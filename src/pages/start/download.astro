@@ -1,0 +1,103 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { wicket } from '../../config';
+---
+
+<DefaultLayout
+  title="Download Apache Wicket"
+  subtitle="Get the most recent version of Wicket"
+  preamble="Wicket is released as a source archive, convenience binaries, and through the Maven Central Repository. The most convenient way of using Wicket is through Maven or Gradle dependency management."
+>
+
+  <h2>Supported Versions</h2>
+  <p>The following releases are actively supported by the Wicket team.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>Latest Release</th>
+        <th>Status</th>
+        <th>Java</th>
+      </tr>
+    </thead>
+    <tbody>
+      {wicket.versions.map((v) => (
+        <tr>
+          <td>Wicket {v.branch}</td>
+          <td>{v.version}</td>
+          <td>{v.status}</td>
+          <td>{v.java}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <p>
+    If your application is on an older branch, consider upgrading at your earliest convenience.
+  </p>
+
+  <hr />
+
+  <h2>Using Maven</h2>
+  <p>
+    Add the following dependency to your <code>pom.xml</code> to use Wicket {wicket.version}:
+  </p>
+
+  <pre><code>{`<dependency>
+    <groupId>org.apache.wicket</groupId>
+    <artifactId>wicket-core</artifactId>
+    <version>${wicket.version}</version>
+</dependency>`}</code></pre>
+
+  <h2>Using Gradle</h2>
+  <pre><code>{`implementation 'org.apache.wicket:wicket-core:${wicket.version}'`}</code></pre>
+
+  <hr />
+
+  <h2>Manual Download</h2>
+  <p>
+    You can also download a binary or source distribution directly. Use the Apache mirror system
+    to find the closest download location.
+  </p>
+  <ul>
+    <li>
+      <a
+        href={`https://www.apache.org/dyn/closer.cgi/wicket/${wicket.version}`}
+        target="_blank"
+        rel="noopener"
+      >
+        Download Apache Wicket {wicket.version}
+      </a>
+    </li>
+  </ul>
+
+  <p>
+    For older releases, visit the <a href="https://archive.apache.org/dist/wicket/" target="_blank" rel="noopener">Apache release archives</a>.
+  </p>
+
+  <hr />
+
+  <h2>SNAPSHOT Repository</h2>
+  <p>
+    To use SNAPSHOT versions you must add the Apache snapshot repository to your <code>pom.xml</code>:
+  </p>
+
+  <pre><code>{`<repository>
+    <id>apache.snapshots</id>
+    <name>Apache Development Snapshot Repository</name>
+    <url>https://repository.apache.org/content/repositories/snapshots/</url>
+    <releases>
+        <enabled>false</enabled>
+    </releases>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>`}</code></pre>
+
+  <p>
+    <strong>Note:</strong> SNAPSHOT versions are development builds and should never be used in production.
+    They may be deleted at any time.
+  </p>
+
+</DefaultLayout>

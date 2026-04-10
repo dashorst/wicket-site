@@ -1,0 +1,66 @@
+---
+import DefaultLayout from '../../../layouts/DefaultLayout.astro';
+import { wicket } from '../../../config';
+---
+
+<DefaultLayout
+  title="Examples"
+  subtitle="See Wicket in action"
+>
+
+  <p>
+    Nothing says more about a framework than a few simple examples. The examples below demonstrate
+    how easy it is to get things done in Wicket. You can also see all examples
+    <a href={wicket.liveExamplesUrl} target="_blank" rel="noopener">live in action</a>
+    without installing anything.
+  </p>
+
+  <h2>Beginner Examples</h2>
+  <p>
+    These examples are particularly helpful if you are new to Wicket and are reading the
+    <a href="/docs">User Guide</a>.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Hello World</strong> — The classic first example. A minimal Wicket page that renders
+      a greeting. Shows how pages, markup, and components relate to each other.
+    </li>
+    <li>
+      <strong>AJAX Counter</strong> — A counter with an increment button that updates the count
+      using Wicket's built-in Ajax support — no JavaScript required on your part.
+    </li>
+    <li>
+      <strong>Guestbook</strong> — A tiny blog demonstrating <code>ListView</code> and
+      <code>Form</code> components. Users can submit messages that are displayed in a list.
+    </li>
+    <li>
+      <strong>Markup Inheritance</strong> — Shows how to share page layouts using Wicket's
+      markup inheritance feature, keeping your HTML templates DRY.
+    </li>
+    <li>
+      <strong>Navomatic</strong> — Automatic navigation using Borders and Links. Demonstrates
+      how to build a reusable navigation bar with Wicket's Border component.
+    </li>
+    <li>
+      <strong>Drop-Down Choice</strong> — A short example explaining the
+      <code>DropDownChoice</code> component for building select menus backed by Java models.
+    </li>
+    <li>
+      <strong>Using Fragments</strong> — Demonstrates Wicket Fragments, a type of inline panel
+      that lets you define reusable markup snippets within the same HTML file.
+    </li>
+  </ul>
+
+  <h2>Live Examples Server</h2>
+  <p>
+    The live examples server hosts the full Wicket example application for the current stable
+    release, including many more examples beyond those listed above.
+  </p>
+  <p>
+    <a href={wicket.liveExamplesUrl} class="font-medium" target="_blank" rel="noopener">
+      Browse all live examples &rarr;
+    </a>
+  </p>
+
+</DefaultLayout>

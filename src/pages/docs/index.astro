@@ -1,0 +1,86 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { wicket } from '../../config';
+---
+
+<DefaultLayout
+  title="Documentation"
+  subtitle="All the things you want to know about Wicket"
+>
+
+  <h2>User Guide</h2>
+  <p>
+    Learn to build web applications with Wicket from scratch with the 200+ page user guide.
+    It gradually introduces you to the various features of the framework with real-world examples,
+    covering models, behaviours, testing, and integration with other projects.
+  </p>
+  <p>The guide is available as HTML or PDF for the following versions:</p>
+  <ul>
+    <li>
+      Wicket 10.x —
+      <a href={`${wicket.guideBaseUrl}/10.x/single.html`} target="_blank" rel="noopener">HTML</a>
+      &middot;
+      <a href={`${wicket.guideBaseUrl}/10.x/single.pdf`} target="_blank" rel="noopener">PDF</a>
+    </li>
+    <li>
+      Wicket 9.x —
+      <a href={`${wicket.guideBaseUrl}/9.x/single.html`} target="_blank" rel="noopener">HTML</a>
+      &middot;
+      <a href={`${wicket.guideBaseUrl}/9.x/single.pdf`} target="_blank" rel="noopener">PDF</a>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>API Documentation</h2>
+  <p>
+    Each release comes with JavaDocs. When using Maven, your IDE will automatically download
+    source JARs and show inline documentation. You can also browse the API online:
+  </p>
+  <ul>
+    <li>
+      <a href={`${wicket.javadocBaseUrl}/10.x/index.html`} target="_blank" rel="noopener">JavaDoc 10.x</a>
+    </li>
+    <li>
+      <a href={`${wicket.javadocBaseUrl}/9.x/index.html`} target="_blank" rel="noopener">JavaDoc 9.x</a>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>Examples</h2>
+  <p>
+    Browse a collection of Wicket examples with full descriptions and live demos.
+  </p>
+  <ul>
+    <li><a href="/docs/examples">Example descriptions</a></li>
+    <li>
+      <a href={wicket.liveExamplesUrl} target="_blank" rel="noopener">
+        Live Examples (Wicket 10.x)
+      </a>
+    </li>
+  </ul>
+
+  <hr />
+
+  <h2>Books</h2>
+  <p>
+    Several books have been published about Apache Wicket covering everything from beginner
+    introductions to advanced topics.
+  </p>
+  <ul>
+    <li><a href="/docs/books">Books about Wicket</a></li>
+  </ul>
+
+  <hr />
+
+  <h2>Migration Guides</h2>
+  <p>
+    Upgrading from an older version? The migration guides document all API changes and provide
+    upgrade paths between Wicket versions.
+  </p>
+  <ul>
+    <li><a href="/docs/migration">Migration guides</a></li>
+  </ul>
+
+</DefaultLayout>
