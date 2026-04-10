@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://wicket.apache.org',
-  integrations: [tailwindcss()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     shikiConfig: {
       themes: {
