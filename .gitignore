@@ -4,3 +4,8 @@ Gemfile.lock
 .jekyll-cache/
 .idea/
 *.iml
+
+# Astro
+node_modules/
+dist/
+.astro/
