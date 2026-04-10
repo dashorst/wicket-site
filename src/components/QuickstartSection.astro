@@ -1,0 +1,26 @@
+---
+import { wicket } from '../config';
+---
+<section class="bg-paper px-6 md:px-12 py-20">
+  <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl">
+    <div class="flex-1">
+      <h3 class="font-display text-3xl font-bold leading-snug mb-3">Up and running in<br />thirty seconds</h3>
+      <p class="text-[15px] text-warm-mid leading-relaxed mb-5">
+        One Maven command gives you a working Wicket application with embedded Jetty. Edit, refresh, repeat.
+      </p>
+      <a href="/start/quickstart" class="inline-block bg-wicket-orange text-white px-7 py-3 rounded-md text-[15px] font-semibold hover:bg-wicket-orange-light hover:-translate-y-0.5 transition-all no-underline">
+        Quickstart Guide →
+      </a>
+    </div>
+    <div class="flex-[1.2] w-full">
+      <div class="bg-[#0f1419] rounded-lg p-6 font-mono text-[13px] text-[#abb2bf] leading-[1.8] border border-white/[0.06] overflow-x-auto">
+        <span class="text-wicket-orange">$</span> mvn archetype:generate \<br />
+        &nbsp;&nbsp;-DarchetypeGroupId=<span class="text-[#8fbc6f]">{wicket.archetype.groupId}</span> \<br />
+        &nbsp;&nbsp;-DarchetypeArtifactId=<span class="text-[#8fbc6f]">{wicket.archetype.artifactId}</span> \<br />
+        &nbsp;&nbsp;-DarchetypeVersion=<span class="text-[#d4a07a]">{wicket.version}</span> \<br />
+        &nbsp;&nbsp;-DgroupId=<span class="text-[#8fbc6f]">com.example</span> \<br />
+        &nbsp;&nbsp;-DartifactId=<span class="text-[#8fbc6f]">myapp</span>
+      </div>
+    </div>
+  </div>
+</section>
