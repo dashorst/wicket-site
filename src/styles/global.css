@@ -39,3 +39,33 @@
     transition: color 0.2s;
   }
 }
+
+@layer components {
+  .prose-warm {
+    --tw-prose-body: var(--color-warm-mid);
+    --tw-prose-headings: var(--color-ink);
+    --tw-prose-links: var(--color-wicket-orange);
+    --tw-prose-code: var(--color-ink);
+  }
+
+  .prose-warm a {
+    text-decoration-color: var(--color-wicket-orange);
+    text-underline-offset: 2px;
+  }
+
+  .prose-warm a:hover {
+    color: var(--color-wicket-orange);
+  }
+
+  .prose-warm code {
+    font-size: 0.875em;
+    background: var(--color-paper-dim);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+  }
+
+  .prose-warm pre {
+    background: var(--color-ink);
+    border-radius: 0.5rem;
+  }
+}
