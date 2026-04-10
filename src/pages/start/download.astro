@@ -12,26 +12,36 @@ import { wicket } from '../../config';
   <h2>Supported Versions</h2>
   <p>The following releases are actively supported by the Wicket team.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Version</th>
-        <th>Latest Release</th>
-        <th>Status</th>
-        <th>Java</th>
-      </tr>
-    </thead>
-    <tbody>
-      {wicket.versions.map((v) => (
-        <tr>
-          <td>Wicket {v.branch}</td>
-          <td>{v.version}</td>
-          <td>{v.status}</td>
-          <td>{v.java}</td>
+  <div class="not-prose overflow-x-auto rounded-lg border border-black/[0.06] mb-4">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="bg-paper-dim border-b border-black/[0.06]">
+          <th class="px-4 py-3 text-left font-bold text-ink">Version</th>
+          <th class="px-4 py-3 text-left font-bold text-ink">Latest Release</th>
+          <th class="px-4 py-3 text-left font-bold text-ink">Status</th>
+          <th class="px-4 py-3 text-left font-bold text-ink">Java</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody class="bg-white divide-y divide-black/[0.04]">
+        {wicket.versions.map((v) => (
+          <tr class="hover:bg-paper-dim transition-colors">
+            <td class="px-4 py-3 font-medium text-ink">Wicket {v.branch}</td>
+            <td class="px-4 py-3 font-mono text-wicket-orange font-medium">{v.version}</td>
+            <td class="px-4 py-3">
+              {v.status === 'current, supported' ? (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">current</span>
+              ) : v.status === 'supported' ? (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">supported</span>
+              ) : (
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">security fixes only</span>
+              )}
+            </td>
+            <td class="px-4 py-3 font-mono text-warm-mid">{v.java}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
   <p>
     If your application is on an older branch, consider upgrading at your earliest convenience.
@@ -44,14 +54,19 @@ import { wicket } from '../../config';
     Add the following dependency to your <code>pom.xml</code> to use Wicket {wicket.version}:
   </p>
 
-  <pre><code>{`<dependency>
+  <div class="not-prose bg-[#0f1419] rounded-lg p-6 font-mono text-[13px] text-[#abb2bf] border border-white/[0.06] mb-4 overflow-x-auto">
+    <pre class="m-0 whitespace-pre">{`<dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
     <version>${wicket.version}</version>
-</dependency>`}</code></pre>
+</dependency>`}</pre>
+  </div>
 
   <h2>Using Gradle</h2>
-  <pre><code>{`implementation 'org.apache.wicket:wicket-core:${wicket.version}'`}</code></pre>
+
+  <div class="not-prose bg-[#0f1419] rounded-lg p-6 font-mono text-[13px] text-[#abb2bf] border border-white/[0.06] mb-4 overflow-x-auto">
+    <pre class="m-0 whitespace-pre">{`implementation 'org.apache.wicket:wicket-core:${wicket.version}'`}</pre>
+  </div>
 
   <hr />
 
@@ -83,7 +98,8 @@ import { wicket } from '../../config';
     To use SNAPSHOT versions you must add the Apache snapshot repository to your <code>pom.xml</code>:
   </p>
 
-  <pre><code>{`<repository>
+  <div class="not-prose bg-[#0f1419] rounded-lg p-6 font-mono text-[13px] text-[#abb2bf] border border-white/[0.06] mb-4 overflow-x-auto">
+    <pre class="m-0 whitespace-pre">{`<repository>
     <id>apache.snapshots</id>
     <name>Apache Development Snapshot Repository</name>
     <url>https://repository.apache.org/content/repositories/snapshots/</url>
@@ -93,7 +109,8 @@ import { wicket } from '../../config';
     <snapshots>
         <enabled>true</enabled>
     </snapshots>
-</repository>`}</code></pre>
+</repository>`}</pre>
+  </div>
 
   <p>
     <strong>Note:</strong> SNAPSHOT versions are development builds and should never be used in production.
