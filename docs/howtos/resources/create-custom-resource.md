@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to create a custom resource"
-description: "Create custom resource types to serve dynamic content in Wicket"
+title: "How to generate dynamic content like PDFs or JSON"
+description: "Learn how to create custom resources that generate files on the fly, such as RSS feeds, CSV exports, or PDF documents"
 category: resources
 ---
 

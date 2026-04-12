@@ -1,3 +1,10 @@
+---
+layout: docs
+title: "How to add or change HTML attributes from Java"
+description: "Learn how to use AttributeModifier to dynamically set CSS classes, styles, data attributes, and other HTML attributes from your Java code"
+category: html-control
+---
+
 To modify tag attributes in a component’s HTML markup we can use class *org.apache.wicket.AttributeModifier*. This class extends *org.apache.wicket.behavior.Behavior* and can be added to any component via the *Component*’s *add* method. Class *Behavior* is used to expand component functionalities and it can also modify component markup. We will see this class in detail later in <a href="#advanced.adoc#_enriching_components_with_behaviors" class="cross-reference">chapter 19.1</a>.
 
 As first example of attribute manipulation let’s consider a *Label* component bound to the following markup:

@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to update components with AJAX"
-description: "Use AjaxRequestTarget to refresh components and execute JavaScript via AJAX in Wicket"
+title: "How to refresh parts of the page without reloading"
+description: "Learn how to use AjaxRequestTarget to update individual components and run JavaScript without a full page reload"
 category: ajax
 ---
 

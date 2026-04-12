@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to convert form input to Java types"
-description: "Control how Wicket converts string input values to typed model objects"
+title: "How to convert text input to numbers, dates, and custom types"
+description: "Learn how to control the conversion from raw string input to typed Java objects like numbers, dates, and enums"
 category: forms
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "Markup inheritance"
-description: "Using markup inheritance and child pages to create consistent layouts"
+title: "Markup inheritance — sharing layouts across pages"
+description: "How to define a base page layout once and let child pages fill in their own content areas"
 category: explanation
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to customize AJAX request lifecycle"
-description: "Use AjaxRequestAttributes and IAjaxCallListener to control AJAX request generation and client-side event handling"
+title: "How to run JavaScript before, during, or after AJAX calls"
+description: "Learn how to customize AJAX request attributes and attach client-side listeners for loading indicators, confirmations, and error handling"
 category: ajax
 ---
 

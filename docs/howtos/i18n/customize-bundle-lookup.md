@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to customize bundle lookup"
-description: "Customize how Wicket looks up resource bundles for localization"
+title: "How to control where Wicket looks for translations"
+description: "Learn how the resource bundle lookup algorithm works and how to customize where translation files are found"
 category: i18n
 ---
 

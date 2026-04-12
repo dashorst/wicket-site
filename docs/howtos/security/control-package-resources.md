@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to control which files are served"
-description: "Configure package resource guards to control which files Wicket serves"
+title: "How to restrict which file types Wicket serves"
+description: "Learn how to configure package resource guards so that only safe file extensions are accessible from the browser"
 category: security
 ---
 

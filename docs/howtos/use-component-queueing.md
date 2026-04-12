@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to use component queueing"
-description: "Simplify component hierarchy setup using Wicket's component queueing"
+title: "How to let Wicket match components to markup automatically"
+description: "Learn how component queueing frees you from manually mirroring the HTML hierarchy in Java code"
 category: components
 ---
 

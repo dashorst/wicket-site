@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "Models"
-description: "Working with Wicket's model interfaces for data binding"
+title: "Models — connecting components to data"
+description: "How Wicket models work as the bridge between your components and their underlying data"
 category: reference
 ---
 

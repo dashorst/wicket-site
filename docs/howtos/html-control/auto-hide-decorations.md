@@ -1,3 +1,10 @@
+---
+layout: docs
+title: "How to automatically hide labels when their content is invisible"
+description: "Learn how to use wicket:enclosure to automatically hide surrounding markup when a component is not visible"
+category: html-control
+---
+
 Our data are rarely displayed alone without a caption or other graphic elements that make clear the meaning of their value. For example:
 
 ``` html

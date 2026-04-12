@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to add CSS and JavaScript"
-description: "Add CSS stylesheets and JavaScript files to your Wicket pages"
+title: "How to add CSS and JavaScript to your pages"
+description: "Learn how to include stylesheets and scripts in the page header from your components and behaviors"
 category: resources
 ---
 

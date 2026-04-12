@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to integrate JavaScript"
-description: "Integrate custom JavaScript libraries and widgets with Wicket components"
+title: "How to call JavaScript from Java and vice versa"
+description: "Learn how to wrap a JavaScript widget in a Wicket component and communicate between client and server"
 category: integration
 ---
 

@@ -1,3 +1,10 @@
+---
+layout: docs
+title: "How to create reusable page wrappers"
+description: "Learn how to use Border to wrap page content with reusable decorating markup like headers, footers, and sidebars"
+category: html-control
+---
+
 Component *org.apache.wicket.markup.html.border.Border* is a special purpose container created to enclose its tag body with its related markup. Just like panels and pages, borders also have their own markup file which is defined following the same rules seen for panels and pages. In this file *\<wicket:border\>* tag is used to indicate which part of the content is to be considered as border markup:
 
 ``` html

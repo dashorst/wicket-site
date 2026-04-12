@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to use resource models"
-description: "Use StringResourceModel and ResourceModel for dynamic localized text"
+title: "How to display localized text in components"
+description: "Learn how to use ResourceModel and StringResourceModel to show translated, parameterized text in your UI"
 category: i18n
 ---
 

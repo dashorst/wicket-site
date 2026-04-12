@@ -1,3 +1,10 @@
+---
+layout: docs
+title: "How to control component visibility"
+description: "Learn how to show, hide, and disable components programmatically and understand how visibility affects the component hierarchy"
+category: html-control
+---
+
 At the end of the previous chapter we have seen how to hide a component calling its method *setVisible*. In a similar fashion, we can also decide to disable a component using method *setEnabled*. When a component is disabled all the links inside it will be in turn disabled (they will be rendered as *\<span\>*) and it can not fire JavaScript events.
 
 Class *Component* provides two getter methods to determine if a component is visible or enabled: *isVisible* and *isEnabled*.

@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to paginate large datasets"
-description: "Use DataView and PagingNavigator with IDataProvider to display and paginate large datasets"
+title: "How to add paging to large lists"
+description: "Learn how to display large datasets one page at a time using DataView and a paging navigator"
 category: repeaters
 ---
 

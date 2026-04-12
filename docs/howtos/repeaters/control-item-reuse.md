@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to control item reuse strategy"
-description: "Use RefreshingView and IItemReuseStrategy to control how repeater children are reused across renders"
+title: "How to keep form state when repeating items"
+description: "Learn how to control which child components are recreated or reused when a repeater re-renders"
 category: repeaters
 ---
 

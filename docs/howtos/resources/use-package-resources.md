@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to use package resources"
-description: "Reference and serve static files bundled alongside your Wicket components"
+title: "How to serve CSS, JS, and images from your Java packages"
+description: "Learn how to bundle static files alongside your components so they stay self-contained and reusable"
 category: resources
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "Request processing"
-description: "How Wicket processes HTTP requests through the request cycle"
+title: "Request processing — from HTTP to rendered page"
+description: "How an HTTP request travels through Wicket's request cycle, filters, and mappers to produce a response"
 category: reference
 ---
 

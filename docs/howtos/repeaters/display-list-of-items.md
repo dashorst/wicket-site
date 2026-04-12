@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to display a list of items"
-description: "Use ListView to display a list of objects with complex markup containing nested components"
+title: "How to display a list with nested components"
+description: "Learn how to use ListView to render a list of objects with rich markup containing links, labels, and other components"
 category: repeaters
 ---
 

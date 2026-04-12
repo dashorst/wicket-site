@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to declare resource dependencies"
-description: "Declare dependencies between JavaScript and CSS resources in Wicket"
+title: "How to control CSS and JavaScript load order"
+description: "Learn how to declare dependencies between stylesheets and scripts so they load in the right order"
 category: resources
 ---
 

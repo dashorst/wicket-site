@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to mount resources"
-description: "Mount shared resources at custom URLs in your Wicket application"
+title: "How to serve files at custom URLs"
+description: "Learn how to mount resources at clean, predictable URLs instead of using auto-generated paths"
 category: resources
 ---
 

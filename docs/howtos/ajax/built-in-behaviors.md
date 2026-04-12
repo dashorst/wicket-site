@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to add AJAX to existing components"
-description: "Use built-in AJAX behaviors to add AJAX functionality to any Wicket component"
+title: "How to make any component respond to browser events via AJAX"
+description: "Learn how to attach built-in AJAX behaviors to existing components so they react to clicks, changes, and other events"
 category: ajax
 ---
 

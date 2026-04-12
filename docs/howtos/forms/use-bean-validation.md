@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to use Jakarta Bean Validation with forms"
-description: "Integrate JSR 303 / Jakarta Bean Validation annotations with Wicket form components"
+title: "How to validate forms with annotations like @NotNull"
+description: "Learn how to use Jakarta Bean Validation (JSR 303) annotations on your domain objects and have Wicket enforce them automatically"
 category: forms
 ---
 

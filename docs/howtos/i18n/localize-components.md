@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to localize components"
-description: "Localize Wicket components using resource bundles and properties files"
+title: "How to make your application multilingual"
+description: "Learn how to set the user's locale and provide translated strings through properties files"
 category: i18n
 ---
 

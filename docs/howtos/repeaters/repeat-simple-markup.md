@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to repeat simple markup"
-description: "Use RepeatingView to repeat simple HTML markup fragments for each item in a collection"
+title: "How to render a dynamic number of items"
+description: "Learn how to repeat a simple HTML fragment once per item using RepeatingView"
 category: repeaters
 ---
 

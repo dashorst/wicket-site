@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "Stateful vs stateless pages"
-description: "Understanding page versioning, caching, and the difference between stateful and stateless pages"
+title: "Stateful vs stateless pages — when sessions matter"
+description: "Why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability"
 category: explanation
 ---
 

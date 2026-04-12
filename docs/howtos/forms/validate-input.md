@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: "How to validate form input"
-description: "Add validators to form components and display error messages"
+title: "How to validate form input and show error messages"
+description: "Learn how to add validation rules to form fields and display feedback messages when input is invalid"
 category: forms
 ---
 
