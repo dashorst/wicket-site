@@ -1741,6 +1741,16 @@ a.card-large {
 }
 
 @media (min-width: 768px) {
+  .docs-header {
+    padding: var(--space-10) var(--space-10);
+  }
+
+  .docs-content {
+    padding: var(--space-8) var(--space-10);
+  }
+}
+
+@media (min-width: 1024px) {
   .docs-layout {
     flex-direction: row;
   }
@@ -1754,14 +1764,6 @@ a.card-large {
     position: sticky;
     top: 0;
     max-height: 100vh;
-  }
-
-  .docs-header {
-    padding: var(--space-10) var(--space-10);
-  }
-
-  .docs-content {
-    padding: var(--space-8) var(--space-10);
   }
 
   .docs-toc {
@@ -2449,7 +2451,7 @@ a.card-large {
 /* On mobile, start collapsed by removing the open attribute via JS.
    But we want it open by default on desktop (the `open` attr is in HTML). */
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .docs-sidebar {
     background-color: var(--color-paper-dim);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -2460,13 +2462,13 @@ a.card-large {
   }
 }
 
-@media (min-width: 768px) {
-  /* Hide the toggle summary on desktop */
+@media (min-width: 1024px) {
+  /* Hide the toggle summary on wide screens */
   .docs-sidebar-toggle {
     display: none;
   }
 
-  /* Ensure sidebar is always visible on desktop regardless of open state */
+  /* Ensure sidebar is always visible regardless of open state */
   .docs-sidebar,
   .docs-sidebar[open] {
     display: block;
@@ -2482,7 +2484,6 @@ a.card-large {
     overflow-y: auto;
   }
 
-  /* The nav inside should always display on desktop */
   .docs-sidebar > .docs-nav {
     display: block;
   }
