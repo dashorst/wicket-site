@@ -1,39 +1,45 @@
 ---
 layout: base
 ---
-<section class="header-band">
-  <div class="header-band-inner">
-    <h1>{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
-    {% if page.preamble %}<p class="preamble">{{ page.preamble }}</p>{% endif %}
-  </div>
-</section>
 <main class="docs-layout">
   <aside class="docs-sidebar">
     <nav class="docs-nav">
-      <h2 class="docs-nav-heading">Documentation</h2>
-      {% assign grouped_docs = site.docs | group_by: "category" %}
-      {% for group in grouped_docs %}
-      <div class="docs-nav-group">
-        {% if group.name != "" %}
-        <h3 class="docs-nav-group-title">{{ group.name }}</h3>
-        {% endif %}
+      {% for section in site.data.docs-nav %}
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">{{ section.title }}</h3>
         <ul class="docs-nav-list">
-          {% assign sorted_docs = group.items | sort: "order" %}
-          {% for doc in sorted_docs %}
-          <li>
-            <a href="{{ doc.url }}"
-               class="docs-nav-link{% if page.url == doc.url %} active{% endif %}">
-              {{ doc.title }}
-            </a>
-          </li>
+          {% for item in section.items %}
+            {% if item.items %}
+              {%- comment -%} Nested group (e.g., Forms, AJAX) {%- endcomment -%}
+              <li class="docs-nav-group">
+                <span class="docs-nav-group-title">{{ item.title }}</span>
+                <ul class="docs-nav-sublist">
+                  {% for subitem in item.items %}
+                  <li>
+                    <a href="{{ subitem.url }}" class="docs-nav-link{% if page.url == subitem.url %} active{% endif %}">{{ subitem.title }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% elsif item.url %}
+              {%- comment -%} Direct link (e.g., Component Queueing) {%- endcomment -%}
+              <li>
+                <a href="{{ item.url }}" class="docs-nav-link{% if page.url == item.url %} active{% endif %}">{{ item.title }}</a>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
       {% endfor %}
     </nav>
   </aside>
-  <div class="docs-content prose">
-    {{ content }}
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="docs-header-description">{{ page.description }}</p>{% endif %}
+    </header>
+    <div class="docs-content prose">
+      {{ content }}
+    </div>
   </div>
 </main>
