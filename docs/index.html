@@ -7,99 +7,288 @@ title: "Documentation"
 <section class="header-band">
   <div class="header-band-inner">
     <h1>Documentation</h1>
-    <p class="subtitle">Everything you need to learn, use, and understand Wicket</p>
+    <p class="subtitle">Guides, tutorials, and reference for Apache Wicket</p>
   </div>
 </section>
 
 <main class="content-area">
   <div class="content-inner">
 
-    <!-- Diataxis quadrants: large cards -->
-    <div class="docs-grid-2" style="margin-bottom: 1.5rem;">
-      <a href="/docs/tutorials/getting-started/" class="card-large">
-        <div class="card-large__icon card__icon--orange">&#x1F680;</div>
-        <h2 class="card__title">Tutorials</h2>
-        <p class="card__text">Step-by-step lessons to get you started. Build a working Wicket application from scratch.</p>
-        <div class="card__links">
-          <span>Getting Started</span>
-          <span>&middot;</span>
-          <span>Your First Form</span>
-          <span>&middot;</span>
-          <span>Adding AJAX</span>
-        </div>
-      </a>
-
-      <a href="/docs/howtos/forms/validate-input/" class="card-large">
-        <div class="card-large__icon card__icon--green">&#x1F527;</div>
-        <h2 class="card__title">How-To Guides</h2>
-        <p class="card__text">Solve specific problems. 47 task-oriented guides covering forms, AJAX, security, testing, and more.</p>
-        <div class="card__links">
-          <span>Forms</span>
-          <span>&middot;</span>
-          <span>AJAX</span>
-          <span>&middot;</span>
-          <span>Security</span>
-          <span>&middot;</span>
-          <span>Testing</span>
-        </div>
-      </a>
+    <!-- Search and filter bar -->
+    <div class="docs-filter-bar">
+      <input
+        type="search"
+        id="docs-search"
+        class="docs-search-input"
+        placeholder="Filter by keyword..."
+        autocomplete="off"
+        oninput="filterDocs()"
+      />
+      <div class="docs-filter-tags">
+        <button class="docs-filter-tag active" data-filter="all" onclick="filterByCategory('all', this)">All</button>
+        <button class="docs-filter-tag" data-filter="tutorials" onclick="filterByCategory('tutorials', this)">Tutorials</button>
+        <button class="docs-filter-tag" data-filter="howto" onclick="filterByCategory('howto', this)">How-To Guides</button>
+        <button class="docs-filter-tag" data-filter="reference" onclick="filterByCategory('reference', this)">Reference</button>
+        <button class="docs-filter-tag" data-filter="explanation" onclick="filterByCategory('explanation', this)">Explanation</button>
+      </div>
     </div>
 
-    <div class="docs-grid-2" style="margin-bottom: 3rem;">
-      <a href="/docs/reference/modules/" class="card-large">
-        <div class="card-large__icon card__icon--blue">{ }</div>
-        <h2 class="card__title">Reference</h2>
-        <p class="card__text">Technical descriptions of Wicket's modules, component lifecycle, request processing, and models.</p>
-        <div class="card__links">
-          <span>Modules</span>
-          <span>&middot;</span>
-          <span>Lifecycle</span>
-          <span>&middot;</span>
-          <span>Models</span>
-          <span>&middot;</span>
-          <span>Configuration</span>
-        </div>
-      </a>
-
-      <a href="/docs/explanation/why-wicket/" class="card-large">
-        <div class="card-large__icon card__icon--orange">&#x1F4A1;</div>
-        <h2 class="card__title">Explanation</h2>
-        <p class="card__text">Understand the design decisions behind Wicket. Why models matter, stateful vs stateless, best practices.</p>
-        <div class="card__links">
-          <span>Why Wicket</span>
-          <span>&middot;</span>
-          <span>Best Practices</span>
-          <span>&middot;</span>
-          <span>Internals</span>
-        </div>
-      </a>
+    <!-- Tutorials section -->
+    <div class="docs-section" data-section="tutorials">
+      <h2 class="docs-section-heading">Tutorials</h2>
+      <p class="docs-section-description">Step-by-step lessons to get you started with Wicket.</p>
+      <div class="docs-card-grid">
+        {% assign tutorials = site.pages | where: "category", "tutorials" | sort: "title" %}
+        {% for page in tutorials %}
+        <a href="{{ page.url }}" class="docs-card" data-category="tutorials" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
     </div>
 
-    <!-- Secondary resources: smaller cards -->
-    <div class="docs-grid-4">
-      <a href="{{ site.wicket.javadoc_base_url }}/10.x/index.html" target="_blank" rel="noopener" class="card">
-        <div class="card__icon card__icon--blue">{ }</div>
-        <h3 class="card__small-title">API JavaDoc</h3>
-        <p class="card__small-text">Complete JavaDoc for all Wicket classes</p>
-      </a>
-
-      <a href="/docs/examples" class="card">
-        <div class="card__icon card__icon--green">&#x25B6;</div>
-        <h3 class="card__small-title">Examples</h3>
-        <p class="card__small-text">Browse examples and live demos</p>
-      </a>
-
-      <a href="/docs/books" class="card">
-        <div class="card__icon card__icon--orange">&#x1F4DA;</div>
-        <h3 class="card__small-title">Books</h3>
-        <p class="card__small-text">Published books about Wicket</p>
-      </a>
-
-      <a href="/docs/migration" class="card">
-        <div class="card__icon card__icon--blue">&#x2197;</div>
-        <h3 class="card__small-title">Migration</h3>
-        <p class="card__small-text">Upgrade between versions</p>
-      </a>
+    <!-- How-To: Forms -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Forms</h2>
+      <div class="docs-card-grid">
+        {% assign forms = site.pages | where: "category", "forms" | sort: "title" %}
+        {% for page in forms %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
     </div>
+
+    <!-- How-To: AJAX -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">AJAX</h2>
+      <div class="docs-card-grid">
+        {% assign ajax = site.pages | where: "category", "ajax" | sort: "title" %}
+        {% for page in ajax %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: Repeaters -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Repeaters</h2>
+      <div class="docs-card-grid">
+        {% assign repeaters = site.pages | where: "category", "repeaters" | sort: "title" %}
+        {% for page in repeaters %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: HTML Control -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">HTML Control</h2>
+      <div class="docs-card-grid">
+        {% assign html = site.pages | where: "category", "html-control" | sort: "title" %}
+        {% for page in html %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: Resources -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Resources &amp; Assets</h2>
+      <div class="docs-card-grid">
+        {% assign resources = site.pages | where: "category", "resources" | sort: "title" %}
+        {% for page in resources %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: i18n -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Internationalization</h2>
+      <div class="docs-card-grid">
+        {% assign i18n = site.pages | where: "category", "i18n" | sort: "title" %}
+        {% for page in i18n %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: Security -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Security</h2>
+      <div class="docs-card-grid">
+        {% assign security = site.pages | where: "category", "security" | sort: "title" %}
+        {% for page in security %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: URLs -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">URLs &amp; Routing</h2>
+      <div class="docs-card-grid">
+        {% assign urls = site.pages | where: "category", "urls" | sort: "title" %}
+        {% for page in urls %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: Testing -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Testing</h2>
+      <div class="docs-card-grid">
+        {% assign testing = site.pages | where: "category", "testing" | sort: "title" %}
+        {% for page in testing %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- How-To: Integration -->
+    <div class="docs-section" data-section="howto">
+      <h2 class="docs-section-heading">Integration</h2>
+      <div class="docs-card-grid">
+        {% assign integration = site.pages | where: "category", "integration" | sort: "title" %}
+        {% for page in integration %}
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Reference section -->
+    <div class="docs-section" data-section="reference">
+      <h2 class="docs-section-heading">Reference</h2>
+      <p class="docs-section-description">Technical descriptions of Wicket internals and APIs.</p>
+      <div class="docs-card-grid">
+        {% assign reference = site.pages | where: "category", "reference" | sort: "title" %}
+        {% for page in reference %}
+        <a href="{{ page.url }}" class="docs-card" data-category="reference" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Explanation section -->
+    <div class="docs-section" data-section="explanation">
+      <h2 class="docs-section-heading">Explanation</h2>
+      <p class="docs-section-description">Understand the design decisions and concepts behind Wicket.</p>
+      <div class="docs-card-grid">
+        {% assign explanation = site.pages | where: "category", "explanation" | sort: "title" %}
+        {% for page in explanation %}
+        <a href="{{ page.url }}" class="docs-card" data-category="explanation" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          <h3 class="docs-card-title">{{ page.title }}</h3>
+          {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- External resources -->
+    <div class="docs-section" data-section="all">
+      <h2 class="docs-section-heading">External Resources</h2>
+      <div class="docs-card-grid">
+        <a href="{{ site.wicket.javadoc_base_url }}/10.x/index.html" target="_blank" rel="noopener" class="docs-card" data-category="all" data-title="api javadoc" data-description="complete javadoc for all wicket classes">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          <h3 class="docs-card-title">API JavaDoc</h3>
+          <p class="docs-card-description">Complete JavaDoc for all Wicket classes and methods.</p>
+        </a>
+        <a href="/docs/examples" class="docs-card" data-category="all" data-title="examples" data-description="browse examples and live demos">
+          <span class="docs-card-badge docs-card-badge--tutorial">Examples</span>
+          <h3 class="docs-card-title">Examples &amp; Live Demos</h3>
+          <p class="docs-card-description">Browse example applications and try Wicket in your browser.</p>
+        </a>
+        <a href="/docs/books" class="docs-card" data-category="all" data-title="books" data-description="published books about wicket">
+          <span class="docs-card-badge docs-card-badge--explanation">Books</span>
+          <h3 class="docs-card-title">Books</h3>
+          <p class="docs-card-description">Published books about Apache Wicket.</p>
+        </a>
+        <a href="/docs/migration" class="docs-card" data-category="all" data-title="migration" data-description="upgrade between wicket versions">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">Migration Guides</h3>
+          <p class="docs-card-description">Upgrade between Wicket versions.</p>
+        </a>
+      </div>
+    </div>
+
   </div>
 </main>
+
+<script>
+  let activeCategory = 'all';
+
+  function filterDocs() {
+    const query = document.getElementById('docs-search').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.docs-card');
+    const sections = document.querySelectorAll('.docs-section');
+
+    cards.forEach(card => {
+      const title = card.dataset.title || '';
+      const desc = card.dataset.description || '';
+      const cat = card.dataset.category || '';
+      const matchesSearch = !query || title.includes(query) || desc.includes(query);
+      const matchesCategory = activeCategory === 'all' || cat === activeCategory;
+      card.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
+    });
+
+    // Hide sections where all cards are hidden
+    sections.forEach(section => {
+      const visibleCards = section.querySelectorAll('.docs-card:not([style*="display: none"])');
+      section.style.display = visibleCards.length > 0 ? '' : 'none';
+    });
+  }
+
+  function filterByCategory(category, btn) {
+    activeCategory = category;
+    document.querySelectorAll('.docs-filter-tag').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    filterDocs();
+  }
+</script>

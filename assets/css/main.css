@@ -2065,3 +2065,173 @@ a.card-large {
 .leading-snug    { line-height: 1.35; }
 .leading-tight   { line-height: 1.2; }
 .max-w-none      { max-width: none; }
+
+
+/* ==========================================================================
+   24. Docs Catalog Page
+   ========================================================================== */
+
+.docs-filter-bar {
+  margin-bottom: var(--space-8);
+}
+
+.docs-search-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: var(--space-3);
+}
+
+.docs-search-input:focus {
+  border-color: var(--color-wicket-orange);
+  box-shadow: 0 0 0 3px var(--color-wicket-orange-glow);
+}
+
+.docs-search-input::placeholder {
+  color: var(--color-warm-light);
+}
+
+.docs-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.docs-filter-tag {
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--color-warm-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.docs-filter-tag:hover {
+  border-color: var(--color-wicket-orange);
+  color: var(--color-wicket-orange);
+}
+
+.docs-filter-tag.active {
+  background: var(--color-wicket-orange);
+  border-color: var(--color-wicket-orange);
+  color: #ffffff;
+}
+
+.docs-section {
+  margin-bottom: var(--space-10);
+}
+
+.docs-section-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: var(--space-1);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.docs-section-description {
+  font-size: var(--text-sm);
+  color: var(--color-warm-light);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-1);
+}
+
+.docs-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .docs-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .docs-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.docs-card {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.docs-card:hover {
+  border-color: var(--color-wicket-orange);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.docs-card-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.125rem 0.5rem;
+  border-radius: 2rem;
+  margin-bottom: var(--space-2);
+}
+
+.docs-card-badge--tutorial {
+  background: var(--color-wicket-orange-glow);
+  color: var(--color-wicket-orange);
+}
+
+.docs-card-badge--howto {
+  background: rgba(143, 188, 111, 0.15);
+  color: #5a8a3c;
+}
+
+.docs-card-badge--reference {
+  background: rgba(109, 179, 206, 0.15);
+  color: #3a7a9a;
+}
+
+.docs-card-badge--explanation {
+  background: rgba(180, 160, 210, 0.15);
+  color: #7a5aaa;
+}
+
+.docs-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: var(--space-1);
+  line-height: 1.3;
+}
+
+.docs-card:hover .docs-card-title {
+  color: var(--color-wicket-orange);
+}
+
+.docs-card-description {
+  font-size: 0.8125rem;
+  color: var(--color-warm-mid);
+  line-height: 1.5;
+  margin: 0;
+}
