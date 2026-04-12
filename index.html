@@ -5,19 +5,19 @@ layout: home
 <!-- Hero -->
 <section class="header-band header-band--hero">
   <div class="header-band__inner hero-reveal">
-    <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0s">
+    <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0.05s">
       <img src="/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
       <p class="header-band__subtitle header-band__subtitle--hero">Apache Wicket&trade;</p>
     </div>
-    <h1 class="header-band__title hero-reveal__item hero-sparkle" style="--reveal-delay: 0.15s">
+    <h1 class="header-band__title hero-reveal__item hero-sparkle" style="--reveal-delay: 0.12s">
       Web development,<br />
       <em>the Java way.</em>
     </h1>
-    <p class="header-band__description hero-reveal__item" style="--reveal-delay: 0.35s">
+    <p class="header-band__description hero-reveal__item" style="--reveal-delay: 0.22s">
       Component-oriented. Type-safe. Production-proven across thousands of
       applications for over twenty years. No JavaScript framework required.
     </p>
-    <div class="header-band__actions hero-reveal__item" style="--reveal-delay: 0.5s">
+    <div class="header-band__actions hero-reveal__item" style="--reveal-delay: 0.3s">
       <a href="/start/quickstart" class="btn-primary">Get Started</a>
       <a href="/docs/examples" class="btn-secondary">See It in Action</a>
     </div>
@@ -26,12 +26,12 @@ layout: home
 
 <!-- Code Showcase -->
 <section class="code-showcase">
-  <div class="code-showcase__header animate-in" style="animation-delay: 0.1s">
+  <div class="code-showcase__header animate-in" style="animation-delay: 0.35s">
     <p class="code-showcase__header-label">The Wicket Pattern</p>
     <p class="code-showcase__header-text">Each component: one Java class + one HTML template</p>
   </div>
 
-  <div class="code-showcase__panes">
+  <div class="code-showcase__panes animate-in" style="animation-delay: 0.45s">
     <!-- Left pane: Java -->
     <div class="code-showcase__pane">
       <div class="code-showcase__file-label">
@@ -90,7 +90,7 @@ layout: home
 </section>
 
 <!-- Feature Cards -->
-<section class="feature-section animate-in" style="animation-delay: 0.2s">
+<section class="feature-section animate-in" style="animation-delay: 0.55s">
   <p class="section-label">Why Wicket</p>
   <h2 class="mb-12" style="line-height:1.2">Crafted for the long run</h2>
   <div class="feature-grid">
@@ -115,7 +115,7 @@ layout: home
 <!-- Community Stats -->
 {% assign current_year = 'now' | date: '%Y' | plus: 0 %}
 {% assign years_in_production = current_year | minus: 2004 %}
-<section class="community-stats animate-in" style="animation-delay: 0.3s">
+<section class="community-stats animate-in" style="animation-delay: 0.65s">
   <p class="section-label mb-6">The Wicket Community</p>
   <div class="community-stats__grid">
     <div>
@@ -141,7 +141,7 @@ layout: home
 </section>
 
 <!-- Quickstart Section -->
-<section class="quickstart animate-in" style="animation-delay: 0.4s">
+<section class="quickstart animate-in" style="animation-delay: 0.75s">
   <div class="quickstart__inner">
     <div class="quickstart__text">
       <h3>Up and running in<br />thirty seconds</h3>
@@ -185,7 +185,7 @@ layout: home
 </section>
 
 <!-- Recent Posts -->
-<section class="recent-posts animate-in" style="animation-delay: 0.6s">
+<section class="recent-posts animate-in" style="animation-delay: 0.85s">
   <div class="recent-posts__header">
     <div>
       <p class="section-label">Latest News</p>
