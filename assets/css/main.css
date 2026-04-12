@@ -2632,35 +2632,15 @@ a.card-large {
    Entrance Animations
    ========================================================================== */
 
-@keyframes slideInUp {
-  from {
-    transform: translateY(0.75rem);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.animate-in {
-  animation: slideInUp 0.5s ease-out both;
-}
+/* slideInUp removed — replaced by diagonalRevealFull above */
 
 /* --- Hero diagonal reveal --- */
-
-@keyframes diagonalReveal {
-  from {
-    clip-path: polygon(0 0, 0 0, 0 0);
-  }
-  to {
-    clip-path: polygon(0 0, 200% 0, 0 200%);
-  }
-}
 
 @keyframes diagonalRevealFull {
   0% {
     clip-path: polygon(0 0, 0 0, 0 0);
   }
-  60% {
+  70% {
     clip-path: polygon(0 0, 200% 0, 0 200%);
   }
   100% {
@@ -2668,9 +2648,15 @@ a.card-large {
   }
 }
 
+/* Hero items: fast diagonal reveal */
 .hero-reveal__item {
-  animation: diagonalRevealFull 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation: diagonalRevealFull 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   animation-delay: var(--reveal-delay, 0s);
+}
+
+/* All homepage sections: diagonal swipe */
+.animate-in {
+  animation: diagonalRevealFull 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 /* --- Sparkle effect on hero title --- */
