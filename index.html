@@ -3,7 +3,7 @@ layout: home
 ---
 
 <!-- Hero -->
-<section class="header-band header-band--hero">
+<section class="header-band header-band--hero animate-in">
   <div class="header-band__inner">
     <p class="header-band__subtitle">Apache Wicket&trade;</p>
     <h1 class="header-band__title">
@@ -22,7 +22,7 @@ layout: home
 </section>
 
 <!-- Code Showcase -->
-<section class="code-showcase">
+<section class="code-showcase animate-in" style="animation-delay: 0.1s">
   <div class="code-showcase__header">
     <p class="code-showcase__header-label">The Wicket Pattern</p>
     <p class="code-showcase__header-text">Each component: one Java class + one HTML template</p>
@@ -87,7 +87,7 @@ layout: home
 </section>
 
 <!-- Feature Cards -->
-<section class="feature-section">
+<section class="feature-section animate-in" style="animation-delay: 0.2s">
   <p class="section-label">Why Wicket</p>
   <h2 class="mb-12" style="line-height:1.2">Crafted for the long run</h2>
   <div class="feature-grid">
@@ -112,7 +112,7 @@ layout: home
 <!-- Community Stats -->
 {% assign current_year = 'now' | date: '%Y' | plus: 0 %}
 {% assign years_in_production = current_year | minus: 2004 %}
-<section class="community-stats">
+<section class="community-stats animate-in" style="animation-delay: 0.3s">
   <p class="section-label mb-6">The Wicket Community</p>
   <div class="community-stats__grid">
     <div>
@@ -138,7 +138,7 @@ layout: home
 </section>
 
 <!-- Quickstart Section -->
-<section class="quickstart">
+<section class="quickstart animate-in" style="animation-delay: 0.4s">
   <div class="quickstart__inner">
     <div class="quickstart__text">
       <h3>Up and running in<br />thirty seconds</h3>
@@ -162,7 +162,7 @@ layout: home
 
 <!-- Vitals Bar -->
 {% assign released_date = site.wicket.released | date: "%b %Y" %}
-<section class="vitals-bar">
+<section class="vitals-bar animate-in" style="animation-delay: 0.5s">
   <div class="vitals-bar__item">
     <div class="vitals-bar__value">{{ site.wicket.version }}</div>
     <div class="vitals-bar__label">Latest Release</div>
@@ -182,7 +182,7 @@ layout: home
 </section>
 
 <!-- Recent Posts -->
-<section class="recent-posts">
+<section class="recent-posts animate-in" style="animation-delay: 0.6s">
   <div class="recent-posts__header">
     <div>
       <p class="section-label">Latest News</p>
