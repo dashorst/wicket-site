@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to mount pages with clean URLs — Apache Wicket</title>
+  <meta name="description" content="Mount Wicket pages at custom URL paths for clean, SEO-friendly URLs">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link active">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>How to mount pages with clean URLs</h1>
+      <p class="docs-header-description">Mount Wicket pages at custom URL paths for clean, SEO-friendly URLs</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Having structured URLs in our site is a basic requirement if we want to build an efficient SEO strategy, but it also contributes to improve user experience with more intuitive URLs. Wicket provides two different ways to control URL generation. The first (and simplest) is to “mount” one or more pages to an arbitrary path, while a more powerful technique is to use custom implementations of IMapperContext and IPageParametersEncoder interfaces. In the next paragraphs we will learn both of these two techniques.</p>
+
+<h1 id="mounting-a-single-page">Mounting a single page</h1>
+
+<p>With Wicket we can mount a page to a given path in much the same way as we map a servlet filter to a desired path inside file web.xml (see <a href="#helloWorld.adoc#_configuration_of_wicket_applications" class="cross-reference">paragraph 4.2</a>). Using mountPage(String path, Class &lt;T&gt; pageClass) method of the WebApplication class we tell Wicket to respond with a new instance of pageClass whenever a user navigates to the given path. In the application class of the project MountedPagesExample we mount MountedPage to the “/pageMount” path:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">mountPage</span><span class="o">(</span><span class="s">"/pageMount"</span><span class="o">,</span> <span class="nc">MountedPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="c1">//Other initialization code...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The path provided to mountPage will be used to generate the URL for any page of the specified class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//it will return "/pageMount"</span>
+<span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">urlFor</span><span class="o">(</span><span class="nc">MountedPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Under the hood the mountPage method mounts an instance of the request mapper <em>org.apache.wicket.request.mapper.MountedMapper</em> configured for the given path:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Page</span><span class="o">&gt;</span> <span class="kt">void</span> <span class="nf">mountPage</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">path</span><span class="o">,</span><span class="kd">final</span> <span class="nc">Class</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">pageClass</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">mount</span><span class="o">(</span><span class="k">new</span> <span class="nc">MountedMapper</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">pageClass</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Request mappers and the Application’s method mount have been introduced in the previous chapter (<a href="#requestProcessing.adoc#_the_director_of_request_processing_requestcycle" class="cross-reference">paragraph 9.3</a>).</p>
+
+<h1 id="using-parameter-placeholders-with-mounted-pages">Using parameter placeholders with mounted pages</h1>
+
+<p>The path specified for mounted pages can contain dynamic segments which are populated with the values of the named parameters used to build the page. These segments are declared using special segments called parameter placeholders. Consider the path used in the following example:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mountPage</span><span class="o">(</span><span class="s">"/pageMount/${foo}/otherSegm"</span><span class="o">,</span> <span class="nc">MountedPageWithPlaceholder</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The path used above is composed by three segments: the first and the last are fixed while the second will be replaced by the value of the named parameter foo that must be provided when the page MountedPageWithPlaceholder is instantiated:</p>
+
+<p>Java code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">PageParameters</span> <span class="n">pageParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">();</span>
+<span class="n">pageParameters</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"foo"</span><span class="o">,</span> <span class="s">"foo"</span><span class="o">);</span>
+
+<span class="n">setResponsePage</span><span class="o">(</span><span class="nc">MountedPageWithPlaceholder</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">pageParameters</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Generated URL:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">path</span><span class="nt">&gt;</span>/pageMount/foo/otherSegm
+</code></pre></div></div>
+
+<p>On the contrary if we manually insert an URL like ’&lt;web app path&gt;/pageMount/bar/otherSegm’, we can read value ’bar’ retrieving the named parameter foo inside our page.</p>
+
+<p>Place holders can be declared as optional using the ’#’ character in place of ’$’:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mountPage</span><span class="o">(</span><span class="s">"/pageMount/#{foo}/otherSegm"</span><span class="o">,</span> <span class="nc">MountedPageOptionalPlaceholder</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>If the named parameter for an optional placeholder is missing, the corresponding segment is removed from the final URL:</p>
+
+<p>Java code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">PageParameters</span> <span class="n">pageParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">();</span>
+<span class="n">setResponsePage</span><span class="o">(</span><span class="nc">MountedPageWithPlaceholder</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">pageParameters</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Generated URL:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">path</span><span class="nt">&gt;</span>/pageMount/otherSegm
+</code></pre></div></div>
+
+<h1 id="mounting-a-package">Mounting a package</h1>
+
+<p>In addition to mounting a single page, Wicket allows to mount all of the pages inside a package to a given path. Method mountPackage(String path, Class&lt;T&gt; pageClass) of class WebApplication will mount every page inside pageClass’s package to the specified path.</p>
+
+<p>The resulting URL for package-mounted pages will have the following structure:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">path</span><span class="nt">&gt;</span>/mountedPath/<span class="nt">&lt;PageClassName&gt;</span>[optional query string]
+</code></pre></div></div>
+
+<p>For example in the MountedPagesExample project we have mounted all pages inside the subpackage org.tutorialWicket.subPackage with this line of code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mountPackage</span><span class="o">(</span><span class="s">"/mountPackage"</span><span class="o">,</span> <span class="nc">StatefulPackageMount</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>StatefulPackageMount is one of the pages placed into the desired package and its URL will be:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">path</span><span class="nt">&gt;</span>/mountPackage/StatefulPackageMount?1
+</code></pre></div></div>
+
+<p>Similarly to what is done by the mountPage method, the implementation of the mountPackage method mounts an instance of <em>org.apache.wicket.request.mapper.PackageMapper</em> to the given path.</p>
+
+<h1 id="providing-custom-mapper-context-to-request-mappers">Providing custom mapper context to request mappers</h1>
+
+<p>Interface <em>org.apache.wicket.request.mapper.IMapperContext</em> is used by request mappers to create new page instances and to retrieve static URL segments used to build and parse page URLs. Here is the list of these segments:</p>
+
+<ul>
+  <li>
+    <p>Namespace: it’s the first URL segment of non-mounted pages. By default its value is wicket.</p>
+  </li>
+  <li>
+    <p>Identifier for non-bookmarkable URLs: it’s the segment that identifies non bookmarkable pages. By default its value is page.</p>
+  </li>
+  <li>
+    <p>Identifier for bookmarkable URLs: it’s the segment that identifies bookmarkable pages. By default its value is bookmarkable (as we have seen before in <a href="#urls.adoc#_pageparameters" class="cross-reference">paragraph 10.1.1</a>).</p>
+  </li>
+  <li>
+    <p>Identifier for resources: it’s the segment that identifies Wicket resources. Its default value is resources. The topic of resource management will be covered in <a href="#_resource_management_with_wicket" class="cross-reference">chapter 16</a>.</p>
+  </li>
+</ul>
+
+<p>IMapperContext provides a getter method for any segment listed above. By default Wicket uses class <em>org.apache.wicket.DefaultMapperContext</em> as mapper context.</p>
+
+<p>Project CustomMapperContext is an example of customization of mapper context where we use index as identifier for non-bookmarkable pages and staticURL as identifier for bookmarkable pages. In this project, instead of implementing our mapper context from scratch, we used DefaultMapperContext as base class overriding just the two methods we need to achieve the desired result (getBookmarkableIdentifier() and getPageIdentifier()). The final implementation is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomMapperContext</span> <span class="kd">extends</span> <span class="nc">DefaultMapperContext</span><span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBookmarkableIdentifier</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"staticURL"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getPageIdentifier</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"index"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now to use a custom mapper context in our application we must override the newMapperContext() method declared in the Application class and make it return our custom implementation of IMapperContext:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="nc">IMapperContext</span> <span class="nf">newMapperContext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">CustomMapperContext</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="controlling-how-page-parameters-are-encoded-with-ipageparametersencoder">Controlling how page parameters are encoded with IPageParametersEncoder</h1>
+
+<p>Some request mappers (like MountedMapper and PackageMapper) can delegate page parameters encoding/decoding to interface <em>org.apache.wicket.request.mapper.parameter.IPageParametersEncoder</em>. This entity exposes two methods: encodePageParameters() and decodePageParameters(): the first one is invoked to encode page parameters into an URL while the second one extracts parameters from the URL.</p>
+
+<p>Wicket comes with a built-in implementation of this interface which encodes named page parameters as URL segments using the following pattern: /paramName1/paramValue1/paramName2/paramValue2…</p>
+
+<p>This built-in encoder is <em>org.apache.wicket.request.mapper.parameter.UrlPathPageParametersEncoder</em> class. In the <em>PageParametersEncoderExample</em> project we have manually mounted a <em>MountedMapper</em> that takes as input also an <em>UrlPathPageParametersEncoder</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">mount</span><span class="o">(</span><span class="k">new</span> <span class="nc">MountedMapper</span><span class="o">(</span><span class="s">"/mountedPath"</span><span class="o">,</span> <span class="nc">MountedPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">UrlPathPageParametersEncoder</span><span class="o">()));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The home page of the project contains just a link to the MountedPage web page. The code of the link and the resulting page URL are:</p>
+
+<p>Link code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"mountedPage"</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="nc">PageParameters</span> <span class="n">pageParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">();</span>
+        <span class="n">pageParameters</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"foo"</span><span class="o">,</span> <span class="s">"foo"</span><span class="o">);</span>
+        <span class="n">pageParameters</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"bar"</span><span class="o">,</span> <span class="s">"bar"</span><span class="o">);</span>
+
+        <span class="n">setResponsePage</span><span class="o">(</span><span class="nc">MountedPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">pageParameters</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+</code></pre></div></div>
+
+<p>Generated URL:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Application</span> <span class="na">path</span><span class="nt">&gt;</span>/mountedPath/foo/foo/bar/bar?1
+</code></pre></div></div>
+
+<h1 id="encrypting-page-urls">Encrypting page URLs</h1>
+
+<p>Sometimes URLs are a double–edged sword for our site because they can expose too many details about the internal structure of our web application making it more vulnerable to malicious users.</p>
+
+<p>To avoid this kind of security threat we can use the <em>CryptoMapper</em> request mapper which wraps an existing mapper and encrypts the original URL producing a single encrypted segment:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/url-encrypted.png" />
+</figure>
+
+<p>Typically, <em>CryptoMapper</em> is registered into a Wicket application as the root request mapper wrapping the default one:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">setRootRequestMapper</span><span class="o">(</span><span class="k">new</span> <span class="nc">CryptoMapper</span><span class="o">(</span><span class="n">getRootRequestMapper</span><span class="o">(),</span> <span class="k">this</span><span class="o">));</span>
+    <span class="c1">//pages and resources must be mounted after we have set CryptoMapper</span>
+    <span class="n">mountPage</span><span class="o">(</span><span class="s">"/foo/"</span><span class="o">,</span> <span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>As pointed out in the code above, pages and resources must be mounted after having set <em>CryptoMapper</em> as root mapper, otherwise the mounted paths will not work.</p>
+
+<blockquote>
+  <p>[!WARNING]
+By default <em>CryptoMapper</em> encrypts page URLs with a cipher that might not be strong enough for production environment. Paragraph <a href="#_security_with_wicket" class="cross-reference">“Security with Wicket”</a> will provide a more detailed description of how Wicket encrypts page URLs and we will see how to use stronger ciphers.</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

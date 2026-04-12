@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apache Wicket v6.0.0 released — Apache Wicket</title>
+  <meta name="description" content="Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link active"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <section class="header-band">
+  <div class="header-band-inner">
+    <div class="blog-post-meta">
+      <time datetime="2012-09-05T00:00:00+00:00">September 5, 2012</time>
+      
+      <div class="blog-post-tags">
+        
+        <span class="blog-post-tag">release</span>
+        
+      </div>
+      
+    </div>
+    <h1>Apache Wicket v6.0.0 released</h1>
+    
+  </div>
+</section>
+<main class="content-area">
+  <div class="content-inner prose">
+    <blockquote>
+  <p>“With great pleasure we announce the availability of Apache Wicket 6.0.0”</p>
+
+  <p>– Martijn Dashorst, Vice President, Apache Wicket</p>
+</blockquote>
+
+<p>Apache Wicket v6.0.0 is the 6th major release of the popular open source Java web framework. Numerous enhancements make Apache Wicket v6.0.0 a solid choice for web
+development:</p>
+
+<ul>
+  <li>Out-of-the box JQuery integration</li>
+  <li>Complete control over AJAX requests</li>
+  <li>Improved event registration in browsers</li>
+  <li>Support for large datasets in components</li>
+  <li>Dependency management for client side javascript libraries</li>
+  <li>Experimental support for websockets</li>
+</ul>
+
+<p>This release is available from the <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.0.0">usual download location (wicket-6.0.0)</a>, or available through the Maven Central repository.</p>
+
+<p>Additional features include a customizable client-side API, improved feedback messages, correct packaging for OSGi compatibility and improved initialization of plugins. Highlights include:</p>
+
+<p>Java 6 required - This release moves the minimum required Java version to Java 6. This means that Wicket applications running on earlier Java versions meaning to upgrade, also need to upgrade their Java runtime.</p>
+
+<p>Revamped Wicket AJAX now leverages JQuery - Wicket’s custom AJAX JavaScript library has been re-implemented using JQuery. This makes it easier to integrate JQuery plugins into Wicket applications. With the new AJAX implementation it is possible to provide your own version of JQuery should the need arise, or even to replace the whole Wicket client side AJAX implementation.</p>
+
+<p>AJAX Attributes - With the new and improved AJAX implementation, you can alter any aspect of an AJAX request through AjaxRequestAttributes. For example you can specify that the request should be executed using POST instead of GET, or that the AJAX request should be multi-part, etc. See the migration guide or the JavaDoc of AjaxRequestAttributes for all possible options.</p>
+
+<p>Browser event registration replaces inline events - Wicket now uses JavaScript event registration instead of inline attributes for AJAX components. This enables multiple event listeners to be attached to a markup tag, cleans up the rendered markup considerably and reduces the amount of generated markup.</p>
+
+<p>IDataProvider now uses long instead of int - The <code class="language-plaintext highlighter-rouge">IDataProvider&lt;T&gt;</code> interface and implementations now use long instead of int for index and size parameters to better line up with the Java Persistence API and other persistency frameworks. Big data is now possible with Wicket!</p>
+
+<p><code class="language-plaintext highlighter-rouge">${label}</code> replaces <code class="language-plaintext highlighter-rouge">${input}</code> in feedback messages - Previous Wicket versions used the input that was provided by users in error messages when validations failed. This led to error messages like “1234a is not a valid number”. In Wicket 6 the feedback messages use the label of the invalid form component instead. You can set the label by calling setLabel() on the form component. If no label is provided, Wicket defaults to displaying the component identifier. This changes the error message to “Phonenumber is not a valid number”.</p>
+
+<p>Resources can declare dependencies - It is now much easier to create resource contributions with dependencies, for example a JQuery plugin can declare a dependency on JQuery and other resources such as embedded style sheets. Users of such resources don’t have to provide these dependencies themselves, and the dependencies are linked in the appropriate order.</p>
+
+<p>Packaged resources will use minimized version automatically - When a minimized JavaScript resource is available (filename.min.js – add the .min part to the filename before the extension), Wicket will automatically use the minimized version when running in deployment mode, while using the non-minimized version for development mode.</p>
+
+<p>OSGi compatible packaging - Wicket’s packaging has been made compatible with OSGi bundles by moving some classes to different packages. The full list can be found in our migration guide. This makes it much easier to deploy Wicket applications in an OSGi environment.</p>
+
+<p>Experimental websocket implementations - This release also includes two experimental websocket implementations: one using Atmosphere as a bridge for browsers and containers that don’t support websockets natively and one for containers and browsers that have native websocket support.</p>
+
+<p>The complete set of changes is available in the migration guide at <a href="http://s.apache.org/wicket-6.0-migration">http://s.apache.org/wicket-6.0-migration</a></p>
+
+<h3 id="availability-and-oversight">Availability and Oversight</h3>
+
+<p>As with all Apache products, Apache Wicket v6.0.0 is released under the Apache License v2.0, and is overseen by a self-selected team of active contributors to the project. A Project Management Committee (PMC) guides the Project’s day-to-day operations, including community development and product releases. Apache Wicket source code, documentation, and related resources are available at http://wicket.apache.org/</p>
+
+<p>“Apache”, “Wicket”, “Apache Wicket”, and “ApacheCon” are trademarks of The Apache Software Foundation. All other brands and trademarks are the property of their respective owners.</p>
+
+
+    <hr class="blog-post-divider">
+
+    <nav class="blog-post-nav">
+      
+      <a href="/wicket-site/blog/2012/09/05/wicket-1.4.21-released/" class="blog-post-nav-link blog-post-nav-prev">
+        <span class="blog-post-nav-label">&larr; Previous</span>
+        <span class="blog-post-nav-title">Wicket 1.4.21 released</span>
+      </a>
+      
+      
+      <a href="/wicket-site/blog/2012/09/06/cve-2012-3373/" class="blog-post-nav-link blog-post-nav-next">
+        <span class="blog-post-nav-label">Next &rarr;</span>
+        <span class="blog-post-nav-title">CVE-2012-3373 - Apache Wicket XSS vulnerability</span>
+      </a>
+      
+    </nav>
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

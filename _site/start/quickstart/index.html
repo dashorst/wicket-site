@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create a Wicket Quickstart — Apache Wicket</title>
+  <meta name="description" content="Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link active"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <section class="header-band">
+  <div class="header-band-inner">
+    <h1>Create a Wicket Quickstart</h1>
+    <p class="subtitle">Up and running in seconds</p>
+    
+  </div>
+</section>
+<main class="content-area">
+  <div class="content-inner prose">
+    <p>
+  The Wicket Quickstart Wizard uses <a href="https://maven.apache.org">Apache Maven</a> to
+  generate a starter project. Make sure Maven is installed and available on your
+  <code>PATH</code> before you continue.
+</p>
+
+<h2>Quick Start Wizard</h2>
+<p>Fill in your project details below and copy the generated command line to your terminal.</p>
+
+<div class="not-prose" style="background:#0f1419; border-radius:var(--radius-lg); overflow:hidden; border-top:3px solid var(--color-wicket-orange); border:1px solid rgba(255,255,255,0.06); border-top:3px solid var(--color-wicket-orange);">
+  <div style="padding:var(--space-6) var(--space-6) var(--space-2);">
+    <div class="grid-2" style="gap:var(--space-4);">
+      <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+        <label for="groupId" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Group ID</label>
+        <input
+          type="text"
+          id="groupId"
+          value="com.example"
+          oninput="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea;"
+        />
+        <span style="font-size:var(--text-xs); color:rgba(245,240,234,0.4);">Your base Java package (e.g. com.example)</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+        <label for="artifactId" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Artifact ID</label>
+        <input
+          type="text"
+          id="artifactId"
+          value="myapp"
+          oninput="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea;"
+        />
+        <span style="font-size:var(--text-xs); color:rgba(245,240,234,0.4);">Your project name (e.g. myapp)</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-1); grid-column:1/-1;">
+        <label for="version" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Wicket Version</label>
+        <select
+          id="version"
+          onchange="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea; max-width:20rem;"
+        >
+          
+          <option value="10.8.0" selected style="background:#0f1419">
+            10.8.0 (10.x &mdash; current, supported)
+          </option>
+          
+          <option value="9.22.0" style="background:#0f1419">
+            9.22.0 (9.x &mdash; supported)
+          </option>
+          
+          <option value="8.17.0" style="background:#0f1419">
+            8.17.0 (8.x &mdash; security fixes only)
+          </option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:var(--space-4) var(--space-6); display:flex; flex-direction:column; gap:var(--space-1);">
+    <label for="cmdLine" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Generated command line</label>
+    <textarea
+      id="cmdLine"
+      readonly
+      rows="4"
+      onfocus="this.select()"
+      style="width:100%; border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); padding:var(--space-2) var(--space-3); font-family:var(--font-mono); font-size:var(--text-xs); color:#abb2bf; resize:vertical;"
+    ></textarea>
+  </div>
+
+  <div style="padding:0 var(--space-6) var(--space-6); display:flex; align-items:center; gap:var(--space-3);">
+    <button
+      id="copyBtn"
+      type="button"
+      onclick="copyCommand()"
+      class="btn-primary"
+      style="font-size:var(--text-sm);"
+    >
+      Copy to clipboard
+    </button>
+    <span id="copyFeedback" style="font-size:var(--text-sm); color:rgba(245,240,234,0.6); opacity:0; transition:opacity 0.3s;">Copied!</span>
+  </div>
+</div>
+
+<h2>Using the Generated Project</h2>
+<ol>
+  <li>Paste the command into a terminal and press Enter to generate the project.</li>
+  <li>Navigate into the generated project directory.</li>
+  <li>Import the project into your IDE (see below).</li>
+  <li>Run the <code>Start</code> class in <code>src/test/java</code>.</li>
+  <li>Open <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> in your browser.</li>
+</ol>
+
+<h2>Importing into Your IDE</h2>
+<p>
+  All major Java IDEs have native support for Maven projects &mdash; no plugins required.
+</p>
+
+<h3>Eclipse</h3>
+<p>
+  Choose <strong>File &rarr; Import &rarr; Existing Maven Projects</strong> and point Eclipse
+  at the folder where the quickstart was generated.
+</p>
+
+<h3>IntelliJ IDEA</h3>
+<p>
+  Open the <code>pom.xml</code> file directly via <strong>File &rarr; Open</strong>.
+  IntelliJ will recognise it as a Maven project and import it automatically.
+</p>
+
+<h3>NetBeans</h3>
+<p>
+  Choose <strong>File &rarr; Open Project</strong> and navigate to the generated folder.
+  NetBeans will detect the Maven project and open it like any other Java project.
+</p>
+
+<script>
+  var archetypeGroupId = 'org.apache.wicket';
+  var archetypeArtifactId = 'wicket-archetype-quickstart';
+
+  function updateCommand() {
+    var groupId = document.getElementById('groupId').value;
+    var artifactId = document.getElementById('artifactId').value;
+    var version = document.getElementById('version').value;
+    var cmd = 'mvn archetype:generate' +
+      ' -DarchetypeGroupId=' + archetypeGroupId +
+      ' -DarchetypeArtifactId=' + archetypeArtifactId +
+      ' -DarchetypeVersion=' + version +
+      ' -DgroupId=' + groupId +
+      ' -DartifactId=' + artifactId;
+    if (version.match(/SNAPSHOT$/)) {
+      cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
+    } else {
+      cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+    }
+    cmd += ' -DinteractiveMode=false';
+    document.getElementById('cmdLine').value = cmd;
+  }
+
+  function copyCommand() {
+    var cmdLine = document.getElementById('cmdLine');
+    navigator.clipboard.writeText(cmdLine.value).then(function() {
+      var feedback = document.getElementById('copyFeedback');
+      feedback.style.opacity = '1';
+      setTimeout(function() { feedback.style.opacity = '0'; }, 2000);
+    }).catch(function() {
+      cmdLine.select();
+      document.execCommand('copy');
+    });
+  }
+
+  // Initialize command on page load
+  document.addEventListener('DOMContentLoaded', updateCommand);
+</script>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

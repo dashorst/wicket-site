@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to convert text input to numbers, dates, and custom types — Apache Wicket</title>
+  <meta name="description" content="Learn how to control the conversion from raw string input to typed Java objects like numbers, dates, and enums">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link active">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>How to convert text input to numbers, dates, and custom types</h1>
+      <p class="docs-header-description">Learn how to control the conversion from raw string input to typed Java objects like numbers, dates, and enums</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Working with Wicket we will rarely need to worry about conversion between input values (which are strings because the underlying HTTP protocol) and Java types because in most cases the default conversion mechanism will be smart enough to infer the type of the model object and perform the proper conversion. However, sometimes we may need to work under the hood of this mechanism to make it properly work or to perform custom conversions. That’s why this paragraph will illustrate how to control input value conversion.</p>
+
+<p>The component that is responsible for converting input is the FormComponent itself with its convertInput() method. In order to convert its input a FormComponent must know the type of its model object. This parameter can be explicitly set with method setType(Class&lt;?&gt; type):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//this field must receive an integer value</span>
+<span class="nc">TextField</span> <span class="n">integerField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"number"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">()).</span><span class="na">setType</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>If no type has been provided, FormComponent will try to ask its model for this information. The PropertyModel and CompoundPropertyModel models can use reflection to get the type of object model. By default, if FormComponent can not obtain the type of its model object in any way, it will consider it as a simple String.</p>
+
+<p>Once FormComponent has determined the type of model object, it can look up for a converter, which is the entity in charge of converting input to Java object and vice versa. Converters are instances of <em>org.apache.wicket.util.convert.IConverter</em> interface and are registered by our application class on start up.</p>
+
+<p>To get a converter for a specific type we must call method getConverter(Class&lt;C&gt; type) on the interface IConverterLocator returned by Application’s method getConverterLocator():</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//retrieve converter for Boolean type</span>
+<span class="nc">Application</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getConverterLocator</span><span class="o">().</span><span class="na">getConverter</span><span class="o">(</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> Components which are subclasses of AbstractSingleSelectChoice don’t follow the schema illustrated above to convert user input.</p>
+</blockquote>
+
+<p>These kinds of components (like DropDownChoice and RadioChoice) use their choice render and their collection of possible choices to perform input conversion.</p>
+
+<h2 id="creating-custom-application-scoped-converters">Creating custom application-scoped converters</h2>
+
+<p>The default converter locator used by Wicket is <em>org.apache.wicket.ConverterLocator</em>. This class provides converters for the most common Java types. Here we can see the converters registered inside its constructor:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">ConverterLocator</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">BooleanConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">BooleanConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Byte</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">ByteConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Byte</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">ByteConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">CharacterConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">CharacterConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Double</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">DoubleConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Double</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">DoubleConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Float</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">FloatConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Float</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">FloatConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">IntegerConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">IntegerConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Long</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">LongConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Long</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">LongConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Short</span><span class="o">.</span><span class="na">TYPE</span><span class="o">,</span> <span class="nc">ShortConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Short</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">ShortConverter</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">);</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Date</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DateConverter</span><span class="o">());</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">Calendar</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CalendarConverter</span><span class="o">());</span>
+    <span class="n">set</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Date</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">SqlDateConverter</span><span class="o">());</span>
+    <span class="n">set</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Time</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">SqlTimeConverter</span><span class="o">());</span>
+    <span class="n">set</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Timestamp</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">SqlTimestampConverter</span><span class="o">());</span>
+    <span class="n">set</span><span class="o">(</span><span class="nc">BigDecimal</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">BigDecimalConverter</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If we want to add more converters to our application, we can override Application’s method newConverterLocator which is used by application class to build its converter locator.</p>
+
+<p>To illustrate how to implement custom converters and use them in our application, we will build a form with two text field: one to input a regular expression pattern and another one to input a string value that will be split with the given pattern.</p>
+
+<p>The first text field will have an instance of class java.util.regex.Pattern as model object. The final page will look like this (the code of this example is from the CustomConverter project):</p>
+
+<p><img src="/wicket-site/img/guide/regex-form.png" alt="Regex form" /></p>
+
+<p>The conversion between Pattern and String is quite straightforward. The code of our custom converter is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegExpPatternConverter</span> <span class="kd">implements</span> <span class="nc">IConverter</span><span class="o">&lt;</span><span class="nc">Pattern</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Pattern</span> <span class="nf">convertToObject</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">,</span> <span class="nc">Locale</span> <span class="n">locale</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">convertToString</span><span class="o">(</span><span class="nc">Pattern</span> <span class="n">value</span><span class="o">,</span> <span class="nc">Locale</span> <span class="n">locale</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Methods declared by interface IConverter take as input a Locale parameter in order to deal with locale-sensitive data and conversions.</p>
+
+<p>Once we have implemented our custom converter, we must override method newConverterLocator() inside our application class and tell it to add our new converter to the default set:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="nc">IConverterLocator</span> <span class="nf">newConverterLocator</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">ConverterLocator</span> <span class="n">defaultLocator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConverterLocator</span><span class="o">();</span>
+
+        <span class="n">defaultLocator</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="nc">Pattern</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="k">new</span> <span class="nc">RegExpPatternConverter</span><span class="o">());</span>
+
+        <span class="k">return</span> <span class="n">defaultLocator</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Finally, in the home page of the project we build the form which displays (with a flash message) the tokens obtained splitting the string with the given pattern:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Pattern</span> <span class="n">regExpPattern</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">stringToSplit</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="kd">final</span> <span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">TextField</span> <span class="n">regExpPatternTxt</span><span class="o">;</span>
+    <span class="nc">TextField</span> <span class="n">stringToSplitTxt</span><span class="o">;</span>
+
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"form"</span><span class="o">){</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">onSubmit</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">messageResult</span> <span class="o">=</span> <span class="s">"Tokens for the given string and pattern:&lt;br/&gt;"</span><span class="o">;</span>
+            <span class="nc">String</span><span class="o">[]</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">regExpPattern</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="n">stringToSplit</span><span class="o">);</span>
+
+            <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">token</span> <span class="o">:</span> <span class="n">tokens</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">messageResult</span> <span class="o">+=</span> <span class="s">"- "</span> <span class="o">+</span> <span class="n">token</span> <span class="o">+</span> <span class="s">"&lt;br/&gt;"</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">success</span><span class="o">(</span><span class="n">messageResult</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="n">form</span><span class="o">.</span><span class="na">setDefaultModel</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">(</span><span class="k">this</span><span class="o">));</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">regExpPatternTxt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"regExpPattern"</span><span class="o">));</span>
+    <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stringToSplitTxt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"stringToSplit"</span><span class="o">));</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FeedbackPanel</span><span class="o">(</span><span class="s">"feedbackMessage"</span><span class="o">).</span><span class="na">setEscapeModelStrings</span><span class="o">(</span><span class="kc">false</span><span class="o">));</span>
+
+    <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note:</strong> If the user input can not be converted to the target type, FormComponent will generate the default error message “The value of ‘${label}’ is not a valid ${type}.”. The bundle key for this message is IConverter.</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

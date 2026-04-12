@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to validate form input and show error messages — Apache Wicket</title>
+  <meta name="description" content="Learn how to add validation rules to form fields and display feedback messages when input is invalid">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link active">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>How to validate form input and show error messages</h1>
+      <p class="docs-header-description">Learn how to add validation rules to form fields and display feedback messages when input is invalid</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>A basic example of a validation rule is to make a field required. We have already seen how this can be done calling setRequired(true) on a field. However, to set a validation rule on a FormComponent we must add the corresponding validator to it.</p>
+
+<p>A validator is an implementation of the <em>org.apache.wicket.validation.IValidator</em> interface and the <em>FormComponent</em> has a version of method add which takes as input a reference of this interface.</p>
+
+<p>For example if we want to use a text field to insert an email address, we could use the built-in validator EmailAddressValidator to ensure that the inserted input will respect the email format <a href="http://en.wikipedia.org/wiki/Email_address">local-part@domain</a>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextField</span> <span class="n">email</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"email"</span><span class="o">);</span>
+<span class="n">email</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">EmailAddressValidator</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>Wicket comes with a set of built-in validators that should suit most of our needs. We will see them later in this chapter.</p>
+
+<h2 id="feedback-messages-and-localization">Feedback messages and localization</h2>
+
+<p>Wicket generates a feedback message for each field that doesn’t satisfy one of its validation rules. For example the message generated when a required field is left empty is the following</p>
+
+<p><em>Field ‘&lt;label&gt;’ is required.</em></p>
+
+<p>&lt;label&gt; is the value of the label model set on a FormComponent with method setLabel(IModel &lt;String&gt; model). If such model is not provided, component id will be used as the default value.</p>
+
+<p>The entire infrastructure of feedback messages is built on top of the Java internationalization (I18N) support and it uses <a href="http://docs.oracle.com/javase/tutorial/i18n/resbundle/index.html">resource bundles</a> to store messages.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> The topics of internationalization will be covered in a later chapter. For now we will give just few notions needed to understand the examples from this chapter.</p>
+</blockquote>
+
+<p>By default resource bundles are stored into properties files but we can easily configure other sources.</p>
+
+<p>Default feedback messages (like the one above for required fields) are stored in the file Application.properties placed inside the org.apache.wicket package. Opening this file we can find the key and the localized value of the message:</p>
+
+<p><em>Required=Field ‘${label}’ is required.</em></p>
+
+<p>We can note the key (Required in our case) and the label parameter written in the <a href="http://en.wikipedia.org/wiki/Expression_Language">expression language</a> (${label}). Scrolling down this file we can also find the message used by the EmailAddressValidator:</p>
+
+<p><em>EmailAddressValidator=The value of ‘${label}’ is not a valid email address.</em></p>
+
+<p>By default FormComponent provides 3 parameters for feedback message: input (the value that failed validation), label and name (this later is the id of the component).</p>
+
+<blockquote>
+  <p><strong>Warning:</strong> Remember that component model is updated with the user input only if validation succeeds! As a consequence, we can’t retrieve the wrong value inserted for a field from its model. Instead, we should use getValue() method of FormComponent class. (This method will be introduced in the example used later in this chapter)</p>
+</blockquote>
+
+<h2 id="displaying-feedback-messages-and-filtering-them">Displaying feedback messages and filtering them</h2>
+
+<p>To display feedback messages we must use component <em>org.apache.wicket.markup.html.panel.FeedbackPanel</em>. This component automatically reads all the feedback messages generated during form validation and displays them with an unordered list:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"feedbackPanel"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"feedbackPanelERROR"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"feedbackPanelERROR"</span><span class="nt">&gt;</span>Field 'Username' is required.<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>CSS classes <em>feedbackPanel</em> and <em>feedbackPanelERROR</em> can be used in order to customize the style of the message list:</p>
+
+<p><img src="/wicket-site/img/guide/feedback-panel-style.png" alt="Feedback panel style" /></p>
+
+<p>The component can be freely placed inside the page and we can set the maximum amount of displayed messages with the setMaxMessages() method.</p>
+
+<p>Error messages can be filtered using three built-in filters:</p>
+
+<ul>
+  <li><strong>ComponentFeedbackMessageFilter</strong>: shows only messages coming from a specific component.</li>
+  <li><strong>ContainerFeedbackMessageFilter</strong>: shows only messages coming from a specific container or from any of its children components.</li>
+  <li><strong>ErrorLevelFeedbackMessageFilter</strong>: shows only messages with a level of severity equals or greater than a given lower bound. Class FeedbackMessage defines a set of static constants to express different levels of severity: DEBUG, ERROR, WARNING, INFO, SUCCESS, etc. Levels of severity for feedback messages are discussed later in this chapter.</li>
+</ul>
+
+<p>These filters are intended to be used when there are more than one feedback panel (or more than one form) in the same page. We can pass a filter to a feedback panel via its constructor or using the setFilter method. Custom filters can be created implementing the IFeedbackMessageFilter interface. An example of custom filter is illustrated later in this paragraph.</p>
+
+<h2 id="built-in-validators">Built-in validators</h2>
+
+<p>Wicket already provides a number of built-in validators ready to be used. The following table is a short reference where validators are listed along with a brief description of what they do. The default feedback message used by each of them is reported as well:</p>
+
+<h3 id="emailaddressvalidator">EmailAddressValidator</h3>
+
+<p>Checks if input respects the format local-part@domain.</p>
+
+<p><strong>Message:</strong></p>
+
+<p><em>The value of ‘${label}’ is not a valid email address.</em></p>
+
+<h3 id="urlvalidator">UrlValidator</h3>
+
+<p>Checks if input is a valid URL. We can specify in the constructor which protocols are allowed (http://, https://, and ftp://).</p>
+
+<p><strong>Message:</strong></p>
+
+<p><em>The value of ‘${label}’ is not a valid URL.</em></p>
+
+<h3 id="datevalidator">DateValidator</h3>
+
+<p>Validator class that can be extended or used as a factory class to get date validators to check if a date is greater than a lower bound (method minimum(Date min)), smaller than a upper bound (method maximum(Date max)) or inside a range (method range(Date min, Date max)).</p>
+
+<p><strong>Messages:</strong></p>
+
+<p><em>The value of ‘${label}’ is less than the minimum of ${minimum}.</em></p>
+
+<p><em>The value of ‘${label}’ is larger than the maximum of ${maximum}.</em></p>
+
+<p><em>The value of ‘${label}’ is not between ${minimum} and ${maximum}.</em></p>
+
+<h3 id="rangevalidator">RangeValidator</h3>
+
+<p>Validator class that can be extended or used as a factory class to get validators to check if a value is bigger than a given lower bound (method minimum(T min)), smaller than a upper bound (method maximum(T max)) or inside a range (method range(T min,T max)).</p>
+
+<p>The type of the value is a generic subtype of java.lang.Comparable and must implement Serializable interface.</p>
+
+<p><strong>Messages:</strong></p>
+
+<p><em>The value of ‘${label}’ must be at least ${minimum}.</em></p>
+
+<p><em>The value of ‘${label}’ must be at most ${maximum}.</em></p>
+
+<p><em>The value of ‘${label}’ must be between ${minimum} and ${maximum}.</em></p>
+
+<h3 id="stringvalidator">StringValidator</h3>
+
+<p>Validator class that can be extended or used as a factory class to get validators to check if the length of a string value is bigger then a given lower bound (method minimumLength (int min)), smaller then a given upper bound (method maximumLength (int max)) or within a given range (method lengthBetween(int min, int max)).</p>
+
+<p>To accept only string values consisting of exactly n characters, we must use method exactLength(int length).</p>
+
+<p><strong>Messages:</strong></p>
+
+<p><em>The value of ‘${label}’ is shorter than the minimum of ${minimum} characters.</em></p>
+
+<p><em>The value of ‘${label}’ is longer than the maximum of ${maximum} characters.</em></p>
+
+<p><em>The value of ‘${label}’ is not between ${minimum} and ${maximum} characters long.</em></p>
+
+<p><em>The value of ‘${label}’ is not exactly ${exact} characters long.</em></p>
+
+<h3 id="creditcardvalidator">CreditCardValidator</h3>
+
+<p>Checks if input is a valid credit card number. This validator supports some of the most popular credit cards (like “American Express”, “MasterCard”, “Visa” or “Diners Club”).</p>
+
+<p><strong>Message:</strong></p>
+
+<p><em>The credit card number is invalid.</em></p>
+
+<h3 id="equalpasswordinputvalidator">EqualPasswordInputValidator</h3>
+
+<p>This validator checks if two password fields have the same value.</p>
+
+<p><strong>Message:</strong></p>
+
+<p><em>${label0} and ${label1} must be equal.</em></p>
+
+<h2 id="overriding-standard-feedback-messages-with-custom-bundles">Overriding standard feedback messages with custom bundles</h2>
+
+<p>If we don’t like the default validation feedback messages, we can override them providing custom properties files. In these files we can write our custom messages using the same keys of the messages we want to override. For example if we wanted to override the default message for invalid email addresses, our properties file would contain a line like this:</p>
+
+<p><em>EmailAddressValidator=Man, your email address is not good!</em></p>
+
+<p>As we will see in the next chapter, Wicket searches for custom properties files in various positions inside the application’s class path, but for now we will consider just the properties file placed next to our application class. The name of this file must be equal to the name of our application class:</p>
+
+<p><img src="/wicket-site/img/guide/custom-properties-file.png" alt="Custom properties file" /></p>
+
+<p>The example project OverrideMailMessage overrides email validator’s message with a new one which also reports the value that failed validation:</p>
+
+<p><em>EmailAddressValidator=The value ‘${input}’ inserted for field ‘${label}’ is not a valid email address.</em></p>
+
+<p><img src="/wicket-site/img/guide/validation-error-message.png" alt="Validation error message" /></p>
+
+<h2 id="creating-custom-validators">Creating custom validators</h2>
+
+<p>If our web application requires a complex validation logic and built-in validators are not enough, we can implement our own custom validators. For example (project UsernameCustomValidator) suppose we are working on the registration page of our site where users can create their profile choosing their username. Our registration form should validate the new username checking if it was already chosen by another user. In a situation like this we may need to implement a custom validator that queries a specific data source to check if a username is already in use.</p>
+
+<p>For the sake of simplicity, the validator of our example will check the given username against a fixed list of three existing usernames.</p>
+
+<p>A custom validator must simply implement interface IValidator:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UsernameValidator</span> <span class="kd">implements</span> <span class="nc">IValidator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">existingUsernames</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"bigJack"</span><span class="o">,</span> <span class="s">"anonymous"</span><span class="o">,</span> <span class="s">"mrSmith"</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">validate</span><span class="o">(</span><span class="nc">IValidatable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">validatable</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">chosenUserName</span> <span class="o">=</span> <span class="n">validatable</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">existingUsernames</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">chosenUserName</span><span class="o">)){</span>
+            <span class="nc">ValidationError</span> <span class="n">error</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ValidationError</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="nc">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+
+            <span class="n">error</span><span class="o">.</span><span class="na">setVariable</span><span class="o">(</span><span class="s">"suggestedUserName"</span><span class="o">,</span>
+                    <span class="n">validatable</span><span class="o">.</span><span class="na">getValue</span><span class="o">()</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">());</span>
+            <span class="n">validatable</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="n">error</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The only method defined inside IValidator is validate(IValidatable&lt;T&gt; validatable) and is invoked during validation’s step. Interface IValidatable represents the component being validated and it can be used to retrieve the component model (getModel()) or the value to validate (getValue()).</p>
+
+<p>The custom validation logic is all inside IValidator’s method validate. When validation fails a validator must use IValidatable’s method error(IValidationError error) to generate the appropriate feedback message. In the code above we used the ValidationError class as convenience implementation of the IValidationError interface which represents the validation error that must be displayed to the user. This class provides a constructor that uses the class name of the validator in input as key for the resource to use as feedback message (i.e. ‘UsernameValidator’ in the example). If we want to specify more then one key to use to locate the error message, we can use method addKey(String key) of ValidationError class.</p>
+
+<p>In our example when validation fails, we suggest a possible username concatenating the given input with a pseudo-random integer. This value is passed to the feedback message with a variable named suggestedUserName. The message is inside application’s properties file:</p>
+
+<p><em>UsernameValidator=The username ‘${input}’ is already in use. Try with ‘${suggestedUserName}’</em></p>
+
+<p>To provide further variables to our feedback message we can use method setVariable(String name, Object value) of class ValidationError as we did in our example.</p>
+
+<p>The code of the home page of the project will be examined in the next paragraph after we have introduced the topic of flash messages.</p>
+
+<h2 id="using-flash-messages">Using flash messages</h2>
+
+<p>So far we have considered just the error messages generated during validation step. However Wicket’s Component class provides a set of methods to explicitly generate feedback messages called flash messages. These methods are:</p>
+
+<ul>
+  <li>debug(Serializable message)</li>
+  <li>info(Serializable message)</li>
+  <li>success(Serializable message)</li>
+  <li>warn(Serializable message)</li>
+  <li>error(Serializable message)</li>
+  <li>fatal(Serializable message)</li>
+</ul>
+
+<p>Each of these methods corresponds to a level of severity for the message. The list above is sorted by increasing level of severity.</p>
+
+<p>In the example seen in the previous paragraph we have a form which uses success method to notify user when the inserted username is valid. Inside this form there are two FeedbackPanel components: one to display the error message produced by custom validator and the other one to display the success message. The code of the example page is the following:</p>
+
+<p><strong>HTML:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+        Username: <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;br/&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"color:green"</span> <span class="na">wicket:id=</span><span class="s">"successMessage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"color:red"</span> <span class="na">wicket:id=</span><span class="s">"feedbackMessage"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre></div></div>
+
+<p><strong>Java code:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="kd">final</span> <span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"form"</span><span class="o">){</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">super</span><span class="o">.</span><span class="na">onSubmit</span><span class="o">();</span>
+            <span class="n">success</span><span class="o">(</span><span class="s">"Username is good!"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">};</span>
+
+    <span class="nc">TextField</span> <span class="n">mail</span><span class="o">;</span>
+
+    <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">mail</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"username"</span><span class="o">,</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">""</span><span class="o">)));</span>
+    <span class="n">mail</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">UsernameValidator</span><span class="o">());</span>
+
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FeedbackPanel</span><span class="o">(</span><span class="s">"feedbackMessage"</span><span class="o">,</span>
+        <span class="k">new</span> <span class="nf">ExactErrorLevelFilter</span><span class="o">(</span><span class="nc">FeedbackMessage</span><span class="o">.</span><span class="na">ERROR</span><span class="o">)));</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">FeedbackPanel</span><span class="o">(</span><span class="s">"successMessage"</span><span class="o">,</span>
+        <span class="k">new</span> <span class="nf">ExactErrorLevelFilter</span><span class="o">(</span><span class="nc">FeedbackMessage</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">)));</span>
+
+    <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">class</span> <span class="nc">ExactErrorLevelFilter</span> <span class="kd">implements</span> <span class="nc">IFeedbackMessageFilter</span><span class="o">{</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">errorLevel</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">ExactErrorLevelFilter</span><span class="o">(</span><span class="kt">int</span> <span class="n">errorLevel</span><span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">errorLevel</span> <span class="o">=</span> <span class="n">errorLevel</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">FeedbackMessage</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="na">getLevel</span><span class="o">()</span> <span class="o">==</span> <span class="n">errorLevel</span><span class="o">;</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+    <span class="c1">//UsernameValidator definition</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The two feedback panels must be filtered in order to display just the messages with a given level of severity (ERROR for validator message and SUCCESS for form’s flash message). Unfortunately the built-in message filter ErrorLevelFeedbackMessageFilter is not suitable for this task because its filter condition does not check for an exact error level (the given level is used as lower bound value). As a consequence, we had to build a custom filter (inner class ExactErrorLevelFilter) to accept only the desired severity level (see method accept of interface IFeedbackMessageFilter).</p>
+
+<blockquote>
+  <p><strong>Note:</strong> Since version 6.13.0 Wicket provides the additional filter class org.apache.wicket.feedback.ExactLevelFeedbackMessageFilter to accept only feedback messages of a certain error level.</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

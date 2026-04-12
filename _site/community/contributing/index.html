@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contributing to Apache Wicket — Apache Wicket</title>
+  <meta name="description" content="Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link active"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <section class="header-band">
+  <div class="header-band-inner">
+    <h1>Contributing to Apache Wicket</h1>
+    <p class="subtitle">Every contribution matters</p>
+    
+  </div>
+</section>
+<main class="content-area">
+  <div class="content-inner prose">
+    <p>A lot of work goes into maintaining a project like Wicket, and we welcome contributions
+of all kinds — from answering questions and reporting bugs, to writing documentation and
+submitting code.</p>
+
+<h2 id="ways-to-contribute">Ways to Contribute</h2>
+
+<ul>
+  <li>Answer questions on the <a href="/wicket-site/community">users mailing list</a></li>
+  <li>Answer questions on <a href="https://stackoverflow.com/questions/tagged/wicket" target="_blank" rel="noopener">Stack Overflow</a></li>
+  <li>Report bugs via the <a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener">JIRA issue tracker</a></li>
+  <li>Improve the user guide (see below)</li>
+  <li>Submit bug fixes or new features via GitHub pull requests</li>
+  <li>Help improve this website</li>
+</ul>
+
+<hr />
+
+<h2 id="getting-the-source">Getting the Source</h2>
+
+<p>The Apache Wicket source code is hosted on GitHub. Fork the repository to your own account
+and then clone it locally:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:&lt;your-userid&gt;/wicket.git
+cd wicket
+</code></pre></div></div>
+
+<p>The official repository is at
+<a href="https://github.com/apache/wicket" target="_blank" rel="noopener">github.com/apache/wicket</a>.</p>
+
+<h3 id="branch-overview">Branch Overview</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wicket version</th>
+      <th>Branch</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10.x</td>
+      <td><code class="language-plaintext highlighter-rouge">master</code></td>
+      <td>current, supported</td>
+    </tr>
+    <tr>
+      <td>9.x</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-9.x</code></td>
+      <td>supported</td>
+    </tr>
+    <tr>
+      <td>8.x</td>
+      <td><code class="language-plaintext highlighter-rouge">wicket-8.x</code></td>
+      <td>security fixes only</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="building-wicket">Building Wicket</h2>
+
+<p>Wicket uses Apache Maven as its build system. To build the entire project:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn install -DskipTests
+</code></pre></div></div>
+
+<p>To run the full test suite (takes longer):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn install
+</code></pre></div></div>
+
+<p>You will need Java 17 or later for building Wicket 10.x (the current development branch).</p>
+
+<hr />
+
+<h2 id="ide-setup">IDE Setup</h2>
+
+<p>All major Java IDEs support Maven projects natively — no extra plugins required.</p>
+
+<h3 id="eclipse">Eclipse</h3>
+
+<p>Choose <strong>File → Import → Existing Maven Projects</strong> and point Eclipse
+at the root of your Wicket clone.</p>
+
+<h3 id="intellij-idea">IntelliJ IDEA</h3>
+
+<p>Open the root <code class="language-plaintext highlighter-rouge">pom.xml</code> via <strong>File → Open</strong>.
+IntelliJ will import the Maven project automatically.</p>
+
+<h3 id="netbeans">NetBeans</h3>
+
+<p>Use <strong>File → Open Project</strong> and navigate to the Wicket folder.
+NetBeans will detect the Maven project structure.</p>
+
+<hr />
+
+<h2 id="submitting-patches">Submitting Patches</h2>
+
+<p>We accept contributions via GitHub pull requests. Once you have made your changes:</p>
+
+<ol>
+  <li>Push your branch to your GitHub fork.</li>
+  <li>Open a pull request against the appropriate branch in the Apache Wicket repository.</li>
+  <li>Notify the team by sending a short email to <a href="mailto:dev@wicket.apache.org">dev@wicket.apache.org</a>.</li>
+</ol>
+
+<p>The GitHub-Apache integration will automatically notify the Wicket committers of new
+pull requests. We will review your contribution as soon as possible.</p>
+
+<hr />
+
+<h2 id="reporting-bugs">Reporting Bugs</h2>
+
+<p>Please report bugs using the Apache Wicket issue tracker on JIRA:</p>
+
+<ul>
+  <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener">issues.apache.org/jira/browse/WICKET</a></li>
+</ul>
+
+<p>Before filing a new issue, please search the existing issues to avoid duplicates. Include
+as much information as possible: Wicket version, Java version, operating system, stack
+traces, and ideally a minimal reproducer project generated with the
+<a href="/wicket-site/start/quickstart">Quickstart Wizard</a>.</p>
+
+<hr />
+
+<h2 id="writing-documentation">Writing Documentation</h2>
+
+<p>The Wicket user guide is maintained in the
+<a href="https://github.com/apache/wicket" target="_blank" rel="noopener">main Wicket repository</a>
+under <code class="language-plaintext highlighter-rouge">wicket-user-guide/</code>. You can also contribute to the
+<a href="https://cwiki.apache.org/WICKET" target="_blank" rel="noopener">Apache Wicket Wiki</a>.</p>
+
+<p>Documentation improvements are always welcome — if you find something unclear or out of
+date, please open a pull request or leave a note on the mailing list.</p>
+
+  </div>
+</main>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
