@@ -1,12 +1,13 @@
 #!/bin/bash
 # Build and publish to GitHub Pages.
-# Works in worktrees — pushes _site/ to gh-pages branch without checkout.
+# Works in worktrees and devcontainers.
+# Uses HTTPS + gh auth token to avoid SSH key issues.
 #
 # Usage: ./publish.sh
 
 set -e
 
-REPO="git@github.com:dashorst/wicket-site.git"
+REPO="https://github.com/dashorst/wicket-site.git"
 
 echo "Building Jekyll site..."
 bundle exec jekyll build
@@ -18,6 +19,15 @@ git init
 git checkout --orphan gh-pages
 git add -A
 git commit -m "Publish site $(date +%Y-%m-%d-%H%M)"
+
+# Use gh auth token for HTTPS push if available
+if command -v gh &> /dev/null; then
+  GH_TOKEN=$(gh auth token 2>/dev/null || true)
+  if [ -n "$GH_TOKEN" ]; then
+    REPO="https://x-access-token:${GH_TOKEN}@github.com/dashorst/wicket-site.git"
+  fi
+fi
+
 git push -f "$REPO" gh-pages
 cd ..
 rm -rf _site/.git
