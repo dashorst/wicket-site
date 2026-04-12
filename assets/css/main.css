@@ -393,6 +393,38 @@ pre code {
   padding-bottom: var(--space-20);
 }
 
+/* Photo hero variant */
+.header-band--photo {
+  background-image:
+    linear-gradient(to bottom, rgba(15, 20, 25, 0.65), rgba(15, 20, 25, 0.75)),
+    url('/img/hero-borobudur.jpg');
+  background-size: cover;
+  background-position: center 40%;
+}
+
+.header-band--photo::before {
+  /* Override the cross-hatch — the photo is the texture now */
+  background-image: none;
+}
+
+.hero-photo-credit {
+  position: absolute;
+  bottom: var(--space-2);
+  right: var(--space-4);
+  font-size: 0.625rem;
+  color: rgba(245, 240, 234, 0.2);
+  z-index: 1;
+}
+
+.hero-photo-credit a {
+  color: rgba(245, 240, 234, 0.3);
+  text-decoration: none;
+}
+
+.hero-photo-credit a:hover {
+  color: rgba(245, 240, 234, 0.5);
+}
+
 /* --page modifier removed: all non-hero bands use the same padding */
 
 /* Cross-hatch background overlay */
