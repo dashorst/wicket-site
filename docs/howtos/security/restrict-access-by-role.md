@@ -2,6 +2,7 @@
 layout: docs
 title: "How to restrict access by role"
 description: "Set up role-based authorization to restrict page access in Wicket"
+keywords: AuthorizeInstantiation AuthorizeAction roles RBAC permissions
 category: security
 ---
 

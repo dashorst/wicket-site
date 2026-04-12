@@ -2,6 +2,7 @@
 layout: docs
 title: "Stateful vs stateless pages — when sessions matter"
 description: "Why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability"
+keywords: session page store serialization back button page expired versioning
 category: explanation
 ---
 

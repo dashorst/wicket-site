@@ -2,6 +2,7 @@
 layout: docs
 title: "Page layouts with markup inheritance"
 description: "Build reusable page layouts using Wicket's markup inheritance"
+keywords: Panel wicket:child wicket:extend BasePage template header footer
 category: tutorials
 ---
 

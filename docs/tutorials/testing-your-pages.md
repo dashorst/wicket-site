@@ -2,6 +2,7 @@
 layout: docs
 title: "Testing Wicket pages"
 description: "Write tests for your Wicket pages and forms with WicketTester"
+keywords: WicketTester FormTester JUnit test assert
 category: tutorials
 ---
 

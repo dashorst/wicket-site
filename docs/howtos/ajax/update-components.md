@@ -2,6 +2,7 @@
 layout: docs
 title: "How to refresh parts of the page without reloading"
 description: "Learn how to use AjaxRequestTarget to update individual components and run JavaScript without a full page reload"
+keywords: AjaxRequestTarget add setOutputMarkupId refresh repaint
 category: ajax
 ---
 

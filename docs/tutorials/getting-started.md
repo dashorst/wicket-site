@@ -3,6 +3,7 @@ layout: docs
 title: "Getting started with Wicket"
 description: "Create your first Wicket application in 10 minutes"
 category: tutorials
+keywords: maven gradle archetype quickstart setup project hello world
 ---
 
 In this tutorial you will create a Wicket web application from scratch, explore the generated project structure, and build your first interactive page. By the end you will have a running application that displays a greeting and responds to link clicks.
@@ -15,22 +16,23 @@ Before you begin, make sure you have the following installed:
 - **Apache Maven 3.9+** (check with `mvn -version`)
 - A Java IDE such as IntelliJ IDEA, Eclipse, or VS Code with Java extensions
 
-## Step 1: Generate a project with the Maven archetype
+## Step 1: Generate a project
 
-Wicket provides a Maven archetype that scaffolds a complete project for you. Open a terminal and run:
+Wicket provides a Maven archetype that scaffolds a complete project for you. The easiest way is to use the [Quickstart Wizard](/start/quickstart/) — fill in your project details and it generates the exact command to run.
+
+Or run this directly in your terminal:
 
 ```bash
 mvn archetype:generate \
   -DarchetypeGroupId=org.apache.wicket \
   -DarchetypeArtifactId=wicket-archetype-quickstart \
-  -DarchetypeVersion=10.4.0 \
+  -DarchetypeVersion={{site.wicket.version}} \
   -DgroupId=com.example \
   -DartifactId=myapp \
-  -Dversion=1.0-SNAPSHOT \
   -DinteractiveMode=false
 ```
 
-Replace `10.4.0` with the latest Wicket release version if a newer one is available. This command creates a directory called `myapp` containing everything you need.
+This creates a directory called `myapp` containing everything you need.
 
 Change into the project directory:
 

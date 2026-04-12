@@ -2,6 +2,7 @@
 layout: docs
 title: "Page storage internals"
 description: "How Wicket stores and manages page instances internally"
+keywords: IPageStore serialization disk session cache page version
 category: explanation
 ---
 

@@ -40,7 +40,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign tutorials = site.pages | where: "category", "tutorials" | sort: "title" %}
         {% for page in tutorials %}
-        <a href="{{ page.url }}" class="docs-card" data-category="tutorials" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="tutorials" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -55,7 +55,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign forms = site.pages | where: "category", "forms" | sort: "title" %}
         {% for page in forms %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -70,7 +70,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign ajax = site.pages | where: "category", "ajax" | sort: "title" %}
         {% for page in ajax %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -85,7 +85,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign repeaters = site.pages | where: "category", "repeaters" | sort: "title" %}
         {% for page in repeaters %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -100,7 +100,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign html = site.pages | where: "category", "html-control" | sort: "title" %}
         {% for page in html %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -115,7 +115,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign resources = site.pages | where: "category", "resources" | sort: "title" %}
         {% for page in resources %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -130,7 +130,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign i18n = site.pages | where: "category", "i18n" | sort: "title" %}
         {% for page in i18n %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -145,7 +145,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign security = site.pages | where: "category", "security" | sort: "title" %}
         {% for page in security %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -160,7 +160,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign urls = site.pages | where: "category", "urls" | sort: "title" %}
         {% for page in urls %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -175,7 +175,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign testing = site.pages | where: "category", "testing" | sort: "title" %}
         {% for page in testing %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -190,7 +190,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign integration = site.pages | where: "category", "integration" | sort: "title" %}
         {% for page in integration %}
-        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="howto" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -206,7 +206,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign reference = site.pages | where: "category", "reference" | sort: "title" %}
         {% for page in reference %}
-        <a href="{{ page.url }}" class="docs-card" data-category="reference" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="reference" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--reference">Reference</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -222,7 +222,7 @@ title: "Documentation"
       <div class="docs-card-grid">
         {% assign explanation = site.pages | where: "category", "explanation" | sort: "title" %}
         {% for page in explanation %}
-        <a href="{{ page.url }}" class="docs-card" data-category="explanation" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}">
+        <a href="{{ page.url }}" class="docs-card" data-category="explanation" data-title="{{ page.title | downcase }}" data-description="{{ page.description | downcase | default: '' }}" data-keywords="{{ page.keywords | downcase | default: '' }}">
           <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
           <h3 class="docs-card-title">{{ page.title }}</h3>
           {% if page.description %}<p class="docs-card-description">{{ page.description }}</p>{% endif %}
@@ -272,8 +272,9 @@ title: "Documentation"
     cards.forEach(card => {
       const title = card.dataset.title || '';
       const desc = card.dataset.description || '';
+      const keywords = card.dataset.keywords || '';
       const cat = card.dataset.category || '';
-      const matchesSearch = !query || title.includes(query) || desc.includes(query);
+      const matchesSearch = !query || title.includes(query) || desc.includes(query) || keywords.includes(query);
       const matchesCategory = activeCategory === 'all' || cat === activeCategory;
       card.style.display = (matchesSearch && matchesCategory) ? '' : 'none';
     });

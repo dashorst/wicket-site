@@ -2,6 +2,7 @@
 layout: docs
 title: "Built-in AJAX components"
 description: "Overview of AJAX-enabled components shipped with Wicket including links, buttons, editable labels, and tree repeaters"
+keywords: AjaxLink AjaxButton AjaxCheckBox AutoCompleteTextField ModalDialog editable label tree
 category: ajax
 ---
 

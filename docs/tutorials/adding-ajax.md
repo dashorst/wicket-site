@@ -2,6 +2,7 @@
 layout: docs
 title: "Adding AJAX to your pages"
 description: "Update parts of the page without full reloads using Wicket's built-in AJAX support"
+keywords: AjaxLink AjaxButton AjaxRequestTarget setOutputMarkupId live update
 category: tutorials
 ---
 

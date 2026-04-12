@@ -2,6 +2,7 @@
 layout: docs
 title: "How to prevent CSRF attacks"
 description: "Protect your Wicket application against cross-site request forgery"
+keywords: ResourceIsolationRequestCycleListener cross-site request forgery token
 category: security
 ---
 

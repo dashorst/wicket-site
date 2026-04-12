@@ -2,6 +2,7 @@
 layout: docs
 title: "How to make any component respond to browser events via AJAX"
 description: "Learn how to attach built-in AJAX behaviors to existing components so they react to clicks, changes, and other events"
+keywords: AjaxEventBehavior AjaxFormComponentUpdatingBehavior AjaxFormSubmitBehavior timer polling
 category: ajax
 ---
 

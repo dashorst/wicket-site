@@ -2,6 +2,7 @@
 layout: docs
 title: "Building your first form"
 description: "Collect user input with Wicket forms, models, validation, and feedback messages"
+keywords: form model CompoundPropertyModel TextField PasswordTextField onSubmit FeedbackPanel
 category: tutorials
 ---
 

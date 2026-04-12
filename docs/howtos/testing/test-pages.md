@@ -2,6 +2,7 @@
 layout: docs
 title: "How to test pages with WicketTester"
 description: "Use WicketTester to unit test your Wicket pages and components"
+keywords: WicketTester startPage assertRenderedPage assertComponent JUnit
 category: testing
 ---
 

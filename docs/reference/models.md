@@ -2,6 +2,7 @@
 layout: docs
 title: "Models — connecting components to data"
 description: "How Wicket models work as the bridge between your components and their underlying data"
+keywords: IModel Model PropertyModel LambdaModel CompoundPropertyModel LoadableDetachableModel data binding
 category: reference
 ---
 

@@ -2,6 +2,7 @@
 layout: docs
 title: "Component lifecycle — stages and hook methods"
 description: "The stages a Wicket component goes through from creation to removal, and which methods to override at each stage"
+keywords: onInitialize onConfigure onRender onDetach hook method stage
 category: reference
 ---
 

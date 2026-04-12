@@ -2,6 +2,7 @@
 layout: docs
 title: "Wicket modules and dependencies"
 description: "Overview of Wicket's module structure and their dependencies"
+keywords: wicket-core wicket-extensions wicket-spring wicket-cdi wicket-tester dependency maven
 category: reference
 ---
 

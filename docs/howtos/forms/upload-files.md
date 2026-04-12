@@ -2,6 +2,7 @@
 layout: docs
 title: "How to handle file uploads"
 description: "Upload single and multiple files using FileUploadField with size limits"
+keywords: FileUploadField multipart setMaxSize upload
 category: forms
 ---
 

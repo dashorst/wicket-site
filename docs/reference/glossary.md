@@ -67,7 +67,7 @@ This glossary defines common Wicket terms in plain English. Where helpful, each 
 
 **Markup inheritance**
 : The ability for a page or panel subclass to inherit the HTML template of its parent class and selectively override marked sections. The parent template defines `<wicket:child>` placeholders, and the subclass fills them using `<wicket:extend>`.
-: *Similar to:* Thymeleaf layout dialect's template inheritance, JSF's `<ui:composition template="...">`, or Django template `{% extends %}` blocks.
+: *Similar to:* Thymeleaf layout dialect's template inheritance, JSF's `<ui:composition template="...">`, or Django template `{% raw %}{% extends %}{% endraw %}` blocks.
 
 **Package resource**
 : A static file (CSS, JavaScript, image, etc.) stored in the same Java package as a component class. Wicket serves it automatically and generates a versioned URL. This keeps components self-contained with their own assets.
@@ -119,7 +119,7 @@ This glossary defines common Wicket terms in plain English. Where helpful, each 
 
 **wicket:child / wicket:extend**
 : Markup tags used for template inheritance. A parent page places `<wicket:child/>` where subclass content should go. The subclass wraps its content in `<wicket:extend>...</wicket:extend>` to fill that slot.
-: *Similar to:* Django's `{% block content %}` / `{% endblock %}`, or Thymeleaf's `layout:fragment`.
+: *Similar to:* Django's `{% raw %}{% block content %}{% endraw %}` / `{% raw %}{% endblock %}{% endraw %}`, or Thymeleaf's `layout:fragment`.
 
 **wicket:enclosure**
 : A markup tag that groups a component and its surrounding decoration (labels, wrappers) so that everything is hidden automatically when the main component is invisible. Avoids manually synchronizing visibility of related elements.

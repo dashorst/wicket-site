@@ -2,6 +2,7 @@
 layout: docs
 title: "How to configure Content Security Policy"
 description: "Set up Content Security Policy headers in Wicket to prevent XSS attacks"
+keywords: ContentSecurityPolicy nonce inline script style XSS
 category: security
 ---
 

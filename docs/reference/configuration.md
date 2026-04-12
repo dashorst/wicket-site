@@ -2,6 +2,7 @@
 layout: docs
 title: "Configuration"
 description: "Configuring your Wicket application settings and deployment options"
+keywords: web.xml WicketFilter WebApplication DEVELOPMENT DEPLOYMENT mode
 category: reference
 ---
 

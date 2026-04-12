@@ -2,6 +2,7 @@
 layout: docs
 title: "How to integrate with Spring"
 description: "Integrate Apache Wicket with the Spring Framework for dependency injection"
+keywords: SpringComponentInjector SpringBean dependency injection autowire
 category: integration
 ---
 

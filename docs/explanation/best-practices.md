@@ -2,6 +2,7 @@
 layout: docs
 title: "Best practices"
 description: "Recommended patterns and practices for building Wicket applications"
+keywords: encapsulation visibility model detach test pattern anti-pattern
 category: explanation
 ---
 
