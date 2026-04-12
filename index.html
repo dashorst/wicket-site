@@ -3,7 +3,7 @@ layout: home
 ---
 
 <!-- Hero -->
-<section class="header-band header-band--hero animate-in">
+<section class="header-band header-band--hero">
   <div class="header-band__inner hero-reveal">
     <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0s">
       <img src="/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
@@ -25,8 +25,8 @@ layout: home
 </section>
 
 <!-- Code Showcase -->
-<section class="code-showcase animate-in" style="animation-delay: 0.1s">
-  <div class="code-showcase__header">
+<section class="code-showcase">
+  <div class="code-showcase__header animate-in" style="animation-delay: 0.1s">
     <p class="code-showcase__header-label">The Wicket Pattern</p>
     <p class="code-showcase__header-text">Each component: one Java class + one HTML template</p>
   </div>
@@ -165,7 +165,7 @@ layout: home
 
 <!-- Vitals Bar -->
 {% assign released_date = site.wicket.released | date: "%b %Y" %}
-<section class="vitals-bar animate-in" style="animation-delay: 0.5s">
+<section class="vitals-bar">
   <div class="vitals-bar__item">
     <div class="vitals-bar__value">{{ site.wicket.version }}</div>
     <div class="vitals-bar__label">Latest Release</div>
