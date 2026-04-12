@@ -16,7 +16,7 @@ In this chapter we will see a classic Hello World! example implemented using a W
 A Wicket application is a standard Jakarta EE web application, hence it is deployed through a *web.xml* file placed inside folder WEB-INF:
 
 <figure>
-<img src="/img/guide/webinf.png" />
+<img src="{{ site.baseurl }}/img/guide/webinf.png" />
 </figure>
 
 *Illustration: The standard directory structure of a Wicket application*

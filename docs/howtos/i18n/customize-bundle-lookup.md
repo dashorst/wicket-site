@@ -12,7 +12,7 @@ As we hinted at the beginning of this chapter, by default Wicket provides a very
 Similarly to application class, also component classes can have their own bundle files having as base name the class name of the related component and placed in the same package. So for example if class CustomPanel is a custom panel we created, we can provide it with a default bundle file called CustomPanel.properties containing the textual resources used by this panel. This rule applies to page classes as well:
 
 <figure>
-<img src="/img/guide/page-and-panel-bundle.png" />
+<img src="{{ site.baseurl }}/img/guide/page-and-panel-bundle.png" />
 </figure>
 
 One fundamental thing to keep in mind when we work with these kinds of bundles is that the lookup algorithm gives priority to the bundles of the containers of the component that is requesting a localized resource. The more a container is higher in the hierarchy, the bigger is its priority over the other components. This mechanism was made to allow containers to overwrite resources used by children components. As a consequence the values inside the resource bundle of a page will have the priority over the other values with the same key defined in the bundles of children components.
@@ -20,7 +20,7 @@ One fundamental thing to keep in mind when we work with these kinds of bundles i
 To better grasp this concept let’s consider the component hierarchy depicted in the following picture:
 
 <figure>
-<img src="/img/guide/custom-panel-bundle.png" />
+<img src="{{ site.baseurl }}/img/guide/custom-panel-bundle.png" />
 </figure>
 
 If CustomPanel tries to retrieve the string resource having ’message’ as key, it will get the value ’Welcome!’ and not the one defined inside its own bundle file.
@@ -28,7 +28,7 @@ If CustomPanel tries to retrieve the string resource having ’message’ as key
 The default message-lookup algorithm is not limited to component hierarchy but it also includes the class hierarchy of every component visited in the search strategy described so far. This makes bundle files inheritable, just like markup files. When the hierarchy of a container component is explored, any ancestor has the priority over children components. Consider for example the hierarchy in the following picture:
 
 <figure>
-<img src="/img/guide/custom-panel-bundle2.png" />
+<img src="{{ site.baseurl }}/img/guide/custom-panel-bundle2.png" />
 </figure>
 
 Similarly to the previous example, the bundle owned by CustomPanel is overwritten by the bundle of page class BasePage (which has been inherited by CustomPage).
@@ -76,7 +76,7 @@ With the code and the bundle above, the label inside the form will display the v
 If no one of the previous steps can find a resource for the given key, the algorithm will look for package bundles. These bundles have *wicket-package* as base name and they can be placed in one of the package of our application:
 
 <figure>
-<img src="/img/guide/package-bundles.png" />
+<img src="{{ site.baseurl }}/img/guide/package-bundles.png" />
 </figure>
 
 Packages are traversed starting from the one containing the component requesting for a resource and going up to the root package.
@@ -86,7 +86,7 @@ Packages are traversed starting from the one containing the component requesting
 The algorithm described so far applies to feedback messages as well. In case of validation errors, the component that has caused the error will be considered as the component which the string resource is relative to. Furthermore, just like application class and components, validators can have their own bundles placed next to their class and having as base name their class name. This allows us to distribute validators along with the messages they use to report errors:
 
 <figure>
-<img src="/img/guide/validator-with-bundle.png" />
+<img src="{{ site.baseurl }}/img/guide/validator-with-bundle.png" />
 </figure>
 
 Validator’s resource bundles have the lowest priority in the lookup algorithm. They can be overwritten by resource bundles of components, packages and application class.

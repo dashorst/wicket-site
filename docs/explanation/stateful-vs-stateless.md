@@ -19,7 +19,7 @@ A new page version is created when a stateful page is requested for the first ti
 In the final example of the previous chapter (project LifeCycleStages), you may have noticed the number appended at the end of URL. This number is the page id we are talking about:
 
 <figure>
-<img src="/img/guide/page-id.png" />
+<img src="{{ site.baseurl }}/img/guide/page-id.png" />
 </figure>
 
 In this chapter we will use a revised version of this example project where the component hierarchy is modified inside the Link’s *onClick()* method. This is necessary because Wicket creates a new page version only if the page is modified before its method *onBeforeRender()* is invoked. The code of the new home page is the following:
@@ -54,13 +54,13 @@ public class HomePage extends WebPage
 Now if we run the new example (project LifeCycleStagesRevisited) and we click on the “Reload” button, a new page version is created and the page id is increased by one:
 
 <figure>
-<img src="/img/guide/reload-page.png" />
+<img src="{{ site.baseurl }}/img/guide/reload-page.png" />
 </figure>
 
 If we press the back button the page version previously rendered (and serialized) will be retrieved (i.e. deserialized) and it will be used again to respond to our request (and page id is decremented):
 
 <figure>
-<img src="/img/guide/browser-back.png" />
+<img src="{{ site.baseurl }}/img/guide/browser-back.png" />
 </figure>
 
 > [!NOTE]
@@ -112,7 +112,7 @@ By default Wicket persists versions of pages into a session-relative file on dis
 The following picture is an overview of these two caching levels:
 
 <figure>
-<img src="/img/guide/wicket-cache.png" />
+<img src="{{ site.baseurl }}/img/guide/wicket-cache.png" />
 </figure>
 
 Wicket allows us to set the maximum size of the file used to store pages with setting class *org.apache.wicket.settings.StoreSettings*. This class provides the *setMaxSizePerSession(Bytes bytes)* method to set the size of the file. The Bytes parameter is the maximum size allowed for this file:
@@ -136,7 +136,7 @@ Class *org.apache.wicket.util.lang.Bytes* is an utility class provided by Wicket
 Page instances are not kept in the user session forever. They can be discarded when the limit set with the *setMaxSizePerSession* method is reached or (more often) when user session expires. When we ask Wicket for a page id corresponding to a page instance removed from the session, we bump into a *PageExpiredException* and we get the following default error page:
 
 <figure>
-<img src="/img/guide/page-expired.png" />
+<img src="{{ site.baseurl }}/img/guide/page-expired.png" />
 </figure>
 
 This error page can be customized with the *setPageExpiredErrorPage* method of class *org.apache.wicket.settings.ApplicationSettings*:

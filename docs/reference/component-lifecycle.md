@@ -19,7 +19,7 @@ During its life a Wicket component goes through the following stages:
 The following picture shows the state diagram of component lifecycle:
 
 <figure>
-<img src="/img/guide/component-lifecycle.png" />
+<img src="{{ site.baseurl }}/img/guide/component-lifecycle.png" />
 </figure>
 
 Once a component has been removed it could be added again to a container, but the initialization stage won’t be executed again - it is easier to just create a new component instance instead.

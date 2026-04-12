@@ -28,7 +28,7 @@ Component oriented frameworks differ from classic web frameworks in that they bu
 3.  HTML code is generated using this model and not vice versa.
 
 <figure>
-<img src="/img/guide/requesthandling-general.png" />
+<img src="{{ site.baseurl }}/img/guide/requesthandling-general.png" />
 </figure>
 
 *General schema of page request handling for a component oriented framework*

@@ -9,7 +9,7 @@ encounter API changes. The migration guides document all the changes between ver
 and provide clear upgrade paths.
 
 If you encounter a change that is not covered in a migration guide, please let us know
-on the [developer mailing list](/community).
+on the [developer mailing list]({{ site.baseurl }}/community).
 
 ## Available Migration Guides
 
@@ -26,4 +26,4 @@ When upgrading, we recommend:
 2. Update your Maven or Gradle dependency to the new version.
 3. Address any compilation errors — these indicate removed or renamed APIs.
 4. Run your test suite to catch behavioural changes.
-5. Check the [mailing list archives](/community) if you encounter unexpected issues.
+5. Check the [mailing list archives]({{ site.baseurl }}/community) if you encounter unexpected issues.

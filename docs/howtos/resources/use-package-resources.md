@@ -12,7 +12,7 @@ To solve this problem Wicket allows us to place static resource files into compo
 These kinds of resources are called package resources (a CSS and a JavaScript file in this screenshot):
 
 <figure>
-<img src="/img/guide/package-resources.png" />
+<img src="{{ site.baseurl }}/img/guide/package-resources.png" />
 </figure>
 
 With package resources custom components become independent and self-contained and client code can use them without worrying about their dependencies.
@@ -70,7 +70,7 @@ When instead Wicket is running in DEPLOYMENT mode, the version identifier will c
 > Package resources can be localized following the same rules seen for resource bundles and markup files:
 
 <figure>
-<img src="/img/guide/package-resource-localization.png" />
+<img src="{{ site.baseurl }}/img/guide/package-resource-localization.png" />
 </figure>
 
 In the example illustrated in the picture above, if we try to retrieve package resource calendar.jpg when the current locale is set to French, the actual file returned will be calendar_fr.jpg.

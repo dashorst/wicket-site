@@ -87,7 +87,7 @@ title: "Documentation"
           {% assign badge_label = "Explanation" %}
         {% endif %}
 
-        <a href="{{ doc.url }}" class="docs-card" data-category="{{ primary }}" data-subcategory="{{ sub }}" data-title="{{ doc.title | downcase }}" data-description="{{ doc.description | downcase | default: '' }}" data-keywords="{{ doc.keywords | downcase | default: '' }}">
+        <a href="{{ site.baseurl }}{{ doc.url }}" class="docs-card" data-category="{{ primary }}" data-subcategory="{{ sub }}" data-title="{{ doc.title | downcase }}" data-description="{{ doc.description | downcase | default: '' }}" data-keywords="{{ doc.keywords | downcase | default: '' }}">
           <span class="docs-card-badge {{ badge_class }}">{{ badge_label }}</span>
           {% if sub != "" %}<span class="docs-card-subcategory-label">{{ sub }}</span>{% endif %}
           <h3 class="docs-card-title">{{ doc.title }}</h3>
@@ -105,17 +105,17 @@ title: "Documentation"
           <h3 class="docs-card-title">API JavaDoc</h3>
           <p class="docs-card-description">Complete JavaDoc for all Wicket classes and methods.</p>
         </a>
-        <a href="/docs/examples" class="docs-card" data-title="examples" data-description="browse examples and live demos">
+        <a href="{{ site.baseurl }}/docs/examples" class="docs-card" data-title="examples" data-description="browse examples and live demos">
           <span class="docs-card-badge docs-card-badge--tutorial">Examples</span>
           <h3 class="docs-card-title">Examples &amp; Live Demos</h3>
           <p class="docs-card-description">Browse example applications and try Wicket in your browser.</p>
         </a>
-        <a href="/docs/books" class="docs-card" data-title="books" data-description="published books about wicket">
+        <a href="{{ site.baseurl }}/docs/books" class="docs-card" data-title="books" data-description="published books about wicket">
           <span class="docs-card-badge docs-card-badge--explanation">Books</span>
           <h3 class="docs-card-title">Books</h3>
           <p class="docs-card-description">Published books about Apache Wicket.</p>
         </a>
-        <a href="/docs/migration" class="docs-card" data-title="migration" data-description="upgrade between wicket versions">
+        <a href="{{ site.baseurl }}/docs/migration" class="docs-card" data-title="migration" data-description="upgrade between wicket versions">
           <span class="docs-card-badge docs-card-badge--howto">How-To</span>
           <h3 class="docs-card-title">Migration Guides</h3>
           <p class="docs-card-description">Upgrade between Wicket versions.</p>

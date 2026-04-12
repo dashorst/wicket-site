@@ -12,7 +12,7 @@ without installing anything.
 ## Beginner Examples
 
 These examples are particularly helpful if you are new to Wicket and are reading the
-[User Guide](/docs).
+[User Guide]({{ site.baseurl }}/docs).
 
 - **Hello World** — The classic first example. A minimal Wicket page that renders
   a greeting. Shows how pages, markup, and components relate to each other.

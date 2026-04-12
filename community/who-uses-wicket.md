@@ -30,6 +30,6 @@ and add a Markdown file describing your project to `src/content/showcase/`.
 
 ## More Ways to Show Your Wicket Love
 
-- Share what you have built on the [users mailing list](/community)
+- Share what you have built on the [users mailing list]({{ site.baseurl }}/community)
 - Answer questions about Wicket on [Stack Overflow](https://stackoverflow.com/questions/tagged/wicket){:target="_blank" rel="noopener"}
 - Star the project on [GitHub](https://github.com/apache/wicket){:target="_blank" rel="noopener"}

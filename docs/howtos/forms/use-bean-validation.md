@@ -84,4 +84,4 @@ public HomePage(final PageParameters parameters) {
 
 Now we can run our application and see that JSR 303 annotations are fully effective:
 
-![JSR 303 form validation](/img/guide/jsr303-form-validation.png)
+![JSR 303 form validation]({{ site.baseurl }}/img/guide/jsr303-form-validation.png)

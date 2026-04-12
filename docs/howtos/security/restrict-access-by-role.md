@@ -211,7 +211,7 @@ The code from session class has three interesting methods. The first is *authent
 Now if we run the project and we try to access to *AdminOnlyPage* from the home page without having the ADMIN role, we will be redirected to the default access-denied page used by Wicket:
 
 <figure>
-<img src="/img/guide/authorization-access-denied.png" />
+<img src="{{ site.baseurl }}/img/guide/authorization-access-denied.png" />
 </figure>
 
 The access-denied page can be customized using method *setAccessDeniedPage(Class\<? extends Page\>)* of setting class *ApplicationSettings*:

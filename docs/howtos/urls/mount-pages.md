@@ -198,7 +198,7 @@ Sometimes URLs are a double–edged sword for our site because they can expose t
 To avoid this kind of security threat we can use the *CryptoMapper* request mapper which wraps an existing mapper and encrypts the original URL producing a single encrypted segment:
 
 <figure>
-<img src="/img/guide/url-encrypted.png" />
+<img src="{{ site.baseurl }}/img/guide/url-encrypted.png" />
 </figure>
 
 Typically, *CryptoMapper* is registered into a Wicket application as the root request mapper wrapping the default one:

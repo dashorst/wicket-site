@@ -1,7 +1,7 @@
 title: Apache Wicket
 description: "Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years."
-url: "https://wicket.apache.org"
-baseurl: ""
+url: "https://dashorst.github.io"
+baseurl: "/wicket-site"
 
 # Hero configuration
 # Switch between hero themes:

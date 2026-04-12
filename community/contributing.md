@@ -10,7 +10,7 @@ submitting code.
 
 ## Ways to Contribute
 
-- Answer questions on the [users mailing list](/community)
+- Answer questions on the [users mailing list]({{ site.baseurl }}/community)
 - Answer questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/wicket){:target="_blank" rel="noopener"}
 - Report bugs via the [JIRA issue tracker](https://issues.apache.org/jira/browse/WICKET){:target="_blank" rel="noopener"}
 - Improve the user guide (see below)
@@ -103,7 +103,7 @@ Please report bugs using the Apache Wicket issue tracker on JIRA:
 Before filing a new issue, please search the existing issues to avoid duplicates. Include
 as much information as possible: Wicket version, Java version, operating system, stack
 traces, and ideally a minimal reproducer project generated with the
-[Quickstart Wizard](/start/quickstart).
+[Quickstart Wizard]({{ site.baseurl }}/start/quickstart).
 
 ---
 

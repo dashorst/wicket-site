@@ -170,7 +170,7 @@ This approach is error-prone and fragile, because we always have to pay attentio
 The solution is the Hollywood principle: "Don’t call us, we’ll call you". Take a look at the following diagram illustrating an application flow with some calls. We avoid three calls through the [Hollywood-Principle](http://en.wikipedia.org/wiki/Hollywood_Principle) and we just have to instantiate the *LoginBoxPanel*.
 
 <figure>
-<img src="/img/guide/login_calls_hollywood.png" />
+<img src="{{ site.baseurl }}/img/guide/login_calls_hollywood.png" />
 </figure>
 
 **Listing 7:**
@@ -435,7 +435,7 @@ public class BlogEditPage extends WebPage {
 It is a widespread opinion that Wicket has a bad documentation. This argument is just partly correct. There are a lot of code samples and snippets which can be used as code templates. Furthermore, there is a big community that answers complex questions very quickly. In Wicket it is very hard to document everything, because nearly everything is extensible and replaceable. If a component is not completely suitable, you will extend or replace it. Working with Wicket means permanently navigating through code. For example, just consider validators. How can I find all validators that exist? Open the interface *IValidator* (Eclipse: Ctrl + Shift + T) and then open the type hierarchy (Ctrl + T). Now we can see all the validators existing in Wicket and our project.
 
 <figure>
-<img src="/img/guide/validator-type-hierachy.png" />
+<img src="{{ site.baseurl }}/img/guide/validator-type-hierachy.png" />
 </figure>
 
 The best practices presented in this chapter should help you to write better and more maintainable code in Wicket. All described methodologies were already proven in a few Wicket projects. If you follow these advices, your Wicket projects will get future-proof and hopefully successful.

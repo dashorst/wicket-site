@@ -9,7 +9,7 @@ category: security
 The first step in implementing a security policy is assigning a trusted identity to our users, which means that we must authenticate them. Web applications usually adopt a form-based authentication with a login form that asks user for a unique username and the relative password:
 
 <figure>
-<img src="/img/guide/wikipedia-login-form.png" />
+<img src="{{ site.baseurl }}/img/guide/wikipedia-login-form.png" />
 </figure>
 
 Wicket supports form-based authentication with session class *AuthenticatedWebSession* and application class *AuthenticatedWebApplication*, both placed inside package *org.apache.wicket.authroles.authentication*.

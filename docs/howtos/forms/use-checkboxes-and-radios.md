@@ -7,7 +7,7 @@ category: forms
 
 In this paragraph we will see which components can be used to handle HTML radio buttons and checkboxes. Both these input elements are usually grouped together to display a list of possible choices:
 
-![Choice form screenshot](/img/guide/choice-form-screenshot.png)
+![Choice form screenshot]({{ site.baseurl }}/img/guide/choice-form-screenshot.png)
 
 A check box can be used as single component to set a boolean property. For this purpose Wicket provides the *org.apache.wicket.markup.html.form.CheckBox* component which must be attached to \<input type="checkbox"/\> tag. In the next example (project SingleCheckBox) we will consider a form to edit a Person object, with an additional checkbox to let the user decide if she wants to subscribe to our mailing list or not. The form uses the following bean as backing object:
 
@@ -88,7 +88,7 @@ public HomePage(final PageParameters parameters) {
 
 Please note that the checkbox will be initially selected because we have set to true the subscribe flag during the model object creation (with instruction registrationInfo.setSubscribeList(true)):
 
-![Subscribe checkbox set](/img/guide/subscribe-checkbox-set.png)
+![Subscribe checkbox set]({{ site.baseurl }}/img/guide/subscribe-checkbox-set.png)
 
 ## Working with grouped checkboxes
 
@@ -112,7 +112,7 @@ form.add(new CheckBoxMultipleChoice("checkGroup", new ListModel<String>(new
 
 **Screenshot:**
 
-![Grouped checkbox](/img/guide/grouped-checkbox.png)
+![Grouped checkbox]({{ site.baseurl }}/img/guide/grouped-checkbox.png)
 
 This component can be attached to a \<div\> tag or to a \<span\> tag. No specific content is required for this tag as it will be populated with the actual checkboxes. Since this component allows multiple selection, its model object is a list. In the example above we have used model class *org.apache.wicket.model.util.ListModel* which is specifically designed to wrap a List object.
 
@@ -142,13 +142,13 @@ form.add(new CheckBoxMultipleChoice("checkGroup", new ListModel<Person>(new Arra
 
 **Screenshot:**
 
-![Grouped checkbox with renderer](/img/guide/grouped-checkbox2.png)
+![Grouped checkbox with renderer]({{ site.baseurl }}/img/guide/grouped-checkbox2.png)
 
 ## How to implement a "select all" checkbox
 
 A nice feature we can offer to users when we have a group of checkboxes is a "special" checkbox which selects/unselects all the other options of the group:
 
-![Select all checkbox](/img/guide/select-all-checkbox.png)
+![Select all checkbox]({{ site.baseurl }}/img/guide/select-all-checkbox.png)
 
 Wicket comes with a couple of utility components that make it easy to implement such a feature. They are CheckboxMultipleChoiceSelector and CheckBoxSelector classes, both inside package *org.apache.wicket.markup.html.form*. The difference between these two components is that the first works with an instance of CheckBoxMultipleChoice while the second takes in input a list of CheckBox objects:
 
@@ -187,6 +187,6 @@ form.add(new RadioChoice("radioGroup", Model.of(""), fruits));
 
 **Screenshot:**
 
-![Grouped radio button](/img/guide/grouped-radiobutton.png)
+![Grouped radio button]({{ site.baseurl }}/img/guide/grouped-radiobutton.png)
 
 Just like CheckBoxMultipleChoice, this component provides the setPrefix and setSuffix methods to configure the prefix and suffix for our options and it supports IChoiceRenderer as well.

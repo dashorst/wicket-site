@@ -26,7 +26,7 @@ JQuery UI needs the following static resources in order to work properly:
 In the following picture we can see these package resources with our component class (named JQueryDateField):
 
 <figure>
-<img src="/img/guide/datepicker-package-resources.png" />
+<img src="{{ site.baseurl }}/img/guide/datepicker-package-resources.png" />
 </figure>
 
 Along with the four static resources listed above, we can find also file calendar.jpg, which is the calendar icon used to open the pop up calendar, and file JQDatePicker.js which contains the following custom JavaScript code that binds our component to a JQuery UI datepicker:

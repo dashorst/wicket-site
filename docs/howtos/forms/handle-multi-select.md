@@ -7,7 +7,7 @@ category: forms
 
 Checkboxes work well when we have a small amount of options to display, but they quickly become chaotic as the number of options increases. To overcome this limit we can use the \<select\> tag switching it to multiple-choice mode with attribute multiple="multiple"
 
-![List multiple choices](/img/guide/list-multiple-choices.png)
+![List multiple choices]({{ site.baseurl }}/img/guide/list-multiple-choices.png)
 
 Now the user can select multiple options by holding down Ctrl key (or Command key for Mac) and selecting them.
 
@@ -31,7 +31,7 @@ form.add(new ListMultipleChoice("fruits", new ListModel<String>(new ArrayList<St
 
 **Screenshot:**
 
-![List multiple choices rendered](/img/guide/list-multiple-choices2.png)
+![List multiple choices rendered]({{ site.baseurl }}/img/guide/list-multiple-choices2.png)
 
 This component must be bound to a \<select\> tag but the attribute multiple="multiple" is not required as it will automatically be added by the component.
 
@@ -41,7 +41,7 @@ The number of visible rows can be set with the setMaxRows(int maxRows) method.
 
 While multiple choice list solves the problem of handling a big number of multiple choices, it is not much intuitive for end users. That's why desktop GUIs have introduced a more complex component which can be generally referred to as multi select transfer component (it doesn't have an actual official name):
 
-![Multi select transfer component](/img/guide/multi-select-transfer-component.png)
+![Multi select transfer component]({{ site.baseurl }}/img/guide/multi-select-transfer-component.png)
 
 This kind of component is composed by two multiple-choice lists, one on the left displaying the available options and the other one on the right displaying the selected options. User can move options from a list to another by double clicking on them or using the buttons placed between the two list.
 
@@ -75,7 +75,7 @@ form.add(new Palette("palette", Model.of(new ArrayList<Person>()), new ListModel
 
 **Screenshot:**
 
-![Multi select transfer component in Wicket](/img/guide/multi-select-transfer-component-wicket.png)
+![Multi select transfer component in Wicket]({{ site.baseurl }}/img/guide/multi-select-transfer-component-wicket.png)
 
 The last two parameters of the Palette's constructor (an integer value and a boolean value) are, respectively, the number of visible rows for the two lists and a flag to choose if we want to display the two optional buttons which move selected options up and down. The descriptions of the two lists ("Available" and "Selected") can be customized providing two resources with keys palette.available and palette.selected.
 

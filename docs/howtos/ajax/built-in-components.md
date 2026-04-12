@@ -48,7 +48,7 @@ Base component AjaxEditableLabel exposes the following set of AJAX-aware methods
 
 Wicket module wicket-examples contains page class *EditableLabelPage.java* which shows all these three components together. You can see this page in action on [examples site](https://examples.wicket.apache.org/ajax/editable-label):
 
-![Editable label example](/img/guide/edit-label-example-screenshot.png)
+![Editable label example]({{ site.baseurl }}/img/guide/edit-label-example-screenshot.png)
 
 ## Autocomplete text field
 
@@ -58,7 +58,7 @@ Wicket offers an out-of-the-box implementation of an autocomplete text field wit
 
 When using AutoCompleteTextField we are required to implement its abstract method getChoices(String input) where the input parameter is the current input of the component. This method returns an iterator over the suggestions that will be displayed as a drop-down menu:
 
-![Autocomplete example](/img/guide/autocomplete-example-screenshot.png)
+![Autocomplete example]({{ site.baseurl }}/img/guide/autocomplete-example-screenshot.png)
 
 Suggestions are rendered using a render which implements interface *IAutoCompleteRenderer*. The default implementation simply calls toString() on each suggestion object. If we need to work with a custom render we can specify it via component constructor.
 
@@ -86,7 +86,7 @@ Wicket module wicket-examples contains page class *AutoCompletePage.java* which 
 
 Class *org.apache.wicket.extensions.ajax.markup.html.modal.ModalDialog* is an implementation of a [modal dialog](http://en.wikipedia.org/wiki/Modal_dialog) based on AJAX:
 
-![Modal dialog example](/img/guide/modal-dialog-example-screenshot.png)
+![Modal dialog example]({{ site.baseurl }}/img/guide/modal-dialog-example-screenshot.png)
 
 The content of a modal dialog is another component. The id of this component used as content must be \_ModalDialog#CONTENT_ID\_.
 
@@ -132,7 +132,7 @@ The modal dialog can be closed from code using its method *close(AjaxRequestTarg
 
 Class *org.apache.wicket.extensions.markup.html.repeater.tree.AbstractTree* is the base class of another family of repeaters called tree repeaters and designed to display a data hierarchy as a tree, resembling the behavior and the look & feel of desktop tree components. A classic example of tree component on desktop is the tree used by nearly all file managers to navigate file system:
 
-![File system trees](/img/guide/file-system-trees.png)
+![File system trees]({{ site.baseurl }}/img/guide/file-system-trees.png)
 
 Because of their highly interactive nature, tree repeaters are implemented as AJAX components, meaning that they are updated via AJAX when we expand or collapse their nodes.
 
@@ -142,7 +142,7 @@ Wicket comes with a built-in implementation of ITreeProvider called TreeModelPro
 
 In the next example (project *CheckBoxAjaxTree*) we will build a tree that displays some of the main cities of three European countries: Italy, Germany and France. The cities are sub-nodes of a main node representing the relative county. The nodes of the final tree will be also selectable with a checkbox control. The whole tree will have the classic look & feel. This is how our tree will look like:
 
-![AJAX tree repeater](/img/guide/AJAX-tree-repeater.png)
+![AJAX tree repeater]({{ site.baseurl }}/img/guide/AJAX-tree-repeater.png)
 
 We will start to explore the code of this example from the home page. The first portion of code we will see is where we build the nodes and the *TreeModelProvider* for the tree. As tree node we will use Swing class *javax.swing.tree.DefaultMutableTreeNode*:
 

@@ -3,10 +3,10 @@ layout: home
 ---
 
 <!-- Hero -->
-<section class="header-band header-band--hero header-band--photo" style="background-image: linear-gradient(to bottom, rgba(15,20,25,0.65), rgba(15,20,25,0.75)), url('{{ site.hero.image }}');">
+<section class="header-band header-band--hero header-band--photo" style="background-image: linear-gradient(to bottom, rgba(15,20,25,0.65), rgba(15,20,25,0.75)), url('{{ site.baseurl }}{{ site.hero.image }}');">
   <div class="header-band__inner hero-reveal">
     <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0.05s">
-      <img src="/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
+      <img src="{{ site.baseurl }}/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
       <p class="header-band__subtitle header-band__subtitle--hero">Apache Wicket&trade;</p>
     </div>
     <h1 class="header-band__title hero-reveal__item hero-sparkle" style="--reveal-delay: 0.12s">
@@ -18,8 +18,8 @@ layout: home
       applications for over twenty years. No JavaScript framework required.
     </p>
     <div class="header-band__actions hero-reveal__item" style="--reveal-delay: 0.3s">
-      <a href="/start/quickstart" class="btn-primary">Get Started</a>
-      <a href="/docs/examples" class="btn-secondary">See It in Action</a>
+      <a href="{{ site.baseurl }}/start/quickstart" class="btn-primary">Get Started</a>
+      <a href="{{ site.baseurl }}/docs/examples" class="btn-secondary">See It in Action</a>
     </div>
   </div>
   <div class="hero-photo-credit">
@@ -138,7 +138,7 @@ layout: home
       <div class="community-stats__label">Major Versions</div>
     </div>
   </div>
-  <a href="/community/who-uses-wicket" class="community-stats__link">
+  <a href="{{ site.baseurl }}/community/who-uses-wicket" class="community-stats__link">
     See who's building with Wicket &rarr;
   </a>
 </section>
@@ -151,7 +151,7 @@ layout: home
       <p>
         One Maven command gives you a working Wicket application with embedded Jetty. Edit, refresh, repeat.
       </p>
-      <a href="/start/quickstart" class="btn-primary">Quickstart Guide &rarr;</a>
+      <a href="{{ site.baseurl }}/start/quickstart" class="btn-primary">Quickstart Guide &rarr;</a>
     </div>
     <div class="quickstart__terminal">
       <div class="quickstart__terminal-block">
@@ -194,7 +194,7 @@ layout: home
       <p class="section-label">Latest News</p>
       <h2>From the Blog</h2>
     </div>
-    <a href="/blog">View all posts &rarr;</a>
+    <a href="{{ site.baseurl }}/blog">View all posts &rarr;</a>
   </div>
   <div class="recent-posts__grid">
     {% for post in site.posts limit:3 %}
@@ -211,7 +211,7 @@ layout: home
         {% endif %}
       {% endif %}
       <h4 class="post-card__title">
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h4>
     </article>
     {% endfor %}

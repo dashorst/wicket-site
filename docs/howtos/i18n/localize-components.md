@@ -78,7 +78,7 @@ greetingMessage=Welcome to the site!
 Along with this file we can also find a bundle for German (WicketApplication_de.properties) and another one in XML format for simplified Chinese (WicketApplication_zh.properties.xml). The example project consists of a single page (HomePage.java) displaying the greeting message. The current locale can be changed with a drop-down list and the possible options are English (the default one), German and simplified Chinese:
 
 <figure>
-<img src="/img/guide/locale-german.png" />
+<img src="{{ site.baseurl }}/img/guide/locale-german.png" />
 </figure>
 
 The label displaying the greeting message has a custom read-only model which returns the message with method getString. The initialization code for this label is this:
@@ -112,7 +112,7 @@ add(form.add(changeLocale))
 Although resource bundles exist to extract local-dependent elements from our code and from UI components, in Wicket we can decide to provide different markup files for different locale settings. Just like standard markup files, by default localized markup files must be placed next to component’s class and their file name must contain the locale’s information. In the following picture, CustomPanel comes with a standard (or default) markup file and with another one localized for German:
 
 <figure>
-<img src="/img/guide/comp-with-markup-german.png" />
+<img src="{{ site.baseurl }}/img/guide/comp-with-markup-german.png" />
 </figure>
 
 When the current locale corresponds to German country (language code de), markup file CustomPanel_de.html will be used in place of the default one.

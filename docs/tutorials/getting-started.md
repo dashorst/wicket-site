@@ -18,7 +18,7 @@ Before you begin, make sure you have the following installed:
 
 ## Step 1: Generate a project
 
-Wicket provides a Maven archetype that scaffolds a complete project for you. The easiest way is to use the [Quickstart Wizard](/start/quickstart/) — fill in your project details and it generates the exact command to run.
+Wicket provides a Maven archetype that scaffolds a complete project for you. The easiest way is to use the [Quickstart Wizard]({{ site.baseurl }}/start/quickstart/) — fill in your project details and it generates the exact command to run.
 
 Or run this directly in your terminal:
 

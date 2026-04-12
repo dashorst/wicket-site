@@ -78,7 +78,7 @@ Remember that system properties overwrite other settings, so they are ideal to e
 Wicket project and its dependencies are managed using Maven. This tool is very useful also when we want to create a new project based on Wicket from scratch. With a couple of shell commands we can generate a new project properly configured and ready to be imported into our favourite IDE. The main step to create such a project is to run the command which generates project’s structure and its artifacts. If we are not familiar with Maven or we simply don’t want to type this command by hand, we can use the utility form on Wicket site at [<http://wicket.apache.org/start/quickstart.html>](http://wicket.apache.org/start/quickstart.html) :
 
 <figure>
-<img src="/img/guide/quickstart-webpage.png" />
+<img src="{{ site.baseurl }}/img/guide/quickstart-webpage.png" />
 </figure>
 
 Here we have to specify the root package of our project (GroupId), the project name (ArtifactId) and which version of Wicket we want to use (Version). Once we have run the resulting command in the OS shell, we will have a new folder with the same name of the project (i.e the ArtifactId). Inside this folder we can find a file called pom.xml. This is the main file used by Maven to manage our project. For example, using “org.wicketTutorial” as GroupId and “MyProject” as ArtifactId, we would obtain the following artifacts:
@@ -146,25 +146,25 @@ Maven projects can be easily imported into the most popular Java IDEs. However, 
 **NetBeans** Starting from version 6.7, NetBeans includes Maven support, hence we can start it and directly open the folder containing our project:
 
 <figure>
-<img src="/img/guide/netbeans-maven-import.png" />
+<img src="{{ site.baseurl }}/img/guide/netbeans-maven-import.png" />
 </figure>
 
 **IntelliJ IDEA** IntelliJ IDEA comes with a Maven importing functionality that can be started under “File/New Project/Import from external model/Maven”. Then, we just have to select the pom.xml file of our project:
 
 <figure>
-<img src="/img/guide/intellij-maven-import.png" />
+<img src="{{ site.baseurl }}/img/guide/intellij-maven-import.png" />
 </figure>
 
 **Eclipse** Just like the other IDEs Eclipse supports Maven projects out of the box. Open the “File/Import…” dialog and search for Maven:
 
 <figure>
-<img src="/img/guide/eclipse-maven-import.png" />
+<img src="{{ site.baseurl }}/img/guide/eclipse-maven-import.png" />
 </figure>
 
 then, select the project folder containing the POM file:
 
 <figure>
-<img src="/img/guide/eclipse-maven-select.png" />
+<img src="{{ site.baseurl }}/img/guide/eclipse-maven-select.png" />
 </figure>
 
 Once the project has been imported into Eclipse, we are free to use our favourite plug-ins to run it or debug it (like for example [run-jetty-run](https://github.com/xzer/run-jetty-run/)).

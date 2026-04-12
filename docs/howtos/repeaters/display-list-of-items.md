@@ -44,7 +44,7 @@ public HomePage(final PageParameters parameters) {
 
 **Screenshot of generated page:**
 
-![Simple ListView screenshot](/img/guide/simple-listview-screenshot.png)
+![Simple ListView screenshot]({{ site.baseurl }}/img/guide/simple-listview-screenshot.png)
 
 In this example we have displayed the full name of two Person’s instances. The most interesting part of the code is the implementation of method populateItem where parameter item is the current child component created by ListView and its model contains the corresponding element of the list. Please note that inside populateItem we must add nested components to the *item* object and not directly to the *ListView*.
 

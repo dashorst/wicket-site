@@ -43,7 +43,7 @@ To resolve the right handler for a given HTTP request, the *RequestCycle* uses a
 The following sequence diagram recaps how a request handler is resolved by the *RequestCycle*:
 
 <figure>
-<img src="/img/guide/request-cycle-handler.png" />
+<img src="{{ site.baseurl }}/img/guide/request-cycle-handler.png" />
 </figure>
 
 Developers can create additional implementations of *IRequestMapper* and add them to their application via the *mount(IRequestMapper mapper)* method of the *WebApplication* class. In paragraph 10.6 we will see how Wicket uses this method to add built-in mappers for mounted pages.
@@ -166,7 +166,7 @@ HttpSession session = ((ServletWebRequest)RequestCycle.get()
 Using the raw session object might be necessary if we have to set a session attribute with a particular name without the prefix added by Wicket. Let’s say for example that we are working with Tomcat as web server. One of the administrative tools provided by Tomcat is a page listing all the active user sessions of a given web application:
 
 <figure>
-<img src="/img/guide/tomcat-admin-sessions.png" />
+<img src="{{ site.baseurl }}/img/guide/tomcat-admin-sessions.png" />
 </figure>
 
 Tomcat allows us to set the values that will be displayed in columns “Guessed locale” and “Guessed User name”. One possible way to do this is to use session attributes named “Locale” and “userName” but we can’t create them via Wicket’s Session class because they would not have exactly the name required by Tomcat. Instead, we must use the raw *HttpSession* and set our attributes on it:

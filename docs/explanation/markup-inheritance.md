@@ -24,19 +24,19 @@ In this chapter we will see how to use Wicket to build a site layout. The sample
 The following picture summarises the layout structure:
 
 <figure>
-<img src="/img/guide/layout.png" />
+<img src="{{ site.baseurl }}/img/guide/layout.png" />
 </figure>
 
 Once we have chosen a page layout, our web designer can start building up the site theme. The result is a beautiful mock of our future web pages. Over this mock we can map the original layout areas:
 
 <figure>
-<img src="/img/guide/layout-mock.png" />
+<img src="{{ site.baseurl }}/img/guide/layout-mock.png" />
 </figure>
 
 Now in order to have a consistent layout across all the site, we must ensure that each page will include the layout areas seen above. With an old template-based approach we must manually put them inside every page. If we were using JSP we would probably end up using *include* directive to add layout areas in our pages. We would have one *include* for each of the areas (except for the content):
 
 <figure>
-<img src="/img/guide/layout-include.png" />
+<img src="{{ site.baseurl }}/img/guide/layout-include.png" />
 </figure>
 
 > [!NOTE]
@@ -51,7 +51,7 @@ The need of ensuring a consistent layout across our pages unveiled a serious lim
 As we have seen in the previous chapter, Wicket pages are pure Java classes, so we can easily write a page which is a subclass of another parent page. But in Wicket inheritance is not limited to the classic object-oriented code inheritance. When a class subclasses a *WebPage* it also inherits the HTML file of the parent class. This type of inheritance is called markup inheritance. To better illustrate this concept let’s consider the following example where we have a page class called *GenericSitePage* with the corresponding HTML file GenericSitePage.html. Now let’s create a specific page called *OrderCheckOutPage* where users can check out their orders on our web site. This class extends *GenericSitePage* but we don’t provide it with any corresponding HTML file. In this scenario *OrderCheckOutPage* will use GenericSitePage.html as markup file:
 
 <figure>
-<img src="/img/guide/markup-inheritance.png" />
+<img src="{{ site.baseurl }}/img/guide/markup-inheritance.png" />
 </figure>
 
 Markup inheritance comes in handy for page layout management as it helps us avoid the burden of checking that each page conforms to the site layout. However to fully take advantage of markup inheritance we must first learn how to use another important component of the framework that supports this feature: the panel.
@@ -64,7 +64,7 @@ Markup inheritance comes in handy for page layout management as it helps us avoi
 Class *org.apache.wicket.markup.html.panel.Panel* is a special component which lets us reuse GUI code and HTML markup across different pages and different web applications. It shares a common ancestor class with WebPage class, which is *org.apache.wicket.MarkupContainer*:
 
 <figure>
-<img src="/img/guide/page-panel-hierarchy.png" />
+<img src="{{ site.baseurl }}/img/guide/page-panel-hierarchy.png" />
 </figure>
 
 *Illustration: Hierarchy of WebPage and Panel classes*
@@ -119,7 +119,7 @@ Let’s go back to our layout example. In <a href="#layout.adoc#_header_footer_l
 First, let’s build a custom panel for each layout area (except for ’content’ area). For example given the header area
 
 <figure>
-<img src="/img/guide/header-area.png" />
+<img src="{{ site.baseurl }}/img/guide/header-area.png" />
 </figure>
 
 we can build a panel called *HeaderPanel* with a related markup file called HeaderPanel.html containing the HTML for this area:
@@ -273,7 +273,7 @@ public class SimpleLoginPage extends JugTemplate {
 Obviously this page doesn’t come with a related markup file. You can see the final page in the following picture:
 
 <figure>
-<img src="/img/guide/final-login-page.png" />
+<img src="{{ site.baseurl }}/img/guide/final-login-page.png" />
 </figure>
 
 With Wicket we can apply markup inheritance using another approach based on the tag *\<wicket:child\>*. This tag is used inside the parent’s markup to define where the children pages/panels can “inject” their custom markup extending the markup inherited from the parent component. An example of a parent page using the tag *\<wicket:child\>* is the following:

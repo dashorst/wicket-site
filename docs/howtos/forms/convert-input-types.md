@@ -67,7 +67,7 @@ To illustrate how to implement custom converters and use them in our application
 
 The first text field will have an instance of class java.util.regex.Pattern as model object. The final page will look like this (the code of this example is from the CustomConverter project):
 
-![Regex form](/img/guide/regex-form.png)
+![Regex form]({{ site.baseurl }}/img/guide/regex-form.png)
 
 The conversion between Pattern and String is quite straightforward. The code of our custom converter is the following:
 

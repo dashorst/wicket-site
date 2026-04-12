@@ -59,7 +59,7 @@ To display feedback messages we must use component *org.apache.wicket.markup.htm
 
 CSS classes *feedbackPanel* and *feedbackPanelERROR* can be used in order to customize the style of the message list:
 
-![Feedback panel style](/img/guide/feedback-panel-style.png)
+![Feedback panel style]({{ site.baseurl }}/img/guide/feedback-panel-style.png)
 
 The component can be freely placed inside the page and we can set the maximum amount of displayed messages with the setMaxMessages() method.
 
@@ -157,13 +157,13 @@ If we don't like the default validation feedback messages, we can override them 
 
 As we will see in the next chapter, Wicket searches for custom properties files in various positions inside the application's class path, but for now we will consider just the properties file placed next to our application class. The name of this file must be equal to the name of our application class:
 
-![Custom properties file](/img/guide/custom-properties-file.png)
+![Custom properties file]({{ site.baseurl }}/img/guide/custom-properties-file.png)
 
 The example project OverrideMailMessage overrides email validator's message with a new one which also reports the value that failed validation:
 
 *EmailAddressValidator=The value '${input}' inserted for field '${label}' is not a valid email address.*
 
-![Validation error message](/img/guide/validation-error-message.png)
+![Validation error message]({{ site.baseurl }}/img/guide/validation-error-message.png)
 
 ## Creating custom validators
 

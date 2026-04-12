@@ -11,7 +11,7 @@ During request handling, Wicket manages page instances through interface *org.ap
 The following workflow diagram summarizes the mechanism seen so far:
 
 <figure>
-<img src="/img/guide/page-storage.png" />
+<img src="{{ site.baseurl }}/img/guide/page-storage.png" />
 </figure>
 
 # IPageManager

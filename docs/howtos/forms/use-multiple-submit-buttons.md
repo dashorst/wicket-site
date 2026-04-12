@@ -7,7 +7,7 @@ category: forms
 
 Besides submitting forms with a standard HTML submit button, Wicket allows us to use special components which implement interface IFormSubmittingComponent. This entity is a subinterface of IFormSubmitter:
 
-![IFormSubmittingComponent class diagram](/img/guide/class-diag-IFormSubmittingComponent.png)
+![IFormSubmittingComponent class diagram]({{ site.baseurl }}/img/guide/class-diag-IFormSubmittingComponent.png)
 
 At the beginning of this chapter we have seen that form processing is started by process method which takes as input an instance of IFormSubmitter. This parameter corresponds to the IFormSubmittingComponent clicked by a user to submit the form and it is null if we have used a standard HTML submit button (like we have done so far).
 

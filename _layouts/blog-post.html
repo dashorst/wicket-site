@@ -25,13 +25,13 @@ layout: base
 
     <nav class="blog-post-nav">
       {% if page.previous %}
-      <a href="{{ page.previous.url }}" class="blog-post-nav-link blog-post-nav-prev">
+      <a href="{{ site.baseurl }}{{ page.previous.url }}" class="blog-post-nav-link blog-post-nav-prev">
         <span class="blog-post-nav-label">&larr; Previous</span>
         <span class="blog-post-nav-title">{{ page.previous.title }}</span>
       </a>
       {% endif %}
       {% if page.next %}
-      <a href="{{ page.next.url }}" class="blog-post-nav-link blog-post-nav-next">
+      <a href="{{ site.baseurl }}{{ page.next.url }}" class="blog-post-nav-link blog-post-nav-next">
         <span class="blog-post-nav-label">Next &rarr;</span>
         <span class="blog-post-nav-title">{{ page.next.title }}</span>
       </a>

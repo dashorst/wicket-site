@@ -9,7 +9,7 @@ category: reference
 Model is essentially a [facade](http://en.wikipedia.org/wiki/Facade_pattern) interface which allows components to access and modify their data without knowing any detail about how they are managed or persisted. Every component has at most one related model, while a model can be shared among different components. In Wicket a model is any implementation of the interface *org.apache.wicket.model.IModel*:
 
 <figure>
-<img src="/img/guide/uml-imodel.png" />
+<img src="{{ site.baseurl }}/img/guide/uml-imodel.png" />
 </figure>
 
 The main goal of *IModel* interface is to decouple components from concrete details about the persistence strategy adopted for their data. In order to achieve this level of abstraction IModel defines the two methods required to get and set a data object: *getObject()* and *setObject()*. The level of indirection introduced by models allows access data object only when it is really needed (for example during the rendering phase) and not earlier when it may not be ready to be used. In addition to *getObject()* and *setObject()*, *IModel* defines a richer set of methods, mostly meant to work with Java 8 lambdas. We will introduce them in the next paragraph.
