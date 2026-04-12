@@ -1,0 +1,12 @@
+# Preserve old URLs — redirect to new structure
+/learn                    /docs
+/learn/index.html         /docs
+/learn/examples/*         /docs/examples/:splat
+/learn/books/*            /docs/books/:splat
+/help                     /community
+/help/*                   /community
+/contribute               /community/contributing
+/contribute/*             /community/contributing
+/start/overview.html      /start/quickstart
+/apache                   https://www.apache.org
+/apache/*                 https://www.apache.org

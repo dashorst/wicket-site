@@ -1,0 +1,72 @@
+---
+layout: base
+title: "Documentation"
+---
+
+<!-- Dark header band -->
+<section class="header-band header-band--page">
+  <div class="header-band-inner">
+    <h1>Documentation</h1>
+    <p class="page-subtitle">All the things you want to know about Wicket</p>
+  </div>
+</section>
+
+<main class="content-area">
+  <div class="content-inner">
+    <!-- Primary resources: large cards -->
+    <div class="docs-grid-2 mb-12">
+      <!-- User Guide -->
+      <a href="{{ site.wicket.guide_base_url }}/10.x/single.html" target="_blank" rel="noopener" class="card-large">
+        <div class="card-large__icon card__icon--orange">&#x1F4D6;</div>
+        <h2 class="card__title">User Guide</h2>
+        <p class="card__text">200+ page guide covering models, behaviours, testing, and integration. Available for Wicket 10.x and 9.x.</p>
+        <div class="mt-4 flex gap-3 text-xs font-medium">
+          <span class="text-orange">10.x HTML</span>
+          <span class="text-warm-light">&middot;</span>
+          <span class="text-warm-mid">10.x PDF</span>
+          <span class="text-warm-light">&middot;</span>
+          <span class="text-warm-mid">9.x HTML</span>
+        </div>
+      </a>
+
+      <!-- API Reference -->
+      <a href="{{ site.wicket.javadoc_base_url }}/10.x/index.html" target="_blank" rel="noopener" class="card-large">
+        <div class="card-large__icon card__icon--blue">{ }</div>
+        <h2 class="card__title">API Reference</h2>
+        <p class="card__text">Complete JavaDoc for all Wicket classes and methods. Your IDE downloads these automatically with Maven.</p>
+        <div class="mt-4 flex gap-3 text-xs font-medium">
+          <span class="text-orange">10.x JavaDoc</span>
+          <span class="text-warm-light">&middot;</span>
+          <span class="text-warm-mid">9.x JavaDoc</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Secondary resources: smaller cards -->
+    <div class="docs-grid-4">
+      <a href="/docs/examples" class="card">
+        <div class="card__icon card__icon--green">&#x25B6;</div>
+        <h3 class="card__small-title">Examples</h3>
+        <p class="card__small-text">Browse examples and live demos</p>
+      </a>
+
+      <a href="/docs/books" class="card">
+        <div class="card__icon card__icon--orange">&#x1F4DA;</div>
+        <h3 class="card__small-title">Books</h3>
+        <p class="card__small-text">Published books about Wicket</p>
+      </a>
+
+      <a href="/docs/migration" class="card">
+        <div class="card__icon card__icon--blue">&#x2197;</div>
+        <h3 class="card__small-title">Migration</h3>
+        <p class="card__small-text">Upgrade between versions</p>
+      </a>
+
+      <a href="{{ site.wicket.live_examples_url }}" target="_blank" rel="noopener" class="card">
+        <div class="card__icon card__icon--green">&#x1F310;</div>
+        <h3 class="card__small-title">Live Demos</h3>
+        <p class="card__small-text">Try Wicket in your browser</p>
+      </a>
+    </div>
+  </div>
+</main>

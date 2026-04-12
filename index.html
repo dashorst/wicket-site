@@ -1,0 +1,213 @@
+---
+layout: home
+---
+
+<!-- Hero -->
+<section class="header-band header-band--hero">
+  <div class="header-band__inner">
+    <p class="header-band__subtitle">Apache Wicket&trade;</p>
+    <h1 class="header-band__title">
+      Web development,<br />
+      <em>the Java way.</em>
+    </h1>
+    <p class="header-band__description">
+      Component-oriented. Type-safe. Production-proven across thousands of
+      applications for over twenty years. No JavaScript framework required.
+    </p>
+    <div class="header-band__actions">
+      <a href="/start/quickstart" class="btn-primary">Get Started</a>
+      <a href="/docs/examples" class="btn-secondary">See It in Action</a>
+    </div>
+  </div>
+</section>
+
+<!-- Code Showcase -->
+<section class="code-showcase">
+  <div class="code-showcase__header">
+    <p class="code-showcase__header-label">The Wicket Pattern</p>
+    <p class="code-showcase__header-text">Each component: one Java class + one HTML template</p>
+  </div>
+
+  <div class="code-showcase__panes">
+    <!-- Left pane: Java -->
+    <div class="code-showcase__pane">
+      <div class="code-showcase__file-label">
+        <span class="code-showcase__file-dot"></span>
+        <span class="code-showcase__file-name">TaskPanel.java</span>
+      </div>
+      <div class="code-showcase__code">
+        <pre><code><span class="code-keyword">public</span> <span class="code-keyword">class</span> <span class="code-type">TaskPanel</span> <span class="code-keyword">extends</span> <span class="code-type">Panel</span> {
+    <span class="code-annotation">@Inject</span>
+    <span class="code-keyword">private</span> <span class="code-type">TaskService</span> taskService;
+
+    <span class="code-keyword">public</span> <span class="code-type">TaskPanel</span>(<span class="code-type">String</span> id) {
+        <span class="code-builtin">super</span>(id);
+        <span class="code-type">Task</span> task = <span class="code-keyword">new</span> <span class="code-type">Task</span>();
+
+        <span class="code-type">Form</span>&lt;<span class="code-type">Task</span>&gt; form = <span class="code-keyword">new</span> <span class="code-type">Form</span>&lt;&gt;(<span class="code-string">"form"</span>);
+<span class="code-highlight">        form.<span class="code-builtin">add</span>(<span class="code-keyword">new</span> <span class="code-type">TextField</span>&lt;&gt;(<span class="code-string">"title"</span>,</span>
+<span class="code-highlight">            <span class="code-type">LambdaModel</span>.<span class="code-builtin">of</span>(task::<span class="code-builtin">getTitle</span>, task::<span class="code-builtin">setTitle</span>)));</span>
+        form.<span class="code-builtin">add</span>(<span class="code-keyword">new</span> <span class="code-type">AjaxButton</span>(<span class="code-string">"save"</span>) {
+            <span class="code-annotation">@Override</span>
+            <span class="code-keyword">protected</span> <span class="code-keyword">void</span> <span class="code-builtin">onSubmit</span>(<span class="code-type">AjaxRequestTarget</span> target) {
+                taskService.<span class="code-builtin">save</span>(task);
+                <span class="code-builtin">success</span>(<span class="code-string">"Saved!"</span>);
+                target.<span class="code-builtin">add</span>(feedback);
+            }
+        });
+        <span class="code-builtin">add</span>(form);
+    }
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Right pane: HTML -->
+    <div class="code-showcase__pane">
+      <div class="code-showcase__file-label">
+        <span class="code-showcase__file-dot"></span>
+        <span class="code-showcase__file-name">TaskPanel.html</span>
+      </div>
+      <div class="code-showcase__code">
+        <pre><code>&lt;<span class="code-keyword">wicket:panel</span>&gt;
+  &lt;<span class="code-keyword">form</span> <span class="code-type">wicket:id</span>=<span class="code-string">"form"</span>&gt;
+<span class="code-highlight">    &lt;<span class="code-keyword">input</span> <span class="code-type">wicket:id</span>=<span class="code-string">"title"</span></span>
+<span class="code-highlight">           <span class="code-type">type</span>=<span class="code-string">"text"</span></span>
+<span class="code-highlight">           <span class="code-type">placeholder</span>=<span class="code-string">"Task title"</span> /&gt;</span>
+    &lt;<span class="code-keyword">button</span> <span class="code-type">wicket:id</span>=<span class="code-string">"save"</span>&gt;Save&lt;/<span class="code-keyword">button</span>&gt;
+  &lt;/<span class="code-keyword">form</span>&gt;
+  &lt;<span class="code-keyword">div</span> <span class="code-type">wicket:id</span>=<span class="code-string">"feedback"</span>&gt;&lt;/<span class="code-keyword">div</span>&gt;
+&lt;/<span class="code-keyword">wicket:panel</span>&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-showcase__caption">
+    <p>A type-safe AJAX form with lambda model binding and CDI injection. No JavaScript. Just Java.</p>
+  </div>
+</section>
+
+<!-- Feature Cards -->
+<section class="feature-section">
+  <p class="section-label">Why Wicket</p>
+  <h2 class="mb-12" style="line-height:1.2">Crafted for the long run</h2>
+  <div class="feature-grid">
+    <div class="card-large">
+      <div class="card-large__icon card__icon--orange">{ }</div>
+      <h3 class="card__title">For Java devs, by Java devs</h3>
+      <p class="card__text">No transpiler. No bundler. No framework-of-the-month. Write Java and HTML &mdash; the same tools you'll use next year, and the year after that.</p>
+    </div>
+    <div class="card-large">
+      <div class="card-large__icon card__icon--green">&#x1f6e1;</div>
+      <h3 class="card__title">Secure by Default</h3>
+      <p class="card__text">Full Content Security Policy support without unsafe directives. Automatic nonce injection. XSS protection built into the framework, not bolted on.</p>
+    </div>
+    <div class="card-large">
+      <div class="card-large__icon card__icon--blue">&#x2197;</div>
+      <h3 class="card__title">Scales with your ambition</h3>
+      <p class="card__text">From prototype to millions of lines of code. Java's packages, classes, and dependency injection are your architecture &mdash; no framework-specific scaffolding required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Community Stats -->
+{% assign current_year = 'now' | date: '%Y' | plus: 0 %}
+{% assign years_in_production = current_year | minus: 2004 %}
+<section class="community-stats">
+  <p class="section-label mb-6">The Wicket Community</p>
+  <div class="community-stats__grid">
+    <div>
+      <div class="community-stats__number">860+</div>
+      <div class="community-stats__label">GitHub Stars</div>
+    </div>
+    <div>
+      <div class="community-stats__number community-stats__number--orange">2.1M+</div>
+      <div class="community-stats__label">Maven Downloads</div>
+    </div>
+    <div>
+      <div class="community-stats__number">{{ years_in_production }}</div>
+      <div class="community-stats__label">Years in Production</div>
+    </div>
+    <div>
+      <div class="community-stats__number community-stats__number--orange">10</div>
+      <div class="community-stats__label">Major Versions</div>
+    </div>
+  </div>
+  <a href="/community/who-uses-wicket" class="community-stats__link">
+    See who's building with Wicket &rarr;
+  </a>
+</section>
+
+<!-- Quickstart Section -->
+<section class="quickstart">
+  <div class="quickstart__inner">
+    <div class="quickstart__text">
+      <h3>Up and running in<br />thirty seconds</h3>
+      <p>
+        One Maven command gives you a working Wicket application with embedded Jetty. Edit, refresh, repeat.
+      </p>
+      <a href="/start/quickstart" class="btn-primary">Quickstart Guide &rarr;</a>
+    </div>
+    <div class="quickstart__terminal">
+      <div class="quickstart__terminal-block">
+        <span class="prompt">$</span> mvn archetype:generate \<br />
+        &nbsp;&nbsp;-DarchetypeGroupId=<span class="string">{{ site.wicket.archetype.group_id }}</span> \<br />
+        &nbsp;&nbsp;-DarchetypeArtifactId=<span class="string">{{ site.wicket.archetype.artifact_id }}</span> \<br />
+        &nbsp;&nbsp;-DarchetypeVersion=<span class="value">{{ site.wicket.version }}</span> \<br />
+        &nbsp;&nbsp;-DgroupId=<span class="string">com.example</span> \<br />
+        &nbsp;&nbsp;-DartifactId=<span class="string">myapp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vitals Bar -->
+{% assign released_date = site.wicket.released | date: "%b %Y" %}
+<section class="vitals-bar">
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value">{{ site.wicket.version }}</div>
+    <div class="vitals-bar__label">Latest Release</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value vitals-bar__value--orange">{{ released_date }}</div>
+    <div class="vitals-bar__label">Released</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value">Java {{ site.wicket.java_baseline }}+</div>
+    <div class="vitals-bar__label">Baseline</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value vitals-bar__value--orange">Jakarta EE</div>
+    <div class="vitals-bar__label">Compatible</div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="recent-posts">
+  <div class="recent-posts__header">
+    <div>
+      <p class="section-label">Latest News</p>
+      <h2>From the Blog</h2>
+    </div>
+    <a href="/blog">View all posts &rarr;</a>
+  </div>
+  <div class="recent-posts__grid">
+    {% for post in site.posts limit:3 %}
+    <article class="post-card">
+      <div class="post-card__date">{{ post.date | date: "%B %d, %Y" }}</div>
+      {% if post.tags.size > 0 %}
+        {% assign tag = post.tags | first %}
+        {% if tag == "release" %}
+          <span class="tag tag-release">{{ tag }}</span>
+        {% elsif tag == "security" %}
+          <span class="tag tag-security">{{ tag }}</span>
+        {% else %}
+          <span class="tag tag-community">{{ tag }}</span>
+        {% endif %}
+      {% endif %}
+      <h4 class="post-card__title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h4>
+    </article>
+    {% endfor %}
+  </div>
+</section>

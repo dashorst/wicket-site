@@ -1,0 +1,152 @@
+---
+layout: default
+title: "Create a Wicket Quickstart"
+subtitle: "Up and running in seconds"
+---
+
+<p>
+  The Wicket Quickstart Wizard uses <a href="https://maven.apache.org">Apache Maven</a> to
+  generate a starter project. Make sure Maven is installed and available on your
+  <code>PATH</code> before you continue.
+</p>
+
+<h2>Quick Start Wizard</h2>
+<p>Fill in your project details below and copy the generated command line to your terminal.</p>
+
+<div class="not-prose" style="background:#0f1419; border-radius:var(--radius-lg); overflow:hidden; border-top:3px solid var(--color-wicket-orange); border:1px solid rgba(255,255,255,0.06); border-top:3px solid var(--color-wicket-orange);">
+  <div style="padding:var(--space-6) var(--space-6) var(--space-2);">
+    <div class="grid-2" style="gap:var(--space-4);">
+      <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+        <label for="groupId" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Group ID</label>
+        <input
+          type="text"
+          id="groupId"
+          value="com.example"
+          oninput="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea;"
+        />
+        <span style="font-size:var(--text-xs); color:rgba(245,240,234,0.4);">Your base Java package (e.g. com.example)</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-1);">
+        <label for="artifactId" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Artifact ID</label>
+        <input
+          type="text"
+          id="artifactId"
+          value="myapp"
+          oninput="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea;"
+        />
+        <span style="font-size:var(--text-xs); color:rgba(245,240,234,0.4);">Your project name (e.g. myapp)</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:var(--space-1); grid-column:1/-1;">
+        <label for="version" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Wicket Version</label>
+        <select
+          id="version"
+          onchange="updateCommand()"
+          style="border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.1); padding:var(--space-2) var(--space-3); font-size:var(--text-sm); color:#f5f0ea; max-width:20rem;"
+        >
+          {% for v in site.wicket.versions %}
+          <option value="{{ v.version }}"{% if v.version == site.wicket.version %} selected{% endif %} style="background:#0f1419">
+            {{ v.version }} ({{ v.branch }} &mdash; {{ v.status }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:var(--space-4) var(--space-6); display:flex; flex-direction:column; gap:var(--space-1);">
+    <label for="cmdLine" style="font-size:var(--text-sm); font-weight:500; color:rgba(245,240,234,0.7);">Generated command line</label>
+    <textarea
+      id="cmdLine"
+      readonly
+      rows="4"
+      onfocus="this.select()"
+      style="width:100%; border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.08); background:rgba(0,0,0,0.3); padding:var(--space-2) var(--space-3); font-family:var(--font-mono); font-size:var(--text-xs); color:#abb2bf; resize:vertical;"
+    ></textarea>
+  </div>
+
+  <div style="padding:0 var(--space-6) var(--space-6); display:flex; align-items:center; gap:var(--space-3);">
+    <button
+      id="copyBtn"
+      type="button"
+      onclick="copyCommand()"
+      class="btn-primary"
+      style="font-size:var(--text-sm);"
+    >
+      Copy to clipboard
+    </button>
+    <span id="copyFeedback" style="font-size:var(--text-sm); color:rgba(245,240,234,0.6); opacity:0; transition:opacity 0.3s;">Copied!</span>
+  </div>
+</div>
+
+<h2>Using the Generated Project</h2>
+<ol>
+  <li>Paste the command into a terminal and press Enter to generate the project.</li>
+  <li>Navigate into the generated project directory.</li>
+  <li>Import the project into your IDE (see below).</li>
+  <li>Run the <code>Start</code> class in <code>src/test/java</code>.</li>
+  <li>Open <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> in your browser.</li>
+</ol>
+
+<h2>Importing into Your IDE</h2>
+<p>
+  All major Java IDEs have native support for Maven projects &mdash; no plugins required.
+</p>
+
+<h3>Eclipse</h3>
+<p>
+  Choose <strong>File &rarr; Import &rarr; Existing Maven Projects</strong> and point Eclipse
+  at the folder where the quickstart was generated.
+</p>
+
+<h3>IntelliJ IDEA</h3>
+<p>
+  Open the <code>pom.xml</code> file directly via <strong>File &rarr; Open</strong>.
+  IntelliJ will recognise it as a Maven project and import it automatically.
+</p>
+
+<h3>NetBeans</h3>
+<p>
+  Choose <strong>File &rarr; Open Project</strong> and navigate to the generated folder.
+  NetBeans will detect the Maven project and open it like any other Java project.
+</p>
+
+<script>
+  var archetypeGroupId = '{{ site.wicket.archetype.group_id }}';
+  var archetypeArtifactId = '{{ site.wicket.archetype.artifact_id }}';
+
+  function updateCommand() {
+    var groupId = document.getElementById('groupId').value;
+    var artifactId = document.getElementById('artifactId').value;
+    var version = document.getElementById('version').value;
+    var cmd = 'mvn archetype:generate' +
+      ' -DarchetypeGroupId=' + archetypeGroupId +
+      ' -DarchetypeArtifactId=' + archetypeArtifactId +
+      ' -DarchetypeVersion=' + version +
+      ' -DgroupId=' + groupId +
+      ' -DartifactId=' + artifactId;
+    if (version.match(/SNAPSHOT$/)) {
+      cmd += ' -DarchetypeRepository=https://repository.apache.org/content/repositories/snapshots/';
+    } else {
+      cmd += ' -DarchetypeRepository=https://repository.apache.org/';
+    }
+    cmd += ' -DinteractiveMode=false';
+    document.getElementById('cmdLine').value = cmd;
+  }
+
+  function copyCommand() {
+    var cmdLine = document.getElementById('cmdLine');
+    navigator.clipboard.writeText(cmdLine.value).then(function() {
+      var feedback = document.getElementById('copyFeedback');
+      feedback.style.opacity = '1';
+      setTimeout(function() { feedback.style.opacity = '0'; }, 2000);
+    }).catch(function() {
+      cmdLine.select();
+      document.execCommand('copy');
+    });
+  }
+
+  // Initialize command on page load
+  document.addEventListener('DOMContentLoaded', updateCommand);
+</script>

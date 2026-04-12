@@ -1,0 +1,99 @@
+---
+layout: base
+title: "Blog"
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: "/blog/page/:num/"
+---
+
+<!-- Dark header band -->
+<section class="header-band header-band--page">
+  <div class="header-band-inner">
+    <h1>Blog</h1>
+    <p class="page-description">News, releases, and updates from the Apache Wicket project</p>
+  </div>
+</section>
+
+<main class="content-area">
+  <div class="content-inner">
+    {% assign all_posts = paginator.posts %}
+    {% assign featured = all_posts | slice: 0, 3 %}
+
+    <!-- Featured posts (3-column cards) -->
+    <div class="recent-posts__grid mb-12">
+      {% for post in featured %}
+      <article class="post-card">
+        <div class="post-card__date">{{ post.date | date: "%B %d, %Y" }}</div>
+        {% if post.tags.size > 0 %}
+          {% assign tag = post.tags | first %}
+          {% if tag == "release" %}
+            <span class="tag tag-release mb-3">{{ tag }}</span>
+          {% elsif tag == "security" %}
+            <span class="tag tag-security mb-3">{{ tag }}</span>
+          {% else %}
+            <span class="tag tag-community mb-3">{{ tag }}</span>
+          {% endif %}
+        {% endif %}
+        <h2 class="post-card__title" style="font-size:var(--text-lg);">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h2>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Remaining posts (compact list) -->
+    {% assign rest_start = 3 %}
+    {% assign rest = all_posts | slice: rest_start, 100 %}
+    {% if rest.size > 0 %}
+    <div>
+      <h2 class="blog-index__older-header">Older Posts</h2>
+      <div class="blog-index__compact-grid">
+        {% for post in rest %}
+        <article class="blog-index__compact-item">
+          <div class="blog-index__compact-date">
+            {{ post.date | date: "%b %d, %Y" }}
+          </div>
+          <div class="blog-index__compact-content">
+            {% if post.tags.size > 0 %}
+              {% assign tag = post.tags | first %}
+              {% if tag == "release" %}
+                <span class="tag tag--small tag-release mb-1">{{ tag }}</span>
+              {% elsif tag == "security" %}
+                <span class="tag tag--small tag-security mb-1">{{ tag }}</span>
+              {% else %}
+                <span class="tag tag--small tag-community mb-1">{{ tag }}</span>
+              {% endif %}
+            {% endif %}
+            <h3 class="blog-index__compact-title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h3>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Pagination -->
+    <div class="blog-index__pagination">
+      {% if paginator.total_pages > 1 %}
+      <div class="flex justify-center items-center gap-4">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path }}" class="btn-link">&larr; Newer</a>
+        {% endif %}
+        <p class="text-sm text-warm-mid">
+          Page {{ paginator.page }} of {{ paginator.total_pages }}
+        </p>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path }}" class="btn-link">Older &rarr;</a>
+        {% endif %}
+      </div>
+      {% else %}
+      <p class="text-sm text-warm-mid">
+        Showing all {{ all_posts.size }} posts
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</main>
