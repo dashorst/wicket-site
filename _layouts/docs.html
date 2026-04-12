@@ -38,8 +38,61 @@ layout: base
       <h1>{{ page.title }}</h1>
       {% if page.description %}<p class="docs-header-description">{{ page.description }}</p>{% endif %}
     </header>
-    <div class="docs-content prose">
-      {{ content }}
+    <div class="docs-body">
+      <div class="docs-content prose">
+        {{ content }}
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
     </div>
   </div>
 </main>
+
+<script>
+(function() {
+  const content = document.querySelector('.docs-content');
+  const tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  const headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    const toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>

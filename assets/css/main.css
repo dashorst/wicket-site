@@ -1661,9 +1661,69 @@ a.card-large {
   margin: var(--space-1) 0 0 0;
 }
 
+.docs-body {
+  display: flex;
+}
+
 .docs-content {
+  flex: 1;
   padding: var(--space-8) var(--space-6);
   min-width: 0;
+}
+
+/* --- Right-side TOC --- */
+
+.docs-toc {
+  display: none;  /* hidden on mobile */
+}
+
+.docs-toc-nav {
+  position: sticky;
+  top: var(--space-8);
+}
+
+.docs-toc-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-warm-light);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.docs-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.docs-toc-item {
+  margin: 0;
+}
+
+.docs-toc-item--nested {
+  padding-left: var(--space-3);
+}
+
+.docs-toc-link {
+  display: block;
+  padding: 0.2rem 0 0.2rem var(--space-3);
+  font-size: 0.75rem;
+  color: var(--color-warm-light);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+  transition: all 0.15s;
+}
+
+.docs-toc-link:hover {
+  color: var(--color-warm-mid);
+}
+
+.docs-toc-link.active {
+  color: var(--color-wicket-orange);
+  border-left-color: var(--color-wicket-orange);
 }
 
 /* Two-column card grids inside docs */
@@ -1702,6 +1762,13 @@ a.card-large {
 
   .docs-content {
     padding: var(--space-8) var(--space-10);
+  }
+
+  .docs-toc {
+    display: block;
+    width: 14rem;
+    flex-shrink: 0;
+    padding: var(--space-8) var(--space-4) var(--space-8) 0;
   }
 
   .docs-grid-2 {
