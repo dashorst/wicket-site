@@ -2,7 +2,8 @@
 layout: base
 ---
 <main class="docs-layout">
-  <aside class="docs-sidebar">
+  <details class="docs-sidebar">
+    <summary class="docs-sidebar-toggle">Navigation</summary>
     <nav class="docs-nav">
       {% for section in site.data.docs-nav %}
       <div class="docs-nav-section">
@@ -32,7 +33,7 @@ layout: base
       </div>
       {% endfor %}
     </nav>
-  </aside>
+  </details>
   <div class="docs-main">
     <header class="docs-header">
       <h1>{{ page.title }}</h1>
@@ -54,14 +55,14 @@ layout: base
 
 <script>
 (function() {
-  const content = document.querySelector('.docs-content');
-  const tocList = document.getElementById('docs-toc-list');
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
   if (!content || !tocList) return;
 
-  const headings = content.querySelectorAll('h2, h3');
+  var headings = content.querySelectorAll('h2, h3');
   if (headings.length === 0) {
     // Hide TOC if no headings
-    const toc = document.querySelector('.docs-toc');
+    var toc = document.querySelector('.docs-toc');
     if (toc) toc.style.display = 'none';
     return;
   }

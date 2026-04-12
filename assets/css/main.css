@@ -2341,3 +2341,149 @@ a.card-large {
   line-height: 1.5;
   margin: 0;
 }
+
+/* Subcategory label shown on how-to cards */
+.docs-card-subcategory-label {
+  display: inline-block;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-warm-light);
+  margin-bottom: var(--space-1);
+  margin-left: var(--space-1);
+}
+
+
+/* ==========================================================================
+   25. Docs Catalog — Subcategory Filter Pills
+   ========================================================================== */
+
+.docs-filter-subcategories {
+  display: none;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.docs-filter-subcategories.visible {
+  display: flex;
+}
+
+.docs-filter-subtag {
+  padding: var(--space-0-5) var(--space-2-5);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--color-warm-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.docs-filter-subtag:hover {
+  border-color: var(--color-wicket-orange);
+  color: var(--color-wicket-orange);
+}
+
+.docs-filter-subtag.active {
+  background: var(--color-warm-dark);
+  border-color: var(--color-warm-dark);
+  color: #ffffff;
+}
+
+/* External resources section — always visible regardless of filters */
+.docs-external-resources {
+  margin-top: var(--space-10);
+}
+
+
+/* ==========================================================================
+   26. Docs Sidebar — Mobile Collapse
+   ========================================================================== */
+
+/* The sidebar is now a <details> element.
+   On mobile it acts as a collapsible; on desktop it's always open
+   with the <summary> toggle hidden. */
+
+.docs-sidebar-toggle {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  list-style: none;              /* remove default disclosure triangle */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Remove the default marker in WebKit/Blink */
+.docs-sidebar-toggle::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom chevron indicator */
+.docs-sidebar-toggle::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--color-warm-mid);
+  border-bottom: 2px solid var(--color-warm-mid);
+  transform: rotate(-45deg);
+  margin-right: var(--space-2);
+  transition: transform 0.2s;
+}
+
+.docs-sidebar[open] > .docs-sidebar-toggle::before {
+  transform: rotate(45deg);
+}
+
+/* On mobile, start collapsed by removing the open attribute via JS.
+   But we want it open by default on desktop (the `open` attr is in HTML). */
+
+@media (max-width: 767px) {
+  .docs-sidebar {
+    background-color: var(--color-paper-dim);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .docs-sidebar > .docs-nav {
+    padding: var(--space-4) var(--space-6) var(--space-6);
+  }
+}
+
+@media (min-width: 768px) {
+  /* Hide the toggle summary on desktop */
+  .docs-sidebar-toggle {
+    display: none;
+  }
+
+  /* Ensure sidebar is always visible on desktop regardless of open state */
+  .docs-sidebar,
+  .docs-sidebar[open] {
+    display: block;
+    background-color: var(--color-paper-dim);
+    width: 16rem;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+    padding: var(--space-6);
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  /* The nav inside should always display on desktop */
+  .docs-sidebar > .docs-nav {
+    display: block;
+  }
+}
