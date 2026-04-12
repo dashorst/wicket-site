@@ -12,9 +12,10 @@ echo "Building Jekyll site..."
 bundle exec jekyll build
 
 echo "Publishing _site/ to gh-pages branch..."
+rm -rf _site/.git
 cd _site
 git init
-git checkout -b gh-pages
+git checkout --orphan gh-pages
 git add -A
 git commit -m "Publish site $(date +%Y-%m-%d-%H%M)"
 git push -f "$REPO" gh-pages
