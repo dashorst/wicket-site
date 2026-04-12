@@ -1750,6 +1750,15 @@ a.card-large {
   }
 }
 
+@media (min-width: 768px) {
+  .docs-toc {
+    display: block;
+    width: 14rem;
+    flex-shrink: 0;
+    padding: var(--space-8) var(--space-4) var(--space-8) 0;
+  }
+}
+
 @media (min-width: 1024px) {
   .docs-layout {
     flex-direction: row;
@@ -1766,12 +1775,7 @@ a.card-large {
     max-height: 100vh;
   }
 
-  .docs-toc {
-    display: block;
-    width: 14rem;
-    flex-shrink: 0;
-    padding: var(--space-8) var(--space-4) var(--space-8) 0;
-  }
+  /* TOC stays at 1024px+ when sidebar is also visible */
 
   .docs-grid-2 {
     grid-template-columns: repeat(2, 1fr);
