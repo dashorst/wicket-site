@@ -1,39 +1,26 @@
 #!/bin/bash
-# Build the Jekyll site and prepare it for GitHub Pages deployment.
-# Run this from the project root inside the devcontainer.
+# Build and publish to GitHub Pages.
+# Works in worktrees — pushes _site/ to gh-pages branch without checkout.
 #
 # Usage: ./publish.sh
-#
-# This builds _site/ and copies it to the gh-pages branch,
-# which GitHub Pages serves from.
 
 set -e
+
+REMOTE="${1:-dashorst}"
 
 echo "Building Jekyll site..."
 bundle exec jekyll build
 
-echo "Switching to gh-pages branch..."
-# Save the built site
-cp -r _site /tmp/wicket-site-build
-
-# Create or switch to gh-pages branch
-git checkout gh-pages 2>/dev/null || git checkout --orphan gh-pages
-
-# Clean everything except .git
-find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} \;
-
-# Copy the built site
-cp -r /tmp/wicket-site-build/* .
-cp /tmp/wicket-site-build/.* . 2>/dev/null || true
-
-# Commit and push
+echo "Publishing _site/ to gh-pages branch on '$REMOTE'..."
+cd _site
+git init
+git checkout -b gh-pages
 git add -A
-git commit -m "Publish site $(date +%Y-%m-%d)"
-echo ""
-echo "Built site is on the gh-pages branch."
-echo "Push with: git push dashorst gh-pages"
-echo "Then configure GitHub Pages to serve from gh-pages branch (root)."
+git commit -m "Publish site $(date +%Y-%m-%d-%H%M)"
+git push -f "$(git -C .. remote get-url $REMOTE)" gh-pages
+cd ..
+rm -rf _site/.git
 
-# Switch back
-git checkout -
-rm -rf /tmp/wicket-site-build
+echo ""
+echo "Done. Configure GitHub Pages to serve from gh-pages branch (root)."
+echo "Site: https://dashorst.github.io/wicket-site/"
