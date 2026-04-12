@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to restrict access by role — Apache Wicket</title>
+  <meta name="description" content="Set up role-based authorization to restrict page access in Wicket">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link active">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>How to restrict access by role</h1>
+      <p class="docs-header-description">Set up role-based authorization to restrict page access in Wicket</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>The authorization support provided by Wicket is built around the concept of authorization strategy which is represented by interface <em>IAuthorizationStrategy</em> (in package <em>org.apache.wicket.authorization</em>):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IAuthorizationStrategy</span> <span class="o">{</span>
+
+ <span class="c1">//interface methods</span>
+ <span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">IRequestableComponent</span><span class="o">&gt;</span> <span class="kt">boolean</span> <span class="nf">isInstantiationAuthorized</span><span class="o">(</span><span class="nc">Class</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">componentClass</span><span class="o">);</span>
+ <span class="kt">boolean</span> <span class="nf">isActionAuthorized</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">,</span> <span class="nc">Action</span> <span class="n">action</span><span class="o">);</span>
+
+ <span class="c1">//default authorization strategy that allows everything</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">IAuthorizationStrategy</span> <span class="no">ALLOW_ALL</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IAuthorizationStrategy</span><span class="o">()</span>
+ <span class="o">{</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">IRequestableComponent</span><span class="o">&gt;</span> <span class="kt">boolean</span> <span class="nf">isInstantiationAuthorized</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Class</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">c</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isActionAuthorized</span><span class="o">(</span><span class="nc">Component</span> <span class="n">c</span><span class="o">,</span> <span class="nc">Action</span> <span class="n">action</span><span class="o">)</span>
+  <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="o">}</span>
+ <span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This interface defines two methods:</p>
+
+<ul>
+  <li>
+    <p><em>isInstantiationAuthorized()</em> checks if user is allowed to instantiate a given component.</p>
+  </li>
+  <li>
+    <p><em>isActionAuthorized()</em> checks if user is authorized to perform a given action on a component’s instance. The standard actions checked by this method are defined into class Action and are Action.ENABLE and Action.RENDER.</p>
+  </li>
+</ul>
+
+<p>Inside <em>IAuthorizationStrategy</em> we can also find a default implementation of the interface (called ALLOW_ALL) that allows everyone to instantiate every component and perform every possible action on it. This is the default strategy adopted by class <em>Application</em>.</p>
+
+<p>To change the authorization strategy in use we must register the desired implementation into security settings (class <em>SecuritySettings</em>) during initialization phase with method setAuthorization Strategy:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">//Application class code...</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+  <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getSecuritySettings</span><span class="o">().</span>
+    <span class="n">setAuthorizationStrategy</span><span class="o">(</span><span class="n">myAuthorizationStrategy</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="c1">//...</span>
+</code></pre></div></div>
+
+<p>If we want to combine the action of two or more authorization strategies we can chain them with strategy <em>CompoundAuthorizationStrategy</em> which implements composite pattern for authorization strategies.</p>
+
+<p>Most of the times we won’t need to implement an <em>IAuthorizationStrategy</em> from scratch as Wicket already comes with a set of built-in strategies. In the next paragraphs we will see some of these strategies that can be used to implement an effective and flexible security policy.</p>
+
+<h1 id="simplepageauthorizationstrategy">SimplePageAuthorizationStrategy</h1>
+
+<p>Abstract class SimplePageAuthorizationStrategy (in package <em>org.apache.wicket.authorization.strategies.page</em>) is a strategy that checks user authorizations calling abstract method <em>isAuthorized</em> only for those pages that are subclasses of a given supertype. If <em>isAuthorized</em> returns false, the user is redirected to the sign in page specified as second constructor parameter:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">SimplePageAuthorizationStrategy</span> <span class="n">authorizationStrategy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimplePageAuthorizationStrategy</span><span class="o">(</span>
+                                                  <span class="nc">PageClassToCheck</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">SignInPage</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="o">{</span>
+  <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">isAuthorized</span><span class="o">()</span>
+  <span class="o">{</span>
+    <span class="c1">//Authentication code...</span>
+  <span class="o">}</span>
+<span class="o">};</span>
+</code></pre></div></div>
+
+<p>By default <em>SimplePageAuthorizationStrategy</em> checks for permissions only on pages. If we want to change this behavior and check also other kinds of components, we must override method <em>isActionAuthorized()</em> and implement our custom logic inside it.</p>
+
+<h1 id="role-based-strategies">Role-based strategies</h1>
+
+<p>At the end of <a href="#security.adoc#_authentication" class="cross-reference">paragraph 22.1</a> we have introduced AbstractAuthenticatedWebSession’s method getRoles() which is provided to support role-based authorization returning the set of roles granted to the current user.</p>
+
+<p>In Wicket roles are simple strings like “BASIC_USER” or “ADMIN” (they don’t need to be capitalized) and they are handled with class <em>org.apache.wicket.authroles.authorization.strategies.role.Roles</em>. This class extends standard HashSet collection adding some functionalities to check whether the set contains one or more roles. Class <em>Roles</em> already defines roles Roles.USER and Roles.ADMIN.</p>
+
+<p>The session class in the following example returns a custom “SIGNED_IN” role for every authenticated user and it adds an Roles.ADMIN role if username is equal to superuser:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BasicAuthenticationRolesSession</span> <span class="kd">extends</span> <span class="nc">AuthenticatedWebSession</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">userName</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BasicAuthenticationRolesSession</span><span class="o">(</span><span class="nc">Request</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">authenticate</span><span class="o">(</span><span class="nc">String</span> <span class="n">username</span><span class="o">,</span> <span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">authResult</span><span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="n">authResult</span> <span class="o">=</span> <span class="c1">//some authentication logic...</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">authResult</span><span class="o">)</span>
+            <span class="n">userName</span> <span class="o">=</span> <span class="n">username</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="n">authResult</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Roles</span> <span class="nf">getRoles</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Roles</span> <span class="n">resultRoles</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Roles</span><span class="o">();</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">isSignedIn</span><span class="o">())</span>
+            <span class="n">resultRoles</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"SIGNED_IN"</span><span class="o">);</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">userName</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"superuser"</span><span class="o">))</span>
+            <span class="n">resultRoles</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Roles</span><span class="o">.</span><span class="na">ADMIN</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">resultRoles</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Roles can be adopted to apply security restrictions on our pages and components. This can be done using one of the two built-in authorization strategies that extend super class <em>AbstractRoleAuthorizationStrategyWicket</em>: <em>MetaDataRoleAuthorizationStrategy</em> and <em>AnnotationsRoleAuthorizationStrategy</em></p>
+
+<p>The difference between these two strategies is that <em>MetaDataRoleAuthorizationStrategy</em> handles role-based authorizations with Wicket metadata while <em>AnnotationsRoleAuthorizationStrategy</em> uses Java annotations.</p>
+
+<blockquote>
+  <p>[!NOTE]
+Application class <em>AuthenticatedWebApplication</em> already sets <em>MetaDataRoleAuthorizationStrategy</em> and <em>AnnotationsRoleAuthorizationStrategy</em> as its own authorization strategies (it uses a compound strategy as we will see in <a href="#security.adoc#_authorizations" class="cross-reference">paragraph 22.2</a>).</p>
+</blockquote>
+
+<p>The code that we will see in the next examples is for illustrative purpose only. If our application class inherits from <em>AuthenticatedWebApplication</em> we won’t need to configure anything to use these two strategies.</p>
+
+<h3 id="using-roles-with-metadata">Using roles with metadata</h3>
+
+<p>Strategy <em>MetaDataRoleAuthorizationStrategy</em> uses application and components metadata to implement role-based authorizations. The class defines a set of static methods authorize that can be used to specify which roles are allowed to instantiate a component and which roles can perform a given action on a component.</p>
+
+<p>The following code snippet reports both application and session classes from project <em>MetaDataRolesStrategyExample</em> and illustrates how to use <em>MetaDataRoleAuthorizationStrategy</em> to allow access to a given page (AdminOnlyPage) only to ADMIN role:</p>
+
+<p><strong>Application class:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WicketApplication</span> <span class="kd">extends</span> <span class="nc">AuthenticatedWebApplication</span> <span class="o">{</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">WebPage</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">(){</span>
+      <span class="k">return</span> <span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">protected</span> <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">AbstractAuthenticatedWebSession</span><span class="o">&gt;</span> <span class="nf">getWebSessionClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nc">BasicAuthenticationSession</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">protected</span> <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">WebPage</span><span class="o">&gt;</span> <span class="nf">getSignInPageClass</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nc">SignInPage</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+      <span class="n">getSecuritySettings</span><span class="o">().</span><span class="na">setAuthorizationStrategy</span><span class="o">(</span><span class="k">new</span> <span class="nc">MetaDataRoleAuthorizationStrategy</span><span class="o">(</span><span class="k">this</span><span class="o">));</span>
+      <span class="nc">MetaDataRoleAuthorizationStrategy</span><span class="o">.</span><span class="na">authorize</span><span class="o">(</span><span class="nc">AdminOnlyPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="nc">Roles</span><span class="o">.</span><span class="na">ADMIN</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>Session class:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasicAuthenticationSession</span> <span class="kd">extends</span> <span class="nc">AuthenticatedWebSession</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">BasicAuthenticationSession</span><span class="o">(</span><span class="nc">Request</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">authenticate</span><span class="o">(</span><span class="nc">String</span> <span class="n">username</span><span class="o">,</span> <span class="nc">String</span> <span class="n">password</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">//user is authenticated if username and password are equal</span>
+     <span class="kt">boolean</span> <span class="n">authResult</span> <span class="o">=</span> <span class="n">username</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
+
+      <span class="k">if</span><span class="o">(</span><span class="n">authResult</span><span class="o">)</span>
+         <span class="k">this</span><span class="o">.</span><span class="na">username</span> <span class="o">=</span> <span class="n">username</span><span class="o">;</span>
+
+      <span class="k">return</span> <span class="n">authResult</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">Roles</span> <span class="nf">getRoles</span><span class="o">()</span> <span class="o">{</span>
+      <span class="nc">Roles</span> <span class="n">resultRoles</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Roles</span><span class="o">();</span>
+      <span class="c1">//if user is signed in add the relative role</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">isSignedIn</span><span class="o">())</span>
+         <span class="n">resultRoles</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"SIGNED_IN"</span><span class="o">);</span>
+      <span class="c1">//if username is equal to 'superuser' add the ADMIN role</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">username</span><span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">username</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"superuser"</span><span class="o">))</span>
+         <span class="n">resultRoles</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Roles</span><span class="o">.</span><span class="na">ADMIN</span><span class="o">);</span>
+
+      <span class="k">return</span> <span class="n">resultRoles</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">signOut</span><span class="o">()</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">signOut</span><span class="o">();</span>
+      <span class="n">username</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The code that instantiates <em>MetaDataRoleAuthorizationStrategy</em> and set it as application’s strategy is inside application class method <em>init()</em>.</p>
+
+<p>Any subclass of <em>AbstractRoleAuthorizationStrategyWicket</em> needs an implementation of interface <em>IRoleCheckingStrategy</em> to be instantiated. For this purpose in the code above we used the application class itself because its base class <em>AuthenticatedWebApplication</em> already implements interface <em>IRoleCheckingStrategy</em>. By default <em>AuthenticatedWebApplication</em> checks for authorizations using the roles returned by the current <em>AbstractAuthenticatedWebSession</em>. As final step inside init we grant the access to page <em>AdminOnlyPage</em> to ADMIN role calling method authorize.</p>
+
+<p>The code from session class has three interesting methods. The first is <em>authenticate()</em> which considers as valid credentials every pair of username and password having the same value. The second notable method is <em>getRoles()</em> which returns role SIGNED_IN if user is authenticated and it adds role ADMIN if username is equal to superuser. Finally, we have method <em>signOut()</em> which has been overridden in order to clean the username field used internally to generate roles.</p>
+
+<p>Now if we run the project and we try to access to <em>AdminOnlyPage</em> from the home page without having the ADMIN role, we will be redirected to the default access-denied page used by Wicket:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/authorization-access-denied.png" />
+</figure>
+
+<p>The access-denied page can be customized using method <em>setAccessDeniedPage(Class&lt;? extends Page&gt;)</em> of setting class <em>ApplicationSettings</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="c1">//Application class code...</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+      <span class="n">getApplicationSettings</span><span class="o">().</span><span class="na">setAccessDeniedPage</span><span class="o">(</span>
+            <span class="nc">MyCustomAccessDeniedPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+   <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Just like custom “Page expired” page (see <a href="#versioningCaching.adoc#_stateful_pages" class="cross-reference">chapter 8.2.5</a>), also custom “Access denied” page must be bookmarkable.</p>
+
+<h3 id="using-roles-with-annotations">Using roles with annotations</h3>
+
+<p>Strategy <em>AnnotationsRoleAuthorizationStrategy</em> relies on two built-in annotations to handle role-based authorizations. These annotations are <em>AuthorizeInstantiation</em> and <em>AuthorizeAction</em>. As their names suggest the first annotation specifies which roles are allowed to instantiate the annotated component while the second must be used to indicate which roles are allowed to perform a specific action on the annotated component.</p>
+
+<p>In the following example we use annotations to make a page accessible only to signed-in users and to enable it only if user has the ADMIN role:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@AuthorizeInstantiation</span><span class="o">(</span><span class="s">"SIGNED_IN"</span><span class="o">)</span>
+<span class="nd">@AuthorizeAction</span><span class="o">(</span><span class="n">action</span> <span class="o">=</span> <span class="s">"ENABLE"</span><span class="o">,</span> <span class="n">roles</span> <span class="o">=</span> <span class="o">{</span><span class="s">"ADMIN"</span><span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+   <span class="c1">//Page class code...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Remember that when a component is not enabled, user can render it but he can neither click on its links nor interact with its forms.</p>
+
+<p>Example project <em>AnnotationsRolesStrategyExample</em> is a revisited version of <em>MetaDataRolesStrategyExample</em> where we use <em>AnnotationsRoleAuthorizationStrategy</em> as authorization strategy. To ensure that page <em>AdminOnlyPage</em> is accessible only to ADMIN role we have used the following annotation:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@AuthorizeInstantiation</span><span class="o">(</span><span class="s">"ADMIN"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdminOnlyPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="c1">//Page class code...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="catching-an-unauthorized-component-instantiation">Catching an unauthorized component instantiation</h1>
+
+<p>Interface <em>IUnauthorizedComponentInstantiationListener</em> (in package <em>org.apache.wicket.authorization</em>) is provided to give the chance to handle the case in which a user tries to instantiate a component without having the permissions to do it. The method defined inside this interface is <em>onUnauthorizedInstantiation(Component)</em> and it is executed whenever a user attempts to execute an unauthorized instantiation.</p>
+
+<p>This listener must be registered into application’s security settings with method <em>setUnauthorizedComponentInstantiationListener</em> defined by setting class <em>SecuritySettings</em>. In the following code snippet we register a listener that redirect user to a warning page if he tries to do a not-allowed instantiation:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WicketApplication</span> <span class="kd">extends</span> <span class="nc">AuthenticatedWebApplication</span><span class="o">{</span>
+     <span class="c1">//Application code...</span>
+     <span class="nd">@Override</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+        <span class="n">getSecuritySettings</span><span class="o">().</span><span class="na">setUnauthorizedComponentInstantiationListener</span><span class="o">(</span>
+            <span class="k">new</span> <span class="nf">IUnauthorizedComponentInstantiationListener</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUnauthorizedInstantiation</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">component</span><span class="o">.</span><span class="na">setResponsePage</span><span class="o">(</span><span class="nc">AuthWarningPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="o">});</span>
+     <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>In addition to interface <em>IRoleCheckingStrategy</em>, class <em>AuthenticatedWebApplication</em> implements also <em>IUnauthorizedComponentInstantiationListener</em> and registers itself as listener for unauthorized instantiations.</p>
+
+<p>By default <em>AuthenticatedWebApplication</em> redirects users to sign-in page if they are not signed-in and they try to instantiate a restricted component. Otherwise, if users are already signed in but they are not allowed to instantiate a given component, an <em>UnauthorizedInstantiationException</em> will be thrown.</p>
+
+<h1 id="strategy-roleauthorizationstrategy">Strategy RoleAuthorizationStrategy</h1>
+
+<p>Class <em>RoleAuthorizationStrategy</em> is a compound strategy that combines both <em>MetaDataRoleAuthorizationStrategy</em> and <em>AnnotationsRoleAuthorizationStrategy</em>.</p>
+
+<p>This is the strategy used internally by <em>AuthenticatedWebApplication</em>.</p>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

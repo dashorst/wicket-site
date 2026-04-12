@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request processing — from HTTP to rendered page — Apache Wicket</title>
+  <meta name="description" content="How an HTTP request travels through Wicket's request cycle, filters, and mappers to produce a response">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link active">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Request processing — from HTTP to rendered page</h1>
+      <p class="docs-header-description">How an HTTP request travels through Wicket's request cycle, filters, and mappers to produce a response</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Beside configuring and initializing our application, the <em>Application</em> class is responsible for creating the internal entities used by Wicket to process a request. These entities are instances of the following classes: <em>RequestCycle</em>, <em>Request</em>, <em>Response</em> and <em>Session</em>.</p>
+
+<p>The next paragraphs will illustrate each of these classes, explaining how they are involved into request processing.</p>
+
+<p>The <em>Request</em> and <em>Response</em> classes are located in package <em>org.apache.wicket.request</em> and they provide an abstraction of the concrete request and response used by our web application.</p>
+
+<p>Both classes are declared as abstract but if our application class inherits from <em>WebApplication</em> it will use their sub classes <em>ServletWebRequest</em> and <em>ServletWebResponse</em>, both of them located inside the package <em>org.apache.wicket.protocol.http.servlet.ServletWebRequest</em> and <em>ServletWebResponse</em> wrap respectively a <em>HttpServletRequest</em> and a <em>HttpServletResponse</em> object. If we need to access these low-level objects, we can call <em>Request</em>’s method <em>getContainerRequest()</em> and <em>Response</em>’s method <em>getContainerResponse()</em>.</p>
+
+<p>Class <em>org.apache.wicket.request.cycle.RequestCycle</em> is the entity in charge of serving a web request. Our application class creates a new <em>RequestCycle</em> on every request with its method <em>createRequestCycle(request, response)</em>.</p>
+
+<p>Method <em>createRequestCycle</em> is declared as final, so we can’t override it to return a custom subclass of <em>RequestCycle</em>. Instead, we must build a request cycle provider implementing interface <em>org.apache.wicket.IRequestCycleProvider</em>, and then we must tell our application class to use it via the <em>setRequestCycleProvider</em> method.</p>
+
+<p>The current running request cycle can be retrieved at any time by calling its static method <em>RequestCycle.get()</em>. Strictly speaking this method returns the request cycle associated with the current (or local) thread, which is the thread that is serving the current request. A similar <em>get()</em> method is also implemented in classes <em>org.apache.wicket.Application</em> (as we have seen in <a href="#_configuration_of_wicket_applications" class="cross-reference">paragraph 4.2.2</a>) and <em>org.apache.wicket.Session</em> in order to get the application and the session in use by the current thread.</p>
+
+<blockquote>
+  <p>[!NOTE]
+The implementation of the get method takes advantage of the standard class <em>java.lang.ThreadLocal</em>. See its JavaDoc for an introduction to local-thread variables.</p>
+</blockquote>
+
+<p>Class <em>org.apache.wicket.Component</em> provides the <em>getRequestCycle()</em> method which is a convenience method that internally invokes <em>RequestCycle.get()</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="nc">RequestCycle</span> <span class="nf">getRequestCycle</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="requestcycle-and-request-processing">RequestCycle and request processing</h1>
+
+<blockquote>
+  <p>[!NOTE]
+This paragraph will provide just the basic information about what happens behind the scenes of request processing. When you work with Wicket it’s unlikely to have a need for customizing this process, so we won’t cover this topic in detail.</p>
+</blockquote>
+
+<p>In order to process a request, <em>RequestCycle</em> delegates the task to another entity which implements interface <em>org.apache.wicket.request.IRequestHandler</em>. There are different implementations of this interface, each suited for a particular type of requested resource (a page to render, an AJAX request, an URL to an external page, etc.).</p>
+
+<p>To resolve the right handler for a given HTTP request, the <em>RequestCycle</em> uses a set of objects implementing the <em>org.apache.wicket.request.IRequestMapper</em> interface. The mapping interface defines the <em>getCompatibilityScore(Request request)</em> method which returns a score indicating how compatible the request mapper is for the current request. <em>RequestCycle</em> will choose the mapper with the highest score and it will call its <em>mapRequest(Request request)</em> method to get the proper handler for the given request. Once <em>RequestCycle</em> has resolved a request handler, it invokes its method <em>respond(IRequestCycle requestCycle)</em> to start request processing.</p>
+
+<p>The following sequence diagram recaps how a request handler is resolved by the <em>RequestCycle</em>:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/request-cycle-handler.png" />
+</figure>
+
+<p>Developers can create additional implementations of <em>IRequestMapper</em> and add them to their application via the <em>mount(IRequestMapper mapper)</em> method of the <em>WebApplication</em> class. In paragraph 10.6 we will see how Wicket uses this method to add built-in mappers for mounted pages.</p>
+
+<h1 id="generating-url-with-the-urlfor-and-mapurlfor-methods">Generating URL with the urlFor and mapUrlFor methods</h1>
+
+<p>The <em>RequestCycle</em> is also responsible for generating the URL value (as <em>CharSequence</em>) for the following entities:</p>
+
+<ul>
+  <li>
+    <p>a page class, via the <em>urlFor(Class&lt;C&gt; pageClass, PageParameters parameters)</em> method</p>
+  </li>
+  <li>
+    <p>an <em>IRequestHandler</em> via the <em>urlFor(IRequestHandler handler)</em> method</p>
+  </li>
+  <li>
+    <p>a <em>ResourceReference</em> via the <em>urlFor(ResourceReference reference, PageParameters params)</em> method (resource entities will be introduced in <a href="#_resource_management_with_wicket" class="cross-reference">chapter 19</a>).</p>
+  </li>
+</ul>
+
+<p>The overloaded <em>urlFor</em> method from above also has a corresponding version that returns an instance of <em>org.apache.wicket.request.Url</em> instead of a <em>CharSequence</em>. This version has the prefix ’map’ in its name (i.e. it has <em>mapUrlFor</em> as full name).</p>
+
+<h1 id="method-setresponsepage">Method setResponsePage</h1>
+
+<p>The <em>RequestCycle</em> class contains the implementation of the <em>setResponsePage</em> method we use to redirect a user to a specific page (see <a href="#_wicket_links" class="cross-reference">paragraph 4.4</a>). The namesake method of class <em>org.apache.wicket.Component</em> is just a convenience method that internally invokes the actual implementation on current request cycle:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">setResponsePage</span><span class="o">(</span><span class="kd">final</span> <span class="nc">Page</span> <span class="n">page</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">getRequestCycle</span><span class="o">().</span><span class="na">setResponsePage</span><span class="o">(</span><span class="n">page</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="requestcycles-hook-methods-and-listeners">RequestCycle’s hook methods and listeners</h1>
+
+<p>The <em>RequestCycle</em> comes with some hook methods which can be overridden to perform custom actions when request handling reaches a specific stage. These methods are:</p>
+
+<ul>
+  <li>
+    <p><strong>onBeginRequest():</strong> called when the RequestCycle is about to start handling the request.</p>
+  </li>
+  <li>
+    <p><strong>onEndRequest():</strong> called when the RequestCycle has finished to handle the request</p>
+  </li>
+  <li>
+    <p><strong>onDetach():</strong> called after the request handling has completed and the RequestCycle is about to be detached from its thread. The default implementation of this method invokes detach() on the current session (the Session class will be shortly discussed in paragraph 9.4).</p>
+  </li>
+</ul>
+
+<p>Methods onBeginRequest and onEndRequest can be used if we need to execute custom actions before and after business code is executed, such as opening a Hibernate/JPA session and closing it when code has terminated.</p>
+
+<p>A more flexible way to interact with the request processing is to use the listener interface <em>org.apache.wicket.request.cycle.IRequestCycleListener</em>. In addition to the three methods already seen for RequestCycle, this interface offers further hooks into request processing:</p>
+
+<ul>
+  <li>
+    <p><strong>onBeginRequest(RequestCycle cycle):</strong> (see the description above)</p>
+  </li>
+  <li>
+    <p><strong>onEndRequest(RequestCycle cycle):</strong> (see the description above)</p>
+  </li>
+  <li>
+    <p><strong>onDetach(RequestCycle cycle):</strong> (see the description above)</p>
+  </li>
+  <li>
+    <p><strong>onRequestHandlerResolved(RequestCycle cycle, IRequestHandler handler):</strong> called when an IRequestHandler has been resolved.</p>
+  </li>
+  <li>
+    <p><strong>onRequestHandlerScheduled(RequestCycle cycle, IRequestHandler handler):</strong> called when an IRequestHandler has been scheduled for execution.</p>
+  </li>
+  <li>
+    <p><strong>onRequestHandlerExecuted(RequestCycle cycle, IRequestHandler handler):</strong> called when an IRequestHandler has been executed.</p>
+  </li>
+  <li>
+    <p><strong>onException(RequestCycle cycle, Exception ex):</strong> called when an exception has been thrown during request processing.</p>
+  </li>
+  <li>
+    <p><strong>onExceptionRequestHandlerResolved(RequestCycle rc, IRequestHandler rh, Exception ex):</strong> called when an IRequestHandler has been resolved and will be used to handle an exception.</p>
+  </li>
+  <li>
+    <p><strong>onUrlMapped(RequestCycle cycle, IRequestHandler handler, Url url):</strong> called when an URL has been generated for an IRequestHandler object.</p>
+  </li>
+</ul>
+
+<p>To use the request cycle listeners we must add them to our application which in turn will pass them to the new <em>RequestCycle</em>’s instances created with <em>createRequestCycle</em> method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+
+    <span class="nc">IRequestCycleListener</span> <span class="n">myListener</span><span class="o">;</span>
+    <span class="c1">//listener initialization...</span>
+    <span class="n">getRequestCycleListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">myListener</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The <em>getRequestCycleListeners</em> method returns an instance of class <em>org.apache.wicket.request.cycle.RequestCycleListenerCollection</em>. This class is a sort of typed collection for <em>IRequestCycleListener</em> and it also implements the <a href="http://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a> .</p>
+
+<p>In Wicket we use class <em>org.apache.wicket.Session</em> to handle session-relative information such as client information, session attributes, session-level cache (seen in paragraph 8.2), etc…</p>
+
+<p>In addition, we know from paragraph 8.1 that Wicket creates a user session to store versions of stateful pages. Similarly to what happens with RequestCycle, the new Session’s instances are generated by the <em>Application</em> class with the <em>newSession(Request request, Response response)</em> method. This method is not declared as final, hence it can be overridden if we need to use a custom implementation of the Session class.</p>
+
+<p>By default if our custom application class is a subclass of <em>WebApplication</em>, method <em>newSession</em> will return an instance of class <em>org.apache.wicket.protocol.http.WebSession</em>. As we have mentioned talking about <em>RequestCycle</em>, also class Session provides a static <em>get()</em> method which returns the session associated to the current thread.</p>
+
+<h1 id="session-and-listeners">Session and listeners</h1>
+
+<p>Similar to the <em>RequestCycle</em>, class <em>org.apache.wicket.Session</em> also offers support for listener entities. With Session these entities must implement the callback interface <em>org.apache.wicket.ISessionListener</em> which exposes only the <em>onCreated(Session session)</em> method. As you might guess from its name, this method is called when a new session is created. Session listeners must be added to our application using a typed collection, just like we have done before with request cycle listeners:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+
+    <span class="c1">//listener initialization...</span>
+    <span class="nc">ISessionListener</span> <span class="n">myListener</span><span class="o">;</span>
+    <span class="c1">//add a custom session listener</span>
+    <span class="n">getSessionListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">myListener</span><span class="o">)</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="handling-session-attributes">Handling session attributes</h1>
+
+<p>The Session class handles session attributes in much the same way as the standard interface <em>jakarta.servlet.http.HttpSession</em>. The following methods are provided to create, read and remove session attributes:</p>
+
+<ul>
+  <li>
+    <p><strong>setAttribute(String name, Serializable value):</strong> creates an attribute identified by the given name. If the session already contains an attribute with the same name, the new value will replace the existing one. The value must be a serializable object.</p>
+  </li>
+  <li>
+    <p><strong>getAttribute(String name):</strong> returns the value of the attribute identified by the given name, or <em>null</em> if the name does not correspond to any attribute.</p>
+  </li>
+  <li>
+    <p><strong>removeAttribute(String name):</strong> removes the attribute identified by the given name.</p>
+  </li>
+</ul>
+
+<p>By default class WebSession will use the underlying HTTP session to store attributes. Wicket will automatically add a prefix to the name of the attributes. This prefix is returned by the WebApplication’s method getSessionAttributePrefix().</p>
+
+<h1 id="accessing-the-http-session">Accessing the HTTP session</h1>
+
+<p>If for any reason we need to directly access to the underlying <em>HttpSession</em> object, we can retrieve it from the current request with the following code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="o">((</span><span class="nc">ServletWebRequest</span><span class="o">)</span><span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">getRequest</span><span class="o">()).</span><span class="na">getContainerRequest</span><span class="o">().</span><span class="na">getSession</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>Using the raw session object might be necessary if we have to set a session attribute with a particular name without the prefix added by Wicket. Let’s say for example that we are working with Tomcat as web server. One of the administrative tools provided by Tomcat is a page listing all the active user sessions of a given web application:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/tomcat-admin-sessions.png" />
+</figure>
+
+<p>Tomcat allows us to set the values that will be displayed in columns “Guessed locale” and “Guessed User name”. One possible way to do this is to use session attributes named “Locale” and “userName” but we can’t create them via Wicket’s Session class because they would not have exactly the name required by Tomcat. Instead, we must use the raw <em>HttpSession</em> and set our attributes on it:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="o">((</span><span class="nc">ServletWebRequest</span><span class="o">)</span><span class="nc">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">().</span>
+        <span class="n">getRequest</span><span class="o">()).</span><span class="na">getContainerRequest</span><span class="o">().</span><span class="na">getSession</span><span class="o">();</span>
+
+<span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"Locale"</span><span class="o">,</span> <span class="s">"ENGLISH"</span><span class="o">);</span>
+<span class="n">session</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"userName"</span><span class="o">,</span> <span class="s">"Mr BadGuy"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h1 id="temporary-and-permanent-sessions">Temporary and permanent sessions</h1>
+
+<p>Wicket doesn’t need to store data into user session as long as the user visits only stateless pages. Nonetheless, even under these conditions, a temporary session object is created to process each request but it is discarded at the end of the current request. To know if the current session is temporary, we can use the isTemporary() method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isTemporary</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>If a session is not temporary (i.e. it is permanent), it’s identified by an unique id which can be read calling the getId() method. This value will be <em>null</em> if the session is temporary.</p>
+
+<p>Although Wicket is able to automatically recognize when it needs to replace a temporary session with a permanent one, sometimes we may need to manually control this process to make our initially temporary session permanent.</p>
+
+<p>To illustrate this possible scenario let’s consider project “BindSessionExample” where we have a stateless home page which sets a session attribute inside its constructor and then it redirects the user to another page which displays with a label the session attribute previously created. The code of the two pages is as follows:</p>
+
+<p>Home page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="kd">final</span> <span class="nc">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">"username"</span><span class="o">,</span> <span class="s">"tommy"</span><span class="o">);</span>
+    <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">bind</span><span class="o">();</span>
+
+    <span class="n">setResponsePage</span><span class="o">(</span><span class="nc">DisplaySessionParameter</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Target page:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DisplaySessionParameter</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">DisplaySessionParameter</span><span class="o">()</span> <span class="o">{</span>
+       <span class="kd">super</span><span class="o">();</span>
+       <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"username"</span><span class="o">,</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="nc">Session</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"username"</span><span class="o">)));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Again, we kept page logic very simple to not over-bloat the example with unnecessary code. In the snippet above we have also bolded Session’s bind() method which converts temporary session into a permanent one. If the home page has not invoked this method, the session with its attribute would have been discarded at the end of the request and the page <em>DisplaySessionParameter</em> would have displayed an empty value in its label.</p>
+
+<h1 id="discarding-session-data">Discarding session data</h1>
+
+<p>Once a user has finished using our web application, she must be able to log out and clean any session data. To be sure that a permanent session will be discarded at the end of the current request, class Session provides the invalidate() method. If we want to immediately invalidate a given session without waiting for the current request to complete, we can invoke the invalidateNow() method.</p>
+
+<blockquote>
+  <p>[!WARNING]
+Remember that invalidateNow() will immediately remove any instance of components (and pages) from the session, meaning that once we have called this method we won’t be able to work with them for the rest of the request process.</p>
+</blockquote>
+
+<h1 id="storing-arbitrary-objects-with-metadata">Storing arbitrary objects with metadata</h1>
+
+<p>JavaServer Pages Specification1 defines 4 scopes in which a page can create and access a variable. These scopes are:</p>
+
+<ul>
+  <li>
+    <p><strong>request:</strong> variables declared in this scope can be seen only by pages processing the same request. The lifespan of these variables is (at most) equal to the one of the related request. They are discarded when the full response has been generated or when the request is forwarded somewhere else.</p>
+  </li>
+  <li>
+    <p><strong>page:</strong> variables declared in this scope can be seen only by the page that has created them.</p>
+  </li>
+  <li>
+    <p><strong>session:</strong> variables in session scope can be created and accessed by every page used in the same session where they are defined.</p>
+  </li>
+  <li>
+    <p><strong>application:</strong> this is the widest scope. Variables declared in this scope can be used by any page of a given web application.</p>
+  </li>
+</ul>
+
+<p>Although Wicket doesn’t implement the JSP Specification (it is rather an alternative to it), it offers a feature called metadata which resembles scoped variables but is much more powerful. Metadata is quite similar to a Java Map in that it stores pairs of key-value objects where the key must be unique. In Wicket each of the following classes has its own metadata store: RequestCycle, Session, Application and Component.</p>
+
+<p>The key used for metadata is an instance of class <em>org.apache.wicket.MetaDataKey&lt;T&gt;</em>. To put an arbitrary object into metadata we must use the setMetaData method which takes two parameters as input: the key used to store the value and the value itself. If we are using metadata with classes Session or Component, data object must be serializable because Wicket serializes both session and component instances. This constraint is not applied to metadata of classes Application and RequestCycle which can contain a generic object. In any case, the type of data object must be compatible with the type parameter T specified by the key.</p>
+
+<p>To retrieve a previously inserted object we must use the <em>getMetaData(MetaDataKey&lt;T&gt; key)</em> method. In the following example we set a <em>java.sql.Connection</em> object in the application’s metadata so it can be used by any page of the application:</p>
+
+<p>Application class code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MetaDataApp</span> <span class="kd">extends</span> <span class="nc">WebApplication</span><span class="o">{</span>
+    <span class="c1">//Do some stuff...</span>
+    <span class="cm">/**
+    * Metadata key definition
+    */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">MetaDataKey</span><span class="o">&lt;</span><span class="nc">Connection</span><span class="o">&gt;</span> <span class="n">connectionKey</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MetaDataKey</span><span class="o">&lt;&gt;</span> <span class="o">(){};</span>
+
+    <span class="cm">/**
+     * Application's initialization
+     */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(){</span>
+
+        <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+        <span class="nc">Connection</span> <span class="n">connection</span><span class="o">;</span>
+        <span class="c1">//connection initialization...</span>
+        <span class="n">setMetaData</span><span class="o">(</span><span class="n">connectionKey</span><span class="o">,</span> <span class="n">connection</span><span class="o">);</span>
+        <span class="c1">//Do some other stuff..</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Code to get the object from the metadata:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="nc">Application</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getMetaData</span><span class="o">(</span><span class="nc">MetaDataApp</span><span class="o">.</span><span class="na">connectionKey</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Since MetaDataKey&lt;T&gt; class is declared as abstract, we must implement it with a subclass or with an anonymous class (like we did in the example above).</p>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

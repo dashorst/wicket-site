@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Markup inheritance — sharing layouts across pages — Apache Wicket</title>
+  <meta name="description" content="How to define a base page layout once and let child pages fill in their own content areas">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-nav-link active">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Markup inheritance — sharing layouts across pages</h1>
+      <p class="docs-header-description">How to define a base page layout once and let child pages fill in their own content areas</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Before going ahead with more advanced topics, we will see how to maintain a consistent layout across our site using Wicket and its component-oriented features. Probably this is not the most interesting use we can get out of Wicket, but it is surely the simplest one so it’s the best way to get our hands dirty with some code.</p>
+
+<p>There was a time in the 90s when Internet was just a buzzword and watching a plain HTML page being rendered by a browser was a new and amazing experience. In those days we used to organize our page layout using the <em>&lt;frame&gt;</em> HTML tag. Over the years this tag has almost disappeared from our code and it survives only in few specific domains. For example is still being used by JavaDoc.</p>
+
+<p>With the adoption of server side technologies like JSP, ASP or PHP the tag <em>&lt;frame&gt;</em> has been replaced by a template-based approach where we divide our page layout into some common areas that will be present in each page of our web application. Then, we manually insert these areas in every page including the appropriate markup fragments.</p>
+
+<p>In this chapter we will see how to use Wicket to build a site layout. The sample layout we will use is a typical page layout consisting of the following areas:</p>
+
+<ul>
+  <li>
+    <p><strong>a header</strong> which could contain site title, some logos, a navigation bar, etc…</p>
+  </li>
+  <li>
+    <p><strong>a left</strong> menu with a bunch of links to different areas/functionalities of the site.</p>
+  </li>
+  <li>
+    <p><strong>a footer</strong> with generic information like webmaster’s email, the company address, etc…</p>
+  </li>
+  <li>
+    <p><strong>a content</strong> area which usually contains the functional part of the page.</p>
+  </li>
+</ul>
+
+<p>The following picture summarises the layout structure:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/layout.png" />
+</figure>
+
+<p>Once we have chosen a page layout, our web designer can start building up the site theme. The result is a beautiful mock of our future web pages. Over this mock we can map the original layout areas:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/layout-mock.png" />
+</figure>
+
+<p>Now in order to have a consistent layout across all the site, we must ensure that each page will include the layout areas seen above. With an old template-based approach we must manually put them inside every page. If we were using JSP we would probably end up using <em>include</em> directive to add layout areas in our pages. We would have one <em>include</em> for each of the areas (except for the content):</p>
+
+<figure>
+<img src="/wicket-site/img/guide/layout-include.png" />
+</figure>
+
+<blockquote>
+  <p>[!NOTE]
+For the sake of simplicity we can consider each included area as a static HTML fragment.</p>
+</blockquote>
+
+<p>Now let’s see how we can handle the layout of our web application using Wicket.</p>
+
+<p>The need of ensuring a consistent layout across our pages unveiled a serious limit of the HTML: the inability to apply inheritance to web pages and their markup. Wouldn’t it be great if we could write our layout once in a page and then inherit it in the other pages of our application? One of the goals of Wicket is to overcome this kind of limit.</p>
+
+<h1 id="markup-inheritance">Markup inheritance</h1>
+
+<p>As we have seen in the previous chapter, Wicket pages are pure Java classes, so we can easily write a page which is a subclass of another parent page. But in Wicket inheritance is not limited to the classic object-oriented code inheritance. When a class subclasses a <em>WebPage</em> it also inherits the HTML file of the parent class. This type of inheritance is called markup inheritance. To better illustrate this concept let’s consider the following example where we have a page class called <em>GenericSitePage</em> with the corresponding HTML file GenericSitePage.html. Now let’s create a specific page called <em>OrderCheckOutPage</em> where users can check out their orders on our web site. This class extends <em>GenericSitePage</em> but we don’t provide it with any corresponding HTML file. In this scenario <em>OrderCheckOutPage</em> will use GenericSitePage.html as markup file:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/markup-inheritance.png" />
+</figure>
+
+<p>Markup inheritance comes in handy for page layout management as it helps us avoid the burden of checking that each page conforms to the site layout. However to fully take advantage of markup inheritance we must first learn how to use another important component of the framework that supports this feature: the panel.</p>
+
+<blockquote>
+  <p>[!WARNING]
+If no markup is found (nor directly assigned to the class, neither inherited from an ancestor) a <em>MarkupNotFoundException</em> is thrown.</p>
+</blockquote>
+
+<h1 id="panel-class">Panel class</h1>
+
+<p>Class <em>org.apache.wicket.markup.html.panel.Panel</em> is a special component which lets us reuse GUI code and HTML markup across different pages and different web applications. It shares a common ancestor class with WebPage class, which is <em>org.apache.wicket.MarkupContainer</em>:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/page-panel-hierarchy.png" />
+</figure>
+
+<p><em>Illustration: Hierarchy of WebPage and Panel classes</em></p>
+
+<p>Subclasses of <em>MarkupContainer</em> can contain children components that can be added with method <em>add(Component…)</em> (seen in <a href="#_benefits_of_component_oriented_frameworks_for_web_development" class="cross-reference">chapter 3.3</a>). <em>MarkupContainer</em> implements a full set of methods to manage children components. The basic operations we can do on them are:</p>
+
+<ul>
+  <li>
+    <p>add one or more children components (with method <em>add</em>).</p>
+  </li>
+  <li>
+    <p>remove a specific child component (with method <em>remove</em>).</p>
+  </li>
+  <li>
+    <p>retrieve a specific child component with method <em>get(String)</em>. The string parameter is the id of the component or its relative path if the component is nested inside other <em>MarkupContainers</em>. This path is a colon-separated string containing also the ids of the intermediate containers traversed to get to the child component. To illustrate an example of component path, let’s consider the code of the following page:</p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">MyPanel</span> <span class="n">myPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyPanel</span> <span class="o">(</span><span class="s">"innerContainer"</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="n">myPanel</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Component <em>MyPanel</em> is a custom panel containing only a label having <strong>“name”</strong> as id. Under those conditions we could retrieve this label from the container page using the following path expression:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Label</span> <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Label</span><span class="o">)</span><span class="n">get</span><span class="o">(</span><span class="s">"innerContainer:name"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>replace a specific child component with a new component having the same id (with method <em>replace</em>).</p>
+  </li>
+  <li>
+    <p>iterate through children components. This can be done in the old way (pre-Wicket 8) using method <em>iterator</em> or using visitor pattern with method <em>visitChildren</em>. The same task can be accomplished using Java Streams and Lambdas with methods <em>stream</em> (which returns a stream containing only the direct children) and <em>streamChildren</em> (which returns a stream containing all children).</p>
+  </li>
+</ul>
+
+<p>Both <em>Panel</em> and <em>WebPage</em> have their own associated markup file which is used to render the corresponding component. If such file is not provided, Wicket will apply markup inheritance looking for a markup file through their ancestor classes. When a panel is attached to a container, the content of its markup file is inserted into its related tag.</p>
+
+<p>While panels and pages have much in common, there are some notable differences between these two components that we should keep in mind. The main difference between them is that pages can be rendered as standalone entities while panels must be placed inside a page to be rendered. Another important difference is the content of their markup file: for both <em>WebPage</em> and <em>Panel</em> this is a standard HTML file, but <em>Panel</em> uses a special tag to indicate which part of the whole file will be considered as markup source. This tag is <em>&lt;wicket:panel&gt;</em>. A markup file for a panel will typically look like this:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;wicket:panel&gt;</span>
+      <span class="c">&lt;!-- Your markup goes here --&gt;</span>
+   <span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The HTML outside tag <em>&lt;wicket:panel&gt;</em> will be removed during rendering phase. The space outside this tag can be used by both web developers and web designers to place some mock HTML to show how the final panel should look like.</p>
+
+<p>Let’s go back to our layout example. In <a href="#layout.adoc#_header_footer_left_menu_content_etc" class="cross-reference">chapter 5.1</a> we have divided our layout in common areas that must be part of every page. Now we will build a reusable template page for our web application combining pages and panels. The code examples are from project MarkupInheritanceExample.</p>
+
+<h1 id="panels-and-layout-areas">Panels and layout areas</h1>
+
+<p>First, let’s build a custom panel for each layout area (except for ’content’ area). For example given the header area</p>
+
+<figure>
+<img src="/wicket-site/img/guide/header-area.png" />
+</figure>
+
+<p>we can build a panel called <em>HeaderPanel</em> with a related markup file called HeaderPanel.html containing the HTML for this area:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;wicket:panel&gt;</span>
+      <span class="nt">&lt;table</span> <span class="na">width=</span><span class="s">"100%"</span> <span class="na">style=</span><span class="s">"border: 0px none;"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;tr&gt;</span>
+              <span class="nt">&lt;td&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Jug4Tenda"</span> <span class="na">src=</span><span class="s">"wicketLayout_files/logo_jug4tenda.gif"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;/td&gt;</span>
+              <span class="nt">&lt;td&gt;</span>
+                <span class="nt">&lt;h1&gt;</span>Gestione Anagrafica<span class="nt">&lt;/h1&gt;</span>
+              <span class="nt">&lt;/td&gt;</span>
+             <span class="nt">&lt;/tr&gt;</span>
+          <span class="nt">&lt;/tbody&gt;</span>
+      <span class="nt">&lt;/table&gt;</span>
+   <span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The class for this panel simply extends base class <em>Panel</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">helloWorld.layoutTenda</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.panel.Panel</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HeaderPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">HeaderPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>For each layout area we will build a panel like the one above that holds the appropriate HTML markup. In the end we will have the following set of panels:</p>
+
+<ul>
+  <li>
+    <p>HeaderPanel</p>
+  </li>
+  <li>
+    <p>FooterPanel</p>
+  </li>
+  <li>
+    <p>MenuPanel</p>
+  </li>
+</ul>
+
+<p>Content area will change from page to page, so we don’t need a reusable panel for it.</p>
+
+<h1 id="template-page">Template page</h1>
+
+<p>Now we can build a generic template page using our brand new panels. Its markup is quite straightforward :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span>
+...
+<span class="c">&lt;!--Include CSS--&gt;</span>
+...
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span> <span class="na">wicket:id=</span><span class="s">"headerPanel"</span><span class="nt">&gt;</span>header<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"menu"</span> <span class="na">wicket:id=</span><span class="s">"menuPanel"</span><span class="nt">&gt;</span>menu<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"content"</span> <span class="na">wicket:id=</span><span class="s">"contentComponent"</span><span class="nt">&gt;</span>content<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span> <span class="na">wicket:id=</span><span class="s">"footerPanel"</span><span class="nt">&gt;</span>footer<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The HTML code for this page implements the generic left-menu layout of our site. You can note the 4 <em>&lt;div&gt;</em> tags used as containers for the corresponding areas. The page class contains the code to physically assemble the page and panels:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">helloWorld.layoutTenda</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.Component</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JugTemplate</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">CONTENT_ID</span> <span class="o">=</span> <span class="s">"contentComponent"</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">Component</span> <span class="n">headerPanel</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Component</span> <span class="n">menuPanel</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Component</span> <span class="n">footerPanel</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">JugTemplate</span><span class="o">(){</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">headerPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HeaderPanel</span><span class="o">(</span><span class="s">"headerPanel"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">menuPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MenuPanel</span><span class="o">(</span><span class="s">"menuPanel"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">footerPanel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FooterPanel</span><span class="o">(</span><span class="s">"footerPanel"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="no">CONTENT_ID</span><span class="o">,</span> <span class="s">"Put your content here"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="c1">//getters for layout areas</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Done! Our template page is ready to be used. Now all the pages of our site will be subclasses of this parent page and they will inherit the layout and the HTML markup. They will only substitute the <em>Label</em> inserted as content area with their custom content.</p>
+
+<h1 id="final-example">Final example</h1>
+
+<p>As final example we will build the login page for our site. We will call it <em>SimpleLoginPage</em>. First, we need a panel containing the login form. This will be the content area of our page. We will call it <em>LoginPanel</em> and the markup is the following:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"margin: auto; width: 40%;"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;form</span>  <span class="na">id=</span><span class="s">"loginForm"</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;fieldset</span> <span class="na">id=</span><span class="s">"login"</span> <span class="na">class=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;legend</span> <span class="nt">&gt;</span>Login<span class="nt">&lt;/legend&gt;</span>
+            <span class="nt">&lt;span</span> <span class="nt">&gt;</span>Username: <span class="nt">&lt;/span&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"username"</span><span class="nt">/&gt;&lt;br/&gt;</span>
+            <span class="nt">&lt;span</span> <span class="nt">&gt;</span>Password: <span class="nt">&lt;/span&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">id=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;p&gt;</span>
+               <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">value=</span><span class="s">"login"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+         <span class="nt">&lt;/fieldset&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+   <span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The class for this panel just extends <em>Panel</em> class so we won’t see the relative code. The form of this panel is for illustrative purpose only. We will see how to work with Wicket forms in chapters <a href="#_wicket_models_and_forms" class="cross-reference">11</a> and <a href="#_wicket_forms_in_detail" class="cross-reference">12</a>. Since this is a login page we don’t want it to display the left menu area. That’s not a big deal as <em>Component</em> class exposes a method called <em>setVisible</em> which sets whether the component and its children should be displayed.</p>
+
+<p>The resulting Java code for the login page is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">helloWorld.layoutTenda</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">helloWorld.LoginPanel</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleLoginPage</span> <span class="kd">extends</span> <span class="nc">JugTemplate</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SimpleLoginPage</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">();</span>
+        <span class="n">replace</span><span class="o">(</span><span class="k">new</span> <span class="nc">LoginPanel</span><span class="o">(</span><span class="no">CONTENT_ID</span><span class="o">));</span>
+        <span class="n">getMenuPanel</span><span class="o">().</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Obviously this page doesn’t come with a related markup file. You can see the final page in the following picture:</p>
+
+<figure>
+<img src="/wicket-site/img/guide/final-login-page.png" />
+</figure>
+
+<p>With Wicket we can apply markup inheritance using another approach based on the tag <em>&lt;wicket:child&gt;</em>. This tag is used inside the parent’s markup to define where the children pages/panels can “inject” their custom markup extending the markup inherited from the parent component. An example of a parent page using the tag <em>&lt;wicket:child&gt;</em> is the following:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    This is parent body!
+    <span class="nt">&lt;wicket:child/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The markup of a child page/panel must be placed inside the tag <em>&lt;wicket:extend&gt;</em>. Only the markup inside <em>&lt;wicket:extend&gt;</em> will be included in final markup. Here is an example of child page markup:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;wicket:extend&gt;</span>
+      This is child body!
+    <span class="nt">&lt;/wicket:extend&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Considering the two pages seen above, the final markup generated for child page will be the following:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    This is parent body!
+    <span class="nt">&lt;wicket:child&gt;</span>
+      <span class="nt">&lt;wicket:extend&gt;</span>
+        This is child body!
+      <span class="nt">&lt;/wicket:extend&gt;</span>
+    <span class="nt">&lt;/wicket:child&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h1 id="our-example-revisited">Our example revisited</h1>
+
+<p>Applying <em>&lt;wicket:child&gt;</em> tag to our layout example, we obtain the following markup for the main template page:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"header"</span> <span class="na">wicket:id=</span><span class="s">"headerPanel"</span><span class="nt">&gt;</span>header<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"body"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"menu"</span> <span class="na">wicket:id=</span><span class="s">"menuPanel"</span><span class="nt">&gt;</span>menu<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;wicket:child/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"footer"</span> <span class="na">wicket:id=</span><span class="s">"footerPanel"</span><span class="nt">&gt;</span>footer<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>We have replaced the <em>&lt;div&gt;</em> tag of the content area with the tag <em>&lt;wicket:child&gt;</em>. Going forward with our example we can build a login page creating class <em>SimpleLoginPage</em> which extends the <em>JugTemplate</em> page, but with a related markup file like this:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+   <span class="nt">&lt;wicket:extend&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"margin: auto; width: 40%;"</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;form</span>  <span class="na">id=</span><span class="s">"loginForm"</span> <span class="na">method=</span><span class="s">"get"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;fieldset</span> <span class="na">id=</span><span class="s">"login"</span> <span class="na">class=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;legend</span> <span class="nt">&gt;</span>Login<span class="nt">&lt;/legend&gt;</span>               
+            <span class="nt">&lt;span</span> <span class="nt">&gt;</span>Username: <span class="nt">&lt;/span&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"username"</span><span class="nt">/&gt;&lt;br/&gt;</span>                                                                  
+            <span class="nt">&lt;span</span> <span class="nt">&gt;</span>Password: <span class="nt">&lt;/span&gt;&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">id=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;p&gt;</span>
+               <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"login"</span> <span class="na">value=</span><span class="s">"login"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/p&gt;</span>
+         <span class="nt">&lt;/fieldset&gt;</span>
+      <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>   
+   <span class="nt">&lt;/wicket:extend&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>As we can see this approach doesn’t require to create custom panels to use as content area and it can be useful if we don’t have to handle a GUI with a high degree of complexity.</p>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

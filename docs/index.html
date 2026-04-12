@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation — Apache Wicket</title>
+  <meta name="description" content="Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/" class="site-nav-brand">
+      <img src="/wicket-site/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Dark header band -->
+<section class="header-band">
+  <div class="header-band-inner">
+    <h1>Documentation</h1>
+    <p class="subtitle">Guides, tutorials, and reference for Apache Wicket</p>
+  </div>
+</section>
+
+<main class="content-area">
+  <div class="content-inner">
+
+    <!-- Search and filter bar -->
+    <div class="docs-filter-bar">
+      <input
+        type="search"
+        id="docs-search"
+        class="docs-search-input"
+        placeholder="Filter by keyword..."
+        autocomplete="off"
+        oninput="filterDocs()"
+      />
+      <div class="docs-filter-tags">
+        <button class="docs-filter-tag active" data-filter="all" onclick="filterByCategory('all', this)">All</button>
+        <button class="docs-filter-tag" data-filter="tutorials" onclick="filterByCategory('tutorials', this)">Tutorials</button>
+        <button class="docs-filter-tag" data-filter="howto" onclick="filterByCategory('howto', this)">How-To Guides</button>
+        <button class="docs-filter-tag" data-filter="reference" onclick="filterByCategory('reference', this)">Reference</button>
+        <button class="docs-filter-tag" data-filter="explanation" onclick="filterByCategory('explanation', this)">Explanation</button>
+      </div>
+      <div class="docs-filter-subcategories" id="docs-subcategories">
+        <button class="docs-filter-subtag active" data-subfilter="all" onclick="filterBySubcategory('all', this)">All</button>
+        <button class="docs-filter-subtag" data-subfilter="forms" onclick="filterBySubcategory('forms', this)">Forms</button>
+        <button class="docs-filter-subtag" data-subfilter="ajax" onclick="filterBySubcategory('ajax', this)">AJAX</button>
+        <button class="docs-filter-subtag" data-subfilter="repeaters" onclick="filterBySubcategory('repeaters', this)">Repeaters</button>
+        <button class="docs-filter-subtag" data-subfilter="html-control" onclick="filterBySubcategory('html-control', this)">HTML Control</button>
+        <button class="docs-filter-subtag" data-subfilter="resources" onclick="filterBySubcategory('resources', this)">Resources</button>
+        <button class="docs-filter-subtag" data-subfilter="i18n" onclick="filterBySubcategory('i18n', this)">i18n</button>
+        <button class="docs-filter-subtag" data-subfilter="security" onclick="filterBySubcategory('security', this)">Security</button>
+        <button class="docs-filter-subtag" data-subfilter="urls" onclick="filterBySubcategory('urls', this)">URLs</button>
+        <button class="docs-filter-subtag" data-subfilter="testing" onclick="filterBySubcategory('testing', this)">Testing</button>
+        <button class="docs-filter-subtag" data-subfilter="integration" onclick="filterBySubcategory('integration', this)">Integration</button>
+      </div>
+    </div>
+
+    <!-- All docs in a single flat card grid -->
+    <div class="docs-card-grid" id="docs-card-grid">
+      
+
+      
+      
+      
+
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/tutorials/adding-ajax/" class="docs-card" data-category="tutorials" data-subcategory="" data-title="adding ajax to your pages" data-description="update parts of the page without full reloads using wicket's built-in ajax support" data-keywords="ajaxlink ajaxbutton ajaxrequesttarget setoutputmarkupid live update">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          
+          <h3 class="docs-card-title">Adding AJAX to your pages</h3>
+          <p class="docs-card-description">Update parts of the page without full reloads using Wicket's built-in AJAX support</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/tutorials/your-first-form/" class="docs-card" data-category="tutorials" data-subcategory="" data-title="building your first form" data-description="collect user input with wicket forms, models, validation, and feedback messages" data-keywords="form model compoundpropertymodel textfield passwordtextfield onsubmit feedbackpanel">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          
+          <h3 class="docs-card-title">Building your first form</h3>
+          <p class="docs-card-description">Collect user input with Wicket forms, models, validation, and feedback messages</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/tutorials/getting-started/" class="docs-card" data-category="tutorials" data-subcategory="" data-title="getting started with wicket" data-description="create your first wicket application in 10 minutes" data-keywords="maven gradle archetype quickstart setup project hello world">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          
+          <h3 class="docs-card-title">Getting started with Wicket</h3>
+          <p class="docs-card-description">Create your first Wicket application in 10 minutes</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/tutorials/layout-with-inheritance/" class="docs-card" data-category="tutorials" data-subcategory="" data-title="page layouts with markup inheritance" data-description="build reusable page layouts using wicket's markup inheritance" data-keywords="panel wicket:child wicket:extend basepage template header footer">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          
+          <h3 class="docs-card-title">Page layouts with markup inheritance</h3>
+          <p class="docs-card-description">Build reusable page layouts using Wicket's markup inheritance</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/tutorials/testing-your-pages/" class="docs-card" data-category="tutorials" data-subcategory="" data-title="testing wicket pages" data-description="write tests for your wicket pages and forms with wickettester" data-keywords="wickettester formtester junit test assert">
+          <span class="docs-card-badge docs-card-badge--tutorial">Tutorial</span>
+          
+          <h3 class="docs-card-title">Testing Wicket pages</h3>
+          <p class="docs-card-description">Write tests for your Wicket pages and forms with WicketTester</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/build-stateless-forms/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to build stateless forms" data-description="use statelessform to avoid session dependency and page expiration issues" data-keywords="statelessform login session page expired">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to build stateless forms</h3>
+          <p class="docs-card-description">Use StatelessForm to avoid session dependency and page expiration issues</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/convert-input-types/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to convert text input to numbers, dates, and custom types" data-description="learn how to control the conversion from raw string input to typed java objects like numbers, dates, and enums" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to convert text input to numbers, dates, and custom types</h3>
+          <p class="docs-card-description">Learn how to control the conversion from raw string input to typed Java objects like numbers, dates, and enums</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/upload-files/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to handle file uploads" data-description="upload single and multiple files using fileuploadfield with size limits" data-keywords="fileuploadfield multipart setmaxsize upload">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to handle file uploads</h3>
+          <p class="docs-card-description">Upload single and multiple files using FileUploadField with size limits</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/handle-multi-select/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to handle multiple selections" data-description="use listmultiplechoice and palette components for multi-select form inputs" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to handle multiple selections</h3>
+          <p class="docs-card-description">Use ListMultipleChoice and Palette components for multi-select form inputs</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/nest-forms/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to nest forms" data-description="use nested forms to split complex forms into reusable sub-forms" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to nest forms</h3>
+          <p class="docs-card-description">Use nested forms to split complex forms into reusable sub-forms</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to use checkboxes and radio buttons" data-description="work with checkbox, checkboxmultiplechoice, and radiochoice components" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to use checkboxes and radio buttons</h3>
+          <p class="docs-card-description">Work with CheckBox, CheckBoxMultipleChoice, and RadioChoice components</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to use multiple submit buttons" data-description="add multiple submit buttons to a form using button and submitlink components" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to use multiple submit buttons</h3>
+          <p class="docs-card-description">Add multiple submit buttons to a form using Button and SubmitLink components</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/validate-input/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to validate form input and show error messages" data-description="learn how to add validation rules to form fields and display feedback messages when input is invalid" data-keywords="ivalidator feedbackpanel emailaddressvalidator rangevalidator stringvalidator error message">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to validate form input and show error messages</h3>
+          <p class="docs-card-description">Learn how to add validation rules to form fields and display feedback messages when input is invalid</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/forms/use-bean-validation/" class="docs-card" data-category="howto" data-subcategory="forms" data-title="how to validate forms with annotations like @notnull" data-description="learn how to use jakarta bean validation (jsr 303) annotations on your domain objects and have wicket enforce them automatically" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">forms</span>
+          <h3 class="docs-card-title">How to validate forms with annotations like @NotNull</h3>
+          <p class="docs-card-description">Learn how to use Jakarta Bean Validation (JSR 303) annotations on your domain objects and have Wicket enforce them automatically</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/ajax/built-in-components/" class="docs-card" data-category="howto" data-subcategory="ajax" data-title="built-in ajax components" data-description="overview of ajax-enabled components shipped with wicket including links, buttons, editable labels, and tree repeaters" data-keywords="ajaxlink ajaxbutton ajaxcheckbox autocompletetextfield modaldialog editable label tree">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">ajax</span>
+          <h3 class="docs-card-title">Built-in AJAX components</h3>
+          <p class="docs-card-description">Overview of AJAX-enabled components shipped with Wicket including links, buttons, editable labels, and tree repeaters</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/ajax/built-in-behaviors/" class="docs-card" data-category="howto" data-subcategory="ajax" data-title="how to make any component respond to browser events via ajax" data-description="learn how to attach built-in ajax behaviors to existing components so they react to clicks, changes, and other events" data-keywords="ajaxeventbehavior ajaxformcomponentupdatingbehavior ajaxformsubmitbehavior timer polling">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">ajax</span>
+          <h3 class="docs-card-title">How to make any component respond to browser events via AJAX</h3>
+          <p class="docs-card-description">Learn how to attach built-in AJAX behaviors to existing components so they react to clicks, changes, and other events</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/ajax/update-components/" class="docs-card" data-category="howto" data-subcategory="ajax" data-title="how to refresh parts of the page without reloading" data-description="learn how to use ajaxrequesttarget to update individual components and run javascript without a full page reload" data-keywords="ajaxrequesttarget add setoutputmarkupid refresh repaint">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">ajax</span>
+          <h3 class="docs-card-title">How to refresh parts of the page without reloading</h3>
+          <p class="docs-card-description">Learn how to use AjaxRequestTarget to update individual components and run JavaScript without a full page reload</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-card" data-category="howto" data-subcategory="ajax" data-title="how to run javascript before, during, or after ajax calls" data-description="learn how to customize ajax request attributes and attach client-side listeners for loading indicators, confirmations, and error handling" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">ajax</span>
+          <h3 class="docs-card-title">How to run JavaScript before, during, or after AJAX calls</h3>
+          <p class="docs-card-description">Learn how to customize AJAX request attributes and attach client-side listeners for loading indicators, confirmations, and error handling</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/ajax/use-stateless-ajax/" class="docs-card" data-category="howto" data-subcategory="ajax" data-title="how to use ajax on stateless pages" data-description="make ajax components and behaviors work on stateless wicket pages by overriding getstatelesshint" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">ajax</span>
+          <h3 class="docs-card-title">How to use AJAX on stateless pages</h3>
+          <p class="docs-card-description">Make AJAX components and behaviors work on stateless Wicket pages by overriding getStatelessHint</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/repeaters/paginate-data/" class="docs-card" data-category="howto" data-subcategory="repeaters" data-title="how to add paging to large lists" data-description="learn how to display large datasets one page at a time using dataview and a paging navigator" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">repeaters</span>
+          <h3 class="docs-card-title">How to add paging to large lists</h3>
+          <p class="docs-card-description">Learn how to display large datasets one page at a time using DataView and a paging navigator</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/repeaters/display-list-of-items/" class="docs-card" data-category="howto" data-subcategory="repeaters" data-title="how to display a list with nested components" data-description="learn how to use listview to render a list of objects with rich markup containing links, labels, and other components" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">repeaters</span>
+          <h3 class="docs-card-title">How to display a list with nested components</h3>
+          <p class="docs-card-description">Learn how to use ListView to render a list of objects with rich markup containing links, labels, and other components</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/repeaters/control-item-reuse/" class="docs-card" data-category="howto" data-subcategory="repeaters" data-title="how to keep form state when repeating items" data-description="learn how to control which child components are recreated or reused when a repeater re-renders" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">repeaters</span>
+          <h3 class="docs-card-title">How to keep form state when repeating items</h3>
+          <p class="docs-card-description">Learn how to control which child components are recreated or reused when a repeater re-renders</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/repeaters/repeat-simple-markup/" class="docs-card" data-category="howto" data-subcategory="repeaters" data-title="how to render a dynamic number of items" data-description="learn how to repeat a simple html fragment once per item using repeatingview" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">repeaters</span>
+          <h3 class="docs-card-title">How to render a dynamic number of items</h3>
+          <p class="docs-card-description">Learn how to repeat a simple HTML fragment once per item using RepeatingView</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/html-control/modify-html-attributes/" class="docs-card" data-category="howto" data-subcategory="html-control" data-title="how to add or change html attributes from java" data-description="learn how to use attributemodifier to dynamically set css classes, styles, data attributes, and other html attributes from your java code" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">html-control</span>
+          <h3 class="docs-card-title">How to add or change HTML attributes from Java</h3>
+          <p class="docs-card-description">Learn how to use AttributeModifier to dynamically set CSS classes, styles, data attributes, and other HTML attributes from your Java code</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/html-control/auto-hide-decorations/" class="docs-card" data-category="howto" data-subcategory="html-control" data-title="how to automatically hide labels when their content is invisible" data-description="learn how to use wicket:enclosure to automatically hide surrounding markup when a component is not visible" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">html-control</span>
+          <h3 class="docs-card-title">How to automatically hide labels when their content is invisible</h3>
+          <p class="docs-card-description">Learn how to use wicket:enclosure to automatically hide surrounding markup when a component is not visible</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/html-control/show-hide-components/" class="docs-card" data-category="howto" data-subcategory="html-control" data-title="how to control component visibility" data-description="learn how to show, hide, and disable components programmatically and understand how visibility affects the component hierarchy" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">html-control</span>
+          <h3 class="docs-card-title">How to control component visibility</h3>
+          <p class="docs-card-description">Learn how to show, hide, and disable components programmatically and understand how visibility affects the component hierarchy</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/html-control/wrap-content-with-border/" class="docs-card" data-category="howto" data-subcategory="html-control" data-title="how to create reusable page wrappers" data-description="learn how to use border to wrap page content with reusable decorating markup like headers, footers, and sidebars" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">html-control</span>
+          <h3 class="docs-card-title">How to create reusable page wrappers</h3>
+          <p class="docs-card-description">Learn how to use Border to wrap page content with reusable decorating markup like headers, footers, and sidebars</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/html-control/swap-markup-fragments/" class="docs-card" data-category="howto" data-subcategory="html-control" data-title="how to switch between different html blocks at runtime" data-description="learn how to use fragments to conditionally display different sections of markup without creating separate panel classes" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">html-control</span>
+          <h3 class="docs-card-title">How to switch between different HTML blocks at runtime</h3>
+          <p class="docs-card-description">Learn how to use Fragments to conditionally display different sections of markup without creating separate panel classes</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/resources/add-css-and-javascript/" class="docs-card" data-category="howto" data-subcategory="resources" data-title="how to add css and javascript to your pages" data-description="learn how to include stylesheets and scripts in the page header from your components and behaviors" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">resources</span>
+          <h3 class="docs-card-title">How to add CSS and JavaScript to your pages</h3>
+          <p class="docs-card-description">Learn how to include stylesheets and scripts in the page header from your components and behaviors</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/resources/declare-dependencies/" class="docs-card" data-category="howto" data-subcategory="resources" data-title="how to control css and javascript load order" data-description="learn how to declare dependencies between stylesheets and scripts so they load in the right order" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">resources</span>
+          <h3 class="docs-card-title">How to control CSS and JavaScript load order</h3>
+          <p class="docs-card-description">Learn how to declare dependencies between stylesheets and scripts so they load in the right order</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/resources/create-custom-resource/" class="docs-card" data-category="howto" data-subcategory="resources" data-title="how to generate dynamic content like pdfs or json" data-description="learn how to create custom resources that generate files on the fly, such as rss feeds, csv exports, or pdf documents" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">resources</span>
+          <h3 class="docs-card-title">How to generate dynamic content like PDFs or JSON</h3>
+          <p class="docs-card-description">Learn how to create custom resources that generate files on the fly, such as RSS feeds, CSV exports, or PDF documents</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/resources/use-package-resources/" class="docs-card" data-category="howto" data-subcategory="resources" data-title="how to serve css, js, and images from your java packages" data-description="learn how to bundle static files alongside your components so they stay self-contained and reusable" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">resources</span>
+          <h3 class="docs-card-title">How to serve CSS, JS, and images from your Java packages</h3>
+          <p class="docs-card-description">Learn how to bundle static files alongside your components so they stay self-contained and reusable</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/resources/mount-resources/" class="docs-card" data-category="howto" data-subcategory="resources" data-title="how to serve files at custom urls" data-description="learn how to mount resources at clean, predictable urls instead of using auto-generated paths" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">resources</span>
+          <h3 class="docs-card-title">How to serve files at custom URLs</h3>
+          <p class="docs-card-description">Learn how to mount resources at clean, predictable URLs instead of using auto-generated paths</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/i18n/customize-bundle-lookup/" class="docs-card" data-category="howto" data-subcategory="i18n" data-title="how to control where wicket looks for translations" data-description="learn how the resource bundle lookup algorithm works and how to customize where translation files are found" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">i18n</span>
+          <h3 class="docs-card-title">How to control where Wicket looks for translations</h3>
+          <p class="docs-card-description">Learn how the resource bundle lookup algorithm works and how to customize where translation files are found</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/i18n/use-resource-models/" class="docs-card" data-category="howto" data-subcategory="i18n" data-title="how to display localized text in components" data-description="learn how to use resourcemodel and stringresourcemodel to show translated, parameterized text in your ui" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">i18n</span>
+          <h3 class="docs-card-title">How to display localized text in components</h3>
+          <p class="docs-card-description">Learn how to use ResourceModel and StringResourceModel to show translated, parameterized text in your UI</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/i18n/localize-components/" class="docs-card" data-category="howto" data-subcategory="i18n" data-title="how to make your application multilingual" data-description="learn how to set the user's locale and provide translated strings through properties files" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">i18n</span>
+          <h3 class="docs-card-title">How to make your application multilingual</h3>
+          <p class="docs-card-description">Learn how to set the user's locale and provide translated strings through properties files</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/configure-csp/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to configure content security policy" data-description="set up content security policy headers in wicket to prevent xss attacks" data-keywords="contentsecuritypolicy nonce inline script style xss">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to configure Content Security Policy</h3>
+          <p class="docs-card-description">Set up Content Security Policy headers in Wicket to prevent XSS attacks</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/enforce-https/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to enforce https" data-description="configure wicket to require https connections for secure pages" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to enforce HTTPS</h3>
+          <p class="docs-card-description">Configure Wicket to require HTTPS connections for secure pages</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/implement-login/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to implement login" data-description="implement authentication and login pages in apache wicket" data-keywords="authenticatedwebsession authenticatedwebapplication login signin password session">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to implement login</h3>
+          <p class="docs-card-description">Implement authentication and login pages in Apache Wicket</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/prevent-csrf/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to prevent csrf attacks" data-description="protect your wicket application against cross-site request forgery" data-keywords="resourceisolationrequestcyclelistener cross-site request forgery token">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to prevent CSRF attacks</h3>
+          <p class="docs-card-description">Protect your Wicket application against cross-site request forgery</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/restrict-access-by-role/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to restrict access by role" data-description="set up role-based authorization to restrict page access in wicket" data-keywords="authorizeinstantiation authorizeaction roles rbac permissions">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to restrict access by role</h3>
+          <p class="docs-card-description">Set up role-based authorization to restrict page access in Wicket</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/security/control-package-resources/" class="docs-card" data-category="howto" data-subcategory="security" data-title="how to restrict which file types wicket serves" data-description="learn how to configure package resource guards so that only safe file extensions are accessible from the browser" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">security</span>
+          <h3 class="docs-card-title">How to restrict which file types Wicket serves</h3>
+          <p class="docs-card-description">Learn how to configure package resource guards so that only safe file extensions are accessible from the browser</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/urls/create-bookmarkable-links/" class="docs-card" data-category="howto" data-subcategory="urls" data-title="how to create bookmarkable links" data-description="create bookmarkable page links that users can share and bookmark" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">urls</span>
+          <h3 class="docs-card-title">How to create bookmarkable links</h3>
+          <p class="docs-card-description">Create bookmarkable page links that users can share and bookmark</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/urls/mount-pages/" class="docs-card" data-category="howto" data-subcategory="urls" data-title="how to mount pages with clean urls" data-description="mount wicket pages at custom url paths for clean, seo-friendly urls" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">urls</span>
+          <h3 class="docs-card-title">How to mount pages with clean URLs</h3>
+          <p class="docs-card-description">Mount Wicket pages at custom URL paths for clean, SEO-friendly URLs</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/urls/use-page-parameters/" class="docs-card" data-category="howto" data-subcategory="urls" data-title="how to use page parameters" data-description="pass and retrieve page parameters in wicket pages" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">urls</span>
+          <h3 class="docs-card-title">How to use page parameters</h3>
+          <p class="docs-card-description">Pass and retrieve page parameters in Wicket pages</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/testing/test-forms/" class="docs-card" data-category="howto" data-subcategory="testing" data-title="how to test forms" data-description="test form submission and validation with wickettester" data-keywords="formtester setvalue submit asserterrormessages validation">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">testing</span>
+          <h3 class="docs-card-title">How to test forms</h3>
+          <p class="docs-card-description">Test form submission and validation with WicketTester</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/testing/test-markup/" class="docs-card" data-category="howto" data-subcategory="testing" data-title="how to test markup with tagtester" data-description="use tagtester to verify generated html markup in wicket tests" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">testing</span>
+          <h3 class="docs-card-title">How to test markup with TagTester</h3>
+          <p class="docs-card-description">Use TagTester to verify generated HTML markup in Wicket tests</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/testing/test-pages/" class="docs-card" data-category="howto" data-subcategory="testing" data-title="how to test pages with wickettester" data-description="use wickettester to unit test your wicket pages and components" data-keywords="wickettester startpage assertrenderedpage assertcomponent junit">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">testing</span>
+          <h3 class="docs-card-title">How to test pages with WicketTester</h3>
+          <p class="docs-card-description">Use WicketTester to unit test your Wicket pages and components</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/integrate-javascript/" class="docs-card" data-category="howto" data-subcategory="integration" data-title="how to call javascript from java and vice versa" data-description="learn how to wrap a javascript widget in a wicket component and communicate between client and server" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">integration</span>
+          <h3 class="docs-card-title">How to call JavaScript from Java and vice versa</h3>
+          <p class="docs-card-description">Learn how to wrap a JavaScript widget in a Wicket component and communicate between client and server</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/integration/integrate-with-spring/" class="docs-card" data-category="howto" data-subcategory="integration" data-title="how to integrate with spring" data-description="integrate apache wicket with the spring framework for dependency injection" data-keywords="springcomponentinjector springbean dependency injection autowire">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">integration</span>
+          <h3 class="docs-card-title">How to integrate with Spring</h3>
+          <p class="docs-card-description">Integrate Apache Wicket with the Spring Framework for dependency injection</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/howtos/integration/use-websockets/" class="docs-card" data-category="howto" data-subcategory="integration" data-title="how to use websockets" data-description="add real-time websocket communication to your wicket application" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <span class="docs-card-subcategory-label">integration</span>
+          <h3 class="docs-card-title">How to use WebSockets</h3>
+          <p class="docs-card-description">Add real-time WebSocket communication to your Wicket application</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/component-lifecycle/" class="docs-card" data-category="reference" data-subcategory="" data-title="component lifecycle — stages and hook methods" data-description="the stages a wicket component goes through from creation to removal, and which methods to override at each stage" data-keywords="oninitialize onconfigure onrender ondetach hook method stage">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Component lifecycle — stages and hook methods</h3>
+          <p class="docs-card-description">The stages a Wicket component goes through from creation to removal, and which methods to override at each stage</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/configuration/" class="docs-card" data-category="reference" data-subcategory="" data-title="configuration" data-description="configuring your wicket application settings and deployment options" data-keywords="web.xml wicketfilter webapplication development deployment mode">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Configuration</h3>
+          <p class="docs-card-description">Configuring your Wicket application settings and deployment options</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/glossary/" class="docs-card" data-category="reference" data-subcategory="" data-title="glossary — wicket terminology explained" data-description="plain-english explanations of wicket terms like models, behaviors, resources, and panels" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Glossary — Wicket terminology explained</h3>
+          <p class="docs-card-description">Plain-English explanations of Wicket terms like Models, Behaviors, Resources, and Panels</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/maven-setup/" class="docs-card" data-category="reference" data-subcategory="" data-title="maven setup" data-description="setting up a wicket project with apache maven" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Maven setup</h3>
+          <p class="docs-card-description">Setting up a Wicket project with Apache Maven</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/models/" class="docs-card" data-category="reference" data-subcategory="" data-title="models — connecting components to data" data-description="how wicket models work as the bridge between your components and their underlying data" data-keywords="imodel model propertymodel lambdamodel compoundpropertymodel loadabledetachablemodel data binding">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Models — connecting components to data</h3>
+          <p class="docs-card-description">How Wicket models work as the bridge between your components and their underlying data</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/request-processing/" class="docs-card" data-category="reference" data-subcategory="" data-title="request processing — from http to rendered page" data-description="how an http request travels through wicket's request cycle, filters, and mappers to produce a response" data-keywords="requestcycle application session webrequest webresponse filter">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Request processing — from HTTP to rendered page</h3>
+          <p class="docs-card-description">How an HTTP request travels through Wicket's request cycle, filters, and mappers to produce a response</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/reference/modules/" class="docs-card" data-category="reference" data-subcategory="" data-title="wicket modules and dependencies" data-description="overview of wicket's module structure and their dependencies" data-keywords="wicket-core wicket-extensions wicket-spring wicket-cdi wicket-tester dependency maven">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          
+          <h3 class="docs-card-title">Wicket modules and dependencies</h3>
+          <p class="docs-card-description">Overview of Wicket's module structure and their dependencies</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/explanation/best-practices/" class="docs-card" data-category="explanation" data-subcategory="" data-title="best practices" data-description="recommended patterns and practices for building wicket applications" data-keywords="encapsulation visibility model detach test pattern anti-pattern">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          
+          <h3 class="docs-card-title">Best practices</h3>
+          <p class="docs-card-description">Recommended patterns and practices for building Wicket applications</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/explanation/markup-inheritance/" class="docs-card" data-category="explanation" data-subcategory="" data-title="markup inheritance — sharing layouts across pages" data-description="how to define a base page layout once and let child pages fill in their own content areas" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          
+          <h3 class="docs-card-title">Markup inheritance — sharing layouts across pages</h3>
+          <p class="docs-card-description">How to define a base page layout once and let child pages fill in their own content areas</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/explanation/page-storage/" class="docs-card" data-category="explanation" data-subcategory="" data-title="page storage internals" data-description="how wicket stores and manages page instances internally" data-keywords="ipagestore serialization disk session cache page version">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          
+          <h3 class="docs-card-title">Page storage internals</h3>
+          <p class="docs-card-description">How Wicket stores and manages page instances internally</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/explanation/stateful-vs-stateless/" class="docs-card" data-category="explanation" data-subcategory="" data-title="stateful vs stateless pages — when sessions matter" data-description="why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability" data-keywords="session page store serialization back button page expired versioning">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          
+          <h3 class="docs-card-title">Stateful vs stateless pages — when sessions matter</h3>
+          <p class="docs-card-description">Why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability</p>
+        </a>
+      
+        
+        
+
+        
+
+        <a href="/wicket-site/docs/explanation/why-wicket/" class="docs-card" data-category="explanation" data-subcategory="" data-title="why wicket" data-description="understanding the benefits and philosophy behind apache wicket" data-keywords="">
+          <span class="docs-card-badge docs-card-badge--explanation">Explanation</span>
+          
+          <h3 class="docs-card-title">Why Wicket</h3>
+          <p class="docs-card-description">Understanding the benefits and philosophy behind Apache Wicket</p>
+        </a>
+      
+    </div>
+
+    <!-- External resources (always visible) -->
+    <div class="docs-section docs-external-resources" id="docs-external-resources">
+      <h2 class="docs-section-heading">External Resources</h2>
+      <div class="docs-card-grid">
+        <a href="https://nightlies.apache.org/wicket/apidocs/10.x/index.html" target="_blank" rel="noopener" class="docs-card" data-title="api javadoc" data-description="complete javadoc for all wicket classes">
+          <span class="docs-card-badge docs-card-badge--reference">Reference</span>
+          <h3 class="docs-card-title">API JavaDoc</h3>
+          <p class="docs-card-description">Complete JavaDoc for all Wicket classes and methods.</p>
+        </a>
+        <a href="/wicket-site/docs/examples" class="docs-card" data-title="examples" data-description="browse examples and live demos">
+          <span class="docs-card-badge docs-card-badge--tutorial">Examples</span>
+          <h3 class="docs-card-title">Examples &amp; Live Demos</h3>
+          <p class="docs-card-description">Browse example applications and try Wicket in your browser.</p>
+        </a>
+        <a href="/wicket-site/docs/books" class="docs-card" data-title="books" data-description="published books about wicket">
+          <span class="docs-card-badge docs-card-badge--explanation">Books</span>
+          <h3 class="docs-card-title">Books</h3>
+          <p class="docs-card-description">Published books about Apache Wicket.</p>
+        </a>
+        <a href="/wicket-site/docs/migration" class="docs-card" data-title="migration" data-description="upgrade between wicket versions">
+          <span class="docs-card-badge docs-card-badge--howto">How-To</span>
+          <h3 class="docs-card-title">Migration Guides</h3>
+          <p class="docs-card-description">Upgrade between Wicket versions.</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  let activeCategory = 'all';
+  let activeSubcategory = 'all';
+
+  function filterDocs() {
+    const query = document.getElementById('docs-search').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('#docs-card-grid > .docs-card');
+
+    cards.forEach(function(card) {
+      const title = card.dataset.title || '';
+      const desc = card.dataset.description || '';
+      const keywords = card.dataset.keywords || '';
+      const cat = card.dataset.category || '';
+      const sub = card.dataset.subcategory || '';
+
+      const matchesSearch = !query || title.includes(query) || desc.includes(query) || keywords.includes(query);
+      const matchesCategory = activeCategory === 'all' || cat === activeCategory;
+      const matchesSubcategory = activeSubcategory === 'all' || activeCategory !== 'howto' || sub === activeSubcategory;
+
+      card.style.display = (matchesSearch && matchesCategory && matchesSubcategory) ? '' : 'none';
+    });
+
+    // Filter external resources section too
+    const extSection = document.getElementById('docs-external-resources');
+    if (extSection) {
+      const extCards = extSection.querySelectorAll('.docs-card');
+      let anyExtVisible = false;
+      extCards.forEach(function(card) {
+        const title = card.dataset.title || '';
+        const desc = card.dataset.description || '';
+        const matchesSearch = !query || title.includes(query) || desc.includes(query);
+        const show = matchesSearch && (activeCategory === 'all');
+        card.style.display = show ? '' : 'none';
+        if (show) anyExtVisible = true;
+      });
+      extSection.style.display = anyExtVisible ? '' : 'none';
+    }
+  }
+
+  function filterByCategory(category, btn) {
+    activeCategory = category;
+    activeSubcategory = 'all';
+
+    // Update primary tag active state
+    document.querySelectorAll('.docs-filter-tag').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+
+    // Reset subcategory buttons
+    document.querySelectorAll('.docs-filter-subtag').forEach(function(t) { t.classList.remove('active'); });
+    var allSubBtn = document.querySelector('.docs-filter-subtag[data-subfilter="all"]');
+    if (allSubBtn) allSubBtn.classList.add('active');
+
+    // Show/hide subcategory row
+    var subRow = document.getElementById('docs-subcategories');
+    if (category === 'howto') {
+      subRow.classList.add('visible');
+    } else {
+      subRow.classList.remove('visible');
+    }
+
+    filterDocs();
+  }
+
+  function filterBySubcategory(subcategory, btn) {
+    activeSubcategory = subcategory;
+
+    // Update subcategory tag active state
+    document.querySelectorAll('.docs-filter-subtag').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+
+    filterDocs();
+  }
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/start/download">Download</a></li>
+          <li><a href="/wicket-site/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
