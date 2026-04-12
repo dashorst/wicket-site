@@ -2,7 +2,7 @@
 layout: base
 ---
 <main class="docs-layout">
-  <details class="docs-sidebar">
+  <details class="docs-sidebar" open>
     <summary class="docs-sidebar-toggle">Navigation</summary>
     <nav class="docs-nav">
       {% for section in site.data.docs-nav %}
@@ -54,6 +54,14 @@ layout: base
 </main>
 
 <script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 768) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
 (function() {
   var content = document.querySelector('.docs-content');
   var tocList = document.getElementById('docs-toc-list');
