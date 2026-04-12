@@ -393,11 +393,8 @@ pre code {
   padding-bottom: var(--space-20);
 }
 
-/* Photo hero variant */
+/* Photo hero variant — image set via inline style or default */
 .header-band--photo {
-  background-image:
-    linear-gradient(to bottom, rgba(15, 20, 25, 0.65), rgba(15, 20, 25, 0.75)),
-    url('/img/hero-borobudur.jpg');
   background-size: cover;
   background-position: center 40%;
 }

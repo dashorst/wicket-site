@@ -3,6 +3,18 @@ description: "Apache Wicket is a component-oriented, type-safe Java web applicat
 url: "https://wicket.apache.org"
 baseurl: ""
 
+# Hero configuration
+# Switch between hero themes:
+#   borobudur: Borobudur temple (Java, Indonesia) — "stand the test of time"
+#   java-developer: Java Developer job posting in cornfield — "the Java way"
+hero:
+  image: /img/hero-borobudur.jpg
+  tagline: "Java web applications"
+  tagline_emphasis: "that stand the test of time."
+  credit_name: "Mario La Pergola"
+  credit_url: "https://unsplash.com/@mlapergolaphoto"
+  photo_url: "https://unsplash.com/photos/WTGV6qBOzro"
+
 # Wicket-specific configuration
 wicket:
   version: "10.8.0"

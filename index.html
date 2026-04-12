@@ -3,15 +3,15 @@ layout: home
 ---
 
 <!-- Hero -->
-<section class="header-band header-band--hero header-band--photo">
+<section class="header-band header-band--hero header-band--photo" style="background-image: linear-gradient(to bottom, rgba(15,20,25,0.65), rgba(15,20,25,0.75)), url('{{ site.hero.image }}');">
   <div class="header-band__inner hero-reveal">
     <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0.05s">
       <img src="/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
       <p class="header-band__subtitle header-band__subtitle--hero">Apache Wicket&trade;</p>
     </div>
     <h1 class="header-band__title hero-reveal__item hero-sparkle" style="--reveal-delay: 0.12s">
-      Java web applications<br />
-      <em>that stand the test of time.</em>
+      {{ site.hero.tagline }}<br />
+      <em>{{ site.hero.tagline_emphasis }}</em>
     </h1>
     <p class="header-band__description hero-reveal__item" style="--reveal-delay: 0.22s">
       Component-oriented. Type-safe. Production-proven across thousands of
@@ -23,7 +23,7 @@ layout: home
     </div>
   </div>
   <div class="hero-photo-credit">
-    Photo by <a href="https://unsplash.com/@mlapergolaphoto">Mario La Pergola</a> on <a href="https://unsplash.com/photos/WTGV6qBOzro">Unsplash</a>
+    Photo by <a href="{{ site.hero.credit_url }}">{{ site.hero.credit_name }}</a> on <a href="{{ site.hero.photo_url }}">Unsplash</a>
   </div>
 </section>
 
