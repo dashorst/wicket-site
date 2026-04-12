@@ -2685,7 +2685,6 @@ a.card-large {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  animation: sparkle 1.8s ease-out both;
 }
 
 .hero-sparkle::before {
@@ -2697,7 +2696,7 @@ a.card-large {
   box-shadow:
     0 0 6px 2px var(--color-wicket-orange-light),
     0 0 20px 4px rgba(255, 122, 82, 0.3);
-  animation-delay: 0.6s;
+  animation: sparkle 3s ease-in-out 0.6s infinite;
 }
 
 .hero-sparkle::after {
@@ -2709,29 +2708,29 @@ a.card-large {
   box-shadow:
     0 0 4px 1px rgba(245, 240, 234, 0.8),
     0 0 12px 3px rgba(245, 240, 234, 0.3);
-  animation-delay: 0.9s;
+  animation: sparkle 3.5s ease-in-out 1.4s infinite;
 }
 
 @keyframes sparkle {
-  0% {
+  0%, 100% {
     opacity: 0;
     transform: scale(0);
   }
-  20% {
+  15% {
     opacity: 1;
     transform: scale(1);
   }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
+  30% {
+    opacity: 0.8;
+    transform: scale(1.3);
   }
-  100% {
+  50% {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0);
   }
 }
 
-/* Extra sparkle dots via a pseudo-element on the hero inner container */
+/* Persistent sparkle field across the hero */
 .hero-reveal::before {
   content: '';
   position: absolute;
@@ -2747,21 +2746,38 @@ a.card-large {
     radial-gradient(1.5px 1.5px at 80% 60%, rgba(255, 122, 82, 0.6) 50%, transparent 100%),
     radial-gradient(1px 1px at 35% 70%, rgba(245, 240, 234, 0.5) 50%, transparent 100%),
     radial-gradient(2px 2px at 75% 40%, rgba(255, 122, 82, 0.7) 50%, transparent 100%);
-  animation: sparkleField 2.5s ease-out both;
-  animation-delay: 0.4s;
+  animation: sparkleField 4s ease-in-out 0.4s infinite;
+}
+
+.hero-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image:
+    radial-gradient(1px 1px at 45% 15%, rgba(255, 122, 82, 0.8) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 55%, rgba(245, 240, 234, 0.6) 50%, transparent 100%),
+    radial-gradient(1px 1px at 90% 35%, rgba(255, 122, 82, 0.5) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 80%, rgba(245, 240, 234, 0.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 70% 15%, rgba(255, 122, 82, 0.6) 50%, transparent 100%);
+  animation: sparkleField 4s ease-in-out 2.4s infinite;
 }
 
 @keyframes sparkleField {
-  0% {
+  0%, 100% {
     opacity: 0;
   }
-  15% {
-    opacity: 1;
+  20% {
+    opacity: 0.9;
   }
-  60% {
-    opacity: 0.8;
+  50% {
+    opacity: 0.5;
   }
-  100% {
+  70% {
     opacity: 0;
   }
 }
@@ -2772,7 +2788,8 @@ a.card-large {
   .hero-reveal__item,
   .hero-sparkle::before,
   .hero-sparkle::after,
-  .hero-reveal::before {
+  .hero-reveal::before,
+  .hero-reveal::after {
     animation: none;
     clip-path: none;
     opacity: 1;
