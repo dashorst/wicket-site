@@ -4,46 +4,85 @@ title: "Documentation"
 ---
 
 <!-- Dark header band -->
-<section class="header-band header-band--page">
+<section class="header-band">
   <div class="header-band-inner">
     <h1>Documentation</h1>
-    <p class="page-subtitle">All the things you want to know about Wicket</p>
+    <p class="subtitle">Everything you need to learn, use, and understand Wicket</p>
   </div>
 </section>
 
 <main class="content-area">
   <div class="content-inner">
-    <!-- Primary resources: large cards -->
-    <div class="docs-grid-2 mb-12">
-      <!-- User Guide -->
-      <a href="{{ site.wicket.guide_base_url }}/10.x/single.html" target="_blank" rel="noopener" class="card-large">
-        <div class="card-large__icon card__icon--orange">&#x1F4D6;</div>
-        <h2 class="card__title">User Guide</h2>
-        <p class="card__text">200+ page guide covering models, behaviours, testing, and integration. Available for Wicket 10.x and 9.x.</p>
-        <div class="mt-4 flex gap-3 text-xs font-medium">
-          <span class="text-orange">10.x HTML</span>
-          <span class="text-warm-light">&middot;</span>
-          <span class="text-warm-mid">10.x PDF</span>
-          <span class="text-warm-light">&middot;</span>
-          <span class="text-warm-mid">9.x HTML</span>
+
+    <!-- Diataxis quadrants: large cards -->
+    <div class="docs-grid-2" style="margin-bottom: 1.5rem;">
+      <a href="/docs/tutorials/getting-started/" class="card-large">
+        <div class="card-large__icon card__icon--orange">&#x1F680;</div>
+        <h2 class="card__title">Tutorials</h2>
+        <p class="card__text">Step-by-step lessons to get you started. Build a working Wicket application from scratch.</p>
+        <div class="card__links">
+          <span>Getting Started</span>
+          <span>&middot;</span>
+          <span>Your First Form</span>
+          <span>&middot;</span>
+          <span>Adding AJAX</span>
         </div>
       </a>
 
-      <!-- API Reference -->
-      <a href="{{ site.wicket.javadoc_base_url }}/10.x/index.html" target="_blank" rel="noopener" class="card-large">
+      <a href="/docs/howtos/forms/validate-input/" class="card-large">
+        <div class="card-large__icon card__icon--green">&#x1F527;</div>
+        <h2 class="card__title">How-To Guides</h2>
+        <p class="card__text">Solve specific problems. 47 task-oriented guides covering forms, AJAX, security, testing, and more.</p>
+        <div class="card__links">
+          <span>Forms</span>
+          <span>&middot;</span>
+          <span>AJAX</span>
+          <span>&middot;</span>
+          <span>Security</span>
+          <span>&middot;</span>
+          <span>Testing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="docs-grid-2" style="margin-bottom: 3rem;">
+      <a href="/docs/reference/modules/" class="card-large">
         <div class="card-large__icon card__icon--blue">{ }</div>
-        <h2 class="card__title">API Reference</h2>
-        <p class="card__text">Complete JavaDoc for all Wicket classes and methods. Your IDE downloads these automatically with Maven.</p>
-        <div class="mt-4 flex gap-3 text-xs font-medium">
-          <span class="text-orange">10.x JavaDoc</span>
-          <span class="text-warm-light">&middot;</span>
-          <span class="text-warm-mid">9.x JavaDoc</span>
+        <h2 class="card__title">Reference</h2>
+        <p class="card__text">Technical descriptions of Wicket's modules, component lifecycle, request processing, and models.</p>
+        <div class="card__links">
+          <span>Modules</span>
+          <span>&middot;</span>
+          <span>Lifecycle</span>
+          <span>&middot;</span>
+          <span>Models</span>
+          <span>&middot;</span>
+          <span>Configuration</span>
+        </div>
+      </a>
+
+      <a href="/docs/explanation/why-wicket/" class="card-large">
+        <div class="card-large__icon card__icon--orange">&#x1F4A1;</div>
+        <h2 class="card__title">Explanation</h2>
+        <p class="card__text">Understand the design decisions behind Wicket. Why models matter, stateful vs stateless, best practices.</p>
+        <div class="card__links">
+          <span>Why Wicket</span>
+          <span>&middot;</span>
+          <span>Best Practices</span>
+          <span>&middot;</span>
+          <span>Internals</span>
         </div>
       </a>
     </div>
 
     <!-- Secondary resources: smaller cards -->
     <div class="docs-grid-4">
+      <a href="{{ site.wicket.javadoc_base_url }}/10.x/index.html" target="_blank" rel="noopener" class="card">
+        <div class="card__icon card__icon--blue">{ }</div>
+        <h3 class="card__small-title">API JavaDoc</h3>
+        <p class="card__small-text">Complete JavaDoc for all Wicket classes</p>
+      </a>
+
       <a href="/docs/examples" class="card">
         <div class="card__icon card__icon--green">&#x25B6;</div>
         <h3 class="card__small-title">Examples</h3>
@@ -60,12 +99,6 @@ title: "Documentation"
         <div class="card__icon card__icon--blue">&#x2197;</div>
         <h3 class="card__small-title">Migration</h3>
         <p class="card__small-text">Upgrade between versions</p>
-      </a>
-
-      <a href="{{ site.wicket.live_examples_url }}" target="_blank" rel="noopener" class="card">
-        <div class="card__icon card__icon--green">&#x1F310;</div>
-        <h3 class="card__small-title">Live Demos</h3>
-        <p class="card__small-text">Try Wicket in your browser</p>
       </a>
     </div>
   </div>
