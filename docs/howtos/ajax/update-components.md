@@ -1,0 +1,99 @@
+---
+layout: docs
+title: "How to update components with AJAX"
+description: "Use AjaxRequestTarget to refresh components and execute JavaScript via AJAX in Wicket"
+category: ajax
+---
+
+Wicket support for AJAX is implemented in file wicket-ajax-jquery.js which makes complete transparent to Java code any detail about AJAX communication.
+
+AJAX components and behaviors shipped with Wicket expose one or more callback methods which are executed when they receive an AJAX request. One of the arguments of these methods is an instance of interface *org.apache.wicket.ajax.AjaxRequestTarget*.
+
+For example component AjaxLink (in package *org.apache.wicket.ajax.markup.html*) defines abstract method *onClick(AjaxRequestTarget target)* which is executed when user clicks on the component:
+
+``` java
+new AjaxLink<Void>("ajaxLink"){
+    @Override
+    public void onClick(AjaxRequestTarget target) {
+        //some server side code...
+    }   
+};
+```
+
+Using AjaxRequestTarget we can specify the content that must be sent back to the client as response to the current AJAX request. The most commonly used method of this interface is probably *add(Component… components)*. With this method we tell Wicket to render again the specified components and refresh their markup via AJAX:
+
+``` java
+new AjaxLink<Void>("ajaxLink"){
+    @Override
+    public void onClick(AjaxRequestTarget target) {
+        //modify the model of a label and refresh it on browser
+        label.setDefaultModelObject("Another value 4 label.");
+        target.add(label);
+    }   
+};
+```
+
+Components can be refreshed via Ajax only if they have rendered a markup id for their related tag. As a consequence, we must remember to set a valid id value on every component we want to add to *AjaxRequestTarget*. This can be done using one of the two methods seen in the Wicket documentation:
+
+``` java
+final Label label = new Label("labelComponent", "Initial value.");
+//autogenerate a markup id
+label.setOutputMarkupId(true);
+add(label);
+//...
+new AjaxLink<Void>("ajaxLink"){
+    @Override
+    public void onClick(AjaxRequestTarget target) {
+        //modify the model of a label and refresh it on client side
+        label.setDefaultModelObject("Another value 4 label.");
+        target.add(label);
+    }   
+};
+```
+
+Another common use of AjaxRequestTarget is to prepend or append some JavaScript code to the generated response. For example the following AJAX link displays an alert box as response to user’s click:
+
+``` java
+new AjaxLink<Void>("ajaxLink"){
+    @Override
+    public void onClick(AjaxRequestTarget target) {
+        target.appendJavaScript(";alert('Hello!!');");
+    }   
+};
+```
+
+**Warning:** Repeaters component that have *org.apache.wicket.markup.repeater.AbstractRepeater* as base class (like *ListView*, *RepeatingView*, etc.) can not be directly updated via AJAX.
+{: .alert .alert-warning}
+
+If we want to refresh their markup via AJAX we must add one of their parent containers to the *AjaxRequestTarget*.
+
+The standard implementation of *AjaxRequestTarget* used by Wicket is class *org.apache.wicket.ajax.AjaxRequestHandler*. To create new instances of *AjaxRequestTarget* a Wicket application uses the provider object registered with method *setAjaxRequestTargetProvider*:
+
+``` java
+setAjaxRequestTargetProvider(
+        Function<Page, AjaxRequestTarget> ajaxRequestTargetProvider)
+```
+
+The provider is an implementation of interface *java.util.function.Function*, hence to use custom implementations of *AjaxRequestTarget* we must register a custom provider that returns the desired implementation:
+
+``` java
+private static class MyCustomAjaxRequestTargetProvider implements
+        Function<Page, AjaxRequestTarget>
+    {
+        @Override
+        public AjaxRequestTarget apply(Page page)
+        {
+            return new MyCustomAjaxRequestTarget();
+        }
+    }
+```
+
+**Note:** During request handling *AjaxRequestHandler* sends an event to its application to notify the entire component hierarchy of the current page:
+{: .alert .alert-info}
+
+``` java
+   //'page' is the associated Page instance
+   page.send(app, Broadcast.BREADTH, this);
+```
+
+The payload of the event is the *AjaxRequestHandler* itself.

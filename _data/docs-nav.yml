@@ -1,0 +1,157 @@
+- title: Tutorials
+  items:
+    - title: Getting Started
+      url: /docs/tutorials/getting-started/
+    - title: Your First Form
+      url: /docs/tutorials/your-first-form/
+    - title: Adding AJAX
+      url: /docs/tutorials/adding-ajax/
+    - title: Page Layouts
+      url: /docs/tutorials/layout-with-inheritance/
+    - title: Testing Your Pages
+      url: /docs/tutorials/testing-your-pages/
+
+- title: How-To Guides
+  items:
+    - title: Forms
+      items:
+        - title: Validate Input
+          url: /docs/howtos/forms/validate-input/
+        - title: Convert Input Types
+          url: /docs/howtos/forms/convert-input-types/
+        - title: Bean Validation
+          url: /docs/howtos/forms/use-bean-validation/
+        - title: Multiple Submit Buttons
+          url: /docs/howtos/forms/use-multiple-submit-buttons/
+        - title: Nested Forms
+          url: /docs/howtos/forms/nest-forms/
+        - title: File Upload
+          url: /docs/howtos/forms/upload-files/
+        - title: Stateless Forms
+          url: /docs/howtos/forms/build-stateless-forms/
+        - title: Checkboxes & Radios
+          url: /docs/howtos/forms/use-checkboxes-and-radios/
+        - title: Multi-Select
+          url: /docs/howtos/forms/handle-multi-select/
+    - title: AJAX
+      items:
+        - title: Update Components
+          url: /docs/howtos/ajax/update-components/
+        - title: Built-in Components
+          url: /docs/howtos/ajax/built-in-components/
+        - title: Add AJAX Behaviors
+          url: /docs/howtos/ajax/built-in-behaviors/
+        - title: Customize Lifecycle
+          url: /docs/howtos/ajax/customize-ajax-lifecycle/
+        - title: Stateless AJAX
+          url: /docs/howtos/ajax/use-stateless-ajax/
+    - title: Repeaters
+      items:
+        - title: Repeat Simple Markup
+          url: /docs/howtos/repeaters/repeat-simple-markup/
+        - title: Display a List
+          url: /docs/howtos/repeaters/display-list-of-items/
+        - title: Control Item Reuse
+          url: /docs/howtos/repeaters/control-item-reuse/
+        - title: Paginate Data
+          url: /docs/howtos/repeaters/paginate-data/
+    - title: HTML Control
+      items:
+        - title: Show/Hide Components
+          url: /docs/howtos/html-control/show-hide-components/
+        - title: Modify Attributes
+          url: /docs/howtos/html-control/modify-html-attributes/
+        - title: Swap Fragments
+          url: /docs/howtos/html-control/swap-markup-fragments/
+        - title: Auto-Hide Decorations
+          url: /docs/howtos/html-control/auto-hide-decorations/
+        - title: Borders
+          url: /docs/howtos/html-control/wrap-content-with-border/
+    - title: Resources
+      items:
+        - title: Add CSS & JavaScript
+          url: /docs/howtos/resources/add-css-and-javascript/
+        - title: Package Resources
+          url: /docs/howtos/resources/use-package-resources/
+        - title: Dependencies
+          url: /docs/howtos/resources/declare-dependencies/
+        - title: Custom Resources
+          url: /docs/howtos/resources/create-custom-resource/
+        - title: Mount Resources
+          url: /docs/howtos/resources/mount-resources/
+    - title: i18n
+      items:
+        - title: Localize Components
+          url: /docs/howtos/i18n/localize-components/
+        - title: Bundle Lookup
+          url: /docs/howtos/i18n/customize-bundle-lookup/
+        - title: Resource Models
+          url: /docs/howtos/i18n/use-resource-models/
+    - title: Security
+      items:
+        - title: Implement Login
+          url: /docs/howtos/security/implement-login/
+        - title: Restrict by Role
+          url: /docs/howtos/security/restrict-access-by-role/
+        - title: Enforce HTTPS
+          url: /docs/howtos/security/enforce-https/
+        - title: Prevent CSRF
+          url: /docs/howtos/security/prevent-csrf/
+        - title: Configure CSP
+          url: /docs/howtos/security/configure-csp/
+        - title: Package Resource Guard
+          url: /docs/howtos/security/control-package-resources/
+    - title: URLs
+      items:
+        - title: Page Parameters
+          url: /docs/howtos/urls/use-page-parameters/
+        - title: Bookmarkable Links
+          url: /docs/howtos/urls/create-bookmarkable-links/
+        - title: Mount Pages
+          url: /docs/howtos/urls/mount-pages/
+    - title: Testing
+      items:
+        - title: Test Pages
+          url: /docs/howtos/testing/test-pages/
+        - title: Test Forms
+          url: /docs/howtos/testing/test-forms/
+        - title: Test Markup
+          url: /docs/howtos/testing/test-markup/
+    - title: Integration
+      items:
+        - title: Spring
+          url: /docs/howtos/integration/integrate-with-spring/
+        - title: WebSockets
+          url: /docs/howtos/integration/use-websockets/
+    - title: Component Queueing
+      url: /docs/howtos/use-component-queueing/
+    - title: JavaScript Integration
+      url: /docs/howtos/integrate-javascript/
+
+- title: Reference
+  items:
+    - title: Modules
+      url: /docs/reference/modules/
+    - title: Component Lifecycle
+      url: /docs/reference/component-lifecycle/
+    - title: Request Processing
+      url: /docs/reference/request-processing/
+    - title: Models
+      url: /docs/reference/models/
+    - title: Configuration
+      url: /docs/reference/configuration/
+    - title: Maven Setup
+      url: /docs/reference/maven-setup/
+
+- title: Explanation
+  items:
+    - title: Why Wicket
+      url: /docs/explanation/why-wicket/
+    - title: Stateful vs Stateless
+      url: /docs/explanation/stateful-vs-stateless/
+    - title: Page Storage
+      url: /docs/explanation/page-storage/
+    - title: Markup Inheritance
+      url: /docs/explanation/markup-inheritance/
+    - title: Best Practices
+      url: /docs/explanation/best-practices/

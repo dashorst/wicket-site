@@ -1,0 +1,38 @@
+---
+layout: docs
+title: "How to repeat simple markup"
+description: "Use RepeatingView to repeat simple HTML markup fragments for each item in a collection"
+category: repeaters
+---
+
+Component *org.apache.wicket.markup.repeater.RepeatingView* is a container which renders its children components using the tag it is bound to. It can contain an arbitrary number of children elements and we can obtain a new valid id for a new child calling its method newChildId(). This component is particularly suited when we have to repeat a simple markup fragment, for example when we want to display some items as a HTML list:
+
+**HTML:**
+
+``` html
+<ul>
+    <li wicket:id="listItems"></li>
+</ul>
+```
+
+**Java Code:**
+
+``` java
+RepeatingView listItems = new RepeatingView("listItems");
+
+listItems.add(new Label(listItems.newChildId(), "green"));
+listItems.add(new Label(listItems.newChildId(), "blue"));
+listItems.add(new Label(listItems.newChildId(), "red"));
+```
+
+**Generated markup:**
+
+``` html
+<ul>
+    <li>green</li>
+    <li>blue</li>
+    <li>red</li>
+</ul>
+```
+
+As we can see in this example, each child component has been rendered using the parent markup as if it was its own.

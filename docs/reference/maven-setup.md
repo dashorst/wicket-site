@@ -1,0 +1,180 @@
+---
+layout: docs
+title: "Maven setup"
+description: "Setting up a Wicket project with Apache Maven"
+category: reference
+---
+
+As pointed out in the note in <a href="#helloWorld.adoc#_configuration_of_wicket_applications" class="cross-reference">paragraph 4.2</a>, Wicket can be started in two modes, DEVELOPMENT and DEPLOYMENT. When we are in DEVELOPMENT mode Wicket warns us at application startup with the following message:
+
+``` java
+********************************************************************
+*** WARNING: Wicket is running in DEVELOPMENT mode.              ***
+***                               ^^^^^^^^^^^                    ***
+*** Do NOT deploy to your live server(s) without changing this.  ***
+*** See Application#getConfigurationType() for more information. ***
+********************************************************************
+```
+
+As we can read Wicket itself discourages us from using DEVELOPMENT mode into production environment. The running mode of our application can be configured in four different ways. The first one is adding a filter parameter inside deployment descriptor web.xml:
+
+``` xml
+<filter>      
+    <filter-name>wicket.MyApp</filter-name>
+    <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+    <init-param>
+        <param-name>applicationClassName</param-name>
+        <param-value>org.wicketTutorial.WicketApplication</param-value>
+    </init-param>
+    <init-param>
+            <param-name>configuration</param-name>
+            <param-value>deployment</param-value>
+    </init-param>
+</filter>
+```
+
+The additional parameter is named *configuration*. The same parameter can be also expressed as context parameter:
+
+``` html
+<context-param>
+    <param-name>configuration</param-name>
+    <param-value>deployment</param-value>
+</context-param>
+```
+
+The third way to set the running mode is using system property *wicket.configuration*. This parameter can be specified in the command line that starts up the server:
+
+``` java
+java -Dwicket.configuration=deployment ...
+```
+
+The last option is to override getConfigurationType() method in your class that extends WebApplication):
+
+``` java
+public class WicketApplication extends WebApplication
+{
+    @Override
+    public void init()
+    {
+        super.init();
+        // add your configuration here
+    }
+
+    @Override
+    public RuntimeConfigurationType getConfigurationType()
+    {
+        return RuntimeConfigurationType.DEPLOYMENT;
+    }
+}
+```
+
+Remember that system properties overwrite other settings, so they are ideal to ensure that on production machine the running mode will be always set to DEPLOYMENT.
+
+> [!NOTE]
+> In order to follow the instructions of this paragraph you must have Maven installed on your system. The installation of Maven is out of the scope of this guide but you can easily find an extensive documentation about it on Internet. Another requirement is a good Internet connection (a flat ADSL is enough) because Maven needs to connect to its central repository to download the required dependencies.
+
+# From Maven to our IDE
+
+Wicket project and its dependencies are managed using Maven. This tool is very useful also when we want to create a new project based on Wicket from scratch. With a couple of shell commands we can generate a new project properly configured and ready to be imported into our favourite IDE. The main step to create such a project is to run the command which generates project’s structure and its artifacts. If we are not familiar with Maven or we simply don’t want to type this command by hand, we can use the utility form on Wicket site at [<http://wicket.apache.org/start/quickstart.html>](http://wicket.apache.org/start/quickstart.html) :
+
+<figure>
+<img src="/img/guide/quickstart-webpage.png" />
+</figure>
+
+Here we have to specify the root package of our project (GroupId), the project name (ArtifactId) and which version of Wicket we want to use (Version). Once we have run the resulting command in the OS shell, we will have a new folder with the same name of the project (i.e the ArtifactId). Inside this folder we can find a file called pom.xml. This is the main file used by Maven to manage our project. For example, using “org.wicketTutorial” as GroupId and “MyProject” as ArtifactId, we would obtain the following artifacts:
+
+``` java
+ .\MyProject
+        |   pom.xml
+        |
+        \---src
+            +---main
+            |   +---java
+            |   |   \---org
+            |   |       \---wicketTutorial
+            |   |               HomePage.html
+            |   |               HomePage.java
+            |   |               WicketApplication.java
+            |   |
+            |   +---resources
+            |   |
+            |   \---webapp
+            |       \---WEB-INF
+            |               web.xml
+            |
+            \---test
+                \---java
+                    \---org
+                        \---wicketTutorial
+                                TestHomePage.java
+```
+
+Amongst other things, file pom.xml contains a section delimited by tag \<dependencies\> which declares the dependencies of our project. By default the Maven archetype will add the following Wicket modules as dependencies:
+
+``` xml
+...
+<dependencies>
+    <!--  WICKET DEPENDENCIES -->
+    <dependency>
+        <groupId>org.apache.wicket</groupId>
+        <artifactId>wicket-core</artifactId>
+        <version>${wicket.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.wicket</groupId>
+        <artifactId>wicket-ioc</artifactId>
+        <version>${wicket.version}</version>
+    </dependency>
+    <!-- OPTIONAL DEPENDENCY
+    <dependency>
+        <groupId>org.apache.wicket</groupId>
+        <artifactId>wicket-extensions</artifactId>
+        <version>${wicket.version}</version>
+    </dependency>
+    -->
+    ...
+</dependencies>
+...
+```
+
+If we need to use more Wicket modules or additional libraries, we can add the appropriate XML fragments here.
+
+# Importing a Maven project into our IDE
+
+Maven projects can be easily imported into the most popular Java IDEs. However, the procedure needed to do this differs from IDE to IDE. In this paragraph we can find the instructions to import Maven projects into three of the most popular IDEs among Java developers: NetBeans, JetBrains IDEA and Eclipse.
+
+**NetBeans** Starting from version 6.7, NetBeans includes Maven support, hence we can start it and directly open the folder containing our project:
+
+<figure>
+<img src="/img/guide/netbeans-maven-import.png" />
+</figure>
+
+**IntelliJ IDEA** IntelliJ IDEA comes with a Maven importing functionality that can be started under “File/New Project/Import from external model/Maven”. Then, we just have to select the pom.xml file of our project:
+
+<figure>
+<img src="/img/guide/intellij-maven-import.png" />
+</figure>
+
+**Eclipse** Just like the other IDEs Eclipse supports Maven projects out of the box. Open the “File/Import…” dialog and search for Maven:
+
+<figure>
+<img src="/img/guide/eclipse-maven-import.png" />
+</figure>
+
+then, select the project folder containing the POM file:
+
+<figure>
+<img src="/img/guide/eclipse-maven-select.png" />
+</figure>
+
+Once the project has been imported into Eclipse, we are free to use our favourite plug-ins to run it or debug it (like for example [run-jetty-run](https://github.com/xzer/run-jetty-run/)).
+
+# Speeding up development with plugins
+
+Now that we have our project loaded into our IDE we could start coding our components directly by hand. However it would be a shame to not leverage the free and good Wicket plugins available for our IDE. The following is a brief overview of the most widely used plugins for each of the three main IDEs considered so far.
+
+**NetBeans** NetBeans offers Wicket support through ’NetBeans Plugin for Wicket’ hosted at [<http://plugins.netbeans.org/plugin/3586/wicket-1-4-support>](http://plugins.netbeans.org/plugin/3586/wicket-1-4-support) . This plugin is released under CDDL-1.0 license. You can find a nice introduction guide to this plugin at [<http://netbeans.org/kb/docs/web/quickstart-webapps-wicket.html>](http://netbeans.org/kb/docs/web/quickstart-webapps-wicket.html) .
+
+**IntelliJ IDEA** For JetBrain IDEA we can use WicketForge plugin, hosted at Google Code [<http://code.google.com/p/wicketforge/>](http://code.google.com/p/wicketforge/) . The plugin is released under ASF 2.0 license.
+
+**Eclipse** With Eclipse we can install one of the plugins that supports Wicket. As of the writing of this document, the most popular is probably qwickie, available in the Eclipse Marketplace and hosted on Google Code at [<https://github.com/count-negative/qwickie/>](https://github.com/count-negative/qwickie/). qwickie is released under ASF 2.0 license.

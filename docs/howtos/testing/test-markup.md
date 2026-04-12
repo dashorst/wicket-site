@@ -1,0 +1,67 @@
+---
+layout: docs
+title: "How to test markup with TagTester"
+description: "Use TagTester to verify generated HTML markup in Wicket tests"
+category: testing
+---
+
+If we need to test component markup at a more fine-grained level, we can use class *TagTester* from package *org.apache.wicket.util.tester*.
+
+This test class allows to check if the generated markup contains one or more tags having a given attribute with a given value. TagTester can not be directly instantiated but it comes with three factory methods that return one or more TagTester matching the searching criteria. In the following test case (from project *TagTesterExample*) we retrieve the first tag of the home page (a \<span\> tag) having attribute class equal to myClass:
+
+**HomePage markup:**
+
+``` html
+<html xmlns:wicket="http://wicket.apache.org">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <span class="myClass"></span>
+        <div class="myClass"></div>
+    </body>
+</html>
+```
+
+**Test method:**
+
+``` java
+@Test
+void homePageMarkupTest()
+{
+    //start and render the test page
+    tester.startPage(HomePage.class);
+    //retrieve response's markup
+    String responseTxt = tester.getLastResponse().getDocument();
+
+    TagTester tagTester = TagTester.createTagByAttribute(responseTxt, "class", "myClass"); 
+
+    Assertions.assertNotNull(tagTester);
+    Assertions.assertEquals("span", tagTester.getName());   
+
+    List<TagTester> tagTesterList = TagTester.createTagsByAttribute(responseTxt, 
+                        "class", "myClass", false);
+    
+    Assertions.assertEquals(2, tagTesterList.size());
+}
+```
+
+The name of the tag found by TagTester can be retrieved with its method getName. Method *createTagsByAttribute* returns all the tags that have the given value on the class attribute. In the code above we have used this method to test that our markup contains two tags having attribute class equal to myClass.
+
+Another utility class that comes in handy when we want to test components markup is *ComponentRenderer* in package *org.apache.wicket.core.util.string*. The purpose of this class is to render a page or a component in isolation with its static methods *renderComponent* and *renderPage*. Both methods return the generated markup as *CharSequence*:
+
+``` java
+@Test
+void customComponentMarkupTest()
+{
+    //instantiate MyComponent
+    MyComponent myComponent = //...
+
+    //render and save component markup
+    String componentMarkup = ComponentRenderer.renderComponent(myComponent);
+    
+    //perform test operations
+    //...
+}
+```

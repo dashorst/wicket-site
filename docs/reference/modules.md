@@ -1,0 +1,28 @@
+---
+layout: docs
+title: "Wicket modules and dependencies"
+description: "Overview of Wicket's module structure and their dependencies"
+category: reference
+---
+
+Wicket is available as a binary package on the main site [<http://wicket.apache.org>](http://wicket.apache.org) . Inside this archive we can find the distribution jars of the framework. Each jar corresponds to a sub-module of the framework. The following table reports these modules along with a short description of their purpose and with the related dependencies:
+
+| **Module’s name** | **Description** | **Dependencies** |
+|----|----|----|
+| wicket-core | Contains the main classes of the framework, like class *Component* and *Application*. | wicket-request, wicket-util |
+| wicket-tester | Contains common classes for unit testing (like *WicketTester*). | wicket-core |
+| wicket-core-tests | Contains test cases for wicket-core. | wicket-core, wicket-tester |
+| wicket-request | This module contains the classes involved into web request processing. | wicket-util |
+| wicket-util | Contains general-purpose utility classes for functional areas such as I/O, lang, string manipulation, security, etc… | None |
+| wicket-bean-validation | Provides support for Jakarta Bean Validation. | wicket-core, wicket-tester |
+| wicket-devutils | Contains utility classes and components to help developers with tasks such as debugging, class inspection and so on. | wicket-core, wicket-extensions, wicket-tester |
+| wicket-extensions | Contains a vast set of built-in components to build a rich UI for our web application (Ajax support is part of this module). | wicket-core, wicket-tester |
+| wicket-auth-roles | Provides support for role-based authorization. | wicket-core, wicket-tester |
+| wicket-ioc | This module provides common classes to support Inversion Of Control. It’s used by both Spring and Guice integration module. | wicket-core, wicket-tester |
+| wicket-guice | This module provides integration with the dependency injection framework developed by Google. | wicket-core, wicket-ioc, wicket-tester |
+| wicket-spring | This module provides integration with Spring framework. | wicket-core, wicket-ioc, wicket-tester |
+| wicket-velocity | This module provides panels and utility class to integrate Wicket with Velocity template engine. | wicket-core, wicket-tester |
+| wicket-jmx | This module provides panels and utility class to integrate Wicket with Java Management Extensions. | wicket-core, wicket-tester |
+| wicket-objectsizeof-agent | Provides integration with Java agent libraries and instrumentation tools. | wicket-core |
+
+Please note that the core module depends on the utility and request modules, hence it cannot be used without them.
