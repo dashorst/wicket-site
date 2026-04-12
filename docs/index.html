@@ -147,6 +147,22 @@ title: "Documentation"
 
       card.style.display = (matchesSearch && matchesCategory && matchesSubcategory) ? '' : 'none';
     });
+
+    // Filter external resources section too
+    const extSection = document.getElementById('docs-external-resources');
+    if (extSection) {
+      const extCards = extSection.querySelectorAll('.docs-card');
+      let anyExtVisible = false;
+      extCards.forEach(function(card) {
+        const title = card.dataset.title || '';
+        const desc = card.dataset.description || '';
+        const matchesSearch = !query || title.includes(query) || desc.includes(query);
+        const show = matchesSearch && (activeCategory === 'all');
+        card.style.display = show ? '' : 'none';
+        if (show) anyExtVisible = true;
+      });
+      extSection.style.display = anyExtVisible ? '' : 'none';
+    }
   }
 
   function filterByCategory(category, btn) {
