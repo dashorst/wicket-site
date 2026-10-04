@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0c0c0c">
 <meta name="color-scheme" content="dark">
 <link rel="preload" href="fonts/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="reveal.css?v=8">
+<link rel="stylesheet" href="reveal.css?v=11">
 <link rel="icon" href="brand/logo-apachewicket-mark.svg" type="image/svg+xml">
 <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
@@ -44,6 +44,10 @@
   <!-- The one action in the hero. The version comes from _config.yml (wicket.version). -->
   <div class="cmd">
     <div class="cmd-controls" hidden>
+      <div class="cmd-modes cmd-lines" role="radiogroup" aria-label="What to copy">
+        <button type="button" role="radio" aria-checked="true" data-mode="dependency">Add to project</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="project">New project</button>
+      </div>
       <div class="cmd-lines" role="radiogroup" aria-label="Release line">
         <button type="button" role="radio" aria-checked="true" data-line="current">11.0</button>
         <button type="button" role="radio" aria-checked="false" data-line="lts">10.11 <abbr title="Long-term support">LTS</abbr></button>
@@ -58,6 +62,10 @@
         </select>
       </label>
     </div>
+    <div class="cmd-project" hidden>
+      <label>Group ID <input id="cmd-group" type="text" value="com.mycompany" spellcheck="false" autocomplete="off"></label>
+      <label>Artifact ID <input id="cmd-artifact" type="text" value="myproject" spellcheck="false" autocomplete="off"></label>
+    </div>
     <div class="cmd-row">
       <p class="cmd-line"><code id="cmd-show">org.apache.wicket:wicket-core:11.0.0</code></p>
       <button type="button" class="cmd-copy" aria-describedby="cmd-show" hidden>
@@ -67,7 +75,9 @@
     </div>
     <span class="cmd-status" role="status"></span>
     <!-- The release lines and the snippet per build tool. On release day, change the versions here.
-         In the templates {version} is the full version, {major} {minor} {patch} its parts, {guide} the upgrade guide. -->
+         "dependency" adds Wicket to a project, "project" starts a new one. In the templates {version} is the full version,
+         {major} {minor} {patch} its parts, {guide} the upgrade guide, {groupId} {artifactId} what the visitor typed.
+         "show" may break lines for reading; "copy" is what lands on the clipboard. -->
     <script type="application/json" id="install-data">
     {
       "lines": {
@@ -81,7 +91,11 @@
         }
       },
       "guide": "https://wicket.apache.org/start/download.html#upgrade-paths",
-      "tools": {
+      "defaults": {
+        "groupId": "com.mycompany",
+        "artifactId": "myproject"
+      },
+      "dependency": {
         "maven": {
           "what": "Maven dependency",
           "show": "org.apache.wicket:wicket-core:{version}",
@@ -101,6 +115,28 @@
           "what": "prompt for your coding assistant",
           "show": "Upgrade my Wicket dependencies to {version} and follow the upgrade guide",
           "copy": "Upgrade my Apache Wicket dependencies to {version} and execute the steps from the upgrade guide: {guide}"
+        }
+      },
+      "project": {
+        "maven": {
+          "what": "Maven command for a new project",
+          "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false",
+          "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false"
+        },
+        "gradle": {
+          "what": "command for a new Gradle project",
+          "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false\n&& cd {artifactId}\n&& gradle init --type pom",
+          "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false && cd {artifactId} && gradle init --type pom"
+        },
+        "bld": {
+          "what": "prompt for a new bld project",
+          "show": "bld has no Wicket template yet: copy a prompt for your coding assistant",
+          "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}, built with bld (https://rife2.com/bld). Use the Wicket quickstart archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) as the reference for the project layout, and make sure it builds and runs."
+        },
+        "ai": {
+          "what": "prompt for a new project",
+          "show": "Create a new Wicket {version} project {groupId}:{artifactId} from the quickstart archetype",
+          "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}. Start from the Wicket quickstart Maven archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) and make sure it builds and runs."
         }
       }
     }
@@ -362,6 +398,6 @@
   </div>
 </footer>
 
-<script src="reveal.js?v=8"></script>
+<script src="reveal.js?v=11"></script>
 </body>
 </html>
