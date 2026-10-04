@@ -495,3 +495,6 @@ pre.code code { display: block; min-width: max-content; color: inherit; font-siz
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* The strip links here; keep the heading clear of the top edge when it lands. */
+#new { scroll-margin-top: 32px; }
