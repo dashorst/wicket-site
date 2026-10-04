@@ -11,7 +11,7 @@ monthly_archive:
 yearly_archive:
     layout: news_archive
 permalink:   news/:year/:month/:day/:title.html
-exclude:      [readme.md, PRODUCT.md, DESIGN.md, .impeccable]
+exclude:      [readme.md, PRODUCT.md, DESIGN.md, .impeccable, .previews]
 excerpt_separator: <!--more-->
 contentsLabel: On this page
 sass:

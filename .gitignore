@@ -9,3 +9,4 @@ Gemfile.lock
 .impeccable/hook.cache.json
 .impeccable/review/
 .claude/settings.local.json
+.previews/
