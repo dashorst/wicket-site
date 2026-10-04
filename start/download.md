@@ -12,6 +12,45 @@ convenience. Released lines link to their own download page.
 
 ---
 
+## Upgrade paths {#upgrade-paths}
+
+How to move an application from an earlier release line to a supported one.
+
+<table class="connections-table">
+    <thead>
+        <tr>
+            <th scope="col">You are on</th>
+            <th scope="col">Your route</th>
+            <th scope="col">Guide</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Wicket 8.x or 9.x</th>
+            <td>
+                <p class="connections-route">8.x &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17) &rarr; 14 LTS, July 2027</p>
+                <p>End of life since Wicket 11.0.0: no more releases, not even security fixes. For production, move to 10 LTS: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS. 9.x moves to 10 directly; 8.x takes the Wicket 9 step first. To follow new features instead, continue from 10 to 11, which needs Java 21.</p>
+            </td>
+            <td>
+                <a href="https://s.apache.org/wicket9migration">Migration to Wicket 9</a><br>
+                <a href="https://s.apache.org/wicket10migrate">Migration to Wicket 10</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 10.x</th>
+            <td>Stay on the LTS until Wicket 14, the next LTS, ships in July 2027. Moving to 11 for its new features means Java 21 and Jakarta Servlet 6.1.</td>
+            <td><a href="{{ site.baseurl }}/start/wicket-11.x.html#new">New in Wicket 11</a></td>
+        </tr>
+        <tr>
+            <th scope="row">Starting out</th>
+            <td>Start on the LTS when the application should change slowly, or on 11 to get new features every quarter.</td>
+            <td><a href="{{ site.baseurl }}/start/quickstart.html">Quick start</a></td>
+        </tr>
+    </tbody>
+</table>
+
+---
+
 ## Release Policy
 
 Since Wicket 11.0.0, released in October 2026, Wicket follows a time-based release

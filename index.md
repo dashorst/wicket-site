@@ -8,7 +8,8 @@ additionalContents:
 ---
 <div class="home-arrivals">
     <div class="home-arrivals-inner">
-        {% include departures.html heading="h1" compact=true upgrade="#connections-title" lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
+        {% assign upgrade_url = site.baseurl | append: '/start/download.html#upgrade-paths' %}
+        {% include departures.html heading="h1" hero=true upgrade=upgrade_url lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
 
         <aside class="ticket" aria-labelledby="ticket-title">
             <div class="ticket-main">
@@ -36,7 +37,7 @@ additionalContents:
                 {% endfor %}
                 <ul class="ticket-links">
                     <li><a href="{{ site.baseurl }}/start/download.html">Source and binary downloads</a></li>
-                    <li><a href="#connections-title">Upgrading from an earlier version</a></li>
+                    <li><a href="{{ site.baseurl }}/start/download.html#upgrade-paths">Upgrading from an earlier version</a></li>
                 </ul>
             </div>
         </aside>
@@ -50,27 +51,6 @@ additionalContents:
     </header>
 
     <ol class="route-stops">
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Plain Java and plain HTML</h3>
-                <p>Markup stays HTML that opens in any editor. Behaviour lives in Java. A <code>wicket:id</code> attribute binds a tag to a component, and that is the whole contract: no template language, no JavaScript toolchain.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">HelloWorld.html</p>
-{% highlight html %}
-<h1 wicket:id="message">Message goes here</h1>
-{% endhighlight %}
-                <p class="route-file">HelloWorld.java</p>
-{% highlight java %}
-public class HelloWorld extends WebPage {
-    public HelloWorld() {
-        add(new Label("message", "Hello World!"));
-    }
-}
-{% endhighlight %}
-            </div>
-        </li>
-
         <li class="route-stop">
             <div class="route-text">
                 <h3>Components for complex pages</h3>
@@ -164,6 +144,10 @@ tester.assertLabel("message", "Hello World!");
     </div>
 </section>
 
+<section class="builtwithwicket" id="builtwithwicket" aria-labelledby="bww-title">
+    {% include builtwithwicket.html %}
+</section>
+
 {% assign featured = site.data.releases.featured %}
 <section class="home-new" aria-labelledby="new-title">
     <header class="home-new-head">
@@ -176,43 +160,6 @@ tester.assertLabel("message", "Hello World!");
     {% include highlights.html home=true %}
 </section>
 
-<section class="connections" aria-labelledby="connections-title">
-    <h2 id="connections-title">Upgrade paths</h2>
-    <p class="connections-intro">Two lines run at any time. The LTS is the line for production: it receives security and bug fixes until the next LTS, a year later. The quarterly release brings new features and receives fixes until the next one replaces it. Features are developed on <code>main</code> and carry forward into every release that follows.</p>
-    <table class="connections-table">
-        <thead>
-            <tr>
-                <th scope="col">You are on</th>
-                <th scope="col">Your route</th>
-                <th scope="col">Guide</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Wicket 8.x or 9.x</th>
-                <td>
-                    <p class="connections-route">8.x &rarr; 9 (Java 11) &rarr; 10 LTS (Java 17) &rarr; 14 LTS, July 2027</p>
-                    <p>End of life since Wicket 11.0.0: no more releases, not even security fixes. For production, move to 10 LTS: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS. 9.x moves to 10 directly; 8.x takes the Wicket 9 step first. To follow new features instead, continue from 10 to 11, which needs Java 21.</p>
-                </td>
-                <td>
-                    <a href="https://s.apache.org/wicket9migration">Migration to Wicket 9</a><br>
-                    <a href="https://s.apache.org/wicket10migrate">Migration to Wicket 10</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">Wicket 10.x</th>
-                <td>Stay on the LTS until Wicket 14, the next LTS, ships in July 2027. Moving to 11 for its new features means Java 21 and Jakarta Servlet 6.1.</td>
-                <td><a href="{{ site.baseurl }}/start/wicket-11.x.html#new">New in Wicket 11</a></td>
-            </tr>
-            <tr>
-                <th scope="row">Starting out</th>
-                <td>Start on the LTS when the application should change slowly, or on 11 to get new features every quarter.</td>
-                <td><a href="{{ site.baseurl }}/start/quickstart.html">Quick start</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <p class="connections-more"><a href="{{ site.baseurl }}/start/download.html#release-policy">How the release schedule works</a></p>
-</section>
 
 <section class="announcements" aria-labelledby="announcements-title">
     <div class="announcements-head">
@@ -232,6 +179,3 @@ tester.assertLabel("message", "Hello World!");
     </ol>
 </section>
 
-<section class="builtwithwicket" id="builtwithwicket" aria-labelledby="bww-title">
-    {% include builtwithwicket.html %}
-</section>

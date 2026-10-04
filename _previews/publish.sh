@@ -45,9 +45,10 @@ while IFS='|' read -r slug source gemfile title date desc; do
     if [[ "$gemfile" == static ]]; then
         # A sketch: a static folder committed at ref:path.
         ref=${source%%:*} path=${source#*:}
-        tmp=$(mktemp -d)
+        tmp=$(mktemp -d -p "$WORK")   # inside the repository, so the container may read it (SELinux)
         git archive "$ref" "$path" | tar -x -C "$tmp"
         mv "$tmp/$path" "$OUT/$slug"
+        chmod -R a+rX "$OUT/$slug"   # mktemp makes 0700 folders
         rm -rf "$tmp" "$OUT/$slug"/*.png
     else
         # A Jekyll site: build the ref in its own worktree with its own baseurl.
