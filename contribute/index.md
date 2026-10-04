@@ -91,19 +91,24 @@ shows the corresponding branch for each Wicket version.
     </thead>
     <tbody>
         <tr>
-            <td>10.x</td>
+            <td>11.x and later</td>
             <td>master</td>
-            <td>current, supported</td>
+            <td>current quarterly release, supported</td>
         </tr>
         <tr>
-            <td>9.x</td>
-            <td>wicket-9.x</td>
-            <td>supported</td>
+            <td>10.x</td>
+            <td>wicket-10.x</td>
+            <td>LTS, supported</td>
         </tr>
         <tr>
-            <td>8.x</td>
-            <td>wicket-8.x</td>
-            <td>security fixes only</td>
+            <td><s>9.x</s></td>
+            <td><s>wicket-9.x</s></td>
+            <td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>8.x</s></td>
+            <td><s>wicket-8.x</s></td>
+            <td><s>discontinued</s></td>
         </tr>
         <tr>
             <td><s>7.x</s></td>
@@ -148,9 +153,9 @@ shows the corresponding branch for each Wicket version.
     </tbody>
 </table>    
 
-If you want to work on Wicket 10, you need to check out the _master_ branch.
+If you want to work on the next quarterly release, you need to check out the _master_ branch.
 
-If you want to work on Wicket 9, you need to check out the _wicket-9.x_ branch.
+If you want to work on Wicket 10 LTS, you need to check out the _wicket-10.x_ branch.
 
 When you are ready with your change you can ask us to review your
 changes and to integrate it into Wicket by creating a Pull Request.

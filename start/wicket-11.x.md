@@ -1,10 +1,9 @@
 ---
 layout: default
-title: Apache Wicket 7.x
+title: Apache Wicket 11.x
 active_link: download
-preamble: Here you can learn about the status of Wicket 7.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.
+preamble: Here you can learn about the status of Wicket 11.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.
 ---
-
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
 	<a class="button" href="#new"><i class="fa fa-star"></i><br>New</a>
@@ -17,31 +16,31 @@ preamble: Here you can learn about the status of Wicket 7.x, find links to downl
 
 ## Status
 
+The status for Wicket 11.x is: **supported**.
 
-The status for Wicket 7.x is: **discontinued**.
+This is the current quarterly release of Wicket: production ready, and
+the line that receives new features. Wicket 11.x receives fixes until
+Wicket 12.0.0 supersedes it in January 2027. A serious issue may warrant
+a patch release, for example 11.0.1.
 
-This branch is **no longer maintained and will no longer receive any updates**.
-
-<i class="fa fa-exclamation-circle"></i>
-**You should upgrade to Wicket 10.x at your earliest convenience.**
-
-### Semantic versioning
-
-These releases follow semantic versioning so upgrades between minor
-releases will not break compatibility.
+If you prefer a line that is supported for longer and changes less,
+use [Wicket 10.x]({{site.baseurl}}/start/wicket-10.x.html), the current
+long-term support (LTS) release. See the
+[release policy]({{site.baseurl}}/start/download.html#release-policy)
+for how the two lines relate.
 
 ### Change log
 
 To see what changed in these releases you can read the
-[change log](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/CHANGELOG-7.x).
+[change log](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/CHANGELOG-11.x).
 
-## New in Wicket 7 {#new}
+## New in Wicket 11 {#new}
 
-{% include highlights.html series="7" %}
+{% include highlights.html series="11" %}
 
 ## Download
 
-The most recent release in this branch is: **{{site.wicket.version_70}}**. 
+The most recent release in this branch is: **{{site.wicket.version_11}}**. 
 You can get the release using [Maven](#maven) or [download it manually](#manually).
 
 ### Using Apache Maven {#maven}
@@ -52,7 +51,7 @@ Use the following Maven dependency to use Wicket in your project:
 <dependency>
     <groupId>org.apache.wicket</groupId>
     <artifactId>wicket-core</artifactId>
-    <version>{{site.wicket.version_70}}</version>
+    <version>{{site.wicket.version_11}}</version>
 </dependency>
 {% endhighlight xml %}
 
@@ -70,24 +69,24 @@ If you are not a Maven user, you can download the Wicket release manually.
 Use the following links to download Wicket manually to build Wicket
 from source:
 
-- Download source [apache-wicket-{{site.wicket.version_70}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.tar.gz.sha256)
+- Download source [apache-wicket-{{site.wicket.version_11}}.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz.asc),
+[SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.tar.gz.sha512)
 )
-- Download source [apache-wicket-{{site.wicket.version_70}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/apache-wicket-{{site.wicket.version_70}}.zip.sha256)
+- Download source [apache-wicket-{{site.wicket.version_11}}.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip.asc),
+[SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/apache-wicket-{{site.wicket.version_11}}.zip.sha512)
 )
 
 Or use the following links to get the pre-packaged binaries instead:
 
-- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.tar.gz.sha256)
+- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.tar.gz](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz.asc),
+[SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.tar.gz.sha512)
 )
-- Download binaries [apache-wicket-{{site.wicket.version_70}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip)
-([PGP](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip.asc),
-[SHA-256](https://www.apache.org/dist/wicket/{{site.wicket.version_70}}/binaries/apache-wicket-{{site.wicket.version_70}}-bin.zip.sha256)
+- Download binaries [apache-wicket-{{site.wicket.version_11}}-bin.zip](http://www.apache.org/dyn/closer.cgi/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip)
+([PGP](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip.asc),
+[SHA-512](https://downloads.apache.org/wicket/{{site.wicket.version_11}}/binaries/apache-wicket-{{site.wicket.version_11}}-bin.zip.sha512)
 )
 
 Note that the binary packages and the source packages don't contain any
@@ -97,7 +96,8 @@ dependency management system.
 
 ### Verify distribution's signature
 
-PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://www.apache.org/dist/wicket/KEYS). 
+PGP signatures can be verified as described [on this page](http://www.apache.org/dev/release-signing.html#verifying-signature). The public key used to sign Wicket distributions can be found in the [KEYS file](https://downloads.apache.org/wicket/KEYS). 
+
 
 ### Older releases
 
@@ -116,7 +116,7 @@ more details on the necessary libraries.
 
 ### Java version
 
-This Wicket version requires at least the following Java version: **JDK 7.0 or newer**.
+This Wicket version requires at least the following Java version: **JDK 21 or newer**.
 
 Not only is a particular version of Java necessary, Wicket also needs
 access to specific APIs.
@@ -124,7 +124,7 @@ access to specific APIs.
 ### Servlet API
 
 This Wicket version requires at least the following Servlet API
-version: **Servlet API 3.0 or newer**. This is provided by your
+version: **Jakarta Servlet API 6.1 or newer**. This is provided by your
 container, please see the documentation of your container to see which
 version of the Servlet specification is supported.
 
@@ -147,7 +147,7 @@ for more information.
 You cannot mix different Wicket versions in your project. You should
 always use the artifacts from a particular release. For example it is
 **not** possible to use Wicket Extensions 1.5 in a Wicket 6 project, or
-Wicket CDI 6.19 in a Wicket 7 project. The same goes for 3rd party
+Wicket CDI 7.x in a Wicket 8 project. The same goes for 3rd party
 libraries: make sure you always use a compatible version of your 3rd
 party library.
 
@@ -161,3 +161,7 @@ Wicket you may find our migration guides invaluable:
  * Migrating from [Wicket 1.4 to Wicket 1.5](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+1.5)
  * Migrating from [Wicket 1.5 to Wicket 6.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0)
  * Migrating from [Wicket 6.x to Wicket 7.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+7.0)
+ * Migrating from [Wicket 7.x to Wicket 8.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+8.0)
+ * Migrating from [Wicket 8.x to Wicket 9.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+9.0)
+ * Migrating from [Wicket 9.x to Wicket 10.x](https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+10.0)
+{% comment %}TODO: add "Migrating from Wicket 10.x to Wicket 11.x" once the migration guide is on the wiki.{% endcomment %}

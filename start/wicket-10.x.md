@@ -6,6 +6,7 @@ preamble: Here you can learn about the status of Wicket 10.x, find links to down
 ---
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#new"><i class="fa fa-star"></i><br>New</a>
 	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 </div>
 <div class="button-bar">
@@ -15,10 +16,13 @@ preamble: Here you can learn about the status of Wicket 10.x, find links to down
 
 ## Status
 
-The status for Wicket 10.x is: **supported**.
+The status for Wicket 10.x is: **supported, long-term support (LTS)**.
 
-This is the current stable, production ready release of Wicket. All
-projects intended for production use should use this version.
+This is the current long-term support release of Wicket. It receives
+security fixes and applicable bug fixes until Wicket 14.0.0, the next LTS
+release, ships in July 2027. Choose this line when you value a stable
+API over new features; new features arrive in the quarterly releases,
+currently [Wicket 11.x]({{site.baseurl}}/start/wicket-11.x.html).
 
 ### Semantic versioning
 
@@ -30,10 +34,14 @@ releases will not break compatibility.
 To see what changed in these releases you can read the
 [change log](https://downloads.apache.org/wicket/{{site.wicket.version_10}}/CHANGELOG-10.x).
 
+## New in Wicket 10 {#new}
+
+{% include highlights.html series="10" %}
+
 ## Download
 
-The most recent test version in this branch is: **{{site.wicket.version_10}}**. 
-You can test the current state of development using [Maven](#maven) or [download it manually](#manually).
+The most recent release in this branch is: **{{site.wicket.version_10}}**. 
+You can get the release using [Maven](#maven) or [download it manually](#manually).
 
 ### Using Apache Maven {#maven}
 

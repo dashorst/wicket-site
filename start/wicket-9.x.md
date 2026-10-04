@@ -6,6 +6,7 @@ preamble: Here you can learn about the status of Wicket 9.x, find links to downl
 ---
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#new"><i class="fa fa-star"></i><br>New</a>
 	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 </div>
 <div class="button-bar">
@@ -15,10 +16,16 @@ preamble: Here you can learn about the status of Wicket 9.x, find links to downl
 
 ## Status
 
-The status for Wicket 9.x is: **supported**.
+The status for Wicket 9.x is: **end of life**.
 
-This is the previous stable, production ready release of Wicket. This branch will continue to recieve new features, improvements, bug- and security fixes.
-However, this release will cease to receive updates in the future. You really should consider upgrading to Wicket 10.x at your earliest convenience.
+This branch is **no longer maintained and will no longer receive any
+updates**, including security fixes. Support ended with the release of
+Wicket 11.0.0 in October 2026, and with it Wicket's support for the
+`javax.servlet` API.
+
+<i class="fa fa-exclamation-circle"></i>
+**You should upgrade to [Wicket 10.x LTS]({{site.baseurl}}/start/wicket-10.x.html)
+or [Wicket 11.x]({{site.baseurl}}/start/wicket-11.x.html) at your earliest convenience.**
 
 ### Semantic versioning
 
@@ -30,10 +37,14 @@ releases will not break compatibility.
 To see what changed in these releases you can read the
 [change log](https://downloads.apache.org/wicket/{{site.wicket.version_90}}/CHANGELOG-9.x).
 
+## New in Wicket 9 {#new}
+
+{% include highlights.html series="9" %}
+
 ## Download
 
-The most recent test version in this branch is: **{{site.wicket.version_90}}**. 
-You can test the current state of development using [Maven](#maven) or [download it manually](#manually).
+The most recent release in this branch is: **{{site.wicket.version_90}}**. 
+You can get the release using [Maven](#maven) or [download it manually](#manually).
 
 ### Using Apache Maven {#maven}
 

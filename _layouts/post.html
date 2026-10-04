@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="l-full">
-    <p class="meta">{{ page.date | date_to_string }}</p>
+<div class="l-full post">
+    {% if page.date %}<p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>{% endif %}
     {{ content }}
 </div>

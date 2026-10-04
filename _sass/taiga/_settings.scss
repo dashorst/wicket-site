@@ -6,8 +6,11 @@
 
 
 // Set your own font
-$font-family-body: "Source Sans Pro", sans-serif;
-$font-family-heading: "Source Sans Pro";
+$font-family-body: "Source Sans Pro", system-ui, sans-serif;
+$font-family-heading: "Overpass", "Source Sans Pro", system-ui, sans-serif;
+$font-family-signage: "Overpass", "Source Sans Pro", system-ui, sans-serif;
+$font-family-board: "Overpass Mono", "Source Code Pro", ui-monospace, monospace;
+$font-family-code: "Source Code Pro", ui-monospace, monospace;
 
 // The base font-size, all other elements will adjust to this value
 $font-size-base: 15px;
@@ -27,7 +30,7 @@ $grid-columns: 48;
 
 
 // Adjust the website's maximum width.
-$max-width: 85rem;
+$max-width: 82rem;
 
 
 // Use the spacing variable on margins and paddings
@@ -57,11 +60,28 @@ $z-index-30: 30;
 // Colors
 // Add your own color variables
 
-// Color brand
-$color-brand-40: color.adjust(#E97826, $lightness: -25%);
-$color-brand-50: #E97826; // Default
-$color-brand-60: color.adjust(#E97826, $lightness: 10%);
-$color-brand-70: #FF9925; //old default
+// Station palette: hall ground, night-blue board, Wicket orange as the
+// "now" signal, signage yellow for platform plates, red for end of life.
+$hall: #F4F6F9;          // page ground
+$paper: #FFFFFF;         // ticket, code, raised surfaces
+$ink: #13203F;           // body text on hall and paper
+$ink-soft: #46536E;      // secondary text on hall and paper
+$rule: #CDD4DF;          // timetable rules on hall
+$board: #0D1B3D;         // departure board, signage bands
+$board-row: #13244D;     // alternating board rows
+$board-rule: #26386A;    // rules on the board
+$board-text: #FFFFFF;
+$board-dim: #A9B5D3;     // secondary text on the board
+$signal: #E9752A;        // Wicket orange: now, boarding, primary action
+$signal-deep: #B4511A;   // orange text on light ground (AA)
+$plate: #FFC72C;         // signage yellow: LTS and last call plates
+$stop: #C8102E;          // end of life
+
+// Color brand (legacy names, mapped onto the station palette)
+$color-brand-40: $signal-deep;
+$color-brand-50: $signal-deep; // links on light ground
+$color-brand-60: $board;
+$color-brand-70: $signal;
 
 
 // Color success
@@ -73,11 +93,11 @@ $color-alert-50: #f3490d; // Default
 $color-alert-60: #d33e09;
 
 // Color neutral
-$color-neutral-10: #eef2f0;
-$color-neutral-30: #ccd6d2;
-$color-neutral-50: #8d9994;
-$color-neutral-70: #3f4542;
-$color-neutral-90: #232725;
+$color-neutral-10: $hall;
+$color-neutral-30: $rule;
+$color-neutral-50: #7A869E;
+$color-neutral-70: $ink;
+$color-neutral-90: $board;
 
 // Color basics
 $black: #000;

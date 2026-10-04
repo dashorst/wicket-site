@@ -1,0 +1,181 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// =========== Station signage: header band, navigation, footer
+
+.station-header {
+    background: settings.$board;
+    border-bottom: 4px solid settings.$signal;
+    color: settings.$board-text;
+    position: relative;
+    z-index: settings.$z-index-20;
+}
+
+.station-header-inner {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem 2rem;
+    margin: 0 auto;
+    max-width: settings.$max-width;
+    min-height: 4.25rem;
+    padding: 0 1rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding: 0 3rem;
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-30, 'max-width') {
+        flex-wrap: wrap;
+        padding-top: 0.75rem;
+    }
+}
+
+.station-logo {
+    display: block;
+    flex: none;
+    line-height: 0;
+    text-decoration: none;
+
+    img {
+        height: 2.1rem;
+        width: auto;
+    }
+}
+
+.station-nav {
+    display: flex;
+    flex: 1;
+    font-family: settings.$font-family-signage;
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 0.25rem;
+
+    a {
+        border-bottom: 3px solid transparent;
+        color: settings.$board-text;
+        padding: 1.45rem 0.6rem 1.1rem;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+            border-bottom-color: settings.$board-dim;
+            color: settings.$board-text;
+        }
+
+        &.active {
+            border-bottom-color: settings.$signal;
+            color: settings.$board-text;
+        }
+
+        &:focus-visible {
+            outline-offset: -3px;
+        }
+    }
+
+    // On small screens the navigation wraps onto its own rows under the logo.
+    @include mixins.breakpoint(settings.$breakpoint-30, 'max-width') {
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        gap: 0 0.25rem;
+        margin: 0.25rem -0.6rem 0;
+        order: 3;
+
+        a { padding: 0.55rem 0.6rem 0.5rem; }
+    }
+}
+
+.station-github {
+    align-items: center;
+    color: settings.$board-text;
+    display: flex;
+    font-family: settings.$font-family-signage;
+    font-size: 0.9rem;
+    font-weight: 600;
+    gap: 0.45rem;
+    margin-left: auto;
+    text-decoration: none;
+
+    &:hover { color: settings.$plate; }
+}
+
+// =========== Footer
+
+body > footer {
+    background: settings.$board;
+    color: settings.$board-dim;
+    margin-top: 5rem;
+}
+
+.station-footer-inner {
+    display: grid;
+    gap: 2.5rem 3rem;
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    max-width: settings.$max-width;
+    padding: 3rem 1rem 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: minmax(16rem, 1fr) 2fr;
+        padding: 3.5rem 3rem 0;
+    }
+}
+
+.station-footer-brand {
+    img { height: 2rem; width: auto; }
+    p { margin-top: 1rem; max-width: 30ch; }
+}
+
+.station-footer-links {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    ul {
+        list-style: none;
+        margin: 0;
+    }
+
+    li + li { margin-top: 0.35rem; }
+
+    a {
+        color: settings.$board-text;
+        font-family: settings.$font-family-signage;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            color: settings.$plate;
+            text-decoration: underline;
+        }
+    }
+}
+
+// The legal line sits on a full-width paper strip, where the ASF logo reads as designed.
+.station-footer-legal {
+    background: settings.$paper;
+    border-top: 4px solid settings.$signal;
+    color: settings.$ink-soft;
+    font-size: settings.$font-size-20;
+    margin-top: 3rem;
+}
+
+.station-footer-legal-inner {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0 auto;
+    max-width: settings.$max-width;
+    padding: 1.5rem 1rem;
+
+    img { flex: none; height: 3.25rem; width: auto; }
+    p { margin: 0; max-width: 95ch; }
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding: 1.5rem 3rem;
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

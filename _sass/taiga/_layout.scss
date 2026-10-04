@@ -55,14 +55,11 @@
     padding: settings.$spacing ;
     @include grid.grid-container;
 
-    @include mixins.breakpoint(settings.$breakpoint-30) { padding: settings.$spacing (settings.$spacing * 5); }
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding: settings.$spacing (settings.$spacing * 3); }
 }
 
 .l-button-table {
-    @include mixins.breakpoint(settings.$breakpoint-30) {
-        display: flex;
-        justify-content: center;        
-    }
+    display: block;
 }
 
 .l-button-table > .l-two-third {

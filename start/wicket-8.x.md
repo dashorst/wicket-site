@@ -6,6 +6,7 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 ---
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#new"><i class="fa fa-star"></i><br>New</a>
 	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 </div>
 <div class="button-bar">
@@ -15,16 +16,16 @@ preamble: Here you can learn about the status of Wicket 8.x, find links to downl
 
 ## Status
 
-The status for Wicket 8.x is: **security fixes only**.
+The status for Wicket 8.x is: **end of life**.
 
-This branch is **no longer actively maintained** and will only recieve
-backported security fixes when relevant and as long as we are able to
-actually build this branch.
+This branch is **no longer maintained and will no longer receive any
+updates**, including security fixes. Support ended with the release of
+Wicket 11.0.0 in October 2026, and with it Wicket's support for the
+`javax.servlet` API.
 
-<i class="fa fa-info-circle"></i>
-However, this release will cease to receive updates in the future. You
-really should consider upgrading to Wicket 9.x at your earliest
-convenience.
+<i class="fa fa-exclamation-circle"></i>
+**You should upgrade to [Wicket 10.x LTS]({{site.baseurl}}/start/wicket-10.x.html)
+or [Wicket 11.x]({{site.baseurl}}/start/wicket-11.x.html) at your earliest convenience.**
 
 ### Semantic versioning
 
@@ -36,10 +37,14 @@ releases will not break compatibility.
 To see what changed in these releases you can read the
 [change log](https://www.apache.org/dist/wicket/{{site.wicket.version_80}}/CHANGELOG-8.x).
 
+## New in Wicket 8 {#new}
+
+{% include highlights.html series="8" %}
+
 ## Download
 
-The most recent test version in this branch is: **{{site.wicket.version_80}}**. 
-You can test the current state of development using [Maven](#maven) or [download it manually](#manually).
+The most recent release in this branch is: **{{site.wicket.version_80}}**. 
+You can get the release using [Maven](#maven) or [download it manually](#manually).
 
 ### Using Apache Maven {#maven}
 

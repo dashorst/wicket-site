@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "_layouts/default.html"
+        ],
+        "createdAt": "2026-10-04T14:15:06.214Z",
+        "reason": "model: the img attributes, including src, come from page.titlePicture front matter at build time; pre-existing template"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "_layouts/news_archive.html"
+        ],
+        "createdAt": "2026-10-04T14:20:20.789Z",
+        "reason": "model: pre-existing template whose img attributes come from page.titlePicture front matter"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "_sass/modules/_toc.scss"
+        ],
+        "createdAt": "2026-10-04T14:35:54.406Z",
+        "reason": "model: the 3px stripe is the reading rail's route line with station dots, the Departure Board world's route device (direction contract), not a card accent"
+      }
+    ]
+  }
+}

@@ -7,6 +7,7 @@ preamble: Here you can learn about the status of Wicket 6.x, find links to downl
 
 <div class="button-bar">
 	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#new"><i class="fa fa-star"></i><br>New</a>
 	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
 </div>
 <div class="button-bar">
@@ -32,6 +33,10 @@ releases will not break compatibility.
 
 To see what changed in this release (and prior releases) you can read
 the [change log](https://www.apache.org/dist/wicket/{{site.wicket.version_60}}/CHANGELOG-6.x).
+
+## New in Wicket 6 {#new}
+
+{% include highlights.html series="6" %}
 
 ## Download
 

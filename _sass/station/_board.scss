@@ -1,0 +1,247 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// =========== The departure board
+
+.board {
+    background: settings.$board;
+    border-radius: settings.$border-radius-20;
+    box-shadow: 0 1.5rem 3rem -1.5rem rgba(settings.$board, 0.55);
+    color: settings.$board-text;
+    padding: 1.75rem 1.5rem 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        padding: 2.25rem 2.25rem 1.5rem;
+    }
+}
+
+.board-head {
+    border-bottom: 2px solid settings.$board-rule;
+    padding-bottom: 1.25rem;
+}
+
+.board-title {
+    color: settings.$board-text;
+    font-family: settings.$font-family-signage;
+    font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    margin: 0 0 0.75rem;
+
+    .flap {
+        color: settings.$signal;
+        font-family: settings.$font-family-board;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+}
+
+.board-sub {
+    color: settings.$board-dim;
+    font-family: settings.$font-family-signage;
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 500;
+    margin: 0;
+}
+
+.board-table {
+    font-family: settings.$font-family-signage;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    width: 100%;
+
+    thead th {
+        background: transparent;
+        color: settings.$board-dim;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 1rem 0.75rem 0.5rem 0;
+        text-transform: uppercase;
+    }
+
+    td {
+        border-bottom: 1px solid settings.$board-rule;
+        padding: 0.7rem 0.75rem 0.6rem 0;
+        vertical-align: baseline;
+    }
+
+    tbody tr:hover td { background: transparent; }
+}
+
+.board-divider th {
+    background: transparent;
+    color: settings.$plate;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 1.25rem 0 0.35rem;
+    text-transform: uppercase;
+}
+
+.board-when {
+    color: settings.$board-dim;
+    white-space: nowrap;
+}
+
+.board-release {
+    font-family: settings.$font-family-board;
+    font-size: 1.35rem;
+    font-weight: 600;
+    white-space: nowrap;
+
+    a {
+        color: settings.$board-text;
+        text-decoration: none;
+
+        &:hover {
+            color: settings.$plate;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+    }
+}
+
+.board-support {
+    color: settings.$board-text;
+}
+
+.plate {
+    border-radius: settings.$border-radius-10;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    padding: 0.35em 0.5em 0.25em;
+}
+
+.plate-lts {
+    background: settings.$plate;
+    color: settings.$board;
+}
+
+.status {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-boarding {
+    background: settings.$signal;
+    border-radius: settings.$border-radius-10;
+    color: settings.$board;
+    padding: 0.2em 0.55em 0.1em;
+    animation: board-blink 1.2s steps(1, end) 1.5s 3;
+}
+
+.status-scheduled { color: settings.$board-dim; }
+.status-current { color: settings.$board-text; }
+.status-superseded { color: settings.$board-dim; }
+
+.status-last-call {
+    border: 2px solid settings.$plate;
+    border-radius: settings.$border-radius-10;
+    color: settings.$plate;
+    padding: 0.1em 0.45em 0;
+}
+
+.status-eol {
+    background: settings.$stop;
+    border-radius: settings.$border-radius-10;
+    color: settings.$white;
+    padding: 0.2em 0.55em 0.1em;
+}
+
+// Lines on their last call are struck through the way a cancelled train is.
+.board-row.is-last-call .board-support,
+.board-row.is-eol .board-release,
+.board-row.is-eol .board-support {
+    color: settings.$board-dim;
+}
+
+.board-row.is-eol .board-release .flap {
+    text-decoration: line-through;
+    text-decoration-color: settings.$stop;
+    text-decoration-thickness: 2px;
+}
+
+.board-row.is-boarding td { color: settings.$board-text; }
+.board-row.is-boarding .board-release { color: settings.$signal; }
+
+.board-foot {
+    font-size: settings.$font-size-20;
+    margin: 1rem 0 0;
+
+    a {
+        color: settings.$board-text;
+
+        &:hover { color: settings.$plate; }
+    }
+}
+
+@keyframes board-blink {
+    0%, 85% { opacity: 1; }
+    86%, 100% { opacity: 0.55; }
+}
+
+// =========== Split-flap characters (set up by javascript/flaps.js)
+
+.flap-c {
+    display: inline-block;
+    transform-origin: 50% 55%;
+}
+
+.flaps-run .flap-c {
+    animation: flap-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 45ms + var(--row, 0) * 70ms);
+}
+
+@keyframes flap-in {
+    0% { transform: perspective(12em) rotateX(-90deg); opacity: 0.2; }
+    60% { opacity: 1; }
+    100% { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flaps-run .flap-c,
+    .status-boarding { animation: none; }
+}
+
+// =========== Small screens: every row becomes a stacked ticket line
+
+@include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+    .board-table thead { display: none; }
+
+    .board-table,
+    .board-table tbody { display: block; }
+
+    .board-divider { display: block; }
+
+    .board-divider th { display: block; }
+
+    .board-row {
+        border-bottom: 1px solid settings.$board-rule;
+        display: grid;
+        gap: 0.15rem 1rem;
+        grid-template-areas:
+            "release status"
+            "service when"
+            "support support";
+        grid-template-columns: 1fr auto;
+        padding: 0.75rem 0;
+
+        td {
+            border: 0;
+            padding: 0;
+        }
+    }
+
+    .board-release { grid-area: release; }
+    .board-status { grid-area: status; text-align: right; }
+    .board-service { grid-area: service; }
+    .board-when { grid-area: when; text-align: right; }
+    .board-support { grid-area: support; color: settings.$board-dim; }
+}

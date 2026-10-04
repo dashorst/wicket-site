@@ -1,0 +1,74 @@
+{% comment %}
+  The departure board. Reads _data/releases.yml and the versions in _config.yml.
+  Parameters: heading = h1 | h2 (default h2), title (default "Release lines"),
+  compact = true to show only the next departures (the earliest `when` among the
+  upcoming lines) and leave out lines that are out of service.
+{% endcomment %}
+{% assign heading = include.heading | default: 'h2' %}
+{% assign releases = site.data.releases %}
+{% assign eol_lines = releases.lines | where: 'status', 'eol' %}
+{% assign next_when = '' %}
+{% for line in releases.lines %}
+    {% if line.status == 'boarding' or line.status == 'scheduled' %}{% assign next_when = line.when %}{% break %}{% endif %}
+{% endfor %}
+<section class="board" aria-labelledby="board-title">
+    <div class="board-head">
+        <{{ heading }} id="board-title" class="board-title">{% if include.title %}{{ include.title }}{% else %}Apache Wicket <span class="flap" data-flap>{{ releases.featured }}</span>{% endif %}</{{ heading }}>
+        <p class="board-sub">A major release every quarter. A long-term support release every year.</p>
+    </div>
+    <table class="board-table">
+        <caption class="visually-hidden">Apache Wicket release lines: when they arrive, how long they are supported, and their status</caption>
+        <thead>
+            <tr>
+                <th scope="col">When</th>
+                <th scope="col">Release</th>
+                <th scope="col">Service</th>
+                <th scope="col">Supported</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        {% for group in (1..3) %}
+        {% if group == 3 and eol_lines.size == 0 %}{% continue %}{% endif %}
+        {% if group == 3 and include.compact %}{% continue %}{% endif %}
+        <tbody class="board-group">
+            <tr class="board-divider">
+                <th scope="rowgroup" colspan="5">{% case group %}{% when 1 %}In service{% when 2 %}Departures{% else %}Out of service{% endcase %}</th>
+            </tr>
+            {% for line in releases.lines %}
+                {% assign line_group = 1 %}
+                {% if line.status == 'boarding' or line.status == 'scheduled' %}{% assign line_group = 2 %}{% endif %}
+                {% if line.status == 'eol' %}{% assign line_group = 3 %}{% endif %}
+                {% if line_group != group %}{% continue %}{% endif %}
+                {% if include.compact and line_group == 2 and line.when != next_when %}{% continue %}{% endif %}
+                {% if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
+            <tr class="board-row is-{{ line.status }}">
+                <td class="board-when" data-label="When">{{ line.when }}</td>
+                <td class="board-release" data-label="Release">
+                    {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{% endif %}<span class="flap" data-flap>{{ version }}</span>{% if line.page %}</a>{% endif %}
+                </td>
+                <td class="board-service" data-label="Service">
+                    {% case line.service %}
+                    {% when 'lts' %}<span class="plate plate-lts" title="Long-term support">LTS</span>
+                    {% when 'quarterly' %}Quarterly
+                    {% else %}Major
+                    {% endcase %}
+                </td>
+                <td class="board-support" data-label="Supported">{{ line.support }}</td>
+                <td class="board-status" data-label="Status">
+                    {% case line.status %}
+                    {% when 'boarding' %}<span class="status status-boarding">Boarding</span>
+                    {% when 'scheduled' %}<span class="status status-scheduled">Scheduled</span>
+                    {% when 'current' %}<span class="status status-current">In service</span>
+                    {% when 'lts' %}<span class="status status-current">In service</span>
+                    {% when 'last-call' %}<span class="status status-last-call">Last call</span>
+                    {% when 'superseded' %}<span class="status status-superseded">Superseded</span>
+                    {% when 'eol' %}<span class="status status-eol">End of life</span>
+                    {% endcase %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% endfor %}
+    </table>
+    <p class="board-foot"><a href="{{ site.baseurl }}/start/download.html#release-policy">How the release schedule works</a></p>
+</section>

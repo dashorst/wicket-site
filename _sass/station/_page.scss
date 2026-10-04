@@ -1,0 +1,340 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// =========== Reading pages: platform sign, preamble, body copy
+
+.page-sign {
+    background: settings.$board;
+    color: settings.$board-text;
+}
+
+.page-sign-inner {
+    margin: 0 auto;
+    max-width: settings.$max-width;
+    padding: 2.75rem 1rem 2.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding: 3.5rem 3rem 2.75rem;
+    }
+
+    h1 {
+        color: settings.$board-text;
+        font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin: 0;
+        max-width: 22ch;
+    }
+}
+
+.page-sign-sub {
+    color: settings.$board-dim;
+    font-family: settings.$font-family-signage;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-weight: 500;
+    line-height: 1.35;
+    margin: 0.85rem 0 0;
+    max-width: 50ch;
+}
+
+// Full-width blocks on reading pages line up with the platform sign above.
+.preamble.l-full,
+.page-content .l-full {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.page-content .board {
+    margin: 0.5rem 0 1.5rem;
+
+    .board-title {
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    }
+}
+
+.preamble {
+    margin-bottom: 1.5rem;
+
+    p {
+        color: settings.$ink;
+        font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+        line-height: 1.55;
+        max-width: 62ch;
+    }
+
+    img {
+        display: block;
+        height: auto;
+        margin: 0 0 1.5rem;
+        max-width: 100%;
+    }
+}
+
+.page-content {
+    > p,
+    > ul,
+    > ol,
+    > dl,
+    > blockquote,
+    .post > p,
+    .post > ul,
+    .post > ol {
+        max-width: 72ch;
+    }
+
+    li { margin-bottom: 0.3rem; }
+
+    img { max-width: 100%; height: auto; }
+
+    blockquote {
+        border-left: 1px solid settings.$rule;
+        color: settings.$ink-soft;
+        margin: 1.5rem 0;
+        padding-left: 1.25rem;
+    }
+}
+
+.post-date {
+    color: settings.$ink-soft;
+    font-family: settings.$font-family-signage;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+// =========== Release highlights: ruled entries, facts set as board figures
+
+.features {
+    list-style: none;
+    margin: 0 0 1.5rem;
+}
+
+// Not held to the reading measure of lists: the code samples need the room.
+.page-content > .features { max-width: none; }
+
+.feature {
+    border-top: 1px solid settings.$rule;
+    margin: 0;
+    padding: 1.5rem 0 1.75rem;
+
+    h3 {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.5rem;
+    }
+
+    p { max-width: 72ch; }
+
+    p code { white-space: nowrap; }
+}
+
+.feature-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.5rem;
+    margin: 0.25rem 0 0;
+
+    dt {
+        color: settings.$ink-soft;
+        font-family: settings.$font-family-signage;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+    }
+
+    dd {
+        color: settings.$board;
+        font-family: settings.$font-family-board;
+        font-size: 2rem;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        line-height: 1.1;
+        margin: 0;
+    }
+}
+
+.feature-code {
+    margin-top: 1rem;
+
+    .highlight { margin-bottom: 0; }
+}
+
+// =========== News archive: posts with a year index beside them
+
+.news-reading {
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        align-items: start;
+        display: grid;
+        gap: 4rem;
+        grid-template-columns: minmax(0, 52rem) 14rem;
+    }
+}
+
+.news-index {
+    border-top: 1px solid settings.$rule;
+    font-family: settings.$font-family-signage;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        border-top: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    h2 {
+        color: settings.$board;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin: 0 0 0.35rem;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2rem 0.75rem;
+        list-style: none;
+        margin: 0 0 1.25rem;
+    }
+
+    li { margin: 0; }
+
+    a {
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+    }
+}
+
+// The toc plugin output is only shown on narrow screens (see modules/toc).
+.toc {
+    font-family: settings.$font-family-signage;
+    font-size: settings.$font-size-20;
+}
+
+// =========== Quick start wizard: a ticket machine
+
+div.quickstart-wizard {
+    background: settings.$board;
+    border-radius: settings.$border-radius-20;
+    color: settings.$board-text;
+    padding: 1.5rem 1.75rem 1.75rem;
+
+    label {
+        color: settings.$board-dim;
+        font-family: settings.$font-family-signage;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        margin-top: 0.85rem;
+    }
+
+    input,
+    select,
+    textarea {
+        background: settings.$paper;
+        border: 2px solid transparent;
+        border-radius: settings.$border-radius-10;
+        color: settings.$ink;
+        font-family: settings.$font-family-code;
+        height: 2.5rem;
+
+        &:focus-visible {
+            border-color: settings.$plate;
+            outline: none;
+        }
+    }
+
+    textarea {
+        font-size: settings.$font-size-20;
+        height: 6.5rem;
+    }
+
+    button {
+        background: settings.$signal;
+        color: settings.$board;
+        font-weight: 700;
+        height: auto;
+        margin-top: 1.25rem;
+        padding: 0.75rem 1rem 0.65rem;
+
+        &:hover {
+            background: settings.$plate;
+            color: settings.$board;
+        }
+    }
+}
+
+.quickstart ol > li::before,
+.quickstart ol > li:before {
+    background: settings.$board;
+    border-radius: settings.$border-radius-10;
+    color: settings.$board-text;
+    font-family: settings.$font-family-signage;
+    font-variant-numeric: tabular-nums;
+}
+
+// =========== Station index: a ruled timetable of destinations
+
+.station-index {
+    margin: 0.5rem 0 2.5rem;
+
+    ul {
+        display: grid;
+        gap: 0 2.5rem;
+        grid-template-columns: minmax(0, 1fr);
+        list-style: none;
+        margin: 0;
+
+        @include mixins.breakpoint(settings.$breakpoint-20) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mixins.breakpoint(settings.$breakpoint-40) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    li {
+        border-top: 1px solid settings.$rule;
+        margin: 0;
+    }
+
+    a {
+        color: settings.$ink-soft;
+        display: block;
+        padding: 0.8rem 0 0.9rem;
+        text-decoration: none;
+
+        &:hover .station-index-label {
+            color: settings.$signal-deep;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+        }
+    }
+}
+
+.station-index-label {
+    color: settings.$board;
+    display: block;
+    font-family: settings.$font-family-signage;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-underline-offset: 0.18em;
+}
+
+.station-index-desc {
+    display: block;
+    font-size: settings.$font-size-20;
+}
+
+// End-of-life lines on the download page read as cancelled services.
+.eol-table {
+    td:nth-child(2) {
+        color: settings.$ink-soft;
+        text-decoration: line-through;
+        text-decoration-color: settings.$stop;
+        text-decoration-thickness: 2px;
+    }
+
+    .status-eol { margin-right: 0.5rem; }
+}

@@ -13,12 +13,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     @include mixins.box-sizing(border-box);
 }
 
-::-moz-selection { background: settings.$color-neutral-90; color: settings.$white; text-shadow: none; }
-::selection { background: settings.$color-neutral-90; color: settings.$white; text-shadow: none; }
+::-moz-selection { background: settings.$plate; color: settings.$board; text-shadow: none; }
+::selection { background: settings.$plate; color: settings.$board; text-shadow: none; }
 
 html {
     color: settings.$color-neutral-70;
-    font: 300 settings.$font-size-base settings.$font-family-body;
+    font: 400 settings.$font-size-base settings.$font-family-body;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: auto;
@@ -30,33 +30,39 @@ html {
 }
 
 body {
-    line-height: 1.5em;
-    background-color: #fff;
+    line-height: 1.6;
+    background-color: settings.$hall;
+    caret-color: settings.$signal;
 }
 
 
 // Headings
 h1, h2, legend, h3, h4, h5, h6 {
+    color: settings.$board;
     font-family: settings.$font-family-heading;
-    font-weight: 400;
-    line-height: 1.5em;
-    margin: 0 0 0.25em 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: 0 0 0.5em 0;
+    text-wrap: balance;
 }
 
-h1 { font-size: 2rem; }
+h1 { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em; }
 
 h2,
 legend {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
-h3 { font-size: 1.3rem; }
+h3 { font-size: 1.25rem; }
 
-h4 { font-size: 1.2rem; }
+h4 { font-size: 1.1rem; }
 
-h5 { font-size: 1.1rem; }
+h5 { font-size: 1rem; }
 
-h6 { font-size: 1rem; }
+h6 { font-size: 1rem; font-weight: 600; }
+
+* + h2, * + h3 { margin-top: 2.25rem; }
 
 
 // Paragraphs
@@ -87,7 +93,7 @@ em { font-style: italic; }
 
 strong { font-weight: bold; }
 
-code, pre { font-family: 'courier new', monospace; }
+code, pre { font-family: settings.$font-family-code; }
 
 pre { overflow-x: auto; }
 
@@ -131,12 +137,3 @@ dl {
     }
 }
 
-main {
-	box-shadow: 0 .5rem 3rem #f0f0f0;
-}
-
-.announce {
-	font-weight: bold !important;
-	font-size: 4rem;
-	color: rgb(48, 50, 132);
-}

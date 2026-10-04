@@ -1,20 +1,8 @@
-<header class="preamble">
-    <h1 id="poweredby">Projects Using Apache Wicket</h1>
-    <p>
-        Many projects use Wicket but are not known for it. 
-        Below you find a list of projects that are <a href="http://builtwithwicket.tumblr.com" rel="nofollow">Powered by Wicket</a>.
-    </p>
-</header>
-<article class="l-full">
-    <div class="builtwithwicket-slider"></div>
-    <br><br>
-    <p>
-        This list is generated from our Tumblr feed 'Built with Wicket'. 
-        You can submit your own project to this list through 
-        <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">this form</a>.
-    </p>
-</article>
-<div class="l-first"></div>
+<div class="bww-head">
+    <h2 id="bww-title">Built with Wicket</h2>
+    <p>Many applications run on Wicket without saying so. These say so, collected through the <a href="http://builtwithwicket.tumblr.com" rel="nofollow">Built with Wicket</a> feed. <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">Submit your own project</a>.</p>
+</div>
+<div class="builtwithwicket-slider"></div>
 <!-- Only display the blog image, title and post URL -->   
 <script type="text/javascript"> 
     function randomIntFromInterval(min,max)
@@ -38,10 +26,21 @@
                     '</div>');
             }
 
+            if (window.matchMedia('(max-width: 589px)').matches) {
+                // Phones get a swipeable strip; images load as they scroll in.
+                $('.builtwithwicket-slider').addClass('is-strip')
+                    .attr({ role: 'region', tabindex: 0, 'aria-label': 'Built with Wicket projects, swipe for more' })
+                    .after('<p class="bww-count">' + posts.length + ' projects, swipe for more</p>');
+                $('.builtwithwicket-screenshot').each(function () {
+                    this.loading = 'lazy';
+                    this.src = this.getAttribute('data-lazy');
+                });
+                return;
+            }
+
             $('.builtwithwicket-slider').slick({
                 arrows: true,
-                autoplay: true,
-                autoplaySpeed: 5000,
+                autoplay: false,
                 dots: true,
                 draggable: true,
                 infinite: true,

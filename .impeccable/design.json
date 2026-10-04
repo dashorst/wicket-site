@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T14:35:45+00:00",
+  "title": "Design System: Apache Wicket",
+  "extensions": {
+    "colorMeta": {
+      "signal": {
+        "role": "primary",
+        "displayName": "Wicket Signal Orange",
+        "canonical": "oklch(68.6% 0.166 49)",
+        "tonalRamp": [
+          "#180500",
+          "#3F1801",
+          "#6A2E03",
+          "#994609",
+          "#CA5F10",
+          "#F58038",
+          "#FFB690",
+          "#FFEADF"
+        ]
+      },
+      "signal-deep": {
+        "role": "primary",
+        "displayName": "Deep Signal Orange",
+        "canonical": "oklch(55.3% 0.144 45)",
+        "tonalRamp": [
+          "#190400",
+          "#411601",
+          "#6D2B02",
+          "#9D4107",
+          "#C6622E",
+          "#EE8553",
+          "#FEB695",
+          "#FFE9E0"
+        ]
+      },
+      "plate": {
+        "role": "secondary",
+        "displayName": "Signage Yellow",
+        "canonical": "oklch(85.7% 0.165 87)",
+        "tonalRamp": [
+          "#110A00",
+          "#302300",
+          "#543E01",
+          "#7A5C05",
+          "#A27C0B",
+          "#CC9E1A",
+          "#F8C01F",
+          "#FEEDC6"
+        ]
+      },
+      "stop": {
+        "role": "tertiary",
+        "displayName": "Stop Red",
+        "canonical": "oklch(53.0% 0.207 22)",
+        "tonalRamp": [
+          "#1F0002",
+          "#4D000A",
+          "#800018",
+          "#B70427",
+          "#E43845",
+          "#FD7373",
+          "#FDB3AF",
+          "#FEE9E7"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Night Board",
+        "canonical": "oklch(23.2% 0.068 265)",
+        "tonalRamp": [
+          "#010727",
+          "#142346",
+          "#304166",
+          "#4E6188",
+          "#6E82AC",
+          "#90A5D1",
+          "#B3C9F7",
+          "#E7EFFF"
+        ]
+      },
+      "board-row": {
+        "role": "neutral",
+        "displayName": "Board Row Blue",
+        "canonical": "oklch(27.2% 0.079 265)",
+        "tonalRamp": [
+          "#01052C",
+          "#11224B",
+          "#2D406C",
+          "#4B608E",
+          "#6B82B2",
+          "#8DA5D7",
+          "#B0C9FE",
+          "#E7EFFF"
+        ]
+      },
+      "board-rule": {
+        "role": "neutral",
+        "displayName": "Board Rule Blue",
+        "canonical": "oklch(35.3% 0.090 267)",
+        "tonalRamp": [
+          "#010330",
+          "#112050",
+          "#2C3F72",
+          "#4A5F94",
+          "#6A81B9",
+          "#8CA4DE",
+          "#B2C8FC",
+          "#E8EEFE"
+        ]
+      },
+      "board-text": {
+        "role": "neutral",
+        "displayName": "Board White",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "board-dim": {
+        "role": "neutral",
+        "displayName": "Board Dim",
+        "canonical": "oklch(77.4% 0.045 268)",
+        "tonalRamp": [
+          "#04091E",
+          "#1C243B",
+          "#38415A",
+          "#56617B",
+          "#77829E",
+          "#99A5C2",
+          "#BDC9E7",
+          "#E8EEFF"
+        ]
+      },
+      "hall": {
+        "role": "neutral",
+        "displayName": "Station Hall",
+        "canonical": "oklch(97.2% 0.005 258)",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#242527",
+          "#404244",
+          "#606164",
+          "#818285",
+          "#A3A5A8",
+          "#C7C9CC",
+          "#EDEFF1"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Ticket Paper",
+        "canonical": "oklch(100.0% 0.000 90)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Timetable Ink",
+        "canonical": "oklch(25.0% 0.062 265)",
+        "tonalRamp": [
+          "#020825",
+          "#162343",
+          "#324163",
+          "#506185",
+          "#7082A8",
+          "#92A5CD",
+          "#B6C9F2",
+          "#E7EFFF"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "oklch(44.2% 0.048 265)",
+        "tonalRamp": [
+          "#03091F",
+          "#19243C",
+          "#35425C",
+          "#54617D",
+          "#7482A0",
+          "#96A5C4",
+          "#BAC9E9",
+          "#E7EFFF"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Timetable Rule",
+        "canonical": "oklch(86.8% 0.017 259)",
+        "tonalRamp": [
+          "#070B12",
+          "#20252D",
+          "#3D424B",
+          "#5C626B",
+          "#7C838D",
+          "#9FA5B0",
+          "#C3CAD5",
+          "#E8EFFA"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Board Title",
+        "purpose": "The departure board title only; the featured version inside it is Overpass Mono 700 in signal orange."
+      },
+      "headline": {
+        "displayName": "Section Head",
+        "purpose": "Home section heads and the platform-sign h1 on reading pages."
+      },
+      "title": {
+        "displayName": "Stop Title",
+        "purpose": "Route stops, panels, ticket title."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Preambles and section intros, max 62ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading copy; 15px root rising to 17px at 769px; max 72ch."
+      },
+      "label": {
+        "displayName": "Board Label",
+        "purpose": "Uppercase board column heads and board group headers only."
+      },
+      "board-figure": {
+        "displayName": "Board Figure",
+        "purpose": "Version numbers on the departure board."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Code blocks and inline code."
+      }
+    },
+    "shadows": [
+      {
+        "name": "board-hang",
+        "value": "0 1.5rem 3rem -1.5rem rgba(13, 27, 61, 0.55)",
+        "purpose": "The departure board."
+      },
+      {
+        "name": "ticket-hang",
+        "value": "0 1.25rem 2.5rem -1.5rem rgba(13, 27, 61, 0.45)",
+        "purpose": "The ticket."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-station",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "State transitions and the split-flap entrance."
+      },
+      {
+        "name": "state-transition",
+        "value": "160ms",
+        "purpose": "Background, colour and border changes on buttons and plates."
+      },
+      {
+        "name": "flap-in",
+        "value": "700ms per character, delay i*45ms + row*70ms, once per load",
+        "purpose": "Split-flap entrance of board version figures; off under prefers-reduced-motion and without JavaScript."
+      },
+      {
+        "name": "board-blink",
+        "value": "1.2s steps(1, end) 1.5s delay, 3 iterations",
+        "purpose": "The Boarding plate dims briefly three times; off under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "10",
+        "value": "590px"
+      },
+      {
+        "name": "20",
+        "value": "769px"
+      },
+      {
+        "name": "30",
+        "value": "960px"
+      },
+      {
+        "name": "40",
+        "value": "1152px"
+      },
+      {
+        "name": "50",
+        "value": "1295px"
+      },
+      {
+        "name": "max-width",
+        "value": "82rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The orange 'now' plate: the one primary action per view.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Open the quick start</button>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{appearance:none;border:2px solid transparent;border-radius:0.125rem;cursor:pointer;font-family:var(--sign);font-size:1rem;font-weight:700;letter-spacing:0.01em;line-height:1.4;padding:0.6rem 1rem 0.5rem;transition:background-color 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease);} .ds-btn:focus-visible{outline:3px solid var(--plate);outline-offset:2px;} .ds-btn-primary{background:var(--signal);color:var(--board);} .ds-btn-primary:hover{background:var(--board);color:var(--board-text);} .ds-btn-primary:active{background:var(--board-row);color:var(--board-text);}"
+    },
+    {
+      "name": "Neutral Button",
+      "kind": "button",
+      "refersTo": "button-neutral",
+      "description": "Outline plate in board blue for secondary actions such as copy.",
+      "html": "<button class=\"ds-btn ds-btn-neutral\">Copy</button>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-btn{appearance:none;border:2px solid transparent;border-radius:0.125rem;cursor:pointer;font-family:var(--sign);font-size:1rem;font-weight:700;letter-spacing:0.01em;line-height:1.4;padding:0.6rem 1rem 0.5rem;transition:background-color 160ms var(--ease),color 160ms var(--ease),border-color 160ms var(--ease);} .ds-btn:focus-visible{outline:3px solid var(--plate);outline-offset:2px;} .ds-btn-neutral{background:transparent;border-color:var(--board);color:var(--board);} .ds-btn-neutral:hover{background:var(--board);color:var(--board-text);}"
+    },
+    {
+      "name": "Station Header",
+      "kind": "nav",
+      "refersTo": "station-header",
+      "description": "Night-blue signage band with an orange bottom band; the active section is underlined in orange.",
+      "html": "<header class=\"ds-header\"><strong class=\"ds-logo\">APACHE WICKET</strong><nav class=\"ds-nav\"><a href=\"#\">Quick Start</a><a href=\"#\" class=\"is-active\">Download</a><a href=\"#\">Documentation</a><a href=\"#\">Community</a></nav></header>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-header{background:var(--board);border-bottom:4px solid var(--signal);color:var(--board-text);display:flex;align-items:center;gap:2rem;min-height:4.25rem;padding:0 1.5rem;} .ds-logo{font-family:var(--sign);font-weight:800;letter-spacing:-0.01em;} .ds-nav{display:flex;gap:0.25rem;font-family:var(--sign);font-size:0.95rem;font-weight:600;} .ds-nav a{border-bottom:3px solid transparent;color:var(--board-text);padding:1.45rem 0.6rem 1.1rem;text-decoration:none;} .ds-nav a:hover{border-bottom-color:var(--board-dim);} .ds-nav a.is-active{border-bottom-color:var(--signal);} .ds-nav a:focus-visible{outline:3px solid var(--plate);outline-offset:-3px;}"
+    },
+    {
+      "name": "Plates and Status",
+      "kind": "chip",
+      "refersTo": "plate-lts",
+      "description": "Enamel plates on the board: LTS yellow, Boarding orange, Last call yellow outline, End of life red.",
+      "html": "<div class=\"ds-plates\"><span class=\"ds-plate ds-lts\">LTS</span><span class=\"ds-plate ds-boarding\">Boarding</span><span class=\"ds-plate ds-lastcall\">Last call</span><span class=\"ds-plate ds-eol\">End of life</span></div>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-plates{background:var(--board);display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;font-family:var(--sign);} .ds-plate{border-radius:0.125rem;display:inline-block;font-size:0.85rem;font-weight:800;letter-spacing:0.02em;line-height:1;padding:0.35em 0.55em 0.25em;} .ds-lts{background:var(--plate);color:var(--board);letter-spacing:0.06em;} .ds-boarding{background:var(--signal);color:var(--board);} .ds-lastcall{border:2px solid var(--plate);color:var(--plate);} .ds-eol{background:var(--stop);color:#fff;}"
+    },
+    {
+      "name": "Departure Board",
+      "kind": "custom",
+      "refersTo": "board",
+      "description": "Signature: night-blue panel of release lines with mono figures, ruled rows and status plates.",
+      "html": "<section class=\"ds-board\"><h2>Apache Wicket <span class=\"ds-fig ds-now\">11</span></h2><p class=\"ds-sub\">A major release every quarter. A long-term support release every year.</p><table><thead><tr><th>When</th><th>Release</th><th>Service</th><th>Status</th></tr></thead><tbody><tr class=\"ds-div\"><th colspan=\"4\">Departures</th></tr><tr><td class=\"ds-dim\">Oct 2026</td><td class=\"ds-fig ds-now\">11.0.0</td><td>Quarterly</td><td><span class=\"ds-st\">Boarding</span></td></tr><tr><td class=\"ds-dim\">Jul 2027</td><td class=\"ds-fig\">14.0.0</td><td><span class=\"ds-lts\">LTS</span></td><td class=\"ds-dim\">Scheduled</td></tr><tr class=\"ds-div\"><th colspan=\"4\">In service</th></tr><tr><td class=\"ds-dim\">Since May 2018</td><td class=\"ds-fig ds-dim\"><s>8.19.0</s></td><td class=\"ds-dim\">Major</td><td><span class=\"ds-eol\">End of life</span></td></tr></tbody></table></section>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-board{background:var(--board);border-radius:0.313rem;box-shadow:0 1.5rem 3rem -1.5rem rgba(13,27,61,0.55);color:var(--board-text);padding:2.25rem 2.25rem 1.5rem;font-family:var(--sign);} .ds-board h2{font-size:3rem;font-weight:800;letter-spacing:-0.03em;line-height:0.95;margin:0 0 0.75rem;} .ds-sub{color:var(--board-dim);font-weight:500;margin:0 0 1.25rem;padding-bottom:1.25rem;border-bottom:2px solid var(--board-rule);} .ds-board table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;} .ds-board thead th{color:var(--board-dim);font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-align:left;padding:1rem 0.75rem 0.5rem 0;} .ds-div th{color:var(--plate);font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-align:left;padding:1.25rem 0 0.35rem;} .ds-board td{border-bottom:1px solid var(--board-rule);padding:0.7rem 0.75rem 0.6rem 0;} .ds-fig{font-family:var(--mono);font-size:1.35rem;font-weight:600;} .ds-now{color:var(--signal);} .ds-dim{color:var(--board-dim);} .ds-board s{text-decoration-color:var(--stop);text-decoration-thickness:2px;} .ds-st{background:var(--signal);color:var(--board);border-radius:0.125rem;font-weight:700;padding:0.2em 0.55em 0.1em;} .ds-lts{background:var(--plate);color:var(--board);border-radius:0.125rem;font-size:0.8rem;font-weight:800;letter-spacing:0.06em;padding:0.35em 0.5em 0.25em;} .ds-eol{background:var(--stop);color:#fff;border-radius:0.125rem;font-weight:700;padding:0.2em 0.55em 0.1em;}"
+    },
+    {
+      "name": "Ticket",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Signature: square paper ticket with an orange top edge and a perforated stub holding the Maven dependency.",
+      "html": "<aside class=\"ds-ticket\"><div class=\"ds-ticket-main\"><h3>Start a project</h3><p>Generate a ready-to-run Maven project with the quick start.</p><a class=\"ds-ticket-action\" href=\"#\">Open the quick start</a></div><div class=\"ds-stub\"><h4>Maven dependency</h4><pre>&lt;artifactId&gt;wicket-core&lt;/artifactId&gt;</pre></div></aside>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-ticket{background:var(--paper);box-shadow:0 1.25rem 2.5rem -1.5rem rgba(13,27,61,0.45);color:var(--ink);max-width:22rem;font-family:var(--body);} .ds-ticket-main{border-top:6px solid var(--signal);padding:1.5rem 1.5rem 1.6rem;} .ds-ticket h3{color:var(--board);font-family:var(--sign);font-size:1.6rem;font-weight:700;letter-spacing:-0.02em;margin:0 0 0.6rem;} .ds-ticket p{margin:0 0 1.25rem;} .ds-ticket-action{display:block;background:var(--signal);color:var(--board);border-radius:0.125rem;font-family:var(--sign);font-weight:700;font-size:1.05rem;padding:0.8rem 1rem 0.7rem;text-align:center;text-decoration:none;transition:background-color 160ms var(--ease),color 160ms var(--ease);} .ds-ticket-action:hover{background:var(--board);color:var(--board-text);} .ds-ticket-action:focus-visible{outline:3px solid var(--plate);outline-offset:2px;} .ds-stub{background:radial-gradient(circle at 0 0,var(--hall) 0.7rem,transparent 0.75rem) top left/1.5rem 1.5rem no-repeat,radial-gradient(circle at 100% 0,var(--hall) 0.7rem,transparent 0.75rem) top right/1.5rem 1.5rem no-repeat;border-top:2px dashed var(--rule);padding:1.25rem 1.5rem 1.4rem;} .ds-stub h4{color:var(--board);font-family:var(--sign);font-size:0.875rem;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 0.6rem;} .ds-stub pre{background:var(--hall);border-radius:0.125rem;font-family:var(--code);font-size:0.8rem;margin:0;padding:0.85rem 1rem;}"
+    },
+    {
+      "name": "Wizard Input",
+      "kind": "input",
+      "refersTo": "input-wizard",
+      "description": "Paper field on board ground in the quick-start ticket machine; focus turns the border yellow.",
+      "html": "<div class=\"ds-wiz\"><label for=\"ds-gid\">GroupId</label><input id=\"ds-gid\" value=\"com.mycompany\"></div>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-wiz{background:var(--board);border-radius:0.313rem;padding:1.5rem 1.75rem 1.75rem;} .ds-wiz label{display:block;color:var(--board-dim);font-family:var(--sign);font-size:0.875rem;font-weight:600;margin-bottom:0.35rem;} .ds-wiz input{background:var(--paper);border:2px solid transparent;border-radius:0.125rem;color:var(--ink);font-family:var(--code);height:2.5rem;padding:0 0.6rem;width:100%;} .ds-wiz input:focus-visible{border-color:var(--plate);outline:none;}"
+    },
+    {
+      "name": "Timetable Table",
+      "kind": "custom",
+      "refersTo": "table-head",
+      "description": "Every table is a timetable: board-blue head, 1px ruled rows, tabular figures, struck end-of-life lines.",
+      "html": "<table class=\"ds-tt\"><thead><tr><th>Version</th><th>Released</th><th>Status</th></tr></thead><tbody><tr><td>10.x</td><td>2024-03-11</td><td>Supported</td></tr><tr class=\"is-eol\"><td>9.x</td><td>2020-07-17</td><td><span class=\"ds-eol\">End of life</span></td></tr></tbody></table>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-tt{border-collapse:collapse;font-family:var(--body);font-variant-numeric:tabular-nums;color:var(--ink);background:var(--hall);} .ds-tt th{background:var(--board);color:var(--board-text);font-family:var(--sign);font-size:0.875rem;font-weight:700;letter-spacing:0.02em;padding:0.6rem 0.75rem 0.45rem;text-align:left;} .ds-tt td{border-bottom:1px solid var(--rule);padding:0.55rem 0.75rem;} .ds-tt tbody tr:hover td{background:var(--paper);} .ds-tt .is-eol td:nth-child(2){color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--stop);text-decoration-thickness:2px;} .ds-eol{background:var(--stop);color:#fff;border-radius:0.125rem;font-family:var(--sign);font-weight:700;padding:0.2em 0.55em 0.1em;}"
+    },
+    {
+      "name": "Route Stops",
+      "kind": "custom",
+      "description": "Signature: sections hang on a board-blue route line as ringed station dots, the first filled orange.",
+      "html": "<ol class=\"ds-route\"><li><h3>Plain Java and plain HTML</h3><p>Markup stays HTML that opens in any editor.</p></li><li><h3>Components for complex pages</h3><p>Pages and components are real Java objects.</p></li></ol>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-route{list-style:none;margin:0;padding:0;position:relative;font-family:var(--body);color:var(--ink);} .ds-route::before{content:'';position:absolute;left:0.6rem;top:0.5rem;bottom:1rem;width:4px;background:var(--board);} .ds-route li{position:relative;padding:2rem 0 2rem 3rem;border-top:1px solid var(--rule);} .ds-route li:first-child{border-top:0;padding-top:0.25rem;} .ds-route li::before{content:'';position:absolute;left:0.05rem;top:2.15rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--paper);border:4px solid var(--board);box-sizing:border-box;} .ds-route li:first-child::before{background:var(--signal);top:0.4rem;} .ds-route h3{color:var(--board);font-family:var(--sign);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin:0 0 0.6rem;} .ds-route p{margin:0;max-width:50ch;}"
+    },
+    {
+      "name": "Reading Rail",
+      "kind": "nav",
+      "refersTo": "reading-rail",
+      "description": "Signature: the page's sections as stops on a route line beside the text; the section in view is the orange stop.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"On this page\"><h2>On this page</h2><ul><li><a href=\"#\">Introduction</a></li><li><a href=\"#\" class=\"is-current\">Download</a><ul><li><a href=\"#\">Maven</a></li><li><a href=\"#\">Source</a></li></ul></li><li><a href=\"#\">Release policy</a></li></ul></nav>",
+      "css": ":host{--signal:#E9752A;--signal-deep:#B4511A;--plate:#FFC72C;--stop:#C8102E;--board:#0D1B3D;--board-row:#13244D;--board-rule:#26386A;--board-text:#FFFFFF;--board-dim:#A9B5D3;--hall:#F4F6F9;--paper:#FFFFFF;--ink:#13203F;--ink-soft:#46536E;--rule:#CDD4DF;--sign:'Overpass','Source Sans Pro',system-ui,sans-serif;--mono:'Overpass Mono','Source Code Pro',ui-monospace,monospace;--code:'Source Code Pro',ui-monospace,monospace;--body:'Source Sans Pro',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);} .ds-rail{font-family:var(--sign);width:14rem;} .ds-rail h2{color:var(--board);font-size:1rem;font-weight:700;margin:0 0 0.75rem;} .ds-rail ul{list-style:none;margin:0;padding:0;} .ds-rail > ul{border-left:3px solid var(--board);margin-left:0.6rem;} .ds-rail li{position:relative;} .ds-rail a{color:var(--ink-soft);display:block;font-size:0.875rem;font-weight:600;line-height:1.3;padding:0.4rem 0 0.4rem 1.1rem;text-decoration:none;} .ds-rail a:hover{color:var(--board);text-decoration:underline;} .ds-rail a:focus-visible{outline:3px solid var(--plate);outline-offset:2px;} .ds-rail > ul > li > a::before{content:'';position:absolute;left:calc(-1.5px - 0.4rem);top:0.65em;width:0.8rem;height:0.8rem;box-sizing:border-box;border-radius:50%;background:var(--hall);border:3px solid var(--board);} .ds-rail > ul > li > a.is-current{color:var(--board);} .ds-rail > ul > li > a.is-current::before{background:var(--signal);} .ds-rail ul ul a{font-size:0.875rem;font-weight:500;padding:0.2rem 0 0.2rem 1.9rem;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Departure Board",
+    "overview": "The site is a European railway station. A pale station-hall ground carries deep night-blue board panels with white tabular rows; the release lines are trains on that board, departing on a timetable (a quarterly major, a yearly long-term-support intercity). Every page arrives under a night-blue signage band, and reading pages open with a platform sign carrying the page title. Information is set the way a timetable sets it: ruled rows, tabular figures, short heavy labels, no ornament that a station would not hang.\n\nDensity is timetable density: rows are compact and ruled with 1px lines, while the sections between them breathe (5rem between home sections). Colour is spent by function, as signage spends it. Wicket orange means \"now\", signage yellow sits on plates, red means a cancelled line. The light hall and the dark board are the only two grounds; everything else is lettering, rules and plates.\n\nThe page refuses the framework-homepage default of headline, code panel and three feature cards. Groups are ruled lists and tables, not card grids.",
+    "keyCharacteristics": [
+      "Two grounds: light station hall and night-blue board.",
+      "Orange marks what is current; yellow marks plates; red marks end of life.",
+      "Overpass for signage and headings, Source Sans Pro for reading, Overpass Mono for board figures, Source Code Pro for code; tabular numerals in every table and date.",
+      "Square enamel plates (2px corners), 1px timetable rules, a 4px orange band under the header.",
+      "One signature motion: version figures flip in once like split-flaps."
+    ],
+    "rules": [
+      {
+        "name": "The Now Signal Rule",
+        "body": "Orange marks what is current or the one primary action. It is never a decorative accent, a section tint or a background wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plate Rule",
+        "body": "Signage yellow appears on plates, on board ground, and as the focus ring. It is never body text on the light hall.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stop Rule",
+        "body": "Red is reserved for end of life: the red plate and the struck-through version. Nothing else on the site is red.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Figures Rule",
+        "body": "Every table, board, date and step number sets `font-variant-numeric: tabular-nums`, so figures line up like a timetable.",
+        "section": "typography"
+      },
+      {
+        "name": "The Signage Voice Rule",
+        "body": "Overpass carries everything a station would sign (headings, nav, table heads, dates, plates, buttons); Source Sans Pro carries everything a passenger reads at length.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Objects Rule",
+        "body": "Only the board and the ticket cast shadows. Panels, tables, code and buttons are flat.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ruled Groups Rule",
+        "body": "Groups are separated by a 1px top or bottom rule, never by boxes or card outlines.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep the two grounds: station hall for reading, night board for signage, the board, the wizard and the footer.",
+      "Do spend orange only on what is current and on the single primary action per view.",
+      "Do set every figure in tables, boards and dates as tabular numerals.",
+      "Do separate groups with 1px rules in timetable rule colour (light ground) or board-rule colour (board ground).",
+      "Do keep corners at 2px for plates, buttons, inputs and code, and 5px for board panels.",
+      "Do run the split-flap entrance once per load and switch it off under reduced motion.",
+      "Do self-host every font and script; Overpass, Overpass Mono, Source Sans Pro and Source Code Pro ship from the site's own fonts directory.",
+      "Do align reading content to the left edge of the column and keep text to 52rem beside the rail; never centre components in the reading area.",
+      "Do keep page content writable in plain Markdown with the legacy layout classes; new station components are styled by class, not by requiring authors to write new markup on ordinary pages."
+    ],
+    "donts": [
+      "Don't load fonts or scripts from external hosts (ASF policy).",
+      "Don't use red for anything but end of life, or yellow as text on the light hall.",
+      "Don't add shadows to anything other than the board and the ticket.",
+      "Don't group content in card grids; use ruled lists, tables and the route.",
+      "Don't use orange as a tint, gradient or decorative stripe beyond the header band, the legal-strip band and the ticket edge.",
+      "Don't add icon-font glyphs to new surfaces."
+    ]
+  }
+}
