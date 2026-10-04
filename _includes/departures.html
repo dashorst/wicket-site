@@ -2,7 +2,6 @@
   The departure board. Reads _data/releases.yml and the versions in _config.yml.
   Parameters: heading = h1 | h2 (default h2), title (default "Release lines"),
   lede = a sentence shown under the title,
-  action / action_url = a primary link shown in the board head on phones only,
   compact = true for the homepage: the table shows the lines in service only,
   and two lines sum up the rest: the next departures (the earliest `when` among
   the upcoming lines, plus the next new LTS line) and the lines out of service,
@@ -33,7 +32,6 @@
         <{{ heading }} id="board-title" class="board-title">{% if include.title %}{{ include.title }}{% else %}Apache Wicket <span class="flap" data-flap>{{ releases.featured }}</span>{% endif %}</{{ heading }}>
         {% if include.lede %}<p class="board-lede">{{ include.lede }}</p>{% endif %}
         <p class="board-sub">A long-term support release every year for production. A major release with new features every quarter.</p>
-        {% if include.action %}<a class="button board-action" href="{{ site.baseurl }}/{{ include.action_url }}">{{ include.action }}</a>{% endif %}
     </div>
     <table class="board-table">
         {% if include.compact %}

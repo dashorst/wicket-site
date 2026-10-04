@@ -63,14 +63,11 @@
     margin-bottom: 0.6rem;
 }
 
-// On phones the board head carries this action, directly under the definition.
 .ticket-action {
     display: block;
     font-size: 1.05rem;
     padding: 0.8rem 1rem 0.7rem;
     text-align: center;
-
-    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { display: none; }
 }
 
 // The stub is torn off along a perforation with a notch on either side.

@@ -8,7 +8,7 @@ additionalContents:
 ---
 <div class="home-arrivals">
     <div class="home-arrivals-inner">
-        {% include departures.html heading="h1" compact=true upgrade="#connections-title" action="Open the quick start" action_url="start/quickstart.html" lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
+        {% include departures.html heading="h1" compact=true upgrade="#connections-title" lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
 
         <aside class="ticket" aria-labelledby="ticket-title">
             <div class="ticket-main">

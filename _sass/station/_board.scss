@@ -312,9 +312,6 @@
     }
 }
 
-// The board head carries the primary action on phones only.
-.board-action { display: none; }
-
 // =========== Small screens: every row becomes a stacked ticket line
 
 @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
@@ -344,13 +341,6 @@
             border: 0;
             padding: 0;
         }
-    }
-
-    .board-action {
-        display: block;
-        margin-top: 1.25rem;
-        padding: 0.8rem 1rem 0.7rem;
-        text-align: center;
     }
 
     .board-brief-label { min-width: 100%; }
