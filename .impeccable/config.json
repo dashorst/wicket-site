@@ -29,6 +29,15 @@
         ],
         "createdAt": "2026-10-04T14:35:54.406Z",
         "reason": "model: the 3px stripe is the reading rail's route line with station dots, the Departure Board world's route device (direction contract), not a card accent"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          ".previews/directions-wt/.impeccable/directions/ribbon-components/ribbon.css"
+        ],
+        "createdAt": "2026-10-04T19:35:45.070Z",
+        "reason": "The 7px orange border-left is the ribbon drawn as the component tree's vertical connector on phones, not a card accent"
       }
     ]
   }
