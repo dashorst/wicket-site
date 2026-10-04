@@ -50,7 +50,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 ## Brand Commitments
 
 - Name: **Apache Wicket**, always with the Apache prefix on first mention, per ASF trademark practice.
-- **Every design uses the registered Apache Wicket logo**, from the assets in `img/` (`logo-apachewicket.svg`, with its white and tungsten variants), never the name set as text or a self-drawn mark in its place. A refreshed logo aligned with the new ASF logo is welcome, but only as an approved trademark asset, not as part of a design direction.
+- **Every design carries the Apache Wicket mark: the orange circle with the white figure**, taken from the registered assets in `img/` (`logo-apachewicket.svg`, with its white and tungsten variants), never redrawn or replaced. The wordmark "Apache Wicket" beside it may be set in the design's own heading face, or the registered wordmark may be used as a whole.
 - **Every design shows the ASF logo** and links it to apache.org, per ASF branding policy. Use the current logo (`img/asf_logo.svg`, from the ASF press kit at apache.org/foundation/press/kit/), self-hosted; on dark grounds place it on a light panel so its purple lettering stays legible. `img/asf_logo_url.svg` is the old feather logo.
 
 ## Evidence on Hand
