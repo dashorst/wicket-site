@@ -159,6 +159,8 @@ abbr[title] { text-decoration: none; }
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 40px;
   font-size: 1rem;
 }
+/* Two separate headlines: Wicket 11, and the release schedule that starts with it. */
+.strip-news { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4em 2.2em; }
 .strip-news a { font-weight: 700; font-size: 1.0625rem; }
 .strip-get { color: var(--ink-2); display: flex; align-items: center; gap: .6em; flex-wrap: wrap; }
 /* The versions to get are buttons, not text: outlined pills that fill orange on hover. */
@@ -450,7 +452,7 @@ pre.code code { display: block; min-width: max-content; color: inherit; font-siz
   .cmd-label { display: block; margin: 0 0 4px; font-size: .8125rem; }
   .cmd-copy { width: 100%; justify-content: center; }
   .strip-in { flex-direction: column; gap: 8px; }
-  .strip-news a { display: inline-block; }
+  .strip-news { gap: .5em 1.4em; }
   .facts { grid-template-columns: 1fr; gap: 28px; }
   .hls { grid-template-columns: 1fr; gap: 0; }
   .hl, .hl:first-child, .hl:nth-child(3) { padding: 22px 0; border-left: 0; border-top: 1px solid var(--line); }
