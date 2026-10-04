@@ -282,7 +282,7 @@ Enamel signage plates: square, heavy Overpass lettering, no gloss.
 
 ### Navigation
 - **Style:** a night-blue signage band at least 4.25rem tall with a 4px orange bottom band. Overpass 600 at 0.95rem white links with a 3px transparent underline; hover shows a board-dim underline, the active section an orange underline. The GitHub link sits at the far right and turns yellow on hover. Under 960px the links wrap onto their own rows under the logo.
-- **Footer:** night-blue ground, Overpass 600 white links turning yellow and underlined on hover, closed by a paper legal strip under a 4px orange band.
+- **Footer:** night-blue ground, Overpass 600 white links turning yellow and underlined on hover, closed by a paper legal strip under a 4px orange band, carrying the current ASF logo (self-hosted, linked to apache.org) beside the trademark notice.
 
 ### Skip link and touch targets
 Every page opens with a "Skip to content" link, hidden until focused, then a paper plate with board-blue Overpass 700 in the top left corner. On touch screens (coarse pointer) the small links (ticket links, board foot, How to upgrade, section footers) and the copy plate grow to 44px targets without changing the desktop layout.
