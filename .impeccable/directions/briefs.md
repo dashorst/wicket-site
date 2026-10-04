@@ -78,3 +78,21 @@ Every homepage carries the same content: what Wicket is, the release lines (in s
 - Tensegrity breathing column: declined (forces do not explain components). Kept in A: annotations pinned by rules.
 - Darkroom under safelight: declined (wrong scene, no product truth). Kept for the quick start: fixed stations in order.
 - Suminagashi ink basin: declined (no mechanism to show). Kept: one continuous surface with a still reading margin.
+
+---
+
+## C2. Provenance ribbon, with seasons (revision after review)
+
+Review: the grid system and drawing sheet are too far from what people expect of a web framework. The provenance ribbon is liked, and so is the Wicket 8 draft of 2018 (seasonal photo hero, big logo lockup, short tagline, light body), without copying it and with less white space. The pre-Apache site of 2005 (wicket.sourceforge.net) showed an orange windscreen on a beach in a circle beside the orange-circle mark.
+
+**Thesis.** The ribbon of release lines stays the structure; it now opens under a seasonal photograph, as the Wicket 8 draft did, so the page feels like a living project in its own landscape rather than a museum ledger.
+
+**Logo.** The registered mark (orange circle, white figure: `img/logo-apachewicket-mark.svg`) is fixed. The wordmark "Apache Wicket" may be set in the heading face. The big lockup in the hero adds the featured version: mark, "Apache Wicket", "11".
+
+**Seasons.** One photograph per season, chosen by month from data: winter (Dec–Feb) the frosted red leaf; spring (Mar–May) the sunlit meadow; summer (Jun–Aug) and autumn (Sep–Nov) still need photographs (summer could be the 2005 windscreen on the beach if the original is found). Until then summer uses the meadow and autumn the leaf.
+
+**First viewport.** The seasonal photograph carries the opening; the lockup and a short tagline over the definition sit on it, legibly; the ribbon enters along the bottom of the photograph and splits at the present into 10 LTS (for production) and 11 (for new features), each with its Maven dependency and copy action, the quick start beside them.
+
+**Body.** Light paper ground with less white space than the 2018 draft; the bookcloth green stays as a secondary field (ribbon band, footer), not the whole page.
+
+**History.** The ribbon starts with Wicket 1.0 on SourceForge in 2005 (1.0.2 and 1.1-beta3 were announced on 22 August 2005).
