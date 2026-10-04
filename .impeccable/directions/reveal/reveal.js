@@ -7,41 +7,67 @@
   'use strict';
   var root = document.documentElement;
 
-  /* ---------------------------------------------------------------- copy */
-  document.querySelectorAll('[data-copy]').forEach(function (btn) {
-    var src = document.getElementById(btn.getAttribute('data-copy'));
-    var status = btn.parentElement.querySelector('.cmd-status');
-    var timer;
+  /* ------------------------------------------------- install: line, tool, copy */
+  (function () {
+    var box = document.querySelector('.cmd');
+    var dataEl = document.getElementById('install-data');
+    if (!box || !dataEl) return;
+    var data = JSON.parse(dataEl.textContent);
+    var show = document.getElementById('cmd-show');
+    var tool = document.getElementById('cmd-tool');
+    var copy = box.querySelector('.cmd-copy');
+    var status = box.querySelector('.cmd-status');
+    var radios = box.querySelectorAll('[data-line]');
+    var line = 'current', timer;
+
+    function fill(template) {
+      var v = data.lines[line].version, p = v.split('.');
+      return template.replace(/\{version\}/g, v).replace(/\{major\}/g, p[0])
+        .replace(/\{minor\}/g, p[1]).replace(/\{patch\}/g, p[2]).replace(/\{guide\}/g, data.guide);
+    }
+    function render() {
+      var t = data.tools[tool.value];
+      show.textContent = fill(t.show);
+      show.title = fill(t.copy);
+      radios.forEach(function (r) { r.setAttribute('aria-checked', String(r.getAttribute('data-line') === line)); });
+    }
     function say(msg) {
       status.textContent = msg;
       clearTimeout(timer);
       timer = setTimeout(function () { status.textContent = ''; }, 2600);
     }
-    btn.addEventListener('click', function () {
-      var text = src.textContent;
+    radios.forEach(function (r) {
+      r.addEventListener('click', function () { line = r.getAttribute('data-line'); render(); });
+      r.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        var next = radios[(Array.prototype.indexOf.call(radios, r) + 1) % radios.length];
+        line = next.getAttribute('data-line'); render(); next.focus(); e.preventDefault();
+      });
+    });
+    tool.addEventListener('change', render);
+    copy.addEventListener('click', function () {
+      var t = data.tools[tool.value], text = fill(t.copy);
+      var done = 'The ' + t.what + ' for ' + data.lines[line].version + ' is on your clipboard.';
       var fallback = function () {
         var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
+        ta.value = text; ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
         var ok = false;
         try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
         ta.remove();
-        say(ok ? 'The <dependency> element for 11.0.0 is on your clipboard.'
-               : 'Your browser blocked the clipboard. The dependency is on the download page.');
+        say(ok ? done : 'Your browser blocked the clipboard. The dependency is on the download page.');
       };
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () {
-          say('The <dependency> element for 11.0.0 is on your clipboard.');
-        }, fallback);
+        navigator.clipboard.writeText(text).then(function () { say(done); }, fallback);
       } else {
         fallback();
       }
     });
-  });
+    box.querySelector('.cmd-controls').hidden = false;
+    copy.hidden = false;
+    render();
+  })();
 
   /* ---------------------------------------------------------------- reveal */
   var section = document.querySelector('.reveal');
