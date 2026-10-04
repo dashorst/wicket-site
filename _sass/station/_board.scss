@@ -23,7 +23,7 @@
 .board-title {
     color: settings.$board-text;
     font-family: settings.$font-family-signage;
-    font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+    font-size: clamp(2.4rem, 4.6vw, 3.75rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 0.95;
@@ -35,6 +35,16 @@
         font-weight: 700;
         letter-spacing: 0;
     }
+}
+
+.board-lede {
+    color: settings.$board-text;
+    font-family: settings.$font-family-signage;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.6rem;
+    max-width: 40ch;
 }
 
 .board-sub {
@@ -70,6 +80,21 @@
     tbody tr:hover td { background: transparent; }
 }
 
+// On the compact board the only group, In service, labels the table from above
+// its column headers.
+.board-caption {
+    caption-side: top;
+    color: settings.$plate;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 1.25rem 0 0;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.board.is-compact .board-table thead th { padding-top: 0.6rem; }
+
 .board-divider th {
     background: transparent;
     color: settings.$plate;
@@ -95,16 +120,30 @@
         color: settings.$board-text;
         text-decoration: none;
 
+        .flap { border-bottom: 2px solid rgba(settings.$board-dim, 0.45); }
+
         &:hover {
             color: settings.$plate;
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
+
+            .flap { border-bottom-color: currentColor; }
         }
     }
 }
 
 .board-support {
     color: settings.$board-text;
+}
+
+// On the homepage the lines out of service point to their upgrade path.
+.board-divider .board-upgrade {
+    color: settings.$board-text;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-left: 0.75rem;
+    text-transform: none;
+
+    &:hover { color: settings.$plate; }
 }
 
 .plate {
@@ -139,6 +178,7 @@
 
 .status-scheduled { color: settings.$board-dim; }
 .status-current { color: settings.$board-text; }
+.status-role { color: settings.$board-text; font-weight: 600; }
 .status-superseded { color: settings.$board-dim; }
 
 .status-last-call {
@@ -162,17 +202,33 @@
     color: settings.$board-dim;
 }
 
+// The characters of a flap are inline blocks, which text decoration does not reach,
+// so the strike and the link underline are drawn on the flap itself.
+.board-row.is-eol .board-release a { color: settings.$board-dim; }
+
 .board-row.is-eol .board-release .flap {
-    text-decoration: line-through;
-    text-decoration-color: settings.$stop;
-    text-decoration-thickness: 2px;
+    border-bottom: 0;
+    position: relative;
+
+    &::after {
+        background: settings.$stop;
+        content: "";
+        height: 2px;
+        left: -0.05em;
+        position: absolute;
+        right: -0.05em;
+        top: 52%;
+    }
 }
 
 .board-row.is-boarding td { color: settings.$board-text; }
 .board-row.is-boarding .board-release { color: settings.$signal; }
 
 .board-foot {
+    display: flex;
+    flex-wrap: wrap;
     font-size: settings.$font-size-20;
+    gap: 0.25rem 1.5rem;
     margin: 1rem 0 0;
 
     a {
@@ -196,11 +252,12 @@
 
 .flaps-run .flap-c {
     animation: flap-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(var(--i, 0) * 45ms + var(--row, 0) * 70ms);
+    // Capped, so no value waits more than about half a second to appear.
+    animation-delay: calc(min(var(--i, 0), 6) * 35ms + min(var(--row, 0), 4) * 50ms);
 }
 
 @keyframes flap-in {
-    0% { transform: perspective(12em) rotateX(-90deg); opacity: 0.2; }
+    0% { transform: perspective(12em) rotateX(-65deg); opacity: 0.45; }
     60% { opacity: 1; }
     100% { transform: none; opacity: 1; }
 }
@@ -210,10 +267,60 @@
     .status-boarding { animation: none; }
 }
 
+// =========== Compact board: what comes next and what left service, in two lines
+
+.board-brief {
+    border-bottom: 1px solid settings.$board-rule;
+    font-family: settings.$font-family-signage;
+    padding: 0.9rem 0 0.4rem;
+
+    p {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 1.25rem;
+        margin: 0 0 0.55rem;
+    }
+
+    a { color: settings.$board-text; font-weight: 600; }
+    a:hover { color: settings.$plate; }
+}
+
+.board-brief-label {
+    color: settings.$plate;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    min-width: 8.5rem;
+    text-transform: uppercase;
+}
+
+.board-brief-item { color: settings.$board-dim; white-space: nowrap; }
+
+.board-brief-version {
+    color: settings.$board-text;
+    font-family: settings.$font-family-board;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-right: 0.15rem;
+
+    &.is-eol {
+        color: settings.$board-dim;
+        text-decoration: line-through;
+        text-decoration-color: settings.$stop;
+        text-decoration-thickness: 2px;
+    }
+}
+
+// The board head carries the primary action on phones only.
+.board-action { display: none; }
+
 // =========== Small screens: every row becomes a stacked ticket line
 
 @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
     .board-table thead { display: none; }
+
+    .board-caption { display: block; }
 
     .board-table,
     .board-table tbody { display: block; }
@@ -238,6 +345,15 @@
             padding: 0;
         }
     }
+
+    .board-action {
+        display: block;
+        margin-top: 1.25rem;
+        padding: 0.8rem 1rem 0.7rem;
+        text-align: center;
+    }
+
+    .board-brief-label { min-width: 100%; }
 
     .board-release { grid-area: release; }
     .board-status { grid-area: status; text-align: right; }

@@ -18,7 +18,7 @@
     margin: 0 auto;
     max-width: settings.$max-width;
     min-height: 4.25rem;
-    padding: 0 1rem;
+    padding: 0 1.25rem;
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         padding: 0 3rem;
@@ -112,7 +112,7 @@ body > footer {
     grid-template-columns: 1fr;
     margin: 0 auto;
     max-width: settings.$max-width;
-    padding: 3rem 1rem 0;
+    padding: 3rem 1.25rem 0;
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         grid-template-columns: minmax(16rem, 1fr) 2fr;
@@ -165,10 +165,10 @@ body > footer {
     gap: 1.5rem;
     margin: 0 auto;
     max-width: settings.$max-width;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1.25rem;
 
     img { flex: none; height: 3.25rem; width: auto; }
-    p { margin: 0; max-width: 95ch; }
+    p { margin: 0; max-width: 72ch; }
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         padding: 1.5rem 3rem;

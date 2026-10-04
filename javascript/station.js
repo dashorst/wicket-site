@@ -10,8 +10,12 @@
     var rows = board.querySelectorAll('[data-flap]');
     Array.prototype.forEach.call(rows, function (el, row) {
         var text = el.textContent;
-        el.setAttribute('aria-label', text);
         el.textContent = '';
+        // Screen readers read the value whole; the flipping characters are hidden from them.
+        var spoken = document.createElement('span');
+        spoken.className = 'visually-hidden';
+        spoken.textContent = text;
+        el.appendChild(spoken);
         Array.prototype.forEach.call(text, function (ch, i) {
             var c = document.createElement('span');
             c.className = 'flap-c';
@@ -25,24 +29,43 @@
     board.classList.add('flaps-run');
 })();
 
-// Copy buttons: <button data-copy="#id"> copies the text of the target.
+// Copy buttons: <button data-copy="#id"> copies the text of the target, or its value for a field.
 (function () {
     if (!navigator.clipboard) return;
     Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (button) {
         button.hidden = false;
         var label = button.textContent;
+        // Announces the outcome to screen readers; the button text alone changes silently.
+        var status = document.createElement('span');
+        status.className = 'visually-hidden';
+        status.setAttribute('role', 'status');
+        button.parentNode.appendChild(status);
         button.addEventListener('click', function () {
             var target = document.querySelector(button.getAttribute('data-copy'));
             if (!target) return;
-            navigator.clipboard.writeText(target.textContent.trim()).then(function () {
+            var text = 'value' in target ? target.value : target.textContent;
+            navigator.clipboard.writeText(text.trim()).then(function () {
                 button.textContent = 'Copied';
                 button.classList.add('is-copied');
+                status.textContent = 'Copied to the clipboard';
                 setTimeout(function () {
                     button.textContent = label;
                     button.classList.remove('is-copied');
+                    status.textContent = '';
                 }, 1800);
             }, function () {
-                button.textContent = 'Select and copy';
+                // Select the text so the visitor can copy it by hand.
+                if ('select' in target) {
+                    target.select();
+                } else {
+                    var range = document.createRange();
+                    range.selectNodeContents(target);
+                    var selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+                button.textContent = 'Selected, copy by hand';
+                status.textContent = 'Copying failed. The text is selected; copy it by hand.';
             });
         });
     });

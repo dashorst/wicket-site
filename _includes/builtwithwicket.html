@@ -17,13 +17,19 @@
 
             for(var postIndex in posts) {
                 var post = posts[postIndex];
-                var caption = jQuery('<div>' + post['photo-caption'] + '</div>').text().substring(0,150) + "...";
-                var newSlide = $('.builtwithwicket-slider').append(
-                    '<div class="builtwithwicket-post">\n' +
-                    '  <img class="builtwithwicket-screenshot" data-lazy="' + post['photo-url-500'] + '">\n' +
-                    '  <p class="builtwithwicket-caption">' + caption + '</p>\n' +
-                    '  <a href="' + post['url'] + '" target="_blank" rel="nofollow">More</a>\n' + 
-                    '</div>');
+                var text = jQuery('<div>' + post['photo-caption'] + '</div>').text().replace(/\s+/g, ' ').trim();
+                // The caption opens with the project's name, followed by its address or a description.
+                var name = text.split(/\s*\(?https?:\/\//)[0].split(/\s+[-–—]\s+|\s*\(|[.:;!?](?:\s|$)/)[0].trim();
+                if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
+                if (!name) name = 'this project';
+                var image = post['photo-url-500'];
+                if (image.charAt(0) === '/') image = '{{ site.baseurl }}' + image;
+                $('.builtwithwicket-slider').append(
+                    $('<div class="builtwithwicket-post">').append(
+                        $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
+                        $('<p class="builtwithwicket-caption">').text(text.length > 150 ? text.substring(0, 150) + '…' : text),
+                        $('<a rel="nofollow">').attr('href', post['url']).text('More').append(
+                            $('<span class="visually-hidden">').text(' about ' + name))));
             }
 
             if (window.matchMedia('(max-width: 589px)').matches) {

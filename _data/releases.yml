@@ -17,10 +17,23 @@
 # status: boarding | scheduled | current | lts | last-call | superseded | eol
 # config: key under `wicket:` in _config.yml that holds the latest version
 #         of the line; leave empty for lines that have no release yet.
+# role:   what a line in service is for, shown instead of its status, e.g.
+#         "For production" on the LTS and "For new features" on the quarterly.
+#
+# Lines in service are shown in the order listed here: the LTS first.
 
 featured: "11"
 
 lines:
+  - series: "10"
+    config: version_10
+    service: lts
+    status: lts
+    when: "Since Mar 2024"
+    support: "Until 14.0.0, Jul 2027"
+    page: /start/wicket-10.x.html
+    role: "For production"
+
   - series: "11"
     config: version_11
     service: quarterly
@@ -28,13 +41,14 @@ lines:
     when: "Since Oct 2026"
     support: "Until 12.0.0, Jan 2027"
     page: /start/wicket-11.x.html
+    role: "For new features"
 
   - series: "12"
     version: "12.0.0"
     service: quarterly
     status: scheduled
     when: "Jan 2027"
-    support: "Until 13.0.0"
+    support: "Until 13.0.0, Apr 2027"
 
   - series: "10"
     version: "10.12.0"
@@ -48,22 +62,14 @@ lines:
     service: quarterly
     status: scheduled
     when: "Apr 2027"
-    support: "Until 14.0.0"
+    support: "Until 14.0.0, Jul 2027"
 
   - series: "14"
     version: "14.0.0"
     service: lts
     status: scheduled
     when: "Jul 2027"
-    support: "Until Wicket 18"
-
-  - series: "10"
-    config: version_10
-    service: lts
-    status: lts
-    when: "Since Mar 2024"
-    support: "Until 14.0.0, Jul 2027"
-    page: /start/wicket-10.x.html
+    support: "Until 18.0.0, Jul 2028"
 
   - series: "9"
     config: version_90

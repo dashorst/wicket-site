@@ -7,8 +7,8 @@
     margin-left: auto;
     margin-right: auto;
     max-width: settings.$max-width;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         padding-left: 3rem;
@@ -49,10 +49,6 @@
     color: settings.$ink;
     overflow: hidden;
 
-    @include mixins.breakpoint(settings.$breakpoint-40) {
-        margin-top: 2.25rem;
-    }
-
     p { margin-bottom: 1.25rem; }
 }
 
@@ -67,11 +63,14 @@
     margin-bottom: 0.6rem;
 }
 
+// On phones the board head carries this action, directly under the definition.
 .ticket-action {
     display: block;
     font-size: 1.05rem;
     padding: 0.8rem 1rem 0.7rem;
     text-align: center;
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { display: none; }
 }
 
 // The stub is torn off along a perforation with a notch on either side.
@@ -88,6 +87,27 @@
         margin: 0;
         text-transform: uppercase;
     }
+}
+
+.ticket-stub .ticket-stub-title { margin-bottom: 0.85rem; }
+
+// One snippet per line in service, the LTS first.
+.ticket-snippet + .ticket-snippet { margin-top: 0.25rem; }
+
+.ticket .ticket-snippet-label {
+    color: settings.$ink-soft;
+    font-family: settings.$font-family-signage;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    margin: 0;
+
+    strong {
+        color: settings.$board;
+        font-family: settings.$font-family-board;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .plate { vertical-align: 0.1em; }
 }
 
 .ticket-stub-head {
@@ -144,16 +164,17 @@ pre.ticket-code {
     @extend %home-width;
     padding-top: 5rem;
 
+    // Two balanced columns: entries of unequal height stack without gaps.
     .features {
-        display: grid;
-        gap: 0 3rem;
-        grid-template-columns: minmax(0, 1fr);
         margin-bottom: 0.5rem;
 
         @include mixins.breakpoint(settings.$breakpoint-30) {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 3rem;
+            columns: 2;
         }
     }
+
+    .feature { break-inside: avoid; }
 
     .feature p { max-width: 62ch; }
 }
@@ -175,6 +196,18 @@ pre.ticket-code {
         line-height: 1.55;
         max-width: 62ch;
     }
+}
+
+// The link to the line's page sits on the heading's baseline, so it does not
+// depend on which column of highlights ends first.
+.home-new-title {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 2rem;
+    margin-bottom: 0.75rem;
+
+    h2 { margin-bottom: 0; }
 }
 
 .home-new-more {
@@ -378,7 +411,11 @@ pre.ticket-code {
 
 .connections-table {
     background: settings.$paper;
+    max-width: 62rem;
     width: 100%;
+
+    td p { margin: 0 0 0.5rem; max-width: 64ch; }
+    td p:last-child { margin-bottom: 0; }
 
     th[scope="row"] {
         background: transparent;
@@ -407,6 +444,13 @@ pre.ticket-code {
 
         td:last-child { white-space: normal; }
     }
+}
+
+.connections-route {
+    color: settings.$board;
+    font-family: settings.$font-family-signage;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
 }
 
 .connections-more {
@@ -447,6 +491,15 @@ pre.ticket-code {
 .announcements-list {
     list-style: none;
     margin: 0;
+
+    // On phones the title leads and the date follows it, so a heading never
+    // sits closer to the item above than to its own text.
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        li > div { display: contents; }
+        h3 { order: 1; }
+        time { order: 2; padding-top: 0; }
+        p { order: 3; }
+    }
 
     li {
         border-bottom: 1px solid settings.$rule;
@@ -530,6 +583,9 @@ pre.ticket-code {
 
 // On phones the showcase is a swipeable strip instead of a carousel.
 .builtwithwicket-slider.is-strip {
+    // Keeps the visually hidden link text inside the strip's scroll box;
+    // otherwise it widens the whole page on phones.
+    position: relative;
     display: grid;
     gap: 1rem;
     grid-auto-columns: 82%;
@@ -540,6 +596,7 @@ pre.ticket-code {
     scroll-snap-type: x mandatory;
 
     .builtwithwicket-post {
+        position: relative;
         background: settings.$paper;
         padding: 0.75rem;
         scroll-snap-align: start;

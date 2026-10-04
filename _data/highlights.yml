@@ -28,6 +28,21 @@
         - label: Spring
           value: "7"
 
+    - title: More secure by default
+      text: >
+        Encryption is rebuilt on one authenticated scheme: encrypted URLs and
+        stored pages cannot be altered unnoticed, the scheme generates its own
+        key, and encrypted URLs stay cacheable. Components that write model
+        values into markup escape them consistently, and the content security
+        policy now covers `script-src-attr` and `style-src-attr`.
+
+    - title: Leaner components
+      text: >
+        A component keeps its model, behaviors and metadata in one compact
+        state object instead of a packed array. In the benchmarks, reading that
+        state is 30 to 45% faster, and a component tree with Ajax behaviors
+        serializes about 40% smaller, so sessions and the page store carry less.
+
     - title: Ajax without jQuery
       text: >
         A second, plain JavaScript implementation of the Ajax engine with the
@@ -43,21 +58,6 @@
             getJavaScriptLibrarySettings().setWicketAjaxReference(
                 WicketAjaxVanillaResourceReference.get());
         }
-
-    - title: More secure by default
-      text: >
-        Encryption is rebuilt on one authenticated scheme: encrypted URLs and
-        stored pages cannot be altered unnoticed, the scheme generates its own
-        key, and encrypted URLs stay cacheable. Components that write model
-        values into markup escape them consistently, and the content security
-        policy now covers `script-src-attr` and `style-src-attr`.
-
-    - title: Leaner components
-      text: >
-        A component keeps its model, behaviors and metadata in one compact
-        state object instead of a packed array. In the benchmarks, reading that
-        state is 30 to 45% faster, and a component tree with Ajax behaviors
-        serializes about 40% smaller, so sessions and the page store carry less.
 
     - title: Ajax veils
       home: false

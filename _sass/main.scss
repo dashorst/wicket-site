@@ -221,6 +221,50 @@ tbody tr:hover td {
     color: settings.$signal;
 }
 
+// Hidden until a keyboard user reaches it, then a plate in the top left corner.
+.skip-link {
+    background: settings.$paper;
+    color: settings.$board;
+    font-family: settings.$font-family-signage;
+    font-weight: 700;
+    left: 1rem;
+    padding: 0.75rem 1rem 0.65rem;
+    position: absolute;
+    text-decoration: none;
+    top: -4rem;
+    z-index: 10;
+
+    &:focus { top: 1rem; }
+}
+
+main:focus { outline: none; }
+
+// Touch screens get 44px targets for the small links and controls.
+@media (pointer: coarse) {
+    .ticket-links a,
+    .board-foot a,
+    .board-upgrade,
+    .home-new-more,
+    .connections-more a,
+    .announcements-links a {
+        display: inline-block;
+        padding: 0.7rem 0;
+    }
+
+    .board-divider .board-upgrade { margin: -0.7rem 0 -0.7rem 0.75rem; }
+
+    .board-release a {
+        display: inline-block;
+        margin: -0.5rem 0;
+        padding: 0.5rem 0;
+    }
+
+    .ticket-copy {
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+    }
+}
+
 .visually-hidden {
     border: 0;
     clip: rect(0 0 0 0);

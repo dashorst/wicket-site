@@ -5,12 +5,8 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta charset="utf-8">
-	{% assign prefix = "" %}
-	{% if page.title %}
-	  {% assign prefix = " |" %}
-	{% endif %}
-
-        <title>{{ page.title | append: prefix }} Apache Wicket</title>
+        <title>{% if page.title %}{{ page.title }} | {% endif %}Apache Wicket</title>
+        <meta name="description" content="{{ page.description | default: page.preamble | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -24,6 +20,7 @@
 
     </head>
     <body class="{{page.pageclasses}}">
+        <a class="skip-link" href="#main">Skip to content</a>
         {{content}}
         <footer>
             {% include footer.html %}

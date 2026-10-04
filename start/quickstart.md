@@ -9,23 +9,7 @@ atitlePicture:
     src: ../img/getstarted.png
     alt: .oO
 ---
-<script type="text/javascript" charset="utf-8" src="{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-      
-      ZeroClipboard.setDefaults( { moviePath: '{{ site.baseurl }}/javascript/ZeroClipboard-1.1.7.swf' } );
-      var clip = new ZeroClipboard(document.getElementById("cmdLineCopy"));
-      clip.on( 'noflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      clip.on( 'wrongflash', function ( client, args ) {
-        document.getElementById("cmdLineCopy").style.display = 'none';
-      });
-      $(document).resize(function() {
-        clip.reposition();
-      });
-    });
-
     function changeIt()
     {
 		var groupId = document.getElementById("groupId").value;
@@ -89,7 +73,7 @@ command line to your clipboard.
         <input type="text" value="myproject" onkeyup="changeIt();" id="artifactId">
       </div>
       <div>
-        <label title="Wicket Version" for="version">Wicket Version</label>
+        <label title="Wicket version" for="version">Wicket version</label>
         <select onchange="changeIt();" id="version">
     {% for version in site.wicket.versions reversed %}
     {% if version == site.wicket.version %}
@@ -108,12 +92,12 @@ command line to your clipboard.
     </select>
     </div>
       <div>
-        <label id="cmdLabel" for="cmdLine">generated command line</label>
+        <label id="cmdLabel" for="cmdLine">Generated command line</label>
         <textarea onfocus="this.select();" id="cmdLine" style="resize: vertical;"></textarea>
         <script>changeIt();</script>
       </div>
       <div>
-        <button data-clipboard-target="cmdLine" class="clip_button" id="cmdLineCopy">copy to clipboard</button>
+        <button type="button" id="cmdLineCopy" data-copy="#cmdLine" hidden>Copy to clipboard</button>
       </div>
     </div>
   </div>

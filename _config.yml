@@ -1,4 +1,5 @@
 name: Apache Wicket
+description: Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.
 destination: ./content
 lsi:         false
 port: 4000

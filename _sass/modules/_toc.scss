@@ -6,7 +6,7 @@
 .reading {
     margin: 0 auto;
     max-width: settings.$max-width;
-    padding: 2.5rem 1rem 0;
+    padding: 2.5rem 1.25rem 0;
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         padding: 2.75rem 3rem 0;
