@@ -108,3 +108,17 @@ Review: every direction pushed the release model to the front and the framework 
 **Release information.** One compact element only: the current version and the LTS version with a link to all release lines and support, plus a temporary notice that 8.x and 9.x are out of service with a link to the upgrade path. The release tree, the release table and the upgrade paths leave the homepage.
 
 **Order.** What Wicket is and how it works (photo hero with the lockup, then the component-tree ribbon) → why Wicket → proof that it lasts (twenty years, Apache, Built with Wicket) → get started (quick start, Maven dependency) → news.
+
+---
+
+## D. Reveal (after vercel.com/eve)
+
+Review: the component tree is the right subject; the seasonal photos say nothing about Wicket. Reference: vercel.com/eve, a monochrome page whose strength is its structure: a hero with one sentence and one command, then "An agent is a directory", a scroll reveal in which every step adds one file to a tree that stays in view. No photographs (the old meetup photos do not represent today's community).
+
+**Thesis.** "A page is a tree of components", told as a build-up: each scroll step adds a few lines of real code and one branch to a component tree that stays in view, until the reader has built a page with a form, a reused panel, an Ajax update and a test. The finished tree is the component tree of the previous sketches.
+
+**World.** Monochrome (black, white, greys) with Wicket orange as the only accent: the registered mark and the tree line. Generous spacing, one thing per screen, but not empty.
+
+**Order (owner's outline).** What Wicket is in one or two sentences → what's new: "Wicket 11 just announced", "a new release schedule", "Get Wicket 11.0 / 10.11" → Wicket in detail: component oriented and server-side rendered (the reveal), stable (twenty years, API stability, LTS lines with the compact release board, migration recipes) → New in Wicket 11 → Who uses Wicket (Built with Wicket).
+
+**Masthead.** On the homepage the menu goes without the brand, centred; the hero lockup carries the mark.
