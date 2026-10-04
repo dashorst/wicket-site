@@ -19,25 +19,18 @@
     var status = box.querySelector('.cmd-status');
     var radios = box.querySelectorAll('[data-line]');
     var modes = box.querySelectorAll('[data-mode]');
-    var project = box.querySelector('.cmd-project');
-    var group = document.getElementById('cmd-group');
-    var artifact = document.getElementById('cmd-artifact');
     var line = 'current', mode = 'dependency', timer;
-
-    // Only characters that belong in a Maven groupId or artifactId reach the command.
-    function clean(input, fallback) { return input.value.replace(/[^A-Za-z0-9_.\-]/g, '') || fallback; }
 
     function fill(template) {
       var v = data.lines[line].version, p = v.split('.');
-      return template.replace(/\{groupId\}/g, clean(group, data.defaults.groupId))
-        .replace(/\{artifactId\}/g, clean(artifact, data.defaults.artifactId))
+      return template.replace(/\{groupId\}/g, data.defaults.groupId)
+        .replace(/\{artifactId\}/g, data.defaults.artifactId)
         .replace(/\{version\}/g, v).replace(/\{major\}/g, p[0])
         .replace(/\{minor\}/g, p[1]).replace(/\{patch\}/g, p[2]).replace(/\{guide\}/g, data.guide);
     }
     function render() {
       var t = data[mode][tool.value];
       show.textContent = fill(t.show);
-      project.hidden = mode !== 'project';
       box.classList.toggle('is-project', mode === 'project');
       modes.forEach(function (m) { m.setAttribute('aria-checked', String(m.getAttribute('data-mode') === mode)); });
       show.title = fill(t.copy);
@@ -57,8 +50,6 @@
       });
     });
     tool.addEventListener('change', render);
-    group.addEventListener('input', render);
-    artifact.addEventListener('input', render);
     modes.forEach(function (m) {
       m.addEventListener('click', function () { mode = m.getAttribute('data-mode'); render(); });
       m.addEventListener('keydown', function (e) {
