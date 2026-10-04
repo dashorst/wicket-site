@@ -61,15 +61,16 @@ h1, h2, h3 { color: var(--ink); margin: 0; font-weight: 800; text-wrap: balance;
 p, dl, dd, ul, ol, figure { margin: 0; }
 p { text-wrap: pretty; }
 
+/* Links carry the accent: an orange underline, orange text on hover. */
 a {
   color: var(--ink);
   text-decoration: underline;
-  text-decoration-color: var(--line-2);
-  text-decoration-thickness: 1px;
+  text-decoration-color: var(--orange);
+  text-decoration-thickness: 2px;
   text-underline-offset: .28em;
-  transition: text-decoration-color .2s;
+  transition: color .2s, text-decoration-color .2s;
 }
-a:hover { text-decoration-color: currentColor; }
+a:hover { color: var(--orange); }
 
 code { font-family: var(--mono); font-size: .9em; color: var(--ink); }
 
@@ -158,12 +159,17 @@ abbr[title] { text-decoration: none; }
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 40px;
   font-size: 1rem;
 }
-.strip-news strong { color: var(--ink); font-weight: 700; }
-.strip-news a { margin-left: 1.1em; padding-left: 1.1em; border-left: 1px solid var(--line-2); }
-.strip-get { color: var(--ink-2); }
-.strip-get a { font-family: var(--mono); font-size: .9375rem; margin-left: .35em; }
+.strip-news a { font-weight: 700; font-size: 1.0625rem; }
+.strip-get { color: var(--ink-2); display: flex; align-items: center; gap: .6em; flex-wrap: wrap; }
+/* The versions to get are buttons, not text: outlined pills that fill orange on hover. */
+.strip-get .pill {
+  border: 1px solid var(--orange); border-radius: 999px; color: var(--ink);
+  font-family: var(--mono); font-size: .9375rem; padding: .35em .9em; text-decoration: none;
+  transition: background-color .2s, color .2s;
+}
+.strip-get .pill:hover, .strip-get .pill:focus-visible { background: var(--orange); color: #0c0c0c; }
+.strip-get .pill:hover abbr, .strip-get .pill:focus-visible abbr { color: #0c0c0c; }
 .strip-get abbr { font-family: var(--sans); font-size: .8em; color: var(--ink-2); }
-.strip-get .slash { color: var(--ink-3); margin-left: .35em; }
 
 /* ---------------------------------------------------------------- shared section rhythm */
 
@@ -444,8 +450,7 @@ pre.code code { display: block; min-width: max-content; color: inherit; font-siz
   .cmd-label { display: block; margin: 0 0 4px; font-size: .8125rem; }
   .cmd-copy { width: 100%; justify-content: center; }
   .strip-in { flex-direction: column; gap: 8px; }
-  .strip-news strong { display: block; }
-  .strip-news a { margin: 2px 0 0; padding: 0; border: 0; display: inline-block; }
+  .strip-news a { display: inline-block; }
   .facts { grid-template-columns: 1fr; gap: 28px; }
   .hls { grid-template-columns: 1fr; gap: 0; }
   .hl, .hl:first-child, .hl:nth-child(3) { padding: 22px 0; border-left: 0; border-top: 1px solid var(--line); }
