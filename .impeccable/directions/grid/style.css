@@ -410,3 +410,12 @@ h1 {
 }
 
 @media (min-width: 700px) { .code pre { font-size: 0.875rem; } }
+
+/* Registered logos: the Wicket logo opens the masthead, the ASF logo signs the footer. */
+.status { display: flex; flex-direction: column; justify-content: space-between; gap: 6px; }
+.status p { margin: 0; }
+.brandmark { display: inline-block; line-height: 0; }
+.brandmark img { height: 32px; width: auto; }
+.foot-name img { height: 32px; width: auto; display: block; }
+.asf-tile { display: inline-block; background: var(--paper); padding: 8px 12px; margin: 4px 0 14px; line-height: 0; }
+.asf-tile img { height: 48px; width: auto; }

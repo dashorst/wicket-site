@@ -516,3 +516,9 @@ main { max-width: 1680px; margin: 0 auto; padding: 0 var(--outer); display: grid
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Registered logos: the Wicket logo as the masthead brand, the ASF logo signs the footer. */
+.brand { line-height: 0; }
+.brand img { height: 30px; width: auto; display: block; }
+.foot .asf { display: inline-block; line-height: 0; justify-self: start; }
+.foot .asf img { height: 56px; width: auto; }

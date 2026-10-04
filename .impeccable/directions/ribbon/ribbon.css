@@ -341,3 +341,8 @@ h1 { font: 700 clamp(3.4rem, 6.2vw, 5.6rem)/0.92 var(--serif); letter-spacing: -
   .news-list li { grid-template-columns: 1fr; gap: 2px; }
   .footer-inner { grid-template-columns: 1fr; }
 }
+
+/* Registered logos: the Wicket logo as the masthead brand, the ASF logo on a paper tile in the footer. */
+.brand-logo { height: 32px; width: auto; display: block; }
+.asf-tile { display: inline-block; justify-self: start; align-self: start; width: max-content; background: var(--paper); padding: 8px 12px; line-height: 0; margin-bottom: 14px; }
+.asf-tile img { height: 48px; width: auto; }
