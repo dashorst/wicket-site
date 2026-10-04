@@ -63,9 +63,10 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 
 ## Product Principles
 
-1. **Serve the evaluator and the incumbent equally.** The homepage and top-level navigation must answer "why Wicket" and "what's current, how do I upgrade" without one burying the other.
-2. **Show the mechanism, not the slogan.** Claims about components, plain HTML and CSP should be backed by real code, real markup or real configuration a Java developer recognizes.
-3. **Release facts are always one step away.** Current versions, support and end-of-life status, and migration paths stay accurate and immediately findable.
-4. **Easy for volunteers to keep correct.** Anything that needs updating on release day must be data-driven or plain Markdown.
-5. **Renew without displacing.** The revitalization must read as new energy to newcomers and as continuity to the people already here: LTS users, long-lived applications and long-time contributors keep their place, their paths and their trust.
-6. **Behave like an Apache project.** Respect ASF policy, credit the community, and make no claims the project cannot back.
+1. **The homepage sells the framework.** It leads with what Wicket is and how it works, then why to choose it, proof that it lasts, and how to start. The release model is supporting information: on the homepage it is one compact element (the current and LTS versions, any temporary end-of-life notice, a link), and the full release lines, release policy and upgrade paths live on the download page. Nobody chooses a framework because it ships often.
+2. **Serve the evaluator and the incumbent equally.** The homepage and top-level navigation must answer "why Wicket" and "what's current, how do I upgrade" without one burying the other; for the incumbent, "what's current" is answered in one glance and "how do I upgrade" one click away.
+3. **Show the mechanism, not the slogan.** Claims about components, plain HTML and CSP should be backed by real code, real markup or real configuration a Java developer recognizes. The mechanism to show is the component model (a tree of Java components bound to plain HTML), not the release calendar.
+4. **Release facts are always one step away.** Current versions, support and end-of-life status, and migration paths stay accurate and immediately findable: one link from every page, never a timetable on the homepage.
+5. **Easy for volunteers to keep correct.** Anything that needs updating on release day must be data-driven or plain Markdown.
+6. **Renew without displacing.** The revitalization must read as new energy to newcomers and as continuity to the people already here: LTS users, long-lived applications and long-time contributors keep their place, their paths and their trust.
+7. **Behave like an Apache project.** Respect ASF policy, credit the community, and make no claims the project cannot back.
