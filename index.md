@@ -9,7 +9,7 @@ additionalContents:
 <div class="home-arrivals">
     <div class="home-arrivals-inner">
         {% assign upgrade_url = site.baseurl | append: '/start/download.html#upgrade-paths' %}
-        {% include departures.html heading="h1" hero=true upgrade=upgrade_url lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
+        {% include departures.html heading="h1" compact=true upgrade=upgrade_url lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
 
         <aside class="ticket" aria-labelledby="ticket-title">
             <div class="ticket-main">
@@ -51,6 +51,27 @@ additionalContents:
     </header>
 
     <ol class="route-stops">
+        <li class="route-stop">
+            <div class="route-text">
+                <h3>Plain Java and plain HTML</h3>
+                <p>Markup stays HTML that opens in any editor. Behaviour lives in Java. A <code>wicket:id</code> attribute binds a tag to a component, and that is the whole contract: no template language, no JavaScript toolchain.</p>
+            </div>
+            <div class="route-code">
+                <p class="route-file">HelloWorld.html</p>
+{% highlight html %}
+<h1 wicket:id="message">Message goes here</h1>
+{% endhighlight %}
+                <p class="route-file">HelloWorld.java</p>
+{% highlight java %}
+public class HelloWorld extends WebPage {
+    public HelloWorld() {
+        add(new Label("message", "Hello World!"));
+    }
+}
+{% endhighlight %}
+            </div>
+        </li>
+
         <li class="route-stop">
             <div class="route-text">
                 <h3>Components for complex pages</h3>

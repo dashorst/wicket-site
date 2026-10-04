@@ -243,6 +243,7 @@ main:focus { outline: none; }
 @media (pointer: coarse) {
     .ticket-links a,
     .board-foot a,
+    .board-upgrade,
     .home-new-more,
     .connections-more a,
     .announcements-links a {
@@ -250,6 +251,7 @@ main:focus { outline: none; }
         padding: 0.7rem 0;
     }
 
+    .board-divider .board-upgrade { margin: -0.7rem 0 -0.7rem 0.75rem; }
 
     .board-release a {
         display: inline-block;

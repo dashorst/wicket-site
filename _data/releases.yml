@@ -1,16 +1,16 @@
-# Release lines shown on the departure board of the download page. The homepage
-# board only shows the lines in service and the lines out of service, on one line.
+# Release lines shown on the departure board (homepage and download page).
 #
 # On release day:
 #   - set `status` of the released line to `current` (or `lts`)
 #   - update the matching version in _config.yml (wicket.version_xx)
 #   - set the previous quarterly line to `superseded`
 #
-# Upcoming releases are listed in date order. An LTS patch release that rides
-# along with a quarterly release is its own entry, with the same `when`.
+# Upcoming releases are listed in date order: the homepage board shows only
+# those sharing the earliest `when`, so give releases that ship together the
+# same `when`. An LTS patch release that rides along is its own entry.
 #
 # A line that reaches end of life gets `status: eol`; the board shows it under
-# "Out of service", and the homepage notes it with a link to the upgrade paths. Remove it from this file after a release or two and keep it
+# "Out of service". Remove it from this file after a release or two and keep it
 # in the Unsupported Releases table on start/download.md.
 #
 # service: lts | quarterly | major (pre-2026 release lines)

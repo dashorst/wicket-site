@@ -80,6 +80,21 @@
     tbody tr:hover td { background: transparent; }
 }
 
+// On the compact board the only group, In service, labels the table from above
+// its column headers.
+.board-caption {
+    caption-side: top;
+    color: settings.$plate;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 1.25rem 0 0;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.board.is-compact .board-table thead th { padding-top: 0.6rem; }
+
 .board-divider th {
     background: transparent;
     color: settings.$plate;
@@ -117,6 +132,18 @@
 
 .board-support {
     color: settings.$board-text;
+}
+
+// On the homepage the lines out of service point to their upgrade path.
+.board-divider .board-upgrade {
+    color: settings.$board-text;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-left: 0.75rem;
+    text-transform: none;
+
+    &:hover { color: settings.$plate; }
 }
 
 .plate {
@@ -240,46 +267,7 @@
     .status-boarding { animation: none; }
 }
 
-// =========== Homepage board: how Wicket works, with the lines in service on one line
-
-.board-mechanism {
-    border-bottom: 1px solid settings.$board-rule;
-    display: grid;
-    gap: 0.9rem;
-    grid-template-columns: minmax(0, 1fr);
-    padding: 1.4rem 0 1.25rem;
-
-    .highlight { margin: 0; }
-
-    // Code cards are paper on the board: set their ink, not the board's white.
-    pre { color: settings.$ink; overflow-x: auto; }
-}
-
-.board-file {
-    color: settings.$board-dim;
-    font-family: settings.$font-family-code;
-    font-size: settings.$font-size-10;
-    margin: 0 0 0.35rem;
-}
-
-.board-mechanism-note {
-    color: settings.$board-dim;
-    font-family: settings.$font-family-signage;
-    grid-column: 1 / -1;
-    margin: 0;
-    max-width: 62ch;
-
-    code {
-        background: rgba(settings.$board-text, 0.08);
-        border-color: settings.$board-rule;
-        color: settings.$board-text;
-    }
-}
-
-.board-brief .board-brief-version a,
-.board-brief a .board-brief-version { color: settings.$board-text; }
-
-// =========== Board summary lines (homepage)
+// =========== Compact board: what comes next and what left service, in two lines
 
 .board-brief {
     border-bottom: 1px solid settings.$board-rule;
@@ -329,6 +317,7 @@
 @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
     .board-table thead { display: none; }
 
+    .board-caption { display: block; }
 
     .board-table,
     .board-table tbody { display: block; }
