@@ -96,3 +96,15 @@ Review: the grid system and drawing sheet are too far from what people expect of
 **Body.** Light paper ground with less white space than the 2018 draft; the bookcloth green stays as a secondary field (ribbon band, footer), not the whole page.
 
 **History.** The ribbon starts with Wicket 1.0 on SourceForge in 2005 (1.0.2 and 1.1-beta3 were announced on 22 August 2005).
+
+---
+
+## C3. Ribbon as component tree (revision after the second critique)
+
+Review: every direction pushed the release model to the front and the framework to the back; nobody chooses a framework because it ships often. The homepage sells the framework (PRODUCT.md principle 1). The ribbon form is liked, but drawing twenty years of releases took the departure board's concept as gospel. The ribbon now draws what makes Wicket Wicket: the component tree.
+
+**Thesis.** A Wicket page is a tree of Java components that mirrors the nesting of its HTML. The ribbon runs through that tree: from the page, through a form, into two reused panels and their fields, each branch ending at the tag in plain HTML that the component brings to life. One continuous line joins the Java side and the markup side, so the visitor sees the whole contract: same tree, same ids, no template language.
+
+**Release information.** One compact element only: the current version and the LTS version with a link to all release lines and support, plus a temporary notice that 8.x and 9.x are out of service with a link to the upgrade path. The release tree, the release table and the upgrade paths leave the homepage.
+
+**Order.** What Wicket is and how it works (photo hero with the lockup, then the component-tree ribbon) → why Wicket → proof that it lasts (twenty years, Apache, Built with Wicket) → get started (quick start, Maven dependency) → news.
