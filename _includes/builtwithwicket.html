@@ -23,7 +23,9 @@
                 if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
                 if (!name) name = 'this project';
                 var image = post['photo-url-500'];
-                if (image.charAt(0) === '/') image = '{{ site.baseurl }}' + image;
+                // Root-relative paths get the baseurl, unless a preview build already added it.
+                var base = '{{ site.baseurl }}';
+                if (image.charAt(0) === '/' && image.indexOf(base + '/') !== 0) image = base + image;
                 $('.builtwithwicket-slider').append(
                     $('<div class="builtwithwicket-post">').append(
                         $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
