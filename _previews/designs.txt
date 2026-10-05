@@ -11,6 +11,7 @@
 # Run _previews/publish.sh to build all designs and push the gh-pages branch.
 
 departure-board | dashorst/departure-board | site | The departure board | October 2026 | Station hall with a departure board of release lines, built for Wicket 11.0 and the quarterly release model.
+reveal-site | dashorst/reveal | site | The reveal | October 2026 | The reveal as a complete site: monochrome with Wicket orange, a homepage that builds a page's component tree step by step, and every page restyled.
 grid | dashorst/directions:.impeccable/directions/grid | static | Sketch: grid system | October 2026 | Homepage sketch in the Swiss International Typographic Style: a module grid with one committed field colour.
 drawing | dashorst/directions:.impeccable/directions/drawing | static | Sketch: drawing sheet | October 2026 | Homepage sketch as an engineering drawing: Wicket drawn as a part in two views, releases in the revision table.
 reveal | dashorst/directions:.impeccable/directions/reveal | static | Sketch: reveal | October 2026 | Monochrome with Wicket orange, after vercel.com/eve: scroll through seven steps that build a page's component tree in real code.
