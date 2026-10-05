@@ -1,4 +1,4 @@
-# Release lines shown on the departure board (homepage and download page).
+# Release lines shown on the release board (homepage and download page).
 #
 # On release day:
 #   - set `status` of the released line to `current` (or `lts`)

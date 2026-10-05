@@ -1,0 +1,18 @@
+# The "what's new" strip under the homepage hero: a few short headlines, each a link.
+# Change it with each announcement; keep it to about four items.
+#
+# title: the headline
+# url:   a path on this site (starting with /), an anchor on the homepage (#new),
+#        or a full URL
+
+- title: Wicket 11 released
+  url: "#new"
+
+- title: Wicket 10 now LTS
+  url: /start/wicket-10.x.html
+
+- title: Wicket 8 and 9 discontinued
+  url: /start/download.html#upgrade-paths
+
+- title: A new release schedule
+  url: /news/2026/09/11/release-cadence.html

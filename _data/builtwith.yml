@@ -1,0 +1,28 @@
+# "Built with Wicket" on the homepage: applications whose teams submitted them to
+# the Built with Wicket feed. Only list projects that submitted themselves.
+#
+# feed / submit: the links under the names
+# names: name of the application or organisation, and what it is (`what`)
+
+feed: https://builtwithwicket.tumblr.com
+submit: https://builtwithwicket.tumblr.com/submit
+
+names:
+  - name: ING Germany
+    what: internet banking
+  - name: ATLAS experiment at CERN
+    what: controls and configuration
+  - name: Air Tahiti
+    what: airline web app
+  - name: Stellantis
+    what: media libraries
+  - name: Coface
+    what: credit insurance
+  - name: Ipsos
+    what: survey rewards community
+  - name: New Zealand Treasury
+    what: e-recruitment
+  - name: OneDev
+    what: open source git server
+  - name: ConSol CM
+    what: web client

@@ -1,0 +1,111 @@
+{% comment %}
+  The release board. Reads _data/releases.yml and the versions in _config.yml.
+  Parameters:
+    compact = true for the homepage: the lines in service, the next releases (those sharing the
+              earliest `when`, plus the next new LTS line) and the lines out of service, which
+              link to `upgrade` (an anchor or URL). Without it: the full table of all lines.
+    heading = h2 | h3 (default h2 in full mode, h3 in compact mode)
+    title   = default "Release lines"
+{% endcomment %}
+{%- assign releases = site.data.releases -%}
+{%- assign title = include.title | default: 'Release lines' -%}
+{%- assign eol_lines = releases.lines | where: 'status', 'eol' -%}
+{%- assign next_when = '' -%}
+{%- assign in_service = ',' -%}
+{%- for line in releases.lines -%}
+    {%- if line.status == 'boarding' or line.status == 'scheduled' -%}
+        {%- if next_when == '' %}{% assign next_when = line.when %}{% endif -%}
+    {%- elsif line.status != 'eol' -%}
+        {%- assign in_service = in_service | append: line.series | append: ',' -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- comment %} The next LTS line: the first upcoming LTS release that does not belong to a line in service. {% endcomment -%}
+{%- assign next_lts = '' -%}
+{%- for line in releases.lines -%}
+    {%- assign key = ',' | append: line.series | append: ',' -%}
+    {%- if line.service == 'lts' and line.status == 'scheduled' or line.service == 'lts' and line.status == 'boarding' -%}
+        {%- unless in_service contains key %}{% assign next_lts = line.series %}{% break %}{% endunless -%}
+    {%- endif -%}
+{%- endfor -%}
+{%- if include.compact -%}
+{%- assign heading = include.heading | default: 'h3' -%}
+<aside class="board" aria-labelledby="board-title">
+    <{{ heading }} id="board-title">{{ title }}</{{ heading }}>
+    <table>
+        {%- for group in (1..3) %}
+        {%- if group == 3 and eol_lines.size == 0 %}{% continue %}{% endif %}
+        <tbody>
+            <tr class="grp"><th colspan="3" scope="rowgroup">{% case group %}{% when 1 %}In service{% when 2 %}Next{% else %}Out of service{% endcase %}</th></tr>
+            {%- if group == 3 %}
+            {%- assign first_eol = eol_lines | first %}
+            <tr class="ended"><th scope="row">{% for line in eol_lines %}<span class="v">{{ line.series }}.x</span>{% unless forloop.last %}, {% endunless %}{% endfor %}</th><td>{{ first_eol.support | downcase }}</td><td class="d">{% if include.upgrade %}<a href="{{ include.upgrade }}">How to upgrade</a>{% endif %}</td></tr>
+            {%- else %}
+            {%- for line in releases.lines %}
+                {%- assign line_group = 1 %}
+                {%- if line.status == 'boarding' or line.status == 'scheduled' %}{% assign line_group = 2 %}{% endif %}
+                {%- if line.status == 'eol' %}{% assign line_group = 3 %}{% endif %}
+                {%- if line_group != group %}{% continue %}{% endif %}
+                {%- if line_group == 2 and line.when != next_when and line.series != next_lts %}{% continue %}{% endif %}
+                {%- if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
+                {%- assign support = line.support | split: ', ' %}
+            <tr><th scope="row"><span class="v">{{ version }}</span>{% if line.service == 'lts' %} <abbr title="Long-term support">LTS</abbr>{% endif %}</th><td>{% if group == 1 %}{{ line.role | downcase }}{% endif %}</td><td class="d">{% if group == 1 %}{{ support[0] | downcase }}{% if support[1] %} <span>{{ support[1] }}</span>{% endif %}{% else %}<span>{{ line.when }}</span>{% endif %}</td></tr>
+            {%- endfor %}
+            {%- endif %}
+        </tbody>
+        {%- endfor %}
+    </table>
+    <p class="board-all"><a href="{{ site.baseurl }}/start/download.html">All release lines</a></p>
+</aside>
+{%- else -%}
+{%- assign heading = include.heading | default: 'h2' -%}
+<section class="board-full" aria-labelledby="board-title">
+    <div class="board-head">
+        <{{ heading }} id="board-title">{{ title }}</{{ heading }}>
+        <p>A long-term support release every year for production. A major release with new features every quarter.</p>
+    </div>
+    <table class="board-table">
+        <caption class="visually-hidden">Apache Wicket release lines: when they arrive, how long they are supported, and their status</caption>
+        <thead>
+            <tr>
+                <th scope="col">Release</th>
+                <th scope="col">Service</th>
+                <th scope="col">When</th>
+                <th scope="col">Supported</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        {%- for group in (1..3) %}
+        {%- if group == 3 and eol_lines.size == 0 %}{% continue %}{% endif %}
+        <tbody class="board-group">
+            <tr class="grp"><th scope="rowgroup" colspan="5">{% case group %}{% when 1 %}In service{% when 2 %}Next{% else %}Out of service{% endcase %}</th></tr>
+            {%- for line in releases.lines %}
+                {%- assign line_group = 1 %}
+                {%- if line.status == 'boarding' or line.status == 'scheduled' %}{% assign line_group = 2 %}{% endif %}
+                {%- if line.status == 'eol' %}{% assign line_group = 3 %}{% endif %}
+                {%- if line_group != group %}{% continue %}{% endif %}
+                {%- if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
+            <tr class="is-{{ line.status }}">
+                <th scope="row" class="b-release" data-label="Release">{% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">{% endif %}<span class="v">{{ version }}</span>{% if line.page %}</a>{% endif %}</th>
+                <td class="b-service" data-label="Service">{% case line.service %}{% when 'lts' %}<abbr title="Long-term support">LTS</abbr>{% when 'quarterly' %}Quarterly{% else %}Major{% endcase %}</td>
+                <td class="b-when" data-label="When">{{ line.when }}</td>
+                <td class="b-support" data-label="Supported">{{ line.support }}</td>
+                <td class="b-status" data-label="Status">
+                    {%- if line.role %}<span class="status is-live">{{ line.role }}</span>{% else %}
+                    {%- case line.status %}
+                    {%- when 'boarding' %}<span class="status is-next">Next</span>
+                    {%- when 'scheduled' %}<span class="status">Scheduled</span>
+                    {%- when 'current' or 'lts' %}<span class="status is-live">In service</span>
+                    {%- when 'last-call' %}<span class="status">Final release</span>
+                    {%- when 'superseded' %}<span class="status">Superseded</span>
+                    {%- when 'eol' %}<span class="status is-eol">End of life</span>
+                    {%- endcase %}
+                    {%- endif -%}
+                </td>
+            </tr>
+            {%- endfor %}
+        </tbody>
+        {%- endfor %}
+    </table>
+    <p class="board-all"><a href="{{ site.baseurl }}/start/download.html#upgrade-paths">Upgrade paths</a> <a href="{{ site.baseurl }}/start/download.html#release-policy">How the release schedule works</a></p>
+</section>
+{%- endif -%}

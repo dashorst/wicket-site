@@ -1,0 +1,144 @@
+{% comment %}
+  Wicket in detail: seven steps, each adding code and one branch to the component tree of OrderPage.
+  Without JavaScript, under reduced motion and on narrow screens every step shows its own code and tree.
+  With JavaScript on a wide screen, reveal.js copies the code into the sticky stage beside the steps.
+  The stage tree lists every node once: data-from and data-until are the steps in which a node is
+  shown, data-hl the steps in which it is highlighted besides the step that adds it.
+{% endcomment %}
+<section class="reveal" id="how" aria-labelledby="how-title">
+  <header class="sec-head reveal-head">
+    <h2 id="how-title">A page is a tree of components</h2>
+    <p>Wicket is component oriented and renders on the server. Build one small order page in seven steps: each adds a few lines of plain Java or HTML, and one branch to the page&rsquo;s component tree.</p>
+  </header>
+
+  <div class="reveal-body">
+    <ol class="steps">
+<li class="step" id="step-1" data-step="1">
+  <div class="step-text">
+    <h3><span class="step-n">01</span> Start with plain HTML</h3>
+    <p>A page begins as an HTML file. The <code>wicket:id</code> attribute marks the tag a component will render. There is no template language: the file stays HTML that any editor or browser opens.</p>
+  </div>
+  <figure class="step-fig" data-caption="One tag waits for its component.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 1</p>
+      <ul class="tree mini"><li class="n root on"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.html</p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;html</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;body</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;p</span> <span class="at">wicket:id</span>=<span class="w">"message"</span><span class="t">&gt;</span>Message<span class="t">&lt;/p</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;/body</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;/html</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-2" data-step="2">
+  <div class="step-text">
+    <h3><span class="step-n">02</span> Give the tag a component</h3>
+    <p>Behaviour lives in a Java class with the same name. <code>add(...)</code> puts a <code>Label</code> into the page&rsquo;s tree under the id <code>"message"</code>, and Wicket renders it into the matching tag.</p>
+  </div>
+  <figure class="step-fig" data-caption="Label &lt;code&gt;&quot;message&quot;&lt;/code&gt; renders &lt;code&gt;&amp;lt;p wicket:id=&quot;message&quot;&amp;gt;&lt;/code&gt;.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 2</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n on last"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln"><span class="k">public</span> <span class="k">class</span> OrderPage <span class="k">extends</span> WebPage {</span><span class="ln">    <span class="k">public</span> OrderPage() {</span><span class="ln new">        add(<span class="k">new</span> Label(<span class="w">"message"</span>,</span><span class="ln new">            <span class="s">"Check both addresses."</span>));</span><span class="ln">    }</span><span class="ln">}</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-3" data-step="3">
+  <div class="step-text">
+    <h3><span class="step-n">03</span> Add a form with fields</h3>
+    <p>Components nest the way tags do. The form is a child of the page; the text fields and the button are children of the form. A <code>CompoundPropertyModel</code> binds each field to the property with its id.</p>
+  </div>
+  <figure class="step-fig" data-caption="A form with two text fields and a button.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 3</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln new">Form&lt;Address&gt; form = <span class="k">new</span> Form&lt;&gt;(<span class="w">"order"</span>,</span><span class="ln new">    <span class="k">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="ln new">form.add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"street"</span>));</span><span class="ln new">form.add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"city"</span>));</span><span class="ln new">form.add(<span class="k">new</span> Button(<span class="w">"save"</span>));</span><span class="ln new">add(form);</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">body</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;p</span> <span class="at">wicket:id</span>=<span class="w">"message"</span><span class="t">&gt;</span>Message<span class="t">&lt;/p</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;form</span> <span class="at">wicket:id</span>=<span class="w">"order"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"street"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"city"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;button</span> <span class="at">wicket:id</span>=<span class="w">"save"</span><span class="t">&gt;</span>Save<span class="t">&lt;/button</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;/form</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-4" data-step="4">
+  <div class="step-text">
+    <h3><span class="step-n">04</span> Reuse a panel, twice</h3>
+    <p>Move the fields into <code>AddressPanel</code>: a Java class with its own markup inside <code>&lt;wicket:panel&gt;</code>. The form uses it twice, for billing and for shipping, and the same branch grows under each.</p>
+  </div>
+  <figure class="step-fig" data-caption="One &lt;code&gt;AddressPanel&lt;/code&gt; class, two instances in the tree.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 4</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">AddressPanel.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="AddressPanel.java"><code><span class="ln new"><span class="k">public</span> <span class="k">class</span> AddressPanel <span class="k">extends</span> Panel {</span><span class="ln new">    <span class="k">public</span> AddressPanel(String id,</span><span class="ln new">            IModel&lt;Address&gt; address) {</span><span class="ln new">        <span class="k">super</span>(id,</span><span class="ln new">            <span class="k">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="ln new">        add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"street"</span>));</span><span class="ln new">        add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"city"</span>));</span><span class="ln new">    }</span><span class="ln new">}</span></code></pre></div>
+<div class="file"><p class="fname">AddressPanel.html</p><pre class="code" data-lang="html" tabindex="0" aria-label="AddressPanel.html"><code><span class="ln new"><span class="t">&lt;wicket:panel</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"street"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"city"</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;/wicket:panel</span><span class="t">&gt;</span></span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln">Form&lt;Void&gt; form = <span class="k">new</span> Form&lt;&gt;(<span class="w">"order"</span>);</span><span class="ln new">form.add(<span class="k">new</span> AddressPanel(<span class="w">"billing"</span>, billingAddress));</span><span class="ln new">form.add(<span class="k">new</span> AddressPanel(<span class="w">"shipping"</span>, shippingAddress));</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">form</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln new"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"billing"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"shipping"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-5" data-step="5">
+  <div class="step-text">
+    <h3><span class="step-n">05</span> Update it from Java</h3>
+    <p>Wicket renders on the server and keeps the page&rsquo;s state there, in this tree. A click on the <code>AjaxLink</code> runs <code>onClick</code> in Java; <code>target.add(shipping)</code> re-renders only that panel and Wicket swaps it into the page. You write no JavaScript.</p>
+  </div>
+  <figure class="step-fig" data-caption="The link re-renders the shipping branch, nothing else.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 5</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln">AddressPanel shipping =</span><span class="ln">    <span class="k">new</span> AddressPanel(<span class="w">"shipping"</span>, shippingAddress);</span><span class="ln new">shipping.setOutputMarkupPlaceholderTag(<span class="k">true</span>);</span><span class="ln new">shipping.setVisible(<span class="k">false</span>);</span><span class="ln">form.add(shipping);</span><span class="ln"> </span><span class="ln new">form.add(<span class="k">new</span> AjaxLink&lt;Void&gt;(<span class="w">"shipElsewhere"</span>) {</span><span class="ln new">    <span class="a">@Override</span></span><span class="ln new">    <span class="k">public</span> <span class="k">void</span> onClick(AjaxRequestTarget target) {</span><span class="ln new">        shipping.setVisible(!shipping.isVisible());</span><span class="ln new">        target.add(shipping);</span><span class="ln new">    }</span><span class="ln new">});</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">form</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"billing"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;a</span> <span class="at">wicket:id</span>=<span class="w">"shipElsewhere"</span><span class="t">&gt;</span>Ship to another address<span class="t">&lt;/a</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"shipping"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-6" data-step="6">
+  <div class="step-text">
+    <h3><span class="step-n">06</span> Test it without a browser</h3>
+    <p><code>WicketTester</code> renders the page in a plain unit test: no browser, no container. It finds components by their path in the tree, clicks the Ajax link and checks what came back.</p>
+  </div>
+  <figure class="step-fig" data-caption="Test paths are tree paths: &lt;code&gt;order:shipping&lt;/code&gt;.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 6</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPageTest.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPageTest.java"><code><span class="ln new">WicketTester tester =</span><span class="ln new">    <span class="k">new</span> WicketTester(<span class="k">new</span> MyApplication());</span><span class="ln new">tester.startPage(OrderPage.<span class="k">class</span>);</span><span class="ln new">tester.assertLabel(<span class="w">"message"</span>, <span class="s">"Check both addresses."</span>);</span><span class="ln new">tester.assertInvisible(<span class="w">"order:shipping"</span>);</span><span class="ln new"> </span><span class="ln new">tester.clickLink(<span class="w">"order:shipElsewhere"</span>);</span><span class="ln new">tester.assertVisible(<span class="w">"order:shipping"</span>);</span><span class="ln new">tester.assertComponentOnAjaxResponse(<span class="w">"order:shipping"</span>);</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-7" data-step="7">
+  <div class="step-text">
+    <h3><span class="step-n">07</span> Secure by default</h3>
+    <p>Wicket supports a strict Content Security Policy without <code>unsafe-inline</code> and adds a nonce to every header contribution, the Ajax link&rsquo;s script included. You only add what your application needs.</p>
+  </div>
+  <figure class="step-fig" data-caption="Every header contribution from this tree gets a nonce.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 7</p>
+      <ul class="tree mini"><li class="n root on"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">MyApplication.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="MyApplication.java"><code><span class="ln"><span class="a">@Override</span></span><span class="ln"><span class="k">protected</span> <span class="k">void</span> init() {</span><span class="ln">    <span class="k">super</span>.init();</span><span class="ln new">    <span class="c">// CSP is on by default; allow one extra image host</span></span><span class="ln new">    getCspSettings().blocking()</span><span class="ln new">        .add(CSPDirective.IMG_SRC,</span><span class="ln new">             <span class="s">"https://images.example.org"</span>);</span><span class="ln">}</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+    </ol>
+
+    <div class="stage" aria-hidden="true">
+      <div class="stage-bar">
+        <span class="stage-title">OrderPage</span>
+        <span class="stage-count"><span class="stage-n">01</span> / 07</span>
+      </div>
+      <div class="stage-grid">
+        <div class="stage-tree">
+          <ul class="tree big"><li class="n root" data-from="1" data-until="99" data-hl="7"><div class="n-in"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n" data-from="2" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></div></li><li class="n" data-from="3" data-until="99" data-hl="6"><div class="n-in"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n" data-from="3" data-until="3" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="3" data-until="3" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li></ul></div></li><li class="n" data-from="5" data-until="99" data-hl="6"><div class="n-in"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl="5 6"><div class="n-in"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li></ul></div></li><li class="n" data-from="3" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></div></li></ul></div></li></ul></div></li></ul>
+          <p class="stage-caption"></p>
+        </div>
+        <div class="stage-code"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="reveal-end">That is the whole model, in a project of your own in a minute: <a class="go" href="{{ site.baseurl }}/start/quickstart.html">Open the quick start</a></p>
+</section>

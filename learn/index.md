@@ -4,19 +4,19 @@ title: Documentation
 subtitle: All the things you want to know about Wicket but are afraid to ask
 preamble: No matter how you want to learn about Wicket, there's something available for you. If you want a quick reference, use the User Guide. If you rather prefer a book, there's a couple waiting for you. And if you rather watch a video or presentation, we have that covered too.
 ---
-<nav class="station-index" aria-label="Documentation">
+<nav class="page-index" aria-label="Documentation">
 <ul>
-    <li><a href="#news"><span class="station-index-label">News</span><span class="station-index-desc">Release announcements and project news</span></a></li>
-    <li><a href="blogs.html"><span class="station-index-label">Blogs</span><span class="station-index-desc">Articles and tutorials from the community</span></a></li>
-    <li><a href="https://cwiki.apache.org/WICKET"><span class="station-index-label">Wiki</span><span class="station-index-desc">The Wicket wiki on Apache Confluence</span></a></li>
-    <li><a href="#guide"><span class="station-index-label">User Guide</span><span class="station-index-desc">The reference guide, from a first page to advanced topics</span></a></li>
-    <li><a href="#javadoc"><span class="station-index-label">API docs</span><span class="station-index-desc">Javadoc for each release line</span></a></li>
-    <li><a href="books/index.html"><span class="station-index-label">Books</span><span class="station-index-desc">Books written about Wicket</span></a></li>
-    <li><a href="#migrations"><span class="station-index-label">Migrations</span><span class="station-index-desc">Guides for moving between major versions</span></a></li>
-    <li><a href="#presentations"><span class="station-index-label">Presentations</span><span class="station-index-desc">Slides and recorded talks</span></a></li>
-    <li><a href="#ides"><span class="station-index-label">IDEs</span><span class="station-index-desc">Support for Wicket in your IDE</span></a></li>
-    <li><a href="#courses"><span class="station-index-label">Online courses</span><span class="station-index-desc">Courses that teach Wicket</span></a></li>
-    <li><a href="#examples"><span class="station-index-label">Support &amp; Examples</span><span class="station-index-desc">Live examples and where to get help</span></a></li>
+    <li><a href="#news"><span class="page-index-label">News</span><span class="page-index-desc">Release announcements and project news</span></a></li>
+    <li><a href="blogs.html"><span class="page-index-label">Blogs</span><span class="page-index-desc">Articles and tutorials from the community</span></a></li>
+    <li><a href="https://cwiki.apache.org/WICKET"><span class="page-index-label">Wiki</span><span class="page-index-desc">The Wicket wiki on Apache Confluence</span></a></li>
+    <li><a href="#guide"><span class="page-index-label">User Guide</span><span class="page-index-desc">The reference guide, from a first page to advanced topics</span></a></li>
+    <li><a href="#javadoc"><span class="page-index-label">API docs</span><span class="page-index-desc">Javadoc for each release line</span></a></li>
+    <li><a href="books/index.html"><span class="page-index-label">Books</span><span class="page-index-desc">Books written about Wicket</span></a></li>
+    <li><a href="#migrations"><span class="page-index-label">Migrations</span><span class="page-index-desc">Guides for moving between major versions</span></a></li>
+    <li><a href="#presentations"><span class="page-index-label">Presentations</span><span class="page-index-desc">Slides and recorded talks</span></a></li>
+    <li><a href="#ides"><span class="page-index-label">IDEs</span><span class="page-index-desc">Support for Wicket in your IDE</span></a></li>
+    <li><a href="#courses"><span class="page-index-label">Online courses</span><span class="page-index-desc">Courses that teach Wicket</span></a></li>
+    <li><a href="#examples"><span class="page-index-label">Support &amp; Examples</span><span class="page-index-desc">Live examples and where to get help</span></a></li>
 </ul>
 </nav>
 
@@ -98,12 +98,12 @@ Wicket's API. We have done our best to document all the changes and
 provide migration paths between the different Wicket versions.
 
 Here's a list of the migration guides:
-<nav class="station-index" aria-label="Migration guides">
+<nav class="page-index" aria-label="Migration guides">
 <ul>
-    <li><a href="https://s.apache.org/wicket10migration"><span class="station-index-label">Wicket 10</span><span class="station-index-desc">Migration guide</span></a></li>
-    <li><a href="https://s.apache.org/wicket9migration"><span class="station-index-label">Wicket 9</span><span class="station-index-desc">Migration guide</span></a></li>
-    <li><a href="https://s.apache.org/wicket8migration"><span class="station-index-label">Wicket 8</span><span class="station-index-desc">Migration guide</span></a></li>
-    <li><a href="https://s.apache.org/wicket7migrate"><span class="station-index-label">Wicket 7</span><span class="station-index-desc">Migration guide</span></a></li>
+    <li><a href="https://s.apache.org/wicket10migration"><span class="page-index-label">Wicket 10</span><span class="page-index-desc">Migration guide</span></a></li>
+    <li><a href="https://s.apache.org/wicket9migration"><span class="page-index-label">Wicket 9</span><span class="page-index-desc">Migration guide</span></a></li>
+    <li><a href="https://s.apache.org/wicket8migration"><span class="page-index-label">Wicket 8</span><span class="page-index-desc">Migration guide</span></a></li>
+    <li><a href="https://s.apache.org/wicket7migrate"><span class="page-index-label">Wicket 7</span><span class="page-index-desc">Migration guide</span></a></li>
 </ul>
 </nav>        
 

@@ -2,201 +2,62 @@
 layout: home
 title:
 pageclasses: index
-additionalContents:
-  -
-   header: builtwithwicket--header.html
 ---
-<div class="home-arrivals">
-    <div class="home-arrivals-inner">
-        {% assign upgrade_url = site.baseurl | append: '/start/download.html#upgrade-paths' %}
-        {% include departures.html heading="h1" compact=true upgrade=upgrade_url lede="A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain." %}
+{% assign featured = site.data.releases.featured %}
+<section class="hero" aria-labelledby="title">
+    <h1 class="lockup" id="title">
+        <img class="lockup-mark" src="{{ site.baseurl }}/img/logo-apachewicket-mark.svg" alt="" width="64" height="64">
+        <span class="lockup-name">Apache Wicket</span>
+        <span class="lockup-v"><span class="vh">, version </span>{{ featured }}</span>
+    </h1>
+    <p class="definition">A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain.</p>
+    {% include install.html %}
+</section>
 
-        <aside class="ticket" aria-labelledby="ticket-title">
-            <div class="ticket-main">
-                <h2 id="ticket-title" class="ticket-title">Start a project</h2>
-                <p>Generate a ready-to-run Maven project with the quick start, or add Wicket to the build you already have.</p>
-                <a class="button ticket-action" href="{{ site.baseurl }}/start/quickstart.html">Open the quick start</a>
-            </div>
-            <div class="ticket-stub">
-                <h3 class="ticket-stub-title">Maven dependency</h3>
-                {% comment %} One snippet per line in service. Only the first is shown in full: the others differ only in their version and copy their own snippet. {% endcomment %}
-                {% assign shown = false %}
-                {% for line in site.data.releases.lines %}{% unless line.status == 'lts' or line.status == 'current' %}{% continue %}{% endunless %}{% assign v = site.wicket[line.config] %}
-                <div class="ticket-snippet">
-                    <div class="ticket-stub-head">
-                        <p class="ticket-snippet-label"><strong>{{ v }}</strong>{% if line.service == 'lts' %} <span class="plate plate-lts" title="Long-term support">LTS</span>{% endif %} {{ line.role | downcase }}</p>
-                        <button type="button" class="ticket-copy" data-copy="#maven-{{ line.series }}" aria-label="Copy the {{ v }} dependency" hidden>Copy</button>
-                    </div>
-<pre class="ticket-code"{% if shown %} hidden{% endif %}><code id="maven-{{ line.series }}">&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
-    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
-    &lt;version&gt;{{ v }}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-                </div>
-                {% assign shown = true %}
-                {% endfor %}
-                <ul class="ticket-links">
-                    <li><a href="{{ site.baseurl }}/start/download.html">Source and binary downloads</a></li>
-                    <li><a href="{{ site.baseurl }}/start/download.html#upgrade-paths">Upgrading from an earlier version</a></li>
-                </ul>
-            </div>
-        </aside>
+{% comment %} What's new: the headlines live in _data/news_strip.yml. {% endcomment %}
+<section class="strip" aria-label="What's new">
+    <div class="strip-in">
+        <p class="strip-news">{% for item in site.data.news_strip %}{% assign first = item.url | slice: 0 %}<a href="{% if first == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a>{% endfor %}</p>
     </div>
-</div>
+</section>
 
-<section class="route" aria-labelledby="route-title">
-    <header class="route-head">
-        <h2 id="route-title">Why Wicket</h2>
-        <p>Wicket is a component-oriented, server-side Java web framework. Open source since 2004 and developed at the Apache Software Foundation, it powers long-lived applications that need complex, dynamic pages without a JavaScript build chain.</p>
-    </header>
+{% include home-reveal.html %}
 
-    <ol class="route-stops">
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Plain Java and plain HTML</h3>
-                <p>Markup stays HTML that opens in any editor. Behaviour lives in Java. A <code>wicket:id</code> attribute binds a tag to a component, and that is the whole contract: no template language, no JavaScript toolchain.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">HelloWorld.html</p>
-{% highlight html %}
-<h1 wicket:id="message">Message goes here</h1>
-{% endhighlight %}
-                <p class="route-file">HelloWorld.java</p>
-{% highlight java %}
-public class HelloWorld extends WebPage {
-    public HelloWorld() {
-        add(new Label("message", "Hello World!"));
-    }
-}
-{% endhighlight %}
-            </div>
-        </li>
-
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Components for complex pages</h3>
-                <p>Pages and components are real Java objects with encapsulation, inheritance and events. Build a panel once, with its own markup, styles and scripts, and reuse it on every page, or ship a whole component library as a JAR.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">AddressPanel.java</p>
-{% highlight java %}
-public class AddressPanel extends Panel {
-    public AddressPanel(String id, IModel<Address> address) {
-        super(id, new CompoundPropertyModel<>(address));
-        add(new TextField<String>("street"));
-        add(new TextField<String>("city"));
-    }
-}
-
-// one component, used twice on the same form
-form.add(new AddressPanel("billing", billingAddress));
-form.add(new AddressPanel("shipping", shippingAddress));
-{% endhighlight %}
-            </div>
-        </li>
-
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Ajax without writing JavaScript</h3>
-                <p>Update parts of a page from Java. Wicket's Ajax components re-render only the components you add to the request, and come with a solid set of building blocks.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">CounterPage.java</p>
-{% highlight java %}
-Label count = new Label("count", () -> clicks);
-add(count.setOutputMarkupId(true));
-
-add(new AjaxLink<Void>("increment") {
-    @Override
-    public void onClick(AjaxRequestTarget target) {
-        clicks++;
-        target.add(count);
-    }
-});
-{% endhighlight %}
-            </div>
-        </li>
-
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Secure by default</h3>
-                <p>Component paths are session-relative and URLs do not expose your model. Wicket supports a strict Content Security Policy without <code>unsafe-inline</code>: every header contribution gets a nonce automatically. You only add what your application needs.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">MyApplication.java</p>
-{% highlight java %}
-@Override
-protected void init() {
-    super.init();
-    // CSP is on by default; allow one extra image host
-    getCspSettings().blocking()
-        .add(CSPDirective.IMG_SRC, "https://images.example.org");
-}
-{% endhighlight %}
-            </div>
-        </li>
-
-        <li class="route-stop">
-            <div class="route-text">
-                <h3>Tested without a browser</h3>
-                <p>WicketTester renders pages and components in a plain unit test: no browser, no container. Check the rendered markup, click links, submit forms.</p>
-            </div>
-            <div class="route-code">
-                <p class="route-file">HelloWorldTest.java</p>
-{% highlight java %}
-WicketTester tester = new WicketTester(new MyApplication());
-tester.startPage(HelloWorld.class);
-tester.assertLabel("message", "Hello World!");
-{% endhighlight %}
-            </div>
-        </li>
-    </ol>
-
-    <div class="route-also">
-        <h3>Also included</h3>
-        <dl>
-            <div><dt>Internationalized</dt><dd>Over 25 languages out of the box, with translations per application, page or component.</dd></div>
-            <div><dt>Many tabs, one session</dt><dd>Automatic page state storage lets users open pages in new tabs and windows safely.</dd></div>
-            <div><dt>Dependency injection</dt><dd>Integrations for CDI, Spring and Guice.</dd></div>
-            <div><dt>Jakarta EE</dt><dd>Use JPA, EJB, Bean Validation and CDI through Wicket's integrations.</dd></div>
-            <div><dt>Your JavaScript and CSS</dt><dd>Global libraries mix cleanly with component-local resources.</dd></div>
-            <div><dt>Apache License 2.0</dt><dd>One of the most permissive open source licenses, since day one.</dd></div>
+<section class="stable" id="stable" aria-labelledby="stable-title">
+    <div class="stable-text">
+        <header class="sec-head">
+            <h2 id="stable-title">Stable since 2004</h2>
+            <p>Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one you just used.</p>
+        </header>
+        <dl class="facts">
+            <div><dt>An Apache project</dt><dd>Developed in the open at the Apache Software Foundation by a community of volunteers, under the Apache License&nbsp;2.0.</dd></div>
+            <div><dt>A stable API</dt><dd>Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</dd></div>
+            <div><dt>Long-term support</dt><dd>Every fourth major release is an LTS, supported until the next LTS. At most two release lines are maintained at once.</dd></div>
+            <div><dt>Migration recipes</dt><dd>OpenRewrite recipes in <code>wicket-migration</code> take care of the mechanical part of an upgrade.</dd></div>
         </dl>
     </div>
+    {% assign upgrade_url = site.baseurl | append: '/start/download.html#upgrade-paths' %}
+    {% include release-board.html compact=true upgrade=upgrade_url %}
 </section>
 
-<section class="builtwithwicket" id="builtwithwicket" aria-labelledby="bww-title">
-    {% include builtwithwicket.html %}
-</section>
-
-{% assign featured = site.data.releases.featured %}
-<section class="home-new" aria-labelledby="new-title">
-    <header class="home-new-head">
-        <div class="home-new-title">
-            <h2 id="new-title">New in Wicket {{ featured }}</h2>
-            <a class="home-new-more" href="{{ site.baseurl }}/start/wicket-{{ featured }}.x.html">Everything about Wicket {{ featured }}</a>
-        </div>
-        <p>{{ site.data.highlights[featured].intro }}</p>
+<section class="new11" id="new" aria-labelledby="new-title">
+    <header class="sec-head">
+        <h2 id="new-title">New in Wicket {{ featured }}</h2>
+        <p><a href="{{ site.baseurl }}/start/wicket-{{ featured }}.x.html">Everything about Wicket {{ featured }}</a></p>
     </header>
     {% include highlights.html home=true %}
 </section>
 
-
-<section class="announcements" aria-labelledby="announcements-title">
-    <div class="announcements-head">
-        <h2 id="announcements-title">Announcements</h2>
-        <p class="announcements-links"><a href="{{ site.baseurl }}/news">News archive</a> <a type="application/atom+xml" href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
-    </div>
-    <ol class="announcements-list">
-    {% for post in site.posts limit:5 %}
-        <li>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
-            <div>
-                <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-                {% if forloop.first %}<p>{{ post.excerpt | strip_html | truncatewords: 45 }}</p>{% endif %}
-            </div>
-        </li>
+{% comment %} Names from the Built with Wicket feed, kept in _data/builtwith.yml. {% endcomment %}
+<section class="built" id="built" aria-labelledby="built-title">
+    <header class="sec-head">
+        <h2 id="built-title">Built with Wicket</h2>
+        <p>Teams that submitted their application to the Built with Wicket feed.</p>
+    </header>
+    <ul class="names">
+    {% for item in site.data.builtwith.names %}
+        <li>{{ item.name }} <span>{{ item.what }}</span></li>
     {% endfor %}
-    </ol>
+    </ul>
+    <p class="built-links"><a href="{{ site.data.builtwith.feed }}" rel="nofollow">More on Built with Wicket</a> <a href="{{ site.data.builtwith.submit }}" rel="nofollow">Submit your project</a></p>
 </section>
-

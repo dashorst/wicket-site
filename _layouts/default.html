@@ -3,41 +3,23 @@ layout: base
 ---
 {% include mainmenu.html %}
 {% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
-<div class="page-sign">
-    <div class="page-sign-inner">
-        <h1>{{ page.title }}</h1>
-        {% if page.subtitle %}<p class="page-sign-sub">{{ page.subtitle }}</p>{% endif %}
-    </div>
-</div>
+{% include page-head.html %}
 <main id="main" tabindex="-1">
     <div class="reading{% if toc != '' %} has-rail{% endif %}">
         {% if toc != '' %}
-        <nav class="reading-rail" aria-label="On this page">
+        <nav class="rail" aria-label="{{ site.contentsLabel }}">
             {{ toc }}
         </nav>
         {% endif %}
         <div class="reading-main">
-            {% if page.titlePicture or page.preamble %}
-            <header class="l-full preamble">
-                {% if page.titlePicture %}
-                    {% assign pictureAttrs = "" %}
-                    {% for prop in page.titlePicture %}
-                       {% for subprop in prop %}
-                         {% capture pictureAttrs %}{{ pictureAttrs }} {{subprop[0]}}="{{subprop[1]}}" {% endcapture %}
-                       {% endfor %}
-                    {% endfor %}
-                <img {{pictureAttrs}}>
-                {% endif %}
-                {% if page.preamble %}<p>{{ page.preamble | markownify }}</p>{% endif %}
-            </header>
-            {% endif %}
+            {% include preamble.html %}
             <section class="page-content">
                 {{ content }}
-{% for item in page.additionalContents %}
+{% for item in page.additionalContents %}{% if item.path %}
                 <article id="{{item.sectionId}}" {% unless item.cssClass == '' %}class="{{item.cssClass}}"{% endunless %}>
                     {% include {{item.path}} %}
                 </article>
-{% endfor %}
+{% endif %}{% endfor %}
             </section>
         </div>
     </div>

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="l-full post">
-    {% if page.date %}<p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>{% endif %}
+<div class="post">
     {{ content }}
+    <p class="post-back"><a href="{{ site.baseurl }}/news/">All news</a> <a type="application/atom+xml" href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
 </div>

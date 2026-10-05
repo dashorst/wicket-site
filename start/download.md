@@ -5,7 +5,7 @@ subtitle: Get the most recent version of Wicket in one source package
 preamble: Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.
 ---
 
-{% include departures.html title="Release lines" %}
+{% include release-board.html %}
 
 If your application is not on a supported line, consider upgrading at your earliest
 convenience. Released lines link to their own download page.
