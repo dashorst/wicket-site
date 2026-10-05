@@ -1,336 +1,345 @@
 ---
 name: Apache Wicket
-description: The project site for Apache Wicket, laid out as a station hall with a departure board of release lines.
+description: The project site for Apache Wicket, told as a reveal - a page is a tree of components, built up step by step in monochrome with Wicket orange as the only accent.
 colors:
-  signal: "#E9752A"
-  signal-deep: "#B4511A"
-  plate: "#FFC72C"
-  stop: "#C8102E"
-  board: "#0D1B3D"
-  board-row: "#13244D"
-  board-rule: "#26386A"
-  board-text: "#FFFFFF"
-  board-dim: "#A9B5D3"
-  hall: "#F4F6F9"
-  paper: "#FFFFFF"
-  ink: "#13203F"
-  ink-soft: "#46536E"
-  rule: "#CDD4DF"
+  wicket-orange: "#ff9925"
+  orange-dim: "rgba(255, 153, 37, .5)"
+  orange-wash: "rgba(255, 153, 37, .12)"
+  ground: "#0c0c0c"
+  surface: "#141414"
+  surface-raised: "#1b1b1b"
+  rule: "#262626"
+  rule-strong: "#3a3a38"
+  ink: "#f3f3f0"
+  ink-2: "#c3c3be"
+  ink-3: "#8c8c87"
+  code-ink: "#d6d6d1"
+  white: "#ffffff"
+  asf-tile: "#f6f6f3"
 typography:
   display:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(2.4rem, 5.2vw, 4.5rem)"
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(2.5rem, 7.2vw, 6rem)"
     fontWeight: 800
-    lineHeight: 0.95
-    letterSpacing: "-0.03em"
+    lineHeight: 1
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4vw, 3rem)"
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(2.25rem, 4.6vw, 4.25rem)"
     fontWeight: 800
-    lineHeight: 1.2
-    letterSpacing: "-0.03em"
+    lineHeight: 1.02
+    letterSpacing: "-0.038em"
   title:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)"
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(1.6rem, 2.4vw, 2.125rem)"
+    fontWeight: 800
+    lineHeight: 1.1
+    letterSpacing: "-0.03em"
+  step-title:
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(1.4rem, 2vw, 1.75rem)"
     fontWeight: 700
-    lineHeight: 1.2
+    lineHeight: 1.15
     letterSpacing: "-0.02em"
+  subtitle:
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "1.3125rem"
+    fontWeight: 700
+    lineHeight: 1.25
+    letterSpacing: "-0.015em"
   lead:
-    fontFamily: "Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(1.15rem, 1.6vw, 1.3rem)"
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(1.15rem, 1.7vw, 1.4rem)"
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.4
   body:
-    fontFamily: "Source Sans Pro, system-ui, sans-serif"
-    fontSize: "1rem"
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
+    fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.6
-  label:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "0.8rem"
-    fontWeight: 600
-    letterSpacing: "0.06em"
-    fontFeature: "\"tnum\" 1"
-  board-figure:
-    fontFamily: "Overpass Mono, Source Code Pro, ui-monospace, monospace"
-    fontSize: "1.35rem"
-    fontWeight: 600
-    fontFeature: "\"tnum\" 1"
-  code:
-    fontFamily: "Source Code Pro, ui-monospace, monospace"
+  small:
+    fontFamily: "Schibsted Grotesk, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.5
+  label-mono:
+    fontFamily: "Red Hat Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "0.8125rem"
+    fontWeight: 500
+    lineHeight: 1.5
+  code:
+    fontFamily: "Red Hat Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.7
+  figure:
+    fontFamily: "Red Hat Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "1.75rem"
+    fontWeight: 500
+    lineHeight: 1.1
 rounded:
-  plate: "0.125rem"
-  panel: "0.313rem"
+  tag: "4px"
+  inline-code: "5px"
+  row: "6px"
+  control: "9px"
+  button: "10px"
+  code-block: "12px"
+  install: "13px"
+  panel: "16px"
+  stage: "18px"
+  pill: "999px"
 spacing:
-  unit: "1rem"
-  gutter: "1rem"
-  gutter-wide: "3rem"
-  panel: "1.5rem"
-  panel-wide: "2.25rem"
-  section: "5rem"
+  page-gutter: "clamp(20px, 4.5vw, 64px)"
+  section: "clamp(96px, 14vh, 168px)"
+  content-max: "1320px"
+  measure: "68ch"
+  reading-max: "54rem"
+  rail-width: "15rem"
+  tree-row: "30px"
+  tree-indent: "20px"
 components:
   button-primary:
-    backgroundColor: "{colors.signal}"
-    textColor: "{colors.board}"
-    typography: "{typography.label}"
-    rounded: "{rounded.plate}"
-    padding: "0.6rem 1rem 0.5rem"
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ground}"
+    typography: "{typography.body}"
+    rounded: "{rounded.button}"
+    padding: "12px 20px"
   button-primary-hover:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-  button-primary-active:
-    backgroundColor: "{colors.board-row}"
-    textColor: "{colors.board-text}"
-  button-neutral:
-    backgroundColor: "transparent"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.6rem 1rem 0.5rem"
-  button-neutral-hover:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-  plate-lts:
-    backgroundColor: "{colors.plate}"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.35em 0.5em 0.25em"
-  status-boarding:
-    backgroundColor: "{colors.signal}"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.2em 0.55em 0.1em"
-  status-last-call:
-    backgroundColor: "transparent"
-    textColor: "{colors.plate}"
-    rounded: "{rounded.plate}"
-    padding: "0.1em 0.45em 0"
-  status-eol:
-    backgroundColor: "{colors.stop}"
-    textColor: "{colors.board-text}"
-    rounded: "{rounded.plate}"
-    padding: "0.2em 0.55em 0.1em"
-  board:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.ground}"
+  button-go:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.button}"
+    padding: "14px 22px"
+  install-box:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.install}"
+    padding: "10px"
+  install-copy:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.ground}"
+    rounded: "{rounded.control}"
+    padding: "10px 15px"
+  segmented-pill:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink-2}"
+    rounded: "{rounded.pill}"
+    padding: "7px 12px"
+  segmented-pill-checked:
+    textColor: "{colors.ink}"
+  field:
+    backgroundColor: "{colors.ground}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "10px 12px"
+  panel:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink-2}"
     rounded: "{rounded.panel}"
-    padding: "2.25rem 2.25rem 1.5rem"
-  ticket:
-    backgroundColor: "{colors.paper}"
+    padding: "22px 24px"
+  reveal-stage:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-    padding: "1.5rem"
-  reading-rail:
-    textColor: "{colors.ink-soft}"
-    width: "14rem"
-  jump-list-entry:
-    backgroundColor: "transparent"
-    textColor: "{colors.board}"
-    padding: "0.75rem 0 0.8rem"
-  station-header:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    height: "4.25rem"
-  page-sign:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    padding: "3.5rem 3rem 2.75rem"
-  table-head:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    padding: "0.6rem 0.75rem 0.45rem"
-  input-wizard:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
+    rounded: "{rounded.stage}"
+  code-block:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.code-ink}"
     typography: "{typography.code}"
-    rounded: "{rounded.plate}"
-    height: "2.5rem"
-  code-inline:
-    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.code-block}"
+    padding: "18px 20px"
+  inline-code:
+    backgroundColor: "{colors.surface-raised}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.plate}"
-    padding: "0.05em 0.3em"
+    rounded: "{rounded.inline-code}"
+    padding: ".08em .36em"
+  status-tag:
+    textColor: "{colors.ink-2}"
+    rounded: "{rounded.tag}"
+    padding: "0 6px"
+  tree-row-active:
+    textColor: "{colors.wicket-orange}"
+    rounded: "{rounded.row}"
+    height: "{spacing.tree-row}"
+  asf-tile:
+    backgroundColor: "{colors.asf-tile}"
+    rounded: "{rounded.button}"
+    padding: "12px 16px"
 ---
 
 # Design System: Apache Wicket
 
 ## Overview
 
-**Creative North Star: "The Departure Board"**
+**Creative North Star: "The Component Tree, Revealed"**
 
-The site is a European railway station. A pale station-hall ground carries deep night-blue board panels with white tabular rows; the release lines are trains on that board, departing on a timetable (a quarterly major, a yearly long-term-support intercity). Every page arrives under a night-blue signage band, and reading pages open with a platform sign carrying the page title. Information is set the way a timetable sets it: ruled rows, tabular figures, short heavy labels, no ornament that a station would not hang.
+The site is a dark, code-led reading room in which every surface explains one idea: a Wicket page is a tree of components. The homepage builds that tree in front of the reader. Seven numbered steps each add a few lines of real Java or HTML, and a sticky stage beside them grows one branch of the tree per step, with the new lines and the new node lit in orange. The rest of the site reuses that tree as its wayfinding: the reading rail on sub pages hangs the page's sections on the same orange elbow lines, and the section in view lights up exactly like a node a reveal step adds.
 
-Density is timetable density: rows are compact and ruled with 1px lines, while the sections between them breathe (5rem between home sections). Colour is spent by function, as signage spends it. Wicket orange means "now", signage yellow sits on plates, red means a cancelled line. The light hall and the dark board are the only two grounds; everything else is lettering, rules and plates.
+The world is monochrome. A near-black ground carries warm off-white and grey ink in three steps, separated by one-pixel rules rather than boxes or shadows. Wicket orange, the colour of the registered mark, is the only hue on any page, and it is spent on meaning: the mark, the tree line, the active or checked state, and the underline of every link. Type is one grotesque at heavy weights for headings and calm regular weight for reading, with a monospace for code, versions, dates and small structural labels. Density is generous on the homepage (tall section spacing, display-sized lockup) and tight and tabular on reference pages (release board, upgrade paths, news archive).
 
-The page refuses the framework-homepage default of headline, code panel and three feature cards. Groups are ruled lists and tables, not card grids.
+The structure follows vercel.com/eve: a centred hero with one install box, then sections that each open with a large two-column head and continue with code, facts or a ruled list. The site stays Markdown-driven: furniture is styled from plain Markdown output and data files, so a volunteer edits text and data, not markup.
 
 **Key Characteristics:**
-- Two grounds: light station hall and night-blue board.
-- Orange marks what is current; yellow marks plates; red marks end of life.
-- Overpass for signage and headings, Source Sans Pro for reading, Overpass Mono for board figures, Source Code Pro for code; tabular numerals in every table and date.
-- Square enamel plates (2px corners), 1px timetable rules, a 4px orange band under the header.
-- One signature motion: version figures flip in once like split-flaps.
+- Near-black ground, three steps of warm grey ink, one-pixel rules for structure.
+- Wicket orange as the single accent, carrying meaning only (mark, tree line, active state, link underline).
+- The component tree with orange elbow connectors as the recurring signature, on the homepage and in every reading rail.
+- Heavy, tightly tracked Schibsted Grotesk headings; Red Hat Mono for code, versions, dates and structural labels.
+- Light primary buttons (ink on dark), never orange buttons.
+- Motion is a reading aid: steps brighten, nodes grow in, new code lines wipe in; all of it disappears under reduced motion.
 
 ## Colors
 
-A night-blue and hall-white signage palette with three functional signal colours.
+A monochrome dark palette with one warm accent taken from the registered mark.
 
 ### Primary
-- **Wicket Signal Orange** (signal): the "now" signal. Primary buttons, the boarding status plate, the boarding row's version, the featured version in the board title, the active navigation underline, the 4px band under the header and above the legal strip, the first stop on the route line, the ticket's top edge. On the board it is legible as text; on light ground it is a fill, not text.
-- **Deep Signal Orange** (signal-deep): orange as text on hall and paper. Body links and link hovers on light ground, where plain signal orange would fail contrast.
-
-### Secondary
-- **Signage Yellow** (plate): platform plates only. The LTS plate, the last-call outline plate, the "In service / Departures / Out of service" group headers on the board, link hovers on board ground, the focus ring and text selection.
-
-### Tertiary
-- **Stop Red** (stop): end of life only. The end-of-life plate and the 2px strike through a cancelled version.
+- **Wicket Orange** (wicket-orange): the registered mark's own fill, and the only hue in the system. Used for the mark, the component-tree connectors of the active branch, the active reveal step number, the active tree node and rail entry, checked segmented controls (as a 1px outline), the select chevron, the focus ring, text selection, the caret, the "live" status dot, link underlines and link hover text.
+- **Orange Dim** (orange-dim): the resting component-tree and rail connector line; also the lighter underline of long title lists in the news archive.
+- **Orange Wash** (orange-wash): the glow behind an active tree row, an active rail entry and newly added code lines, always as a left-to-right gradient fading towards transparent.
 
 ### Neutral
-- **Night Board** (board): the board panel, the header band, the platform sign, the footer, table heads, and the colour of headings and plate lettering on light ground.
-- **Board Row Blue** (board-row): pressed state of the primary button.
-- **Board Rule Blue** (board-rule): 1px rules between board rows, the 2px rule under the board head, the board's 1px edge on the homepage.
-- **Board White** (board-text): lettering on the board and the signage bands.
-- **Board Dim** (board-dim): secondary lettering on the board: column heads, "when" dates, superseded and scheduled lines, the platform-sign subline, footer text.
-- **Station Hall** (hall): the page ground, code ground inside the ticket, the notches cut out of the ticket stub.
-- **Ticket Paper** (paper): raised reading surfaces: the ticket, code blocks, inline code, the upgrade paths table, the "Also included" panel, the legal strip.
-- **Timetable Ink** (ink): body text on hall and paper.
-- **Soft Ink** (ink-soft): secondary text on light ground: intros, dates, descriptions, file names above code.
-- **Timetable Rule** (rule): 1px rules on light ground: table rows, ruled list items, code-block borders, the dashed perforation of the ticket stub.
+- **Ground** (ground): the page background, and the text colour on light buttons.
+- **Surface** (surface): panels that hold code or data: install box, reveal stage and step figures, release board, code blocks, quick start wizard, compact rail on narrow screens.
+- **Raised Surface** (surface-raised): inline code chips and the copied state of a button.
+- **Rule** (rule): the default one-pixel divider (section strip, list rows, table rows, panel borders, footer top).
+- **Strong Rule** (rule-strong): borders of interactive controls (install box, pills, select, fields), tag outlines, table heads, blockquote bar.
+- **Ink** (ink): headings, link text, values that matter (versions, dates in the board, `dt` terms), light button fill.
+- **Ink 2** (ink-2): body text, navigation at rest, captions.
+- **Ink 3** (ink-3): metadata and quiet labels: dates, column heads, mono labels, list markers, the lockup version number, inactive reveal steps.
+- **Code Ink** (code-ink): default text in code blocks; syntax tokens are greys between Ink 3 and White, strings brightest.
+- **White** (white): hover fill of light buttons only.
+- **ASF Tile** (asf-tile): the light tile behind the ASF logo in the footer, so the logo's own colours stay legible on the dark ground.
 
 ### Named Rules
-**The Now Signal Rule.** Orange marks what is current or the one primary action. It is never a decorative accent, a section tint or a background wash.
+**The Orange Is Meaning Rule.** Orange appears only on the mark, the tree line, an active, checked or current state, a focus ring, and the link underline. No orange fills, orange headings, orange backgrounds or orange buttons. Test: every orange pixel on a screen must answer "this is Wicket" or "this is where you are / what is selected / where you can go".
 
-**The Plate Rule.** Signage yellow appears on plates, on board ground, and as the focus ring. It is never body text on the light hall.
+**The Grey Syntax Rule.** Code is highlighted in greys only (keywords and tags mid-grey, strings near-white, comments dim). Orange in code marks a line added by the current step, never a token type.
 
-**The Stop Rule.** Red is reserved for end of life: the red plate and the struck-through version. Nothing else on the site is red.
+**The Light Button Rule.** The primary action is an ink-filled button with ground-coloured text, turning white on hover. Orange is never a button fill.
 
 ## Typography
 
-**Display Font:** Overpass (with Source Sans Pro, system-ui)
-**Body Font:** Source Sans Pro (with system-ui)
-**Label/Mono Font:** Overpass Mono for board figures (with Source Code Pro); Source Code Pro for code
+**Display Font:** Schibsted Grotesk (with system-ui, sans-serif), self-hosted at 400, 400 italic, 500, 700, 800.
+**Body Font:** Schibsted Grotesk.
+**Label/Mono Font:** Red Hat Mono (with ui-monospace, SFMono-Regular, Menlo), self-hosted at 400 and 500.
 
-**Character:** Overpass is highway and station signage lettering: heavy, open, slightly condensed, read at a distance. Source Sans Pro is the timetable's small print, calm at length. All faces are self-hosted.
+**Character:** One grotesque does all the talking: at 800 with tight negative tracking it reads as poster-like headings, at 400 it is a calm reading face. The monospace is the voice of the code and of anything machine-like (versions, dates, file names, step numbers, rail and column labels).
 
 ### Hierarchy
-- **Display** (800, clamp(2.4rem, 4.6vw, 3.75rem), 0.95): the board title only. The version inside it switches to Overpass Mono 700 in signal orange.
-- **Headline** (800, clamp(2rem, 4vw, 3rem), -0.03em): home section heads ("Why Wicket", "New in Wicket 11"). Section headings are plain words; the station metaphor lives in the visual system, not in the names. The platform-sign h1 on reading pages uses the same weight at clamp(2.1rem, 4.5vw, 3.6rem), line-height 1, max 22ch. Secondary section heads (Announcements, Built with Wicket) step down to clamp(1.6rem, 3vw, 2.25rem) over a 2px board rule.
-- **Title** (700, clamp(1.35rem, 2.2vw, 1.75rem), -0.02em): route stops and panels. Base markdown headings run h1 2.25rem/800, h2 1.6rem, h3 1.25rem, h4 1.1rem, all 700, line-height 1.2, balanced wrapping, in board blue.
-- **Lead** (400, clamp(1.15rem, 1.6vw, 1.3rem), 1.55): preambles and section intros, max 62ch.
-- **Body** (400, 15px rising to 17px at 769px, 1.6): reading copy, max 72ch.
-- **Label** (600, 0.8rem, 0.06em, uppercase): board column heads and board group headers only. Navigation, footer links, table heads and dates use Overpass 600 in sentence case.
-- **Board figure** (Overpass Mono 600, 1.35rem): version numbers on the board.
+- **Display** (800, lockup only, tracking -0.04em): the homepage lockup "Apache Wicket 11"; the version number is set at 400 in Ink 3.
+- **Headline** (800): homepage section heads; the page title band uses the same treatment capped at 4rem with line-height 1.03.
+- **Title** (800): h1/h2 inside reading pages.
+- **Step Title** (700): the reveal steps' headings, preceded by a two-digit mono step number at 0.72em.
+- **Subtitle** (700): h3 in reading pages, release highlight titles; homepage cards use 1.1875rem at the same weight.
+- **Lead** (400): the page sub-title under a page heading; the homepage definition runs larger (clamp(1.2rem, 1.9vw, 1.6rem), line-height 1.38, 38ch) and the preamble paragraph smaller in Ink.
+- **Body** (400, line-height 1.6, 1.7 in reading pages, measure 68ch).
+- **Small** (400): metadata, captions, board footers, stage captions.
+- **Label Mono** (500, no case change, no extra tracking): rail title "On this page", file names over code, column heads in the board group rows, news dates.
+- **Figure** (mono 500): large numbers in release-highlight fact rows.
 
 ### Named Rules
-**The Tabular Figures Rule.** Every table, board, date and step number sets `font-variant-numeric: tabular-nums`, so figures line up like a timetable.
+**The Heavy Heading Rule.** Every heading is Schibsted Grotesk at 700 or 800 with negative tracking proportional to size (-0.04em at display down to -0.01em at small heads), balanced wrapping. No light or thin heading weights.
 
-**The Signage Voice Rule.** Overpass carries everything a station would sign (headings, nav, table heads, dates, plates, buttons); Source Sans Pro carries everything a passenger reads at length.
+**The Mono Is Machine Rule.** Monospace is for code and machine values (versions, dates, file names, step numbers) and for small structural labels. Prose never runs in mono.
 
 ## Layout
 
-Content sits in a centred column capped at 82rem with 1.25rem side gutters, widening to 3rem from 960px. Breakpoints are 590px, 769px, 960px, 1152px and 1295px; the legacy Taiga 48-column grid and its layout classes (full, half, one-third and so on) remain in use by Markdown page content and must keep working.
+Content sits in a centred column of at most 1320px with a fluid page gutter (clamp(20px, 4.5vw, 64px)). Homepage sections are separated by a tall fluid gap (clamp(96px, 14vh, 168px)); the footer keeps the same gap above it.
 
-The homepage arrival hall sets the board (8fr) beside the ticket (4fr, at least 19rem), top edges aligned, from 1152px, on a hall ground whose top 7rem continues the night-blue header band behind them. Below 1152px they stack. Below the hall the homepage runs: "Why Wicket" (the route), Built with Wicket as proof that it lasts, the release highlights, then announcements; the upgrade paths live on the download page. Home sections are separated by 5rem (4.5rem for announcements and showcase). Route stops run as a two-column 5/7 split of text and code from 960px. Ruled lists (station index, "Also included") go one, two, then three columns at 769px and 1152px.
+Homepage sections open with a two-column head (headline at 1.15fr, a short paragraph at 0.85fr, bottom-aligned), collapsing to one column below 860px. The reveal uses a 4:9 text-to-figure grid per step in its static form; with JavaScript, a wide screen (1280px and up) and motion allowed it becomes a 3.6:8.4 grid of step texts beside one sticky stage (height min(720px, 100vh - 120px), vertically centred). Below 1280px, without JavaScript or under reduced motion, every step keeps its own tree and code figure inline. The "stable" section pairs a two-column fact list with the compact release board (6fr:5fr), stacking below 1100px. "New in Wicket 11" is four columns divided by vertical rules (two at 1099px, one at 600px); "Built with Wicket" is a three-column ruled name list.
 
-Under 769px tables become stacked rows: the board turns each line into a two-column grid of release and status over service and date, with support beneath; the connections table stacks its cells. Code samples keep their lines and scroll sideways under 590px, with a fade at the right edge.
+Reading pages have a title band (heading, sub-title, optional mono date) closed by a rule, then a reading column of at most 54rem. From 1100px a page with a table of contents gets a 15rem sticky rail at the left; the news archive gets a 13rem sticky year index at the right. Below 1100px the rail becomes a compact index panel above the text, showing only the first level.
 
-Reading pages open with a full-width platform sign. Below it the reading area shares the 82rem column with 2.5rem top padding (2.75rem from 960px), and everything in it is left-aligned to the column's edge: no centred components. When the page has sections, from 1152px it becomes a two-column grid of a 14rem sticky "On this page" rail and a content column of at most 52rem, 4rem apart, so the right side of a wide screen is not left empty beside a narrow text. Below 1152px the rail moves above the text. Base spacing is 1rem paragraph rhythm.
+Breakpoints in use: 600px (phones), 760px (tables reflow to cards), 860px (two-column heads collapse), 999px (sub-page nav wraps under the brand), 1100px (rail and index appear), 1280px (sticky reveal stage). Touch screens get 44px targets on small links.
 
 ## Elevation & Depth
 
-The site is flat except for two objects that hang in the hall: the departure board and the ticket. Both carry a soft, downward, board-tinted shadow with a negative spread so it reads as a hanging object, not a floating card. Everything else is separated by ground colour (hall against board against paper) and by rules.
+The system is flat. Depth comes from tonal steps (ground, surface, raised surface) and one-pixel rules, not shadows. Two soft ambient shadows exist and both sit under objects that float over the page: the sticky reveal stage, and book covers on the books page.
 
 ### Shadow Vocabulary
-- **Board hang** (`box-shadow: 0 1.5rem 3rem -1.5rem rgba(13, 27, 61, 0.55)`): the departure board.
-- **Ticket hang** (`box-shadow: 0 1.25rem 2.5rem -1.5rem rgba(13, 27, 61, 0.45)`): the ticket.
+- **Stage float** (`box-shadow: 0 30px 80px -40px rgba(0, 0, 0, .9)`): only on the sticky reveal stage.
+- **Cover** (`box-shadow: 0 0 0 1px var(--line-2), 0 18px 40px -24px rgba(0, 0, 0, .9)`): book covers; on hover the ring becomes a 2px orange ring.
 
 ### Named Rules
-**The Two Objects Rule.** Only the board and the ticket cast shadows. Panels, tables, code and buttons are flat.
+**The Rule-Not-Box Rule.** Lists, tables, facts and news entries are separated by one-pixel top rules in Rule, not by cards. A surface panel is reserved for content that is code, data or a control.
 
 ## Shapes
 
-Corners are nearly square, as enamel plates are. Plates, buttons, inputs, inline code and code blocks take a 2px radius (plate); the board panel and the quick-start wizard take 5px (panel). The ticket is square-cornered, with a 6px orange top edge and a stub torn off along a 2px dashed perforation, notched by two half-circles of hall colour. The one round form is the station dot on a route line: route stops on the homepage are 1.35rem circles with a 4px board-blue ring on a 4px line, the first stop filled orange; the reading rail repeats the form at 0.8rem with a 3px ring on a 3px line, the current section filled orange.
-
-Rules carry the structure: 1px for rows and list items, 2px under section heads and the board head, 3px for the navigation underline, 4px for the orange header band.
-
-### Named Rules
-**The Ruled Groups Rule.** Groups are separated by a 1px top or bottom rule, never by boxes or card outlines.
+Corners are softly rounded and scale with the size of the object: 4px for tags and the focus ring, 5px for inline code, 6px for tree rows, rail entries and images, 9-10px for controls and buttons, 12px for code blocks, 13px for the install box, 16px for panels (step figure, release board, wizard), 18px for the reveal stage. Segmented controls and the build-tool select are full pills. Borders are always one pixel; the only two-pixel lines are the link underline, the focus outline, the orange bar on a newly added code line and the blockquote bar. The component-tree connector is a one-pixel elbow with a 6px rounded corner, and the same elbow draws the reading rail.
 
 ## Components
 
-### Buttons
-Enamel signage plates: square, heavy Overpass lettering, no gloss.
-- **Shape:** near-square corners (plate radius), 2px border reserved for outline variants.
-- **Primary:** signal orange fill with board-blue lettering, Overpass 700 at 1rem, padding 0.6rem 1rem 0.5rem.
-- **Hover / Focus:** hover turns the plate night blue with white lettering; pressed goes board-row blue. Focus is a 3px signage-yellow outline offset 2px. Colour transitions run 160ms on cubic-bezier(0.16, 1, 0.3, 1).
-- **Neutral:** transparent with a 2px board-blue border and board-blue lettering, filling night blue on hover. The ticket's copy button is a small neutral plate that turns board blue with yellow "Copied" lettering.
+### Masthead
+- **Home:** the menu alone, centred, no brand: the hero lockup carries the mark.
+- **Sub pages:** the registered mark (32px) and the wordmark "Apache Wicket" in the heading face (800, 1.3125rem, -0.035em) at the left, menu at the right; below 1000px the menu wraps onto its own line, left-aligned.
+- **Menu:** 0.9375rem, 500, Ink 2 at rest, Ink on hover; the current section is Ink with the orange 2px underline at a 0.5em offset. GitHub carries an inline 16px SVG mark.
 
-### Plates and status
-- **Style:** small Overpass 700 to 800 plates at 0.8 to 0.9rem with plate radius. LTS is yellow with board lettering; Boarding is orange with board lettering and blinks three times after 1.5s; Last call is a 2px yellow outline with yellow lettering; End of life is red with white lettering. Scheduled, current and superseded are plain lettering in white or dim.
+### Lockup
+The homepage hero: registered mark at 0.9em, "Apache Wicket" in Display, the current major version in Ink 3 at 400. Below it the definition (Lead, centred, 38ch). On phones the mark sits above the name at 64px.
 
-### Cards / Containers
-- **Corner Style:** square (ticket, panels) or panel radius (board, wizard).
-- **Background:** paper on hall for reading panels; board blue for the board and wizard.
-- **Shadow Strategy:** only board and ticket (see Elevation & Depth).
-- **Border:** none, or the board's 1px board-rule edge on the homepage.
-- **Internal Padding:** 1.5rem, widening to 2.25rem from 769px.
+### Install Box
+A surface panel (1px Strong Rule border) with a row of controls and a command row. Controls: a segmented pill for the mode (Add to project / New project), a segmented pill for the release line (current and LTS, versions in mono), a native select for the build tool (Maven, Gradle, bld, AI prompt) with an orange chevron. The checked segment gets a 1px orange outline and Ink text, never a fill. The command is mono Ink in a single line (46ch, ellipsis), or one option per line for a new project; the Copy button is a light button with an inline copy icon. Versions and templates come from `_data/releases.yml` and `_config.yml`.
 
-### Inputs / Fields
-- **Style:** inside the quick-start wizard (a ticket machine on board ground): paper fields, 2px transparent border, plate radius, 2.5rem high, Source Code Pro lettering; labels in Overpass 600 board-dim.
-- **Focus:** the border turns signage yellow; no outline glow.
+### News Strip
+A full-width band between two Rule lines directly under the hero: two to four short headlines as bold links (700, 1.0625rem) with the orange underline, from `_data/news_strip.yml`.
 
-### Navigation
-- **Style:** a night-blue signage band at least 4.25rem tall with a 4px orange bottom band. Overpass 600 at 0.95rem white links with a 3px transparent underline; hover shows a board-dim underline, the active section an orange underline. The GitHub link sits at the far right and turns yellow on hover. Under 960px the links wrap onto their own rows under the logo.
-- **Footer:** night-blue ground, Overpass 600 white links turning yellow and underlined on hover, closed by a paper legal strip under a 4px orange band, carrying the current ASF logo (self-hosted, linked to apache.org) beside the trademark notice.
+### Reveal Step and Sticky Stage
+Each step is a two-digit mono number and a Step Title, then a short paragraph (40ch). Inactive steps are dimmed to Ink 3; the active step goes to Ink with its number in orange (0.45s). The stage is a surface panel (18px radius, Stage float shadow) with a bar (page name in bold sans, "04 / 07" in mono), the big tree at the left (38%, min 214px) with a caption at its foot, and the code panes at the right. Panes cross-fade and rise 12px; added lines wipe in an orange wash with a 2px orange bar, staggered 45ms per line.
 
-### Skip link and touch targets
-Every page opens with a "Skip to content" link, hidden until focused, then a paper plate with board-blue Overpass 700 in the top left corner. On touch screens (coarse pointer) the small links (ticket links, board foot, How to upgrade, section footers) and the copy plate grow to 44px targets without changing the desktop layout.
+### Component Tree
+A list of nodes, each row showing the id (mono, Ink), the component type (Ink 3) and the markup tag (mono, Ink 3, right-aligned; hidden when the container is narrow). The root is set in bold sans. Children hang on one-pixel Orange Dim elbows (6px corner); the active node's elbow turns full orange, its row gets the Orange Wash gradient and its id turns orange. In the stage, nodes grow in by animating grid rows from 0fr to 1fr (0.6s) with a delayed fade.
 
-### Links
-Deep signal orange, underlined 1px at a 0.18em offset; hover goes board blue with a 2px underline. Links inside headings inherit the heading colour.
+### Release Board
+- **Compact (homepage):** a surface panel with a small heading, group rows (In service / Next / Ended) as small Ink 3 labels over a Rule, release name in Ink, version in mono, LTS as an outlined tag, date right-aligned in mono; a footer link to the full board.
+- **Full (download page):** a plain table in the reading column with columns Release, Service, When, Supported, Status; versions are mono links; status "live" carries a 7px orange dot; end-of-life rows drop to Ink 3 with an outlined EOL tag. Below 760px each row becomes a two-column card. Both boards render from `_data/releases.yml`.
+
+### Reading Layout and Rail
+Title band, then rail plus reading column. The rail is the component tree applied to the page's table of contents: Ink 3 entries hanging on Orange Dim elbows under a mono "On this page" label; the section in view is orange text on the Orange Wash with a full-orange elbow. Jump lists that only repeat the rail are hidden on pages that have one.
 
 ### Tables
-Tables are timetables: a board-blue head row in white Overpass 700 at 0.875rem, 1px rule under each body row, tabular figures, paper on row hover. End-of-life rows strike the version in red.
+Full width, no vertical rules, no zebra. Head cells are small 500 Ink 3 over a Strong Rule; body rows are separated by Rule lines; row header cells are 700 Ink. Below 760px wide tables scroll inside their own box; the release and upgrade tables reflow to stacked rows instead.
 
-### The Departure Board (signature)
-A night-blue panel of release lines. A head with the display title, on the homepage a one-line definition of Wicket in white Overpass 600 (max 40ch), and a board-dim subline that leads with the LTS, over a 2px board-rule; columns When, Release, Service, Supported, Status in uppercase board-dim labels; group headers "In service", "Departures" and, while a line has just reached end of life, "Out of service" in yellow uppercase; rows ruled 1px in board-rule; version figures in Overpass Mono. The boarding line's version is orange; end-of-life versions are struck through in red and their text dims. The strike and the link underline are drawn on the version as a whole (a 2px rule and a 2px bottom border), because text decoration does not reach the flipping characters. On load each version flips in character by character from a half-turned, half-visible start (700ms per character on cubic-bezier(0.16, 1, 0.3, 1), staggered 35ms per character and 50ms per row, capped at the sixth character and the fifth row so no value waits more than about half a second), once per page load. Under reduced motion, or without JavaScript, the figures stand still and the boarding blink is off. The board is driven by the releases data file and reused on reading pages at a smaller title size. Lines in service run LTS first, and their Status cell names their role ("For production", "For new features") instead of repeating the group header. Version links carry a 2px board-dim underline at 45% so they read as links. The homepage shows the board compact, so it informs without dominating the page: the table holds only the lines in service, labelled "In service" in yellow above its column headers (its caption, in place of a group row), and two summary lines under it carry the rest, each with a yellow label. "Next" lists the next departures (those sharing the earliest date, plus the next new LTS line) as Overpass Mono figures with their LTS plates and dates; "Out of service" lists the end-of-life versions struck through in red with a "How to upgrade" link to the upgrade paths on the download page. The foot links to all release lines and to the release policy; the download page shows every line in full.
+### Code
+Blocks are surface panels (12px radius, 1px Rule border, padding 18px 20px) in Code Ink with grey Rouge highlighting; a file name in Label Mono may sit above. Inline code is a small chip (Raised Surface, 1px Rule border, 5px radius, 0.86em).
 
-### The Ticket (signature)
-A square paper ticket beside the board: orange 6px top edge, a title and one primary action, then a perforated stub carrying one Maven dependency per line in service, LTS first, each labelled with its version in Overpass Mono, its LTS plate and its role, with its own copy plate. Only the first snippet is shown on hall-coloured code ground; the others differ only in their version, so they show their label and copy their own hidden snippet.
+### Links
+Ink text with a 2px orange underline at a 0.28em offset; hover turns the text orange. Inside navigation, rails, indexes and buttons the underline is dropped and hover moves to Ink or orange text. Long title lists use a 1px Orange Dim underline.
 
-### Release Highlights
-What is new in the featured release line, from the highlights data file. On the homepage a "New in Wicket N" section follows "Why Wicket": a headline with a link to the line's page on its baseline, a lead intro, then the highlights as ruled entries in two balanced columns from 960px (CSS columns, entries never split). Every release line's page lists its highlights in one column under "New in Wicket N", including those kept off the homepage, at the full width of the reading column so code samples fit. Each entry has a title, one or two sentences, and optionally facts or a code sample. Facts are board figures on light ground: an Overpass 600 label in soft ink over the value in Overpass Mono 600 at 2rem in board blue, with tabular figures. Code samples use the route's file label and code block.
+### Buttons and Pills
+- **Primary:** light button (Ink fill, Ground text, 700 1rem, 10px radius, 12px 20px), white on hover, 1px press-down on active.
+- **Go:** the larger homepage variant (14px 22px) with a drawn arrow made from a clipped shape in the text colour.
+- **Jump list:** the Markdown `.button-bar` becomes a ruled grid of plain labels (600, Ink, top Rule), orange on hover.
+- **Pills:** segmented controls and select in the install box (full radius, 1px Strong Rule border); the checked state is an orange outline.
+- **Tags:** LTS and EOL as small 500 labels in a 1px Strong Rule outline with a 4px radius.
 
-### The Route (signature)
-Content sections hang on a 4px board-blue route line as numbered stops, each a ringed station dot with text on the left and real code on the right.
+### Inputs / Fields
+Quick start wizard fields: Ground fill inside a surface panel, 1px Strong Rule border, 9px radius, mono 0.9375rem Ink text; focus turns the border orange (no outline glow). Selects use the orange chevron. The full-width light button copies the command; its copied state is Raised Surface with an inset orange ring.
 
-### Platform Sign
-Reading pages open with a full-width night-blue band holding the page title in white headline type and a board-dim subline, max 50ch.
+### Section Index and Facts
+Section landing pages list their pages as a ruled grid: label (700 Ink) with a one-line description in Ink 3; hover turns the label orange. Facts are a definition list (term 700 Ink, description body) in a two-column grid. Release highlights repeat the ruled pattern with optional mono Figure numbers and a code block.
 
-### Reading Rail
-The page's sections as stops on a route. From 1152px a 14rem column sticks 1.5rem from the top beside the text, scrolling on its own if taller than the viewport. A board-colour heading ("On this page", from the site config) sits over a 3px board-blue line; top-level sections hang on it as 0.75rem hall-filled dots with a 3px board-blue ring and Overpass 600 labels at 0.875rem in soft ink, turning board blue and underlined on hover. The section in view becomes the current stop: its label turns board blue and its dot fills signal orange, set by a scroll observer. Second-level sections share the 0.875rem size at weight 500 and are indented without dots. Section numbers are hidden. Below 1152px the rail is a compact paper block above the text listing top-level sections only.
+### News Archive
+Entries separated by top Rules: title as Subtitle link, date in Label Mono, summary. Earlier years collapse to a compact two-column list of mono date and title. A sticky year index at the right (from 1100px) lists years in mono and months as small Ink 3 links. Posts end with a ruled back-link row.
 
-### Jump Lists
-Lists of links in page content are a left-aligned ruled index, not boxed tiles: each entry is an Overpass label at 1.05rem in board blue under a 1px timetable rule, hovering to deep signal orange with a 2px underline. They run one column, two from 769px, three from 1152px, like the other ruled lists. Icon glyphs, line breaks and empty placeholder cells in the legacy markup are hidden. When the reading rail is present, a jump list whose links all point within the page is hidden because it repeats the rail; lists that link to other pages stay.
+### Footer
+A top Rule, then the ASF logo on its light tile (10px radius) beside a wrapping row of Ink 2 links (orange on hover) and the legal text in small Ink 3.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the two grounds: station hall for reading, night board for signage, the board, the wizard and the footer.
-- **Do** spend orange only on what is current and on the single primary action per view.
-- **Do** set every figure in tables, boards and dates as tabular numerals.
-- **Do** separate groups with 1px rules in timetable rule colour (light ground) or board-rule colour (board ground).
-- **Do** keep corners at 2px for plates, buttons, inputs and code, and 5px for board panels.
-- **Do** run the split-flap entrance once per load and switch it off under reduced motion.
-- **Do** self-host every font and script; Overpass, Overpass Mono, Source Sans Pro and Source Code Pro ship from the site's own fonts directory.
-- **Do** align reading content to the left edge of the column and keep text to 52rem beside the rail; never centre components in the reading area.
-- **Do** keep page content writable in plain Markdown with the legacy layout classes; new station components are styled by class, not by requiring authors to write new markup on ordinary pages.
+- **Do** spend orange only on the mark, the tree line, active/checked/current states, the focus ring and link underlines.
+- **Do** separate list items, table rows and facts with one-pixel Rule lines; keep surface panels for code, data and controls.
+- **Do** reuse the component-tree elbow (one pixel, Orange Dim, 6px corner, full orange when active) for any new hierarchical wayfinding.
+- **Do** mark a current item the way the reveal marks a new node: orange text on the Orange Wash gradient, full-orange connector.
+- **Do** set versions, dates, file names and step numbers in Red Hat Mono.
+- **Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1280px every step shows its own tree and code.
+- **Do** drive release-dependent content (install box, release boards, strip) from `_data/` and `_config.yml`, never hard-coded versions in templates.
+- **Do** keep the registered orange-circle mark unchanged and the ASF logo on its light tile.
 
 ### Don't:
-- **Don't** load fonts or scripts from external hosts (ASF policy).
-- **Don't** use red for anything but end of life, or yellow as text on the light hall.
-- **Don't** add shadows to anything other than the board and the ticket.
-- **Don't** group content in card grids; use ruled lists, tables and the route.
-- **Don't** use orange as a tint, gradient or decorative stripe beyond the header band, the legal-strip band and the ticket edge.
-- **Don't** add icon-font glyphs to new surfaces.
+- **Don't** fill buttons, backgrounds or headings with orange, or introduce a second hue.
+- **Don't** colour syntax tokens; code highlighting stays grey, with orange only for lines added by the current step.
+- **Don't** wrap lists of links or facts in cards; use ruled rows.
+- **Don't** add shadows beyond the stage float and the book cover; depth is tonal.
+- **Don't** use icon fonts; icons are inline SVG (the leftover Font Awesome elements in old Markdown are hidden).
+- **Don't** set headings below weight 700 or run prose in monospace.
