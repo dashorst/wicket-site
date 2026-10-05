@@ -477,7 +477,8 @@
         margin: 0; padding: 7px 0; border-top: 1px solid var(--line); line-height: 1.45;
     }
     time { font-family: var(--mono); font-size: .8125rem; line-height: 1.8; color: var(--ink-3); }
-    a { text-decoration-color: transparent; }
+    // Long title lists keep the site's orange link underline, a little lighter so 200 titles don't shout.
+    a { text-decoration-color: var(--orange-dim); text-decoration-thickness: 1px; }
     a:hover { text-decoration-color: var(--orange); }
 }
 .news-list h2 { margin-top: 3rem; }
