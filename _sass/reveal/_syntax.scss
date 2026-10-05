@@ -1,0 +1,30 @@
+// =========== Rouge highlighting on the dark ground
+// Monochrome like the homepage code: grey keywords and tags, bright strings, dim comments.
+// Orange stays reserved for the accent.
+
+.highlight {
+    .c, .c1, .cm, .cd, .cs, .ch, .cpf { color: #8c8c87; font-style: italic; }
+    .cp { color: #8c8c87; }
+    .k, .kd, .kn, .kp, .kr, .kv, .kc { color: #a3a39e; font-weight: 500; }
+    .kt { color: #c3c3be; }
+    .o, .ow, .p, .pi { color: #b0b0ab; }
+    .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl { color: #f3f3f0; }
+    .m, .mb, .mf, .mh, .mi, .mo, .mx, .il { color: #ecece8; }
+    .nt { color: #9d9d98; }
+    .na { color: #b9b9b4; }
+    .nc, .nn, .ne { color: #e6e6e1; }
+    .nf, .fm { color: #e6e6e1; }
+    .nd { color: #8f8f8a; }
+    .nb, .bp, .no, .nv, .vc, .vg, .vi { color: #d6d6d1; }
+    .ni { color: #b9b9b4; }
+    .err { color: inherit; background: none; }
+    .gd { color: #8c8c87; text-decoration: line-through; }
+    .gi { background: var(--orange-wash); color: var(--ink); }
+    .ge { font-style: italic; }
+    .gs { font-weight: 700; }
+    .gh, .gu { color: var(--ink); font-weight: 700; }
+    .gp { color: #8c8c87; user-select: none; }
+    .go { color: #c3c3be; }
+    .w { color: #5a5a56; }
+    .lineno { color: #5a5a56; margin-right: .75rem; text-align: right; }
+}

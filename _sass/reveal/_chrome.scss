@@ -1,0 +1,62 @@
+// =========== Masthead and footer
+
+.masthead-in {
+    max-width: var(--max); margin: 0 auto; padding: 22px var(--pad) 0;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 40px;
+}
+.masthead.is-home .masthead-in { justify-content: center; }
+
+// Sub pages: the registered mark with the wordmark in the heading face.
+.brand {
+    display: inline-flex; align-items: center; gap: 11px;
+    color: var(--ink); text-decoration: none;
+    font-size: 1.3125rem; font-weight: 800; letter-spacing: -.035em; line-height: 1;
+}
+.brand:hover { color: var(--ink); }
+.brand-mark { width: 32px; height: 32px; flex: none; }
+
+.nav {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 6px clamp(16px, 2.2vw, 30px);
+    font-size: .9375rem; font-weight: 500;
+}
+.nav a { color: var(--ink-2); text-decoration: none; padding: 6px 0; transition: color .2s; }
+.nav a:hover { color: var(--ink); }
+// The section the page belongs to: ink with the orange underline of a link.
+.nav a.is-active {
+    color: var(--ink);
+    text-decoration: underline; text-decoration-color: var(--orange);
+    text-decoration-thickness: 2px; text-underline-offset: .5em;
+}
+.nav-gh { display: inline-flex; align-items: center; gap: 7px; }
+
+@media (max-width: 999px) {
+    .masthead:not(.is-home) .masthead-in { padding-top: 18px; }
+    .masthead:not(.is-home) .nav { flex-basis: 100%; justify-content: flex-start; gap: 0 18px; }
+}
+
+@media (max-width: 600px) {
+    .nav { gap: 0 13px; font-size: .875rem; }
+    .nav a { padding: 8px 0; }
+    .masthead:not(.is-home) .nav { gap: 0 14px; }
+}
+
+// ---------------------------------------------------------------- footer
+
+.footer { margin-top: var(--sec); border-top: 1px solid var(--line); }
+.footer-in {
+    max-width: var(--max); margin: 0 auto; padding: 48px var(--pad) 56px;
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 48px; align-items: start;
+}
+// The ASF logo on a light tile, so its purple lettering stays legible on the dark ground.
+.asf-tile { display: block; padding: 12px 16px; background: #f6f6f3; border-radius: 10px; line-height: 0; }
+.asf-tile img { display: block; width: 114px; height: auto; }
+.footer nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: .9375rem; }
+.footer nav a { color: var(--ink-2); }
+.footer nav a:hover { color: var(--orange); }
+.legal { margin-top: 18px; max-width: 92ch; font-size: .8125rem; line-height: 1.6; color: var(--ink-3); }
+
+@media (max-width: 600px) {
+    .footer-in { grid-template-columns: 1fr; }
+    .footer nav a { display: inline-block; padding: 4px 0; }
+}

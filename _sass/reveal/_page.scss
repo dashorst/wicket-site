@@ -1,0 +1,466 @@
+// =========== Reading pages: title band, rail, body copy, and the legacy Markdown furniture
+
+// ---------------------------------------------------------------- title band
+
+.page-head { border-bottom: 1px solid var(--line); }
+.page-head-in {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(56px, 10vh, 112px) var(--pad) clamp(40px, 6vh, 64px);
+}
+.page-head h1 {
+    max-width: 22ch;
+    font-size: clamp(2.25rem, 4.6vw, 4rem); line-height: 1.03; letter-spacing: -.038em;
+}
+.page-sub {
+    max-width: 48ch; margin-top: 18px;
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; color: var(--ink-2);
+}
+.page-kicker {
+    display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 20px;
+    font-family: var(--mono); font-size: .875rem; color: var(--ink-3);
+}
+.page-kicker a { color: var(--orange); text-decoration: none; }
+.page-kicker a:hover { text-decoration: underline; }
+
+// ---------------------------------------------------------------- reading layout and rail
+
+.reading {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(40px, 6vh, 64px) var(--pad) 0;
+}
+.reading-main { min-width: 0; max-width: 54rem; }
+
+@media (min-width: 1100px) {
+    .reading.has-rail {
+        display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: clamp(48px, 5vw, 96px); align-items: start;
+    }
+    .reading.has-index {
+        display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: clamp(48px, 5vw, 96px); align-items: start;
+    }
+}
+
+.rail-title,
+.rail #toc-title h2 {
+    margin: 0 0 12px;
+    font-family: var(--mono); font-size: .8125rem; font-weight: 500; letter-spacing: 0; color: var(--ink-3);
+}
+
+// The rail: the page's sections hang on the orange line of the component tree.
+.rail {
+    font-size: .9375rem;
+
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { position: relative; margin: 0; padding-left: 18px; --mid: 15px; }
+    li li { --mid: 13px; }
+
+    // Elbow from the parent line to the section, and the line on to the next sibling.
+    li::before, li::after { content: ""; position: absolute; left: 4px; pointer-events: none; }
+    li::before {
+        top: 0; height: var(--mid); width: 9px;
+        border-left: 1px solid var(--orange-dim); border-bottom: 1px solid var(--orange-dim);
+        border-bottom-left-radius: 6px;
+    }
+    li::after { top: var(--mid); bottom: 0; border-left: 1px solid var(--orange-dim); }
+    li:last-child::after { display: none; }
+
+    a {
+        display: block; padding: 5px 8px 5px 6px; margin-left: -2px; border-radius: 6px;
+        color: var(--ink-3); line-height: 20px; text-decoration: none;
+        transition: color .2s, background-color .4s var(--ease);
+    }
+    a:hover { color: var(--ink); }
+    .toc--level-2 a { padding-block: 4px; font-size: .875rem; line-height: 19px; }
+    .toc-number { display: none; }
+
+    // The section in view, marked like the node a reveal step adds.
+    a.is-current { color: var(--orange); background: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%); }
+    li:has(> a.is-current)::before { border-color: var(--orange); }
+}
+
+@media (min-width: 1100px) {
+    .rail { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: thin; padding-bottom: 8px; }
+}
+
+// Below the wide layout the rail is a compact index above the text.
+@media (max-width: 1099px) {
+    .rail {
+        margin-bottom: 40px; padding: 16px 18px 12px;
+        background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px;
+        ul ul { display: none; }
+    }
+}
+
+// Jump lists that only point at sections of this page repeat the rail.
+.has-rail .l-button-table:not(:has(a:not([href^="#"]))),
+.has-rail .page-content > .button-bar:not(:has(a:not([href^="#"]))) { display: none; }
+
+// ---------------------------------------------------------------- preamble
+
+.preamble {
+    margin-bottom: 40px;
+
+    p { max-width: 60ch; font-size: clamp(1.15rem, 1.6vw, 1.3rem); line-height: 1.55; color: var(--ink); }
+    img { display: block; margin: 0 0 24px; }
+}
+
+// ---------------------------------------------------------------- body copy
+
+.page-content {
+    line-height: 1.7;
+
+    &::after { content: ""; display: table; clear: both; }
+
+    > :first-child { margin-top: 0; }
+
+    p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6 { max-width: var(--measure); }
+
+    h1, h2 {
+        margin: 3.5rem 0 1rem;
+        font-size: clamp(1.6rem, 2.4vw, 2.125rem); line-height: 1.1; letter-spacing: -.03em;
+    }
+    h3 { margin: 2.25rem 0 .6rem; font-size: 1.3125rem; font-weight: 700; line-height: 1.25; letter-spacing: -.015em; }
+    h4 { margin: 1.75rem 0 .5rem; font-size: 1.0625rem; font-weight: 700; line-height: 1.3; }
+    h5, h6 { margin: 1.5rem 0 .4rem; font-size: 1rem; font-weight: 700; }
+    h2, h3, h4 { scroll-margin-top: 24px; }
+
+    p { margin: 0 0 1.1em; }
+    ul, ol { margin: 0 0 1.25em; padding-left: 1.35em; }
+    li { margin-bottom: .35em; }
+    li > ul, li > ol { margin: .35em 0 0; }
+    li::marker { color: var(--ink-3); font-variant-numeric: normal; }
+    dl { margin: 0 0 1.25em; }
+    dt { color: var(--ink); font-weight: 700; }
+    dd { margin: 0 0 .9em; }
+    strong, b { color: var(--ink); font-weight: 700; }
+    em { font-style: italic; }
+    small { font-size: .875rem; color: var(--ink-3); }
+
+    hr { clear: both; height: 0; margin: 3rem 0; border: 0; border-top: 1px solid var(--line); }
+    hr + h1, hr + h2 { margin-top: 0; }
+
+    blockquote {
+        margin: 1.5rem 0; padding: 2px 0 2px 20px;
+        border-left: 2px solid var(--line-2); color: var(--ink-2);
+        p:last-child { margin-bottom: 0; }
+    }
+
+    img { border-radius: 6px; }
+
+    :not(pre) > code {
+        padding: .08em .36em; border: 1px solid var(--line); border-radius: 5px;
+        background: var(--bg-3); font-size: .86em;
+    }
+    a code { color: inherit; }
+}
+
+// ---------------------------------------------------------------- code blocks
+
+.page-content pre,
+.feature-code pre {
+    overflow-x: auto; scrollbar-width: thin;
+    font: 400 .875rem/1.7 var(--mono); color: #d6d6d1; tab-size: 4;
+}
+.page-content pre code,
+.feature-code pre code { font-size: 1em; color: inherit; }
+
+.page-content div.highlight,
+.page-content figure.highlight,
+.feature-code div.highlight,
+.page-content > pre {
+    margin: 1.25rem 0 1.75rem;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
+}
+.page-content div.highlight pre,
+.page-content figure.highlight pre,
+.feature-code div.highlight pre { margin: 0; padding: 18px 20px; }
+.page-content > pre { padding: 18px 20px; }
+
+// ---------------------------------------------------------------- tables
+
+.page-content table {
+    width: 100%; margin: 1.5rem 0 2.25rem;
+    border-collapse: collapse; font-size: .96875rem; line-height: 1.55;
+}
+.page-content th,
+.page-content td { padding: 12px 18px 12px 0; text-align: left; vertical-align: top; }
+.page-content th:last-child,
+.page-content td:last-child { padding-right: 0; }
+.page-content thead th,
+.page-content tr:first-child > th:not([scope="row"]) {
+    padding-block: 8px 10px; vertical-align: bottom;
+    border-bottom: 1px solid var(--line-2);
+    font-size: .8125rem; font-weight: 500; color: var(--ink-3);
+}
+.page-content td { border-bottom: 1px solid var(--line); }
+.page-content th[scope="row"] { border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 700; }
+.page-content td p { margin: 0 0 .5rem; }
+.page-content td p:last-child { margin-bottom: 0; }
+
+// Narrow screens: wide tables scroll inside their own box rather than the page.
+@media (max-width: 760px) {
+    .page-content table:not(.connections-table):not(.board-table) { display: block; overflow-x: auto; scrollbar-width: thin; }
+}
+
+// ---------------------------------------------------------------- buttons
+
+.button,
+.page-content .button {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin: .25rem 0 1rem; padding: 12px 20px; border: 0; border-radius: 10px;
+    background: var(--ink); color: #0c0c0c;
+    font: 700 1rem/1.2 var(--sans); letter-spacing: 0; text-decoration: none; cursor: pointer;
+    transition: background-color .2s, transform .15s var(--ease);
+}
+.button:hover { background: #fff; color: #0c0c0c; }
+.button:active { transform: translateY(1px); }
+
+// Jump lists (.button-bar in the Markdown): a ruled index, labels only.
+.l-button-table,
+.l-button-table > div { display: block; float: none; margin: 0; width: auto; }
+.l-button-table { margin: 0 0 2.5rem; }
+
+.button-bar {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0 2.5rem;
+    margin: 0; max-width: none;
+
+    & + .button-bar { margin-top: 0; }
+    &:last-child { margin-bottom: 2.5rem; }
+
+    .button,
+    .page-content & .button {
+        display: block; margin: 0; padding: 12px 0 13px;
+        border-top: 1px solid var(--line); border-radius: 0;
+        background: transparent; color: var(--ink);
+        font-size: 1.0625rem; font-weight: 600; text-align: left;
+    }
+    .button:hover { background: transparent; color: var(--orange); }
+    i, br { display: none; }
+    div.button { display: none; }
+}
+
+// Index of a section's pages (learn/, ...): label and a line of description.
+.page-index {
+    margin: 0 0 3rem;
+
+    ul {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0 2.5rem;
+        list-style: none; margin: 0; padding: 0; max-width: none;
+    }
+    li { margin: 0; border-top: 1px solid var(--line); }
+    a { display: block; padding: 13px 0 15px; color: var(--ink-3); text-decoration: none; line-height: 1.45; }
+    a:hover .page-index-label { color: var(--orange); }
+}
+.page-index-label { display: block; color: var(--ink); font-size: 1.0625rem; font-weight: 700; letter-spacing: -.01em; transition: color .2s; }
+.page-index-desc { display: block; margin-top: 2px; font-size: .9375rem; }
+
+// ---------------------------------------------------------------- legacy Taiga layout inside the reading column
+
+// A single two-third or half block is a narrower column, not a float.
+.page-content > .l-two-third,
+.page-content > .l-half { float: none; width: auto; margin-left: 0; margin-right: 0; max-width: 42rem; }
+
+// Rows of floated columns become grids.
+.l-clearfix {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0 2.5rem; margin-bottom: 1.5rem;
+    > * { float: none; width: auto; margin: 0; }
+}
+.media-bar {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 24px; margin-bottom: 24px;
+    > * { float: none; width: auto; margin: 0; }
+    a { text-decoration: none; }
+    a > img { display: block; width: 100%; border-radius: 4px; }
+}
+.page-content article + article { clear: both; }
+
+// ---------------------------------------------------------------- release highlights (branch pages)
+
+.page-content .features { list-style: none; margin: 0 0 2rem; padding: 0; max-width: none; }
+
+.feature {
+    margin: 0; padding: 28px 0 30px; border-top: 1px solid var(--line);
+
+    .page-content & h3 { margin: 0 0 .5rem; font-size: 1.3125rem; }
+    p:last-child { margin-bottom: 0; }
+    p code { white-space: nowrap; }
+}
+
+.feature-facts {
+    display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 16px 0 0;
+
+    dt { font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+    dd { margin: 2px 0 0; font-family: var(--mono); font-size: 1.75rem; font-weight: 500; line-height: 1.1; color: var(--ink); }
+}
+
+.feature-code {
+    margin-top: 18px;
+    .fname { margin: 0 0 8px; }
+    div.highlight { margin: 0; }
+}
+
+// ---------------------------------------------------------------- the full release board (download page)
+
+.board-full { margin: 0 0 2rem; }
+.board-head {
+    h2 { margin-top: 0; }
+    p { color: var(--ink-2); }
+}
+.page-content .board-table { margin: 1rem 0 0; }
+.board-table {
+    .grp th {
+        padding: 26px 0 8px; border-bottom: 1px solid var(--line);
+        font-size: .8125rem; font-weight: 500; color: var(--ink-3); vertical-align: bottom;
+    }
+    tbody:first-of-type .grp th { padding-top: 14px; }
+    .b-release { white-space: nowrap; }
+    .b-release .v { font-family: var(--mono); font-size: 1rem; font-weight: 500; }
+    .b-when, .b-support { white-space: nowrap; }
+    .is-eol .b-release a, .is-eol td { color: var(--ink-3); }
+}
+.board-all { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 16px; font-size: .9375rem; }
+
+.board-table abbr,
+.status-eol,
+.page-content .status {
+    display: inline-block;
+    font-size: .75rem; font-weight: 500; line-height: 1.5; color: var(--ink-2);
+}
+.board-table abbr,
+.status-eol { padding: 0 6px; border: 1px solid var(--line-2); border-radius: 4px; }
+.status.is-live { color: var(--ink); font-size: .9375rem; font-weight: 500; }
+.status.is-live::before {
+    content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 9px; vertical-align: 1px;
+    border-radius: 50%; background: var(--orange);
+}
+.status.is-next { color: var(--ink); font-size: .9375rem; }
+.board-table .status:not(.is-live):not(.is-next):not(.is-eol) { font-size: .9375rem; color: var(--ink-2); }
+.status.is-eol { padding: 0 6px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-3); }
+.status-eol { margin-right: 8px; color: var(--ink-3); }
+
+@media (max-width: 760px) {
+    .board-table thead { display: none; }
+    .board-table, .board-table tbody { display: block; }
+    .board-table .grp { display: block; }
+    .board-table .grp th { display: block; }
+    .board-table tr:not(.grp) {
+        display: grid; grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "release status" "service when" "support support";
+        gap: 2px 12px; padding: 12px 0; border-bottom: 1px solid var(--line);
+    }
+    .board-table tr:not(.grp) > * { padding: 0; border: 0; white-space: normal; }
+    .board-table .b-release { grid-area: release; }
+    .board-table .b-status { grid-area: status; text-align: right; }
+    .board-table .b-service { grid-area: service; color: var(--ink-3); font-size: .875rem; }
+    .board-table .b-when { grid-area: when; text-align: right; color: var(--ink-3); font-size: .875rem; }
+    .board-table .b-support { grid-area: support; color: var(--ink-3); font-size: .875rem; }
+}
+
+// ---------------------------------------------------------------- upgrade paths and unsupported releases
+
+.connections-table {
+    th[scope="row"] { white-space: nowrap; }
+    td:last-child { white-space: nowrap; }
+
+    @media (max-width: 760px) {
+        thead { display: none; }
+        &, tbody, tr, th[scope="row"], td { display: block; }
+        tr { padding: 12px 0 14px; border-bottom: 1px solid var(--line); }
+        th[scope="row"], td, td:last-child { padding: 3px 0; border: 0; white-space: normal; }
+    }
+}
+.connections-route { font-family: var(--mono); font-size: .9375rem; color: var(--ink); }
+.eol-table td:nth-child(2) { font-family: var(--mono); color: var(--ink-3); }
+
+// ---------------------------------------------------------------- quick start wizard
+
+.quickstart-wizard {
+    max-width: 40rem; margin: 1.5rem 0 2rem; padding: 22px 24px 24px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px;
+    line-height: 1.4;
+
+    label { display: block; margin: 16px 0 7px; font-size: .875rem; font-weight: 500; color: var(--ink-2); }
+    > div:first-child label { margin-top: 0; }
+
+    input, select, textarea {
+        display: block; width: 100%;
+        padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 9px;
+        background: var(--bg); color: var(--ink);
+        font: 400 .9375rem/1.4 var(--mono);
+        transition: border-color .2s;
+    }
+    input:hover, select:hover, textarea:hover { border-color: #55554f; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--orange); outline: 0; }
+    select {
+        appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer;
+        background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ff9925' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 13px center;
+    }
+    textarea { height: 7.5rem; font-size: .875rem; line-height: 1.55; }
+
+    button {
+        display: inline-flex; align-items: center; justify-content: center; width: 100%; margin-top: 16px;
+        padding: 12px 16px; border: 0; border-radius: 9px;
+        background: var(--ink); color: #0c0c0c; font: 700 .9375rem/1.2 var(--sans); cursor: pointer;
+        transition: background-color .2s, transform .15s var(--ease);
+    }
+    button:hover { background: #fff; }
+    button:active { transform: translateY(1px); }
+    button.is-copied { background: var(--bg-3); color: var(--ink); box-shadow: inset 0 0 0 1px var(--orange); }
+}
+
+// Numbered steps on the quick start page, numbered like the reveal's steps.
+.quickstart .page-content > ol {
+    list-style: none; padding-left: 0; counter-reset: step;
+
+    > li { position: relative; padding-left: 2.75rem; counter-increment: step; margin-bottom: .6em; }
+    > li::before {
+        content: counter(step, decimal-leading-zero);
+        position: absolute; left: 0; top: .2em;
+        font: 500 .875rem/1.5 var(--mono); color: var(--orange);
+    }
+}
+
+// ---------------------------------------------------------------- news
+
+.news-list {
+    h1 { margin-top: 0; }
+    article,
+    .news {
+        clear: both; padding: 20px 0 22px; border-top: 1px solid var(--line);
+    }
+    article + article { margin: 0; }
+    article h3,
+    .news h3 { margin: 0 0 4px; font-size: 1.1875rem; }
+    article small,
+    .news small { display: block; margin-bottom: 8px; font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
+    article p { margin-bottom: 0; }
+    .l-first + hr,
+    hr { margin: 2.5rem 0; }
+    .l-full { float: none; width: auto; margin: 0; }
+}
+
+.news-index {
+    margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
+
+    @media (min-width: 1100px) {
+        position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: thin;
+        margin-top: 0; padding-top: 0; border-top: 0;
+    }
+
+    .news-year { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 0 10px; padding: 7px 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0; font-family: var(--mono); font-size: .875rem; font-weight: 500; line-height: 1.6; }
+    h2 a { color: var(--ink); text-decoration: none; }
+    h2 a:hover { color: var(--orange); }
+    ul { display: flex; flex-wrap: wrap; gap: 0 9px; list-style: none; margin: 0; padding: 0; }
+    li { margin: 0; }
+    ul a { color: var(--ink-3); font-size: .8125rem; line-height: 1.6; text-decoration: none; }
+    ul a:hover { color: var(--orange); }
+}
+
+.post-back {
+    display: flex; flex-wrap: wrap; gap: 6px 28px;
+    margin-top: 3rem; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9375rem;
+}
+
+// Touch screens get 44px targets for the small links.
+@media (pointer: coarse) {
+    .board-all a, .post-back a, .news-index a, .built-links a, .footer nav a { display: inline-block; padding-block: 10px; }
+}
