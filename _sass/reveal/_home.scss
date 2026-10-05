@@ -174,7 +174,7 @@ pre.code code { display: block; min-width: max-content; color: inherit; font-siz
 .step:first-child { border-top: 0; padding-top: 0; }
 
 .step-text h3 { font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
-.step-n { display: block; margin-bottom: 14px; font-family: var(--mono); font-size: .875rem; font-weight: 500; color: var(--orange); letter-spacing: 0; }
+.step-n { margin-right: .5em; font-family: var(--mono); font-size: .72em; font-weight: 500; letter-spacing: 0; color: var(--ink-3); }
 .step-text p { margin-top: 14px; max-width: 40ch; }
 
 .step-fig {

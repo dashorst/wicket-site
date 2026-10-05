@@ -193,11 +193,28 @@ Here's a list of tasks that only committers can do:
 
 ### Subscribing and unsubscribing ##
 
-<a href="mailto:dev@wicket.apache.org">Wicket development list</a>
-Medium traffic
-<a href="http://mail-archives.apache.org/mod_mbox/wicket-dev/">Archives</a>
-<a href="http://wicket-dev.markmail.org/">Search</a>
-<a href="mailto:dev-subscribe@wicket.apache.org?subject=Subscribe to Apache Wicket development list">Subscribe</a>
-<a href="mailto:dev-unsubscribe@wicket.apache.org?subject=Unsubscribe from Apache Wicket development list">Unsubscribe</a>
-<a href="mailto:dev-help@wicket.apache.org?subject=Help for Apache Wicket development list">Help</a>
+<table class="lists-table">
+    <thead>
+        <tr>
+            <th scope="col">List</th>
+            <th scope="col">Traffic</th>
+            <th scope="col">Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"><a href="mailto:dev@wicket.apache.org">Wicket development list</a></th>
+            <td>Medium traffic</td>
+            <td>
+                <a href="http://mail-archives.apache.org/mod_mbox/wicket-dev/">Archives</a>,
+                <a href="http://wicket-dev.markmail.org/">Search</a>,
+                <a href="mailto:dev-subscribe@wicket.apache.org?subject=Subscribe to Apache Wicket development list">Subscribe</a>,
+                <a href="mailto:dev-unsubscribe@wicket.apache.org?subject=Unsubscribe from Apache Wicket development list">Unsubscribe</a>,
+                <a href="mailto:dev-help@wicket.apache.org?subject=Help for Apache Wicket development list">Help</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+The other mailing lists are described on the [mailing lists page]({{ site.baseurl }}/help/email.html).
 

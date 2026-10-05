@@ -4,7 +4,7 @@ eliminating security problems against the Apache Wicket web framework.
 For reporting and discussing a security issue you should contact the
 Wicket PMC privately. 
 
-**\*\* PLEASE DO NOT CREATE A SECURITY REPORT IN OUR ISSUE TRACKER \*\***
+**Please do not create a security report in our issue tracker.**
 
 The issue tracker for Wicket is not the appropriate venue for reporting
 security issues as the issue tracker is publicly accessible. Instead,
@@ -18,7 +18,7 @@ private without leaking the info to any bad guys.
 
 <a class="button" href="#" onclick="window.location.href='mailto:private@wicket.apache.org?subject=Security%20issue';return false;" href="mailto:private@wicket.apache.org?subject=Security%20issue">
     <i class="fa fa-shield"></i>
-    REPORT A SECURITY ISSUE
+    Report a security issue
 </a>
 
 We treat all security issues seriously and will try to fix them as soon

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Download Apache Wicket
-subtitle: Get the most recent version of Wicket in one source package
+subtitle: Get Wicket from Maven Central, or as source and binary packages
 preamble: Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.
 ---
 
@@ -82,66 +82,60 @@ The full announcement is in our news archive:
 
 ## Unsupported Releases
 
-The following releases are no longer supported by the Wicket team. You
-should upgrade your project if it still depends on any of these
-versions.
+The following releases are no longer supported by the Wicket team: they have
+reached end of life and receive no more releases, not even security fixes.
+If your project still depends on one of them, upgrade to 10.x LTS or 11.x; the
+[upgrade paths](#upgrade-paths) show the route.
 
-<table class="eol-table" style="width:100%">
-	<tr>
-		<th style="width:30%">Version</th>
-		<th style="width:30%">Latest release</th>
-		<th style="width:40%">Status</th>
-	</tr>
-	<tr>
-		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
-		<td>{{site.wicket.version_90}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
-		<td>{{site.wicket.version_80}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
-		<td>{{site.wicket.version_70}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-6.x.html">Wicket 6.x</a></td>
-		<td>{{site.wicket.version_60}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-1.5.x.html">Wicket 1.5.x</a></td>
-		<td>{{site.wicket.version_15}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-1.4.x.html">Wicket 1.4.x</a></td>
-		<td>{{site.wicket.version_14}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td><a href="wicket-1.3.x.html">Wicket 1.3.x</a></td>
-		<td>{{site.wicket.version_13}}</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td>Wicket 1.2.x</td>
-		<td>1.2.5</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td>Wicket 1.1.x</td>
-		<td>1.1.0</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
-	<tr>
-		<td>Wicket 1.0.x</td>
-		<td>1.0.0</td>
-		<td><span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
-	</tr>
+<table class="eol-table">
+    <thead>
+        <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Latest release</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row"><a href="wicket-9.x.html">Wicket 9.x</a></th>
+            <td>{{site.wicket.version_90}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-8.x.html">Wicket 8.x</a></th>
+            <td>{{site.wicket.version_80}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-7.x.html">Wicket 7.x</a></th>
+            <td>{{site.wicket.version_70}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-6.x.html">Wicket 6.x</a></th>
+            <td>{{site.wicket.version_60}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-1.5.x.html">Wicket 1.5.x</a></th>
+            <td>{{site.wicket.version_15}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-1.4.x.html">Wicket 1.4.x</a></th>
+            <td>{{site.wicket.version_14}}</td>
+        </tr>
+        <tr>
+            <th scope="row"><a href="wicket-1.3.x.html">Wicket 1.3.x</a></th>
+            <td>{{site.wicket.version_13}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 1.2.x</th>
+            <td>1.2.5</td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 1.1.x</th>
+            <td>1.1.0</td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 1.0.x</th>
+            <td>1.0.0</td>
+        </tr>
+    </tbody>
 </table>
 
 ---

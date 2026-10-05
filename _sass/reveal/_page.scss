@@ -15,12 +15,7 @@
     max-width: 48ch; margin-top: 18px;
     font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; color: var(--ink-2);
 }
-.page-kicker {
-    display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 20px;
-    font-family: var(--mono); font-size: .875rem; color: var(--ink-3);
-}
-.page-kicker a { color: var(--orange); text-decoration: none; }
-.page-kicker a:hover { text-decoration: underline; }
+.page-date { margin-top: 16px; font-family: var(--mono); font-size: .9375rem; color: var(--ink-3); }
 
 // ---------------------------------------------------------------- reading layout and rail
 
@@ -265,11 +260,18 @@
     > * { float: none; width: auto; margin: 0; }
 }
 .media-bar {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 24px; margin-bottom: 24px;
+    display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 24px;
     > * { float: none; width: auto; margin: 0; }
-    a { text-decoration: none; }
-    a > img { display: block; width: 100%; border-radius: 4px; }
+    a { display: block; line-height: 0; text-decoration: none; }
+    // Book covers: one height, one treatment.
+    a > img {
+        display: block; height: 220px; width: auto; max-width: none;
+        border-radius: 3px; box-shadow: 0 0 0 1px var(--line-2), 0 18px 40px -24px rgba(0, 0, 0, .9);
+        transition: box-shadow .2s;
+    }
+    a:hover > img { box-shadow: 0 0 0 2px var(--orange), 0 18px 40px -24px rgba(0, 0, 0, .9); }
 }
+@media (max-width: 600px) { .media-bar a > img { height: 160px; } }
 .page-content article + article { clear: both; }
 
 // ---------------------------------------------------------------- release highlights (branch pages)
@@ -368,7 +370,8 @@
     }
 }
 .connections-route { font-family: var(--mono); font-size: .9375rem; color: var(--ink); }
-.eol-table td:nth-child(2) { font-family: var(--mono); color: var(--ink-3); }
+.page-content .eol-table { max-width: 34rem; }
+.eol-table td:nth-child(2) { font-family: var(--mono); color: var(--ink-2); }
 
 // ---------------------------------------------------------------- quick start wizard
 
@@ -464,3 +467,18 @@
 @media (pointer: coarse) {
     .board-all a, .post-back a, .news-index a, .built-links a, .footer nav a { display: inline-block; padding-block: 10px; }
 }
+
+// Earlier years on the news page: a compact list of dates and titles.
+.page-content .news-titles {
+    list-style: none; margin: 0 0 1rem; padding: 0; max-width: none;
+
+    li {
+        display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 16px;
+        margin: 0; padding: 7px 0; border-top: 1px solid var(--line); line-height: 1.45;
+    }
+    time { font-family: var(--mono); font-size: .8125rem; line-height: 1.8; color: var(--ink-3); }
+    a { text-decoration-color: transparent; }
+    a:hover { text-decoration-color: var(--orange); }
+}
+.news-list h2 { margin-top: 3rem; }
+.news-list > h2:first-child { margin-top: 0; }
