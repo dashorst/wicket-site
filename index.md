@@ -17,7 +17,11 @@ pageclasses: index
 {% comment %} What's new: the headlines live in _data/news_strip.yml. {% endcomment %}
 <section class="strip" aria-label="What's new">
     <div class="strip-in">
-        <p class="strip-news">{% for item in site.data.news_strip %}{% assign first = item.url | slice: 0 %}<a href="{% if first == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a>{% endfor %}</p>
+        <ul class="strip-news">
+            {% for item in site.data.news_strip %}{% assign first = item.url | slice: 0 %}
+            <li><a href="{% if first == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a>{% if item.note %}<span class="strip-note">{{ item.note }}</span>{% endif %}</li>
+            {% endfor %}
+        </ul>
     </div>
 </section>
 

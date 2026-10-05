@@ -2,17 +2,22 @@
 # Change it with each announcement; keep it to about four items.
 #
 # title: the headline
+# note:  one short fact under it, the part a reader acts on (keep it under ~50 characters)
 # url:   a path on this site (starting with /), an anchor on the homepage (#new),
 #        or a full URL
 
 - title: Wicket 11 released
+  note: Java 21, Ajax without jQuery, leaner components
   url: "#new"
 
 - title: Wicket 10 now LTS
+  note: Supported until 14.0.0, July 2027
   url: /start/wicket-10.x.html
 
 - title: Wicket 8 and 9 discontinued
+  note: "No more releases: move to 10 LTS or 11"
   url: /start/download.html#upgrade-paths
 
 - title: A new release schedule
+  note: A major release every quarter, an LTS every year
   url: /news/2026/09/11/release-cadence.html

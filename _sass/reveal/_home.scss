@@ -80,14 +80,15 @@
 /* ---------------------------------------------------------------- what's new strip */
 
 .strip { border-block: 1px solid var(--line); }
-.strip-in {
-  max-width: var(--max); margin: 0 auto; padding: 18px var(--pad);
-  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 40px;
-  font-size: 1rem;
+.strip-in { max-width: var(--max); margin: 0 auto; padding: 24px var(--pad) 26px; font-size: 1rem; }
+/* Each headline is a link with one short fact under it, in equal columns across the page. */
+.strip-news {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr)); gap: 18px 40px;
+  list-style: none; margin: 0; padding: 0;
 }
-/* Two separate headlines: Wicket 11, and the release schedule that starts with it. */
-.strip-news { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4em 2.2em; }
-.strip-news a { font-weight: 700; font-size: 1.0625rem; }
+.strip-news li { display: grid; gap: 6px; align-content: start; }
+.strip-news a { font-weight: 700; font-size: 1.0625rem; justify-self: start; }
+.strip-note { color: var(--ink-3); font-size: .9375rem; line-height: 1.45; text-wrap: balance; }
 
 /* ---------------------------------------------------------------- shared section rhythm */
 
@@ -352,8 +353,7 @@ pre.code code { display: block; min-width: max-content; color: inherit; font-siz
   .cmd-row { flex-direction: column; align-items: stretch; padding-left: 0; }
   .cmd-line { width: auto; font-size: .875rem; white-space: normal; overflow-wrap: anywhere; padding: 4px 6px; }
   .cmd-copy { width: 100%; justify-content: center; }
-  .strip-in { flex-direction: column; gap: 8px; }
-  .strip-news { gap: .5em 1.4em; }
+  .strip-news { grid-template-columns: 1fr; gap: 16px; }
   .facts { grid-template-columns: 1fr; gap: 28px; }
   .hls { grid-template-columns: 1fr; gap: 0; }
   .hl, .hl:first-child, .hl:nth-child(3) { padding: 22px 0; border-left: 0; border-top: 1px solid var(--line); }
