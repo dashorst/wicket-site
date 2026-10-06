@@ -246,11 +246,11 @@ A monochrome dark palette with one warm accent taken from the registered mark.
 
 Content sits in a centred column of at most 1320px with a fluid page gutter (clamp(20px, 4.5vw, 64px)). Homepage sections are separated by a tall fluid gap (clamp(96px, 14vh, 168px)); the footer keeps the same gap above it.
 
-Homepage sections open with a two-column head (headline at 1.15fr, a short paragraph at 0.85fr, bottom-aligned), collapsing to one column below 860px. The reveal uses a 4:9 text-to-figure grid per step in its static form; with JavaScript, a wide screen (1280px and up) and motion allowed it becomes a 3.6:8.4 grid of step texts beside one sticky stage (height min(720px, 100vh - 120px), vertically centred). Below 1280px, without JavaScript or under reduced motion, every step keeps its own tree and code figure inline. The "stable" section pairs a two-column fact list with the compact release board (6fr:5fr), stacking below 1100px. "New in Wicket 11" is four columns divided by vertical rules (two at 1099px, one at 600px); "Built with Wicket" is a three-column ruled name list.
+Homepage sections open with a two-column head (headline at 1.15fr, a short paragraph at 0.85fr, bottom-aligned), collapsing to one column below 860px. The reveal uses a 4:9 text-to-figure grid per step in its static form; with JavaScript, a wide screen (1000px and up) and motion allowed it becomes a 3.6:8.4 grid of step texts beside one sticky stage (height min(720px, 100vh - 120px), vertically centred). Below 1000px, without JavaScript or under reduced motion, every step keeps its own tree and code figure inline. The "stable" section pairs a two-column fact list with the compact release board (6fr:5fr), stacking below 1100px. "New in Wicket 11" is four columns divided by vertical rules (two at 1099px, one at 600px); "Built with Wicket" is a three-column ruled name list at subtitle size, followed by the onward row: three ruled columns (User guide, Migration guides, Help and support).
 
 Reading pages have a title band (heading, sub-title, optional mono date) closed by a rule, then a reading column of at most 54rem. From 1100px a page with a table of contents gets a 15rem sticky rail at the left; the news archive gets a 13rem sticky year index at the right. Below 1100px the rail becomes a compact index panel above the text, showing only the first level.
 
-Breakpoints in use: 600px (phones), 760px (tables reflow to cards), 860px (two-column heads collapse), 999px (sub-page nav wraps under the brand), 1100px (rail and index appear), 1280px (sticky reveal stage). Touch screens get 44px targets on small links.
+Breakpoints in use: 600px (phones), 760px (tables reflow to cards), 860px (two-column heads collapse), 999px (sub-page nav wraps under the brand), 1000px (sticky reveal stage), 1100px (rail and index appear), 1280px (step figures stack their tree above the code). Touch screens get 44px targets on small links.
 
 ## Elevation & Depth
 
@@ -278,10 +278,10 @@ Corners are softly rounded and scale with the size of the object: 4px for tags a
 The homepage hero: registered mark at 0.9em, "Apache Wicket" in Display, the current major version in Ink 3 at 400. Below it the definition (Lead, centred, 38ch). On phones the mark sits above the name at 64px.
 
 ### Install Box
-A surface panel (1px Strong Rule border) with a row of controls and a command row. Controls: a segmented pill for the mode (Add to project / New project), a segmented pill for the release line (current and LTS, versions in mono), a native select for the build tool (Maven, Gradle, bld, AI prompt) with an orange chevron. The checked segment gets a 1px orange outline and Ink text, never a fill. The command is mono Ink in a single line (46ch, ellipsis), or one option per line for a new project; the Copy button is a light button with an inline copy icon. Versions and templates come from `_data/releases.yml` and `_config.yml`.
+A surface panel (1px Strong Rule border) with a row of controls and a command row. Controls: a segmented pill for the mode (Existing project / New project), a segmented pill for the release line (current and LTS, full versions in mono), a native select for the build tool (Maven, Gradle, bld, AI prompt) with an orange chevron. Each segmented pill is a radio group with one tab stop and arrow keys. The checked segment gets a 1px orange outline, Ink text and the Raised Surface, never an orange fill, so it reads apart from the focus ring. The command is mono Ink in a single line (58ch, ellipsis), one option per line for a new project, or wrapping prose for a prompt; the Copy button is a light button with an inline copy icon. Under the box a centred hint in Ink 3 says what the copy is and what it needs; after a copy the outcome replaces it for a few seconds. Versions and templates come from `_data/releases.yml` and `_config.yml`. Versions and templates come from `_data/releases.yml` and `_config.yml`.
 
 ### News Strip
-A full-width band between two Rule lines directly under the hero: up to four headlines in equal columns across the page (one column on phones), each a bold link (700, 1.0625rem) with the orange underline and under it one short fact in Ink 3 (0.9375rem, balanced wrap), the part a reader acts on. Both come from `_data/news_strip.yml` (`title`, `note`, `url`).
+A full-width band between two Rule lines directly under the hero: up to four headlines in equal columns across the page (one column on phones). Each item is one link as a whole: a bold title (700, 1.0625rem) with the orange underline and under it one short teaser in Ink 3 (0.9375rem, balanced wrap) that hints at what is behind the link without giving it away. Hover turns the title orange and the teaser Ink 2. Both come from `_data/news_strip.yml` (`title`, `note`, `url`). The onward row at the end of the homepage uses the same pattern.
 
 ### Reveal Step and Sticky Stage
 Each step is a two-digit mono number and a Step Title, then a short paragraph (40ch). Inactive steps are dimmed to Ink 3; the active step goes to Ink with its number in orange (0.45s). The stage is a surface panel (18px radius, Stage float shadow) with a bar (page name in bold sans, "04 / 07" in mono), the big tree at the left (38%, min 214px) with a caption at its foot, and the code panes at the right. Panes cross-fade and rise 12px; added lines wipe in an orange wash with a 2px orange bar, staggered 45ms per line.
@@ -309,7 +309,7 @@ Ink text with a 2px orange underline at a 0.28em offset; hover turns the text or
 - **Primary:** light button (Ink fill, Ground text, 700 1rem, 10px radius, 12px 20px), white on hover, 1px press-down on active.
 - **Go:** the larger homepage variant (14px 22px) with a drawn arrow made from a clipped shape in the text colour.
 - **Jump list:** the Markdown `.button-bar` becomes a ruled grid of plain labels (600, Ink, top Rule), orange on hover.
-- **Pills:** segmented controls and select in the install box (full radius, 1px Strong Rule border); the checked state is an orange outline.
+- **Pills:** segmented controls and select in the install box (full radius, 1px Strong Rule border); the checked state is an orange outline on the Raised Surface.
 - **Tags:** LTS and EOL as small 500 labels in a 1px Strong Rule outline with a 4px radius.
 
 ### Inputs / Fields
@@ -332,7 +332,7 @@ A top Rule, then the ASF logo on its light tile (10px radius) beside a wrapping 
 - **Do** reuse the component-tree elbow (one pixel, Orange Dim, 6px corner, full orange when active) for any new hierarchical wayfinding.
 - **Do** mark a current item the way the reveal marks a new node: orange text on the Orange Wash gradient, full-orange connector.
 - **Do** set versions, dates, file names and step numbers in Red Hat Mono.
-- **Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1280px every step shows its own tree and code.
+- **Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1000px every step shows its own tree and code.
 - **Do** drive release-dependent content (install box, release boards, strip) from `_data/` and `_config.yml`, never hard-coded versions in templates.
 - **Do** keep the registered orange-circle mark unchanged and the ASF logo on its light tile.
 

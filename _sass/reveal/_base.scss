@@ -76,7 +76,7 @@ abbr[title] { text-decoration: none; }
 
 .skip {
     position: absolute; left: 16px; top: -60px; z-index: 10;
-    background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 700;
+    background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; text-decoration: none; font-weight: 700;
 }
 .skip:focus { top: 16px; color: var(--bg); }
 

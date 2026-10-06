@@ -19,7 +19,7 @@ pageclasses: index
     <div class="strip-in">
         <ul class="strip-news">
             {% for item in site.data.news_strip %}{% assign first = item.url | slice: 0 %}
-            <li><a href="{% if first == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a>{% if item.note %}<span class="strip-note">{{ item.note }}</span>{% endif %}</li>
+            <li><a href="{% if first == '/' %}{{ site.baseurl }}{% endif %}{{ item.url }}"><span class="strip-title">{{ item.title }}</span>{% if item.note %}<span class="strip-note">{{ item.note }}</span>{% endif %}</a></li>
             {% endfor %}
         </ul>
     </div>
@@ -30,8 +30,8 @@ pageclasses: index
 <section class="stable" id="stable" aria-labelledby="stable-title">
     <div class="stable-text">
         <header class="sec-head">
-            <h2 id="stable-title">Stable since 2004</h2>
-            <p>Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one you just used.</p>
+            <h2 id="stable-title">Stable since 2005</h2>
+            <p>Open source since 2004, Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one you just used.</p>
         </header>
         <dl class="facts">
             <div><dt>An Apache project</dt><dd>Developed in the open at the Apache Software Foundation by a community of volunteers, under the Apache License&nbsp;2.0.</dd></div>
@@ -47,7 +47,7 @@ pageclasses: index
 <section class="new11" id="new" aria-labelledby="new-title">
     <header class="sec-head">
         <h2 id="new-title">New in Wicket {{ featured }}</h2>
-        <p><a href="{{ site.baseurl }}/start/wicket-{{ featured }}.x.html">Everything about Wicket {{ featured }}</a></p>
+        <p>{{ site.data.highlights[featured].intro }} <a href="{{ site.baseurl }}/start/wicket-{{ featured }}.x.html">Everything about Wicket {{ featured }}</a></p>
     </header>
     {% include highlights.html home=true %}
 </section>
@@ -65,3 +65,12 @@ pageclasses: index
     </ul>
     <p class="built-links"><a href="{{ site.data.builtwith.feed }}" rel="nofollow">More on Built with Wicket</a> <a href="{{ site.data.builtwith.submit }}" rel="nofollow">Submit your project</a></p>
 </section>
+
+{% comment %} Where to go once Wicket runs: the guides and help, for teams already on Wicket. {% endcomment %}
+<nav class="onward" aria-label="Documentation and help">
+    <ul>
+        <li><a href="{{ site.baseurl }}/learn/#guide"><span class="onward-title">User guide</span><span class="onward-note">From a first page to advanced topics</span></a></li>
+        <li><a href="{{ site.baseurl }}/learn/#migrations"><span class="onward-title">Migration guides</span><span class="onward-note">Every API change between major versions</span></a></li>
+        <li><a href="{{ site.baseurl }}/help/"><span class="onward-title">Help and support</span><span class="onward-note">Mailing lists and commercial support</span></a></li>
+    </ul>
+</nav>

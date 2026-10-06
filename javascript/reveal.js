@@ -17,8 +17,9 @@
     var tool = document.getElementById('cmd-tool');
     var copy = box.querySelector('.cmd-copy');
     var status = box.querySelector('.cmd-status');
-    var radios = box.querySelectorAll('[data-line]');
-    var modes = box.querySelectorAll('[data-mode]');
+    var hint = document.getElementById('cmd-hint');
+    var radios = Array.prototype.slice.call(box.querySelectorAll('[data-line]'));
+    var modes = Array.prototype.slice.call(box.querySelectorAll('[data-mode]'));
     var line = 'current', mode = 'dependency', timer;
 
     function fill(template) {
@@ -28,39 +29,61 @@
         .replace(/\{version\}/g, v).replace(/\{major\}/g, p[0])
         .replace(/\{minor\}/g, p[1]).replace(/\{patch\}/g, p[2]).replace(/\{guide\}/g, data.guide);
     }
+    // A radio group: only the checked button is a tab stop, the arrow keys move the choice.
+    function check(group, attr, value) {
+      group.forEach(function (b) {
+        var on = b.getAttribute(attr) === value;
+        b.setAttribute('aria-checked', String(on));
+        b.tabIndex = on ? 0 : -1;
+      });
+    }
     function render() {
       var t = data[mode][tool.value];
       show.textContent = fill(t.show);
-      box.classList.toggle('is-project', mode === 'project');
-      modes.forEach(function (m) { m.setAttribute('aria-checked', String(m.getAttribute('data-mode') === mode)); });
       show.title = fill(t.copy);
-      radios.forEach(function (r) { r.setAttribute('aria-checked', String(r.getAttribute('data-line') === line)); });
+      hint.textContent = fill(t.hint);
+      box.classList.toggle('is-project', mode === 'project');
+      box.classList.toggle('is-prose', !!t.prose);
+      box.classList.remove('is-by-hand');
+      check(modes, 'data-mode', mode);
+      check(radios, 'data-line', line);
+      say('');
     }
+    // The status replaces the hint under the box while it shows.
     function say(msg) {
       status.textContent = msg;
+      box.classList.toggle('has-status', msg !== '');
       clearTimeout(timer);
-      timer = setTimeout(function () { status.textContent = ''; }, 2600);
+      if (msg) timer = setTimeout(function () { say(''); }, 3200);
     }
-    radios.forEach(function (r) {
-      r.addEventListener('click', function () { line = r.getAttribute('data-line'); render(); });
-      r.addEventListener('keydown', function (e) {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        var next = radios[(Array.prototype.indexOf.call(radios, r) + 1) % radios.length];
-        line = next.getAttribute('data-line'); render(); next.focus(); e.preventDefault();
+    function arrows(group, attr, set) {
+      group.forEach(function (b, i) {
+        b.addEventListener('click', function () { set(b.getAttribute(attr)); render(); });
+        b.addEventListener('keydown', function (e) {
+          var step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+          if (!step) return;
+          var next = group[(i + step + group.length) % group.length];
+          set(next.getAttribute(attr)); render(); next.focus(); e.preventDefault();
+        });
       });
-    });
+    }
+    arrows(radios, 'data-line', function (v) { line = v; });
+    arrows(modes, 'data-mode', function (v) { mode = v; });
     tool.addEventListener('change', render);
-    modes.forEach(function (m) {
-      m.addEventListener('click', function () { mode = m.getAttribute('data-mode'); render(); });
-      m.addEventListener('keydown', function (e) {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        var next = modes[(Array.prototype.indexOf.call(modes, m) + 1) % modes.length];
-        mode = next.getAttribute('data-mode'); render(); next.focus(); e.preventDefault();
-      });
-    });
     copy.addEventListener('click', function () {
       var t = data[mode][tool.value], text = fill(t.copy);
       var done = 'The ' + t.what + ' for ' + data.lines[line].version + ' is on your clipboard.';
+      // Without the clipboard: show exactly what would have been copied, selected, to copy by hand.
+      var byHand = function () {
+        show.textContent = text;
+        box.classList.add('is-by-hand');
+        var range = document.createRange();
+        range.selectNodeContents(show);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        say('Your browser blocked the clipboard. The text is selected: copy it by hand.');
+      };
       var fallback = function () {
         var ta = document.createElement('textarea');
         ta.value = text; ta.setAttribute('readonly', '');
@@ -69,7 +92,7 @@
         var ok = false;
         try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
         ta.remove();
-        say(ok ? done : 'Your browser blocked the clipboard. The dependency is on the download page.');
+        if (ok) say(done); else byHand();
       };
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(function () { say(done); }, fallback);
@@ -136,6 +159,8 @@
   function mode() {
     var on = mq.matches;
     root.classList.toggle('is-reveal', on);
+    // The step figures are visually hidden while the stage shows their code: no tab stops in them.
+    section.querySelectorAll('.step-fig pre.code').forEach(function (pre) { pre.tabIndex = on ? -1 : 0; });
     if (on && !io) {
       current = 0;
       show(1);

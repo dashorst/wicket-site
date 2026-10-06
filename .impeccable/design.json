@@ -338,7 +338,7 @@
       },
       {
         "name": "reveal-stage",
-        "value": "1280px"
+        "value": "1000px"
       }
     ]
   },
@@ -465,7 +465,7 @@
       "**Do** reuse the component-tree elbow (one pixel, Orange Dim, 6px corner, full orange when active) for any new hierarchical wayfinding.",
       "**Do** mark a current item the way the reveal marks a new node: orange text on the Orange Wash gradient, full-orange connector.",
       "**Do** set versions, dates, file names and step numbers in Red Hat Mono.",
-      "**Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1280px every step shows its own tree and code.",
+      "**Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1000px every step shows its own tree and code.",
       "**Do** drive release-dependent content (install box, release boards, strip) from `_data/` and `_config.yml`, never hard-coded versions in templates.",
       "**Do** keep the registered orange-circle mark unchanged and the ASF logo on its light tile."
     ],

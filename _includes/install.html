@@ -5,27 +5,26 @@
   release day needs no edit here.
   In the templates below {version} is the full version, {major} {minor} {patch} its parts,
   {guide} the upgrade guide, {groupId} {artifactId} the defaults. "show" may break lines for
-  reading; "copy" is what lands on the clipboard.
+  reading; "copy" is what lands on the clipboard; "hint" says under the box what the copy is and
+  what it needs. "prose": true lets a sentence wrap instead of running on one line.
 {% endcomment %}
 {%- assign current = site.data.releases.lines | where: 'status', 'current' | first -%}
 {%- assign lts = site.data.releases.lines | where: 'status', 'lts' | first -%}
 {%- assign v_current = site.wicket[current.config] | default: site.wicket.version -%}
 {%- assign v_lts = site.wicket[lts.config] -%}
-{%- assign p_current = v_current | split: '.' -%}
-{%- assign p_lts = v_lts | split: '.' -%}
 {%- capture guide %}{{ site.url | default: 'https://wicket.apache.org' }}{{ site.baseurl }}/start/download.html#upgrade-paths{% endcapture -%}
 <div class="cmd">
     <div class="cmd-controls" hidden>
         <div class="cmd-modes cmd-lines" role="radiogroup" aria-label="What to copy">
-            <button type="button" role="radio" aria-checked="true" data-mode="dependency">Add to project</button>
+            <button type="button" role="radio" aria-checked="true" data-mode="dependency">Existing project</button>
             <button type="button" role="radio" aria-checked="false" data-mode="project">New project</button>
         </div>
         <div class="cmd-lines" role="radiogroup" aria-label="Release line">
-            <button type="button" role="radio" aria-checked="true" data-line="current">{{ p_current[0] }}.{{ p_current[1] }}</button>
-            {% if v_lts %}<button type="button" role="radio" aria-checked="false" data-line="lts">{{ p_lts[0] }}.{{ p_lts[1] }} <abbr title="Long-term support">LTS</abbr></button>{% endif %}
+            <button type="button" role="radio" aria-checked="true" data-line="current">{{ v_current }}</button>
+            {% if v_lts %}<button type="button" role="radio" aria-checked="false" data-line="lts">{{ v_lts }} <abbr title="Long-term support">LTS</abbr></button>{% endif %}
         </div>
         <label class="cmd-tool">
-            <span class="visually-hidden">Build tool</span>
+            <span class="visually-hidden">Build tool or AI prompt</span>
             <select id="cmd-tool">
                 <option value="maven">Maven</option>
                 <option value="gradle">Gradle</option>
@@ -36,12 +35,13 @@
     </div>
     <div class="cmd-row">
         <p class="cmd-line"><code id="cmd-show">org.apache.wicket:wicket-core:{{ v_current }}</code></p>
-        <button type="button" class="cmd-copy" aria-describedby="cmd-show" hidden>
+        <button type="button" class="cmd-copy" aria-describedby="cmd-show cmd-hint" hidden>
             <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 10.5h-.5a1 1 0 0 1-1-1v-6.5a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
             <span>Copy</span>
         </button>
     </div>
-    <span class="cmd-status" role="status"></span>
+    <p class="cmd-hint" id="cmd-hint"></p>
+    <p class="cmd-status" role="status"></p>
     <script type="application/json" id="install-data">
     {
       "lines": {
@@ -56,43 +56,54 @@
       "dependency": {
         "maven": {
           "what": "Maven dependency",
+          "hint": "Copies the <dependency> element for your pom.xml",
           "show": "org.apache.wicket:wicket-core:{version}",
           "copy": "<dependency>\n  <groupId>org.apache.wicket<\/groupId>\n  <artifactId>wicket-core<\/artifactId>\n  <version>{version}<\/version>\n<\/dependency>"
         },
         "gradle": {
           "what": "Gradle dependency",
+          "hint": "Copies the line for the dependencies block of build.gradle.kts",
           "show": "implementation(\"org.apache.wicket:wicket-core:{version}\")",
           "copy": "implementation(\"org.apache.wicket:wicket-core:{version}\")"
         },
         "bld": {
           "what": "bld dependency",
+          "hint": "Copies the compile dependency for your bld build class",
           "show": "dependency(\"org.apache.wicket\", \"wicket-core\", version({major},{minor},{patch}))",
           "copy": "scope(compile)\n    .include(dependency(\"org.apache.wicket\", \"wicket-core\", version({major},{minor},{patch})));"
         },
         "ai": {
           "what": "prompt for your coding assistant",
-          "show": "Upgrade my Wicket dependencies to {version} and follow the upgrade guide",
-          "copy": "Upgrade my Apache Wicket dependencies to {version} and execute the steps from the upgrade guide: {guide}"
+          "hint": "Copies a prompt for your coding assistant, with a link to the upgrade guide",
+          "prose": true,
+          "show": "Add Wicket {version} to my project, or upgrade it to {version} with the upgrade guide",
+          "copy": "Use Apache Wicket {version} in my project. If the project does not use Wicket yet, add the dependency org.apache.wicket:wicket-core:{version}. If it uses an earlier Wicket version, upgrade my Apache Wicket dependencies to {version} and execute the steps from the upgrade guide: {guide}"
         }
       },
       "project": {
         "maven": {
           "what": "Maven command for a new project",
+          "hint": "Copies the command on one line. Creates the project in ./{artifactId}",
           "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false",
           "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false"
         },
         "gradle": {
           "what": "command for a new Gradle project",
+          "hint": "Gradle has no project templates: this needs Maven to generate the project, then converts it",
           "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false\n&& cd {artifactId}\n&& gradle init --type pom",
           "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false && cd {artifactId} && gradle init --type pom"
         },
         "bld": {
           "what": "prompt for a new bld project",
-          "show": "bld has no Wicket template yet: copy a prompt for your coding assistant",
+          "hint": "bld has no Wicket template yet: this copies a prompt for your coding assistant",
+          "prose": true,
+          "show": "Create a new Wicket {version} application {groupId}:{artifactId}, built with bld",
           "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}, built with bld (https://rife2.com/bld). Use the Wicket quickstart archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) as the reference for the project layout, and make sure it builds and runs."
         },
         "ai": {
           "what": "prompt for a new project",
+          "hint": "Copies a prompt for your coding assistant",
+          "prose": true,
           "show": "Create a new Wicket {version} project {groupId}:{artifactId} from the quickstart archetype",
           "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}. Start from the Wicket quickstart Maven archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) and make sure it builds and runs."
         }

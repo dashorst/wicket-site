@@ -48,7 +48,8 @@
                 {%- if line_group == 2 and line.when != next_when and line.series != next_lts %}{% continue %}{% endif %}
                 {%- if line.config %}{% assign version = site.wicket[line.config] %}{% else %}{% assign version = line.version %}{% endif %}
                 {%- assign support = line.support | split: ', ' %}
-            <tr><th scope="row"><span class="v">{{ version }}</span>{% if line.service == 'lts' %} <abbr title="Long-term support">LTS</abbr>{% endif %}</th><td>{% if group == 1 %}{{ line.role | downcase }}{% endif %}</td><td class="d">{% if group == 1 %}{{ support[0] | downcase }}{% if support[1] %} <span>{{ support[1] }}</span>{% endif %}{% else %}<span>{{ line.when }}</span>{% endif %}</td></tr>
+                {%- assign key = ',' | append: line.series | append: ',' %}
+            <tr><th scope="row"><span class="v">{{ version }}</span>{% if line.service == 'lts' %} <abbr title="Long-term support">LTS</abbr>{% endif %}</th><td>{% if group == 1 %}{{ line.role | downcase }}{% elsif line.service == 'lts' %}{% if in_service contains key %}LTS update{% else %}next LTS{% endif %}{% else %}next major{% endif %}</td><td class="d">{% if group == 1 %}{{ support[0] | downcase }}{% if support[1] %} <span>{{ support[1] }}</span>{% endif %}{% else %}<span>{{ line.when }}</span>{% endif %}</td></tr>
             {%- endfor %}
             {%- endif %}
         </tbody>
