@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apache Wicket</title>
+  <meta name="description" content="Apache Wicket is a component-oriented, type-safe Java web application framework. Production-proven for over twenty years.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero -->
+<section class="header-band header-band--hero header-band--photo" style="background-image: linear-gradient(to bottom, rgba(15,20,25,0.65), rgba(15,20,25,0.75)), url('/wicket-site/april-2026/img/hero-borobudur.jpg');">
+  <div class="header-band__inner hero-reveal">
+    <div class="hero-brand hero-reveal__item" style="--reveal-delay: 0.05s">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="" class="hero-logo" aria-hidden="true">
+      <p class="header-band__subtitle header-band__subtitle--hero">Apache Wicket&trade;</p>
+    </div>
+    <h1 class="header-band__title hero-reveal__item hero-sparkle" style="--reveal-delay: 0.12s">
+      Java web applications<br />
+      <em>that stand the test of time.</em>
+    </h1>
+    <p class="header-band__description hero-reveal__item" style="--reveal-delay: 0.22s">
+      Component-oriented. Type-safe. Production-proven across thousands of
+      applications for over twenty years. No JavaScript framework required.
+    </p>
+    <div class="header-band__actions hero-reveal__item" style="--reveal-delay: 0.3s">
+      <a href="/wicket-site/april-2026/start/quickstart" class="btn-primary">Get Started</a>
+      <a href="/wicket-site/april-2026/docs/examples" class="btn-secondary">See It in Action</a>
+    </div>
+  </div>
+  <div class="hero-photo-credit">
+    Photo by <a href="https://unsplash.com/@mlapergolaphoto">Mario La Pergola</a> on <a href="https://unsplash.com/photos/WTGV6qBOzro">Unsplash</a>
+  </div>
+</section>
+
+<!-- Code Showcase -->
+<section class="code-showcase">
+  <div class="code-showcase__header animate-in" style="animation-delay: 0.35s">
+    <p class="code-showcase__header-label">The Wicket Pattern</p>
+    <p class="code-showcase__header-text">Each component: one Java class + one HTML template</p>
+  </div>
+
+  <div class="code-showcase__panes animate-in" style="animation-delay: 0.45s">
+    <!-- Left pane: Java -->
+    <div class="code-showcase__pane">
+      <div class="code-showcase__file-label">
+        <span class="code-showcase__file-dot"></span>
+        <span class="code-showcase__file-name">TaskPanel.java</span>
+      </div>
+      <div class="code-showcase__code">
+        <pre><code><span class="code-keyword">public</span> <span class="code-keyword">class</span> <span class="code-type">TaskPanel</span> <span class="code-keyword">extends</span> <span class="code-type">Panel</span> {
+    <span class="code-annotation">@Inject</span>
+    <span class="code-keyword">private</span> <span class="code-type">TaskService</span> taskService;
+
+    <span class="code-keyword">public</span> <span class="code-type">TaskPanel</span>(<span class="code-type">String</span> id) {
+        <span class="code-builtin">super</span>(id);
+        <span class="code-type">Task</span> task = <span class="code-keyword">new</span> <span class="code-type">Task</span>();
+
+        <span class="code-type">Form</span>&lt;<span class="code-type">Task</span>&gt; form = <span class="code-keyword">new</span> <span class="code-type">Form</span>&lt;&gt;(<span class="code-string">"form"</span>);
+<span class="code-highlight">        form.<span class="code-builtin">add</span>(<span class="code-keyword">new</span> <span class="code-type">TextField</span>&lt;&gt;(<span class="code-string">"title"</span>,</span>
+<span class="code-highlight">            <span class="code-type">LambdaModel</span>.<span class="code-builtin">of</span>(task::<span class="code-builtin">getTitle</span>, task::<span class="code-builtin">setTitle</span>)));</span>
+        form.<span class="code-builtin">add</span>(<span class="code-keyword">new</span> <span class="code-type">AjaxButton</span>(<span class="code-string">"save"</span>) {
+            <span class="code-annotation">@Override</span>
+            <span class="code-keyword">protected</span> <span class="code-keyword">void</span> <span class="code-builtin">onSubmit</span>(<span class="code-type">AjaxRequestTarget</span> target) {
+                taskService.<span class="code-builtin">save</span>(task);
+                <span class="code-builtin">success</span>(<span class="code-string">"Saved!"</span>);
+                target.<span class="code-builtin">add</span>(feedback);
+            }
+        });
+        <span class="code-builtin">add</span>(form);
+    }
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Right pane: HTML -->
+    <div class="code-showcase__pane">
+      <div class="code-showcase__file-label">
+        <span class="code-showcase__file-dot"></span>
+        <span class="code-showcase__file-name">TaskPanel.html</span>
+      </div>
+      <div class="code-showcase__code">
+        <pre><code>&lt;<span class="code-keyword">wicket:panel</span>&gt;
+  &lt;<span class="code-keyword">form</span> <span class="code-type">wicket:id</span>=<span class="code-string">"form"</span>&gt;
+<span class="code-highlight">    &lt;<span class="code-keyword">input</span> <span class="code-type">wicket:id</span>=<span class="code-string">"title"</span></span>
+<span class="code-highlight">           <span class="code-type">type</span>=<span class="code-string">"text"</span></span>
+<span class="code-highlight">           <span class="code-type">placeholder</span>=<span class="code-string">"Task title"</span> /&gt;</span>
+    &lt;<span class="code-keyword">button</span> <span class="code-type">wicket:id</span>=<span class="code-string">"save"</span>&gt;Save&lt;/<span class="code-keyword">button</span>&gt;
+  &lt;/<span class="code-keyword">form</span>&gt;
+  &lt;<span class="code-keyword">div</span> <span class="code-type">wicket:id</span>=<span class="code-string">"feedback"</span>&gt;&lt;/<span class="code-keyword">div</span>&gt;
+&lt;/<span class="code-keyword">wicket:panel</span>&gt;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-showcase__caption">
+    <p>A type-safe AJAX form with lambda model binding and CDI injection. No JavaScript. Just Java.</p>
+  </div>
+</section>
+
+<!-- Feature Cards -->
+<section class="feature-section animate-in" style="animation-delay: 0.55s">
+  <p class="section-label">Why Wicket</p>
+  <h2 class="mb-12" style="line-height:1.2">Crafted for the long run</h2>
+  <div class="feature-grid">
+    <div class="card-large">
+      <div class="card-large__icon card__icon--orange">{ }</div>
+      <h3 class="card__title">For Java devs, by Java devs</h3>
+      <p class="card__text">No transpiler. No bundler. No framework-of-the-month. Write Java and HTML &mdash; the same tools you'll use next year, and the year after that.</p>
+    </div>
+    <div class="card-large">
+      <div class="card-large__icon card__icon--green">&#x1f6e1;</div>
+      <h3 class="card__title">Secure by Default</h3>
+      <p class="card__text">Full Content Security Policy support without unsafe directives. Automatic nonce injection. XSS protection built into the framework, not bolted on.</p>
+    </div>
+    <div class="card-large">
+      <div class="card-large__icon card__icon--blue">&#x2197;</div>
+      <h3 class="card__title">Scales with your ambition</h3>
+      <p class="card__text">From prototype to millions of lines of code. Java's packages, classes, and dependency injection are your architecture &mdash; no framework-specific scaffolding required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Community Stats -->
+
+
+<section class="community-stats animate-in" style="animation-delay: 0.65s">
+  <p class="section-label mb-6">The Wicket Community</p>
+  <div class="community-stats__grid">
+    <div>
+      <div class="community-stats__number">860+</div>
+      <div class="community-stats__label">GitHub Stars</div>
+    </div>
+    <div>
+      <div class="community-stats__number community-stats__number--orange">2.1M+</div>
+      <div class="community-stats__label">Maven Downloads</div>
+    </div>
+    <div>
+      <div class="community-stats__number">22</div>
+      <div class="community-stats__label">Years in Production</div>
+    </div>
+    <div>
+      <div class="community-stats__number community-stats__number--orange">10</div>
+      <div class="community-stats__label">Major Versions</div>
+    </div>
+  </div>
+  <a href="/wicket-site/april-2026/community/who-uses-wicket" class="community-stats__link">
+    See who's building with Wicket &rarr;
+  </a>
+</section>
+
+<!-- Quickstart Section -->
+<section class="quickstart animate-in" style="animation-delay: 0.75s">
+  <div class="quickstart__inner">
+    <div class="quickstart__text">
+      <h3>Up and running in<br />thirty seconds</h3>
+      <p>
+        One Maven command gives you a working Wicket application with embedded Jetty. Edit, refresh, repeat.
+      </p>
+      <a href="/wicket-site/april-2026/start/quickstart" class="btn-primary">Quickstart Guide &rarr;</a>
+    </div>
+    <div class="quickstart__terminal">
+      <div class="quickstart__terminal-block">
+        <span class="prompt">$</span> mvn archetype:generate \<br />
+        &nbsp;&nbsp;-DarchetypeGroupId=<span class="string">org.apache.wicket</span> \<br />
+        &nbsp;&nbsp;-DarchetypeArtifactId=<span class="string">wicket-archetype-quickstart</span> \<br />
+        &nbsp;&nbsp;-DarchetypeVersion=<span class="value">10.8.0</span> \<br />
+        &nbsp;&nbsp;-DgroupId=<span class="string">com.example</span> \<br />
+        &nbsp;&nbsp;-DartifactId=<span class="string">myapp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vitals Bar -->
+
+<section class="vitals-bar">
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value">10.8.0</div>
+    <div class="vitals-bar__label">Latest Release</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value vitals-bar__value--orange">Dec 2025</div>
+    <div class="vitals-bar__label">Released</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value">Java 17+</div>
+    <div class="vitals-bar__label">Baseline</div>
+  </div>
+  <div class="vitals-bar__item">
+    <div class="vitals-bar__value vitals-bar__value--orange">Jakarta EE</div>
+    <div class="vitals-bar__label">Compatible</div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="recent-posts animate-in" style="animation-delay: 0.85s">
+  <div class="recent-posts__header">
+    <div>
+      <p class="section-label">Latest News</p>
+      <h2>From the Blog</h2>
+    </div>
+    <a href="/wicket-site/april-2026/blog">View all posts &rarr;</a>
+  </div>
+  <div class="recent-posts__grid">
+    
+    <article class="post-card">
+      <div class="post-card__date">December 21, 2025</div>
+      
+        
+        
+          <span class="tag tag-release">release</span>
+        
+      
+      <h4 class="post-card__title">
+        <a href="/wicket-site/april-2026/blog/2025/12/21/wicket-10.8.0-released/">Apache Wicket 10.8.0 released</a>
+      </h4>
+    </article>
+    
+    <article class="post-card">
+      <div class="post-card__date">December 19, 2025</div>
+      
+        
+        
+          <span class="tag tag-release">release</span>
+        
+      
+      <h4 class="post-card__title">
+        <a href="/wicket-site/april-2026/blog/2025/12/19/wicket-9.22.0-released/">Apache Wicket 9.22.0 released</a>
+      </h4>
+    </article>
+    
+    <article class="post-card">
+      <div class="post-card__date">September 30, 2025</div>
+      
+        
+        
+          <span class="tag tag-release">release</span>
+        
+      
+      <h4 class="post-card__title">
+        <a href="/wicket-site/april-2026/blog/2025/09/30/wicket-10.7.0-released/">Apache Wicket 10.7.0 released</a>
+      </h4>
+    </article>
+    
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

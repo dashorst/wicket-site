@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Apache Wicket site designs</title>
+<style>
+  :root { color-scheme: light; --ink: #1d1d1f; --soft: #5c5c66; --rule: #d9d9de; --link: #0b57d0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, sans-serif; color: var(--ink); background: #fafafa; }
+  main { max-width: 72rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 0.5rem; }
+  .intro { color: var(--soft); max-width: 62ch; margin: 0 0 2.5rem; }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.5rem 2rem; grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); }
+  li { border-top: 1px solid var(--rule); padding-top: 1rem; }
+  a.shot { display: block; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--rule); background: #fff; }
+  a.shot img { display: block; width: 100%; height: auto; }
+  h2 { font-size: 1.15rem; margin: 0.9rem 0 0.15rem; }
+  h2 a { color: var(--ink); }
+  .date { color: var(--soft); font-size: 0.875rem; margin: 0 0 0.4rem; }
+  .desc { margin: 0; }
+  a { color: var(--link); text-underline-offset: 0.15em; }
+  a:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Apache Wicket site designs</h1>
+<p class="intro">Designs for wicket.apache.org, published side by side for comparison. The sketches show a homepage only; the full designs include every page. Content on the older designs is as of their date.</p>
+<ol>
+<li>
+  <a class="shot" href="departure-board/" tabindex="-1" aria-hidden="true"><img src="thumbs/departure-board.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="departure-board/">The departure board</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">Station hall with a departure board of release lines, built for Wicket 11.0 and the quarterly release model.</p>
+</li>
+<li>
+  <a class="shot" href="reveal-site/" tabindex="-1" aria-hidden="true"><img src="thumbs/reveal-site.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="reveal-site/">The reveal</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">The reveal as a complete site: monochrome with Wicket orange, a homepage that builds a page's component tree step by step, and every page restyled.</p>
+</li>
+<li>
+  <a class="shot" href="grid/" tabindex="-1" aria-hidden="true"><img src="thumbs/grid.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="grid/">Sketch: grid system</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">Homepage sketch in the Swiss International Typographic Style: a module grid with one committed field colour.</p>
+</li>
+<li>
+  <a class="shot" href="drawing/" tabindex="-1" aria-hidden="true"><img src="thumbs/drawing.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="drawing/">Sketch: drawing sheet</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">Homepage sketch as an engineering drawing: Wicket drawn as a part in two views, releases in the revision table.</p>
+</li>
+<li>
+  <a class="shot" href="reveal/" tabindex="-1" aria-hidden="true"><img src="thumbs/reveal.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="reveal/">Sketch: reveal</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">Monochrome with Wicket orange, after vercel.com/eve: scroll through seven steps that build a page's component tree in real code.</p>
+</li>
+<li>
+  <a class="shot" href="ribbon-tree/" tabindex="-1" aria-hidden="true"><img src="thumbs/ribbon-tree.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="ribbon-tree/">Sketch: component tree on bookcloth</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">The original provenance ribbon's world without a photo: the component-tree ribbon enters from the left edge and opens the page.</p>
+</li>
+<li>
+  <a class="shot" href="ribbon-components/" tabindex="-1" aria-hidden="true"><img src="thumbs/ribbon-components.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="ribbon-components/">Sketch: ribbon as component tree</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">The ribbon runs through a page's component tree, joining each Java component to its tag; release facts shrink to one small block.</p>
+</li>
+<li>
+  <a class="shot" href="ribbon-seasons/" tabindex="-1" aria-hidden="true"><img src="thumbs/ribbon-seasons.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="ribbon-seasons/">Sketch: ribbon with seasons</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">The provenance ribbon under a seasonal photograph, with the big logo lockup and a light body. Try ?season=summer or ?occasion=halloween.</p>
+</li>
+<li>
+  <a class="shot" href="ribbon/" tabindex="-1" aria-hidden="true"><img src="thumbs/ribbon.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="ribbon/">Sketch: provenance ribbon</a></h2>
+  <p class="date">October 2026</p>
+  <p class="desc">Homepage sketch that follows Wicket's release lines as one ribbon through twenty years, splitting at the present.</p>
+</li>
+<li>
+  <a class="shot" href="april-2026/" tabindex="-1" aria-hidden="true"><img src="thumbs/april-2026.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="april-2026/">The April attempt</a></h2>
+  <p class="date">April 2026</p>
+  <p class="desc">The previous redesign, published at this address until October 2026.</p>
+</li>
+<li>
+  <a class="shot" href="current/" tabindex="-1" aria-hidden="true"><img src="thumbs/current.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="current/">The current site</a></h2>
+  <p class="date">2015 to today</p>
+  <p class="desc">wicket.apache.org as it is live today, on the Taiga theme.</p>
+</li>
+<li>
+  <a class="shot" href="2020/" tabindex="-1" aria-hidden="true"><img src="thumbs/2020.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="2020/">The 2020 layout</a></h2>
+  <p class="date">June 2020</p>
+  <p class="desc">Andrea Del Bene's new layout for Wicket 9, with content as of June 2020.</p>
+</li>
+<li>
+  <a class="shot" href="2018/" tabindex="-1" aria-hidden="true"><img src="thumbs/2018.png" alt="" width="720" height="480" loading="lazy"></a>
+  <h2><a href="2018/">The Wicket 8 draft</a></h2>
+  <p class="date">May 2018</p>
+  <p class="desc">A first draft for the Wicket 8 site, with content as of May 2018.</p>
+</li>
+</ol>
+</main>
+</body>
+</html>

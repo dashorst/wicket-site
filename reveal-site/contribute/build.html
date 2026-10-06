@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Build from source | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute" class="is-active" aria-current="true">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Build from source</h1>
+        
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#getting-your-wicket-version"><span class="toc-number">1</span> <span class="toc-text">Getting your Wicket version</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#building-wicket"><span class="toc-number">2</span> <span class="toc-text">Building Wicket</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#coping-with-test-failures"><span class="toc-number">2.1</span> <span class="toc-text">Coping with test failures</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#using-your-own-built-artifacts"><span class="toc-number">2.2</span> <span class="toc-text">Using your own built artifacts</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+
+            <section class="page-content">
+                <p>The Wicket projects are built using a multi-module build as proposed by the
+Maven project. We use Maven to build our projects and distributions. To be
+able to build Wicket directly from subversion, you will need an understanding
+of Maven.</p>
+
+<p>This document contains the following sections.</p>
+
+<ol>
+  <li>Getting your Wicket version</li>
+  <li>Building Wicket</li>
+  <li>Coping with test failures</li>
+  <li>Using your own built artifacts</li>
+</ol>
+
+<p>For more information on the project structure, please read the ‘Better Builds
+With Maven’ book which has a detailed description on how to structure a
+maintainable, enterprise ready build. The book is available for free from the
+Mergere website.</p>
+
+<h2 id="getting-your-wicket-version">Getting your Wicket version</h2>
+
+<p>Clone the master branch from Apache Git Wicket repository</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone http://git-wip-us.apache.org/repos/asf/wicket.git</code></pre></figure>
+
+<p>This will give you a directory structure like the following directory tree:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wicket
+wicket/wicket-core
+wicket/wicket-extensions
+wicket/wicket-spring
+wicket/wicket-auth-roles
+wicket/wicket-examples
+wicket/wicket-spring-annot
+</span><span class="c">...</span></code></pre></figure>
+
+<p>To check out a different branch use:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>wicket
+<span class="gp">$</span><span class="w"> </span>git checkout <span class="nt">-b</span> release/wicket-x.y.z release/wicket-x.y.z
+<span class="gp">#</span><span class="w"> </span>verify the branch with:
+<span class="gp">$</span><span class="w"> </span>git branch</code></pre></figure>
+
+<p>In this document we focus at the maven project descriptor located in the top
+level directory, which enforces default settings for all Wicket projects such
+as plug-in settings, versioning of the Wicket projects, managing the various
+dependencies and more.</p>
+
+<p>The artifacts in this project are there only for having a consistent build.
+This top-level project doesn’t have sources for itself.</p>
+
+<h2 id="building-wicket">Building Wicket</h2>
+
+<p>The current development version of Wicket requires at least jdk 6.</p>
+
+<p>If you want to ensure that your Wicket version is built using JDK-6 and
+fully compatible with that Java version, you will need to build it with a Java
+6 compiler and runtime library.</p>
+
+<p>If you haven’t done so already change into the Wicket root directory:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">cd wicket</span></code></pre></figure>
+
+<p>Now building all of Wicket is as simple as issuing the following command:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn install</span></code></pre></figure>
+
+<p>This will compile, test, package and install all Wicket projects. Installation
+means putting the jar files into your local Maven repository, including the
+source, but without the javadoc jars (this is a Wicket specific configuration,
+because build javadoc takes a long time).</p>
+
+<p>The following commands are useful:</p>
+<table>
+<tr>
+<th>Commandline</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>`mvn clean`</td>
+<td>cleans up build artifacts</td>
+</tr>
+<tr>
+<td>`mvn compile`</td>
+<td>compiles the projects</td>
+</tr>
+<tr>
+<td>`mvn package`</td>
+<td>creates the jar files in the target/ subdirectories</td>
+</tr>
+<tr>
+<td>`mvn install`</td>
+<td>installs the jar files in your local repository</td>
+</tr>
+<tr>
+<td>`mvn -Prelease package`</td>
+<td>generates the javadoc/source jars as well</td>
+</tr>
+</table>
+
+<p>You can just run the install target, as Maven will build the previous stages
+automatically.</p>
+
+<h3 id="coping-with-test-failures">Coping with test failures</h3>
+
+<p>As this is our main development you might/will encounter failing unit tests.
+These can be skipped using:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn -Dmaven.test.skip=true install</span></code></pre></figure>
+
+<p>Of course, all bets are off then and your mileage may vary if you use such a
+built jar.</p>
+
+<h3 id="using-your-own-built-artifacts">Using your own built artifacts</h3>
+
+<p>Now you have built your own fresh Wicket jar you must be anxious to use it.
+This is now as simple as adding a snapshot dependency on the specific Wicket
+version. So in your pom.xml you can use:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>And adding this to your Eclipse, NetBeans or IntelliJ IDEA project classpath
+is then as simple as:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
+
+<p>or opening the project using Netbeans or IDEAs Maven integration.</p>
+
+<p>Maven will then add all the necessary JAR files to the project’s classpath.</p>
+
+<p>One thing you need to make sure is that you have set the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath
+variable in Eclipse (or a similar construct in Netbeans), and point it to your
+local repository, typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\username\.m2\repo</code>
+or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code></p>
+
+<p>You can add this setting using maven:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
+
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

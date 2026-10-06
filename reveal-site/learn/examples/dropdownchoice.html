@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Using the DropDownChoice component | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Using the DropDownChoice component</h1>
+        
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#the-example-domain"><span class="toc-number">1</span> <span class="toc-text">The example domain</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#the-assign-manager-page"><span class="toc-number">2</span> <span class="toc-text">The assign manager page</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#selecting-a-choice"><span class="toc-number">3</span> <span class="toc-text">Selecting a choice</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#selecting-a-default-choice"><span class="toc-number">4</span> <span class="toc-text">Selecting a default choice</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#summary"><span class="toc-number">5</span> <span class="toc-text">Summary</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+
+            <section class="page-content">
+                <p>One of the most problematic components for beginners of Wicket is the
+<code class="language-plaintext highlighter-rouge">DropDownChoice</code> component. In this example we will work the component to
+give a little more insight into its workings. This example requires that you
+have some understanding of the Wicket component model (nothing fancy though,
+but you might want to read the other examples first), and the Model concept
+used in Wicket (you can read more on models
+<a href="https://cwiki.apache.org/confluence/display/WICKET/Working+with+Wicket+models" target="_blank" rel="noopener noreferrer">here</a>).</p>
+
+<h2 id="the-example-domain">The example domain</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">DropDownChoice</code> component is typically used <em>inside</em> a form. This
+example will expand on that usage. The component is particularly designed to
+work with objects. So let’s say we have a list of people and we want to
+select the manager of an employee.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Person</span> <span class="n">managedBy</span><span class="o">;</span>
+
+    <span class="c1">// ... insert getters and setters</span>
+
+    <span class="cm">/**
+     * Used to display the person.
+     */</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Gets the list of possible managers from the database.
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="nf">getManagers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// gets the managers from the database</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h2 id="the-assign-manager-page">The assign manager page</h2>
+
+<p>Next we want to create a page where we assign a manager to an employee. This
+is how the page would look like in HTML:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Assign manager<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;table&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td</span> <span class="na">wicket:id=</span><span class="s">"name"</span><span class="nt">&gt;</span>Some employee<span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Managed by<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;&lt;select</span> <span class="na">wicket:id=</span><span class="s">"managedBy"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Some Person<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;option&gt;</span>Some Other Person<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr&gt;&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Save"</span><span class="nt">/&gt;&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>This page has three components:</p>
+
+<ul>
+  <li>a form (needed to process the input),</li>
+  <li>a label (to show the name of the employee) and</li>
+  <li>a select box for picking the manager.</li>
+</ul>
+
+<p>We will focus on the select box, because that will be our <code class="language-plaintext highlighter-rouge">DropDownChoice</code>.
+The <code class="language-plaintext highlighter-rouge">&lt;option&gt;</code> tags are there for preview, our component will replace them
+with the generated choices.</p>
+
+<p>Let’s see how the page looks like from the Java side:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AssignManagerPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AssignManagerPage</span><span class="o">(</span><span class="nc">Person</span> <span class="n">employee</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PropertyModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">employee</span><span class="o">,</span> <span class="s">"name"</span><span class="o">)));</span>
+
+        <span class="nc">DropDownChoice</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">ddc</span> <span class="o">=</span> 
+            <span class="k">new</span> <span class="nc">DropDownChoice</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;(</span><span class="s">"name"</span><span class="o">,</span> 
+                    <span class="k">new</span> <span class="nc">PropertyModel</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;(</span><span class="n">employee</span><span class="o">,</span> <span class="s">"managedBy"</span><span class="o">),</span>
+                    <span class="k">new</span> <span class="nc">LoadableDetachableModel</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+                        <span class="nd">@Override</span>
+                        <span class="kd">protected</span> <span class="nc">Object</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span> 
+                            <span class="k">return</span> <span class="nc">Person</span><span class="o">.</span><span class="na">getManagers</span><span class="o">();</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                <span class="o">);</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">ddc</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>In this example you see that we add the <code class="language-plaintext highlighter-rouge">DropDownChoice</code> to the form, and
+provide it with 3 parameters. The first is the component identifier. The
+second is the item that needs to be updated, in this case the <code class="language-plaintext highlighter-rouge">managedBy</code>
+field of the <code class="language-plaintext highlighter-rouge">employee</code>. The third parameter is a <code class="language-plaintext highlighter-rouge">LoadableDetachableModel</code>
+that retrieves the list of available choices.</p>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">DropDownChoice</code> component has many constructors, and that you
+need to read the JavaDoc documentation to pick the right one for you.</p>
+
+<p>This generates (basically) the following markup when the list of managers is
+Kyle Brovlovski, Stan Marsh, Eric Cartman, and Kenny McCormick:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;tr&gt;</span>
+    <span class="nt">&lt;th&gt;</span>Managed by<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;td&gt;</span>
+        <span class="nt">&lt;select</span> <span class="na">wicket:id=</span><span class="s">"managedBy"</span> <span class="na">name=</span><span class="s">"managedBy"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">"selected"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>Choose one<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">&gt;</span>Kyle Brovlovski<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>Stan Marsh<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>Eric Cartman<span class="nt">&lt;/option&gt;</span>
+            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"3"</span><span class="nt">&gt;</span>Kenny McCormick<span class="nt">&lt;/option&gt;</span>
+        <span class="nt">&lt;/select&gt;</span>
+    <span class="nt">&lt;/td&gt;</span>
+<span class="nt">&lt;/tr&gt;</span></code></pre></figure>
+
+<p>As you can see from this markup is that Wicket added the items of the
+managers list and numbered the values of the options. These are the indices
+of the items in the list. If the order of the list can change between
+requests, <em>or</em> if the list itself can change, then please use an
+<code class="language-plaintext highlighter-rouge">IChoiceRenderer</code>.</p>
+
+<h2 id="selecting-a-choice">Selecting a choice</h2>
+
+<p>Now if a user selects a value and submits the form, Wicket will assign the
+manager to the employee (the <code class="language-plaintext highlighter-rouge">PropertyModel</code> takes care of that). The
+following list shows what basically happens:</p>
+
+<ol>
+  <li>create new Employee, with <code class="language-plaintext highlighter-rouge">null</code> for its manager</li>
+  <li>create AssignManagerPage with the employee</li>
+  <li>render page, selected value is <code class="language-plaintext highlighter-rouge">"Choose one"</code>
+</li>
+  <li>user selects “Eric Cartman” and submits form</li>
+  <li>Wicket assigns manager “Eric Cartman” to <code class="language-plaintext highlighter-rouge">managedBy</code> field of the employee</li>
+</ol>
+
+<p>So there is no need for getting or setting the value from the drop down
+component: Wicket binds directly to your domain objects if you use the
+correct models.</p>
+
+<h2 id="selecting-a-default-choice">Selecting a default choice</h2>
+
+<p>If you want to select a default value for the manager, then all you need to
+do is assign the default manager to the employee and Wicket will take care of
+the rest:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// some add new employee code</span>
+<span class="nc">Employee</span> <span class="n">manager</span> <span class="o">=</span> <span class="nc">Employee</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"Eric Cartman"</span><span class="o">);</span> <span class="c1">// gets a manager</span>
+<span class="nc">Employee</span> <span class="n">newEmployee</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Employee</span><span class="o">();</span>
+<span class="n">newEmployee</span><span class="o">.</span><span class="na">setManagedBy</span><span class="o">(</span><span class="n">manager</span><span class="o">);</span>
+
+<span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nc">AssignManagerPage</span><span class="o">(</span><span class="n">newEmployee</span><span class="o">));</span></code></pre></figure>
+
+<h2 id="summary">Summary</h2>
+
+<p>This concludes the (small) example of using a <code class="language-plaintext highlighter-rouge">DropDownChoice</code> component
+correctly. The ideas behind Wicket are perfectly reflected in this component:
+work with your domain objects, bind them to your components and get on with
+the rest of your application.</p>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Books — Instant Apache Wicket 6 | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Books — Instant Apache Wicket 6</h1>
+        
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#description"><span class="toc-number">1</span> <span class="toc-text">Description</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#what-you-will-learn-from-this-book"><span class="toc-number">2</span> <span class="toc-text">What you will learn from this book</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#approach"><span class="toc-number">3</span> <span class="toc-text">Approach</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#who-this-book-is-written-for"><span class="toc-number">4</span> <span class="toc-text">Who this book is written for</span></a></li>
+<li class="toc--level-1 toc--section-5">
+<a href="#about-the-authors"><span class="toc-number">5</span> <span class="toc-text">About the authors</span></a><ul>
+<li class="toc--level-2 toc--section-6"><a href="#jo%C3%A3o-s%C3%A1vio-ceregatti-longo"><span class="toc-number">5.1</span> <span class="toc-text">João Sávio Ceregatti Longo</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#felipe-fedel-pinto"><span class="toc-number">5.2</span> <span class="toc-text">Felipe Fedel Pinto</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-8"><a href="#book-details"><span class="toc-number">6</span> <span class="toc-text">Book details</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+
+            <section class="page-content">
+                <h2 id="description">Description</h2>
+
+<p>Wicket is a component-based Java web framework.
+In Wicket, the server side state is automatically managed as it is associated with components.
+With proper mark-up/logic separation, a POJO data model, and a refreshing lack of XML, Apache Wicket makes developing web-apps simple and enjoyable.
+There are no configuration files to learn in Wicket as it has powerful and reusable components written with plain Java and HTML.
+Instant Apache Wicket 6 will take you through the entire process of building web application using the Wicket frame work.</p>
+
+<p>Instant Apache Wicket 6 aims to introduce the reader to Apache Wicket, an amazing Java framework.
+After you finish this book, you will be capable of developing Wicket applications, using the knowledge acquired in the book to explore more of the technology, and even contribute to Wicket’s community.</p>
+
+<p>Instant Apache Wicket 6 starts by explaining what Apache Wicket is and its advantages, and then goes on to show how to set up the Wicket environment and how to build a “hello world” and a sign-in/sign-out application.
+After you learn the Wicket core concepts and apply them to the sign-in/sign-out app, you will use Maven in Eclipse to build Wicket applications.
+You will learn important concepts like lifecycle (objects and requests), models (Model, PropertyModel, and CompoundPropertyModel), markup (wicket:id, wicket:panel, wicket:extend, and wicket:child), and behaviors.</p>
+
+<h2 id="what-you-will-learn-from-this-book">What you will learn from this book</h2>
+
+<ul>
+  <li>Learn something new in an Instant! A short, fast, focused guide delivering immediate results</li>
+  <li>Learn to build a Wicket application</li>
+  <li>Get to grips with the core concepts of Wicket</li>
+  <li>Understand the lifecycle of Wicket</li>
+</ul>
+
+<h2 id="approach">Approach</h2>
+
+<p>Get to grips with a new technology, understand what it is and what it can do for you, and then get to work with the most important features and tasks.
+This Starter style guide takes the reader through the basic workflow of Apache Wicket in a practical and friendly style.</p>
+
+<h2 id="who-this-book-is-written-for">Who this book is written for</h2>
+
+<p>Instant Apache Wicket 6 is for people who want to learn the basics of Apache Wicket 6 and who already have some experience with Java and object-oriented programming.
+Basic knowledge of web concepts like HTTP and Ajax will be an added advantage.</p>
+
+<h2 id="about-the-authors">About the authors</h2>
+
+<p>About the Authors</p>
+
+<h3 id="joão-sávio-ceregatti-longo">João Sávio Ceregatti Longo</h3>
+
+<p>João Sávio Ceregatti Longo has a Bachelor’s and Master’s degree in Computer Science.
+He also has a strong background in the Java programming language (consultant, developer, evangelist, SCJP 6 certified) and is a Wicket enthusiast.
+He is currently working at Daitan Group - http://www.daitangroup.com.</p>
+
+<h3 id="felipe-fedel-pinto">Felipe Fedel Pinto</h3>
+
+<p>Felipe Fedel Pinto holds a Bachelor’s degree in Computer Science and has been developing and managing projects using Wicket since 2010.
+He also collaborates on open source Wicket projects. He is partner and Software Architect at Ampliato - http://www.ampliato.com.br.</p>
+
+<h2 id="book-details">Book details</h2>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<td>Instant Apache Wicket 6</td>
+	</tr>
+	<tr>
+		<th>Authors</th>
+		<td>João Sávio Ceregatti Longo, Felipe Fedel Pinto</td>
+	</tr>
+	<tr>
+		<th>Version covered</th>
+		<td>Wicket 6</td>
+	</tr>
+	<tr>
+		<th>Publisher URL</th>
+		<td><a href="https://www.packtpub.com/web-development/instant-apache-wicket-6-instant" target="_blank" rel="noopener noreferrer">Instant Apache Wicket 6</a></td>
+	</tr>
+	<tr>
+		<th>Paperback</th>
+		<td>54 pages</td>
+	</tr>
+	<tr>
+		<th>Date</th>
+		<td>August 2013</td>
+	</tr>
+	<tr>
+		<th>Language</th>
+		<td>English</td>
+	</tr>
+	<tr>
+		<th>ISBN-10</th>
+		<td>1783280026</td>
+	</tr>
+	<tr>
+		<th>ISBN-13</th>
+		<td>978-1-78328-001-8</td>
+	</tr>
+	<tr>
+		<th>Buy</th>
+		<td><a href="https://www.packtpub.com/web-development/instant-apache-wicket-6-instant" target="_blank" rel="noopener noreferrer">PACKT Publishing</a></td>
+	</tr>
+</table>
+
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

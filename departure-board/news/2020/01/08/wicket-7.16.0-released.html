@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 7.16.0 released | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Apache Wicket 7.16.0 released</h1>
+        
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading">
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <div class="l-full post">
+    <p class="post-date"><time datetime="2020-01-08T00:00:00+00:00">8 January 2020</time></p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 7.16.0!</p>
+
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at https://wicket.apache.org</p>
+
+<p>This release marks another minor release of Wicket 7. We
+use semantic versioning for the development of Wicket, and as such no
+API breaks are present breaks are present in this release compared to
+7.0.0.</p>
+
+<optional> New and noteworthy
+<optional> ------------------
+<optional>
+Using this release
+------------------
+
+With Apache Maven update your dependency to (and don't forget to
+update any other dependencies on Wicket projects to the same version):
+
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7.16.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+
+Or download and build the distribution yourself, or use our
+convenience binary package you can find here:
+
+ * Download: http://wicket.apache.org/start/wicket-7.x.html#manually
+
+<!--more-->
+
+Upgrading from earlier versions
+-------------------------------
+
+If you upgrade from 7.y.z this release is a drop in replacement. If
+you come from a version prior to 7.0.0, please read our Wicket 7
+migration guide found at
+
+ * http://s.apache.org/wicket7migrate
+
+Have fun!
+
+— The Wicket team
+
+
+========================================================================
+
+    The signatures for the source release artefacts:
+
+    
+Signature for apache-wicket-7.16.0.zip:
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAl4QoiAACgkQh48B+qjT
+VuEcMg//V/HLgAeFzSyvdj+GSvtq3r8aZgmTh+TLJ5zMiFVyu9hfPmh7T5V3EY3+
+Qn+CHdXh3kD/G6jLYAhEUw9iqU5duxFqBqXRzdTtmIwxK2VTdfI2iJhyTnmKGXS8
+vaUV8cjC8YMXtEjkibQGErbbV5jXRwohF029F7Zck1A7+U0PN58K0feMz7mXMIXT
+Gxl3dC0wXYa1SptctjeZSAxVCR4QZc/txIvCah00LlV0GDY24XMfxovd6oDsb6+W
++VjuNbAmleV7D534IPTh9VE9ObcHwqXi7JbPk5f/uL3BUTis+baZp0e+3kGpY4Il
+uLdUcGF4juDjc+lY1phxoPbni4XnHfEkDQLez40/jlMWO3Vx7BUkCFVolFOC5hAa
+8hmFURXSytXXDD4f3/yCMZr95Sdh4SP+FeQtryckE7K08lrblOHaQJn/dF08tcVN
+QOrFJ5k1LfDk3biB7U8bzGQJ1py0UctKyDzw15QY3FQb/stypn/brs7hMAXLQbZp
+knu9AhuTGvu2Q2kqqn78UwG+zq6hcZBVR4+XGkX9KHMxN3K16nKBnkdv2v6bLt1E
+Qyw1lBZj20Uo2dkpidyN6esDzX8j8US8c0CNylak/4xA1er7+MvkiAQhVjDlvqTH
+LbIO5Pyszlq9n1Vw6RSZjbWnhZL/Tv7CIux4zsdTLYMbaohZPZM=
+=9BT0
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+Signature for apache-wicket-7.16.0.tar.gz:
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE0a6YZHC1pJw+aieyh48B+qjTVuEFAl4QoiAACgkQh48B+qjT
+VuFEoQ//VxsVwquHRi4ZAHQK6KOlEmqRvF1DGqu9Eawqb8SQGNiqAmkWEjkfIaG0
+gBwpZUr1g0CY2F3NbPQMuPaokIn41QIGoeKCMapCYtzI8NjeEHEBHydDqs+9vHLw
+mbmuZdZeFmrUFH1DhhuBZY6XgczvlTKxw17HW6OBkqLqE0G6WTFVjMDTlFnXPqOd
+7IdXmIfSynxCSORzDvwjZUrtRSrrc/6T10kiaIDNNoBkwqBva2Dnk20i6yLgwoZW
+PBZyjosQhKj0FeP8RfD30S51MfJ3QMflY9iOYdN3oGxxNcAxQCHZXkzZA/dqvLcj
+TB1VJtmJ/O2wuASNDfa85FmbH7B+sFM4yp6rYsTsWLcWFLXm6y2r8iBER9AD04P8
+vUbqh4s7x8wWHX4T6n5xMq8nlSyoMokAEu+sEA2vkd32a1qrUSnKhI0qJK8Xlgz1
+DCeca2txqWTTr2qmK9xydBEcNUo9uNDS6Z6YpOY3AX3P9oA7TXBKBAyzRvZ/I5aN
+iZUVgYwvGPH7VfIF7YR3fRBvik2LwpfAq1kE19WZugKTCXWihgjHDKfZKxpnzOL+
+p5+WcEnf6NzsHSzoaAU/az0Wvem4yCj2B49uZUeMZfrgRoLt/DWB4mOBj/uhb+8K
+GkN/vehn3d9ZHJ76ImhkV1EGGgfAkSq1O7nHE2E2NxrZOVe8Ueo=
+=3rL9
+-----END PGP SIGNATURE-----
+</pre></div>
+
+    
+========================================================================
+
+### This Release
+
+#### CHANGELOG for 7.16.0:
+    
+##### Bug
+
+ * [WICKET-6531] - Crash in Unsafe.getObject when running on the J9 VM
+ * [WICKET-6704] - JavaSerializer.serialize causes the JVM crash !
+ * [WICKET-6706] - Websocket Endpoint logs exception when user leaves page
+ * [WICKET-6707] - Property setter parameter type is assumed to be equal to getter return type
+ * [WICKET-6708] - FormComponent should read only the GET/POST parameters of the request, not both
+
+</optional></optional></optional>
+
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

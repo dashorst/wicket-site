@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 6.19.0 released | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Apache Wicket 6.19.0 released</h1>
+        
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading">
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <div class="l-full post">
+    <p class="post-date"><time datetime="2015-02-02T00:00:00+00:00">2 February 2015</time></p>
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.19.0!</p>
+
+<p>This release marks another minor release of Wicket 6. Starting
+with Wicket 6 we use semantic versioning for the future development
+of Wicket, and as such no API breaks are present in this release
+compared to 6.0.0.</p>
+
+<h3 id="using-this-release">Using this release</h3>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;version&gt;</span>6.19.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.19.0" target="_blank" rel="noopener noreferrer">6.19.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.19.0/binaries" target="_blank" rel="noopener noreferrer">6.19.0 binary download</a>
+</li>
+</ul>
+
+<h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+
+<ul>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">migration to Wicket 6</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<h3 id="this-release">This release</h3>
+
+<p>Below you can find the cryptographic signatures for the distributions
+and the release notes.</p>
+
+<h4 id="the-signatures-for-the-source-release-artefacts">The signatures for the source release artefacts:</h4>
+
+<p>Signature for apache-wicket-6.19.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAlRTb2UACgkQJBX8W/xy/UW1egCg1LOkWMrnD+FJoHKjp7Gulyvm
+s+UAoMNN/mgMKo+p33h3vt4fnLTemLGT
+=RpfO
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-6.19.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - https://gpgtools.org
+
+iEYEABECAAYFAlRTb2UACgkQJBX8W/xy/UVZcACguyKdrM0byfMp5IWqzwFMx5Lo
+i6UAn25gHcC0w8QWiNJXV7u99iTHssaP
+=+QQW
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<h4 id="changelog-for-6190">CHANGELOG for 6.19.0:</h4>
+
+<p>The following changes were made in Wicket for this release.</p>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5747" target="_blank" rel="noopener noreferrer">WICKET-5747</a> - Wicket Ajax Click handling gets requeued in OnDomReady so fire out of order</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5752" target="_blank" rel="noopener noreferrer">WICKET-5752</a> - ReplacementResourceBundleReference should return the dependencies for the replacing resource ref</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5755" target="_blank" rel="noopener noreferrer">WICKET-5755</a> - Restoring focus after Ajax replace no longer works in IE8</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5759" target="_blank" rel="noopener noreferrer">WICKET-5759</a> - AjaxRequestAttributes extra parameters aren't properly handled in getCallbackFunction()</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5770" target="_blank" rel="noopener noreferrer">WICKET-5770</a> - PageParametersEncoder should not decode parameters with no name</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5782" target="_blank" rel="noopener noreferrer">WICKET-5782</a> - Missing escaping in MultiFileUploadField.js - sort of XSS</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5783" target="_blank" rel="noopener noreferrer">WICKET-5783</a> - Multiple events in AjaxEventBehavior with prefix 'on'</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5784" target="_blank" rel="noopener noreferrer">WICKET-5784</a> - arraycopy with bad length in AbstractRequestLogger:172</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5793" target="_blank" rel="noopener noreferrer">WICKET-5793</a> - Request for static resource creating a session in 6.13.0+</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5809" target="_blank" rel="noopener noreferrer">WICKET-5809</a> - URL IPv6 parsing</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5811" target="_blank" rel="noopener noreferrer">WICKET-5811</a> - Infinite loop issue in PropertyValidator#createUnresolvablePropertyMessage(FormComponent&lt;&gt;)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5812" target="_blank" rel="noopener noreferrer">WICKET-5812</a> - AtmosphereBehavior wrongly sets Ajax base url to '.'</li>
+</ul>
+
+<h4 id="improvement">Improvement</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4703" target="_blank" rel="noopener noreferrer">WICKET-4703</a> - StringResourceModel should provide an overridable getString(Component) method</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5746" target="_blank" rel="noopener noreferrer">WICKET-5746</a> - Fire an event once all JS event listeners are registered</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5753" target="_blank" rel="noopener noreferrer">WICKET-5753</a> - It is impossible to determine the form submitting component's inputName when AjaxFormSubmitBehavior is used</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5754" target="_blank" rel="noopener noreferrer">WICKET-5754</a> - (String)ResourceModel's defaultValue could be an IModel&lt;String&gt;</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5756" target="_blank" rel="noopener noreferrer">WICKET-5756</a> - Allow to use custom ciphers when using SunJceCrypt class</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5758" target="_blank" rel="noopener noreferrer">WICKET-5758</a> - Portuguese translation</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5760" target="_blank" rel="noopener noreferrer">WICKET-5760</a> - Add constructor (String, Serializable, String) to AttributeAppender</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5775" target="_blank" rel="noopener noreferrer">WICKET-5775</a> - Replace the session upon successful signin for better support for Session Fixation</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5776" target="_blank" rel="noopener noreferrer">WICKET-5776</a> - Add information about the component when it fail in detach phase</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5778" target="_blank" rel="noopener noreferrer">WICKET-5778</a> - Pass the IModifiable to the IChangeListener in ModificationWatcher</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5780" target="_blank" rel="noopener noreferrer">WICKET-5780</a> - Add a resource reference for ContextRelativeResource</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5794" target="_blank" rel="noopener noreferrer">WICKET-5794</a> - Make DefaultExceptionMapper extensible</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5797" target="_blank" rel="noopener noreferrer">WICKET-5797</a> - Convenience method to call setResponsePage with forward option</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5799" target="_blank" rel="noopener noreferrer">WICKET-5799</a> - Add rel=prev/next in PagingNavigator.html</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5802" target="_blank" rel="noopener noreferrer">WICKET-5802</a> - HTML Import</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5806" target="_blank" rel="noopener noreferrer">WICKET-5806</a> - Wicket.Log should log (at least errors) in the browser console even when Wicket Ajax Debug window is disabled</li>
+</ul>
+
+<h4 id="new-feature">New Feature</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5771" target="_blank" rel="noopener noreferrer">WICKET-5771</a> - Ability to escape resource bundle messages added with wicket:message</li>
+</ul>
+
+<h4 id="task">Task</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5791" target="_blank" rel="noopener noreferrer">WICKET-5791</a> - Update JQuery to 1.11.2 and 2.1.3</li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

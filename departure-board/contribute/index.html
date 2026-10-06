@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>How to contribute to Apache Wicket | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="active" aria-current="page">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>How to contribute to Apache Wicket</h1>
+        <p class="page-sign-sub">You can contribute to Apache Wicket in many ways, so join us and make Wicket better!</p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="reading-rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#contribute"><span class="toc-number">1</span> <span class="toc-text">Ways to Contribute to Apache Wicket</span></a></li>
+<li class="toc--level-1 toc--section-2">
+<a href="#github"><span class="toc-number">2</span> <span class="toc-text">Github Mirror for Easy Contributing</span></a><ul>
+<li class="toc--level-2 toc--section-3"><a href="#fork"><span class="toc-number">2.1</span> <span class="toc-text">Fork Wicket to your Account</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#clone"><span class="toc-number">2.2</span> <span class="toc-text">Clone Wicket to your Workstation</span></a></li>
+<li class="toc--level-2 toc--section-5"><a href="#checkout"><span class="toc-number">2.3</span> <span class="toc-text">Start with the Correct Branch</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#pullrequest"><span class="toc-number">2.4</span> <span class="toc-text">Create a Pull Request</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-7">
+<a href="#documentation"><span class="toc-number">3</span> <span class="toc-text">Documentation for contributors</span></a><ul>
+<li class="toc--level-2 toc--section-8"><a href="#how-to-contribute"><span class="toc-number">3.1</span> <span class="toc-text">How to contribute</span></a></li>
+<li class="toc--level-2 toc--section-9"><a href="#committers"><span class="toc-number">3.2</span> <span class="toc-text">Committers</span></a></li>
+<li class="toc--level-2 toc--section-10"><a href="#subscribing-and-unsubscribing"><span class="toc-number">3.3</span> <span class="toc-text">Subscribing and unsubscribing</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <h2 id="contribute">Ways to Contribute to Apache Wicket</h2>
+
+<p>A lot of work goes into maintaining a project like Wicket and we can
+use your help!</p>
+
+<p>You can help us in many ways:</p>
+
+<ul>
+  <li>Help out other users at our <a href="../help/email.html">user list</a>
+</li>
+  <li>Answer questions on <a href="http://stackoverflow.com/questions/tagged/wicket" rel="nofollow noopener noreferrer" target="_blank">Stackoverflow</a>
+</li>
+  <li><a href="userguide.html">Improve our user guide</a></li>
+  <li>Report <a href="../help/#reportbug">your bugs</a>
+</li>
+  <li>Implement <a href="patch.html">new features or fix bugs</a>
+</li>
+  <li><a href="write.html">Improve this site</a></li>
+</ul>
+
+<p>If you want to help out with one of our bugs or want to implement a
+feature, consider using our <a href="#github">Github mirror</a>.</p>
+
+<hr>
+
+<h2 id="github">Github Mirror for Easy Contributing</h2>
+
+<p>Wicket is mirrored on github so you can contribute with ease:</p>
+
+<ol>
+  <li>Fork Wicket</li>
+  <li>Implement your feature or fix the bug, and</li>
+  <li>Send a pull request.</li>
+</ol>
+
+<p>The Github/Apache integration will send the pull request to our
+contributors list, and we will look at your pull request as soon as we
+can.</p>
+
+<h3 id="fork">Fork Wicket to your Account</h3>
+
+<p>So you have an account registered at Github and are ready to start
+hacking at Wicket. First you need to <em>fork the code</em> to your own Github
+account.</p>
+
+<p>You can find the official mirror for the Apache Wicket project at the
+following location in the official Apache Software Foundation
+organisation at Github:</p>
+
+<ul>
+  <li>Apache Wicket Github mirror: <a href="https://github.com/apache/wicket" rel="nofollow noopener noreferrer" target="_blank">https://github.com/apache/wicket</a>
+</li>
+</ul>
+
+<p>On this page you will find a button with the caption “Fork”. Click it
+or use the button below.</p>
+
+<p><a class="button" rel="nofollow noopener noreferrer" href="https://github.com/apache/wicket/fork" target="_blank">
+	<i class="fa fa-github"></i> Fork us on github
+</a></p>
+
+<p>Now you have your own copy of Wicket to hack on. You can edit directly
+in the Github web interface–good for minor fixes like documentation
+errors–or clone the project to your workstation.</p>
+
+<h3 id="clone">Clone Wicket to your Workstation</h3>
+
+<p>You can use the tooling for Github to get a copy on your workstation or
+use the commandline:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git@github.com:&lt;your userid&gt;/wicket.git</code></pre></figure>
+
+<p><strong>NB</strong> Ensure that you replace <em>&lt;your userid&gt;</em> with your actual
+Github user id, otherwise your clone command will fail.</p>
+
+<p>This shell command will create a local checkout of the git repository.
+Now you can check out the correct branch.</p>
+
+<h3 id="checkout">Start with the Correct Branch</h3>
+
+<p>Wicket is developed in several version branches. Depending on what you
+want to work on you need to select the right one. The following table
+shows the corresponding branch for each Wicket version.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Wicket version</th>
+            <th>Branch name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>11.x and later</td>
+            <td>master</td>
+            <td>current quarterly release, supported</td>
+        </tr>
+        <tr>
+            <td>10.x</td>
+            <td>wicket-10.x</td>
+            <td>LTS, supported</td>
+        </tr>
+        <tr>
+            <td><s>9.x</s></td>
+            <td><s>wicket-9.x</s></td>
+            <td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>8.x</s></td>
+            <td><s>wicket-8.x</s></td>
+            <td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>7.x</s></td>
+            <td><s>wicket-7.x</s></td>
+            <td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>6.x</s></td>
+            <td><s>wicket-6.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.5.x</s></td>
+            <td><s>wicket-1.5.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.4.x</s></td>
+            <td><s>wicket-1.4.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.3.x</s></td>
+            <td><s>wicket-1.3.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.2.x</s></td>
+            <td><s>wicket-1.2.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.1.x</s></td>
+            <td><s>wicket-1.1.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+        <tr>
+            <td><s>1.0.x</s></td>
+            <td><s>wicket-1.0.x</s></td>
+			<td><s>discontinued</s></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>If you want to work on the next quarterly release, you need to check out the <em>master</em> branch.</p>
+
+<p>If you want to work on Wicket 10 LTS, you need to check out the <em>wicket-10.x</em> branch.</p>
+
+<p>When you are ready with your change you can ask us to review your
+changes and to integrate it into Wicket by creating a Pull Request.</p>
+
+<h3 id="pullrequest">Create a Pull Request</h3>
+
+<p>Make sure you have pushed your changes to your Github repository. To
+create a pull request on GitHub follow the instructions you can find <a href="https://help.github.com/articles/creating-a-pull-request/" rel="nofollow noopener noreferrer" target="_blank">here</a>. Once you have finished to work on you pull
+request, send us an email using <a href="mailto:dev@wicket.apache.org">devs</a>
+mailing list.</p>
+
+<p>The Github–Apache integration will automatically send a message to the
+Wicket project that a new pull request is waiting for us.</p>
+
+<h2 id="documentation">Documentation for contributors</h2>
+
+<p>This section is particularly of interest for those who want to
+contribute to Wicket.</p>
+
+<h3 id="how-to-contribute">How to contribute</h3>
+
+<p>Here’s a list of documents that explain how you can best help the Wicket team:</p>
+
+<ul>
+  <li>
+<a href="/wicket-site/departure-board/contribute/userguide.html">Write documentation</a> - Contribute to improve our user guide.</li>
+  <li>
+<a href="/wicket-site/departure-board/contribute/patch.html">Provide a patch or a pull request</a> - Think you have found a bug or just want to propose a new feature? Do it sending us a patch or creating a pull request on GitHub.</li>
+  <li>
+<a href="/wicket-site/departure-board/contribute/write.html">Contribute to the site</a> - Help us to improve our site.</li>
+</ul>
+
+<h3 id="committers">Committers</h3>
+
+<p>Here’s a list of tasks that only committers can do:</p>
+
+<ul>
+  <li><a href="/wicket-site/departure-board/contribute/release.html">Build a release</a></li>
+</ul>
+
+<h3 id="subscribing-and-unsubscribing">Subscribing and unsubscribing</h3>
+
+<p><a href="mailto:dev@wicket.apache.org">Wicket development list</a>
+Medium traffic
+<a href="http://mail-archives.apache.org/mod_mbox/wicket-dev/" target="_blank" rel="noopener noreferrer">Archives</a>
+<a href="http://wicket-dev.markmail.org/" target="_blank" rel="noopener noreferrer">Search</a>
+<a href="mailto:dev-subscribe@wicket.apache.org?subject=Subscribe%20to%20Apache%20Wicket%20development%20list">Subscribe</a>
+<a href="mailto:dev-unsubscribe@wicket.apache.org?subject=Unsubscribe%20from%20Apache%20Wicket%20development%20list">Unsubscribe</a>
+<a href="mailto:dev-help@wicket.apache.org?subject=Help%20for%20Apache%20Wicket%20development%20list">Help</a></p>
+
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

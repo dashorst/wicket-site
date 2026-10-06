@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary — Wicket terminology explained — Apache Wicket</title>
+  <meta name="description" content="Plain-English explanations of Wicket terms like Models, Behaviors, Resources, and Panels">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Glossary — Wicket terminology explained</h1>
+      <p class="docs-header-description">Plain-English explanations of Wicket terms like Models, Behaviors, Resources, and Panels</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>This glossary defines common Wicket terms in plain English. Where helpful, each entry includes a comparison to concepts from other frameworks.</p>
+
+<hr />
+
+<dl>
+  <dt><strong>Application</strong></dt>
+  <dd>The central configuration object for your Wicket web application. You subclass <code class="language-plaintext highlighter-rouge">WebApplication</code> to set up page mounts, security, resource settings, and dependency injection. There is one <code class="language-plaintext highlighter-rouge">Application</code> instance per web application.</dd>
+  <dd><em>Similar to:</em> Spring’s <code class="language-plaintext highlighter-rouge">@SpringBootApplication</code> configuration class, or a JSF <code class="language-plaintext highlighter-rouge">faces-config.xml</code> setup.</dd>
+  <dt><strong>Behavior</strong></dt>
+  <dd>A reusable add-on that you attach to a component to modify its markup or add functionality — without subclassing the component. Behaviors can add HTML attributes, contribute CSS/JavaScript, or handle AJAX events.</dd>
+  <dd><em>Similar to:</em> React higher-order components or hooks that add behavior without changing the wrapped component. In HTMX, attributes like <code class="language-plaintext highlighter-rouge">hx-get</code> serve a comparable role.</dd>
+  <dt><strong>Border</strong></dt>
+  <dd>A component that wraps its child content with reusable decorating markup. The border provides the surrounding HTML (header, footer, frame) and the child content is inserted in the middle via <code class="language-plaintext highlighter-rouge">&lt;wicket:body&gt;</code>.</dd>
+  <dd><em>Similar to:</em> Thymeleaf layout dialect’s <code class="language-plaintext highlighter-rouge">layout:decorate</code>, or JSF <code class="language-plaintext highlighter-rouge">&lt;ui:composition&gt;</code> with a template.</dd>
+  <dt><strong>Component</strong></dt>
+  <dd>The fundamental building block of a Wicket UI. Every visible element — a label, a link, a form field, a panel — is a component. Components are Java objects bound to HTML tags via the <code class="language-plaintext highlighter-rouge">wicket:id</code> attribute.</dd>
+  <dd><em>Similar to:</em> React components, JSF <code class="language-plaintext highlighter-rouge">UIComponent</code>, or Thymeleaf fragments backed by a controller.</dd>
+  <dt><strong>CompoundPropertyModel</strong></dt>
+  <dd>A model that automatically connects child components to properties of a single object, using each component’s <code class="language-plaintext highlighter-rouge">wicket:id</code> as the property name. This eliminates the need to create individual models for every form field.</dd>
+  <dd><em>Similar to:</em> Vue’s <code class="language-plaintext highlighter-rouge">v-model</code> binding to an object, or Spring MVC’s <code class="language-plaintext highlighter-rouge">@ModelAttribute</code> that maps form fields to bean properties by name.</dd>
+  <dt><strong>Converter</strong></dt>
+  <dd>An object that transforms raw string input (from HTTP) into a typed Java object and back. Wicket provides built-in converters for numbers, dates, enums, and more. You can register custom converters for your own types.</dd>
+  <dd><em>Similar to:</em> JSF converters (<code class="language-plaintext highlighter-rouge">@FacesConverter</code>), or Spring’s <code class="language-plaintext highlighter-rouge">Converter&lt;S, T&gt;</code> interface.</dd>
+  <dt><strong>Detachable model</strong></dt>
+  <dd>A model that releases its data at the end of each request cycle to avoid storing large objects in the session. The data is reloaded on the next request when needed. This pattern keeps serialized page size small.</dd>
+  <dd><em>Similar to:</em> A lazy-loading proxy in Hibernate that fetches data on access, or React’s <code class="language-plaintext highlighter-rouge">useMemo</code> that recomputes only when dependencies change.</dd>
+  <dt><strong>Enclosure</strong></dt>
+  <dd>A Wicket markup tag (<code class="language-plaintext highlighter-rouge">&lt;wicket:enclosure&gt;</code>) that automatically hides its entire contents when the controlling child component is not visible. This keeps your labels, wrappers, and other decorating HTML in sync with the data they display.</dd>
+  <dd><em>Similar to:</em> Vue’s <code class="language-plaintext highlighter-rouge">v-if</code> on a wrapper element, or Thymeleaf’s <code class="language-plaintext highlighter-rouge">th:if</code> applied to a containing <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>.</dd>
+  <dt><strong>Feedback panel</strong></dt>
+  <dd>A component (<code class="language-plaintext highlighter-rouge">FeedbackPanel</code>) that collects and displays validation messages, error messages, and informational messages generated during form processing or page rendering.</dd>
+  <dd><em>Similar to:</em> JSF’s <code class="language-plaintext highlighter-rouge">&lt;h:messages&gt;</code>, or a toast notification container in React.</dd>
+  <dt><strong>Form</strong></dt>
+  <dd>A component that represents an HTML <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>. It manages the submit lifecycle: input conversion, validation, error reporting, and model updating. Forms can be nested, and each form can have its own submit button.</dd>
+  <dd><em>Similar to:</em> An HTML <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> handled by Spring MVC’s <code class="language-plaintext highlighter-rouge">@PostMapping</code>, or a JSF <code class="language-plaintext highlighter-rouge">&lt;h:form&gt;</code>.</dd>
+  <dt><strong>Fragment</strong></dt>
+  <dd>A lightweight alternative to Panel for conditionally showing different blocks of HTML. Fragments are defined inline in the parent’s markup file using <code class="language-plaintext highlighter-rouge">&lt;wicket:fragment&gt;</code> tags, so you avoid creating separate HTML files for small markup variations.</dd>
+  <dd><em>Similar to:</em> Qute template fragments (<code class="language-plaintext highlighter-rouge">{#fragment}</code>), or the target of an HTMX <code class="language-plaintext highlighter-rouge">hx-swap</code> that swaps in a section of the same page.</dd>
+  <dt><strong>IModel / Model</strong></dt>
+  <dd>The interface that provides data to a component. Instead of passing raw values, you pass a model that knows how to get (and optionally set) the value. This allows components to always work with fresh data and supports two-way binding.</dd>
+  <dd><em>Similar to:</em> React state (<code class="language-plaintext highlighter-rouge">useState</code>) or an observable in RxJS — the component reads from it and can write back to it.</dd>
+  <dt><strong>LambdaModel</strong></dt>
+  <dd>A concise way to create a model using Java lambda expressions for the getter and setter. This avoids the need for anonymous inner classes and keeps model code readable.</dd>
+  <dd><em>Similar to:</em> Kotlin property delegates, or computed properties in Vue.</dd>
+  <dt><strong>ListView</strong></dt>
+  <dd>A repeater that renders one child item per entry in a Java <code class="language-plaintext highlighter-rouge">List</code>. Each item gets its own <code class="language-plaintext highlighter-rouge">ListItem</code> container where you add labels, links, and other components. Best for small to medium lists where all items are rendered at once.</dd>
+  <dd><em>Similar to:</em> React’s <code class="language-plaintext highlighter-rouge">array.map()</code> rendering pattern, Vue’s <code class="language-plaintext highlighter-rouge">v-for</code>, or JSF’s <code class="language-plaintext highlighter-rouge">&lt;ui:repeat&gt;</code>.</dd>
+  <dt><strong>Markup inheritance</strong></dt>
+  <dd>The ability for a page or panel subclass to inherit the HTML template of its parent class and selectively override marked sections. The parent template defines <code class="language-plaintext highlighter-rouge">&lt;wicket:child&gt;</code> placeholders, and the subclass fills them using <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;</code>.</dd>
+  <dd><em>Similar to:</em> Thymeleaf layout dialect’s template inheritance, JSF’s <code class="language-plaintext highlighter-rouge">&lt;ui:composition template="..."&gt;</code>, or Django template <code class="language-plaintext highlighter-rouge">{% extends %}</code> blocks.</dd>
+  <dt><strong>Package resource</strong></dt>
+  <dd>A static file (CSS, JavaScript, image, etc.) stored in the same Java package as a component class. Wicket serves it automatically and generates a versioned URL. This keeps components self-contained with their own assets.</dd>
+  <dd><em>Similar to:</em> A CSS Module co-located with a React component, or a Vite asset import.</dd>
+  <dt><strong>Page</strong></dt>
+  <dd>A top-level component that represents a full web page. Every Wicket URL ultimately resolves to a Page. Pages have their own HTML template and can be stateful (stored in session) or stateless (recreated each request).</dd>
+  <dd><em>Similar to:</em> A React page component in Next.js, a JSF Facelets page, or a Thymeleaf template mapped to a Spring controller.</dd>
+  <dt><strong>PageParameters</strong></dt>
+  <dd>A multimap of named string values extracted from the URL. Used to pass data to bookmarkable pages — for example, <code class="language-plaintext highlighter-rouge">/products/42</code> where <code class="language-plaintext highlighter-rouge">42</code> is a page parameter.</dd>
+  <dd><em>Similar to:</em> Spring MVC’s <code class="language-plaintext highlighter-rouge">@PathVariable</code> and <code class="language-plaintext highlighter-rouge">@RequestParam</code>, or Next.js route params.</dd>
+  <dt><strong>Panel</strong></dt>
+  <dd>A reusable component with its own separate HTML template file. Panels are the primary way to create reusable UI building blocks — a navigation bar, a user card, a comment widget.</dd>
+  <dd><em>Similar to:</em> A React component with its own JSX, a JSF composite component, or a Thymeleaf fragment with its own file.</dd>
+  <dt><strong>PropertyModel</strong></dt>
+  <dd>A model that reads and writes a property of an object using a dotted path expression, such as <code class="language-plaintext highlighter-rouge">"address.city"</code>. Useful for binding a single form field to a nested property of a domain object.</dd>
+  <dd><em>Similar to:</em> Spring EL expressions like <code class="language-plaintext highlighter-rouge">${user.address.city}</code>, or lodash’s <code class="language-plaintext highlighter-rouge">_.get(obj, 'a.b.c')</code>.</dd>
+  <dt><strong>Repeater</strong></dt>
+  <dd>The general term for components that repeat their markup once per item in a collection. Wicket provides several repeater types: <code class="language-plaintext highlighter-rouge">RepeatingView</code> for simple cases, <code class="language-plaintext highlighter-rouge">ListView</code> for lists, and <code class="language-plaintext highlighter-rouge">DataView</code> for large paginated datasets.</dd>
+  <dd><em>Similar to:</em> <code class="language-plaintext highlighter-rouge">v-for</code> in Vue, <code class="language-plaintext highlighter-rouge">{items.map(...)}</code> in React, or <code class="language-plaintext highlighter-rouge">&lt;ui:repeat&gt;</code> in JSF.</dd>
+  <dt><strong>RequestCycle</strong></dt>
+  <dd>The object that manages processing of a single HTTP request from start to finish. It coordinates URL mapping, page resolution, component rendering, response writing, and cleanup. Each request gets its own RequestCycle instance.</dd>
+  <dd><em>Similar to:</em> Spring’s <code class="language-plaintext highlighter-rouge">DispatcherServlet</code> request handling pipeline, or the JSF lifecycle.</dd>
+  <dt><strong>Resource</strong></dt>
+  <dd>Anything Wicket serves that is not a page — CSS files, JavaScript files, images, dynamically generated PDFs, JSON endpoints, file downloads, and so on. Resources can be static (files on the classpath) or dynamic (generated on each request).</dd>
+  <dd><em>Similar to:</em> A Spring <code class="language-plaintext highlighter-rouge">@ResponseBody</code> endpoint or a static asset served by a CDN.</dd>
+  <dt><strong>ResourceReference</strong></dt>
+  <dd>A stable, serializable pointer to a resource. Instead of passing around the resource itself, you pass a reference that Wicket can resolve to the actual resource when needed. This keeps pages serializable and enables resource caching and versioning.</dd>
+  <dd><em>Similar to:</em> A Spring <code class="language-plaintext highlighter-rouge">ResourceHandler</code> mapping, or a Vite <code class="language-plaintext highlighter-rouge">import</code> of a static asset that resolves to a hashed URL.</dd>
+  <dt><strong>Session</strong></dt>
+  <dd>The server-side object that holds per-user state across requests — the current locale, authentication info, feedback messages, and (for stateful pages) the page store. Wicket creates a session automatically when needed.</dd>
+  <dd><em>Similar to:</em> An HTTP session in any Java web framework, or server-side session state in Next.js.</dd>
+  <dt><strong>Stateful page / Stateless page</strong></dt>
+  <dd>A stateful page stores its component tree in the session so it can process callbacks and maintain form state across requests. A stateless page is recreated from scratch on each request — it uses no session storage, scales better, and produces bookmarkable URLs. Choose stateless when you can, stateful when you need interactive state.</dd>
+  <dd><em>Similar to:</em> Server components vs. client components in React/Next.js — server components are stateless and rendered fresh, client components maintain state.</dd>
+  <dt><strong>WicketTester</strong></dt>
+  <dd>A test harness that simulates a browser interacting with your Wicket application in JUnit tests — without starting a servlet container. You can render pages, click links, submit forms, and assert on the resulting markup and component state.</dd>
+  <dd><em>Similar to:</em> React Testing Library’s <code class="language-plaintext highlighter-rouge">render</code> and <code class="language-plaintext highlighter-rouge">fireEvent</code>, Spring’s <code class="language-plaintext highlighter-rouge">MockMvc</code>, or JSF’s Arquillian test framework.</dd>
+  <dt><strong>wicket:child / wicket:extend</strong></dt>
+  <dd>Markup tags used for template inheritance. A parent page places <code class="language-plaintext highlighter-rouge">&lt;wicket:child/&gt;</code> where subclass content should go. The subclass wraps its content in <code class="language-plaintext highlighter-rouge">&lt;wicket:extend&gt;...&lt;/wicket:extend&gt;</code> to fill that slot.</dd>
+  <dd><em>Similar to:</em> Django’s <code class="language-plaintext highlighter-rouge">{% block content %}</code> / <code class="language-plaintext highlighter-rouge">{% endblock %}</code>, or Thymeleaf’s <code class="language-plaintext highlighter-rouge">layout:fragment</code>.</dd>
+  <dt><strong>wicket:enclosure</strong></dt>
+  <dd>A markup tag that groups a component and its surrounding decoration (labels, wrappers) so that everything is hidden automatically when the main component is invisible. Avoids manually synchronizing visibility of related elements.</dd>
+  <dd><em>Similar to:</em> Vue’s <code class="language-plaintext highlighter-rouge">v-if</code> wrapping a group of elements, or a Svelte <code class="language-plaintext highlighter-rouge">{#if}</code> block.</dd>
+  <dt><strong>wicket:fragment</strong></dt>
+  <dd>A markup tag that defines an inline HTML block within a page or panel template. The block can be referenced by a <code class="language-plaintext highlighter-rouge">Fragment</code> component to conditionally display different content without needing a separate HTML file.</dd>
+  <dd><em>Similar to:</em> Qute’s <code class="language-plaintext highlighter-rouge">{#fragment}</code> blocks, or named slots in Vue/Svelte.</dd>
+  <dt><strong>wicket:id</strong></dt>
+  <dd>The HTML attribute that connects a tag in your HTML template to a Java component. Every component you add in Java must have a matching <code class="language-plaintext highlighter-rouge">wicket:id</code> in the markup. This is the fundamental link between your HTML and your Java code.</dd>
+  <dd><em>Similar to:</em> React’s JSX where component names map to imports, or Thymeleaf’s <code class="language-plaintext highlighter-rouge">th:field</code> that binds to a backing bean property.</dd>
+</dl>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

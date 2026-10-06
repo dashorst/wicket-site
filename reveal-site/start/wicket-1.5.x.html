@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Apache Wicket 1.5.x | Apache Wicket</title>
+        <meta name="description" content="Here you can learn about the status of Wicket 1.5.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal require...">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html" class="is-active" aria-current="true">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Apache Wicket 1.5.x</h1>
+        
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1">
+<a href="#status"><span class="toc-number">1</span> <span class="toc-text">Status</span></a><ul>
+<li class="toc--level-2 toc--section-2"><a href="#semantic-versioning"><span class="toc-number">1.1</span> <span class="toc-text">Semantic Versioning</span></a></li>
+<li class="toc--level-2 toc--section-3"><a href="#change-log"><span class="toc-number">1.2</span> <span class="toc-text">Change log</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-4">
+<a href="#download"><span class="toc-number">2</span> <span class="toc-text">Download</span></a><ul>
+<li class="toc--level-2 toc--section-5"><a href="#using-apache-maven"><span class="toc-number">2.1</span> <span class="toc-text">Using Apache Maven</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#download-manually"><span class="toc-number">2.2</span> <span class="toc-text">Download Manually</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#older-releases"><span class="toc-number">2.3</span> <span class="toc-text">Older releases</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-8">
+<a href="#requirements"><span class="toc-number">3</span> <span class="toc-text">Requirements</span></a><ul>
+<li class="toc--level-2 toc--section-9"><a href="#java-version"><span class="toc-number">3.1</span> <span class="toc-text">Java version</span></a></li>
+<li class="toc--level-2 toc--section-10"><a href="#servlet-api"><span class="toc-number">3.2</span> <span class="toc-text">Servlet API</span></a></li>
+<li class="toc--level-2 toc--section-11"><a href="#logging"><span class="toc-number">3.3</span> <span class="toc-text">Logging</span></a></li>
+<li class="toc--level-2 toc--section-12"><a href="#dont-mix-wicket-versions"><span class="toc-number">3.4</span> <span class="toc-text">Don’t mix Wicket versions</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-13"><a href="#migrating-from-earlier-versions"><span class="toc-number">4</span> <span class="toc-text">Migrating from earlier versions</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+<header class="preamble">
+    
+    <p>Here you can learn about the status of Wicket 1.5.x, find links to download it, learn how to configure your Maven POM to use Wicket, find the minimal requirements, and migrate your existing application to this Wicket version.</p>
+</header>
+
+
+            <section class="page-content">
+                <div class="button-bar">
+	<a class="button" href="#status"><i class="fa fa-info-circle"></i><br>Status</a>
+	<a class="button" href="#download"><i class="fa fa-download"></i><br>Download</a>
+</div>
+<div class="button-bar">
+	<a class="button" href="#requirements"><i class="fa fa-exclamation-triangle"></i><br>Requirements</a>
+	<a class="button" href="#migrating-from-earlier-versions"><i class="fa fa-history"></i><br>Migrate</a>
+</div>
+
+<h2 id="status">Status</h2>
+
+<p>The status for Wicket 1.5.x is: <strong>discontinued</strong>.</p>
+
+<p>This branch is <strong>no longer maintained and will no longer receive any updates</strong>.</p>
+
+<p><i class="fa fa-exclamation-circle"></i>
+<strong>You should upgrade to Wicket 10.x at your earliest convenience.</strong></p>
+
+<h3 id="semantic-versioning">Semantic Versioning</h3>
+
+<p>This release branch <strong>does not</strong> follow semantic versioning. Upgrading
+between minor versions may break binary compatibility.</p>
+
+<h3 id="change-log">Change log</h3>
+
+<p>To see what changed in this release (and prior releases) you can read
+the <a href="http://archive.apache.org/dist/wicket/1.5.16/CHANGELOG-1.5" target="_blank" rel="noopener noreferrer">change log</a>.</p>
+
+<h2 id="download">Download</h2>
+
+<p>The most recent release in this branch is: <strong>1.5.16</strong>.</p>
+
+<p>You can get the release using Maven or download it manually.</p>
+
+<h3 id="using-apache-maven">Using Apache Maven</h3>
+
+<p>Use the following Maven dependency to use Wicket in your project:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.16<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Add the snippet above to your project’s POM in the dependency
+(management) section.</p>
+
+<p>You can add more Wicket modules to your project by adding more
+dependencies (copy above snippet and change the <code class="language-plaintext highlighter-rouge">artifactId</code>
+accordingly).</p>
+
+<p>If you are not a Maven user, you can download the Wicket release manually.</p>
+
+<h3 id="download-manually">Download Manually</h3>
+
+<p>Use the following links to download Wicket manually to build Wicket
+from source:</p>
+
+<ul>
+  <li>Download source <a href="http://archive.apache.org/dist/wicket/1.5.16/apache-wicket-1.5.16-source.tgz" target="_blank" rel="noopener noreferrer">apache-wicket-1.5.16-source.tar.gz</a>
+(<a href="http://archive.apache.org/dist/wicket/1.5.16/apache-wicket-1.5.16-source.tgz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/apache-wicket-1.5.16-source.tgz.md5" target="_blank" rel="noopener noreferrer">MD5</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/apache-wicket-1.5.16-source.tgz.sha" target="_blank" rel="noopener noreferrer">SHA</a>
+)</li>
+</ul>
+
+<p>Or use the following links to get the pre-packaged binaries instead:</p>
+
+<ul>
+  <li>Download binaries <a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.tar.gz" target="_blank" rel="noopener noreferrer">apache-wicket-1.5.16.tar.gz</a>
+(<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.tar.gz.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.tar.gz.md5" target="_blank" rel="noopener noreferrer">MD5</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.tar.gz.sha" target="_blank" rel="noopener noreferrer">SHA</a>
+)</li>
+  <li>Download binaries <a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.zip" target="_blank" rel="noopener noreferrer">apache-wicket-1.5.16.zip</a>
+(<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.zip.asc" target="_blank" rel="noopener noreferrer">PGP</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.zip.md5" target="_blank" rel="noopener noreferrer">MD5</a>,
+<a href="http://archive.apache.org/dist/wicket/1.5.16/binaries/apache-wicket-1.5.16.zip.sha" target="_blank" rel="noopener noreferrer">SHA</a>
+)</li>
+</ul>
+
+<p>Note that the binary packages and the source packages don’t contain any
+dependencies necessary to have your project working out of the box. We
+strongly urge you to use Maven (or Buildr, or Gradle) as your
+dependency management system.</p>
+
+<h3 id="older-releases">Older releases</h3>
+
+<p>The Apache mirroring system only hosts the latest version of each actively supported branch.
+When you need to download an older release you can find them in the archives.</p>
+
+<p>Go to <a href="https://archive.apache.org/dist/wicket" target="_blank" rel="noopener noreferrer">the Apache archives</a> to find your specific version.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Apache Wicket has few requirements in order to work properly. In this
+section you’ll find the minimum requirements for all Wicket modules.
+Specific modules may need additional libraries, such as file upload,
+date time APIs, CDI specifications, and more. See the module’s POM for
+more details on the necessary libraries.</p>
+
+<h3 id="java-version">Java version</h3>
+
+<p>This Wicket version requires at least the following Java version: <strong>JDK 5.0 or newer</strong>.</p>
+
+<p>Not only is a particular version of Java necessary, Wicket also needs
+access to specific APIs.</p>
+
+<h3 id="servlet-api">Servlet API</h3>
+
+<p>This Wicket version requires at least the following Servlet API
+version: <strong>Servlet API 2.5 or newer</strong>. This is provided by your
+container, please see the documentation of your container to see which
+version of the Servlet specification is supported.</p>
+
+<p>In addition to the Servlet API, Wicket uses SLF4J to let you choose
+your own implementation of a logging framework.</p>
+
+<h3 id="logging">Logging</h3>
+
+<p>You cannot use Wicket without adding an SLF4J logging implementation to
+your classpath. Most people use
+<a href="http://logging.apache.org/log4j" target="_blank" rel="noopener noreferrer">log4j</a>.</p>
+
+<p>If you do, just include <strong>slf4j-log4j12.jar</strong> on your classpath to get
+Wicket to use log4j too. If you want to use commons-logging or JDK14
+logging or something else, please see the <a href="http://www.slf4j.org/faq.html" target="_blank" rel="noopener noreferrer">SLF4J site</a>
+for more information.</p>
+
+<h3 id="dont-mix-wicket-versions">Don’t mix Wicket versions</h3>
+
+<p>You cannot mix different Wicket versions in your project. You should
+always use the artifacts from a particular release. For example it is
+<strong>not</strong> possible to use Wicket Extensions 1.3 in a Wicket 1.5 project,
+or Wicket Spring 1.4.19 in a Wicket 1.5 project. The same goes for 3rd
+party libraries: make sure you always use a compatible version of your
+3rd party library.</p>
+
+<h2 id="migrating-from-earlier-versions">Migrating from earlier versions</h2>
+
+<p>If you are migrating an existing application from earlier versions of
+Wicket you may find our migration guides invaluable:</p>
+
+<ul>
+  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.3" target="_blank" rel="noopener noreferrer">Wicket 1.2 to Wicket 1.3</a>
+</li>
+  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.4" target="_blank" rel="noopener noreferrer">Wicket 1.3 to Wicket 1.4</a>
+</li>
+  <li>Migrating from <a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+1.5" target="_blank" rel="noopener noreferrer">Wicket 1.4 to Wicket 1.5</a>
+</li>
+</ul>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

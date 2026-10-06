@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Download Apache Wicket | Apache Wicket</title>
+        <meta name="description" content="Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through t..." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Download Apache Wicket</h1>
+        <p class="page-sign-sub">Get the most recent version of Wicket in one source package</p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="reading-rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#board-title"><span class="toc-number">1</span> <span class="toc-text">Release lines</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#upgrade-paths"><span class="toc-number">2</span> <span class="toc-text">Upgrade paths</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#release-policy"><span class="toc-number">3</span> <span class="toc-text">Release Policy</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#unsupported-releases"><span class="toc-number">4</span> <span class="toc-text">Unsupported Releases</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#release-archives"><span class="toc-number">5</span> <span class="toc-text">Release Archives</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#snapshot-repository"><span class="toc-number">6</span> <span class="toc-text">SNAPSHOT Repository</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+            <header class="l-full preamble">
+                
+                <p>Wicket is released as a source archive, convenience binaries and through the Maven Central Repository. The most convenient way of getting Wicket is through the Maven dependency management system.</p>
+            </header>
+            
+            <section class="page-content">
+                
+<section class="board" aria-labelledby="board-title">
+    <div class="board-head">
+        <h2 id="board-title" class="board-title">Release lines</h2>
+        
+        <p class="board-sub">A long-term support release every year for production. A major release with new features every quarter.</p>
+    </div>
+    <table class="board-table">
+        
+        <caption class="visually-hidden">Apache Wicket release lines: when they arrive, how long they are supported, and their status</caption>
+        
+        <thead>
+            <tr>
+                <th scope="col">When</th>
+                <th scope="col">Release</th>
+                <th scope="col">Service</th>
+                <th scope="col">Supported</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        
+        
+        
+        <tbody class="board-group board-group-1">
+            
+            <tr class="board-divider">
+                <th scope="rowgroup" colspan="5">In service</th>
+            </tr>
+            
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-lts">
+                <td class="board-when" data-label="When">Since Mar 2024</td>
+                <td class="board-release" data-label="Release">
+                    <a href="/wicket-site/departure-board/start/wicket-10.x.html"><span class="flap" data-flap="">10.11.0</span></a>
+                </td>
+                <td class="board-service" data-label="Service">
+                    <span class="plate plate-lts" title="Long-term support">LTS</span>
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 14.0.0, Jul 2027</td>
+                <td class="board-status" data-label="Status">
+                    <span class="status status-role">For production</span>
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-current">
+                <td class="board-when" data-label="When">Since Oct 2026</td>
+                <td class="board-release" data-label="Release">
+                    <a href="/wicket-site/departure-board/start/wicket-11.x.html"><span class="flap" data-flap="">11.0.0</span></a>
+                </td>
+                <td class="board-service" data-label="Service">
+                    Quarterly
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 12.0.0, Jan 2027</td>
+                <td class="board-status" data-label="Status">
+                    <span class="status status-role">For new features</span>
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+        </tbody>
+        
+        
+        
+        <tbody class="board-group board-group-2">
+            
+            <tr class="board-divider">
+                <th scope="rowgroup" colspan="5">Departures</th>
+            </tr>
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-scheduled">
+                <td class="board-when" data-label="When">Jan 2027</td>
+                <td class="board-release" data-label="Release">
+                    <span class="flap" data-flap="">12.0.0</span>
+                </td>
+                <td class="board-service" data-label="Service">
+                    Quarterly
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 13.0.0, Apr 2027</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-scheduled">Scheduled</span>
+                    
+                    
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-scheduled">
+                <td class="board-when" data-label="When">Jan 2027</td>
+                <td class="board-release" data-label="Release">
+                    <span class="flap" data-flap="">10.12.0</span>
+                </td>
+                <td class="board-service" data-label="Service">
+                    <span class="plate plate-lts" title="Long-term support">LTS</span>
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 14.0.0, Jul 2027</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-scheduled">Scheduled</span>
+                    
+                    
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-scheduled">
+                <td class="board-when" data-label="When">Apr 2027</td>
+                <td class="board-release" data-label="Release">
+                    <span class="flap" data-flap="">13.0.0</span>
+                </td>
+                <td class="board-service" data-label="Service">
+                    Quarterly
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 14.0.0, Jul 2027</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-scheduled">Scheduled</span>
+                    
+                    
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-scheduled">
+                <td class="board-when" data-label="When">Jul 2027</td>
+                <td class="board-release" data-label="Release">
+                    <span class="flap" data-flap="">14.0.0</span>
+                </td>
+                <td class="board-service" data-label="Service">
+                    <span class="plate plate-lts" title="Long-term support">LTS</span>
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Until 18.0.0, Jul 2028</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-scheduled">Scheduled</span>
+                    
+                    
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+                
+                
+        </tbody>
+        
+        
+        
+        <tbody class="board-group board-group-3">
+            
+            <tr class="board-divider">
+                <th scope="rowgroup" colspan="5">Out of service</th>
+            </tr>
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-eol">
+                <td class="board-when" data-label="When">Jul 2020 to Oct 2026</td>
+                <td class="board-release" data-label="Release">
+                    <a href="/wicket-site/departure-board/start/wicket-9.x.html"><span class="flap" data-flap="">9.24.0</span></a>
+                </td>
+                <td class="board-service" data-label="Service">
+                    Major
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Ended with 11.0.0</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-eol">End of life</span>
+                    
+                    
+                </td>
+            </tr>
+            
+                
+                
+                
+                
+                
+                
+            <tr class="board-row is-eol">
+                <td class="board-when" data-label="When">May 2018 to Oct 2026</td>
+                <td class="board-release" data-label="Release">
+                    <a href="/wicket-site/departure-board/start/wicket-8.x.html"><span class="flap" data-flap="">8.19.0</span></a>
+                </td>
+                <td class="board-service" data-label="Service">
+                    Major
+                    
+                </td>
+                <td class="board-support" data-label="Supported">Ended with 11.0.0</td>
+                <td class="board-status" data-label="Status">
+                    
+                    <span class="status status-eol">End of life</span>
+                    
+                    
+                </td>
+            </tr>
+            
+        </tbody>
+        
+    </table>
+    
+    <p class="board-foot"><a href="/wicket-site/departure-board/start/download.html#release-policy">How the release schedule works</a></p>
+</section>
+
+<p>If your application is not on a supported line, consider upgrading at your earliest
+convenience. Released lines link to their own download page.</p>
+
+<hr>
+
+<h2 id="upgrade-paths">Upgrade paths</h2>
+
+<p>How to move an application from an earlier release line to a supported one.</p>
+
+<table class="connections-table">
+    <thead>
+        <tr>
+            <th scope="col">You are on</th>
+            <th scope="col">Your route</th>
+            <th scope="col">Guide</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Wicket 8.x or 9.x</th>
+            <td>
+                <p class="connections-route">8.x → 9 (Java 11) → 10 LTS (Java 17) → 14 LTS, July 2027</p>
+                <p>End of life since Wicket 11.0.0: no more releases, not even security fixes. For production, move to 10 LTS: it brings <code>jakarta.servlet</code>, is supported until July 2027, and hands over to 14, the next LTS. 9.x moves to 10 directly; 8.x takes the Wicket 9 step first. To follow new features instead, continue from 10 to 11, which needs Java 21.</p>
+            </td>
+            <td>
+                <a href="https://s.apache.org/wicket9migration" target="_blank" rel="noopener noreferrer">Migration to Wicket 9</a><br>
+                <a href="https://s.apache.org/wicket10migrate" target="_blank" rel="noopener noreferrer">Migration to Wicket 10</a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Wicket 10.x</th>
+            <td>Stay on the LTS until Wicket 14, the next LTS, ships in July 2027. Moving to 11 for its new features means Java 21 and Jakarta Servlet 6.1.</td>
+            <td><a href="/wicket-site/departure-board/start/wicket-11.x.html#new">New in Wicket 11</a></td>
+        </tr>
+        <tr>
+            <th scope="row">Starting out</th>
+            <td>Start on the LTS when the application should change slowly, or on 11 to get new features every quarter.</td>
+            <td><a href="/wicket-site/departure-board/start/quickstart.html">Quick start</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2 id="release-policy">Release Policy</h2>
+
+<p>Since Wicket 11.0.0, released in October 2026, Wicket follows a time-based release
+schedule: a new major release every three months, and every fourth major release
+— once a year — is a long term support (LTS) release. The
+board above shows the schedule.</p>
+
+<p>Two release lines are maintained at any time:</p>
+
+<ul>
+  <li>the current <strong>LTS</strong> release, which receives security fixes and applicable bug fixes
+until the next LTS release;</li>
+  <li>the current <strong>quarterly</strong> release, which receives fixes until the next quarterly
+release supersedes it. Fixes normally ride along with that next release; a serious
+issue may warrant a patch release, for example 13.0.1.</li>
+</ul>
+
+<p>The support window applies to the release line, not to individual features. Features are
+developed on <code class="language-plaintext highlighter-rouge">main</code> and carry over into every following release, so a feature introduced
+in Wicket 11 is also present in 12, 13 and in the next LTS, Wicket 14.</p>
+
+<p>Wicket 10 is the current LTS and stays supported until Wicket 14 is released in the first
+week of July 2027. Wicket 8.x and 9.x reached end of life with the release of 11.0.0, and
+with them Wicket’s support for the <code class="language-plaintext highlighter-rouge">javax.servlet</code> API.</p>
+
+<p>The full announcement is in our news archive:
+<a href="/wicket-site/departure-board/news/2026/09/11/release-cadence.html">A new release cadence for Apache Wicket</a>.</p>
+
+<hr>
+
+<h2 id="unsupported-releases">Unsupported Releases</h2>
+
+<p>The following releases are no longer supported by the Wicket team. You
+should upgrade your project if it still depends on any of these
+versions.</p>
+
+<table class="eol-table" style="width:100%">
+	<tr>
+		<th style="width:30%">Version</th>
+		<th style="width:30%">Latest release</th>
+		<th style="width:40%">Status</th>
+	</tr>
+	<tr>
+		<td><a href="wicket-9.x.html">Wicket 9.x</a></td>
+		<td>9.24.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-8.x.html">Wicket 8.x</a></td>
+		<td>8.19.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-7.x.html">Wicket 7.x</a></td>
+		<td>7.18.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-6.x.html">Wicket 6.x</a></td>
+		<td>6.30.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-1.5.x.html">Wicket 1.5.x</a></td>
+		<td>1.5.16</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-1.4.x.html">Wicket 1.4.x</a></td>
+		<td>1.4.23</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td><a href="wicket-1.3.x.html">Wicket 1.3.x</a></td>
+		<td>1.3.7</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td>Wicket 1.2.x</td>
+		<td>1.2.5</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td>Wicket 1.1.x</td>
+		<td>1.1.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+	<tr>
+		<td>Wicket 1.0.x</td>
+		<td>1.0.0</td>
+		<td>
+<span class="status status-eol">End of life</span> upgrade to 10.x LTS or 11.x</td>
+	</tr>
+</table>
+
+<hr>
+
+<h2 id="release-archives">Release Archives</h2>
+
+<p>The Apache mirroring system only hosts the latest version of each actively supported branch.
+When you need to download an older release you can find them in the archives.</p>
+
+<p>Go to <a href="https://archive.apache.org/dist/wicket" target="_blank" rel="noopener noreferrer">the Apache archives</a> to find your specific version.</p>
+
+<hr>
+
+<h2 id="snapshot-repository">SNAPSHOT Repository</h2>
+
+<p>In order to use any SNAPSHOT versions mentioned in each download section of a specific Wicket version you have to configure the SNAPSHOT repository in your pom.xml.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;repository&gt;</span>
+    <span class="nt">&lt;id&gt;</span>apache.snapshots<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Apache Development Snapshot Repository<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>https://repository.apache.org/content/repositories/snapshots/<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;releases&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>false<span class="nt">&lt;/enabled&gt;</span>
+    <span class="nt">&lt;/releases&gt;</span>
+    <span class="nt">&lt;snapshots&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+    <span class="nt">&lt;/snapshots&gt;</span>
+<span class="nt">&lt;/repository&gt;</span></code></pre></figure>
+
+<p>Beware that SNAPSHOT versions might be deleted after a while and that you should <strong>not use</strong> any of them to go live with.</p>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

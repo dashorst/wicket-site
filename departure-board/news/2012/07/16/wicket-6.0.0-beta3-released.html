@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Wicket 6.0.0-beta3 released | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Wicket 6.0.0-beta3 released</h1>
+        
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="reading-rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#wicket-native-websockets"><span class="toc-number">1</span> <span class="toc-text">Wicket Native Websockets</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#wicket-bootstrap"><span class="toc-number">2</span> <span class="toc-text">Wicket Bootstrap</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#new-wicket-examples"><span class="toc-number">3</span> <span class="toc-text">New Wicket Examples</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#wicket-atmosphere"><span class="toc-number">4</span> <span class="toc-text">Wicket Atmosphere</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <div class="l-full post">
+    <p class="post-date"><time datetime="2012-07-16T00:00:00+00:00">16 July 2012</time></p>
+    <p>The Wicket team is proud to announce the third beta release of
+the Wicket 6.x series. This release is an intermediary release
+just before we give you 6.0.0 final.</p>
+
+<p>There are no more planned API breaks but if you find something
+that can be made better now it the time to discuss it! The
+next planned release is 6.0.0 final, so speak now or forever
+be silenced (or learn to live with it until 7.0.0 comes out).</p>
+
+<p>Any feedback about the new features, their implementation and
+their documentation is very welcome!</p>
+
+<h1 id="new-and-noteworthy-in-600-beta3">New and Noteworthy in 6.0.0-beta3</h1>
+
+<p><strong>NOTA BENE:</strong> the use of modules that are marked experimental,
+by being part of the sub module ‘wicket-experimental’, are really
+that: experimental. These modules can change, disappear or blow up
+your computer without notice and you really use/depend on them at
+your own risk.</p>
+
+<h2 id="wicket-native-websockets">Wicket Native Websockets</h2>
+
+<p>A new <strong>experimental</strong> module has been added to Wicket 6 - Wicket
+Native WebSocket. This module adds support for using HTML5
+WebSockets as you may use Ajax in your Wicket applications.</p>
+
+<p>All you have to do is to add a WebSocketBehavior to your page and from
+there on you can receive messages from the clients and push messages
+back to them.</p>
+
+<p>At <a href="https://cwiki.apache.org/confluence/x/0vSoAQ" target="_blank" rel="noopener noreferrer">our wiki</a> you may 
+find the documentation and a link to a demo application.</p>
+
+<p>If something is not clear feel free to ask your question in the
+mailing lists and we will improve the documentation.</p>
+
+<h2 id="wicket-bootstrap">Wicket Bootstrap</h2>
+
+<p>The <strong>experimental</strong> modules now contain a new module for integration
+with Twitter’s Bootstrap. Currently this module only provides a
+central way of using the Bootstrap resources. In the future we
+will provide proper components and behaviors for the Bootstrap
+concepts.</p>
+
+<p>To use this new <strong>experimental</strong> module, add this to your pom:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-bootstrap&lt;/artifactId&gt;
+    &lt;version&gt;0.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p>To add Bootstrap support to your pages, add this in the <code class="language-plaintext highlighter-rouge">renderHead</code>
+method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Override
+public void renderHead(IHeaderResponse response) {
+    super.renderHead(response);
+
+    Bootstrap.renderHead(response);
+}
+</code></pre></div></div>
+
+<p>This will render a dependency to the Twitter bootstrap CSS and JS files,
+including the required dependency to JQuery.</p>
+
+<h2 id="new-wicket-examples">New Wicket Examples</h2>
+<p>We have started an effort to revamp the tried and tested Wicket Examples
+and bring them into 2012. The new examples are located in the
+<strong>experimental</strong> module.</p>
+
+<p>It is currently a copy of Twitter Bootstrap’s design but with Wicket
+specific filling.</p>
+
+<p>You can test the examples by running the</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wicket-examples-jar/src/test/java/Start.java
+</code></pre></div></div>
+
+<p>class in the default package.</p>
+
+<p>The examples will feature a component reference with typical use
+cases, full examples such as Hello, World, and descriptions of the
+code in play.</p>
+
+<h2 id="wicket-atmosphere">Wicket Atmosphere</h2>
+
+<p>Wicket Atmosphere in the experimental modules has seen an upgrade of
+the Atmosphere dependency to 1.0.0-beta3. This has caused an
+incompatibility with Jetty 7.6.3 (used with Wicket and the examples). To
+mitigate this, you need to override either:</p>
+
+<ul>
+  <li>the dependency on Jetty to 8.1.3 or newer, or</li>
+  <li>the dependency on Atmosphere to 0.9.5 (0.9.6 and 0.9.7 are broken as
+well)</li>
+</ul>
+
+<p>See <a href="https://issues.apache.org/jira/browse/WICKET-4656" target="_blank" rel="noopener noreferrer">WICKET-4656</a> for 
+more information regarding this issue.</p>
+
+<h1 id="this-release">This release</h1>
+
+<ul>
+  <li>Check the roadmap  with a list of the major
+goals: <a href="https://cwiki.apache.org/confluence/display/WICKET/Wicket+6.0+Roadmap" target="_blank" rel="noopener noreferrer">6.0 roadmap</a>
+</li>
+  <li>And the migration guide with all major and some minor changes
+between 1.5.x and 6.x series: <a href="http://s.apache.org/wicket-6.0-migration" target="_blank" rel="noopener noreferrer">migration guide</a>
+</li>
+  <li>The Jira changelog of all closed ticket at
+Jira: <a href="http://s.apache.org/wicket-6.0.0-beta3-changelog" target="_blank" rel="noopener noreferrer">changelog</a>
+</li>
+</ul>
+
+<p>To use it in Maven:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+    &lt;version&gt;6.0.0-beta3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p>If you don’t use a dependencies management build tool then you
+can download the full distribution (including source) and build from
+source yourself.</p>
+
+<p>Have fun,</p>
+
+<p>The Wicket team!</p>
+
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

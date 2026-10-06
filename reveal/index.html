@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apache Wicket</title>
+<meta name="description" content="Apache Wicket is a component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain.">
+<meta name="theme-color" content="#0c0c0c">
+<meta name="color-scheme" content="dark">
+<link rel="preload" href="fonts/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="reveal.css?v=13">
+<link rel="icon" href="brand/logo-apachewicket-mark.svg" type="image/svg+xml">
+<script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <nav class="nav" aria-label="Main">
+    <a href="start/quickstart.html">Quick Start</a>
+    <a href="start/download.html">Download</a>
+    <a href="learn/">Documentation</a>
+    <a href="help/">Support</a>
+    <a href="contribute/">Contribute</a>
+    <a href="community/">Community</a>
+    <a href="apache/">Apache</a>
+    <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="title">
+  <h1 class="lockup" id="title">
+    <img class="lockup-mark" src="brand/logo-apachewicket-mark.svg" alt="" width="64" height="64">
+    <span class="lockup-name">Apache Wicket</span>
+    <span class="lockup-v"><span class="vh">, version </span>11</span>
+  </h1>
+  <p class="definition">A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain.</p>
+
+  <!-- The one action in the hero. The version comes from _config.yml (wicket.version). -->
+  <div class="cmd">
+    <div class="cmd-controls" hidden>
+      <div class="cmd-modes cmd-lines" role="radiogroup" aria-label="What to copy">
+        <button type="button" role="radio" aria-checked="true" data-mode="dependency">Add to project</button>
+        <button type="button" role="radio" aria-checked="false" data-mode="project">New project</button>
+      </div>
+      <div class="cmd-lines" role="radiogroup" aria-label="Release line">
+        <button type="button" role="radio" aria-checked="true" data-line="current">11.0</button>
+        <button type="button" role="radio" aria-checked="false" data-line="lts">10.11 <abbr title="Long-term support">LTS</abbr></button>
+      </div>
+      <label class="cmd-tool">
+        <span class="visually-hidden">Build tool</span>
+        <select id="cmd-tool">
+          <option value="maven">Maven</option>
+          <option value="gradle">Gradle</option>
+          <option value="bld">bld</option>
+          <option value="ai">AI prompt</option>
+        </select>
+      </label>
+    </div>
+    <div class="cmd-row">
+      <p class="cmd-line"><code id="cmd-show">org.apache.wicket:wicket-core:11.0.0</code></p>
+      <button type="button" class="cmd-copy" aria-describedby="cmd-show" hidden>
+        <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 10.5h-.5a1 1 0 0 1-1-1v-6.5a1 1 0 0 1 1-1h6.5a1 1 0 0 1 1 1v.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span>Copy</span>
+      </button>
+    </div>
+    <span class="cmd-status" role="status"></span>
+    <!-- The release lines and the snippet per build tool. On release day, change the versions here.
+         "dependency" adds Wicket to a project, "project" starts a new one. In the templates {version} is the full version,
+         {major} {minor} {patch} its parts, {guide} the upgrade guide, {groupId} {artifactId} the defaults below (own values on the quick start page).
+         "show" may break lines for reading; "copy" is what lands on the clipboard. -->
+    <script type="application/json" id="install-data">
+    {
+      "lines": {
+        "current": {
+          "version": "11.0.0",
+          "name": "11.0"
+        },
+        "lts": {
+          "version": "10.11.0",
+          "name": "10.11 LTS"
+        }
+      },
+      "guide": "https://wicket.apache.org/start/download.html#upgrade-paths",
+      "defaults": {
+        "groupId": "com.mycompany",
+        "artifactId": "myproject"
+      },
+      "dependency": {
+        "maven": {
+          "what": "Maven dependency",
+          "show": "org.apache.wicket:wicket-core:{version}",
+          "copy": "<dependency>\n  <groupId>org.apache.wicket<\/groupId>\n  <artifactId>wicket-core<\/artifactId>\n  <version>{version}<\/version>\n<\/dependency>"
+        },
+        "gradle": {
+          "what": "Gradle dependency",
+          "show": "implementation(\"org.apache.wicket:wicket-core:{version}\")",
+          "copy": "implementation(\"org.apache.wicket:wicket-core:{version}\")"
+        },
+        "bld": {
+          "what": "bld dependency",
+          "show": "dependency(\"org.apache.wicket\", \"wicket-core\", version({major},{minor},{patch}))",
+          "copy": "scope(compile)\n    .include(dependency(\"org.apache.wicket\", \"wicket-core\", version({major},{minor},{patch})));"
+        },
+        "ai": {
+          "what": "prompt for your coding assistant",
+          "show": "Upgrade my Wicket dependencies to {version} and follow the upgrade guide",
+          "copy": "Upgrade my Apache Wicket dependencies to {version} and execute the steps from the upgrade guide: {guide}"
+        }
+      },
+      "project": {
+        "maven": {
+          "what": "Maven command for a new project",
+          "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false",
+          "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false"
+        },
+        "gradle": {
+          "what": "command for a new Gradle project",
+          "show": "mvn archetype:generate\n  -DarchetypeGroupId=org.apache.wicket\n  -DarchetypeArtifactId=wicket-archetype-quickstart\n  -DarchetypeVersion={version}\n  -DgroupId={groupId}\n  -DartifactId={artifactId}\n  -DinteractiveMode=false\n&& cd {artifactId}\n&& gradle init --type pom",
+          "copy": "mvn archetype:generate -DarchetypeGroupId=org.apache.wicket -DarchetypeArtifactId=wicket-archetype-quickstart -DarchetypeVersion={version} -DgroupId={groupId} -DartifactId={artifactId} -DinteractiveMode=false && cd {artifactId} && gradle init --type pom"
+        },
+        "bld": {
+          "what": "prompt for a new bld project",
+          "show": "bld has no Wicket template yet: copy a prompt for your coding assistant",
+          "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}, built with bld (https://rife2.com/bld). Use the Wicket quickstart archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) as the reference for the project layout, and make sure it builds and runs."
+        },
+        "ai": {
+          "what": "prompt for a new project",
+          "show": "Create a new Wicket {version} project {groupId}:{artifactId} from the quickstart archetype",
+          "copy": "Create a new Apache Wicket {version} web application with groupId {groupId} and artifactId {artifactId}. Start from the Wicket quickstart Maven archetype (org.apache.wicket:wicket-archetype-quickstart:{version}) and make sure it builds and runs."
+        }
+      }
+    }
+    </script>
+  </div>
+</section>
+
+<!-- What's new. Versions come from _config.yml; the first half changes with each announcement. -->
+<section class="strip" aria-label="What's new">
+  <div class="strip-in">
+    <ul class="strip-news">
+      <li><a href="#new">Wicket 11 released</a><span class="strip-note">Java 21, Ajax without jQuery, leaner components</span></li>
+      <li><a href="start/wicket-10.x.html">Wicket 10 now LTS</a><span class="strip-note">Supported until 14.0.0, July 2027</span></li>
+      <li><a href="start/download.html#upgrade-paths">Wicket 8 and 9 discontinued</a><span class="strip-note">No more releases: move to 10 LTS or 11</span></li>
+      <li><a href="news/2026/09/11/release-cadence.html">A new release schedule</a><span class="strip-note">A major release every quarter, an LTS every year</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Wicket in detail. Each step adds code and one branch to the component tree of OrderPage.
+     Without JavaScript, under reduced motion and on narrow screens every step shows its own code and tree.
+     With JavaScript on a wide screen, reveal.js copies the code into the sticky stage beside the steps. -->
+<section class="reveal" id="how" aria-labelledby="how-title">
+  <header class="sec-head reveal-head">
+    <h2 id="how-title">A page is a tree of components</h2>
+    <p>Wicket is component oriented and renders on the server. Build one small order page in seven steps: each adds a few lines of plain Java or HTML, and one branch to the page&rsquo;s component tree.</p>
+  </header>
+
+  <div class="reveal-body">
+    <ol class="steps">
+<li class="step" id="step-1" data-step="1">
+  <div class="step-text">
+    <h3><span class="step-n">01</span> Start with plain HTML</h3>
+    <p>A page begins as an HTML file. The <code>wicket:id</code> attribute marks the tag a component will render. There is no template language: the file stays HTML that any editor or browser opens.</p>
+  </div>
+  <figure class="step-fig" data-caption="One tag waits for its component.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 1</p>
+      <ul class="tree mini"><li class="n root on"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.html</p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;html</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;body</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;p</span> <span class="at">wicket:id</span>=<span class="w">"message"</span><span class="t">&gt;</span>Message<span class="t">&lt;/p</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;/body</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;/html</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-2" data-step="2">
+  <div class="step-text">
+    <h3><span class="step-n">02</span> Give the tag a component</h3>
+    <p>Behaviour lives in a Java class with the same name. <code>add(...)</code> puts a <code>Label</code> into the page&rsquo;s tree under the id <code>"message"</code>, and Wicket renders it into the matching tag.</p>
+  </div>
+  <figure class="step-fig" data-caption="Label &lt;code&gt;&quot;message&quot;&lt;/code&gt; renders &lt;code&gt;&amp;lt;p wicket:id=&quot;message&quot;&amp;gt;&lt;/code&gt;.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 2</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n on last"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln"><span class="k">public</span> <span class="k">class</span> OrderPage <span class="k">extends</span> WebPage {</span><span class="ln">    <span class="k">public</span> OrderPage() {</span><span class="ln new">        add(<span class="k">new</span> Label(<span class="w">"message"</span>,</span><span class="ln new">            <span class="s">"Check both addresses."</span>));</span><span class="ln">    }</span><span class="ln">}</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-3" data-step="3">
+  <div class="step-text">
+    <h3><span class="step-n">03</span> Add a form with fields</h3>
+    <p>Components nest the way tags do. The form is a child of the page; the text fields and the button are children of the form. A <code>CompoundPropertyModel</code> binds each field to the property with its id.</p>
+  </div>
+  <figure class="step-fig" data-caption="A form with two text fields and a button.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 3</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln new">Form&lt;Address&gt; form = <span class="k">new</span> Form&lt;&gt;(<span class="w">"order"</span>,</span><span class="ln new">    <span class="k">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="ln new">form.add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"street"</span>));</span><span class="ln new">form.add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"city"</span>));</span><span class="ln new">form.add(<span class="k">new</span> Button(<span class="w">"save"</span>));</span><span class="ln new">add(form);</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">body</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;p</span> <span class="at">wicket:id</span>=<span class="w">"message"</span><span class="t">&gt;</span>Message<span class="t">&lt;/p</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;form</span> <span class="at">wicket:id</span>=<span class="w">"order"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"street"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"city"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;button</span> <span class="at">wicket:id</span>=<span class="w">"save"</span><span class="t">&gt;</span>Save<span class="t">&lt;/button</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;/form</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-4" data-step="4">
+  <div class="step-text">
+    <h3><span class="step-n">04</span> Reuse a panel, twice</h3>
+    <p>Move the fields into <code>AddressPanel</code>: a Java class with its own markup inside <code>&lt;wicket:panel&gt;</code>. The form uses it twice, for billing and for shipping, and the same branch grows under each.</p>
+  </div>
+  <figure class="step-fig" data-caption="One &lt;code&gt;AddressPanel&lt;/code&gt; class, two instances in the tree.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 4</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n on"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">AddressPanel.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="AddressPanel.java"><code><span class="ln new"><span class="k">public</span> <span class="k">class</span> AddressPanel <span class="k">extends</span> Panel {</span><span class="ln new">    <span class="k">public</span> AddressPanel(String id,</span><span class="ln new">            IModel&lt;Address&gt; address) {</span><span class="ln new">        <span class="k">super</span>(id,</span><span class="ln new">            <span class="k">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="ln new">        add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"street"</span>));</span><span class="ln new">        add(<span class="k">new</span> TextField&lt;String&gt;(<span class="w">"city"</span>));</span><span class="ln new">    }</span><span class="ln new">}</span></code></pre></div>
+<div class="file"><p class="fname">AddressPanel.html</p><pre class="code" data-lang="html" tabindex="0" aria-label="AddressPanel.html"><code><span class="ln new"><span class="t">&lt;wicket:panel</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"street"</span><span class="t">&gt;</span></span><span class="ln new">  <span class="t">&lt;input</span> <span class="at">wicket:id</span>=<span class="w">"city"</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;/wicket:panel</span><span class="t">&gt;</span></span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln">Form&lt;Void&gt; form = <span class="k">new</span> Form&lt;&gt;(<span class="w">"order"</span>);</span><span class="ln new">form.add(<span class="k">new</span> AddressPanel(<span class="w">"billing"</span>, billingAddress));</span><span class="ln new">form.add(<span class="k">new</span> AddressPanel(<span class="w">"shipping"</span>, shippingAddress));</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">form</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln new"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"billing"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"shipping"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-5" data-step="5">
+  <div class="step-text">
+    <h3><span class="step-n">05</span> Update it from Java</h3>
+    <p>Wicket renders on the server and keeps the page&rsquo;s state there, in this tree. A click on the <code>AjaxLink</code> runs <code>onClick</code> in Java; <code>target.add(shipping)</code> re-renders only that panel and Wicket swaps it into the page. You write no JavaScript.</p>
+  </div>
+  <figure class="step-fig" data-caption="The link re-renders the shipping branch, nothing else.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 5</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPage.java <span class="fnote">constructor</span></p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPage.java"><code><span class="ln">AddressPanel shipping =</span><span class="ln">    <span class="k">new</span> AddressPanel(<span class="w">"shipping"</span>, shippingAddress);</span><span class="ln new">shipping.setOutputMarkupPlaceholderTag(<span class="k">true</span>);</span><span class="ln new">shipping.setVisible(<span class="k">false</span>);</span><span class="ln">form.add(shipping);</span><span class="ln"> </span><span class="ln new">form.add(<span class="k">new</span> AjaxLink&lt;Void&gt;(<span class="w">"shipElsewhere"</span>) {</span><span class="ln new">    <span class="a">@Override</span></span><span class="ln new">    <span class="k">public</span> <span class="k">void</span> onClick(AjaxRequestTarget target) {</span><span class="ln new">        shipping.setVisible(!shipping.isVisible());</span><span class="ln new">        target.add(shipping);</span><span class="ln new">    }</span><span class="ln new">});</span></code></pre></div>
+<div class="file"><p class="fname">OrderPage.html <span class="fnote">form</span></p><pre class="code" data-lang="html" tabindex="0" aria-label="OrderPage.html"><code><span class="ln"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"billing"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span><span class="ln new"><span class="t">&lt;a</span> <span class="at">wicket:id</span>=<span class="w">"shipElsewhere"</span><span class="t">&gt;</span>Ship to another address<span class="t">&lt;/a</span><span class="t">&gt;</span></span><span class="ln"><span class="t">&lt;div</span> <span class="at">wicket:id</span>=<span class="w">"shipping"</span><span class="t">&gt;</span><span class="t">&lt;/div</span><span class="t">&gt;</span></span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-6" data-step="6">
+  <div class="step-text">
+    <h3><span class="step-n">06</span> Test it without a browser</h3>
+    <p><code>WicketTester</code> renders the page in a plain unit test: no browser, no container. It finds components by their path in the tree, clicks the Ajax link and checks what came back.</p>
+  </div>
+  <figure class="step-fig" data-caption="Test paths are tree paths: &lt;code&gt;order:shipping&lt;/code&gt;.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 6</p>
+      <ul class="tree mini"><li class="n root"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n on last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n on"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n on"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">OrderPageTest.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="OrderPageTest.java"><code><span class="ln new">WicketTester tester =</span><span class="ln new">    <span class="k">new</span> WicketTester(<span class="k">new</span> MyApplication());</span><span class="ln new">tester.startPage(OrderPage.<span class="k">class</span>);</span><span class="ln new">tester.assertLabel(<span class="w">"message"</span>, <span class="s">"Check both addresses."</span>);</span><span class="ln new">tester.assertInvisible(<span class="w">"order:shipping"</span>);</span><span class="ln new"> </span><span class="ln new">tester.clickLink(<span class="w">"order:shipElsewhere"</span>);</span><span class="ln new">tester.assertVisible(<span class="w">"order:shipping"</span>);</span><span class="ln new">tester.assertComponentOnAjaxResponse(<span class="w">"order:shipping"</span>);</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+<li class="step" id="step-7" data-step="7">
+  <div class="step-text">
+    <h3><span class="step-n">07</span> Secure by default</h3>
+    <p>Wicket supports a strict Content Security Policy without <code>unsafe-inline</code> and adds a nonce to every header contribution, the Ajax link&rsquo;s script included. You only add what your application needs.</p>
+  </div>
+  <figure class="step-fig" data-caption="Every header contribution from this tree gets a nonce.">
+    <div class="mini-wrap">
+      <p class="mini-title">Tree after step 7</p>
+      <ul class="tree mini"><li class="n root on"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></li><li class="n"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li><li class="n last"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></li></ul></li><li class="n last"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></li></ul></li></ul></li></ul>
+    </div>
+    <div class="files">
+<div class="file"><p class="fname">MyApplication.java</p><pre class="code" data-lang="java" tabindex="0" aria-label="MyApplication.java"><code><span class="ln"><span class="a">@Override</span></span><span class="ln"><span class="k">protected</span> <span class="k">void</span> init() {</span><span class="ln">    <span class="k">super</span>.init();</span><span class="ln new">    <span class="c">// CSP is on by default; allow one extra image host</span></span><span class="ln new">    getCspSettings().blocking()</span><span class="ln new">        .add(CSPDirective.IMG_SRC,</span><span class="ln new">             <span class="s">"https://images.example.org"</span>);</span><span class="ln">}</span></code></pre></div>
+    </div>
+  </figure>
+</li>
+    </ol>
+
+    <div class="stage" aria-hidden="true">
+      <div class="stage-bar">
+        <span class="stage-title">OrderPage</span>
+        <span class="stage-count"><span class="stage-n">01</span> / 07</span>
+      </div>
+      <div class="stage-grid">
+        <div class="stage-tree">
+          <ul class="tree big"><li class="n root" data-from="1" data-until="99" data-hl="7"><div class="n-in"><span class="row"><code class="nid">OrderPage</code><span class="ntype">WebPage</span><code class="ntag">OrderPage.html</code></span><ul><li class="n" data-from="2" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;message&quot;</code><span class="ntype">Label</span><code class="ntag">&lt;p&gt;</code></span></div></li><li class="n" data-from="3" data-until="99" data-hl="6"><div class="n-in"><span class="row"><code class="nid">&quot;order&quot;</code><span class="ntype">Form</span><code class="ntag">&lt;form&gt;</code></span><ul><li class="n" data-from="3" data-until="3" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="3" data-until="3" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;billing&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li></ul></div></li><li class="n" data-from="5" data-until="99" data-hl="6"><div class="n-in"><span class="row"><code class="nid">&quot;shipElsewhere&quot;</code><span class="ntype">AjaxLink</span><code class="ntag">&lt;a&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl="5 6"><div class="n-in"><span class="row"><code class="nid">&quot;shipping&quot;</code><span class="ntype">AddressPanel</span><code class="ntag">&lt;div&gt;</code></span><ul><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;street&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li><li class="n" data-from="4" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;city&quot;</code><span class="ntype">TextField</span><code class="ntag">&lt;input&gt;</code></span></div></li></ul></div></li><li class="n" data-from="3" data-until="99" data-hl=""><div class="n-in"><span class="row"><code class="nid">&quot;save&quot;</code><span class="ntype">Button</span><code class="ntag">&lt;button&gt;</code></span></div></li></ul></div></li></ul></div></li></ul>
+          <p class="stage-caption"></p>
+        </div>
+        <div class="stage-code"></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="reveal-end">That is the whole model, in a project of your own in a minute: <a class="go" href="start/quickstart.html">Open the quick start</a></p>
+</section>
+
+<section class="stable" id="stable" aria-labelledby="stable-title">
+  <div class="stable-text">
+    <header class="sec-head">
+      <h2 id="stable-title">Stable since 2004</h2>
+      <p>Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one you just used.</p>
+    </header>
+    <dl class="facts">
+      <div><dt>An Apache project</dt><dd>Developed in the open at the Apache Software Foundation by a community of volunteers, under the Apache License&nbsp;2.0.</dd></div>
+      <div><dt>A stable API</dt><dd>Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</dd></div>
+      <div><dt>Long-term support</dt><dd>Every fourth major release is an LTS, supported until the next LTS. At most two release lines are maintained at once.</dd></div>
+      <div><dt>Migration recipes</dt><dd>OpenRewrite recipes in <code>wicket-migration</code> take care of the mechanical part of an upgrade.</dd></div>
+    </dl>
+  </div>
+
+  <!-- The one release element on the homepage. Versions and dates come from _config.yml. -->
+  <aside class="board" aria-labelledby="board-title">
+    <h3 id="board-title">Release lines</h3>
+    <table>
+      <tbody>
+        <tr class="grp"><th colspan="3" scope="rowgroup">In service</th></tr>
+        <tr><th scope="row"><span class="v">10.11.0</span> <abbr title="Long-term support">LTS</abbr></th><td>for production</td><td class="d">until 14.0.0 <span>Jul 2027</span></td></tr>
+        <tr><th scope="row"><span class="v">11.0.0</span></th><td>for new features</td><td class="d">until 12.0.0 <span>Jan 2027</span></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="grp"><th colspan="3" scope="rowgroup">Next</th></tr>
+        <tr><th scope="row"><span class="v">12.0.0</span></th><td></td><td class="d"><span>Jan 2027</span></td></tr>
+        <tr><th scope="row"><span class="v">10.12.0</span> <abbr title="Long-term support">LTS</abbr></th><td></td><td class="d"><span>Jan 2027</span></td></tr>
+        <tr><th scope="row"><span class="v">14.0.0</span> <abbr title="Long-term support">LTS</abbr></th><td></td><td class="d"><span>Jul 2027</span></td></tr>
+      </tbody>
+      <tbody>
+        <tr class="grp"><th colspan="3" scope="rowgroup">Out of service</th></tr>
+        <tr class="ended"><th scope="row"><span class="v">9.x</span>, <span class="v">8.x</span></th><td>ended with 11.0.0</td><td class="d"><a href="start/download.html#upgrade-paths">How to upgrade</a></td></tr>
+      </tbody>
+    </table>
+    <p class="board-all"><a href="start/download.html">All release lines</a></p>
+  </aside>
+</section>
+
+<section class="new11" id="new" aria-labelledby="new-title">
+  <header class="sec-head">
+    <h2 id="new-title">New in Wicket 11</h2>
+    <p><a href="start/wicket-11.x.html">Everything about Wicket 11</a></p>
+  </header>
+  <div class="hls">
+    <article class="hl">
+      <h3>A new baseline</h3>
+      <p class="baseline"><span>Java <b>21</b></span> <span>Jakarta Servlet <b>6.1</b></span> <span>Spring <b>7</b></span></p>
+      <p>Wicket 10 applications already use <code>jakarta.servlet</code>: the step up is your JDK and container.</p>
+    </article>
+    <article class="hl">
+      <h3>More secure by default</h3>
+      <p>Encrypted URLs and stored pages cannot be altered unnoticed, model values in markup are escaped consistently, and CSP covers <code>script-src-attr</code> and <code>style-src-attr</code>.</p>
+    </article>
+    <article class="hl">
+      <h3>Leaner components</h3>
+      <p>One compact state object per component: in the benchmarks, reading state is 30 to 45% faster and a tree with Ajax behaviors serializes about 40% smaller.</p>
+    </article>
+    <article class="hl">
+      <h3>Ajax without jQuery</h3>
+      <p>An opt-in plain JavaScript Ajax engine with the same client-side API. jQuery stays the default and now supports jQuery&nbsp;4.</p>
+    </article>
+  </div>
+</section>
+
+<!-- Names from the Built with Wicket feed (tumblr.json); only projects that submitted themselves. -->
+<section class="built" id="built" aria-labelledby="built-title">
+  <header class="sec-head">
+    <h2 id="built-title">Built with Wicket</h2>
+    <p>Teams that submitted their application to the Built with Wicket feed.</p>
+  </header>
+  <ul class="names">
+    <li>ING Germany <span>internet banking</span></li>
+    <li>ATLAS experiment at CERN <span>controls and configuration</span></li>
+    <li>Air Tahiti <span>airline web app</span></li>
+    <li>Stellantis <span>media libraries</span></li>
+    <li>Coface <span>credit insurance</span></li>
+    <li>Ipsos <span>survey rewards community</span></li>
+    <li>New Zealand Treasury <span>e-recruitment</span></li>
+    <li>OneDev <span>open source git server</span></li>
+    <li>ConSol CM <span>web client</span></li>
+  </ul>
+  <p class="built-links"><a href="https://builtwithwicket.tumblr.com" rel="nofollow">More on Built with Wicket</a> <a href="https://builtwithwicket.tumblr.com/submit" rel="nofollow">Submit your project</a></p>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <a class="asf-tile" href="https://www.apache.org"><img src="brand/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+    <div class="footer-text">
+      <nav aria-label="Apache Software Foundation">
+        <ul>
+          <li><a href="https://www.apache.org">Apache</a></li>
+          <li><a href="https://www.apache.org/licenses/">License</a></li>
+          <li><a href="https://events.apache.org/x/current-event">Events</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks">Thanks</a></li>
+          <li><a href="https://www.apache.org/security">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+        </ul>
+      </nav>
+      <p class="legal">Copyright &copy; 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="reveal.js?v=13"></script>
+</body>
+</html>

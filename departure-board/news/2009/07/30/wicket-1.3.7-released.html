@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Apache Wicket 1.3.7 marks end of life for Wicket 1.3 | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Apache Wicket 1.3.7 marks end of life for Wicket 1.3</h1>
+        
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="reading-rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul><li class="toc--level-1 toc--section-1">
+<a href="#apache-wicket-137"><span class="toc-number">1</span> <span class="toc-text">Apache Wicket 1.3.7</span></a><ul>
+<li class="toc--level-2 toc--section-2"><a href="#this-release"><span class="toc-number">1.1</span> <span class="toc-text">This release</span></a></li>
+<li class="toc--level-2 toc--section-3"><a href="#migrating-from-12"><span class="toc-number">1.2</span> <span class="toc-text">Migrating from 1.2</span></a></li>
+<li class="toc--level-2 toc--section-4"><a href="#downloading-the-release"><span class="toc-number">1.3</span> <span class="toc-text">Downloading the release</span></a></li>
+<li class="toc--level-2 toc--section-5"><a href="#validating-the-release"><span class="toc-number">1.4</span> <span class="toc-text">Validating the release</span></a></li>
+<li class="toc--level-2 toc--section-6"><a href="#reporting-bugs"><span class="toc-number">1.5</span> <span class="toc-text">Reporting bugs</span></a></li>
+<li class="toc--level-2 toc--section-7"><a href="#the-distribution"><span class="toc-number">1.6</span> <span class="toc-text">The distribution</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#release-notes"><span class="toc-number">1.7</span> <span class="toc-text">Release Notes</span></a></li>
+</ul>
+</li></ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <div class="l-full post">
+    <p class="post-date"><time datetime="2009-07-30T00:00:00+00:00">30 July 2009</time></p>
+    <p>The Apache Wicket team is proud to present the release of Apache Wicket
+1.3.7. This will be the last feature release for the 1.3.x branch. Going
+forward, only security fixes will be released in the 1.3.x branch - meaning
+that 1.3.7 may be the last release in this branch. All users are encouraged
+to upgrade to 1.4.0 as soon as possible. As work begins on 1.5 in the near
+future, we will be supporting 1.4.x and 1.5.x.</p>
+
+<p>Eager people click here to download the distribution, others can read
+further:</p>
+
+<ul>
+  <li><a href="http://www.apache.org/dyn/closer.cgi/wicket/1.3.7" target="_blank" rel="noopener noreferrer">http://www.apache.org/dyn/closer.cgi/wicket/1.3.7</a></li>
+</ul>
+
+<p>We thank you for your patience and support.</p>
+
+<p>The Wicket Team</p>
+
+<h2 id="apache-wicket-137">Apache Wicket 1.3.7</h2>
+
+<p>Apache Wicket is a component oriented Java web application framework. With
+proper mark-up/logic separation, a POJO data model, and a refreshing lack of
+XML, Apache Wicket makes developing web-apps simple and enjoyable again. Swap
+the boilerplate, complex debugging and brittle code for powerful, reusable
+components written with plain Java and HTML.</p>
+
+<p>You can find out more about Apache Wicket on <a href="http://wicket.apache.org" target="_blank" rel="noopener noreferrer">our website</a></p>
+
+<h3 id="this-release">This release</h3>
+
+<p>This will be the last feature release for the 1.3.x branch. Going forward,
+only security fixes will be released in the 1.3.x branch - meaning that 1.3.7
+may be the last release in this branch. All users are encouraged to upgrade
+to 1.4.0 as soon as possible. As work begins on 1.5 in the near future, we
+will be supporting 1.4.x and 1.5.x.</p>
+
+<h3 id="migrating-from-12">Migrating from 1.2</h3>
+
+<p>If you are coming from Wicket 1.2, you really want to read our migration
+guide, found on the wiki:</p>
+
+<p>https://cwiki.apache.org/confluence/display/WICKET/Migrating+to+Wicket+1.3</p>
+
+<h3 id="downloading-the-release">Downloading the release</h3>
+
+<p>You can download the release from the official Apache mirror system, and you
+can find it through the following link:</p>
+
+<p>http://www.apache.org/dyn/closer.cgi/wicket/1.3.7/</p>
+
+<p>For the Maven and Ivy fans out there: update your pom’s to the following, and
+everything will be downloaded automatically:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.3.7<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Substitute the artifact ID with the projects of your liking to get the other
+projects.</p>
+
+<p>Please note that we don’t prescribe a Logging implementation for SLF4J. You
+need to specify yourself which one you prefer. Read more about SLF4J here:
+http://slf4j.org</p>
+
+<h3 id="validating-the-release">Validating the release</h3>
+
+<p>The release has been signed by Igor Vaynberg, your release manager for today.
+The public key can be found in the KEYS file in the download area. Download
+the KEYS file only from the Apache website.</p>
+
+<p>http://www.apache.org/dist/wicket/1.3.7/KEYS</p>
+
+<p>Instructions on how to validate the release can be found here:</p>
+
+<p>http://www.apache.org/dev/release-signing.html#check-integrity</p>
+
+<h3 id="reporting-bugs">Reporting bugs</h3>
+
+<p>In case you do encounter a bug, we would appreciate a report in our JIRA:</p>
+
+<p>http://issues.apache.org/jira/browse/WICKET</p>
+
+<h3 id="the-distribution">The distribution</h3>
+
+<p>In the distribution you will find a README. The README contains instructions
+on how to build from source yourself. You also find a CHANGELOG-1.3 which
+contains a list of all things that have been fixed, added and/or removed
+since Wicket 1.3.0.</p>
+
+<h3 id="release-notes">Release Notes</h3>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-1912" target="_blank" rel="noopener noreferrer">WICKET-1912</a> - StatelessForm problems with query string</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-1922" target="_blank" rel="noopener noreferrer">WICKET-1922</a> - AbstractTree - setting root to null causes NullPointerException</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-1960" target="_blank" rel="noopener noreferrer">WICKET-1960</a> - AutoCompleteTextField - gives a type mismatch error on IE - version wicket-1.4-rc1</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-1992" target="_blank" rel="noopener noreferrer">WICKET-1992</a> - SharedResourceRequestTarget allows access to almost arbitrary files under WEB-INF.</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2215" target="_blank" rel="noopener noreferrer">WICKET-2215</a> - WebClientInfo does not set browerMajorVersion for IE8</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2252" target="_blank" rel="noopener noreferrer">WICKET-2252</a> - Autocomplete text fields don’t call existing JavaScript event handlers properly</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2268" target="_blank" rel="noopener noreferrer">WICKET-2268</a> - NullPointerException NPE in DiskPageStore after Session Timeout</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2289" target="_blank" rel="noopener noreferrer">WICKET-2289</a> - AutoCompleteBehavior: Selected input not modiefied when selected with keyboard</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2308" target="_blank" rel="noopener noreferrer">WICKET-2308</a> - Append lastmodified to Resources shouldnt append when the resource is a directory (ends with /)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2313" target="_blank" rel="noopener noreferrer">WICKET-2313</a> - BaseWicketTester doesn’t invoke Application.newAjaxRequestTarget for ajax request target</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2337" target="_blank" rel="noopener noreferrer">WICKET-2337</a> - IndexOutOfBoundsException when PropertyResolver is using an invalid list index</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2354" target="_blank" rel="noopener noreferrer">WICKET-2354</a> - PropertyModel does not support index only property (“[0]”)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2371" target="_blank" rel="noopener noreferrer">WICKET-2371</a> - jre 1.5 method used in wicket-extensions</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2384" target="_blank" rel="noopener noreferrer">WICKET-2384</a> - OutOfMemoryError occur for memory leak on FeedbackPanel &amp; FeedbackMessages</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2385" target="_blank" rel="noopener noreferrer">WICKET-2385</a> - BigDecimalConverter uses jdk5</li>
+</ul>
+
+<h4 id="improvement">Improvement</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2168" target="_blank" rel="noopener noreferrer">WICKET-2168</a> - TableTree.html is not XHTML valid</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-2315" target="_blank" rel="noopener noreferrer">WICKET-2315</a> - Backport PageReference from trunk</li>
+</ul>
+
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

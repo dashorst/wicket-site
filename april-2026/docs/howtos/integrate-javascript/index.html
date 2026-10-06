@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to call JavaScript from Java and vice versa — Apache Wicket</title>
+  <meta name="description" content="Learn how to wrap a JavaScript widget in a Wicket component and communicate between client and server">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link active">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>How to call JavaScript from Java and vice versa</h1>
+      <p class="docs-header-description">Learn how to wrap a JavaScript widget in a Wicket component and communicate between client and server</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Our new component will extend the built-in text field <em>org.apache.wicket.extensions.markup.html.form.DateTextField</em> which already uses a java.util.Date as model object and already performs conversion and validation for input values. Since the component must be self-contained, we must ensure that the JavaScript libraries it relies on (JQuery and JQuery UI) will be always available.</p>
+
+<p>Wicket adopted JQuery as backing JavaScript library so we can use the version bundled with Wicket for our custom datepicker.</p>
+
+<p>To make JQuery UI available we should instead go to its official site, download the required artifacts and use them as package resources of our component.</p>
+
+<h1 id="component-package-resources">Component package resources</h1>
+
+<p>JQuery UI needs the following static resources in order to work properly:</p>
+
+<ul>
+  <li>
+    <p><strong>jquery-ui.min.js</strong>: the minified version of the library.</p>
+  </li>
+  <li>
+    <p><strong>jquery-ui.css</strong>: the CSS containing the style used by JQuery UI widgets.</p>
+  </li>
+  <li>
+    <p><strong>jquery-ui-i18n.min.js</strong>: the minified JavaScript containing the built-in support for localization.</p>
+  </li>
+  <li>
+    <p><strong>Folder ’images’</strong>: the folder containing picture files used by JQuery UI widgets.</p>
+  </li>
+</ul>
+
+<p>In the following picture we can see these package resources with our component class (named JQueryDateField):</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/datepicker-package-resources.png" />
+</figure>
+
+<p>Along with the four static resources listed above, we can find also file calendar.jpg, which is the calendar icon used to open the pop up calendar, and file JQDatePicker.js which contains the following custom JavaScript code that binds our component to a JQuery UI datepicker:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">initJQDatepicker</span><span class="p">(</span><span class="nx">inputId</span><span class="p">,</span> <span class="nx">countryIsoCode</span><span class="p">,</span> <span class="nx">dateFormat</span><span class="p">,</span>  <span class="nx">calendarIcon</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">localizedArray</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">datepicker</span><span class="p">.</span><span class="nx">regional</span><span class="p">[</span><span class="nx">countryIsoCode</span><span class="p">];</span>
+    <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">buttonImage</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">calendarIcon</span><span class="p">;</span>
+    <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">dateFormat</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">dateFormat</span><span class="p">;</span>
+    <span class="nf">initCalendar</span><span class="p">(</span><span class="nx">localizedArray</span><span class="p">);</span>
+    <span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">inputId</span><span class="p">).</span><span class="nf">datepicker</span><span class="p">(</span><span class="nx">localizedArray</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nf">initCalendar</span><span class="p">(</span><span class="nx">localizedArray</span><span class="p">){</span>
+     <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">changeMonth</span><span class="dl">'</span><span class="p">]</span><span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+     <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">changeYear</span><span class="dl">'</span><span class="p">]</span><span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+     <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">showOn</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">button</span><span class="dl">'</span><span class="p">;</span>
+     <span class="nx">localizedArray</span><span class="p">[</span><span class="dl">'</span><span class="s1">buttonImageOnly</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Function initJQDatepicker takes in input the following parameters:</p>
+
+<ul>
+  <li>
+    <p><strong>inputId</strong>: the id of the HTML text field corresponding to our custom component instance.</p>
+  </li>
+  <li>
+    <p><strong>countryIsoCode</strong>: a two-letter low-case ISO language code. It can contain also the two-letter upper-case ISO country code separated with a minus sign (for example en-GB)</p>
+  </li>
+  <li>
+    <p><strong>dateFormat</strong>: the date format to use for parsing and displaying date values.</p>
+  </li>
+  <li>
+    <p><strong>calendarIcon</strong>: the relative URL of the icon used as calendar icon.</p>
+  </li>
+</ul>
+
+<p>As we will see in the next paragraphs, it’s up to our component to generate this parameters and invoke the initJQDatepicker function.</p>
+
+<p>Function initCalendar is a simple utility function that sets the initialization array for datepicker widget. For more details on JQuery UI datepicker usage see the documentation at <a href="https://jqueryui.com/datepicker/">https://jqueryui.com/datepicker/</a>.</p>
+
+<h1 id="initialization-code">Initialization code</h1>
+
+<p>The component is based on <em>LocalDateTextField</em> which supports pattern-based conversion for dates. The initialization code is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JQueryDateField</span> <span class="kd">extends</span> <span class="nc">LocalDateTextField</span> <span class="o">{</span>
+
+    <span class="cm">/**
+     *
+     */</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">5088998263851588184L</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">datePattern</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">countryIsoCode</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">CharSequence</span> <span class="n">urlForIcon</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">PackageResourceReference</span> <span class="nc">JQDatePickerRef</span> <span class="o">=</span>
+                           <span class="k">new</span> <span class="nf">PackageResourceReference</span><span class="o">(</span><span class="nc">JQueryDateField</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"JQDatePicker.js"</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="nf">JQueryDateField</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">LocalDate</span><span class="o">&gt;</span> <span class="n">dateModel</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">datePattern</span><span class="o">,</span> <span class="nc">String</span> <span class="n">countryIsoCode</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dateModel</span><span class="o">,</span> <span class="n">datePattern</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">datePattern</span> <span class="o">=</span> <span class="n">datePattern</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">countryIsoCode</span> <span class="o">=</span> <span class="n">countryIsoCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onInitialize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onInitialize</span><span class="o">();</span>
+
+        <span class="n">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="nc">PackageResourceReference</span> <span class="n">resourceReference</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="n">getClass</span><span class="o">(),</span> <span class="s">"calendar.jpg"</span><span class="o">);</span>
+
+        <span class="n">urlForIcon</span> <span class="o">=</span> <span class="n">urlFor</span><span class="o">(</span><span class="n">resourceReference</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PageParameters</span><span class="o">());</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="nc">AttributeModifier</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"size"</span><span class="o">,</span> <span class="s">"12"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">...</span>
+</code></pre></div></div>
+
+<p>The first thing we do inside onInitialize is to ensure that our component will have a markup id for its related text field. This is done invoking setOutputMarkupId(true).</p>
+
+<p>Next, to generate the relative URL for the calendar icon we load its file as package resource reference and then we use <em>Component</em>’s method urlFor to get the URL value (we have seen this method in <a href="#requestProcessing.adoc#_the_director_of_request_processing_requestcycle" class="cross-reference">paragraph 9.3.2</a>).</p>
+
+<blockquote>
+  <p>[!NOTE]
+as you might have noted in the constructor we need to pass the ISO language code along with the date pattern. The ISO code will be used to generate the JavaScript for the calendar.</p>
+</blockquote>
+
+<h1 id="header-contributor-code">Header contributor code</h1>
+
+<p>The rest of the code of our custom component is inside method <em>renderHead</em>, which is responsible for adding to page header the bundled JQuery library, the three files from JQuery UI distribution, the custom file JQDatePicker.js and the invocation of function <em>initJQDatepicker</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">renderHead</span><span class="o">(</span><span class="nc">IHeaderResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">renderHead</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+
+    <span class="c1">//if component is disabled we don't have to load the JQueryUI datepicker</span>
+    <span class="k">if</span><span class="o">(!</span><span class="n">isEnabledInHierarchy</span><span class="o">())</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="c1">//add bundled JQuery</span>
+    <span class="nc">JavaScriptLibrarySettings</span> <span class="n">javaScriptSettings</span> <span class="o">=</span>
+                      <span class="n">getApplication</span><span class="o">().</span><span class="na">getJavaScriptLibrarySettings</span><span class="o">();</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">JavaScriptHeaderItem</span><span class="o">.</span>
+            <span class="nf">forReference</span><span class="o">(</span><span class="n">javaScriptSettings</span><span class="o">.</span><span class="na">getJQueryReference</span><span class="o">()));</span>
+    <span class="c1">//add package resources</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">JavaScriptHeaderItem</span><span class="o">.</span>
+          <span class="nf">forReference</span><span class="o">(</span><span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="n">getClass</span><span class="o">(),</span> <span class="s">"jquery-ui.min.js"</span><span class="o">)));</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">JavaScriptHeaderItem</span><span class="o">.</span>
+          <span class="nf">forReference</span><span class="o">(</span><span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="n">getClass</span><span class="o">(),</span> <span class="s">"jquery-ui-i18n.min.js"</span><span class="o">)));</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">CssHeaderItem</span><span class="o">.</span>
+          <span class="nf">forReference</span><span class="o">(</span><span class="k">new</span> <span class="nc">PackageResourceReference</span><span class="o">(</span><span class="n">getClass</span><span class="o">(),</span> <span class="s">"jquery-ui.css"</span><span class="o">)));</span>
+    <span class="c1">//add custom file JQDatePicker.js. Reference JQDatePickerRef is a static field</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">JavaScriptHeaderItem</span><span class="o">.</span><span class="na">forReference</span><span class="o">(</span><span class="nc">JQDatePickerRef</span><span class="o">));</span>
+
+    <span class="c1">//add the init script for datepicker</span>
+    <span class="nc">String</span> <span class="n">jqueryDateFormat</span> <span class="o">=</span> <span class="n">datePattern</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"yyyy"</span><span class="o">,</span> <span class="s">"yy"</span><span class="o">).</span><span class="na">toLowerCase</span><span class="o">();</span>
+    <span class="nc">String</span> <span class="n">initScript</span> <span class="o">=</span> <span class="s">";initJQDatepicker('"</span> <span class="o">+</span> <span class="n">getMarkupId</span><span class="o">()</span> <span class="o">+</span> <span class="s">"', '"</span> <span class="o">+</span> <span class="n">countryIsoCode</span> <span class="o">+</span>
+                            <span class="s">"', '"</span> <span class="o">+</span> <span class="n">jqueryDateFormat</span> <span class="o">+</span> <span class="s">"', "</span> <span class="o">+</span> <span class="s">"'"</span> <span class="o">+</span> <span class="n">urlForIcon</span> <span class="o">+</span><span class="s">"');"</span><span class="o">;</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">OnLoadHeaderItem</span><span class="o">.</span><span class="na">forScript</span><span class="o">(</span><span class="n">initScript</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If component is disabled the calendar icon must be hidden and no datepicker must be displayed. That’s why <em>renderHead</em> is skipped if component is not enabled.</p>
+
+<p>To get a reference to the bundled JQuery library we used the JavaScript setting class <em>JavaScriptLibrarySettings</em> and its method <em>getJQueryReference</em>.</p>
+
+<p>In the last part of <em>renderHead</em> we build the string to invoke function <em>initJQDatepicker</em> using the values obtained inside onInitialize. Unfortunately the date format used by JQuery UI is different from the one adopted in Java so we have to convert it before building the JavaScript code. This init script is rendered into header section using a <em>OnLoadHeaderItem</em> to ensure that it will be executed after all the other scripts have been loaded.</p>
+
+<blockquote>
+  <p>[!NOTE]
+If we add more than one instance of our custom component to a single page, static resources are rendered to the header section just once. Wicket automatically checks if a static resource is already referenced by a page and if so, it will not render it again.</p>
+</blockquote>
+
+<p>This does not apply to the init script which is dynamically generated and is rendered for every instance of the component.</p>
+
+<blockquote>
+  <p>[!WARNING]
+Our datepicker is not ready yet to be used with AJAX. In <a href="#_working_with_ajax" class="cross-reference">chapter 19</a> we will see how to modify it to make it AJAX-compatible.</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

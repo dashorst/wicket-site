@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Get help via email | Apache Wicket</title>
+        <meta name="description" content="Getting help through email is the most convenient way to contact the larger community and will result in the quickest responses.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help" class="is-active" aria-current="true">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Get help via email</h1>
+        
+        <p class="page-sub">The most convenient way of getting lots of help</p>
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#mailing-lists"><span class="toc-number">1</span> <span class="toc-text">Mailing lists</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#user"><span class="toc-number">2</span> <span class="toc-text">The Users list</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#dev"><span class="toc-number">3</span> <span class="toc-text">The Developers list</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#announce"><span class="toc-number">4</span> <span class="toc-text">The Announcements list</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#commit"><span class="toc-number">5</span> <span class="toc-text">The Commit list</span></a></li>
+<li class="toc--level-1 toc--section-6">
+<a href="#security"><span class="toc-number">6</span> <span class="toc-text">Report a security issue</span></a><ul>
+<li class="toc--level-2 toc--section-7"><a href="#contact-the-wicket-pmc-privately"><span class="toc-number">6.1</span> <span class="toc-text">Contact the Wicket PMC privately</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#report-normal-bugs-in-our-issue-tracker"><span class="toc-number">6.2</span> <span class="toc-text">Report normal bugs in our issue tracker</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+<header class="preamble">
+    
+    <p>Getting help through email is the most convenient way to contact the larger community and will result in the quickest responses.
+</p>
+</header>
+
+
+            <section class="page-content">
+                <h2 id="mailing-lists">Mailing lists</h2>
+
+<p>For users of the Wicket community we run the following email lists:</p>
+<div class="l-button-table">
+    <div class="l-two-third">
+      <div class="button-bar">
+          <a class="button" href="#user"><i class="fa fa-comments"></i><br>Users</a>
+          <a class="button" href="#dev"><i class="fa fa-code-fork"></i><br>Developers</a>
+          <a class="button" href="#announce"><i class="fa fa-bullhorn"></i><br>Announcements</a>
+          <a class="button" href="#commit"><i class="fa fa-file-code-o"></i><br>Commits</a>
+          <a class="button" href="#security"><i class="fa fa-lock"></i><br>Security</a>
+      </div>
+    </div>
+</div>
+
+<p>Learn more about these lists below.</p>
+
+<hr>
+
+<h2 id="user">The Users list</h2>
+
+<p>Ask your questions and answer questions of other users on the users
+list. It is a medium traffic list with a couple of messages per day.
+Community members ask and answer questions on this list. Announcements
+and security updates are also sent to this list.</p>
+
+<p>You have to subscribe to this list if you want to ask a question and
+see the replies.</p>
+
+<ul>
+  <li>Traffic: medium</li>
+  <li>
+<a href="http://mail-archives.apache.org/mod_mbox/wicket-users/" target="_blank" rel="noopener noreferrer">Browse</a> the archives</li>
+  <li>
+<a href="http://wicket-user.markmail.org" target="_blank" rel="noopener noreferrer">Search</a> the list</li>
+  <li>
+<a href="mailto:users-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+User+list">Subscribe</a> to the list</li>
+  <li>
+<a href="mailto:users-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+User+list">Unsubscribe</a> from the list</li>
+  <li><a href="mailto:users-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+User+list">Help for subscriptions</a></li>
+</ul>
+
+<p>Only subscribers can post to this list.</p>
+
+<p>If you are only interested in updates about the Wicket project,
+consider just subscribing to the announcements list.</p>
+
+<hr>
+
+<h2 id="dev">The Developers list</h2>
+
+<p>Discuss internals of the framework. The traffic is low with just a couple of messages per week.</p>
+
+<p>You have to subscribe to this list if you want to participate in discussions.</p>
+
+<ul>
+  <li>Traffic: low</li>
+  <li>
+<a href="http://mail-archives.apache.org/mod_mbox/wicket-dev/" target="_blank" rel="noopener noreferrer">Browse</a> the archives</li>
+  <li>
+<a href="http://wicket-dev.markmail.org" target="_blank" rel="noopener noreferrer">Search</a> the list</li>
+  <li>
+<a href="mailto:dev-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+Dev+list">Subscribe</a> to the list</li>
+  <li>
+<a href="mailto:dev-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+Dev+list">Unsubscribe</a> from the list</li>
+  <li><a href="mailto:dev-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+Dev+list">Help for subscriptions</a></li>
+</ul>
+
+<p>Only subscribers can post to this list.</p>
+
+<hr>
+
+<h2 id="announce">The Announcements list</h2>
+
+<p>The announcements list is used for publishing news about releases and
+security updates. It is a very low traffic list.</p>
+
+<p>You should subscribe to this list if you only want to keep up to date
+with Wicket concerning releases and security announcements.</p>
+
+<ul>
+  <li>Traffic: low</li>
+  <li>
+<a href="http://mail-archives.apache.org/mod_mbox/wicket-announce" target="_blank" rel="noopener noreferrer">Browse</a>  the archives</li>
+  <li>
+<a href="http://wicket-announce.markmail.org" target="_blank" rel="noopener noreferrer">Search</a> the list</li>
+  <li>
+<a href="mailto:announce-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+announcements+list">Subscribe</a> to the list</li>
+  <li>
+<a href="mailto:announce-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+announcements+list">Unsubscribe</a> from the list</li>
+  <li><a href="mailto:announce-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+announcements+list">Help for subscriptions</a></li>
+</ul>
+
+<p>Only Apache Wicket project members can post to this list.</p>
+
+<hr>
+
+<h2 id="commit">The Commit list</h2>
+
+<p>The commit list is used for publishing commit messages, bug tracker
+updates and other automatically generated messages.</p>
+
+<p>You should subscribe to this list if you want to keep up to date with
+Wicket development, like which commits happen, which issues are updated
+and other things.</p>
+
+<ul>
+  <li>Traffic: high</li>
+  <li>
+<a href="http://mail-archives.apache.org/mod_mbox/wicket-commits" target="_blank" rel="noopener noreferrer">Browse</a> the archives</li>
+  <li>
+<a href="http://wicket-commits.markmail.org" target="_blank" rel="noopener noreferrer">Search</a> the list</li>
+  <li>
+<a href="mailto:commits-subscribe@wicket.apache.org?subject=Subscribe+to+Apache+Wicket+commits+list">Subscribe</a> to the list</li>
+  <li>
+<a href="mailto:commits-unsubscribe@wicket.apache.org?subject=Unsubscribe+from+Apache+Wicket+commits+list">Unsubscribe</a> from the list</li>
+  <li><a href="mailto:commits-help@wicket.apache.org?subject=Get+help+for+Apache+Wicket+commits+list">Help for subscriptions</a></li>
+</ul>
+
+<p>This list is read only, and only Apache build systems can publish to it.</p>
+
+<hr>
+
+<h2 id="security">Report a security issue</h2>
+
+<p>The Apache Software Foundation takes a very active stance in
+eliminating security problems against the Apache Wicket web framework.</p>
+
+<p>For reporting and discussing a security issue you should contact the
+Wicket PMC privately.</p>
+
+<p><strong>Please do not create a security report in our issue tracker.</strong></p>
+
+<p>The issue tracker for Wicket is not the appropriate venue for reporting
+security issues as the issue tracker is publicly accessible. Instead,
+contact the Wicket PMC privately.</p>
+
+<h3 id="contact-the-wicket-pmc-privately">Contact the Wicket PMC privately</h3>
+
+<p>Send your security issue to <strong>private at wicket.apache.org</strong>. This list
+is not publicly available so we can discuss and fix the issue in
+private without leaking the info to any bad guys.</p>
+
+<p><a class="button" href="mailto:private@wicket.apache.org?subject=Security%20issue" onclick="window.location.href='mailto:private@wicket.apache.org?subject=Security%20issue';return false;">
+    <i class="fa fa-shield"></i>
+    Report a security issue
+</a></p>
+
+<p>We treat all security issues seriously and will try to fix them as soon
+as possible in all affected versions that we still support.</p>
+
+<h3 id="report-normal-bugs-in-our-issue-tracker">Report normal bugs in our issue tracker</h3>
+
+<p>The Security Team cannot accept regular bug reports or other queries,
+we ask that you use our <a href="/wicket-site/reveal-site/help/#reportbug">bug reporting page</a>
+for normal, non-security bugs.</p>
+
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

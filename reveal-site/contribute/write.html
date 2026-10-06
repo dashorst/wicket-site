@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Write documentation | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute" class="is-active" aria-current="true">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Write documentation</h1>
+        
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#contents"><span class="toc-number">1</span> <span class="toc-text">Contents</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#introduction"><span class="toc-number">2</span> <span class="toc-text">Introduction</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#install"><span class="toc-number">3</span> <span class="toc-text">Install Jekyll</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#clone"><span class="toc-number">4</span> <span class="toc-text">Clone wicket-site</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#run"><span class="toc-number">5</span> <span class="toc-text">Run the site</span></a></li>
+<li class="toc--level-1 toc--section-6">
+<a href="#write"><span class="toc-number">6</span> <span class="toc-text">Write some documentation</span></a><ul>
+<li class="toc--level-2 toc--section-7"><a href="#page-template"><span class="toc-number">6.1</span> <span class="toc-text">Page template</span></a></li>
+<li class="toc--level-2 toc--section-8"><a href="#syntax-highlighting"><span class="toc-number">6.2</span> <span class="toc-text">Syntax highlighting</span></a></li>
+<li class="toc--level-2 toc--section-9"><a href="#menu"><span class="toc-number">6.3</span> <span class="toc-text">Menu</span></a></li>
+<li class="toc--level-2 toc--section-10"><a href="#blog-posts"><span class="toc-number">6.4</span> <span class="toc-text">Blog posts</span></a></li>
+</ul>
+</li>
+<li class="toc--level-1 toc--section-11"><a href="#update"><span class="toc-number">7</span> <span class="toc-text">Update the site</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+
+            <section class="page-content">
+                <p>We use <a href="http://github.com/mojombo/jekyll" target="_blank" rel="noopener noreferrer">Jekyll</a> for writing our
+documentation on our main website. Publishing new content is as simple as
+regenerating the site and committing the changed files.</p>
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#install">Install Jekyll</a></li>
+  <li><a href="#clone">Clone wicket-site</a></li>
+  <li><a href="#run">Run the site</a></li>
+  <li><a href="#write">Write some documentation</a></li>
+  <li><a href="#update">Update the site</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The site is split into two parts: static content and the official Apache
+Wicket blog. The static content contains all the documentation that is more
+static (such as mailing lists, downloads, examples). The blog includes release
+announcements, adding new committers and other important Wicket related news.</p>
+
+<h2 id="install">Install Jekyll</h2>
+
+<p>Follow the instructions available on the <a href="http://github.com/mojombo/jekyll" target="_blank" rel="noopener noreferrer">Jekyll
+website</a>. Basically it boils down to:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">gem install jekyll</span></code></pre></figure>
+
+<p>You also need to install the Pygments Python module.</p>
+
+<h2 id="clone">Clone wicket-site</h2>
+
+<p>Before you can edit the site, you need to clone it:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone git@github.com:apache/wicket-site.git</code></pre></figure>
+
+<h2 id="run">Run the site</h2>
+
+<p>You can run the website and edit it live:</p>
+
+<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">jekyll serve -w</span></code></pre></figure>
+
+<p>This not only runs the server, but watches for modifications and regenerates
+any modified files.</p>
+
+<p>You can check out the website running at <a href="http://localhost:4000" target="_blank" rel="noopener noreferrer">localhost, port 4000</a>.</p>
+
+<h2 id="write">Write some documentation</h2>
+
+<p>Jekyll can render HTML from markdown syntax and textile syntax. <strong>For our site
+we use markdown</strong>.</p>
+
+<h3 id="page-template">Page template</h3>
+
+<p>Each page needs to have a YAML preamble that specifies the rendered template
+and other variables. If it doesn’t include the YAML preamble, it won’t be
+rendered correctly.</p>
+
+<p>The default layout supports a property to specify the main title for the page and 
+another property for an additional subtitle.</p>
+
+<p>For example: (the <code class="language-plaintext highlighter-rouge">---</code> must be included):</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Main title</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Subtitle</span>
+<span class="nn">---</span></code></pre></figure>
+
+<p>A more advanced feature for the default layout is the ability to specify more files to include
+in the final page. This can be done with property <code class="language-plaintext highlighter-rouge">additionalContents</code> where we can list additional files
+with an id for their section tag and a value for the CSS class:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Welcome to Apache Wicket</span>
+<span class="na">subtitle</span><span class="pi">:</span> <span class="s">Discover why developers love Wicket!</span>
+<span class="na">additionalContents</span><span class="pi">:</span>
+  <span class="pi">-</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">anotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">anotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">sectionClass</span>
+  <span class="pi">-</span>
+   <span class="na">path</span><span class="pi">:</span> <span class="s">yetAnotherPage.html</span>
+   <span class="na">sectionId</span><span class="pi">:</span> <span class="s">yetAnotherPage</span>
+   <span class="na">cssClass</span><span class="pi">:</span> <span class="s">yetAnotherSectionClass</span>
+<span class="nn">---</span></code></pre></figure>
+
+<h4 id="additional-conventions">Additional conventions</h4>
+
+<p>The following conventions have been adopted for the templeates of the site pages:</p>
+
+<ul>
+  <li>Any link to static resources (css, js, pictures, etc.) is prefixed with <code class="language-plaintext highlighter-rouge">site.baseurl</code> to support <a href="http://jekyllrb.com/docs/github-pages/#project-page-url-structure" target="_blank" rel="noopener noreferrer">GitHub free hosting</a>. However, to run the project locally you don’t need to specify any baseurl.</li>
+  <li>Site posts use custom tag <code class="language-plaintext highlighter-rouge">&lt;!--more--&gt;</code> as <code class="language-plaintext highlighter-rouge">excerpt_separator</code>.</li>
+</ul>
+
+<h3 id="syntax-highlighting">Syntax highlighting</h3>
+
+<p>If you have a need to render code in your templates and have it syntax
+highlighted, surround the code with {\% highlight java \%} (substitute java
+with the language you want highlighted.)</p>
+
+<h3 id="menu">Menu</h3>
+
+<p>If you want your page linked from every page, include the link in
+<code class="language-plaintext highlighter-rouge">_includes/header.html</code>.</p>
+
+<h3 id="blog-posts">Blog posts</h3>
+
+<p>For news items such as release announcements, new committers and other
+happenings, it is appriorate to create a blog post. The blog post is
+automatically added to the front page and the RSS feed.</p>
+
+<p>The blog items are written using the normal Jekyll syntax. The filename needs
+to be formatted as <code class="language-plaintext highlighter-rouge">yyyy-mm-dd-title.md</code> and the blog item should start with a
+YAML preamble, similar to normal pages:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Wicket 1.4.7 released</span>
+<span class="nn">---</span></code></pre></figure>
+
+<h2 id="update">Update the site</h2>
+
+<p>When you’re done with making your changes, please check the following:</p>
+
+<ul>
+  <li>Do the modified files contain only those changes that you actually want to
+publish? (Use <code class="language-plaintext highlighter-rouge">git status</code> to check)</li>
+  <li>Did you start Jekyll to generate the site?</li>
+</ul>
+
+<p>If these things are OK, you can either create a pull request when
+you’re not a committer, or just commit the changes. In the latter case, the
+modifications are pushed immediately to the site and are live within a minute.</p>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>

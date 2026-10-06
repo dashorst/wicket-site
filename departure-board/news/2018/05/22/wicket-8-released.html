@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Announcing Apache Wicket 8: Write Less, Achieve More | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1791278166" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <h1>Announcing Apache Wicket 8: Write Less, Achieve More</h1>
+        
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="reading-rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#a-careful-application-of-java-8"><span class="toc-number">1</span> <span class="toc-text">A Careful Application of Java 8</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#java-8-required"><span class="toc-number">2</span> <span class="toc-text">Java 8+ Required</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#lambdas-in-all-the-right-places"><span class="toc-number">3</span> <span class="toc-text">Lambdas in All The Right Places</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#java-datetime-api"><span class="toc-number">4</span> <span class="toc-text">Java Date/Time API</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#optional-is-somtimes-required"><span class="toc-number">5</span> <span class="toc-text">Optional is Somtimes Required</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#models-as-functional-interface"><span class="toc-number">6</span> <span class="toc-text">Models as Functional Interface</span></a></li>
+<li class="toc--level-1 toc--section-7"><a href="#servlet-31-required"><span class="toc-number">7</span> <span class="toc-text">Servlet 3.1 Required</span></a></li>
+<li class="toc--level-1 toc--section-8"><a href="#no-rewrite-necessary"><span class="toc-number">8</span> <span class="toc-text">No Rewrite Necessary</span></a></li>
+<li class="toc--level-1 toc--section-9"><a href="#migrating-to-wicket-8"><span class="toc-number">9</span> <span class="toc-text">Migrating to Wicket 8</span></a></li>
+<li class="toc--level-1 toc--section-10"><a href="#support"><span class="toc-number">10</span> <span class="toc-text">Support</span></a></li>
+<li class="toc--level-1 toc--section-11"><a href="#download"><span class="toc-number">11</span> <span class="toc-text">Download</span></a></li>
+<li class="toc--level-1 toc--section-12"><a href="#thanks"><span class="toc-number">12</span> <span class="toc-text">Thanks</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            
+            <section class="page-content">
+                <div class="l-full post">
+    <p class="post-date"><time datetime="2018-05-22T00:00:00+00:00">22 May 2018</time></p>
+    <p>The Apache Wicket project announces the 8th major release of the open source Java web framework servicing websites and applications across the globe for over a decade. With this release Wicket embraces Java 8 idioms fully, allowing the use of lambda expressions in all the right places. With Wicket 8 you can write fewer, faster and more maintainable code.</p>
+
+<!--more-->
+
+<h2 id="a-careful-application-of-java-8">A Careful Application of Java 8</h2>
+
+<p>While previous versions of Wicket work well with Java 8 and beyond, the Wicket API was not optimized to make full use of Java 8 idioms. After careful consideration and trying many paths to adopt new ways of combining Java 8 and Wicket, we finally settled on the current API.</p>
+
+<p>Java 8’s new idioms and types have been applied throughout Wicket’s API. Learn more about the details below.</p>
+
+<h2 id="java-8-required">Java 8+ Required</h2>
+
+<p>Starting with Wicket 8 the minimum required version of Java is Java 8. All Wicket supplied projects have been upgraded to Java 8 and Wicket 8, and shortly all active community projects, such as Wicket Stuff, will follow suit.</p>
+
+<p>With the adoption of Java 8 we were able to provide support for Lambdas.</p>
+
+<h2 id="lambdas-in-all-the-right-places">Lambdas in All The Right Places</h2>
+
+<p>The major feature of Java 8 was the addition of lambda support in the language. With Wicket 8 we have looked at providing lambda support in the API and have weighed it against performance and memory usage considerations.</p>
+
+<p>In this light we have opted to continue using subclassing as the primary extension mechanism for Wicket components.</p>
+
+<p>Factories for lambdas have been provided for various forms of models (databinding) and behaviors (adapters for components).</p>
+
+<h2 id="java-datetime-api">Java Date/Time API</h2>
+
+<p>Wicket 8 provides out-of-the-box support for the new types for handling dates in Java 8. These can be converted, validated and bound to components.</p>
+
+<h2 id="optional-is-somtimes-required">Optional is Somtimes Required</h2>
+
+<p>The new Optional type in Java 8 is intended for places in your API where things can be null. In Wicket’s case we have adopted Optional in just those places to clarify the API.</p>
+
+<p>For example the AjaxFallbackLink, a link that works using both with and without AJAX, now uses Optional to signify whether the link was clicked utilizing AJAX or normal request processing: the AJAX request is wrapped in an Optional. Previous versions of Wicket would provide a null value for the AJAX request.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// WICKET 7:</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket7"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">AjaxRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">target</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span>
+<span class="c1">// WICKET 8:</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">AjaxFallbackLink</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"wicket8"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">AjaxRequestTarget</span><span class="o">&gt;</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">target</span><span class="o">.</span><span class="na">isPresent</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// ...</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">});</span></code></pre></figure>
+
+<p>Because we have modified the API to utilize Optional, you will get compile errors when you start migrating to Wicket 8. This gives you the exact positions where these improvements have occurred and you can start working with the Optional API.</p>
+
+<h2 id="models-as-functional-interface">Models as Functional Interface</h2>
+
+<p>Wicket uses models as the databinding method: each data-aware component can take a model implementation to retrieve and store data in. From Wicket 8 we have made the root interface IModel a <em>functional interface</em>. You can now use lambdas where you can use models.</p>
+
+<p>The following example binds a Label component to the name of a person object in different ways using Wicket 8:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name1"</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">name</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name2"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name3"</span><span class="o">,</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">personModel</span><span class="o">,</span> <span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name4"</span><span class="o">,</span> 
+    <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">contractModel</span><span class="o">,</span> <span class="nl">Contract:</span><span class="o">:</span><span class="n">getPerson</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">)));</span></code></pre></figure>
+
+<p>The new <code class="language-plaintext highlighter-rouge">LambdaModel</code> type in Wicket enables type safe, refactor safe databinding for components. Previously one would bind data to components using <code class="language-plaintext highlighter-rouge">PropertyModel</code>, using a string expression to determine the exact property to show. The string expression is something like <code class="language-plaintext highlighter-rouge">"person.name"</code>. This is inherently difficult to refactor when you decide to change the name field into for example <code class="language-plaintext highlighter-rouge">"lastName"</code>. With <code class="language-plaintext highlighter-rouge">LambdaModel</code>, this refactoring is trivial for IDEs to perform: the Java methods can easily be renamed and the IDE will find all the references.</p>
+
+<p>Microbenchmarks have shown that using lambda models provides much better performance than the string based PropertyModel at the cost of slightly larger memory footprint.</p>
+
+<h2 id="servlet-31-required">Servlet 3.1 Required</h2>
+
+<p>As of Wicket 8 we only support the Java Servlet API 3.1 (or newer). This means that to run applications built using Wicket 8 you have to run your application in a modern server like Tomcat 8.x, Jetty 9.1+ or a Java EE 7 compatible server.</p>
+
+<h2 id="no-rewrite-necessary">No Rewrite Necessary</h2>
+
+<p>The Wicket team has been very careful of adopting Java 8 technologies and as such you don’t have to rewrite your whole application, whilst still reaping all the benefits of Java 8.</p>
+
+<p>As this is a new major version we have, in accordance with semantic versioning, cleaned up many APIs and you will get compile errors when you migrate from previous Wicket versions.</p>
+
+<h2 id="migrating-to-wicket-8">Migrating to Wicket 8</h2>
+
+<p>When you migrate from a previous Wicket version to Wicket 8, a full list of changes and migrations is available at the following page:</p>
+
+<p><a href="https://s.apache.org/wicket8migrate" target="_blank" rel="noopener noreferrer">https://s.apache.org/wicket8migrate</a></p>
+
+<p>Please consult this migration guide when you are moving towards Wicket 8.</p>
+
+<h2 id="support">Support</h2>
+
+<p>You can find out about our support channels through the following page on our website: <a href="https://wicket.apache.org/help/" target="_blank" rel="noopener noreferrer">https://wicket.apache.org/help/</a></p>
+
+<h2 id="download">Download</h2>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.0.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0" target="_blank" rel="noopener noreferrer">8.0.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/8.0.0/binaries" target="_blank" rel="noopener noreferrer">8.0.0 binary download</a>
+</li>
+</ul>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>Our many thanks go out to our contributors for testing this release during its development and providing invaluable feedback.</p>
+
+
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1791278166" defer></script>
+    </body>
+</html>

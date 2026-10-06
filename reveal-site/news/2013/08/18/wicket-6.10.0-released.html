@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Apache Wicket 6.10.0 released | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1791278173">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+<header class="page-head">
+    <div class="page-head-in">
+        <h1>Apache Wicket 6.10.0 released</h1>
+        <p class="page-date"><time datetime="2013-08-18T00:00:00+00:00">18 August 2013</time></p>
+        
+    </div>
+</header>
+
+<main id="main" tabindex="-1">
+    <div class="reading">
+        
+        <div class="reading-main">
+            
+
+            <section class="page-content">
+                <div class="post">
+    <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.10.0!</p>
+
+<p>This release marks the tenth minor release of Wicket 6. Starting with
+Wicket 6 we use semantic versioning for the future development of
+Wicket, and as such no API breaks are present in this release
+compared to 6.0.0.</p>
+
+<h3 id="new-and-noteworthy">New and noteworthy</h3>
+
+<ul>
+  <li>
+    <p>Required text form components now emit the HTML5 required attribute</p>
+  </li>
+  <li>
+    <p>URLs with username/passwords in them will now be parsed correctly
+http://me:secret@localhost and http://me:secret@localhost:8080 will
+no longer trigger an invalid number exception</p>
+  </li>
+  <li>
+    <p>OnEventHeaderItem uses JavaScript event registration, instead of
+inline DOM attributes, so it should remove ‘on’ prefixes when it is
+provided by the user application. For example: onclick =&gt; click.</p>
+  </li>
+</ul>
+
+<h3 id="jquery-update-in-690">JQuery update in 6.9.0</h3>
+
+<p>As of Wicket 6.9 we ship JQuery 1.10.1. The JQuery project has
+decided to remove deprecated APIs from their codebase from JQuery 1.9
+and up. This means that JQuery plugins using these deprecated APIs no
+longer work. See the JQuery migration guide for more information,
+available from http://jquery.com/upgrade-guide/1.9/</p>
+
+<p>If your application depends on these deprecated APIs you can easily
+downgrade to JQuery 1.8.3-the previously provided JQuery that still
+contains these APIs. Download the 1.8.3 release of jquery and add it
+to your project in its application’s init method:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span> 
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">getJavaScriptLibrarySettings</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">setJQueryReference</span><span class="o">(</span><span class="n">yourJquery183ResourceReference</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="cdi-injection-issue">CDI injection issue</h3>
+
+<p>In the CDI releases of Weld 2.0.1 and prior, it was assumed that
+injection in anonymous inner classes was not legal and when
+attempted, it resulted in an exception:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">Caused by: org.jboss.weld.exceptions.DefinitionException: WELD-000070
+Simple bean [EnhancedAnnotatedTypeImpl] private class
+com.example.HomePage$AForm cannot be a non-static inner class</code></pre></figure>
+
+<p>This was reported as
+<a href="https://issues.apache.org/jira/browse/WICKET-5226" target="_blank" rel="noopener noreferrer">WICKET-5226</a>, as
+it became an issue in Glassfish 4, which ships with Weld 2.0.1 (or
+earlier). We implemented a fix for this particular issue by not
+injecting into anonymous inner classes.</p>
+
+<p>Unfortunately this was not a bug that needed fixing on our part, but
+rather in the Weld framework (see
+<a href="https://issues.jboss.org/browse/WELD-1441" target="_blank" rel="noopener noreferrer">WELD-1441</a>)</p>
+
+<p>Therefore we reverted the commits done for WICKET-5226 and hope that
+Glassfish will upgrade their Weld implementation soon. For the whole
+story read
+<a href="https://issues.apache.org/jira/browse/WICKET-5264" target="_blank" rel="noopener noreferrer">WICKET-5264</a></p>
+
+<h3 id="using-this-release">Using this release</h3>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>6.10.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0" target="_blank" rel="noopener noreferrer">6.10.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.10.0/binaries" target="_blank" rel="noopener noreferrer">6.10.0 binary download</a>
+</li>
+</ul>
+
+<h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+
+<ul>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">Migration to Wicket 6.0</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<h3 id="release-notes---wicket---version-6100">Release Notes - Wicket - Version 6.10.0</h3>
+
+<h4 id="sub-task">Sub-task</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5248" target="_blank" rel="noopener noreferrer">WICKET-5248</a> - OnEventHeaderItem is still broken in 6.9.0</li>
+</ul>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5135" target="_blank" rel="noopener noreferrer">WICKET-5135</a> - wicket-atmosphere EventBus constructor throws NullPointerException under invalid state</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5164" target="_blank" rel="noopener noreferrer">WICKET-5164</a> - PageStoreManager.SessionEntry keeps outdated sessionId when container changes sessionId</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5224" target="_blank" rel="noopener noreferrer">WICKET-5224</a> - ModalWindow is not visible in Safari when opened from a link at the bottom of a large page</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5250" target="_blank" rel="noopener noreferrer">WICKET-5250</a> - Minified css/js gets compressed</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5251" target="_blank" rel="noopener noreferrer">WICKET-5251</a> - Minified name resolves incorrectly if default resource reference is used</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5256" target="_blank" rel="noopener noreferrer">WICKET-5256</a> - Allow configuring the resource used by ResourceStreamRequestHandler</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5259" target="_blank" rel="noopener noreferrer">WICKET-5259</a> - Url can't parse urls with username and password</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5260" target="_blank" rel="noopener noreferrer">WICKET-5260</a> - UrlRenderer#renderUrl() doesn't preserve the host</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5263" target="_blank" rel="noopener noreferrer">WICKET-5263</a> - FilenameWithVersionResourceCachingStrategy breaks silently when the versionPrefix is contained in the original filename</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5266" target="_blank" rel="noopener noreferrer">WICKET-5266</a> - Issue with TomcatWebSocketFilter and Spring Security</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5268" target="_blank" rel="noopener noreferrer">WICKET-5268</a> - ComponentRenderer.renderComponent fails to render two components with different component IDs</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5269" target="_blank" rel="noopener noreferrer">WICKET-5269</a> - XmlAjaxResponse restores wrong response</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5272" target="_blank" rel="noopener noreferrer">WICKET-5272</a> - NPE on unmount in BookmarkableMapper.java:189</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5273" target="_blank" rel="noopener noreferrer">WICKET-5273</a> - Tabindex overwritten in modal window for IE - Works in FF, Chrome</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5279" target="_blank" rel="noopener noreferrer">WICKET-5279</a> - o.a.w.a.AtmosphereBehavior onBroadcast should log DEBUG, not INFO</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5287" target="_blank" rel="noopener noreferrer">WICKET-5287</a> - NumberFormatException when parsing the port from Requests with invalid URIs</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5291" target="_blank" rel="noopener noreferrer">WICKET-5291</a> - Dependencies of Resource Bundle References are ignored</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5294" target="_blank" rel="noopener noreferrer">WICKET-5294</a> - MarkupCache ignores enforceReload flag</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5298" target="_blank" rel="noopener noreferrer">WICKET-5298</a> - Wicket Example for effects with Prototype is broken</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5300" target="_blank" rel="noopener noreferrer">WICKET-5300</a> - ComponentRenderingRequestHandler does not clear renderedComponents (PrototypeApplication)</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5302" target="_blank" rel="noopener noreferrer">WICKET-5302</a> - Using InlineEnclosure leads to two re-renderings of the controlling child component</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5306" target="_blank" rel="noopener noreferrer">WICKET-5306</a> - Dynamic and static extra paramaters not evaluated in ajax submitting behavior in a multipart form</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5309" target="_blank" rel="noopener noreferrer">WICKET-5309</a> - No page id appended to some stateful pages using repeaters</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5310" target="_blank" rel="noopener noreferrer">WICKET-5310</a> - if wicket is an external lib, BundleStringResourceLoader doesn't work</li>
+</ul>
+
+<h4 id="improvement">Improvement</h4>
+
+<ul>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-4993" target="_blank" rel="noopener noreferrer">WICKET-4993</a> - Add a minInputLength parameter to AutoCompleteTextField</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5270" target="_blank" rel="noopener noreferrer">WICKET-5270</a> - Do not set the location.hash when clicking on a link</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5276" target="_blank" rel="noopener noreferrer">WICKET-5276</a> - JavaDoc &amp; API for IConverter</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5277" target="_blank" rel="noopener noreferrer">WICKET-5277</a> - PropertiesFactory - customizable properties loading</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5289" target="_blank" rel="noopener noreferrer">WICKET-5289</a> - setRequired(true) should add the HTML5 "required" attribute on &lt;input&gt; and &lt;textarea&gt; elements</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5295" target="_blank" rel="noopener noreferrer">WICKET-5295</a> - UrlResourceStream#getData content-type detection relies on flawed logic in URLConnection#getContentType</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5296" target="_blank" rel="noopener noreferrer">WICKET-5296</a> - OnEventHeaderItem should remove 'on' prefix for the event name</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5303" target="_blank" rel="noopener noreferrer">WICKET-5303</a> - Static id counter AbstractToolbar prevents stable component paths for testing</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5304" target="_blank" rel="noopener noreferrer">WICKET-5304</a> - AbstractResource should check for error code first before for modifications</li>
+  <li>
+<a href="https://issues.apache.org/jira/browse/WICKET-5307" target="_blank" rel="noopener noreferrer">WICKET-5307</a> - Export resources' version cache attribute as request cycle metadata</li>
+</ul>
+
+    <p class="post-back"><a href="/wicket-site/reveal-site/news/">All news</a> <a type="application/atom+xml" href="/wicket-site/reveal-site/atom.xml">Atom feed</a></p>
+</div>
+
+
+            </section>
+        </div>
+    </div>
+</main>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1791278173" defer></script>
+    </body>
+</html>
