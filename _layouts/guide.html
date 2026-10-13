@@ -1,0 +1,52 @@
+---
+layout: base
+---
+{% include mainmenu.html %}
+{% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
+{% assign topic = site.data.guide.topics | where: "id", page.topic | first %}
+{% assign kind = site.data.guide.kinds | where: "id", page.type | first %}
+<header class="page-head guide-head">
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
+            <p class="guide-crumbs"><a href="{{ site.baseurl }}/guide/">User guide</a><span aria-hidden="true"> / </span><a href="{{ site.baseurl }}/guide/topics/{{ topic.id }}.html">{{ topic.title }}</a></p>
+            <h1>{{ page.title }}</h1>
+            <p class="page-sub">{{ page.summary }}</p>
+            <p class="guide-tags"><span class="guide-kind">{{ kind.label }}</span><span class="guide-since">Wicket {{ page.since }} and later</span></p>
+        </div>
+        {% include guide-search.html id="-head" %}
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <div class="reading{% if toc != '' %} has-rail{% endif %}">
+        {% if toc != '' %}
+        <nav class="rail" aria-label="{{ site.contentsLabel }}">
+            {{ toc }}
+        </nav>
+        {% endif %}
+        <div class="reading-main">
+            <p class="guide-version-note" data-since="{{ page.since }}" hidden>
+                This page describes Wicket {{ page.since }} and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html">single-page guide for Wicket <span data-chosen></span></a>.
+            </p>
+            <section class="page-content guide-content">
+                {{ content }}
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="{{ site.baseurl }}/guide/topics/{{ topic.id }}.html">{{ topic.title }}</a></h2>
+                {% assign siblings = site.guide | where: "topic", page.topic %}
+                {% for k in site.data.guide.kinds %}
+                    {% assign pages = siblings | where: "type", k.id | sort: "order", "last" %}
+                    {% if pages.size > 0 %}
+                    <section class="guide-branch">
+                        <h3>{{ k.title }}</h3>
+                        {% include guide-list.html pages=pages current=page.url %}
+                    </section>
+                    {% endif %}
+                {% endfor %}
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/{{ page.relative_path }}">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="{{ site.baseurl }}/javascript/guide.js?v={{ site.time | date: '%s' }}" defer></script>

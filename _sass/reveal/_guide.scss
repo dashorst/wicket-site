@@ -1,0 +1,275 @@
+// =========== User guide: title band with search, page lists on the component tree, the A-Z index
+
+// ---------------------------------------------------------------- title band
+
+@media (min-width: 1000px) {
+    .guide-head-in {
+        display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem); gap: 0 clamp(48px, 5vw, 96px); align-items: end;
+    }
+}
+
+.guide-crumbs {
+    margin: 0 0 18px;
+    font-family: var(--mono); font-size: .875rem; color: var(--ink-3);
+
+    a { color: var(--ink-3); text-decoration: none; }
+    a:hover { color: var(--orange); }
+}
+
+.guide-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 22px; }
+
+// The kind of page as an outlined tag, like LTS on the release board.
+.guide-kind {
+    padding: 3px 8px; border: 1px solid var(--line-2); border-radius: 4px;
+    font-size: .875rem; font-weight: 500; color: var(--ink);
+}
+.guide-since { font-family: var(--mono); font-size: .875rem; color: var(--ink-3); }
+
+// ---------------------------------------------------------------- search: a surface panel like the install box
+
+.guide-search {
+    position: relative; margin-top: 32px; padding: 10px;
+    background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 13px;
+}
+@media (min-width: 1000px) {
+    .guide-head-in > .guide-search { margin-top: 0; }
+}
+.guide-search--large { max-width: 40rem; margin-top: clamp(32px, 5vh, 48px); }
+
+.guide-search-label { display: block; margin: 2px 6px 8px; font-family: var(--mono); font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+
+.guide-search-field {
+    position: relative;
+
+    input {
+        width: 100%; height: 44px; padding: 0 44px 0 14px;
+        background: var(--bg); border: 1px solid var(--line-2); border-radius: 9px;
+        color: var(--ink); font: 400 1rem var(--sans); caret-color: var(--orange);
+        transition: border-color .2s;
+    }
+    input::placeholder { color: var(--ink-3); }
+    input:hover { border-color: var(--ink-3); }
+    input:focus-visible { border-color: var(--orange); outline: none; }
+    input::-webkit-search-cancel-button { display: none; }
+
+    .guide-search--large & input { height: 52px; font-size: 1.125rem; }
+}
+
+.guide-search-key {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;
+    padding: 2px 7px; border: 1px solid var(--line-2); border-radius: 4px;
+    font-family: var(--mono); font-size: .8125rem; color: var(--ink-3);
+
+    input:focus ~ & { visibility: hidden; }
+    @media (pointer: coarse) { display: none; }
+}
+
+.guide-search-hint {
+    margin: 10px 6px 2px; font-size: .875rem; color: var(--ink-3);
+
+    select {
+        appearance: none; -webkit-appearance: none; margin-left: 4px; cursor: pointer;
+        background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ff9925' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center;
+        border: 1px solid var(--line-2); border-radius: 999px; color: var(--ink);
+        font: 500 .875rem/1 var(--sans); padding: 7px 30px 7px 12px;
+    }
+    select:hover { border-color: var(--orange); }
+
+    // On phones the version choice stays on the guide's front page, keeping title bands short.
+    @media (max-width: 999px) {
+        .guide-head-in > .guide-search:not(.guide-search--large) & { display: none; }
+    }
+}
+
+.guide-results {
+    position: absolute; z-index: 5; top: calc(100% + 16px); left: -11px; right: -11px;
+    max-height: min(32rem, 70vh); overflow-y: auto; scrollbar-width: thin;
+    background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 13px;
+    box-shadow: 0 30px 80px -40px rgba(0, 0, 0, .9);
+
+    // Beside the title the panel is narrow; the results open leftwards, wider.
+    @media (min-width: 1000px) {
+        .guide-head-in > .guide-search & { left: auto; width: min(38rem, calc(100vw - 6rem)); }
+    }
+
+    ul { list-style: none; margin: 0; padding: 6px; }
+    li { margin: 0; }
+    li + li { border-top: 1px solid var(--line); }
+
+    a { display: block; padding: 11px 12px 12px; border-radius: 8px; color: var(--ink-3); text-decoration: none; }
+
+    // The chosen result, marked like the node a reveal step adds.
+    li:hover a,
+    li.is-active a { background: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%); }
+    li:hover .guide-result-title,
+    li.is-active .guide-result-title { color: var(--orange); }
+}
+
+.guide-result-title { display: block; color: var(--ink); font-size: 1rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; transition: color .2s; }
+.guide-result-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 3px;
+    font-family: var(--mono); font-size: .8125rem;
+
+    span:not(.guide-list-since) + span:not(.guide-list-since)::before { content: "/ "; }
+}
+.guide-result-text {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+    margin-top: 4px; font-size: .875rem; color: var(--ink-2);
+}
+.guide-results-empty { padding: 14px 18px; font-size: .9375rem; color: var(--ink-3); }
+
+// ---------------------------------------------------------------- page lists: leaves on the component tree
+
+.guide-list {
+    list-style: none; margin: 0; padding: 0;
+
+    li { position: relative; margin: 0; padding: 0 0 0 22px; --mid: 18px; }
+
+    // Elbow to the page, and the line on to the next sibling, as in the rail.
+    li::before, li::after { content: ""; position: absolute; left: 4px; pointer-events: none; }
+    li::before {
+        top: 0; height: var(--mid); width: 12px;
+        border-left: 1px solid var(--orange-dim); border-bottom: 1px solid var(--orange-dim);
+        border-bottom-left-radius: 6px;
+    }
+    li::after { top: var(--mid); bottom: 0; border-left: 1px solid var(--orange-dim); }
+    li:last-child::after { display: none; }
+
+    // The page being read: the lit node.
+    li.is-current::before { border-color: var(--orange); }
+    li.is-current { background: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%) no-repeat 18px 0 / calc(100% - 18px) 100%; border-radius: 6px; }
+    li.is-current .guide-list-title { color: var(--orange); }
+
+    li > * { padding-left: 8px; }
+    li { padding-bottom: 14px; }
+}
+
+.guide-list-title {
+    display: inline-block; padding-top: 6px;
+    color: var(--ink); font-size: 1.0625rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.35;
+    text-decoration: none; transition: color .2s;
+
+    &:is(a):hover { color: var(--orange); }
+}
+
+.guide-list-meta {
+    display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 4px; vertical-align: .1em;
+
+    &:empty { display: none; }
+}
+.guide-list-kind { font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
+
+// A page that needs a newer release line than the oldest in service: an outlined tag.
+.guide-list-since {
+    padding: 1px 6px; border: 1px solid var(--line-2); border-radius: 4px;
+    font-family: var(--mono); font-size: .75rem; font-weight: 500; color: var(--ink-2); white-space: nowrap;
+}
+
+.guide-list-summary { display: block; max-width: var(--measure); margin-top: 2px; font-size: .9375rem; color: var(--ink-3); }
+
+// ---------------------------------------------------------------- topic pages, the A-Z index, the foot of a page
+
+.guide-group { margin-bottom: 56px; }
+.guide-group h2 { margin: 0 0 8px; font-size: clamp(1.6rem, 2.4vw, 2.125rem); letter-spacing: -.03em; scroll-margin-top: 24px; }
+.guide-group-intro { max-width: var(--measure); margin: 0 0 22px; color: var(--ink-3); }
+
+.guide-topics-other {
+    padding-top: 24px; border-top: 1px solid var(--line);
+
+    h2 { margin: 0 0 10px; font-family: var(--mono); font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+    ul { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; margin: 0; padding: 0; }
+    a { font-weight: 600; }
+}
+
+.guide-letters {
+    display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 28px;
+
+    a {
+        min-width: 34px; padding: 6px 0; text-align: center;
+        border: 1px solid var(--line-2); border-radius: 9px;
+        font-family: var(--mono); font-weight: 500; color: var(--ink); text-decoration: none;
+    }
+    a:hover { border-color: var(--orange); color: var(--orange); }
+}
+
+.guide-letter {
+    margin: 36px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line-2);
+    font-family: var(--mono); font-size: 1.25rem; font-weight: 500; scroll-margin-top: 24px;
+}
+
+.guide-classes {
+    margin: 0;
+
+    @media (min-width: 760px) { display: grid; grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); }
+
+    dt, dd { margin: 0; padding: 10px 16px 10px 0; border-top: 1px solid var(--line); }
+    dt:first-of-type, dd:first-of-type { border-top: 0; }
+    @media (max-width: 759px) { dd { border-top: 0; padding-top: 0; } }
+
+    code { color: var(--ink); font-weight: 500; }
+    dd a { text-decoration-color: var(--orange-dim); }
+}
+
+.guide-version-note {
+    max-width: var(--measure); margin: 0 0 32px; padding: 14px 18px;
+    background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 12px; color: var(--ink-2);
+}
+
+.guide-content blockquote.since { border-left-color: var(--orange-dim); color: var(--ink-2); }
+
+.guide-foot { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--line-2); }
+.guide-foot-title { margin: 0 0 24px; font-size: clamp(1.6rem, 2.4vw, 2.125rem); letter-spacing: -.03em; }
+.guide-foot-title a { color: inherit; }
+.guide-branch { margin-bottom: 28px; }
+.guide-branch h3 { margin: 0 0 8px; font-family: var(--mono); font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+.guide-edit { margin-top: 12px; font-size: .9375rem; }
+
+// ---------------------------------------------------------------- the guide's front page
+
+.guide-front-section { margin-bottom: clamp(72px, 10vh, 120px); }
+
+// A two-column head, as the homepage sections open.
+.guide-front-head {
+    margin-bottom: 32px;
+
+    h2 { font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: 1.05; letter-spacing: -.035em; }
+    p { max-width: 46ch; margin-top: 14px; color: var(--ink-3); }
+
+    @media (min-width: 860px) {
+        display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: end;
+        p { margin-top: 0; }
+    }
+}
+
+// The tutorials as numbered steps, like the reveal's.
+.guide-steps {
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 0 40px;
+
+    @media (min-width: 860px) { grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+
+    li { margin: 0; border-top: 1px solid var(--line); }
+    a { display: block; padding: 18px 0 22px; text-decoration: none; color: var(--ink-3); }
+    a:hover .guide-step-title { color: var(--orange); }
+    a:hover .guide-step-n { color: var(--orange); }
+}
+.guide-step-n { display: block; font-family: var(--mono); font-size: .875rem; font-weight: 500; color: var(--ink-3); transition: color .2s; }
+.guide-step-title { display: block; margin-top: 8px; color: var(--ink); font-size: 1.1875rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.25; transition: color .2s; }
+.guide-step-summary { display: block; margin-top: 6px; font-size: .9375rem; }
+
+// The topics as the guide's component tree.
+.guide-tree {
+    --rh: 46px; --ind: 26px; font-size: 1rem;
+
+    .row { text-decoration: none; }
+    .root > .row .nid { font-size: 1.125rem; }
+    .nid { font-family: var(--sans); font-weight: 700; letter-spacing: -.01em; }
+    .ntype { overflow: hidden; text-overflow: ellipsis; font-size: .9375rem; }
+    .ntag { font-family: var(--mono); font-size: .875rem; }
+    a.row:hover { background: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%); }
+    a.row:hover .nid { color: var(--orange); }
+    li.n:has(> a.row:hover)::before { border-color: var(--orange); }
+
+    @media (max-width: 759px) { .ntype { display: none; } }
+}
+
+.guide-older p a { white-space: nowrap; }
