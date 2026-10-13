@@ -19,7 +19,7 @@ Wicket reads a small set of tags and attributes from your HTML. They all live in
 
 The declaration is optional: Wicket assumes the prefix `wicket` when there is none. It keeps editors and validators quiet, and it lets you choose another prefix. Any namespace URI that starts with `http://wicket.apache.org` works, so `xmlns:w="http://wicket.apache.org"` makes Wicket read `w:id` and `<w:panel>` instead.
 
-## Overview
+## All tags and attributes
 
 | Tag or attribute | Kind | What it does |
 |---|---|---|
