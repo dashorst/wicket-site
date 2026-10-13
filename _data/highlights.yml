@@ -71,7 +71,7 @@
         protected void init() {
             super.init();
             getJavaScriptLibrarySettings().setWicketAjaxReference(
-                WicketAjaxVanillaResourceReference.get());
+                WicketAjaxResourceReference.get());
         }
 
     - title: Ajax veils
