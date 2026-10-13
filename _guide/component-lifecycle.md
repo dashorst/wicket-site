@@ -111,7 +111,7 @@ protected void init() {
 }
 ```
 
-## Examples
+## Which hook to override
 
 Set visibility in `onConfigure()`, not by overriding `isVisible()`, which Wicket calls many times per request:
 
