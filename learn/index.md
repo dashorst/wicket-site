@@ -9,7 +9,7 @@ preamble: No matter how you want to learn about Wicket, there's something availa
     <li><a href="#news"><span class="page-index-label">News</span><span class="page-index-desc">Release announcements and project news</span></a></li>
     <li><a href="blogs.html"><span class="page-index-label">Blogs</span><span class="page-index-desc">Articles and tutorials from the community</span></a></li>
     <li><a href="https://cwiki.apache.org/WICKET"><span class="page-index-label">Wiki</span><span class="page-index-desc">The Wicket wiki on Apache Confluence</span></a></li>
-    <li><a href="#guide"><span class="page-index-label">User Guide</span><span class="page-index-desc">The reference guide, from a first page to advanced topics</span></a></li>
+    <li><a href="{{ site.baseurl }}/guide/"><span class="page-index-label">User Guide</span><span class="page-index-desc">Tutorials, how-to guides, reference and explanation, by topic</span></a></li>
     <li><a href="#javadoc"><span class="page-index-label">API docs</span><span class="page-index-desc">Javadoc for each release line</span></a></li>
     <li><a href="books/index.html"><span class="page-index-label">Books</span><span class="page-index-desc">Books written about Wicket</span></a></li>
     <li><a href="#migrations"><span class="page-index-label">Migrations</span><span class="page-index-desc">Guides for moving between major versions</span></a></li>
@@ -37,38 +37,13 @@ The complete articles and all other news items are available in the [archives]({
 
 ## Wicket User Guide {#guide}
 
-Learn building web applications with Wicket from scratch reading its
-200+ page user guide. The guide gradually introduces you to the various
-features of the framework with many real-world examples. It covers
-subjects such as models, behaviours, testing and integration with other
-projects.
+The [user guide]({{ site.baseurl }}/guide/) covers the release lines in service, Wicket 10 and 11. Start with the five lessons that build one application, or search for a task, a class or a tag. Each topic, from models and forms to security and testing, gathers its tutorials, how-to guides, reference and explanation on one page.
 
-The guide is available as PDF or html file for the following versions:
+For the release lines out of service, the previous guide is available as a single page and as PDF:
 
-
-1.  Wicket 11.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/11.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/11.x/single.pdf)
-
-2.  Wicket 10.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/10.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/10.x/single.pdf)
-
-3.  Wicket 9.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/9.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/9.x/single.pdf)
-
-4.  Wicket 8.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/8.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/8.x/single.pdf)
-
-5.  Wicket 7.x
-* [HTML (single page)](https://nightlies.apache.org/wicket/guide/7.x/single.html)
-* [PDF](https://nightlies.apache.org/wicket/guide/7.x/single.pdf)
-
-You can use the guide for older releases even though there will be
-differences. We urge you however to upgrade your project to the latest
-stable release rather than sticking on an older version.
+* Wicket 9.x: [HTML (single page)](https://nightlies.apache.org/wicket/guide/9.x/single.html), [PDF](https://nightlies.apache.org/wicket/guide/9.x/single.pdf)
+* Wicket 8.x: [HTML (single page)](https://nightlies.apache.org/wicket/guide/8.x/single.html), [PDF](https://nightlies.apache.org/wicket/guide/8.x/single.pdf)
+* Wicket 7.x: [HTML (single page)](https://nightlies.apache.org/wicket/guide/7.x/single.html), [PDF](https://nightlies.apache.org/wicket/guide/7.x/single.pdf)
 
 ---
 

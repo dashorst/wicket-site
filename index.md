@@ -69,7 +69,7 @@ pageclasses: index
 {% comment %} Where to go once Wicket runs: the guides and help, for teams already on Wicket. {% endcomment %}
 <nav class="onward" aria-label="Documentation and help">
     <ul>
-        <li><a href="{{ site.baseurl }}/learn/#guide"><span class="onward-title">User guide</span><span class="onward-note">From a first page to advanced topics</span></a></li>
+        <li><a href="{{ site.baseurl }}/guide/"><span class="onward-title">User guide</span><span class="onward-note">Lessons, how-to guides and reference, by topic</span></a></li>
         <li><a href="{{ site.baseurl }}/learn/#migrations"><span class="onward-title">Migration guides</span><span class="onward-note">Every API change between major versions</span></a></li>
         <li><a href="{{ site.baseurl }}/help/"><span class="onward-title">Help and support</span><span class="onward-note">Mailing lists and commercial support</span></a></li>
     </ul>
