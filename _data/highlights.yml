@@ -5,7 +5,8 @@
 # Per highlight:
 #   title: short name of the feature
 #   text:  one or two sentences, Markdown allowed
-#   facts: optional list of { label, value } pairs, shown as board figures
+#   short: optional shorter text for the homepage columns (default: text)
+#   facts: optional list of { label, value } pairs, shown as figures (one baseline line on the homepage)
 #   code:  optional code sample, with `lang` (java, xml, html) and `file`
 #   home:  false keeps a highlight off the homepage (default: shown)
 
@@ -16,6 +17,9 @@
     lets Ajax run without jQuery.
   items:
     - title: A new baseline
+      short: >
+        Wicket 10 applications already use `jakarta.servlet`: the step up is
+        your JDK and container.
       text: >
         Wicket 11 requires Java 21 and runs on Jakarta Servlet 6.1, and its
         Spring integration moves to Spring 7. Applications on Wicket 10 already
@@ -29,6 +33,10 @@
           value: "7"
 
     - title: More secure by default
+      short: >
+        Encrypted URLs and stored pages cannot be altered unnoticed, model
+        values in markup are escaped consistently, and CSP covers
+        `script-src-attr` and `style-src-attr`.
       text: >
         Encryption is rebuilt on one authenticated scheme: encrypted URLs and
         stored pages cannot be altered unnoticed, the scheme generates its own
@@ -37,6 +45,10 @@
         policy now covers `script-src-attr` and `style-src-attr`.
 
     - title: Leaner components
+      short: >
+        One compact state object per component: in the benchmarks, reading
+        state is 30 to 45% faster and a tree with Ajax behaviors serializes
+        about 40% smaller.
       text: >
         A component keeps its model, behaviors and metadata in one compact
         state object instead of a packed array. In the benchmarks, reading that
@@ -44,6 +56,9 @@
         serializes about 40% smaller, so sessions and the page store carry less.
 
     - title: Ajax without jQuery
+      short: >
+        An opt-in plain JavaScript Ajax engine with the same client-side API.
+        jQuery stays the default and now supports jQuery 4.
       text: >
         A second, plain JavaScript implementation of the Ajax engine with the
         same client-side API. Opt in, and your pages, including autocomplete,

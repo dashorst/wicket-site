@@ -1,0 +1,249 @@
+// =========== User guide: title band with search, page lists on the ribbon, the A-Z index
+
+// ---------------------------------------------------------------- title band
+
+@media (min-width: 1000px) {
+    .guide-head-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem); gap: 0 clamp(48px, 5vw, 96px); align-items: end; }
+}
+.guide-head-text { min-width: 0; }
+
+.guide-crumbs {
+    margin: 0 0 10px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .03em;
+    a { color: var(--ribbon-deep); text-decoration-color: transparent; }
+    a:hover { text-decoration-color: var(--ribbon-deep); }
+}
+
+.guide-tags { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 14px 0 0; font: 400 1rem/1.3 var(--sans); }
+// The kind of page as a bead, as the components are on the homepage.
+.guide-kind { padding: 2px 8px 3px; border: 1px solid var(--ribbon); border-radius: 3px; background: rgba(var(--veil), .9); font-weight: 500; }
+.guide-since { color: var(--ink-soft); }
+
+// ---------------------------------------------------------------- search: a paper sheet on the photograph
+
+.guide-search { position: relative; margin-top: 24px; padding: 12px 14px 12px; background: var(--paper); box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .45); }
+@media (min-width: 1000px) { .guide-head-in > .guide-search { margin-top: 0; } }
+.guide-search--large { max-width: 40rem; margin-top: 28px; }
+
+.guide-search-label { display: block; margin: 0 0 7px; font: 500 1rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ink-soft); }
+
+.guide-search-field {
+    position: relative;
+
+    input {
+        width: 100%; height: 44px; padding: 0 44px 0 12px;
+        background: var(--paper); border: 1px solid #9FB4AC; border-radius: 2px;
+        color: var(--ink); font: 400 1.0625rem var(--sans); caret-color: var(--ribbon-deep);
+        transition: border-color .15s;
+    }
+    input::placeholder { color: var(--ink-soft); }
+    input:hover { border-color: var(--ink-soft); }
+    input:focus-visible { border-color: var(--ribbon-deep); outline: 2px solid var(--ribbon-wash); outline-offset: 0; }
+    input::-webkit-search-cancel-button { display: none; }
+
+    .guide-search--large & input { height: 52px; font-size: 1.2rem; }
+}
+
+.guide-search-key {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;
+    padding: 1px 7px; border: 1px solid var(--ribbon); border-radius: 3px;
+    font: 400 .85rem var(--mono); color: var(--ink);
+
+    input:focus ~ & { visibility: hidden; }
+    @media (pointer: coarse) { display: none; }
+}
+
+.guide-search-hint {
+    margin: 9px 0 0; font: 400 1rem var(--sans); color: var(--ink-soft);
+
+    select {
+        appearance: none; -webkit-appearance: none; margin-left: 4px; cursor: pointer;
+        background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239A430A' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 10px center;
+        border: 1px solid #9FB4AC; border-radius: 2px; color: var(--ink);
+        font: 500 1rem/1 var(--sans); padding: 6px 28px 6px 9px;
+    }
+    select:hover { border-color: var(--ribbon-deep); }
+
+    // On phones the version choice stays on the guide's front page, keeping title bands short.
+    @media (max-width: 999px) {
+        .guide-head-in > .guide-search:not(.guide-search--large) & { display: none; }
+    }
+}
+
+.guide-results {
+    position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; right: 0;
+    max-height: min(32rem, 70vh); overflow-y: auto; scrollbar-width: thin;
+    background: var(--paper); border-top: 2px solid var(--ribbon);
+    box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 24px 48px -24px rgba(6, 26, 22, .55);
+
+    @media (min-width: 1000px) {
+        .guide-head-in > .guide-search & { left: auto; width: min(38rem, calc(100vw - 6rem)); }
+    }
+
+    ul { list-style: none; margin: 0; padding: 4px 6px; }
+    li { margin: 0; }
+    li + li { border-top: 1px solid var(--rule); }
+    a { display: block; padding: 9px 10px 10px; border-radius: 2px; color: var(--ink-soft); text-decoration: none; }
+    li:hover a,
+    li.is-active a { background: var(--ribbon-wash); }
+    li:hover .guide-result-title,
+    li.is-active .guide-result-title { text-decoration-color: var(--ribbon-deep); }
+}
+
+.guide-result-title {
+    display: block; color: var(--ink); font: 700 1.15rem/1.25 var(--serif);
+    text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: .2em;
+}
+.guide-result-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 3px;
+    font: 500 .95rem/1.3 var(--sc); letter-spacing: .02em; color: var(--ribbon-deep);
+    span:not(.guide-list-since) + span:not(.guide-list-since)::before { content: "/ "; }
+}
+.guide-result-text {
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+    margin-top: 3px; font: 400 .95rem/1.4 var(--sans);
+}
+.guide-results-empty { padding: 12px 16px; font: 400 1rem var(--sans); color: var(--ink-soft); }
+
+// ---------------------------------------------------------------- page lists: leaves on the ribbon
+
+.guide-list {
+    --rw: 5px; --mid: 20px;
+    list-style: none; margin: 0; padding: 0;
+
+    li { position: relative; margin: 0; padding: 0 0 14px 26px; }
+    li::before {
+        content: ""; position: absolute; left: 0; top: 0; width: 16px; height: var(--mid);
+        border-left: var(--rw) solid var(--ribbon); border-bottom: var(--rw) solid var(--ribbon); border-bottom-left-radius: 2px;
+    }
+    li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: calc(var(--mid) - 4px); bottom: 0; border-left: var(--rw) solid var(--ribbon); }
+}
+
+.guide-list-title {
+    display: inline-block; padding: 5px 0 0;
+    font: 700 1.25rem/1.25 var(--serif); text-decoration-color: transparent;
+    &:is(a):hover { text-decoration-color: var(--ribbon-deep); }
+}
+// The page being read: the lit bead.
+.guide-list li.is-current .guide-list-title { padding: 3px 8px 4px; margin-top: 2px; border-radius: 3px; background: var(--ribbon); }
+
+.guide-list-meta { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 6px; vertical-align: .1em; &:empty { display: none; } }
+.guide-list-kind { font: 500 .95rem var(--sc); letter-spacing: .03em; color: var(--ribbon-deep); }
+// A page that needs a newer release line than the oldest in service.
+.guide-list-since { padding: 0 6px 1px; border: 1px solid var(--ribbon); border-radius: 3px; font: 500 .85rem/1.4 var(--sans); white-space: nowrap; }
+.guide-list-summary { display: block; max-width: var(--measure); margin-top: 2px; font: 400 1.02rem/1.4 var(--sans); color: var(--ink-soft); }
+
+// ---------------------------------------------------------------- topic pages, the A-Z index, the foot of a page
+
+.guide-group { margin-bottom: 52px; }
+.guide-group h2 { margin: 0 0 6px; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; scroll-margin-top: 24px; }
+.guide-group-intro { max-width: var(--measure); margin: 0 0 20px; color: var(--ink-soft); }
+
+.guide-topics-other {
+    padding-top: 16px; border-top: 2px solid var(--ink);
+    h2 { margin: 0 0 10px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); }
+    ul { display: flex; flex-wrap: wrap; gap: 6px 22px; list-style: none; margin: 0; padding: 0; font: 500 1.05rem var(--sans); }
+}
+
+// Letters as beads.
+.guide-letters {
+    display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 28px;
+    a {
+        min-width: 36px; padding: 5px 0 6px; text-align: center;
+        border: 1px solid var(--ribbon); border-radius: 3px; background: var(--paper);
+        font: 400 .95rem var(--mono); text-decoration: none; transition: background-color .15s;
+    }
+    a:hover { background: var(--ribbon); }
+}
+
+.guide-letter { margin: 36px 0 0; padding-bottom: 6px; border-bottom: 2px solid var(--ink); font: 700 1.6rem/1.1 var(--serif); scroll-margin-top: 24px; }
+
+.guide-classes {
+    margin: 0;
+    @media (min-width: 760px) { display: grid; grid-template-columns: minmax(12rem, 18rem) minmax(0, 1fr); }
+
+    dt, dd { margin: 0; padding: 9px 16px 9px 0; border-top: 1px solid var(--rule); }
+    dt:first-of-type, dd:first-of-type { border-top: 0; }
+    @media (max-width: 759px) { dd { border-top: 0; padding-top: 0; } }
+    dd { font-family: var(--sans); }
+    code { font-size: .85em; }
+}
+
+.guide-version-note {
+    max-width: var(--measure); margin: 0 0 32px; padding: 12px 16px 13px;
+    background: var(--paper-tint); border-top: 1px solid var(--ribbon); font: 400 1.05rem/1.45 var(--sans);
+}
+
+.guide-content blockquote.since { font-family: var(--sans); }
+
+.guide-foot { margin-top: 64px; padding-top: 22px; border-top: 2px solid var(--ink); }
+.guide-foot-title { margin: 0 0 20px; font: 700 clamp(1.75rem, 2.6vw, 2.25rem)/1.1 var(--serif); letter-spacing: -.015em; }
+.guide-branch { margin-bottom: 26px; }
+.guide-branch h3 { margin: 0 0 8px; font: 500 1.05rem/1.2 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); }
+.guide-edit { margin-top: 12px; font: 500 1.02rem var(--sans); }
+
+// ---------------------------------------------------------------- the guide's front page
+
+.guide-front-section { margin-bottom: 72px; }
+
+.guide-front-head {
+    margin-bottom: 26px; padding-bottom: 18px; border-bottom: 2px solid var(--ink);
+    h2 { font: 700 clamp(2rem, 3vw, 2.6rem)/1.05 var(--serif); letter-spacing: -.015em; }
+    p { max-width: 48ch; margin: 10px 0 0; font-size: 1.15rem; }
+
+    @media (min-width: 860px) {
+        display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: baseline;
+        p { margin-top: 0; }
+    }
+}
+
+// The tutorials in order: each step a bead with its number.
+.guide-steps {
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 0 40px;
+    @media (min-width: 860px) { grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+
+    li { margin: 0; border-bottom: 1px solid var(--rule); }
+    a { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; padding: 16px 0 18px; text-decoration: none; }
+    a:hover .guide-step-n { background: var(--ribbon); }
+    a:hover .guide-step-title { text-decoration-color: var(--ribbon-deep); }
+}
+.guide-step-n {
+    grid-row: span 2; align-self: start; min-width: 2rem; height: 2rem; padding: 0 6px; margin-top: 2px;
+    border: 1px solid var(--ribbon); border-radius: 3px; background: var(--paper);
+    font: 400 .95rem/1.9rem var(--mono); text-align: center; transition: background-color .15s;
+}
+.guide-step-title {
+    font: 700 1.3rem/1.2 var(--serif);
+    text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: .2em;
+}
+.guide-step-summary { font: 400 1.02rem/1.4 var(--sans); color: var(--ink-soft); }
+
+// The topics as the guide's component tree: the ribbon drops from the root bead and folds into every topic.
+.guide-tree {
+    --rw: var(--ribbon-w); --mid: 26px;
+    list-style: none; margin: 0; padding: 0;
+
+    ul { list-style: none; margin: 0 0 0 12px; padding: 0; }
+    ul li { position: relative; margin: 0; padding: 0 0 0 30px; }
+    ul li::before {
+        content: ""; position: absolute; left: 0; top: 0; width: 20px; height: var(--mid);
+        border-left: var(--rw) solid var(--ribbon); border-bottom: var(--rw) solid var(--ribbon); border-bottom-left-radius: 2px;
+    }
+    ul li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: calc(var(--mid) - 4px); bottom: 0; border-left: var(--rw) solid var(--ribbon); }
+}
+.gt-root { display: inline-flex; align-items: baseline; gap: 12px; margin-bottom: 0; padding: 4px 10px 5px; border-radius: 3px; background: var(--ribbon); font: 700 1.2rem/1.2 var(--serif); }
+.gt-root span { font: 500 1rem var(--sc); letter-spacing: .03em; }
+.gt-row {
+    display: grid; grid-template-columns: minmax(12rem, 20rem) minmax(0, 1fr) auto; gap: 2px 24px; align-items: baseline;
+    padding: 12px 0 11px; border-bottom: 1px solid var(--rule); text-decoration: none;
+}
+.gt-name { font: 700 1.35rem/1.2 var(--serif); text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px; text-underline-offset: .2em; }
+.gt-row:hover .gt-name { text-decoration-color: var(--ribbon-deep); }
+.gt-sum { font: 400 1.02rem/1.4 var(--sans); color: var(--ink-soft); }
+.gt-count { font: 500 1rem/1.2 var(--sc); letter-spacing: .03em; color: var(--ribbon-deep); white-space: nowrap; }
+@media (max-width: 759px) {
+    .gt-row { grid-template-columns: minmax(0, 1fr) auto; }
+    .gt-sum { grid-column: 1 / -1; grid-row: 2; }
+}
+
+.guide-older p a { white-space: nowrap; }
+.guide-older .guide-front-head { border-bottom: 0; padding-bottom: 0; }

@@ -1,0 +1,9 @@
+{% comment %} The title band of reading pages on the season's photograph: title, subtitle, and the date of a news post. {% endcomment %}
+<header class="page-head">
+    {% include season-photo.html %}
+    <div class="page-head-in">
+        <h1>{{ page.title }}</h1>
+        {% if page.collection == 'posts' %}<p class="page-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>{% endif %}
+        {% if page.subtitle %}<p class="page-sub">{{ page.subtitle }}</p>{% endif %}
+    </div>
+</header>

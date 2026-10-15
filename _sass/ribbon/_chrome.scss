@@ -1,0 +1,145 @@
+// =========== Masthead, the seasonal photograph, the season selector and the footer
+
+// ---------------------------------------------------------------- masthead: lies on the photograph
+
+.masthead { position: relative; z-index: 5; }
+.masthead-in {
+    max-width: var(--max); height: var(--mast-h); margin: 0 auto; padding: 0 var(--pad);
+    display: flex; align-items: center; gap: 40px;
+}
+
+// Sub pages: the registered mark with the wordmark in the heading face.
+.brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; }
+.brand-mark { width: 34px; height: 34px; flex: none; display: block; }
+.brand-name { font: 700 1.5rem/1 var(--serif); letter-spacing: -.01em; white-space: nowrap; }
+
+.nav { margin-left: auto; display: flex; align-items: center; gap: 26px; font: 500 1.0625rem/1 var(--sans); }
+.nav a { padding: 8px 0; color: var(--ink); text-decoration-color: transparent; white-space: nowrap; }
+.nav a:hover { text-decoration-color: var(--ribbon-deep); }
+// The section the page belongs to: a short run of ribbon under the link.
+.nav a.is-active { text-decoration-color: var(--ribbon); text-decoration-thickness: 4px; text-underline-offset: .42em; }
+.nav-gh { display: inline-flex; align-items: center; gap: 7px; padding-left: 22px !important; border-left: 1px solid rgba(20, 36, 31, .22); }
+
+// Homepage: the hero lockup carries the mark, so the menu goes without the brand, centred.
+.masthead.is-home .masthead-in { justify-content: center; }
+.masthead.is-home .nav { margin-left: 0; }
+
+@media (max-width: 1399px) { .nav { gap: 18px; } }
+
+@media (max-width: 860px) {
+    .masthead-in { flex-wrap: wrap; align-content: center; gap: 4px 10px; padding-right: 0; }
+    .brand-name { font-size: 1.35rem; }
+    .brand-mark { width: 30px; height: 30px; }
+    .nav {
+        margin-left: 0; width: 100%; overflow-x: auto; gap: 20px; padding: 0 var(--pad) 2px 0; scrollbar-width: none;
+        -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent);
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a { padding: 10px 0 12px; }
+    .nav-gh { padding-left: 18px !important; padding-right: 40px !important; }
+
+    // On phones the centred homepage menu wraps onto two rows instead of scrolling sideways.
+    .masthead.is-home .masthead-in { padding-right: var(--pad); }
+    .masthead.is-home .nav { flex-wrap: wrap; justify-content: center; overflow: visible; gap: 2px 20px; padding: 0; -webkit-mask-image: none; mask-image: none; }
+    .masthead.is-home .nav a { padding: 8px 0; }
+    .masthead.is-home .nav-gh { padding: 8px 0 !important; border-left: 0; }
+}
+
+// ---------------------------------------------------------------- the seasonal photograph
+// One element, two uses: behind the homepage hero, and as the band behind the title of every
+// other page. It reaches up behind the masthead. The season data is in _data/seasons.yml.
+
+.photo {
+    position: absolute; z-index: -1; left: 0; right: 0; top: calc(-1 * var(--mast-h)); bottom: 0;
+    overflow: hidden; background: #C9D6CF;
+}
+.photo img {
+    position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: var(--focus-wide, 50% 50%);
+}
+.photo[data-soft] img { filter: blur(1.4px) saturate(.92); transform: scale(1.03); }
+
+// A photo whose subject stands mid-frame keeps its full height at the right; its own sky and land continue to the left.
+.photo[data-anchor="right"] { background: var(--ground, #C9D6CF); }
+.photo[data-anchor="right"] img {
+    left: auto; right: 0; width: auto; max-width: none; height: 100%; transform: translateX(var(--shift, 0));
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 260px); mask-image: linear-gradient(90deg, transparent 0, #000 260px);
+}
+.photo[data-anchor="right"][data-sized] img {
+    bottom: auto; height: var(--size, 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 260px), linear-gradient(180deg, #000 calc(100% - 140px), transparent);
+    mask-image: linear-gradient(90deg, transparent 0, #000 260px), linear-gradient(180deg, #000 calc(100% - 140px), transparent);
+    -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+
+// The scrim: paper, only where text sits: the masthead and the corner with the lockup or title.
+.photo::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .74) 0, rgba(var(--veil), .5) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 80px)),
+        radial-gradient(ellipse 62% 112% at 0% 60%, rgba(var(--veil), .82) 0, rgba(var(--veil), .74) 50%, rgba(var(--veil), 0) 100%);
+}
+.photo[data-soft]::after {
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .74) 0, rgba(var(--veil), .5) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 80px)),
+        radial-gradient(ellipse 64% 115% at 0% 60%, rgba(var(--veil), .86) 0, rgba(var(--veil), .78) 50%, rgba(var(--veil), 0) 100%);
+}
+.photo[data-veil="strong"]::after {
+    background:
+        linear-gradient(180deg, rgba(var(--veil), .78) 0, rgba(var(--veil), .56) calc(var(--mast-h) - 6px), rgba(var(--veil), 0) calc(var(--mast-h) + 90px)),
+        radial-gradient(ellipse 72% 125% at 0% 60%, rgba(var(--veil), .88) 0, rgba(var(--veil), .82) 56%, rgba(var(--veil), 0) 100%);
+}
+
+// The credit and, in review builds, the season selector: small chips in the photo's corner.
+.photo-meta {
+    position: absolute; right: var(--pad); bottom: 10px; z-index: 1;
+    display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 6px;
+    font: 400 .8rem/1.2 var(--sans);
+}
+.photo-credit {
+    margin: 0; padding: 3px 8px 4px; border-radius: 2px;
+    color: var(--paper); background: rgba(11, 46, 40, .8);
+    a { text-decoration-color: rgba(246, 248, 247, .55); text-decoration-thickness: 1px; }
+    &[hidden] { display: none; }
+}
+
+// Review builds only (season_selector: true): try the photo of each season on every page.
+.season-pick {
+    margin: 0; padding: 3px; border: 0; border-radius: 3px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
+    background: rgba(11, 46, 40, .86); color: var(--paper);
+    --focus: var(--ribbon-text);
+
+    &[hidden] { display: none; }
+    legend { float: left; padding: 3px 6px 4px 5px; font: 500 .8rem/1.2 var(--sc); letter-spacing: .04em; color: var(--muted); }
+    label { position: relative; display: block; cursor: pointer; }
+    input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+    span { display: block; padding: 3px 8px 4px; border-radius: 2px; transition: background-color .15s, color .15s; }
+    label:hover span { background: rgba(246, 248, 247, .14); }
+    input:checked + span { background: var(--ribbon); color: var(--ink); }
+    input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 1px; }
+}
+
+// ---------------------------------------------------------------- footer
+
+.footer { background: var(--cloth); color: var(--muted); --focus: var(--ribbon-text); }
+.footer a { color: var(--paper); text-decoration-color: var(--ribbon); }
+.footer-in {
+    max-width: var(--max); margin: 0 auto; padding: 40px var(--pad) 48px;
+    display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 20px 48px;
+    font: 400 1rem/1.5 var(--sans);
+}
+// The ASF logo on a paper tile, so its purple lettering stays legible on the cloth.
+.asf-tile { display: inline-block; justify-self: start; align-self: start; width: max-content; background: var(--paper); padding: 8px 12px; line-height: 0; }
+.asf-tile img { height: 48px; width: auto; }
+.footer-brand { margin: 0 0 14px; color: var(--paper); }
+.footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.legal { grid-column: 1 / -1; margin: 0; font-size: .92rem; max-width: 110ch; }
+
+@media (max-width: 860px) {
+    .footer-in { grid-template-columns: 1fr; }
+}
+
+@media (pointer: coarse) {
+    .footer nav a { display: inline-block; padding-block: 10px; }
+}

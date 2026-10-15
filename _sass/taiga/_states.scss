@@ -7,7 +7,6 @@
 
 .is-hidden, .is-invisible { visibility: hidden !important; }
 
-.is-active, .is-visible { display: block; }
 
 .left { @include mixins.breakpoint(settings.$breakpoint-10) { float: left; } }
 

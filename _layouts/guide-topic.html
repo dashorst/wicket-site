@@ -3,27 +3,26 @@ layout: base
 ---
 {% include mainmenu.html %}
 {% assign pages = site.guide | where: "topic", page.topic %}
-<div class="page-sign guide-sign">
-    <div class="page-sign-inner guide-sign-inner">
-        <div class="guide-sign-text">
+<header class="page-head guide-head">
+    {% include season-photo.html %}
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
             <p class="guide-crumbs"><a href="{{ site.baseurl }}/guide/">User guide</a></p>
             <h1>{{ page.title }}</h1>
-            <p class="page-sign-sub">{{ page.summary }}</p>
+            <p class="page-sub">{{ page.summary }}</p>
         </div>
-        {% include guide-search.html id="-sign" %}
+        {% include guide-search.html id="-head" %}
     </div>
-</div>
+</header>
 <main id="main" tabindex="-1">
-    <div class="reading has-rail guide-reading">
-        <div class="reading-rail">
-            <nav aria-label="On this page">
-                <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
-                {% for k in site.data.guide.kinds %}{% assign n = pages | where: "type", k.id %}{% if n.size > 0 %}
-                    <li class="toc--level-1"><a href="#{{ k.id }}"><span class="toc-text">{{ k.title }}</span></a></li>
-                {% endif %}{% endfor %}
-                </ul></div>
-            </nav>
-        </div>
+    <div class="reading has-rail">
+        <nav class="rail" aria-label="{{ site.contentsLabel }}">
+            <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
+            {% for k in site.data.guide.kinds %}{% assign n = pages | where: "type", k.id %}{% if n.size > 0 %}
+                <li class="toc--level-1"><a href="#{{ k.id }}"><span class="toc-text">{{ k.title }}</span></a></li>
+            {% endif %}{% endfor %}
+            </ul></div>
+        </nav>
         <div class="reading-main">
             {% for k in site.data.guide.kinds %}
                 {% assign group = pages | where: "type", k.id | sort: "order", "last" %}

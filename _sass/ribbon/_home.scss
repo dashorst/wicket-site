@@ -1,0 +1,292 @@
+// =========== Homepage: the seasonal hero, the component tree on bookcloth, and the paper sections
+
+// ---------------------------------------------------------------- hero: lockup, definition, the one release line
+
+.hero { position: relative; isolation: isolate; }
+.hero-in {
+    max-width: var(--max); min-height: 440px; margin: 0 auto; padding: 30px var(--pad) 40px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+}
+.lockup { margin: 0; display: flex; align-items: center; gap: 0 26px; font-weight: 400; color: var(--ink); }
+.lockup-mark { width: 104px; height: 104px; flex: none; display: block; }
+.lockup-name { font: 700 clamp(3.4rem, 5.6vw, 5.1rem)/.9 var(--serif); letter-spacing: -.022em; white-space: nowrap; }
+.lockup-v {
+    font: 400 clamp(3.4rem, 5.6vw, 5.1rem)/.9 var(--serif); letter-spacing: -.02em; font-variant-numeric: lining-nums;
+    padding-left: 26px; border-left: 3px solid var(--ribbon);
+}
+.lede { max-width: 640px; }
+.tagline { font: italic 400 clamp(1.7rem, 2.4vw, 2.15rem)/1.15 var(--serif); margin: 0 0 12px; }
+.definition { font: 400 clamp(1.3rem, 1.75vw, 1.6rem)/1.3 var(--serif); margin: 0 0 20px; max-width: 32ch; }
+
+.release {
+    display: inline-block; padding: 9px 14px 10px;
+    background: rgba(var(--veil), .84); border-top: 1px solid var(--ribbon);
+    font: 400 1.02rem/1.4 var(--sans);
+    p { margin: 0; }
+}
+.release-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.release-line b { font: 700 1.15rem/1 var(--serif); font-variant-numeric: lining-nums; }
+.release-line .dot { color: var(--ink-soft); }
+.release-line a { margin-left: 12px; font-weight: 500; }
+.release-note { margin-top: 3px !important; color: var(--ink-soft); font-size: .95rem; }
+.release-note a { color: var(--ink); }
+
+@media (max-width: 1399px) { .lockup-mark { width: 88px; height: 88px; } }
+
+// ---------------------------------------------------------------- the component tree on bookcloth
+// Java sheet, ribbon, markup sheet, on shared rows. javascript/ribbon.js draws the ribbon from the beads.
+
+.ctree { background: var(--cloth); color: var(--paper); --focus: var(--ribbon-text); --loom-fs: 12px; }
+.ctree-in { max-width: var(--max); margin: 0 auto; padding: 40px var(--pad); }
+.ctree-head, .loom { display: grid; grid-template-columns: minmax(0, 1fr) 63ch 46ch; font: 400 var(--loom-fs)/1 var(--mono); }
+.ctree-head { align-items: end; padding-bottom: 26px; }
+.ctree-head h2 {
+    grid-column: 1; margin: 0; padding-right: 2ch; max-width: 16ch;
+    color: var(--paper); font: 700 clamp(2.2rem, 3.2vw, 2.9rem)/1.02 var(--serif); letter-spacing: -.015em;
+}
+.ctree-head p { grid-column: 2 / 4; margin: 0; padding-left: 14ch; max-width: calc(46ch + 50ch); font: 400 1.12rem/1.5 var(--serif); }
+.ctree-head code { font-size: .86em; color: var(--ribbon-text); }
+
+.loom {
+    position: relative;
+    grid-template-rows: 1.2em 3em 1.85em 1.85em repeat(5, 2.8em) repeat(3, 1.85em) 1.2em 2.2em 1.2em 3em repeat(3, 1.85em) repeat(2, 2.8em) repeat(2, 1.85em) 1.2em;
+}
+.sheet { grid-column: var(--c); grid-row: var(--r); background: var(--paper); border-radius: 2px; box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 16px 36px -22px rgba(0, 0, 0, .55); }
+.loom .file { grid-column: var(--c); grid-row: var(--r); align-self: center; margin: 0; padding: 0 2ch; font: 500 1.02rem/1 var(--sans); color: var(--ink-soft); }
+.loom .file .x { color: var(--ink); }
+.src, .src code { display: contents; white-space: normal; }
+.ln { grid-column: var(--c, 1); grid-row: var(--r); display: block; white-space: pre; padding: 0 2ch; line-height: 1.85em; color: var(--ink); transition: background-color .15s; }
+.ln.c { line-height: 2.8em; }
+.ln.on, .file.on { background: var(--ribbon-wash); }
+.loom .tk { color: var(--ribbon-deep); }
+.loom .ts { color: #1C5E43; }
+.loom .tg { color: #0F4A40; }
+.loom .tw { color: var(--ribbon-deep); }
+.ln.on .tw { background: rgba(238, 127, 45, .3); color: var(--ink); }
+
+.beads { display: contents; }
+.bead {
+    grid-column: 2; grid-row: var(--r); justify-self: start; align-self: center; position: relative; z-index: 2;
+    margin-left: calc((var(--x) + 2.5) * 1ch); height: 2.1em; padding: 0 1ch;
+    font: 400 1em/1 var(--mono); white-space: nowrap; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--ribbon); border-radius: 3px; cursor: pointer;
+    transition: background-color .15s, opacity .2s;
+}
+.bead.root { background: var(--ribbon); }
+.bead:hover, .bead.on { background: var(--ribbon); }
+.loom.focused .bead:not(.on) { opacity: .62; }
+.bead:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
+// Without JavaScript: a stub of ribbon at every bead, so the indentation still reads as a tree.
+.no-js .bead:not(.root)::before { content: ""; position: absolute; right: 100%; top: 50%; width: 2ch; height: 6px; margin-top: -3px; background: var(--ribbon); }
+
+.tree-ribbon { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+.tree-ribbon .seg { transition: opacity .2s; }
+.loom.focused .tree-ribbon .seg { opacity: .3; }
+.loom.focused .tree-ribbon .seg.on { opacity: 1; }
+.tree-ribbon .thread { stroke: rgba(127, 156, 147, .5); stroke-width: 1; }
+.tree-ribbon .thread.on { stroke: var(--ribbon); stroke-width: 2; }
+.tree-ribbon .knot { fill: var(--paper); stroke: var(--ribbon-under); stroke-width: 2; }
+
+.loom-hint { margin: 14px 0 0; font: 400 1rem/1.4 var(--sans); color: var(--muted); }
+.no-js .loom-hint { display: none; }
+
+// The one authored moment: the ribbon draws down through the tree.
+.tree-ribbon.unroll { clip-path: inset(-400px 0 100% 0); }
+.tree-ribbon.unrolled { clip-path: inset(-400px 0 0 0); transition: clip-path 1.4s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+    .tree-ribbon.unroll { clip-path: none; }
+}
+
+// The tree as a list: read aloud on wide screens, drawn on phones.
+.tree-list { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+@media (max-width: 1399px) { .ctree { --loom-fs: 11px; } }
+
+// Below the loom's width the tree is a list, Java node then its tag, the ribbon down the left.
+@media (max-width: 1239px) {
+    .ctree-head { display: block; font: inherit; }
+    .ctree-head h2 { max-width: none; margin-bottom: 12px; }
+    .ctree-head p { padding-left: 0; max-width: 62ch; }
+    .loom, .loom-hint { display: none; }
+    .tree-list { position: static; width: auto; height: auto; overflow: visible; clip-path: none; max-width: 760px; }
+    .tree-list-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .tl, .tl ol { list-style: none; margin: 0; padding: 0; }
+    .tl ol { margin-left: 4px; }
+    .tl li { position: relative; padding: 0 0 0 26px; }
+    .tl > li { padding-left: 0; }
+    // The ribbon: a vertical run beside every child list and a fold into each item.
+    .tl li li::before { content: ""; position: absolute; left: 0; top: 0; width: 18px; height: 24px; border-left: var(--ribbon-w) solid var(--ribbon); border-bottom: var(--ribbon-w) solid var(--ribbon); border-bottom-left-radius: 2px; }
+    .tl li li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: 20px; bottom: 0; border-left: var(--ribbon-w) solid var(--ribbon); }
+    .tl-name, .tl-j, .tl-t { display: block; }
+    .tl li > .tl-name { padding-top: 10px; }
+    .tl > li > .tl-name { padding-top: 0; }
+    .tl-name b { font: 700 .98rem/1.2 var(--mono); color: var(--paper); background: var(--cloth-deep); }
+    .tl > li > .tl-name b { font: 700 1.3rem/1.2 var(--serif); }
+    .tl-name span { font: 500 1rem/1.2 var(--sc); color: var(--ribbon-text); letter-spacing: .03em; margin-left: 6px; }
+    .tl-j, .tl-t { font: 400 12px/1.45 var(--mono); padding: 5px 9px; overflow-wrap: anywhere; }
+    .tl-j { margin-top: 6px; background: var(--paper); color: var(--ink); border-radius: 2px 2px 0 0; }
+    .tl-t { background: #DCE7E2; color: #0F4A40; border-radius: 0 0 2px 2px; }
+    .tl-foot { margin: 18px 0 0; font: 400 1rem/1.45 var(--sans); color: var(--muted); }
+    .tl-foot code { color: var(--ribbon-text); }
+}
+
+// ---------------------------------------------------------------- paper sections
+
+.sec-title { margin: 0; font: 700 clamp(2rem, 3vw, 2.6rem)/1.05 var(--serif); letter-spacing: -.015em; }
+.fname { margin: 0 0 6px; font: 500 .92rem/1 var(--sans); color: var(--ink-soft); }
+.code { margin: 0; padding: 14px 16px; background: var(--code-bg); color: var(--ink); font: 400 12px/1.65 var(--mono); overflow-x: auto; tab-size: 4; }
+.code .tk { color: var(--ribbon-deep); }
+.code .ts { color: #1C5E43; }
+.code .tc { color: var(--ink-soft); font-style: italic; }
+.code .ta { color: #0F4A40; }
+
+// Why Wicket: three mechanisms with their code, on shared rows.
+.why { max-width: var(--max); margin: 0 auto; padding: 56px var(--pad) 60px; }
+.why-head { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: baseline; padding-bottom: 26px; }
+.why-head p { margin: 0; font-size: 1.2rem; max-width: 56ch; }
+.why-list {
+    list-style: none; margin: 0; padding: 26px 0 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); gap: 0 40px;
+    border-top: 2px solid var(--ink);
+}
+.why-list li { min-width: 0; display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+.why-list h3 { font: 700 1.45rem/1.15 var(--serif); margin: 0 0 8px; }
+.why-list li > p:not(.fname) { margin: 0 0 16px; }
+.why-list .fname { align-self: end; }
+.also { margin: 32px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px 32px; }
+.also dt { font: 700 1.02rem/1.3 var(--sans); }
+.also dd { margin: 3px 0 0; font: 400 1rem/1.4 var(--sans); color: var(--ink-soft); }
+
+// Proof that it lasts, and who builds with it.
+.lasts { background: var(--paper-tint); }
+.lasts-in { max-width: var(--max); margin: 0 auto; padding: 56px var(--pad) 60px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 28px 48px; }
+.lasts-head p { margin: 12px 0 0; font-size: 1.2rem; max-width: 34ch; }
+.lasts-facts { grid-column: 1; margin: 0; display: grid; gap: 18px; align-content: start; }
+.lasts-facts dt { font: 700 1.25rem/1.2 var(--serif); }
+.lasts-facts dd { margin: 4px 0 0; color: var(--ink-soft); max-width: 40ch; font-size: 1.05rem; }
+.built { grid-column: 2; grid-row: 1 / span 2; border-top: 2px solid var(--ink); padding-top: 18px; }
+.built h3 { font: 500 1.2rem/1 var(--sc); letter-spacing: .04em; color: var(--ribbon-deep); margin: 0 0 16px; }
+.built-names { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.built-names li { font: 700 1.6rem/1.2 var(--serif); padding: 12px 0 13px; border-bottom: 1px solid var(--rule); letter-spacing: -.005em; }
+.built-names span { display: block; font: 400 1rem/1.3 var(--sans); color: var(--ink-soft); letter-spacing: 0; margin-top: 2px; }
+.built-links { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 6px 26px; font: 500 1.05rem var(--sans); }
+
+// New in the featured release.
+.new11 { max-width: var(--max); margin: 0 auto; padding: 56px var(--pad) 60px; }
+.new11-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 2px solid var(--ribbon); }
+.more { font: 500 1.05rem var(--sans); }
+.hls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding-top: 24px; }
+.hl { min-width: 0; }
+.hl h3 { font: 700 1.35rem/1.15 var(--serif); margin: 0 0 8px; }
+.hl p { margin: 0 0 10px; font-size: 1.08rem; line-height: 1.5; }
+.hl .baseline { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 500 1rem/1.2 var(--sc); color: var(--ink-soft); letter-spacing: .03em; }
+.hl .baseline b { font: 700 1.45rem/1 var(--serif); color: var(--ribbon-deep); margin-left: 3px; letter-spacing: 0; }
+
+// Get started: the quick start and both lines' Maven dependency.
+.start { background: var(--paper-tint); }
+.start-in {
+    max-width: var(--max); margin: 0 auto; padding: 52px var(--pad) 56px;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 40px; align-items: start;
+}
+.start-text p { margin: 12px 0 18px; max-width: 36ch; }
+.btn {
+    display: inline-block; padding: 13px 18px; border-radius: 2px;
+    background: var(--ribbon); color: var(--ink); font: 700 1.0625rem/1 var(--sans); text-decoration: none;
+    transition: background-color .15s;
+}
+.btn:hover { background: var(--ribbon-text); }
+.dep { background: var(--paper); padding: 16px 18px 18px; box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .35); }
+.dep-head { margin: 0 0 12px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-weight: 400; }
+.dep-v { font: 700 1.6rem/1 var(--serif); letter-spacing: -.01em; }
+.dep-lts { font: 500 1.05rem/1 var(--sc); color: var(--ribbon-deep); letter-spacing: .06em; }
+.dep-role { margin-left: auto; font: 400 1rem/1.2 var(--sans); color: var(--ink-soft); }
+.snippet { position: relative; }
+.snippet pre { margin: 0; padding: 12px 14px; background: var(--code-bg); color: var(--ink); font: 400 13px/1.55 var(--mono); overflow-x: auto; tab-size: 2; }
+.copy {
+    position: absolute; top: 8px; right: 8px; padding: 8px 12px; border: 0; border-radius: 2px;
+    background: var(--ribbon); color: var(--ink); font: 700 .9rem/1 var(--sans); cursor: pointer;
+    transition: background-color .15s;
+}
+.copy:hover { background: var(--ribbon-text); }
+.copy.is-copied { background: var(--ink); color: var(--paper); }
+.copy.is-failed { background: #B3261E; color: #fff; }
+
+// Announcements.
+.home-news { max-width: var(--max); margin: 0 auto; padding: 52px var(--pad) 64px; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: start; }
+.home-news-links { margin: 12px 0 0; display: flex; gap: 22px; font: 500 1.02rem var(--sans); }
+.home-news-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.home-news-list li { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.home-news-list time { font: 500 1.02rem/1.45 var(--sc); color: var(--ribbon-deep); letter-spacing: .03em; font-variant-numeric: tabular-nums; }
+.home-news-list h3 { font: 700 1.2rem/1.3 var(--serif); margin: 0; }
+.home-news-list h3 a { text-decoration-color: transparent; }
+.home-news-list h3 a:hover { text-decoration-color: var(--ribbon-deep); }
+.home-news-list p { margin: 6px 0 0; color: var(--ink-soft); max-width: 66ch; }
+
+@media (max-width: 1399px) {
+    .why-list { gap: 28px; }
+    .also { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .hls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+// ---------------------------------------------------------------- phones and narrow tablets
+
+@media (max-width: 860px) {
+    // The photograph gets its own band above the lockup; the text below reads on paper.
+    .hero > .photo { bottom: auto; height: var(--photo-m); background: var(--paper); --photo-m: 380px; }
+    .hero > .photo img,
+    .hero > .photo[data-anchor] img,
+    .hero > .photo[data-anchor][data-sized] img {
+        inset: 40px 0 auto 0; width: 100%; height: calc(var(--photo-m) - 40px);
+        transform: none; -webkit-mask-image: none; mask-image: none; object-position: var(--focus-narrow, 100% 50%);
+    }
+    .hero > .photo[data-anchor] { background: var(--paper); }
+    .hero > .photo::after,
+    .hero > .photo[data-soft]::after,
+    .hero > .photo[data-veil="strong"]::after {
+        background: linear-gradient(180deg, rgba(var(--veil), .78) 0, rgba(var(--veil), .55) calc(var(--mast-h) - 4px), rgba(var(--veil), 0) calc(var(--mast-h) + 50px),
+            rgba(var(--veil), 0) calc(var(--photo-m) - 120px), rgba(var(--veil), 1) var(--photo-m));
+    }
+    // The credit and selector follow the hero text, on paper.
+    .hero { display: flex; flex-direction: column; }
+    .hero .photo-meta { position: static; order: 1; justify-content: flex-start; padding: 0 var(--pad) 18px; margin-top: -14px; }
+    .hero .photo-credit { padding: 0; background: none; color: var(--ink-soft); }
+    .hero-in { min-height: 0; padding: 216px var(--pad) 34px; gap: 18px; }
+    .lockup { gap: 0 14px; }
+    .lockup-mark { width: 64px; height: 64px; }
+    .lockup-name { font-size: 2.55rem; line-height: .92; }
+    .lockup-name > span { display: block; }
+    .lockup-v { font-size: 4.6rem; line-height: .8; padding-left: 14px; }
+    .tagline { font-size: 1.6rem; margin-bottom: 8px; }
+    .definition { font-size: 1.32rem; margin-bottom: 16px; }
+    .release { display: block; background: var(--paper-tint); padding: 10px 12px 11px; }
+    .release-line a { margin-left: 0; flex-basis: 100%; }
+
+    .ctree-in { padding: 36px var(--pad) 40px; }
+    .ctree-head h2 { font-size: 2rem; }
+    .ctree-head p { font-size: 1.05rem; margin-bottom: 26px; }
+
+    .why, .new11 { padding: 44px var(--pad) 48px; }
+    .why-head, .lasts-in, .start-in, .home-news { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .why-head p, .lasts-head p { font-size: 1.1rem; }
+    .why-list { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 30px; }
+    .why-list li { display: flex; flex-direction: column; grid-row: auto; }
+    .why-list .fname { align-self: auto; }
+    .code { padding: 12px; }
+    .also { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .lasts-in { padding: 44px var(--pad) 48px; gap: 24px; }
+    .built { grid-column: 1; grid-row: auto; }
+    .built-names { grid-template-columns: minmax(0, 1fr); }
+    .built-names li { font-size: 1.35rem; padding: 9px 0 10px; }
+    .hls { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .start-in { padding: 44px var(--pad) 48px; gap: 20px; }
+    .dep { padding: 14px 12px; }
+    .dep-role { margin-left: 0; width: 100%; }
+    .snippet pre { font-size: 11.5px; padding: 10px; }
+    .copy { top: 6px; right: 6px; padding: 7px 10px; }
+    .home-news { padding: 44px var(--pad) 52px; gap: 18px; }
+    .home-news-list li { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@media (pointer: coarse) {
+    .built-links a, .home-news-links a { display: inline-block; padding-block: 10px; }
+}

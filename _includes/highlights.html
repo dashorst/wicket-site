@@ -1,26 +1,43 @@
 {% comment %}
   The highlights of a release line, from _data/highlights.yml.
   Parameters: series (default: the featured line of releases.yml),
-  home = true to leave out highlights marked `home: false`.
+  home = true for the homepage: four columns with the short text (`short`, or `text` when a
+  highlight has none), facts as one baseline line, no code, and highlights marked `home: false`
+  left out.
 {% endcomment %}
 {%- assign series = include.series | default: site.data.releases.featured -%}
 {%- assign highlights = site.data.highlights[series] -%}
+{%- if include.home -%}
+<div class="hls">
+{%- for item in highlights.items -%}
+    {%- if item.home == false %}{% continue %}{% endif %}
+    <article class="hl">
+        <h3>{{ item.title }}</h3>
+        {%- if item.facts %}
+        <p class="baseline">{% for fact in item.facts %}<span>{{ fact.label }} <b>{{ fact.value }}</b></span> {% endfor %}</p>
+        {%- endif %}
+        {{ item.short | default: item.text | markdownify }}
+    </article>
+{%- endfor %}
+</div>
+{%- else -%}
 <ul class="features">
 {%- for item in highlights.items -%}
-    {%- if include.home and item.home == false %}{% continue %}{% endif %}
     <li class="feature">
-        <h3>{{ item.title }}</h3>
-        {{ item.text | markdownify }}
-        {%- if item.facts %}
-        <dl class="feature-facts">
-            {%- for fact in item.facts %}
-            <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
-            {%- endfor %}
-        </dl>
-        {%- endif %}
+        <div class="feature-text">
+            <h3>{{ item.title }}</h3>
+            {{ item.text | markdownify }}
+            {%- if item.facts %}
+            <dl class="feature-facts">
+                {%- for fact in item.facts %}
+                <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
+                {%- endfor %}
+            </dl>
+            {%- endif %}
+        </div>
         {%- if item.code %}
-        <div class="feature-code route-code">
-            {%- if item.file %}<p class="route-file">{{ item.file }}</p>{% endif -%}
+        <div class="feature-code">
+            {%- if item.file %}<p class="fname">{{ item.file }}</p>{% endif -%}
 {% capture fence %}~~~ {{ item.lang }}
 {{ item.code }}~~~{% endcapture %}
             {{ fence | markdownify }}
@@ -29,3 +46,4 @@
     </li>
 {%- endfor %}
 </ul>
+{%- endif -%}

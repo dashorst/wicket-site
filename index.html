@@ -1,0 +1,165 @@
+---
+layout: home
+title:
+pageclasses: index
+---
+{%- assign releases = site.data.releases -%}
+{%- assign featured = releases.featured -%}
+{%- assign current = releases.lines | where: 'status', 'current' | first -%}
+{%- assign lts = releases.lines | where: 'status', 'lts' | first -%}
+{%- assign eol = releases.lines | where: 'status', 'eol' | sort: 'series' -%}
+<section class="hero" aria-labelledby="title">
+    {% include season-photo.html hero="hero" %}
+    <div class="hero-in">
+        <h1 class="lockup" id="title">
+            <img class="lockup-mark" src="{{ site.baseurl }}/img/logo-apachewicket-mark.svg" alt="" width="112" height="112">
+            <span class="lockup-name"><span>Apache</span> <span>Wicket</span></span>
+            <span class="lockup-v"><span class="vh">, version </span>{{ featured }}</span>
+        </h1>
+        <div class="lede">
+            {% comment %} Tagline placeholder: "Write less, achieve more." is the Wicket 8 announcement's line, kept until the project picks one. {% endcomment %}
+            <p class="tagline">Write less, achieve more.</p>
+            <p class="definition">A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain.</p>
+            {% comment %} The one release element on the homepage, from _data/releases.yml and the versions in _config.yml. The note shows while lines are out of service. {% endcomment %}
+            <div class="release">
+                <p class="release-line"><span><b>{{ site.wicket[current.config] }}</b> current</span><span class="dot" aria-hidden="true">&middot;</span><span><b>{{ site.wicket[lts.config] }}</b> <abbr title="Long-term support">LTS</abbr></span> <a href="{{ site.baseurl }}/start/download.html">Release lines and support</a></p>
+                {%- if eol.size > 0 %}
+                <p class="release-note">{% for line in eol %}{{ line.series }}.x{% unless forloop.last %}{% if forloop.rindex == 2 %} and {% else %}, {% endif %}{% endunless %}{% endfor %} {% if eol.size > 1 %}are{% else %}is{% endif %} out of service: support {{ eol[0].support | downcase }} &mdash; <a href="{{ site.baseurl }}/start/download.html#upgrade-paths">how to upgrade</a></p>
+                {%- endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include home-tree.html %}
+
+<section class="why" id="why" aria-labelledby="why-title">
+  <header class="why-head">
+    <h2 class="sec-title" id="why-title">Why Wicket</h2>
+    <p>The component tree is where Wicket starts. Ajax, security and testing work on that same tree, from the same Java.</p>
+  </header>
+
+  <ol class="why-list">
+    <li>
+      <h3>Ajax without writing JavaScript</h3>
+      <p>Update parts of a page from Java. Wicket re-renders only the components you add to the request.</p>
+      <p class="fname">CounterPage.java</p>
+<pre class="code"><code>Label count = <span class="tk">new</span> Label(<span class="ts">"count"</span>, () -&gt; clicks);
+add(count.setOutputMarkupId(<span class="tk">true</span>));
+
+add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="ts">"increment"</span>) {
+    <span class="ta">@Override</span>
+    <span class="tk">public void</span> onClick(AjaxRequestTarget target) {
+        clicks++;
+        target.add(count);
+    }
+});</code></pre>
+    </li>
+    <li>
+      <h3>Secure by default</h3>
+      <p>A strict Content Security Policy without <code>unsafe-inline</code>: every header contribution gets a nonce automatically. URLs do not expose your model.</p>
+      <p class="fname">MyApplication.java</p>
+<pre class="code"><code><span class="ta">@Override</span>
+<span class="tk">protected void</span> init() {
+    <span class="tk">super</span>.init();
+    <span class="tc">// CSP is on by default; allow one extra image host</span>
+    getCspSettings().blocking()
+        .add(CSPDirective.IMG_SRC,
+             <span class="ts">"https://images.example.org"</span>);
+}</code></pre>
+    </li>
+    <li>
+      <h3>Tested without a browser</h3>
+      <p>WicketTester renders pages and components in a plain unit test: no browser, no container. Check markup, click links, submit forms.</p>
+      <p class="fname">HelloWorldTest.java</p>
+<pre class="code"><code>WicketTester tester =
+    <span class="tk">new</span> WicketTester(<span class="tk">new</span> MyApplication());
+tester.startPage(HelloWorld.<span class="tk">class</span>);
+tester.assertLabel(<span class="ts">"message"</span>, <span class="ts">"Hello World!"</span>);</code></pre>
+    </li>
+  </ol>
+
+  <dl class="also">
+    <div><dt>Internationalized</dt><dd>Over 25 languages, per application, page or component.</dd></div>
+    <div><dt>Many tabs, one session</dt><dd>Page state is stored, so new tabs and windows are safe.</dd></div>
+    <div><dt>Dependency injection</dt><dd>CDI, Spring and Guice integrations.</dd></div>
+    <div><dt>Jakarta EE</dt><dd>JPA, EJB, Bean Validation and CDI.</dd></div>
+    <div><dt>Your JavaScript and CSS</dt><dd>Global libraries beside component-local resources.</dd></div>
+  </dl>
+</section>
+
+<section class="lasts" id="lasts" aria-labelledby="lasts-title">
+    <div class="lasts-in">
+        <header class="lasts-head">
+            <h2 class="sec-title" id="lasts-title">Open source since 2004</h2>
+            <p>Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one in Wicket {{ featured }}.</p>
+        </header>
+        <dl class="lasts-facts">
+            <div><dt>An Apache project</dt><dd>Developed in the open at the Apache Software Foundation by a community of volunteers, under the Apache License&nbsp;2.0.</dd></div>
+            <div><dt>Upgrades you can plan</dt><dd>Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</dd></div>
+        </dl>
+        {% comment %} Names from the Built with Wicket feed, kept in _data/builtwith.yml. {% endcomment %}
+        <div class="built">
+            <h3>Built with Wicket</h3>
+            <ul class="built-names">
+            {%- for item in site.data.builtwith.names %}
+                <li>{{ item.name }}{% if item.what %} <span>{{ item.what }}</span>{% endif %}</li>
+            {%- endfor %}
+            </ul>
+            <p class="built-links"><a href="{{ site.data.builtwith.feed }}" rel="nofollow">More on Built with Wicket</a> <a href="{{ site.data.builtwith.submit }}" rel="nofollow">Submit your project</a></p>
+        </div>
+    </div>
+</section>
+
+<section class="new11" id="new" aria-labelledby="new-title">
+    <header class="new11-head">
+        <h2 class="sec-title" id="new-title">New in Wicket {{ featured }}</h2>
+        <a class="more" href="{{ site.baseurl }}/start/wicket-{{ featured }}.x.html">Everything about Wicket {{ featured }}</a>
+    </header>
+    {% include highlights.html home=true %}
+</section>
+
+<section class="start" id="start" aria-labelledby="start-title">
+    <div class="start-in">
+        <div class="start-text">
+            <h2 class="sec-title" id="start-title">Get started</h2>
+            <p>Generate a ready-to-run Maven project with the quick start, or add Wicket to the build you already have.</p>
+            <a class="btn" href="{{ site.baseurl }}/start/quickstart.html">Open the quick start</a>
+        </div>
+        {% comment %} The Maven dependency of each line in service: the current line first, then the LTS. {% endcomment %}
+        {%- assign deps = '' | split: '' | push: current | push: lts %}
+        {%- for line in deps %}{% assign v = site.wicket[line.config] %}
+        <article class="dep" aria-labelledby="dep-{{ line.series }}">
+            <h3 id="dep-{{ line.series }}" class="dep-head"><span class="dep-v">{{ v }}</span>{% if line.service == 'lts' %} <abbr class="dep-lts" title="Long-term support">LTS</abbr>{% endif %} <span class="dep-role">{{ line.role | downcase }}{% if line.java %} &middot; Java&nbsp;{{ line.java }}{% endif %}</span></h3>
+            <div class="snippet">
+<pre><code id="mvn-{{ line.series }}">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+  &lt;version&gt;{{ v }}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                <button type="button" class="copy" data-copy="#mvn-{{ line.series }}" aria-label="Copy the {{ v }} dependency" hidden>Copy</button>
+            </div>
+        </article>
+        {%- endfor %}
+    </div>
+</section>
+
+<section class="home-news" aria-labelledby="news-title">
+    <div class="home-news-head">
+        <h2 class="sec-title" id="news-title">Announcements</h2>
+        <p class="home-news-links"><a href="{{ site.baseurl }}/news/">News archive</a> <a type="application/atom+xml" href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
+    </div>
+    <ol class="home-news-list">
+    {%- for post in site.posts limit: 4 %}
+        <li>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+            <div>
+                <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+                {%- if forloop.first %}
+                <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 45 }}</p>
+                {%- endif %}
+            </div>
+        </li>
+    {%- endfor %}
+    </ol>
+</section>

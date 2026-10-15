@@ -7,26 +7,25 @@ active_link: documentation
 {% include mainmenu.html %}
 {% assign classes = site.data.guide_classes %}
 {% assign letters = classes | map: "letter" | uniq | sort %}
-<div class="page-sign guide-sign">
-    <div class="page-sign-inner guide-sign-inner">
-        <div class="guide-sign-text">
+<header class="page-head guide-head">
+    {% include season-photo.html %}
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
             <p class="guide-crumbs"><a href="{{ site.baseurl }}/guide/">User guide</a></p>
             <h1>A–Z index</h1>
-            <p class="page-sign-sub">Every Wicket class the guide explains, and every page by title.</p>
+            <p class="page-sub">Every Wicket class the guide explains, and every page by title.</p>
         </div>
-        {% include guide-search.html id="-sign" %}
+        {% include guide-search.html id="-head" %}
     </div>
-</div>
+</header>
 <main id="main" tabindex="-1">
-    <div class="reading has-rail guide-reading">
-        <div class="reading-rail">
-            <nav aria-label="On this page">
+    <div class="reading has-rail">
+        <nav class="rail" aria-label="{{ site.contentsLabel }}">
                 <div id="toc" class="toc"><div id="toc-title"><h2>{{ site.contentsLabel }}</h2></div><ul>
                     <li class="toc--level-1"><a href="#classes"><span class="toc-text">Classes</span></a></li>
                     <li class="toc--level-1"><a href="#pages"><span class="toc-text">Pages</span></a></li>
                 </ul></div>
-            </nav>
-        </div>
+        </nav>
         <div class="reading-main">
             <section class="guide-group">
                 <h2 id="classes">Classes</h2>

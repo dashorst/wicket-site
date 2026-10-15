@@ -5,60 +5,79 @@ description: The Apache Wicket user guide, by topic, with tutorials, how-to guid
 active_link: documentation
 ---
 {% include mainmenu.html %}
-{% assign oldest = site.data.guide_oldest %}
-<div class="page-sign guide-sign guide-sign--front">
-    <div class="page-sign-inner">
+<header class="page-head guide-head guide-head--front">
+    {% include season-photo.html %}
+    <div class="page-head-in">
         <h1>User guide</h1>
-        <p class="page-sign-sub">Building web applications with Apache Wicket {{ site.data.guide_lines | join: " and " }}.</p>
+        <p class="page-sub">Building web applications with Apache Wicket {{ site.data.guide_lines | join: " and " }}.</p>
         {% include guide-search.html size="large" id="-front" %}
     </div>
-</div>
+</header>
 <main id="main" tabindex="-1">
     <div class="reading guide-front">
         <section class="guide-front-section">
-            <h2>Start here</h2>
-            <p class="guide-group-intro">Five lessons that build one application, from an empty project to a tested page with Ajax.</p>
+            <div class="guide-front-head">
+                <h2>Start here</h2>
+                <p>Five lessons that build one application, from an empty project to a tested page with Ajax.</p>
+            </div>
             {% assign tutorials = site.guide | where: "type", "tutorial" | sort: "order", "last" %}
-            <ol class="guide-route">
+            <ol class="guide-steps">
             {% for doc in tutorials %}
                 <li>
-                    <a class="guide-list-title" href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a>
-                    <span class="guide-list-summary">{{ doc.summary }}</span>
+                    <a href="{{ site.baseurl }}{{ doc.url }}">
+                        <span class="guide-step-n">{{ forloop.index }}</span>
+                        <span class="guide-step-title">{{ doc.title }}</span>
+                        <span class="guide-step-summary">{{ doc.summary }}</span>
+                    </a>
                 </li>
             {% endfor %}
             </ol>
         </section>
 
         <section class="guide-front-section">
-            <h2>Topics</h2>
-            <p class="guide-group-intro">Each topic gathers its lessons, how-to guides, reference and explanation on one page.</p>
-            <ul class="guide-topics">
-            {% for t in site.data.guide.topics %}
-                {% assign pages = site.guide | where: "topic", t.id %}
-                <li>
-                    <a class="guide-list-title" href="{{ site.baseurl }}/guide/topics/{{ t.id }}.html">{{ t.title }}</a>
-                    <span class="guide-list-summary">{{ t.summary }}</span>
-                    <span class="guide-topic-counts">{% for k in site.data.guide.kinds %}{% assign n = pages | where: "type", k.id %}{% if n.size > 0 %}<span>{{ n.size }} {% if n.size == 1 %}{{ k.label | downcase }}{% else %}{{ k.title | downcase }}{% endif %}</span>{% endif %}{% endfor %}</span>
-                </li>
-            {% endfor %}
-            </ul>
+            <div class="guide-front-head">
+                <h2>Topics</h2>
+                <p>Each topic gathers its lessons, how-to guides, reference and explanation on one page.</p>
+            </div>
+            <div class="guide-tree">
+                <p class="gt-root">User guide <span>{{ site.guide.size }} pages</span></p>
+                <ul>
+                {% for t in site.data.guide.topics %}
+                    {% assign pages = site.guide | where: "topic", t.id %}
+                    <li>
+                        <a class="gt-row" href="{{ site.baseurl }}/guide/topics/{{ t.id }}.html">
+                            <span class="gt-name">{{ t.title }}</span>
+                            <span class="gt-sum">{{ t.summary }}</span>
+                            <span class="gt-count">{{ pages.size }} pages</span>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
         </section>
 
         <section class="guide-front-section">
-            <h2>Look it up</h2>
-            <ul class="guide-lookup">
-                <li><a class="guide-list-title" href="{{ site.baseurl }}/guide/a-z.html">A–Z index</a><span class="guide-list-summary">Every Wicket class the guide explains, and every page by title.</span></li>
-                {% assign refs = "wicket-tags,component-lifecycle,form-components,model-types,header-items,glossary" | split: "," %}
-                {% for slug in refs %}{% assign doc = site.guide | where_exp: "d", "d.url contains slug" | first %}{% if doc %}
-                <li><a class="guide-list-title" href="{{ site.baseurl }}{{ doc.url }}">{{ doc.title }}</a><span class="guide-list-summary">{{ doc.summary }}</span></li>
-                {% endif %}{% endfor %}
-            </ul>
+            <div class="guide-front-head">
+                <h2>Look it up</h2>
+                <p>The reference pages readers return to, and an index of every class the guide explains.</p>
+            </div>
+            <nav class="page-index" aria-label="Reference">
+                <ul>
+                    <li><a href="{{ site.baseurl }}/guide/a-z.html"><span class="page-index-label">A–Z index</span><span class="page-index-desc">Every Wicket class the guide explains, and every page by title.</span></a></li>
+                    {% assign refs = "wicket-tags,component-lifecycle,form-components,model-types,header-items,glossary" | split: "," %}
+                    {% for slug in refs %}{% assign doc = site.guide | where_exp: "d", "d.url contains slug" | first %}{% if doc %}
+                    <li><a href="{{ site.baseurl }}{{ doc.url }}"><span class="page-index-label">{{ doc.title }}</span><span class="page-index-desc">{{ doc.summary }}</span></a></li>
+                    {% endif %}{% endfor %}
+                </ul>
+            </nav>
         </section>
 
         <section class="guide-front-section guide-older">
-            <h2>Older versions</h2>
-            <p>The guide covers the release lines in service. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. For lines out of service, use their single-page guide:
-            {% assign older = "9,8,7" | split: "," %}{% for v in older %}<a href="https://nightlies.apache.org/wicket/guide/{{ v }}.x/single.html">Wicket {{ v }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+            <div class="guide-front-head">
+                <h2>Older versions</h2>
+                <p>The guide covers the release lines in service. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. For lines out of service, use their single-page guide:
+                {% assign older = "9,8,7" | split: "," %}{% for v in older %}<a href="https://nightlies.apache.org/wicket/guide/{{ v }}.x/single.html">Wicket {{ v }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}.</p>
+            </div>
         </section>
     </div>
 </main>

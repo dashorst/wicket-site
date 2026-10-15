@@ -1,4 +1,4 @@
-# Release lines shown on the departure board (homepage and download page).
+# Release lines shown on the release board (homepage and download page).
 #
 # On release day:
 #   - set `status` of the released line to `current` (or `lts`)
@@ -19,6 +19,7 @@
 #         of the line; leave empty for lines that have no release yet.
 # role:   what a line in service is for, shown instead of its status, e.g.
 #         "For production" on the LTS and "For new features" on the quarterly.
+# java:   the Java version a line in service needs, shown with its Maven dependency.
 #
 # Lines in service are shown in the order listed here: the LTS first.
 
@@ -33,6 +34,7 @@ lines:
     support: "Until 14.0.0, Jul 2027"
     page: /start/wicket-10.x.html
     role: "For production"
+    java: "17"
 
   - series: "11"
     config: version_11
@@ -42,6 +44,7 @@ lines:
     support: "Until 12.0.0, Jan 2027"
     page: /start/wicket-11.x.html
     role: "For new features"
+    java: "21"
 
   - series: "12"
     version: "12.0.0"

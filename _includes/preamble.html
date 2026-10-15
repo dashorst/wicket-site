@@ -1,0 +1,14 @@
+{% if page.titlePicture or page.preamble %}
+<header class="preamble">
+    {% if page.titlePicture %}
+        {% assign pictureAttrs = "" %}
+        {% for prop in page.titlePicture %}
+           {% for subprop in prop %}
+             {% capture pictureAttrs %}{{ pictureAttrs }} {{subprop[0]}}="{{subprop[1]}}" {% endcapture %}
+           {% endfor %}
+        {% endfor %}
+    <img {{pictureAttrs}}>
+    {% endif %}
+    {% if page.preamble %}<p>{{ page.preamble | markownify }}</p>{% endif %}
+</header>
+{% endif %}
