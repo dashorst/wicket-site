@@ -31,7 +31,7 @@
         background: linear-gradient(180deg, rgba(var(--veil), .8) 0, rgba(var(--veil), .6) calc(var(--mast-h) - 4px), rgba(var(--veil), 0) calc(var(--mast-h) + 40px),
             rgba(var(--veil), 0) calc(var(--band-m) - 110px), rgba(var(--veil), 1) var(--band-m));
     }
-    .page-head .photo-meta { top: 8px; bottom: auto; }
+    .page-head .photo-meta { top: 8px; bottom: auto; left: var(--pad); }
     .page-head-in { min-height: 0; padding: calc(var(--band-m) - var(--mast-h) - 34px) var(--pad) 26px; }
     .page-head h1 { font-size: 2.3rem; }
     .page-sub { font-size: 1.2rem; }

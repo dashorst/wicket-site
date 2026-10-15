@@ -156,7 +156,10 @@ tester.assertLabel(<span class="ts">"message"</span>, <span class="ts">"Hello Wo
             <div>
                 <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
                 {%- if forloop.first %}
-                <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 45 }}</p>
+                {%- comment %} The first two sentences of the newest post. {% endcomment %}
+                {%- assign sentences = post.excerpt | strip_html | normalize_whitespace | strip | split: '. ' %}
+                {%- assign lead = sentences | slice: 0, 2 | join: '. ' %}{% assign end = lead | slice: -1 %}
+                <p>{{ lead }}{% unless end == '.' %}.{% endunless %}</p>
                 {%- endif %}
             </div>
         </li>
