@@ -1,336 +1,302 @@
 ---
 name: Apache Wicket
-description: The project site for Apache Wicket, laid out as a station hall with a departure board of release lines.
+description: The project site for Apache Wicket, where one orange ribbon runs through the component tree under a seasonal photograph.
 colors:
-  signal: "#E9752A"
-  signal-deep: "#B4511A"
-  plate: "#FFC72C"
-  stop: "#C8102E"
-  board: "#0D1B3D"
-  board-row: "#13244D"
-  board-rule: "#26386A"
-  board-text: "#FFFFFF"
-  board-dim: "#A9B5D3"
-  hall: "#F4F6F9"
-  paper: "#FFFFFF"
-  ink: "#13203F"
-  ink-soft: "#46536E"
-  rule: "#CDD4DF"
+  ribbon: "#EE7F2D"
+  ribbon-under: "#C9661F"
+  ribbon-text: "#F39A55"
+  ribbon-deep: "#9A430A"
+  cloth: "#103C35"
+  cloth-deep: "#0B2E28"
+  muted: "#A8C7BD"
+  paper: "#F6F8F7"
+  paper-tint: "#E9F0ED"
+  code-bg: "#E4ECE8"
+  rule: "#CFDAD5"
+  field-stroke: "#9FB4AC"
+  ink: "#14241F"
+  ink-soft: "#4A5E57"
+  code-green: "#1C5E43"
+  code-tag: "#0F4A40"
 typography:
   display:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(2.4rem, 5.2vw, 4.5rem)"
-    fontWeight: 800
-    lineHeight: 0.95
-    letterSpacing: "-0.03em"
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(3.4rem, 5.6vw, 5.1rem)"
+    fontWeight: 700
+    lineHeight: 0.9
+    letterSpacing: "-0.022em"
   headline:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4vw, 3rem)"
-    fontWeight: 800
-    lineHeight: 1.2
-    letterSpacing: "-0.03em"
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(2.4rem, 4.4vw, 3.8rem)"
+    fontWeight: 700
+    lineHeight: 1.02
+    letterSpacing: "-0.02em"
+  section:
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(2rem, 3vw, 2.6rem)"
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: "-0.015em"
   title:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)"
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(1.75rem, 2.6vw, 2.25rem)"
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: "-0.015em"
+  subtitle:
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "1.45rem"
     fontWeight: 700
     lineHeight: 1.2
-    letterSpacing: "-0.02em"
   lead:
-    fontFamily: "Source Sans Pro, system-ui, sans-serif"
-    fontSize: "clamp(1.15rem, 1.6vw, 1.3rem)"
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "clamp(1.25rem, 1.7vw, 1.5rem)"
     fontWeight: 400
-    lineHeight: 1.55
+    lineHeight: 1.3
   body:
-    fontFamily: "Source Sans Pro, system-ui, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: 1.6
-  label:
-    fontFamily: "Overpass, Source Sans Pro, system-ui, sans-serif"
-    fontSize: "0.8rem"
-    fontWeight: 600
-    letterSpacing: "0.06em"
-    fontFeature: "\"tnum\" 1"
-  board-figure:
-    fontFamily: "Overpass Mono, Source Code Pro, ui-monospace, monospace"
-    fontSize: "1.35rem"
-    fontWeight: 600
-    fontFeature: "\"tnum\" 1"
-  code:
-    fontFamily: "Source Code Pro, ui-monospace, monospace"
-    fontSize: "0.875rem"
+    fontFamily: "Alegreya, Georgia, serif"
+    fontSize: "1.1875rem"
     fontWeight: 400
     lineHeight: 1.55
+  label:
+    fontFamily: "Alegreya SC, Alegreya, Georgia, serif"
+    fontSize: "1rem"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "0.03em"
+  ui:
+    fontFamily: "Alegreya Sans, Alegreya, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 500
+    lineHeight: 1.2
+  code:
+    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.65
 rounded:
-  plate: "0.125rem"
-  panel: "0.313rem"
+  square: "2px"
+  bead: "3px"
 spacing:
-  unit: "1rem"
-  gutter: "1rem"
-  gutter-wide: "3rem"
-  panel: "1.5rem"
-  panel-wide: "2.25rem"
-  section: "5rem"
+  pad-wide: "56px"
+  pad-mid: "36px"
+  pad-narrow: "18px"
+  column-gap: "48px"
+  section-y: "56px"
+  measure: "68ch"
+  max: "1440px"
+  ribbon-w: "7px"
 components:
   button-primary:
-    backgroundColor: "{colors.signal}"
-    textColor: "{colors.board}"
-    typography: "{typography.label}"
-    rounded: "{rounded.plate}"
-    padding: "0.6rem 1rem 0.5rem"
-  button-primary-hover:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-  button-primary-active:
-    backgroundColor: "{colors.board-row}"
-    textColor: "{colors.board-text}"
-  button-neutral:
-    backgroundColor: "transparent"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.6rem 1rem 0.5rem"
-  button-neutral-hover:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-  plate-lts:
-    backgroundColor: "{colors.plate}"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.35em 0.5em 0.25em"
-  status-boarding:
-    backgroundColor: "{colors.signal}"
-    textColor: "{colors.board}"
-    rounded: "{rounded.plate}"
-    padding: "0.2em 0.55em 0.1em"
-  status-last-call:
-    backgroundColor: "transparent"
-    textColor: "{colors.plate}"
-    rounded: "{rounded.plate}"
-    padding: "0.1em 0.45em 0"
-  status-eol:
-    backgroundColor: "{colors.stop}"
-    textColor: "{colors.board-text}"
-    rounded: "{rounded.plate}"
-    padding: "0.2em 0.55em 0.1em"
-  board:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    rounded: "{rounded.panel}"
-    padding: "2.25rem 2.25rem 1.5rem"
-  ticket:
-    backgroundColor: "{colors.paper}"
+    backgroundColor: "{colors.ribbon}"
     textColor: "{colors.ink}"
-    padding: "1.5rem"
-  reading-rail:
-    textColor: "{colors.ink-soft}"
-    width: "14rem"
-  jump-list-entry:
-    backgroundColor: "transparent"
-    textColor: "{colors.board}"
-    padding: "0.75rem 0 0.8rem"
-  station-header:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    height: "4.25rem"
-  page-sign:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    padding: "3.5rem 3rem 2.75rem"
-  table-head:
-    backgroundColor: "{colors.board}"
-    textColor: "{colors.board-text}"
-    padding: "0.6rem 0.75rem 0.45rem"
-  input-wizard:
+    typography: "{typography.ui}"
+    rounded: "{rounded.square}"
+    padding: "12px 18px"
+  button-primary-hover:
+    backgroundColor: "{colors.ribbon-text}"
+    textColor: "{colors.ink}"
+  bead:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
     typography: "{typography.code}"
-    rounded: "{rounded.plate}"
-    height: "2.5rem"
-  code-inline:
+    rounded: "{rounded.bead}"
+    padding: "0 1ch"
+  bead-lit:
+    backgroundColor: "{colors.ribbon}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.bead}"
+  field:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.plate}"
-    padding: "0.05em 0.3em"
+    rounded: "{rounded.square}"
+    padding: "0 44px 0 12px"
+    height: "44px"
+  code-block:
+    backgroundColor: "{colors.code-bg}"
+    textColor: "{colors.ink}"
+    typography: "{typography.code}"
+    rounded: "{rounded.square}"
+    padding: "14px 16px"
+  sheet:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    padding: "16px 18px 18px"
+  cloth-band:
+    backgroundColor: "{colors.cloth}"
+    textColor: "{colors.paper}"
+    padding: "40px 56px"
+  footer:
+    backgroundColor: "{colors.cloth}"
+    textColor: "{colors.muted}"
+    padding: "40px 56px 48px"
 ---
 
 # Design System: Apache Wicket
 
 ## Overview
 
-**Creative North Star: "The Departure Board"**
+**Creative North Star: "The Ribbon Through the Tree"**
 
-The site is a European railway station. A pale station-hall ground carries deep night-blue board panels with white tabular rows; the release lines are trains on that board, departing on a timetable (a quarterly major, a yearly long-term-support intercity). Every page arrives under a night-blue signage band, and reading pages open with a platform sign carrying the page title. Information is set the way a timetable sets it: ruled rows, tabular figures, short heavy labels, no ornament that a station would not hang.
+A Wicket page is a tree of Java components that mirrors its HTML, and the site is drawn the same way: one orange ribbon runs from the seasonal photograph at the top of a page down into the component tree, into the reading rail, into lists of guide pages, folding at a square elbow into every child. The ribbon is the only loud element. Everything else is cool paper, bookcloth green and ink, set in a humanist book face.
 
-Density is timetable density: rows are compact and ruled with 1px lines, while the sections between them breathe (5rem between home sections). Colour is spent by function, as signage spends it. Wicket orange means "now", signage yellow sits on plates, red means a cancelled line. The light hall and the dark board are the only two grounds; everything else is lettering, rules and plates.
+Every page opens on a photograph of the current season (or a dated occasion) under a cool paper veil that only thickens where text sits. The homepage hero carries the lockup on it; every other page carries its title band on it. Below the photograph the page turns to paper for reading, with bookcloth green fields for the homepage component tree and the footer, and a pale green tint for alternating sections and asides. The density is that of a well-set book: generous measure, ink rules above lists and tables, hairlines between rows, few boxes.
 
-The page refuses the framework-homepage default of headline, code panel and three feature cards. Groups are ruled lists and tables, not card grids.
+The world refuses the framework-homepage default of a headline, a code panel and three feature cards, and it refuses cream or warm paper.
 
 **Key Characteristics:**
-- Two grounds: light station hall and night-blue board.
-- Orange marks what is current; yellow marks plates; red marks end of life.
-- Overpass for signage and headings, Source Sans Pro for reading, Overpass Mono for board figures, Source Code Pro for code; tabular numerals in every table and date.
-- Square enamel plates (2px corners), 1px timetable rules, a 4px orange band under the header.
-- One signature motion: version figures flip in once like split-flaps.
+- One orange ribbon, drawn as a continuous band with square folded elbows, connecting parent to child wherever there is a hierarchy.
+- A seasonal photograph behind the masthead and title on every page, under a paper veil.
+- Bookcloth green fields for the tree and the footer; cool paper and a pale green tint for reading.
+- Alegreya for headings and body, Alegreya SC for dates and small labels, Alegreya Sans for interface text, JetBrains Mono for code.
+- Square corners (2px), beads at 3px, ink rules (2px) over lists and tables, hairlines (1px) between rows.
 
 ## Colors
 
-A night-blue and hall-white signage palette with three functional signal colours.
+A cool, green-grey book palette with a single warm voice: Wicket orange.
 
 ### Primary
-- **Wicket Signal Orange** (signal): the "now" signal. Primary buttons, the boarding status plate, the boarding row's version, the featured version in the board title, the active navigation underline, the 4px band under the header and above the legal strip, the first stop on the route line, the ticket's top edge. On the board it is legible as text; on light ground it is a fill, not text.
-- **Deep Signal Orange** (signal-deep): orange as text on hall and paper. Body links and link hovers on light ground, where plain signal orange would fail contrast.
+- **Wicket Ribbon Orange** (`ribbon`): the ribbon itself, rules that open a highlighted list, the run of ribbon under the active menu item, the lit bead, the one action button, text selection. Graphic use only; never text on paper.
+- **Ribbon Reverse** (`ribbon-under`): the ribbon's back side, shown on diagonal runs at a fold in the drawn tree and as the stroke of knots.
+- **Ribbon on Cloth** (`ribbon-text`): orange for text and code on the green fields (5.6:1), and the hover state of orange buttons.
+- **Burnt Ribbon** (`ribbon-deep`): orange for text on paper (6.2:1): link underlines, dates, small-caps labels, list markers, Java keywords, the focus ring.
 
 ### Secondary
-- **Signage Yellow** (plate): platform plates only. The LTS plate, the last-call outline plate, the "In service / Departures / Out of service" group headers on the board, link hovers on board ground, the focus ring and text selection.
-
-### Tertiary
-- **Stop Red** (stop): end of life only. The end-of-life plate and the 2px strike through a cancelled version.
+- **Bookcloth Green** (`cloth`): the homepage component-tree band and the footer.
+- **Deep Bookcloth** (`cloth-deep`): name chips in the narrow-screen tree list, the photo credit chip.
+- **Lichen** (`muted`): secondary text on cloth (6.7:1).
 
 ### Neutral
-- **Night Board** (board): the board panel, the header band, the platform sign, the footer, table heads, and the colour of headings and plate lettering on light ground.
-- **Board Row Blue** (board-row): pressed state of the primary button.
-- **Board Rule Blue** (board-rule): 1px rules between board rows, the 2px rule under the board head, the board's 1px edge on the homepage.
-- **Board White** (board-text): lettering on the board and the signage bands.
-- **Board Dim** (board-dim): secondary lettering on the board: column heads, "when" dates, superseded and scheduled lines, the platform-sign subline, footer text.
-- **Station Hall** (hall): the page ground, code ground inside the ticket, the notches cut out of the ticket stub.
-- **Ticket Paper** (paper): raised reading surfaces: the ticket, code blocks, inline code, the upgrade paths table, the "Also included" panel, the legal strip.
-- **Timetable Ink** (ink): body text on hall and paper.
-- **Soft Ink** (ink-soft): secondary text on light ground: intros, dates, descriptions, file names above code.
-- **Timetable Rule** (rule): 1px rules on light ground: table rows, ruled list items, code-block borders, the dashed perforation of the ticket stub.
+- **Cool Paper** (`paper`): the page ground, sheets, fields, beads at rest. Also the veil over the photograph.
+- **Pale Green Tint** (`paper-tint`): the second field for alternating homepage sections, blockquotes and version notes.
+- **Code Ground** (`code-bg`): code blocks, inline code, the quick start's generated command.
+- **Hairline** (`rule`): 1px row separators and section hairlines.
+- **Field Stroke** (`field-stroke`): input and select borders, scrollbar thumb.
+- **Ink** (`ink`): text, headings, the 2px ink rules, and text on orange.
+- **Soft Ink** (`ink-soft`): secondary text, summaries, file names, table headers (6.3:1 on paper).
+- **Code Green** (`code-green`) and **Tag Green** (`code-tag`): strings and numbers, and HTML tags and types, in highlighted code.
 
 ### Named Rules
-**The Now Signal Rule.** Orange marks what is current or the one primary action. It is never a decorative accent, a section tint or a background wash.
+**The One Ribbon Rule.** Wicket orange is a ribbon, a rule or the one action on a screen. It is never a fill for a panel, a heading color or a decorative wash beyond the light hover tint (`rgba(238, 127, 45, .16)`).
 
-**The Plate Rule.** Signage yellow appears on plates, on board ground, and as the focus ring. It is never body text on the light hall.
+**The Two Oranges Rule.** Text in orange uses `ribbon-deep` on paper and `ribbon-text` on cloth. The bright `ribbon` carries ink text when it is a fill.
 
-**The Stop Rule.** Red is reserved for end of life: the red plate and the struck-through version. Nothing else on the site is red.
+**The Cool Paper Rule.** The ground is cool paper with a green cast. No cream, no warm white, no pure white.
 
 ## Typography
 
-**Display Font:** Overpass (with Source Sans Pro, system-ui)
-**Body Font:** Source Sans Pro (with system-ui)
-**Label/Mono Font:** Overpass Mono for board figures (with Source Code Pro); Source Code Pro for code
+**Display Font:** Alegreya (with Georgia, serif)
+**Body Font:** Alegreya (with Georgia, serif)
+**Label Font:** Alegreya SC for dates and small labels; Alegreya Sans for interface text
+**Mono Font:** JetBrains Mono (with ui-monospace)
 
-**Character:** Overpass is highway and station signage lettering: heavy, open, slightly condensed, read at a distance. Source Sans Pro is the timetable's small print, calm at length. All faces are self-hosted.
+**Character:** One humanist book family in three cuts: the serif reads and titles, the small caps date and label, the sans runs the menu, buttons and metadata. All four families are self-hosted under the SIL Open Font License.
 
 ### Hierarchy
-- **Display** (800, clamp(2.4rem, 4.6vw, 3.75rem), 0.95): the board title only. The version inside it switches to Overpass Mono 700 in signal orange.
-- **Headline** (800, clamp(2rem, 4vw, 3rem), -0.03em): home section heads ("Why Wicket", "New in Wicket 11"). Section headings are plain words; the station metaphor lives in the visual system, not in the names. The platform-sign h1 on reading pages uses the same weight at clamp(2.1rem, 4.5vw, 3.6rem), line-height 1, max 22ch. Secondary section heads (Announcements, Built with Wicket) step down to clamp(1.6rem, 3vw, 2.25rem) over a 2px board rule.
-- **Title** (700, clamp(1.35rem, 2.2vw, 1.75rem), -0.02em): route stops and panels. Base markdown headings run h1 2.25rem/800, h2 1.6rem, h3 1.25rem, h4 1.1rem, all 700, line-height 1.2, balanced wrapping, in board blue.
-- **Lead** (400, clamp(1.15rem, 1.6vw, 1.3rem), 1.55): preambles and section intros, max 62ch.
-- **Body** (400, 15px rising to 17px at 769px, 1.6): reading copy, max 72ch.
-- **Label** (600, 0.8rem, 0.06em, uppercase): board column heads and board group headers only. Navigation, footer links, table heads and dates use Overpass 600 in sentence case.
-- **Board figure** (Overpass Mono 600, 1.35rem): version numbers on the board.
+- **Display** (700, `clamp(3.4rem, 5.6vw, 5.1rem)`, 0.9): the homepage lockup "Apache Wicket", with the release number at the same size in weight 400 behind a 3px orange rule.
+- **Headline** (700, `clamp(2.4rem, 4.4vw, 3.8rem)`, 1.02): the title of every page on the photo band, at most 20ch wide.
+- **Section** (700, `clamp(2rem, 3vw, 2.6rem)`, 1.05): homepage and guide front-page section titles.
+- **Title** (700, `clamp(1.75rem, 2.6vw, 2.25rem)`, 1.1): h2 inside reading pages and guide groups.
+- **Subtitle** (700, 1.45rem, 1.2): h3 in reading pages and the "Why Wicket" columns; list entries in the serif run 1.2 to 1.35rem.
+- **Lead** (italic 400 for taglines and page subtitles; roman 400 for the preamble and definition): the sentence under a title.
+- **Body** (400, 1.1875rem, 1.55; 1.6 in reading pages; 1.125rem on phones): running text, at a measure of 68ch.
+- **Label** (Alegreya SC 500, 1rem, letter-spacing .03 to .06em): dates, table headers, rail and list headings, "LTS", the guide breadcrumb. Small caps, never forced uppercase.
+- **UI** (Alegreya Sans 500 to 700, about 1rem): menu, buttons, links rows, summaries, metadata, table cells.
+- **Code** (JetBrains Mono 400, .8125rem, 1.65; 12 to 13px in homepage snippets): code blocks, beads, file paths.
 
 ### Named Rules
-**The Tabular Figures Rule.** Every table, board, date and step number sets `font-variant-numeric: tabular-nums`, so figures line up like a timetable.
+**The Small Caps Rule.** Dates and labels are set in Alegreya SC in `ribbon-deep` or `ink-soft`. A label names the list or table directly below it; it is not a tag line above a heading.
 
-**The Signage Voice Rule.** Overpass carries everything a station would sign (headings, nav, table heads, dates, plates, buttons); Source Sans Pro carries everything a passenger reads at length.
+**The Lining Numbers Rule.** Version numbers in the serif use lining figures; dates in lists use tabular figures.
 
 ## Layout
 
-Content sits in a centred column capped at 82rem with 1.25rem side gutters, widening to 3rem from 960px. Breakpoints are 590px, 769px, 960px, 1152px and 1295px; the legacy Taiga 48-column grid and its layout classes (full, half, one-third and so on) remain in use by Markdown page content and must keep working.
+Content sits in a 1440px frame with side padding of 56px, 36px below 1400px, and 18px below 861px. Homepage sections and two-column heads use a 4 : 8 grid with a 48px gap: the title on the left, the text or list on the right. Sections run 56px top and 60px bottom on wide screens, about 44px on phones, alternating paper and pale tint, with the cloth band after the hero and the cloth footer at the end.
 
-The homepage arrival hall sets the board (8fr) beside the ticket (4fr, at least 19rem), top edges aligned, from 1152px, on a hall ground whose top 7rem continues the night-blue header band behind them. Below 1152px they stack. Below the hall the homepage runs: "Why Wicket" (the route), Built with Wicket as proof that it lasts, the release highlights, then announcements; the upgrade paths live on the download page. Home sections are separated by 5rem (4.5rem for announcements and showcase). Route stops run as a two-column 5/7 split of text and code from 960px. Ruled lists (station index, "Also included") go one, two, then three columns at 769px and 1152px.
+Reading pages have a title band on the photograph (at least 200px tall, title bottom-aligned), then a reading column of up to 54rem with a 68ch measure. From 1100px the column gets a sticky 15rem rail on the left for the page's sections, or a 13rem index on the right for the news archive. Below 1100px the rail becomes a first-level index above the text.
 
-Under 769px tables become stacked rows: the board turns each line into a two-column grid of release and status over service and date, with support beneath; the connections table stacks its cells. Code samples keep their lines and scroll sideways under 590px, with a fade at the right edge.
+The homepage component tree is a three-column grid (Java sheet, ribbon lane, markup sheet) on shared rows. Below 1240px it becomes a nested list with the ribbon down the left, each Java line followed by its tag.
 
-Reading pages open with a full-width platform sign. Below it the reading area shares the 82rem column with 2.5rem top padding (2.75rem from 960px), and everything in it is left-aligned to the column's edge: no centred components. When the page has sections, from 1152px it becomes a two-column grid of a 14rem sticky "On this page" rail and a content column of at most 52rem, 4rem apart, so the right side of a wide screen is not left empty beside a narrow text. Below 1152px the rail moves above the text. Base spacing is 1rem paragraph rhythm.
+On phones the photograph becomes its own band (380px on the homepage, 250px on other pages) that fades to paper, and the title and lockup read on paper below it. The homepage menu wraps onto two centred rows; other menus scroll sideways with a fade at the edge. Touch targets on link rows get 10px vertical padding under `pointer: coarse`.
 
 ## Elevation & Depth
 
-The site is flat except for two objects that hang in the hall: the departure board and the ticket. Both carry a soft, downward, board-tinted shadow with a negative spread so it reads as a hanging object, not a floating card. Everything else is separated by ground colour (hall against board against paper) and by rules.
+Flat by default. Depth comes from three things: the photograph under its veil, the change of field from paper to tint to cloth, and a single family of soft, low sheets that lift paper off a darker ground.
 
 ### Shadow Vocabulary
-- **Board hang** (`box-shadow: 0 1.5rem 3rem -1.5rem rgba(13, 27, 61, 0.55)`): the departure board.
-- **Ticket hang** (`box-shadow: 0 1.25rem 2.5rem -1.5rem rgba(13, 27, 61, 0.45)`): the ticket.
+- **Sheet on cloth** (`box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 16px 36px -22px rgba(0, 0, 0, .55)`): the Java and markup sheets in the component tree.
+- **Sheet on paper** (`box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .35)`): dependency cards and the quick start wizard; the guide search sheet uses the same shape at .45.
+- **Dropdown** (`box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 24px 48px -24px rgba(6, 26, 22, .55)`): search results over the page.
+- **Book cover** (`box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 16px 32px -20px rgba(6, 26, 22, .5)`): covers on the books page; on hover a 3px orange ring is added.
 
 ### Named Rules
-**The Two Objects Rule.** Only the board and the ticket cast shadows. Panels, tables, code and buttons are flat.
+**The Paper Veil Rule.** Text on the photograph sits under a cool paper scrim that is strongest at the masthead and the text corner and clear elsewhere. A dark photo gets the stronger veil; a small photo is shown softened rather than stretched sharp.
+
+**The Low Sheet Rule.** Shadows are long, soft and negative-spread, so a sheet reads as paper resting on a ground. No hard offset shadows, no card stacks.
 
 ## Shapes
 
-Corners are nearly square, as enamel plates are. Plates, buttons, inputs, inline code and code blocks take a 2px radius (plate); the board panel and the quick-start wizard take 5px (panel). The ticket is square-cornered, with a 6px orange top edge and a stub torn off along a 2px dashed perforation, notched by two half-circles of hall colour. The one round form is the station dot on a route line: route stops on the homepage are 1.35rem circles with a 4px board-blue ring on a 4px line, the first stop filled orange; the reading rail repeats the form at 0.8rem with a 3px ring on a 3px line, the current section filled orange.
+Corners are square: 2px on buttons, sheets, code, fields, images and chips; 3px on beads (the ribbon's components, letter and step markers, kind and version tags, the lit rail entry). Nothing is rounder.
 
-Rules carry the structure: 1px for rows and list items, 2px under section heads and the board head, 3px for the navigation underline, 4px for the orange header band.
+The ribbon is the recurring form. Drawn in SVG on the homepage it is a mitred band whose diagonal runs show the reverse side; drawn in CSS it is a 5 to 7px left border with a bottom border into each item and a 2px inner radius at the fold, with 3px runs for nested levels. A line in service carries a 16 x 5px run of ribbon before its status.
 
-### Named Rules
-**The Ruled Groups Rule.** Groups are separated by a 1px top or bottom rule, never by boxes or card outlines.
+Rules are structural: a 2px ink rule opens every list, table and index; 1px hairlines separate rows; a 1px or 2px orange rule opens the release line, blockquotes, version notes, the release highlights and the search results.
 
 ## Components
 
 ### Buttons
-Enamel signage plates: square, heavy Overpass lettering, no gloss.
-- **Shape:** near-square corners (plate radius), 2px border reserved for outline variants.
-- **Primary:** signal orange fill with board-blue lettering, Overpass 700 at 1rem, padding 0.6rem 1rem 0.5rem.
-- **Hover / Focus:** hover turns the plate night blue with white lettering; pressed goes board-row blue. Focus is a 3px signage-yellow outline offset 2px. Colour transitions run 160ms on cubic-bezier(0.16, 1, 0.3, 1).
-- **Neutral:** transparent with a 2px board-blue border and board-blue lettering, filling night blue on hover. The ticket's copy button is a small neutral plate that turns board blue with yellow "Copied" lettering.
+Few and orange: one action per section.
+- **Shape:** square corners (2px).
+- **Primary:** orange fill, ink text, Alegreya Sans 700 at 1.0625rem, 12 to 13px by 18px.
+- **Hover / Focus:** fill moves to `ribbon-text` over .15s; focus is a 2px `ribbon-deep` outline at 3px offset.
+- **Copy:** a small primary button inside the top right of a snippet; it turns ink on paper when copied.
+- **Jump lists:** Markdown button bars render as a ruled index of serif link labels, not as buttons.
 
-### Plates and status
-- **Style:** small Overpass 700 to 800 plates at 0.8 to 0.9rem with plate radius. LTS is yellow with board lettering; Boarding is orange with board lettering and blinks three times after 1.5s; Last call is a 2px yellow outline with yellow lettering; End of life is red with white lettering. Scheduled, current and superseded are plain lettering in white or dim.
-
-### Cards / Containers
-- **Corner Style:** square (ticket, panels) or panel radius (board, wizard).
-- **Background:** paper on hall for reading panels; board blue for the board and wizard.
-- **Shadow Strategy:** only board and ticket (see Elevation & Depth).
-- **Border:** none, or the board's 1px board-rule edge on the homepage.
-- **Internal Padding:** 1.5rem, widening to 2.25rem from 769px.
+### Beads
+The components on the ribbon. Monospace or serif label in a 1px orange border, 3px corners, paper fill. Hover, focus or the current item fills orange. The root bead is always filled. Used for the tree's components, the guide's kind tag, A-Z letters, tutorial step numbers, quick start step numbers and the search shortcut key.
 
 ### Inputs / Fields
-- **Style:** inside the quick-start wizard (a ticket machine on board ground): paper fields, 2px transparent border, plate radius, 2.5rem high, Source Code Pro lettering; labels in Overpass 600 board-dim.
-- **Focus:** the border turns signage yellow; no outline glow.
+- **Style:** paper fill, 1px `field-stroke` border, 2px corners, 44px tall (52px for the large guide search), Alegreya Sans or mono text.
+- **Hover:** border moves to `ink-soft`.
+- **Focus:** border in `ribbon-deep` with a 2px orange-wash outline.
+- **Selects:** native appearance removed, a small `ribbon-deep` chevron drawn in SVG.
+
+### Cards / Containers
+- **Sheets:** paper on a tint or cloth ground, no border, square corners, the low sheet shadow, 16 to 20px padding. Used for dependency cards, the quick start wizard, the guide search and the code sheets of the tree.
+- **Asides:** blockquotes and version notes on the pale tint with a 1px orange top rule.
 
 ### Navigation
-- **Style:** a night-blue signage band at least 4.25rem tall with a 4px orange bottom band. Overpass 600 at 0.95rem white links with a 3px transparent underline; hover shows a board-dim underline, the active section an orange underline. The GitHub link sits at the far right and turns yellow on hover. Under 960px the links wrap onto their own rows under the logo.
-- **Footer:** night-blue ground, Overpass 600 white links turning yellow and underlined on hover, closed by a paper legal strip under a 4px orange band, carrying the current ASF logo (self-hosted, linked to apache.org) beside the trademark notice.
-
-### Skip link and touch targets
-Every page opens with a "Skip to content" link, hidden until focused, then a paper plate with board-blue Overpass 700 in the top left corner. On touch screens (coarse pointer) the small links (ticket links, board foot, How to upgrade, section footers) and the copy plate grow to 44px targets without changing the desktop layout.
+- **Masthead:** lies on the photograph. Alegreya Sans 500 at 1.0625rem, ink, 26px gaps. Hover shows a `ribbon-deep` underline; the current section carries a 4px orange underline at a deep offset. GitHub is set off by a hairline. On the homepage the menu is centred without the brand; elsewhere the mark and the serif wordmark sit left.
+- **Rail:** the page's sections hang from the ribbon, which drops from the photograph's edge. Entries are Alegreya Sans in `ink-soft`; hover shows the orange wash; the section in view is a lit bead.
+- **Footer:** cloth field, lichen text, paper links with orange underlines, the ASF logo on a paper tile.
 
 ### Links
-Deep signal orange, underlined 1px at a 0.18em offset; hover goes board blue with a 2px underline. Links inside headings inherit the heading colour.
+Inherit the text color with a 1.5px `ribbon-deep` underline at .22em offset that thickens to 3px on hover. Titles in lists hide the underline until hover.
 
-### Tables
-Tables are timetables: a board-blue head row in white Overpass 700 at 0.875rem, 1px rule under each body row, tabular figures, paper on row hover. End-of-life rows strike the version in red.
+### Component Tree (signature)
+On cloth: the Java sheet left, the markup sheet right, beads on the ribbon between, thin threads joining each Java line to its tag on the same row. The ribbon unrolls once from the top over 1.4s (`cubic-bezier(.16, 1, .3, 1)`); pointing at or focusing a bead lights its path and its Java and HTML lines with the orange wash and dims the rest. Reduced motion shows it drawn.
 
-### The Departure Board (signature)
-A night-blue panel of release lines. A head with the display title, on the homepage a one-line definition of Wicket in white Overpass 600 (max 40ch), and a board-dim subline that leads with the LTS, over a 2px board-rule; columns When, Release, Service, Supported, Status in uppercase board-dim labels; group headers "In service", "Departures" and, while a line has just reached end of life, "Out of service" in yellow uppercase; rows ruled 1px in board-rule; version figures in Overpass Mono. The boarding line's version is orange; end-of-life versions are struck through in red and their text dims. The strike and the link underline are drawn on the version as a whole (a 2px rule and a 2px bottom border), because text decoration does not reach the flipping characters. On load each version flips in character by character from a half-turned, half-visible start (700ms per character on cubic-bezier(0.16, 1, 0.3, 1), staggered 35ms per character and 50ms per row, capped at the sixth character and the fifth row so no value waits more than about half a second), once per page load. Under reduced motion, or without JavaScript, the figures stand still and the boarding blink is off. The board is driven by the releases data file and reused on reading pages at a smaller title size. Lines in service run LTS first, and their Status cell names their role ("For production", "For new features") instead of repeating the group header. Version links carry a 2px board-dim underline at 45% so they read as links. The homepage shows the board compact, so it informs without dominating the page: the table holds only the lines in service, labelled "In service" in yellow above its column headers (its caption, in place of a group row), and two summary lines under it carry the rest, each with a yellow label. "Next" lists the next departures (those sharing the earliest date, plus the next new LTS line) as Overpass Mono figures with their LTS plates and dates; "Out of service" lists the end-of-life versions struck through in red with a "How to upgrade" link to the upgrade paths on the download page. The foot links to all release lines and to the release policy; the download page shows every line in full.
+### Seasonal Photograph
+One element in two uses: behind the homepage hero and behind every page title. The season or dated occasion comes from `_data/seasons.yml`. Credits sit in a small cloth chip in the photo's corner. Review builds with `season_selector: true` add a season selector chip beside the credit; production builds do not show it.
 
-### The Ticket (signature)
-A square paper ticket beside the board: orange 6px top edge, a title and one primary action, then a perforated stub carrying one Maven dependency per line in service, LTS first, each labelled with its version in Overpass Mono, its LTS plate and its role, with its own copy plate. Only the first snippet is shown on hall-coloured code ground; the others differ only in their version, so they show their label and copy their own hidden snippet.
-
-### Release Highlights
-What is new in the featured release line, from the highlights data file. On the homepage a "New in Wicket N" section follows "Why Wicket": a headline with a link to the line's page on its baseline, a lead intro, then the highlights as ruled entries in two balanced columns from 960px (CSS columns, entries never split). Every release line's page lists its highlights in one column under "New in Wicket N", including those kept off the homepage, at the full width of the reading column so code samples fit. Each entry has a title, one or two sentences, and optionally facts or a code sample. Facts are board figures on light ground: an Overpass 600 label in soft ink over the value in Overpass Mono 600 at 2rem in board blue, with tabular figures. Code samples use the route's file label and code block.
-
-### The Route (signature)
-Content sections hang on a 4px board-blue route line as numbered stops, each a ringed station dot with text on the left and real code on the right.
-
-### Platform Sign
-Reading pages open with a full-width night-blue band holding the page title in white headline type and a board-dim subline, max 50ch.
-
-### Reading Rail
-The page's sections as stops on a route. From 1152px a 14rem column sticks 1.5rem from the top beside the text, scrolling on its own if taller than the viewport. A board-colour heading ("On this page", from the site config) sits over a 3px board-blue line; top-level sections hang on it as 0.75rem hall-filled dots with a 3px board-blue ring and Overpass 600 labels at 0.875rem in soft ink, turning board blue and underlined on hover. The section in view becomes the current stop: its label turns board blue and its dot fills signal orange, set by a scroll observer. Second-level sections share the 0.875rem size at weight 500 and are indented without dots. Section numbers are hidden. Below 1152px the rail is a compact paper block above the text listing top-level sections only.
-
-### Jump Lists
-Lists of links in page content are a left-aligned ruled index, not boxed tiles: each entry is an Overpass label at 1.05rem in board blue under a 1px timetable rule, hovering to deep signal orange with a 2px underline. They run one column, two from 769px, three from 1152px, like the other ruled lists. Icon glyphs, line breaks and empty placeholder cells in the legacy markup are hidden. When the reading rail is present, a jump list whose links all point within the page is hidden because it repeats the rail; lists that link to other pages stay.
+### Release Line
+One compact line on the photo: the current release and the LTS in bold serif figures with Alegreya SC labels, a link to release lines and support, on a translucent paper panel with a 1px orange top rule. The full release board lives on the download page as a ruled table grouped under small-caps headings.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the two grounds: station hall for reading, night board for signage, the board, the wizard and the footer.
-- **Do** spend orange only on what is current and on the single primary action per view.
-- **Do** set every figure in tables, boards and dates as tabular numerals.
-- **Do** separate groups with 1px rules in timetable rule colour (light ground) or board-rule colour (board ground).
-- **Do** keep corners at 2px for plates, buttons, inputs and code, and 5px for board panels.
-- **Do** run the split-flap entrance once per load and switch it off under reduced motion.
-- **Do** self-host every font and script; Overpass, Overpass Mono, Source Sans Pro and Source Code Pro ship from the site's own fonts directory.
-- **Do** align reading content to the left edge of the column and keep text to 52rem beside the rail; never centre components in the reading area.
-- **Do** keep page content writable in plain Markdown with the legacy layout classes; new station components are styled by class, not by requiring authors to write new markup on ordinary pages.
+- **Do** draw hierarchy with the ribbon: a left run and a folded elbow into each child, in `ribbon` at 5 to 7px.
+- **Do** open lists, tables and indexes with a 2px ink rule and separate rows with 1px `rule` hairlines.
+- **Do** set dates and labels in Alegreya SC, in `ribbon-deep` or `ink-soft`.
+- **Do** put the season's photograph behind the title of every new page, through the shared page head.
+- **Do** keep corners at 2px, and 3px for beads.
+- **Do** use `ribbon-deep` for orange text on paper and `ribbon-text` on cloth.
 
 ### Don't:
-- **Don't** load fonts or scripts from external hosts (ASF policy).
-- **Don't** use red for anything but end of life, or yellow as text on the light hall.
-- **Don't** add shadows to anything other than the board and the ticket.
-- **Don't** group content in card grids; use ruled lists, tables and the route.
-- **Don't** use orange as a tint, gradient or decorative stripe beyond the header band, the legal-strip band and the ticket edge.
-- **Don't** add icon-font glyphs to new surfaces.
+- **Don't** fill panels, headings or large areas with orange; it is the ribbon, a rule or the one action.
+- **Don't** use cream, warm white or pure white as a ground.
+- **Don't** build feature-card grids; mechanisms are columns of text with their code, on shared rows.
+- **Don't** use hard offset shadows or stacked cards; sheets rest on the ground with the low sheet shadow.
+- **Don't** put kickers or eyebrow labels above headings; small caps head the list or table below them.
+- **Don't** use icon fonts or glyph icons; the Wicket mark, the ASF logo, the GitHub mark and the select chevron are the only drawn images in the interface.
+- **Don't** round corners beyond 3px.
