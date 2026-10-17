@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+        <title>Lists and tables | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1792239874" type="text/css" />
+        <link href="/wicket-site/departure-board/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<header class="station-header">
+    <div class="station-header-inner">
+        <a class="station-logo" href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket home" width="231" height="40"></a>
+        <nav class="station-nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/quickstart.html" class="">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/start/download.html" class="">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/learn" class="active" aria-current="page">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/help" class="">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/contribute" class="">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/community" class="">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/departure-board/apache" class="">Apache</a>
+        
+        </nav>
+        <a class="station-github" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+            <svg viewbox="0 0 16 16" width="22" height="22" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span>GitHub</span>
+        </a>
+    </div>
+</header>
+
+
+<div class="page-sign guide-sign">
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/wicket-site/departure-board/guide/">User guide</a></p>
+            <h1>Lists and tables</h1>
+            <p class="page-sign-sub">Repeat markup for each item in a list, page through data.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/wicket-site/departure-board/guide/a-z.html" data-index="/wicket-site/departure-board/guide/search.json" data-script="/wicket-site/departure-board/javascript/minisearch-7.2.0.js" data-oldest="10">
+    <label class="guide-search-label" for="guide-q-sign">Search the guide</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Task, class or tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+                
+                    <li class="toc--level-1"><a href="#howto"><span class="toc-text">How-to guides</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#reference"><span class="toc-text">Reference</span></a></li>
+                
+                </ul>
+</div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            
+                
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="howto">How-to guides</h2>
+                    <p class="guide-group-intro">Directions for a specific goal.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/departure-board/guide/repeat-markup.html">Repeat markup with RepeatingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/departure-board/guide/list-items.html">Show a list with ListView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render markup for every element of a java.util.List, keep form input in the rows, and avoid the pitfalls of index-based items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/departure-board/guide/refreshing-view.html">Control how items are reused with RefreshingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build repeater items from models you supply, and keep an item's components across renders as long as its model stays in the list.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/departure-board/guide/paginate-data.html">Page through data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Load one page of rows at a time with an IDataProvider, show them in a DataView or DataTable, and let users move between pages.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="reference">Reference</h2>
+                    <p class="guide-group-intro">The classes, tags and settings, described.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/departure-board/guide/repeaters.html">Repeaters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+            
+            <nav class="guide-topics-other" aria-label="Other topics">
+                <h2>Other topics</h2>
+                <ul>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/start.html">Getting started</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/components.html">Components and markup</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/models.html">Models</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/forms.html">Forms</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/ajax.html">Ajax and JavaScript</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/websockets.html">WebSockets</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/links.html">Links and URLs</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/resources.html">Resources</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/state.html">Pages and state</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/lifecycle.html">Requests and lifecycle</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/i18n.html">Localization</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/security.html">Security</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/testing.html">Testing</a></li>
+                
+                    <li><a href="/wicket-site/departure-board/guide/topics/integration.html">Integration</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/wicket-site/departure-board/javascript/guide.js?v=1792239874" defer></script>
+
+        <footer>
+            <div class="station-footer-inner">
+    <div class="station-footer-brand">
+        <img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40" loading="lazy">
+        <p>A project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+    </div>
+    <nav class="station-footer-links" aria-label="Apache Software Foundation">
+        <ul>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="station-footer-legal">
+    <div class="station-footer-legal-inner">
+        <a class="station-footer-asf" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60" loading="lazy"></a>
+        <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1792239874" defer></script>
+    </body>
+</html>

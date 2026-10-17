@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting started with Wicket — Apache Wicket</title>
+  <meta name="description" content="Create your first Wicket application in 10 minutes">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link active">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Getting started with Wicket</h1>
+      <p class="docs-header-description">Create your first Wicket application in 10 minutes</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>In this tutorial you will create a Wicket web application from scratch, explore the generated project structure, and build your first interactive page. By the end you will have a running application that displays a greeting and responds to link clicks.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before you begin, make sure you have the following installed:</p>
+
+<ul>
+  <li><strong>Java 17</strong> or later (check with <code class="language-plaintext highlighter-rouge">java -version</code>)</li>
+  <li><strong>Apache Maven 3.9+</strong> (check with <code class="language-plaintext highlighter-rouge">mvn -version</code>)</li>
+  <li>A Java IDE such as IntelliJ IDEA, Eclipse, or VS Code with Java extensions</li>
+</ul>
+
+<h2 id="step-1-generate-a-project">Step 1: Generate a project</h2>
+
+<p>Wicket provides a Maven archetype that scaffolds a complete project for you. The easiest way is to use the <a href="/wicket-site/april-2026/start/quickstart/">Quickstart Wizard</a> — fill in your project details and it generates the exact command to run.</p>
+
+<p>Or run this directly in your terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn archetype:generate <span class="se">\</span>
+  <span class="nt">-DarchetypeGroupId</span><span class="o">=</span>org.apache.wicket <span class="se">\</span>
+  <span class="nt">-DarchetypeArtifactId</span><span class="o">=</span>wicket-archetype-quickstart <span class="se">\</span>
+  <span class="nt">-DarchetypeVersion</span><span class="o">=</span>10.8.0 <span class="se">\</span>
+  <span class="nt">-DgroupId</span><span class="o">=</span>com.example <span class="se">\</span>
+  <span class="nt">-DartifactId</span><span class="o">=</span>myapp <span class="se">\</span>
+  <span class="nt">-DinteractiveMode</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div></div>
+
+<p>This creates a directory called <code class="language-plaintext highlighter-rouge">myapp</code> containing everything you need.</p>
+
+<p>Change into the project directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>myapp
+</code></pre></div></div>
+
+<h2 id="step-2-understand-the-project-structure">Step 2: Understand the project structure</h2>
+
+<p>The archetype generates a standard Maven project layout. Here are the important files:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>myapp/
+  pom.xml
+  src/
+    main/
+      java/
+        com/example/
+          WicketApplication.java    &lt;-- Application entry point
+          HomePage.java             &lt;-- Your first page (Java)
+          HomePage.html             &lt;-- Your first page (HTML)
+      webapp/
+        WEB-INF/
+          web.xml                   &lt;-- Servlet configuration
+    test/
+      java/
+        com/example/
+          TestHomePage.java         &lt;-- Unit test for the home page
+</code></pre></div></div>
+
+<p>Notice that <code class="language-plaintext highlighter-rouge">HomePage.java</code> and <code class="language-plaintext highlighter-rouge">HomePage.html</code> are in the same package. This is a fundamental Wicket convention: every page (and panel) class has a companion HTML file with the same name, located in the same package.</p>
+
+<h2 id="step-3-explore-the-application-class">Step 3: Explore the Application class</h2>
+
+<p>Open <code class="language-plaintext highlighter-rouge">src/main/java/com/example/WicketApplication.java</code>. This is the heart of your application:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WicketApplication</span> <span class="kd">extends</span> <span class="nc">WebApplication</span>
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">WebPage</span><span class="o">&gt;</span> <span class="nf">getHomePage</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+        <span class="c1">// add your configuration here</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Two key methods to know:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">getHomePage()</code></strong> tells Wicket which page to display when a user visits the root URL. It returns a class reference, not an instance.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">init()</code></strong> is called once when the application starts. You will use it later to register settings, mount pages to URLs, and configure security.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">web.xml</code> file registers <code class="language-plaintext highlighter-rouge">WicketFilter</code> and points it to this application class via the <code class="language-plaintext highlighter-rouge">applicationClassName</code> parameter.</p>
+
+<h2 id="step-4-run-the-application">Step 4: Run the application</h2>
+
+<p>The archetype includes an embedded Jetty server for development. Start it with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn jetty:run
+</code></pre></div></div>
+
+<p>Open your browser and navigate to <a href="http://localhost:8080">http://localhost:8080</a>. You should see a page with a “Congratulations!” message. Keep the server running while you work through the rest of this tutorial.</p>
+
+<h2 id="step-5-understand-the-homepage">Step 5: Understand the HomePage</h2>
+
+<p>Open <code class="language-plaintext highlighter-rouge">src/main/java/com/example/HomePage.java</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"If you see this message, Wicket is working!"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now open the companion file <code class="language-plaintext highlighter-rouge">src/main/java/com/example/HomePage.html</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Apache Wicket Quickstart<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">wicket:id=</span><span class="s">"message"</span><span class="nt">&gt;</span>This text will be replaced.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Here is what happens at runtime:</p>
+
+<ol>
+  <li>Wicket loads <code class="language-plaintext highlighter-rouge">HomePage.html</code> as the template for the <code class="language-plaintext highlighter-rouge">HomePage</code> class.</li>
+  <li>It finds the <code class="language-plaintext highlighter-rouge">&lt;p&gt;</code> tag with <code class="language-plaintext highlighter-rouge">wicket:id="message"</code>.</li>
+  <li>It looks for a child component with id <code class="language-plaintext highlighter-rouge">"message"</code> in the Java class.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">Label</code> component replaces the tag’s content with its model value: <em>“If you see this message, Wicket is working!”</em>.</li>
+</ol>
+
+<p>The placeholder text inside the HTML tag (“This text will be replaced.”) is only visible when you open the HTML file directly in a browser. It gets replaced at runtime, making the HTML file useful as a design preview.</p>
+
+<blockquote>
+  <p><strong>Important:</strong> Every <code class="language-plaintext highlighter-rouge">wicket:id</code> in the HTML must match a component added in the Java code, and every component added in Java must have a corresponding <code class="language-plaintext highlighter-rouge">wicket:id</code> in the HTML. A mismatch in either direction throws an exception.</p>
+</blockquote>
+
+<h2 id="step-6-add-a-dynamic-label">Step 6: Add a dynamic Label</h2>
+
+<p>Let’s modify the page to display the current date and time. Edit <code class="language-plaintext highlighter-rouge">HomePage.java</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">now</span> <span class="o">=</span> <span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="nc">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">"EEEE, MMMM d, yyyy 'at' HH:mm:ss"</span><span class="o">));</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello, Wicket!"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"currentTime"</span><span class="o">,</span> <span class="s">"The current time is: "</span> <span class="o">+</span> <span class="n">now</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Update <code class="language-plaintext highlighter-rouge">HomePage.html</code> to include the new label:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Wicket App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">wicket:id=</span><span class="s">"message"</span><span class="nt">&gt;</span>Greeting goes here<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">wicket:id=</span><span class="s">"currentTime"</span><span class="nt">&gt;</span>Time goes here<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Refresh the browser. You should see your greeting and the current server time.</p>
+
+<h2 id="step-7-add-a-link-that-navigates">Step 7: Add a Link that navigates</h2>
+
+<p>Wicket links are server-side click handlers, not plain HTML anchors. Let’s add a link that navigates to a second page.</p>
+
+<p>First, create a new page. Add <code class="language-plaintext highlighter-rouge">SecondPage.java</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">com.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SecondPage</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"heading"</span><span class="o">,</span> <span class="s">"You made it to the second page!"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Add <code class="language-plaintext highlighter-rouge">SecondPage.html</code> in the same package:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Second Page<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">wicket:id=</span><span class="s">"heading"</span><span class="nt">&gt;</span>Heading<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Back to home<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Now update <code class="language-plaintext highlighter-rouge">HomePage.java</code> to include a link:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebPage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.link.Link</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">now</span> <span class="o">=</span> <span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="nc">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">"EEEE, MMMM d, yyyy 'at' HH:mm:ss"</span><span class="o">));</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"message"</span><span class="o">,</span> <span class="s">"Hello, Wicket!"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"currentTime"</span><span class="o">,</span> <span class="s">"The current time is: "</span> <span class="o">+</span> <span class="n">now</span><span class="o">));</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"goToSecondPage"</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span>
+            <span class="o">{</span>
+                <span class="n">setResponsePage</span><span class="o">(</span><span class="nc">SecondPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Update <code class="language-plaintext highlighter-rouge">HomePage.html</code> to add the link tag:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>My Wicket App<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">wicket:id=</span><span class="s">"message"</span><span class="nt">&gt;</span>Greeting goes here<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">wicket:id=</span><span class="s">"currentTime"</span><span class="nt">&gt;</span>Time goes here<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;&lt;a</span> <span class="na">wicket:id=</span><span class="s">"goToSecondPage"</span><span class="nt">&gt;</span>Go to the second page<span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Refresh the page and click the link. The <code class="language-plaintext highlighter-rouge">onClick()</code> method executes on the server and redirects the browser to <code class="language-plaintext highlighter-rouge">SecondPage</code>.</p>
+
+<h2 id="step-8-run-the-existing-test">Step 8: Run the existing test</h2>
+
+<p>The archetype also generated a test. Open <code class="language-plaintext highlighter-rouge">src/test/java/com/example/TestHomePage.java</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TestHomePage</span>
+<span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">WicketTester</span> <span class="n">tester</span><span class="o">;</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">tester</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WicketTester</span><span class="o">(</span><span class="k">new</span> <span class="nc">WicketApplication</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">homepageRendersSuccessfully</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">startPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">tester</span><span class="o">.</span><span class="na">assertRenderedPage</span><span class="o">(</span><span class="nc">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Run it from the command line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>If the test passes, your page renders without errors. <code class="language-plaintext highlighter-rouge">WicketTester</code> creates an in-memory servlet environment so tests run without a real server.</p>
+
+<h2 id="step-9-hot-reload-workflow">Step 9: Hot reload workflow</h2>
+
+<p>Wicket runs in <strong>DEVELOPMENT</strong> mode by default. This enables several developer-friendly features:</p>
+
+<ul>
+  <li><strong>Markup reloading:</strong> When you change an HTML file and refresh the browser, Wicket picks up the new markup without restarting the server.</li>
+  <li><strong>Detailed error pages:</strong> Exceptions show a full stack trace with the component hierarchy.</li>
+  <li><strong>AJAX debug window:</strong> A floating panel in the browser shows AJAX requests in real time.</li>
+</ul>
+
+<p>To see markup hot reload in action, change the text inside <code class="language-plaintext highlighter-rouge">HomePage.html</code> (for example, change the <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> placeholder text to something else) and refresh your browser. The change appears instantly.</p>
+
+<p>Java code changes still require a restart (or using a tool like JRebel or DCEVM for hot-swapping).</p>
+
+<blockquote>
+  <p><strong>Production warning:</strong> Always switch to <strong>DEPLOYMENT</strong> mode before going live. Development mode enables extra resource monitoring that hurts performance. You can switch modes by setting the system property <code class="language-plaintext highlighter-rouge">-Dwicket.configuration=deployment</code> or by configuring it in <code class="language-plaintext highlighter-rouge">web.xml</code>.</p>
+</blockquote>
+
+<h2 id="what-you-learned">What you learned</h2>
+
+<p>In this tutorial you:</p>
+
+<ul>
+  <li>Generated a Wicket project using the Maven archetype</li>
+  <li>Explored the project structure and the application class</li>
+  <li>Used <code class="language-plaintext highlighter-rouge">Label</code> to display dynamic text</li>
+  <li>Used <code class="language-plaintext highlighter-rouge">Link</code> to navigate between pages</li>
+  <li>Ran a unit test with <code class="language-plaintext highlighter-rouge">WicketTester</code></li>
+  <li>Experienced the hot reload workflow in development mode</li>
+</ul>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>You now have a running Wicket application with two pages. Here are some suggestions for what to explore next:</p>
+
+<ul>
+  <li><a href="your-first-form">Building your first form</a> – Collect user input with Wicket forms</li>
+  <li><a href="adding-ajax">Adding AJAX to your pages</a> – Update parts of the page without a full reload</li>
+  <li><a href="layout-with-inheritance">Page layouts with markup inheritance</a> – Create a consistent layout across all pages</li>
+</ul>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Wicket 6.0.0-beta3 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/current/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/wicket-site/current/css/style.css" type="text/css" media="screen" />
+        <link href="/wicket-site/current/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/current/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+        
+<nav class="mainmenu">
+    <div class="nav-logo">
+    <a href="/wicket-site/current/"><img src="/wicket-site/current/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+    <div class="nav-container">
+    
+		
+    	
+        
+        
+		<!-- /start/quickstart.html || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/start/quickstart.html" class=" nav-items">Quick Start</a>
+    
+		
+    	
+        
+        
+		<!-- /start/download.html || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/start/download.html" class=" nav-items">Download</a>
+    
+		
+    	
+        
+        
+		<!-- /learn || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/learn" class=" nav-items">Documentation</a>
+    
+		
+    	
+        
+        
+		<!-- /help || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/help" class=" nav-items">Support</a>
+    
+		
+    	
+        
+        
+		<!-- /contribute || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/contribute" class=" nav-items">Contribute</a>
+    
+		
+    	
+        
+        
+		<!-- /community || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/community" class=" nav-items">Community</a>
+    
+		
+    	
+        
+        
+		<!-- /apache || /news/2012/07/16/wicket-6.0.0-beta3-released.html -->
+		
+    	
+        
+    	<a href="/wicket-site/current/apache" class=" nav-items">Apache</a>
+    
+    </div>
+    <div class="nav-container  ">
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+    </div>    
+</nav>
+        
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>Wicket 6.0.0-beta3 released</h1>
+            
+            
+            
+        </header>
+        <section class="toc left post ">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#wicket-native-websockets"><span class="toc-number">1</span> <span class="toc-text">Wicket Native Websockets</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#wicket-bootstrap"><span class="toc-number">2</span> <span class="toc-text">Wicket Bootstrap</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#new-wicket-examples"><span class="toc-number">3</span> <span class="toc-text">New Wicket Examples</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#wicket-atmosphere"><span class="toc-number">4</span> <span class="toc-text">Wicket Atmosphere</span></a></li>
+</ul>
+</div>
+        </section>
+        <section>
+            <div class="l-full">
+    <p class="meta">16 Jul 2012</p>
+    <p>The Wicket team is proud to announce the third beta release of
+the Wicket 6.x series. This release is an intermediary release
+just before we give you 6.0.0 final.</p>
+
+<p>There are no more planned API breaks but if you find something
+that can be made better now it the time to discuss it! The
+next planned release is 6.0.0 final, so speak now or forever
+be silenced (or learn to live with it until 7.0.0 comes out).</p>
+
+<p>Any feedback about the new features, their implementation and
+their documentation is very welcome!</p>
+
+<h1 id="new-and-noteworthy-in-600-beta3">New and Noteworthy in 6.0.0-beta3</h1>
+
+<p><strong>NOTA BENE:</strong> the use of modules that are marked experimental,
+by being part of the sub module ‘wicket-experimental’, are really
+that: experimental. These modules can change, disappear or blow up
+your computer without notice and you really use/depend on them at
+your own risk.</p>
+
+<h2 id="wicket-native-websockets">Wicket Native Websockets</h2>
+
+<p>A new <strong>experimental</strong> module has been added to Wicket 6 - Wicket
+Native WebSocket. This module adds support for using HTML5
+WebSockets as you may use Ajax in your Wicket applications.</p>
+
+<p>All you have to do is to add a WebSocketBehavior to your page and from
+there on you can receive messages from the clients and push messages
+back to them.</p>
+
+<p>At <a href="https://cwiki.apache.org/confluence/x/0vSoAQ" target="_blank" rel="noopener noreferrer">our wiki</a> you may 
+find the documentation and a link to a demo application.</p>
+
+<p>If something is not clear feel free to ask your question in the
+mailing lists and we will improve the documentation.</p>
+
+<h2 id="wicket-bootstrap">Wicket Bootstrap</h2>
+
+<p>The <strong>experimental</strong> modules now contain a new module for integration
+with Twitter’s Bootstrap. Currently this module only provides a
+central way of using the Bootstrap resources. In the future we
+will provide proper components and behaviors for the Bootstrap
+concepts.</p>
+
+<p>To use this new <strong>experimental</strong> module, add this to your pom:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-bootstrap&lt;/artifactId&gt;
+    &lt;version&gt;0.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p>To add Bootstrap support to your pages, add this in the <code class="language-plaintext highlighter-rouge">renderHead</code>
+method:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Override
+public void renderHead(IHeaderResponse response) {
+    super.renderHead(response);
+
+    Bootstrap.renderHead(response);
+}
+</code></pre></div></div>
+
+<p>This will render a dependency to the Twitter bootstrap CSS and JS files,
+including the required dependency to JQuery.</p>
+
+<h2 id="new-wicket-examples">New Wicket Examples</h2>
+<p>We have started an effort to revamp the tried and tested Wicket Examples
+and bring them into 2012. The new examples are located in the
+<strong>experimental</strong> module.</p>
+
+<p>It is currently a copy of Twitter Bootstrap’s design but with Wicket
+specific filling.</p>
+
+<p>You can test the examples by running the</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wicket-examples-jar/src/test/java/Start.java
+</code></pre></div></div>
+
+<p>class in the default package.</p>
+
+<p>The examples will feature a component reference with typical use
+cases, full examples such as Hello, World, and descriptions of the
+code in play.</p>
+
+<h2 id="wicket-atmosphere">Wicket Atmosphere</h2>
+
+<p>Wicket Atmosphere in the experimental modules has seen an upgrade of
+the Atmosphere dependency to 1.0.0-beta3. This has caused an
+incompatibility with Jetty 7.6.3 (used with Wicket and the examples). To
+mitigate this, you need to override either:</p>
+
+<ul>
+  <li>the dependency on Jetty to 8.1.3 or newer, or</li>
+  <li>the dependency on Atmosphere to 0.9.5 (0.9.6 and 0.9.7 are broken as
+well)</li>
+</ul>
+
+<p>See <a href="https://issues.apache.org/jira/browse/WICKET-4656" target="_blank" rel="noopener noreferrer">WICKET-4656</a> for 
+more information regarding this issue.</p>
+
+<h1 id="this-release">This release</h1>
+
+<ul>
+  <li>Check the roadmap  with a list of the major
+goals: <a href="https://cwiki.apache.org/confluence/display/WICKET/Wicket+6.0+Roadmap" target="_blank" rel="noopener noreferrer">6.0 roadmap</a>
+</li>
+  <li>And the migration guide with all major and some minor changes
+between 1.5.x and 6.x series: <a href="http://s.apache.org/wicket-6.0-migration" target="_blank" rel="noopener noreferrer">migration guide</a>
+</li>
+  <li>The Jira changelog of all closed ticket at
+Jira: <a href="http://s.apache.org/wicket-6.0.0-beta3-changelog" target="_blank" rel="noopener noreferrer">changelog</a>
+</li>
+</ul>
+
+<p>To use it in Maven:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+    &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+    &lt;version&gt;6.0.0-beta3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div></div>
+
+<p>If you don’t use a dependencies management build tool then you
+can download the full distribution (including source) and build from
+source yourself.</p>
+
+<p>Have fun,</p>
+
+<p>The Wicket team!</p>
+
+</div>
+
+
+        </section>
+    </div>
+</main>
+
+        <footer>
+            <div class="l-container l-flex">
+    <div class="l-one-third left">
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
+    </div>
+    <div class="l-one-third">
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
+    </div>
+    <div class="l-one-third">
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
+    </div>
+</div>
+<div class="l-container">
+    <div class="left">
+        <img src="https://www.apache.org/img/asf_logo.png" style="height:90px; float:left; margin-right:10px;">
+        <div style="margin-top:12px;">Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    </div>
+</div>
+
+        </footer>
+    </body>
+</html>

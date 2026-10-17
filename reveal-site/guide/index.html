@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User guide | Apache Wicket</title>
+        <meta name="description" content="The Apache Wicket user guide, by topic, with tutorials, how-to guides, reference and explanation.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1792239884">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+<header class="page-head guide-head guide-head--front">
+    <div class="page-head-in">
+        <h1>User guide</h1>
+        <p class="page-sub">Building web applications with Apache Wicket 10 and 11.</p>
+        
+<form class="guide-search guide-search--large" role="search" action="/wicket-site/reveal-site/guide/a-z.html" data-index="/wicket-site/reveal-site/guide/search.json" data-script="/wicket-site/reveal-site/javascript/minisearch-7.2.0.js" data-oldest="10">
+    <label class="guide-search-label" for="guide-q-front">Search the guide</label>
+    <div class="guide-search-field">
+        <input id="guide-q-front" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <div class="reading guide-front">
+        <section class="guide-front-section">
+            <div class="guide-front-head">
+                <h2>Start here</h2>
+                <p>Five lessons that build one application, from an empty project to a tested page with Ajax.</p>
+            </div>
+            
+            <ol class="guide-steps">
+            
+                <li>
+                    <a href="/wicket-site/reveal-site/guide/first-application.html">
+                        <span class="guide-step-n">01</span>
+                        <span class="guide-step-title">Build your first application</span>
+                        <span class="guide-step-summary">Generate a project from the quickstart, run it, and build a home page with a label, a click counter and a link to a second page.</span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/wicket-site/reveal-site/guide/page-layout.html">
+                        <span class="guide-step-n">02</span>
+                        <span class="guide-step-title">Give every page the same layout</span>
+                        <span class="guide-step-summary">Move the header, navigation and footer of your application into a base page and two panels, so every page shares one layout.</span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/wicket-site/reveal-site/guide/first-form.html">
+                        <span class="guide-step-n">03</span>
+                        <span class="guide-step-title">Build a form that saves data</span>
+                        <span class="guide-step-summary">Add a guestbook page with a form that validates its input, saves entries and lists them, and shows errors and a confirmation.</span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/wicket-site/reveal-site/guide/first-ajax.html">
+                        <span class="guide-step-n">04</span>
+                        <span class="guide-step-title">Update a page with Ajax</span>
+                        <span class="guide-step-summary">Make the click counter and the guestbook form update only the parts of the page that change, open the form without a reload, and refresh the guestbook every ten seconds.</span>
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/wicket-site/reveal-site/guide/first-test.html">
+                        <span class="guide-step-n">05</span>
+                        <span class="guide-step-title">Test a page with WicketTester</span>
+                        <span class="guide-step-summary">Write JUnit tests that render your pages, click links, submit the guestbook form and check Ajax updates, without a browser or a server.</span>
+                    </a>
+                </li>
+            
+            </ol>
+        </section>
+
+        <section class="guide-front-section">
+            <div class="guide-front-head">
+                <h2>Topics</h2>
+                <p>Each topic gathers its lessons, how-to guides, reference and explanation on one page.</p>
+            </div>
+            <ul class="tree guide-tree">
+                <li class="n root">
+<div class="row">
+<span class="nid">User guide</span><span class="ntag">137 pages</span>
+</div>
+                    <ul>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/start.html">
+                                <span class="nid">Getting started</span>
+                                <span class="ntype">Create a project, configure the application and learn what Wicket is made of.</span>
+                                <span class="ntag">13</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/components.html">
+                                <span class="nid">Components and markup</span>
+                                <span class="ntype">Pages, panels, borders and fragments, and how Java components meet their HTML.</span>
+                                <span class="ntag">16</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/models.html">
+                                <span class="nid">Models</span>
+                                <span class="ntype">How components get and keep their data.</span>
+                                <span class="ntag">7</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/forms.html">
+                                <span class="nid">Forms</span>
+                                <span class="ntype">Input fields, validation, conversion, uploads and submitting.</span>
+                                <span class="ntag">14</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/repeaters.html">
+                                <span class="nid">Lists and tables</span>
+                                <span class="ntype">Repeat markup for each item in a list, page through data.</span>
+                                <span class="ntag">5</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/ajax.html">
+                                <span class="nid">Ajax and JavaScript</span>
+                                <span class="ntype">Update parts of a page without reloading it, and work with JavaScript.</span>
+                                <span class="ntag">12</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/websockets.html">
+                                <span class="nid">WebSockets</span>
+                                <span class="ntype">Push updates from the server to the browser.</span>
+                                <span class="ntag">4</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/links.html">
+                                <span class="nid">Links and URLs</span>
+                                <span class="ntype">Link between pages, pass parameters and shape the URLs.</span>
+                                <span class="ntag">9</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/resources.html">
+                                <span class="nid">Resources</span>
+                                <span class="ntype">Serve CSS, JavaScript, images and generated files.</span>
+                                <span class="ntag">16</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/state.html">
+                                <span class="nid">Pages and state</span>
+                                <span class="ntype">Stateful and stateless pages, the page store and the session.</span>
+                                <span class="ntag">5</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/lifecycle.html">
+                                <span class="nid">Requests and lifecycle</span>
+                                <span class="ntype">How a request is processed and what happens to a component along the way.</span>
+                                <span class="ntag">7</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/i18n.html">
+                                <span class="nid">Localization</span>
+                                <span class="ntype">Translate texts, formats and choices.</span>
+                                <span class="ntag">6</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/security.html">
+                                <span class="nid">Security</span>
+                                <span class="ntype">Log users in, restrict access and harden the application.</span>
+                                <span class="ntag">10</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/testing.html">
+                                <span class="nid">Testing</span>
+                                <span class="ntype">Test pages, forms and markup without a browser.</span>
+                                <span class="ntag">5</span>
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="n last">
+                            <a class="row" href="/wicket-site/reveal-site/guide/topics/integration.html">
+                                <span class="nid">Integration</span>
+                                <span class="ntype">Spring, CDI, EJB, OSGi and monitoring.</span>
+                                <span class="ntag">8</span>
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="guide-front-section">
+            <div class="guide-front-head">
+                <h2>Look it up</h2>
+                <p>The reference pages readers return to, and an index of every class the guide explains.</p>
+            </div>
+            <nav class="page-index" aria-label="Reference">
+                <ul>
+                    <li><a href="/wicket-site/reveal-site/guide/a-z.html"><span class="page-index-label">A–Z index</span><span class="page-index-desc">Every Wicket class the guide explains, and every page by title.</span></a></li>
+                    
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/wicket-tags.html"><span class="page-index-label">Wicket tags and attributes</span><span class="page-index-desc">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span></a></li>
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/component-lifecycle.html"><span class="page-index-label">Component lifecycle</span><span class="page-index-desc">The stages a component goes through and every hook method Wicket calls on it, in order, with who calls it and when.</span></a></li>
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/form-components.html"><span class="page-index-label">Form components</span><span class="page-index-desc">Every form, input, choice, upload and submit component in wicket-core and wicket-extensions, with the markup tag it needs and the type of its model.</span></a></li>
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/model-types.html"><span class="page-index-label">Model classes</span><span class="page-index-desc">Every model class and model interface in wicket-core, the default methods of IModel, the factory methods and the component methods that work with models.</span></a></li>
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/header-items.html"><span class="page-index-label">Header items</span><span class="page-index-desc">Every header item type with its factory methods, the tag it renders and where it ends up, the rendering order, Ajax behaviour and the header response decorators.</span></a></li>
+                    
+                    <li><a href="/wicket-site/reveal-site/guide/glossary.html"><span class="page-index-label">Glossary</span><span class="page-index-desc">Plain-English definitions of the Wicket terms used in this guide, each compared with what other web frameworks call it.</span></a></li>
+                    
+                </ul>
+            </nav>
+        </section>
+
+        <section class="guide-front-section guide-older">
+            <div class="guide-front-head">
+                <h2>Older versions</h2>
+                <p>The guide covers the release lines in service. Pages marked with a version, like <span class="guide-list-since">Wicket 11+</span>, need that version or later. For lines out of service, use their single-page guide:
+                <a href="https://nightlies.apache.org/wicket/guide/9.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 9</a>, <a href="https://nightlies.apache.org/wicket/guide/8.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 8</a>, <a href="https://nightlies.apache.org/wicket/guide/7.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 7</a>.</p>
+            </div>
+        </section>
+    </div>
+</main>
+<script src="/wicket-site/reveal-site/javascript/guide.js?v=1792239884" defer></script>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1792239884" defer></script>
+    </body>
+</html>

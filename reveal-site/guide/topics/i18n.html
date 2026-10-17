@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Localization | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1792239884">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+<header class="page-head guide-head">
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
+            <p class="guide-crumbs"><a href="/wicket-site/reveal-site/guide/">User guide</a></p>
+            <h1>Localization</h1>
+            <p class="page-sub">Translate texts, formats and choices.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/wicket-site/reveal-site/guide/a-z.html" data-index="/wicket-site/reveal-site/guide/search.json" data-script="/wicket-site/reveal-site/javascript/minisearch-7.2.0.js" data-oldest="10">
+    <label class="guide-search-label" for="guide-q-head">Search the guide</label>
+    <div class="guide-search-field">
+        <input id="guide-q-head" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Task, class or tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+            
+                <li class="toc--level-1"><a href="#howto"><span class="toc-text">How-to guides</span></a></li>
+            
+                <li class="toc--level-1"><a href="#reference"><span class="toc-text">Reference</span></a></li>
+            
+                <li class="toc--level-1"><a href="#explanation"><span class="toc-text">Explanation</span></a></li>
+            
+            </ul>
+</div>
+        </nav>
+        <div class="reading-main">
+            
+                
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="howto">How-to guides</h2>
+                    <p class="guide-group-intro">Directions for a specific goal.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/localize-components.html">Translate component texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Move the texts of a page or panel into properties files, show them with wicket:message or from Java, and let the user switch the language.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/resource-models.html">Put model values into translated texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated texts through ResourceModel and StringResourceModel, fill in property values and MessageFormat parameters, and choose the key from the data.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/localize-choices.html">Translate the options of a choice</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Show translated options in a DropDownChoice, RadioChoice or other choice component, translate enum values, and change the "Choose One" text.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/custom-string-loaders.html">Load texts from your own source</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Add a string resource loader that reads texts from a database or an existing Java ResourceBundle, and change the chain of loaders Wicket searches.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="reference">Reference</h2>
+                    <p class="guide-group-intro">The classes, tags and settings, described.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/bundle-lookup.html">Where Wicket looks for texts</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The exact order in which Wicket searches resource bundles for a key, the file names it tries, and the settings that change the search.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="explanation">Explanation</h2>
+                    <p class="guide-group-intro">Why Wicket works the way it does.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/about-localization.html">How Wicket localizes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Where the locale of a page comes from, why texts live in properties files next to the components that use them, and why the page can override its panels.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+            <nav class="guide-topics-other" aria-label="Other topics">
+                <h2>Other topics</h2>
+                <ul>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/start.html">Getting started</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/components.html">Components and markup</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/models.html">Models</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/forms.html">Forms</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/repeaters.html">Lists and tables</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/ajax.html">Ajax and JavaScript</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/websockets.html">WebSockets</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/links.html">Links and URLs</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/resources.html">Resources</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/state.html">Pages and state</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/lifecycle.html">Requests and lifecycle</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/security.html">Security</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/testing.html">Testing</a></li>
+                
+                    <li><a href="/wicket-site/reveal-site/guide/topics/integration.html">Integration</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/wicket-site/reveal-site/javascript/guide.js?v=1792239884" defer></script>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1792239884" defer></script>
+    </body>
+</html>

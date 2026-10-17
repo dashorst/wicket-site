@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apache Wicket</title>
+<meta name="description" content="Apache Wicket is a component-oriented Java web framework: a page is a tree of Java components bound to plain HTML, with no JavaScript build chain.">
+<meta name="theme-color" content="#103C35">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="ribbon.css">
+<link rel="icon" href="brand/logo-apachewicket-mark.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead is-home">
+  <div class="masthead-inner">
+    <nav class="nav" aria-label="Main">
+      <a href="start/quickstart.html">Quick Start</a>
+      <a href="start/download.html">Download</a>
+      <a href="learn/">Documentation</a>
+      <a href="help/">Support</a>
+      <a href="contribute/">Contribute</a>
+      <a href="community/">Community</a>
+      <a href="apache/">Apache</a>
+      <a class="nav-github" href="https://github.com/apache/wicket" rel="noreferrer">
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- The opening on bookcloth: the lockup and the definition, then the component tree. The ribbon enters from the
+     left page edge under the lede and runs into OrderPage; ribbon.js draws it from the bead positions, one bead per
+     component instance. Without JavaScript the beads keep a stub of ribbon each and the tree still reads. -->
+<section class="stage" id="tree" aria-labelledby="title">
+  <div class="stage-inner">
+    <div class="stage-top">
+      <h1 class="lockup" id="title">
+        <img class="lockup-mark" src="brand/logo-apachewicket-mark.svg" alt="" width="112" height="112">
+        <span class="lockup-name"><span>Apache</span> <span>Wicket</span></span>
+        <span class="lockup-version"><span class="vh">, version </span>11</span>
+      </h1>
+      <div class="lede">
+        <!-- Tagline placeholder: "Write less, achieve more." is the Wicket 8 announcement's line, kept until the project picks one. -->
+        <p class="tagline">Write less, achieve more.</p>
+        <p class="definition">A component-oriented Java web framework: plain Java, plain HTML, no JavaScript build chain.</p>
+        <!-- The one release element on the homepage. Versions come from _config.yml; the notice goes when 8.x and 9.x users have moved on. -->
+        <div class="release">
+          <p class="release-line"><span><b>11.0.0</b> current</span><span class="dot" aria-hidden="true">&middot;</span><span><b>10.11.0</b> LTS</span> <a href="start/download.html">Release lines and support</a></p>
+          <p class="release-note">8.x and 9.x are out of service since 11.0.0 &mdash; <a href="start/download.html#upgrade-paths">how to upgrade</a></p>
+        </div>
+      </div>
+      <header class="tree-head">
+        <h2 id="tree-title">A page is a tree of components</h2>
+        <p>Java builds the tree with <code>add(...)</code>, the HTML has the same nesting, and each <code>wicket:id</code> names the component that renders its tag. <code>AddressPanel</code> is written once, with its own markup, and the form uses it twice.</p>
+      </header>
+    </div>
+
+    <div class="loom" aria-describedby="loom-hint">
+      <div class="sheet" style="--c:1; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:1; --r:15 / 25" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:15 / 25" aria-hidden="true"></div>
+
+      <p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln c" style="--r:8" data-c="shipping">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span></span>
+<span class="ln c" style="--r:9" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:10">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:11">    <span class="x">}</span></span>
+<span class="ln" style="--r:12"><span class="x">}</span></span></code></pre>
+
+      <p class="file" style="--c:1; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:17" data-c="AddressPanel"><span class="x"><span class="tk">public class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:18">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:19">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:20" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:21" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:22">    <span class="x">}</span></span>
+<span class="ln" style="--r:23"><span class="x">}</span></span></code></pre>
+
+      <div class="beads" role="group" aria-label="Component tree of OrderPage">
+        <button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page: OrderPage.java with OrderPage.html">OrderPage</button>
+        <button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label="Label &quot;message&quot; renders &lt;p wicket:id=&quot;message&quot;&gt;">message</button>
+        <button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label="Form &quot;order&quot; renders &lt;form wicket:id=&quot;order&quot;&gt;">order</button>
+        <button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label="AddressPanel &quot;billing&quot; renders &lt;div wicket:id=&quot;billing&quot;&gt; with the markup of AddressPanel.html">billing</button>
+        <button type="button" class="bead" style="--r:8; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label="AddressPanel &quot;shipping&quot; renders &lt;div wicket:id=&quot;shipping&quot;&gt; with the same AddressPanel.html">shipping</button>
+        <button type="button" class="bead" style="--r:9; --x:25" data-path="page/order/save" data-k="save" aria-label="Button &quot;save&quot; renders &lt;button wicket:id=&quot;save&quot;&gt;">save</button>
+        <button type="button" class="bead" style="--r:20; --x:50" data-path="page/order/billing/street" data-k="street" aria-label="TextField &quot;street&quot; inside billing renders &lt;input wicket:id=&quot;street&quot;&gt;">street</button>
+        <button type="button" class="bead" style="--r:20; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label="TextField &quot;street&quot; inside shipping renders the same &lt;input wicket:id=&quot;street&quot;&gt;">street</button>
+        <button type="button" class="bead" style="--r:21; --x:50" data-path="page/order/billing/city" data-k="city" aria-label="TextField &quot;city&quot; inside billing renders &lt;input wicket:id=&quot;city&quot;&gt;">city</button>
+        <button type="button" class="bead" style="--r:21; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label="TextField &quot;city&quot; inside shipping renders the same &lt;input wicket:id=&quot;city&quot;&gt;">city</button>
+      </div>
+
+      <p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:8" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:9" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:10">  <span class="x"><span class="tg">&lt;/form&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:11"><span class="x"><span class="tg">&lt;/body&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12"><span class="x"><span class="tg">&lt;/html&gt;</span></span></span></code></pre>
+
+      <p class="file" style="--c:3; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:17" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:20" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:21" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/wicket:panel&gt;</span></span></span></code></pre>
+
+      <svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+    </div>
+    <p class="loom-hint" id="loom-hint">Point at a component, or tab to the tree and use the arrow keys, to follow it from its Java line to its tag.</p>
+
+    <!-- The same tree as a list: read by screen readers on wide screens, and the visible tree on phones. -->
+    <div class="tree-list">
+      <h3 class="tree-list-title">OrderPage as a tree</h3>
+      <ol class="tl">
+        <li><span class="tl-name"><b>OrderPage</b> <span>page</span></span><code class="tl-j">OrderPage.java</code><code class="tl-t">OrderPage.html</code>
+          <ol>
+            <li><span class="tl-name"><b>"message"</b> <span>Label</span></span><code class="tl-j">new Label("message", …)</code><code class="tl-t">&lt;p wicket:id="message"&gt;</code></li>
+            <li><span class="tl-name"><b>"order"</b> <span>Form</span></span><code class="tl-j">new Form&lt;&gt;("order")</code><code class="tl-t">&lt;form wicket:id="order"&gt;</code>
+              <ol>
+                <li><span class="tl-name"><b>"billing"</b> <span>AddressPanel</span></span><code class="tl-j">new AddressPanel("billing", billingAddress)</code><code class="tl-t">&lt;div wicket:id="billing"&gt;</code>
+                  <ol>
+                    <li><span class="tl-name"><b>"street"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("street")</code><code class="tl-t">&lt;input wicket:id="street"&gt;</code></li>
+                    <li><span class="tl-name"><b>"city"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("city")</code><code class="tl-t">&lt;input wicket:id="city"&gt;</code></li>
+                  </ol>
+                </li>
+                <li><span class="tl-name"><b>"shipping"</b> <span>AddressPanel, reused</span></span><code class="tl-j">new AddressPanel("shipping", shippingAddress)</code><code class="tl-t">&lt;div wicket:id="shipping"&gt;</code>
+                  <ol>
+                    <li><span class="tl-name"><b>"street"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("street")</code><code class="tl-t">&lt;input wicket:id="street"&gt;</code></li>
+                    <li><span class="tl-name"><b>"city"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("city")</code><code class="tl-t">&lt;input wicket:id="city"&gt;</code></li>
+                  </ol>
+                </li>
+                <li><span class="tl-name"><b>"save"</b> <span>Button</span></span><code class="tl-j">new Button("save")</code><code class="tl-t">&lt;button wicket:id="save"&gt;</code></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <p class="tl-foot">Both panels render <code>AddressPanel.html</code>, the panel's own markup inside <code>&lt;wicket:panel&gt;</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why paper" id="why" aria-labelledby="why-title">
+  <header class="why-head">
+    <h2 id="why-title">Why Wicket</h2>
+    <p>The component tree is where Wicket starts. Ajax, security and testing work on that same tree, from the same Java.</p>
+  </header>
+
+  <ol class="why-list">
+    <li>
+      <h3>Ajax without writing JavaScript</h3>
+      <p>Update parts of a page from Java. Wicket re-renders only the components you add to the request.</p>
+      <p class="file">CounterPage.java</p>
+<pre class="code"><code>Label count = <span class="tk">new</span> Label(<span class="ts">"count"</span>, () -&gt; clicks);
+add(count.setOutputMarkupId(<span class="tk">true</span>));
+
+add(<span class="tk">new</span> AjaxLink&lt;Void&gt;(<span class="ts">"increment"</span>) {
+    <span class="ta">@Override</span>
+    <span class="tk">public void</span> onClick(AjaxRequestTarget target) {
+        clicks++;
+        target.add(count);
+    }
+});</code></pre>
+    </li>
+    <li>
+      <h3>Secure by default</h3>
+      <p>A strict Content Security Policy without <code>unsafe-inline</code>: every header contribution gets a nonce automatically. URLs do not expose your model.</p>
+      <p class="file">MyApplication.java</p>
+<pre class="code"><code><span class="ta">@Override</span>
+<span class="tk">protected void</span> init() {
+    <span class="tk">super</span>.init();
+    <span class="tc">// CSP is on by default; allow one extra image host</span>
+    getCspSettings().blocking()
+        .add(CSPDirective.IMG_SRC,
+             <span class="ts">"https://images.example.org"</span>);
+}</code></pre>
+    </li>
+    <li>
+      <h3>Tested without a browser</h3>
+      <p>WicketTester renders pages and components in a plain unit test: no browser, no container. Check markup, click links, submit forms.</p>
+      <p class="file">HelloWorldTest.java</p>
+<pre class="code"><code>WicketTester tester =
+    <span class="tk">new</span> WicketTester(<span class="tk">new</span> MyApplication());
+tester.startPage(HelloWorld.<span class="tk">class</span>);
+tester.assertLabel(<span class="ts">"message"</span>, <span class="ts">"Hello World!"</span>);</code></pre>
+    </li>
+  </ol>
+
+  <dl class="also">
+    <div><dt>Internationalized</dt><dd>Over 25 languages, per application, page or component.</dd></div>
+    <div><dt>Many tabs, one session</dt><dd>Page state is stored, so new tabs and windows are safe.</dd></div>
+    <div><dt>Dependency injection</dt><dd>CDI, Spring and Guice integrations.</dd></div>
+    <div><dt>Jakarta EE</dt><dd>JPA, EJB, Bean Validation and CDI.</dd></div>
+    <div><dt>Your JavaScript and CSS</dt><dd>Global libraries beside component-local resources.</dd></div>
+  </dl>
+</section>
+
+<section class="lasts" id="lasts" aria-labelledby="lasts-title">
+  <div class="lasts-inner">
+    <header class="lasts-head">
+      <h2 id="lasts-title">Open source since 2004</h2>
+      <p>Wicket 1.0 came out on SourceForge in 2005. The component model it introduced is the one in Wicket 11.</p>
+    </header>
+    <dl class="lasts-facts">
+      <div><dt>An Apache project</dt><dd>Developed in the open at the Apache Software Foundation by a community of volunteers, under the Apache License&nbsp;2.0.</dd></div>
+      <div><dt>Upgrades you can plan</dt><dd>Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</dd></div>
+    </dl>
+    <div class="built">
+      <h3>Built with Wicket</h3>
+      <ul class="built-names">
+        <li>ING Germany <span>internet banking</span></li>
+        <li>ATLAS experiment at CERN <span>controls and configuration</span></li>
+        <li>Air Tahiti</li>
+        <li>Stellantis <span>media libraries</span></li>
+        <li>Coface</li>
+        <li>Ipsos</li>
+        <li>OneDev <span>git server</span></li>
+        <li>ConSol CM</li>
+      </ul>
+      <p class="built-links"><a href="http://builtwithwicket.tumblr.com" rel="nofollow">More on Built with Wicket</a> <a href="http://builtwithwicket.tumblr.com/submit" rel="nofollow">Submit your project</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="new11 paper" id="new" aria-labelledby="new-title">
+  <header class="new11-head">
+    <h2 id="new-title">New in Wicket 11</h2>
+    <a class="more" href="start/wicket-11.x.html">Everything about Wicket 11</a>
+  </header>
+  <div class="new11-items">
+    <article class="hl">
+      <h3>A new baseline</h3>
+      <p class="baseline"><span>Java <b>21</b></span><span>Jakarta Servlet <b>6.1</b></span><span>Spring <b>7</b></span></p>
+      <p>Wicket 10 applications already use <code>jakarta.servlet</code>: the step up is your JDK and container.</p>
+    </article>
+    <article class="hl">
+      <h3>More secure by default</h3>
+      <p>Encrypted URLs and stored pages cannot be altered unnoticed, model values in markup are escaped consistently, and CSP covers <code>script-src-attr</code> and <code>style-src-attr</code>.</p>
+    </article>
+    <article class="hl">
+      <h3>Leaner components</h3>
+      <p>One compact state object per component: in the benchmarks, reading state is 30 to 45% faster and a tree with Ajax behaviors serializes about 40% smaller.</p>
+    </article>
+    <article class="hl">
+      <h3>Ajax without jQuery</h3>
+      <p>An opt-in plain JavaScript Ajax engine with the same client-side API. jQuery stays the default and now supports jQuery&nbsp;4.</p>
+    </article>
+  </div>
+</section>
+
+<section class="start" id="start" aria-labelledby="start-title">
+  <div class="start-inner">
+    <div class="start-text">
+      <h2 id="start-title">Get started</h2>
+      <p>Generate a ready-to-run Maven project with the quick start, or add Wicket to the build you already have.</p>
+      <a class="btn" href="start/quickstart.html">Open the quick start</a>
+    </div>
+    <article class="dep" aria-labelledby="dep-11">
+      <h3 id="dep-11" class="dep-head"><span class="dep-v">11.0.0</span> <span class="dep-role">for new features &middot; Java&nbsp;21</span></h3>
+      <div class="snippet">
+<pre><code id="mvn-11">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+  &lt;version&gt;11.0.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+        <button type="button" class="copy" data-copy="mvn-11" aria-label="Copy the 11.0.0 dependency">Copy</button>
+        <span class="copy-status" role="status"></span>
+      </div>
+    </article>
+    <article class="dep" aria-labelledby="dep-10">
+      <h3 id="dep-10" class="dep-head"><span class="dep-v">10.11.0</span> <abbr class="dep-lts" title="Long-term support">LTS</abbr> <span class="dep-role">for production &middot; Java&nbsp;17</span></h3>
+      <div class="snippet">
+<pre><code id="mvn-10">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
+  &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
+  &lt;version&gt;10.11.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+        <button type="button" class="copy" data-copy="mvn-10" aria-label="Copy the 10.11.0 dependency">Copy</button>
+        <span class="copy-status" role="status"></span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="news paper" aria-labelledby="news-title">
+  <div class="news-head">
+    <h2 id="news-title">Announcements</h2>
+    <p class="news-links"><a href="news/">News archive</a> <a type="application/atom+xml" href="atom.xml">Atom feed</a></p>
+  </div>
+  <ol class="news-list">
+    <li>
+      <time datetime="2026-09-11">11 Sep 2026</time>
+      <div>
+        <h3><a href="news/2026/09/11/release-cadence.html">A new release cadence for Apache Wicket</a></h3>
+        <p>Starting with Apache Wicket 11.0, Wicket moves to time-based releases: a new major release every three months, and an LTS release once a year. Wicket 10 is our current LTS and remains supported until the release of Wicket 14, expected in the first week of July 2027.</p>
+      </div>
+    </li>
+    <li><time datetime="2026-08-30">30 Aug 2026</time><div><h3><a href="news/2026/08/30/wicket-10.11.0-released.html">Apache Wicket 10.11.0 released</a></h3></div></li>
+    <li><time datetime="2026-08-30">30 Aug 2026</time><div><h3><a href="news/2026/08/30/wicket-9.24.0-released.html">Apache Wicket 9.24.0 released</a></h3></div></li>
+    <li><time datetime="2026-08-30">30 Aug 2026</time><div><h3><a href="news/2026/08/30/wicket-8.19.0-released.html">Apache Wicket 8.19.0 released</a></h3></div></li>
+  </ol>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a class="asf-tile" href="https://www.apache.org"><img src="brand/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+    <p class="footer-brand">Apache Wicket is a project of The Apache Software Foundation, released under the Apache License, Version&nbsp;2.0.</p>
+    <nav aria-label="Apache Software Foundation">
+      <ul>
+        <li><a href="https://www.apache.org">Apache</a></li>
+        <li><a href="https://www.apache.org/licenses/">License</a></li>
+        <li><a href="https://events.apache.org/x/current-event">Events</a></li>
+        <li><a href="https://www.apache.org/foundation/sponsorship">Sponsorships</a></li>
+        <li><a href="https://www.apache.org/foundation/thanks">Thanks</a></li>
+        <li><a href="https://www.apache.org/security">Security</a></li>
+        <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+      </ul>
+    </nav>
+    <p class="legal">Copyright &copy; 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+  </div>
+</footer>
+
+<script src="ribbon.js"></script>
+</body>
+</html>

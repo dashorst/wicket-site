@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add behavior to a component with a Behavior | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#F6F8F7">
+        <meta name="color-scheme" content="light">
+        <link rel="icon" href="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/ribbon-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/ribbon-site/atom.xml">
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/ribbon-site/css/style.css?v=1792239894">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/ribbon-site/">
+            <img class="brand-mark" src="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/ribbon-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+
+<header class="page-head guide-head">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 13; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%);" aria-hidden="true">
+    <img src="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg" srcset="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-900.jpg 900w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg 1600w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+    <fieldset class="season-pick" hidden>
+        <legend>Season</legend>
+        <label><input type="radio" name="season-band" value=""><span>By date</span></label>
+        <label><input type="radio" name="season-band" value="winter"><span>Winter</span></label>
+        <label><input type="radio" name="season-band" value="spring"><span>Spring</span></label>
+        <label><input type="radio" name="season-band" value="summer"><span>Summer</span></label>
+        <label><input type="radio" name="season-band" value="autumn"><span>Autumn</span></label>
+        <label><input type="radio" name="season-band" value="halloween"><span>Halloween</span></label>
+    </fieldset>
+</div>
+
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
+            <p class="guide-crumbs"><a href="/wicket-site/ribbon-site/guide/">User guide</a><span aria-hidden="true"> / </span><a href="/wicket-site/ribbon-site/guide/topics/components.html">Components and markup</a></p>
+            <h1>Add behavior to a component with a Behavior</h1>
+            <p class="page-sub">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</p>
+            <p class="guide-tags"><span class="guide-kind">How-to</span><span class="guide-since">Wicket 10 and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/wicket-site/ribbon-site/guide/a-z.html" data-index="/wicket-site/ribbon-site/guide/search.json" data-script="/wicket-site/ribbon-site/javascript/minisearch-7.2.0.js" data-oldest="10">
+    <label class="guide-search-label" for="guide-q-head">Search the guide</label>
+    <div class="guide-search-field">
+        <input id="guide-q-head" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Task, class or tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#write-a-behavior"><span class="toc-number">1</span> <span class="toc-text">Write a behavior</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#add-and-remove-a-behavior"><span class="toc-number">2</span> <span class="toc-text">Add and remove a behavior</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#add-a-behavior-to-many-components"><span class="toc-number">3</span> <span class="toc-text">Add a behavior to many components</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#contribute-css-and-javascript"><span class="toc-number">4</span> <span class="toc-text">Contribute CSS and JavaScript</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#write-a-small-behavior-as-a-lambda"><span class="toc-number">5</span> <span class="toc-text">Write a small behavior as a lambda</span></a></li>
+<li class="toc--level-1 toc--section-6"><a href="#choose-the-right-method-to-override"><span class="toc-number">6</span> <span class="toc-text">Choose the right method to override</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">single-page guide for Wicket <span data-chosen></span></a>.
+            </p>
+            <section class="page-content guide-content">
+                <p>Use a behavior when the same addition applies to components of different kinds: a CSS class on every required field, a tooltip, a JavaScript widget, a confirmation prompt. Subclassing each component type would mean one subclass per type; a behavior is written once and added to any component with <code class="language-plaintext highlighter-rouge">add</code>.</p>
+
+<h2 id="write-a-behavior">Write a behavior</h2>
+
+<p>Extend <code class="language-plaintext highlighter-rouge">Behavior</code> and override the methods for the moments you need. Every method gets the component the behavior is attached to. This one marks required form components: it adds a CSS class to the tag and writes an asterisk after it.</p>
+
+<p><em>RequiredMarker.java</em></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RequiredMarker</span> <span class="kd">extends</span> <span class="nc">Behavior</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onComponentTag</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">,</span> <span class="nc">ComponentTag</span> <span class="n">tag</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isRequired</span><span class="o">(</span><span class="n">component</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">tag</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"class"</span><span class="o">,</span> <span class="s">"is-required"</span><span class="o">,</span> <span class="s">" "</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">afterRender</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isRequired</span><span class="o">(</span><span class="n">component</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">component</span><span class="o">.</span><span class="na">getResponse</span><span class="o">().</span><span class="na">write</span><span class="o">(</span><span class="s">"&lt;span class=\"required-mark\" aria-hidden=\"true\"&gt;*&lt;/span&gt;"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isRequired</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">component</span> <span class="k">instanceof</span> <span class="nc">FormComponent</span><span class="o">&lt;?&gt;</span> <span class="n">field</span> <span class="o">&amp;&amp;</span> <span class="n">field</span><span class="o">.</span><span class="na">isRequired</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">beforeRender</code> and <code class="language-plaintext highlighter-rouge">afterRender</code> write to the response just before and after the component’s markup. <code class="language-plaintext highlighter-rouge">onComponentTag</code> changes the component’s own tag.</p>
+
+<h2 id="add-and-remove-a-behavior">Add and remove a behavior</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">TextField</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextField</span><span class="o">&lt;&gt;(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">nameModel</span><span class="o">);</span>
+<span class="n">name</span><span class="o">.</span><span class="na">setRequired</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="n">name</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">RequiredMarker</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">add</code> takes several behaviors at once. <code class="language-plaintext highlighter-rouge">remove(behavior)</code> takes one off again; keep a reference to the instance if you need that. <code class="language-plaintext highlighter-rouge">getBehaviors(RequiredMarker.class)</code> finds the behaviors of a type on a component.</p>
+
+<h2 id="add-a-behavior-to-many-components">Add a behavior to many components</h2>
+
+<p>Behaviors combine with visitors and with your own base classes. To mark every form component in a form:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">form</span><span class="o">.</span><span class="na">visitChildren</span><span class="o">(</span><span class="nc">FormComponent</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="o">(</span><span class="n">component</span><span class="o">,</span> <span class="n">visit</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">component</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">RequiredMarker</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>Run this in <code class="language-plaintext highlighter-rouge">onInitialize</code> of the page or form, after the fields have been added.</p>
+
+<h2 id="contribute-css-and-javascript">Contribute CSS and JavaScript</h2>
+
+<p>Override <code class="language-plaintext highlighter-rouge">renderHead</code> to add resources to the page when the component is on it. Wicket renders each header item once per page, however many components carry the behavior.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">CssResourceReference</span> <span class="no">CSS</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="nf">CssResourceReference</span><span class="o">(</span><span class="nc">RequiredMarker</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"required-marker.css"</span><span class="o">);</span>
+
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">renderHead</span><span class="o">(</span><span class="nc">Component</span> <span class="n">component</span><span class="o">,</span> <span class="nc">IHeaderResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">response</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="nc">CssHeaderItem</span><span class="o">.</span><span class="na">forReference</span><span class="o">(</span><span class="no">CSS</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>For JavaScript that needs the component’s element, call <code class="language-plaintext highlighter-rouge">component.setOutputMarkupId(true)</code> in <code class="language-plaintext highlighter-rouge">bind</code> and use <code class="language-plaintext highlighter-rouge">component.getMarkupId()</code> in <code class="language-plaintext highlighter-rouge">renderHead</code>. See <a href="/wicket-site/ribbon-site/guide/integrate-javascript.html">Wrap a JavaScript widget in a component</a>.</p>
+
+<h2 id="write-a-small-behavior-as-a-lambda">Write a small behavior as a lambda</h2>
+
+<p>For a one-off change to a tag, the factory methods on <code class="language-plaintext highlighter-rouge">Behavior</code> save a class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">name</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Behavior</span><span class="o">.</span><span class="na">onTag</span><span class="o">((</span><span class="n">component</span><span class="o">,</span> <span class="n">tag</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">tag</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"autocomplete"</span><span class="o">,</span> <span class="s">"name"</span><span class="o">)));</span>
+<span class="n">name</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Behavior</span><span class="o">.</span><span class="na">onAttribute</span><span class="o">(</span><span class="s">"class"</span><span class="o">,</span> <span class="n">current</span> <span class="o">-&gt;</span> <span class="n">current</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">"wide"</span> <span class="o">:</span> <span class="n">current</span> <span class="o">+</span> <span class="s">" wide"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>To set or append an attribute value from a model, use <code class="language-plaintext highlighter-rouge">AttributeModifier</code>; see <a href="/wicket-site/ribbon-site/guide/modify-attributes.html">Change a tag’s attributes</a>.</p>
+
+<h2 id="choose-the-right-method-to-override">Choose the right method to override</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Called</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bind(Component)</code></td>
+      <td>when the behavior is added to a component</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unbind(Component)</code></td>
+      <td>when the behavior is removed</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onConfigure(Component)</code></td>
+      <td>after the component’s own <code class="language-plaintext highlighter-rouge">onConfigure</code>, once per request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">beforeRender(Component)</code></td>
+      <td>just before the component renders</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onComponentTag(Component, ComponentTag)</code></td>
+      <td>while the component’s tag is written</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">afterRender(Component)</code></td>
+      <td>just after the component rendered</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">renderHead(Component, IHeaderResponse)</code></td>
+      <td>while Wicket collects the page’s header contributions</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onEvent(Component, IEvent&lt;?&gt;)</code></td>
+      <td>when the component receives an event</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">detach(Component)</code></td>
+      <td>at the end of every request; release models and caches here</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onRemove(Component)</code></td>
+      <td>when the component is removed from its parent</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">onException(Component, RuntimeException)</code></td>
+      <td>when an exception occurs in one of the other methods</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isEnabled(Component)</code></td>
+      <td>before each of the above; return <code class="language-plaintext highlighter-rouge">false</code> to skip the behavior</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">isTemporary(Component)</code></td>
+      <td>return <code class="language-plaintext highlighter-rouge">true</code> to have the behavior removed at the end of the request</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getStatelessHint(Component)</code></td>
+      <td>return <code class="language-plaintext highlighter-rouge">false</code> if the behavior makes the page stateful</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">canCallListener(Component)</code></td>
+      <td>for behaviors with a callback URL: whether a request to it is accepted</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A behavior that holds no state can be shared: add one instance to many components. Ajax behaviors are bound to a single component and throw an exception when you add them to a second one. For Ajax behaviors, see <a href="/wicket-site/ribbon-site/guide/ajax-behaviors.html">Ajax behaviors</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/wicket-site/ribbon-site/guide/topics/components.html">Components and markup</a>
+</h2>
+                
+                
+                    
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/markup-ids.html">Give a component a markup id</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/build-panel.html">Build a reusable panel</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Add behavior to a component with a Behavior</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/generate-markup.html">Generate markup from code</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/wicket-tags.html">Wicket tags and attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/guide/auto-components.html">How markup becomes components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/add-behaviors.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/wicket-site/ribbon-site/javascript/guide.js?v=1792239894" defer></script>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/ribbon-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <p class="footer-brand">Apache Wicket is a project of The Apache Software Foundation, released under the Apache License, Version 2.0.</p>
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+    </div>
+</footer>
+
+        
+        <script type="application/json" id="seasons" data-base="/wicket-site/ribbon-site/img/seasons/" data-selector>{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-windscreen-1600.jpg","srcset":[{"file":"summer-windscreen-900.jpg","width":900},{"file":"summer-windscreen-1600.jpg","width":1600},{"file":"summer-windscreen-2160.jpg","width":2160}],"focus":"50% 50%","focus_narrow":"50% 50%","anchor":"right","shift":"33%","ground":"linear-gradient(180deg, #44649E 0%, #4D6FA8 10%, #597FB4 20%, #7393C0 30%, #9DABC1 42%, #93A4B8 54%, #859AB2 56.5%, #9A8A79 57.5%, #BBB3B2 62%, #B1A79F 85%, #ACA39C 100%)"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/wicket-site/ribbon-site/javascript/ribbon.js?v=1792239894" defer></script>
+    </body>
+</html>

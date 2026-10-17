@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Generate markup from code | Apache Wicket</title>
+        <meta name="description" content="Apache Wicket is a component-oriented Java web framework for complex, dynamic pages in plain Java and plain HTML, without a JavaScript build chain.">
+        <meta name="theme-color" content="#0c0c0c">
+        <meta name="color-scheme" content="dark">
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml">
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket news" href="/wicket-site/reveal-site/atom.xml">
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+        
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1792239884">
+    </head>
+    <body class="">
+        <a class="skip" href="#main">Skip to content</a>
+        
+
+<header class="masthead">
+    <div class="masthead-in">
+        
+        <a class="brand" href="/wicket-site/reveal-site/">
+            <img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32">
+            <span class="brand-name">Apache Wicket</span>
+        </a>
+        
+        <nav class="nav" aria-label="Main">
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/quickstart.html">Quick Start</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/start/download.html">Download</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/learn" class="is-active" aria-current="true">Documentation</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/help">Support</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/contribute">Contribute</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/community">Community</a>
+        
+            
+            
+            
+            <a href="/wicket-site/reveal-site/apache">Apache</a>
+        
+            <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank">
+                <svg viewbox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                GitHub
+            </a>
+        </nav>
+    </div>
+</header>
+
+
+
+
+<header class="page-head guide-head">
+    <div class="page-head-in guide-head-in">
+        <div class="guide-head-text">
+            <p class="guide-crumbs"><a href="/wicket-site/reveal-site/guide/">User guide</a><span aria-hidden="true"> / </span><a href="/wicket-site/reveal-site/guide/topics/components.html">Components and markup</a></p>
+            <h1>Generate markup from code</h1>
+            <p class="page-sub">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</p>
+            <p class="guide-tags"><span class="guide-kind">How-to</span><span class="guide-since">Wicket 10 and later</span></p>
+        </div>
+        
+<form class="guide-search" role="search" action="/wicket-site/reveal-site/guide/a-z.html" data-index="/wicket-site/reveal-site/guide/search.json" data-script="/wicket-site/reveal-site/javascript/minisearch-7.2.0.js" data-oldest="10">
+    <label class="guide-search-label" for="guide-q-head">Search the guide</label>
+    <div class="guide-search-field">
+        <input id="guide-q-head" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="Task, class or tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</header>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail">
+        
+        <nav class="rail" aria-label="On this page">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#return-the-markup-from-the-component"><span class="toc-number">1</span> <span class="toc-text">Return the markup from the component</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#cache-the-markup-per-variant"><span class="toc-number">2</span> <span class="toc-text">Cache the markup per variant</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#turn-caching-off"><span class="toc-number">3</span> <span class="toc-text">Turn caching off</span></a></li>
+<li class="toc--level-1 toc--section-4"><a href="#keep-user-content-out-of-the-markup"><span class="toc-number">4</span> <span class="toc-text">Keep user content out of the markup</span></a></li>
+<li class="toc--level-1 toc--section-5"><a href="#change-how-all-markup-is-loaded"><span class="toc-number">5</span> <span class="toc-text">Change how all markup is loaded</span></a></li>
+</ul>
+</div>
+        </nav>
+        
+        <div class="reading-main">
+            <p class="guide-version-note" data-since="10" hidden>
+                This page describes Wicket 10 and later.
+                For Wicket <span data-chosen></span>, see the
+                <a data-single-guide href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">single-page guide for Wicket <span data-chosen></span></a>.
+            </p>
+            <section class="page-content guide-content">
+                <p>Use this when a component’s markup cannot be a file next to its class: it comes from a database or a CMS, is assembled from configuration, or differs per customer. A page, panel or border can supply its own markup by implementing <code class="language-plaintext highlighter-rouge">IMarkupResourceStreamProvider</code>.</p>
+
+<h2 id="return-the-markup-from-the-component">Return the markup from the component</h2>
+
+<p>Implement <code class="language-plaintext highlighter-rouge">getMarkupResourceStream</code> and return the markup as an <code class="language-plaintext highlighter-rouge">IResourceStream</code>. For markup in a string, wrap it in a <code class="language-plaintext highlighter-rouge">StringResourceStream</code>. The markup follows the same rules as a file: a panel’s markup needs <code class="language-plaintext highlighter-rouge">&lt;wicket:panel&gt;</code>, a border’s <code class="language-plaintext highlighter-rouge">&lt;wicket:border&gt;</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NoticePanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="kd">implements</span> <span class="nc">IMarkupResourceStreamProvider</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">NoticePanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"text"</span><span class="o">,</span> <span class="n">text</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">IResourceStream</span> <span class="nf">getMarkupResourceStream</span><span class="o">(</span><span class="nc">MarkupContainer</span> <span class="n">container</span><span class="o">,</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">containerClass</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">StringResourceStream</span><span class="o">(</span><span class="sh">"""
+            &lt;wicket:panel&gt;
+              &lt;aside class="notice"&gt;&lt;p wicket:id="text"&gt;&lt;/p&gt;&lt;/aside&gt;
+            &lt;/wicket:panel&gt;
+            """</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The markup can contain <code class="language-plaintext highlighter-rouge">wicket:id</code> tags; the component adds the matching components as usual. No <code class="language-plaintext highlighter-rouge">NoticePanel.html</code> is needed.</p>
+
+<h2 id="cache-the-markup-per-variant">Cache the markup per variant</h2>
+
+<p>Wicket caches markup per class, locale, style and variation, and asks for the markup stream only once per cache key. A component whose markup depends on other state must tell Wicket how to tell the versions apart. Implement <code class="language-plaintext highlighter-rouge">IMarkupCacheKeyProvider</code> and return a key that differs for each version of the markup:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TenantPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span>
+        <span class="kd">implements</span> <span class="nc">IMarkupResourceStreamProvider</span><span class="o">,</span> <span class="nc">IMarkupCacheKeyProvider</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">tenant</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TenantPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">tenant</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">tenant</span> <span class="o">=</span> <span class="n">tenant</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">IResourceStream</span> <span class="nf">getMarkupResourceStream</span><span class="o">(</span><span class="nc">MarkupContainer</span> <span class="n">container</span><span class="o">,</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">containerClass</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">StringResourceStream</span><span class="o">(</span><span class="n">templates</span><span class="o">.</span><span class="na">panelFor</span><span class="o">(</span><span class="n">tenant</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCacheKey</span><span class="o">(</span><span class="nc">MarkupContainer</span> <span class="n">container</span><span class="o">,</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">containerClass</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">containerClass</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">+</span> <span class="n">tenant</span> <span class="o">+</span> <span class="s">"_"</span> <span class="o">+</span> <span class="n">container</span><span class="o">.</span><span class="na">getLocale</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Include the locale (and the style, if you use styles) in the key when the markup depends on them.</p>
+
+<h2 id="turn-caching-off">Turn caching off</h2>
+
+<p>Return <code class="language-plaintext highlighter-rouge">null</code> from <code class="language-plaintext highlighter-rouge">getCacheKey</code> and Wicket does not cache the markup: it asks for the stream and parses it every time it needs the markup. Use this only for markup that really changes between renders. Parsing on every render costs time, and markup that changes between requests can break pages that are already in the browser, for example when an Ajax request refers to a component whose tag has gone.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCacheKey</span><span class="o">(</span><span class="nc">MarkupContainer</span> <span class="n">container</span><span class="o">,</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">containerClass</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="keep-user-content-out-of-the-markup">Keep user content out of the markup</h2>
+
+<p>Generated markup is parsed as a template, not escaped. Never paste user input or other untrusted text into it: it could add tags, scripts or <code class="language-plaintext highlighter-rouge">wicket:</code> tags. Put such content in a component, such as a <code class="language-plaintext highlighter-rouge">Label</code>, which escapes it. To show trusted HTML from a CMS without Wicket tags, a <code class="language-plaintext highlighter-rouge">Label</code> with <code class="language-plaintext highlighter-rouge">setEscapeModelStrings(false)</code> is simpler than generating markup.</p>
+
+<h2 id="change-how-all-markup-is-loaded">Change how all markup is loaded</h2>
+
+<p><code class="language-plaintext highlighter-rouge">IMarkupResourceStreamProvider</code> works per component. To change where Wicket looks for the markup of every component, for example to load all templates from a directory outside the classpath, configure the resource stream locator in the resource settings instead; see <a href="/wicket-site/reveal-site/guide/resource-loading.html">Customize where resources are loaded from</a>. How Wicket loads, parses and caches markup is described in <a href="/wicket-site/reveal-site/guide/auto-components.html">How markup becomes components</a>.</p>
+
+            </section>
+            <footer class="guide-foot">
+                <h2 class="guide-foot-title">More in <a href="/wicket-site/reveal-site/guide/topics/components.html">Components and markup</a>
+</h2>
+                
+                
+                    
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>How-to guides</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/show-hide-components.html">Show, hide or disable a component</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a component or make it read-only depending on the state of your application, and decide that state once per request in onConfigure.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/modify-attributes.html">Change a tag's attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Set, append to or remove an attribute of a component's tag from Java, with a fixed value or one that follows a model.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/markup-ids.html">Give a component a markup id</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render the HTML id attribute of a component so JavaScript, CSS, labels and Ajax can find it, and choose or generate the id yourself.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/group-components.html">Group components with WebMarkupContainer</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Attach a plain HTML element to a container component so you can hide, disable, style or repaint a group of components as one.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/build-panel.html">Build a reusable panel</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Package a piece of user interface as a Panel, a Java class with its own HTML file, and use it on any page as often as you need.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/use-fragments.html">Swap markup with fragments</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Keep small alternative pieces of markup inside a page or panel and choose in Java which one to show, without a panel class for each.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/use-borders.html">Wrap content with a Border</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write the markup that goes around content once, as a Border, and wrap any part of a page in it while the page keeps its own components.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/use-enclosures.html">Hide surrounding markup with wicket:enclosure</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Hide a caption, label or table row together with the component it describes, without a container component in Java.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/render-body-only.html">Render a component without its tag</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave out a component's own HTML tag and render only its content, and know what stops working when you do.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/stub-markup.html">Keep preview markup out of the output</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Leave sample content in your HTML files so they look complete in a browser or design tool, and make sure Wicket never sends it.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/add-behaviors.html">Add behavior to a component with a Behavior</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Write a Behavior that changes a component's tag, adds markup around it or contributes CSS and JavaScript, and reuse it on any kind of component.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/queue-components.html">Add components without repeating the markup hierarchy</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Queue components on a page or panel and let Wicket put each one in the right container by following the nesting in the markup.</span>
+    </li>
+
+    
+    <li class="is-current">
+        
+        <span class="guide-list-title" aria-current="page">Generate markup from code</span>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Give a panel or page markup built in Java instead of an HTML file, and control whether Wicket caches it.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>Reference</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/wicket-tags.html">Wicket tags and attributes</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Every tag and attribute in the wicket namespace, what it does, which attributes it takes, with a minimal example of each.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                    
+                    
+                    <section class="guide-branch">
+                        <h3>Explanation</h3>
+                        
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/markup-inheritance.html">Markup inheritance</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How a page or panel subclass inherits its parent's HTML along with its Java code, how wicket:child and wicket:extend merge the two, and when panels are the better tool.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/reveal-site/guide/auto-components.html">How markup becomes components</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">How Wicket loads, parses and caches markup, and how Wicket tags turn into auto components that you never add yourself.</span>
+    </li>
+
+</ul>
+
+                    </section>
+                    
+                
+                <p class="guide-edit"><a href="https://github.com/apache/wicket-site/edit/asf-site/_guide/generate-markup.md" target="_blank" rel="noopener noreferrer">Improve this page on GitHub</a></p>
+            </footer>
+        </div>
+    </div>
+</main>
+<script src="/wicket-site/reveal-site/javascript/guide.js?v=1792239884" defer></script>
+
+        <footer class="footer">
+    <div class="footer-in">
+        <a class="asf-tile" href="https://www.apache.org" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="114" height="60"></a>
+        <div class="footer-text">
+            <nav aria-label="Apache Software Foundation">
+                <ul>
+                    <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+                    <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+                    <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+                    <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+                </ul>
+            </nav>
+            <p class="legal">Copyright © 2026 The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1792239884" defer></script>
+    </body>
+</html>

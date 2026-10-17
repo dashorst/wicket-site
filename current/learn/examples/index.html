@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>A Quick Tour of Wicket | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="shortcut icon" href="/wicket-site/current/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/wicket-site/current/css/style.css" type="text/css" media="screen" />
+        <link href="/wicket-site/current/css/font-awesome.min.css" rel="stylesheet" />
+
+		<script src="/wicket-site/current/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <div class="header default">
+    <div class="l-container">
+        
+<nav class="mainmenu">
+    <div class="nav-logo">
+    <a href="/wicket-site/current/"><img src="/wicket-site/current/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+    <div class="nav-container">
+    
+		
+    	
+        
+        
+		<!-- /start/quickstart.html || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/start/quickstart.html" class=" nav-items">Quick Start</a>
+    
+		
+    	
+        
+        
+		<!-- /start/download.html || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/start/download.html" class=" nav-items">Download</a>
+    
+		
+    	
+        
+        
+		<!-- /learn || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/learn" class=" nav-items">Documentation</a>
+    
+		
+    	
+        
+        
+		<!-- /help || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/help" class=" nav-items">Support</a>
+    
+		
+    	
+        
+        
+		<!-- /contribute || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/contribute" class=" nav-items">Contribute</a>
+    
+		
+    	
+        
+        
+		<!-- /community || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/community" class=" nav-items">Community</a>
+    
+		
+    	
+        
+        
+		<!-- /apache || /learn/examples/ -->
+		
+    	
+        
+    	<a href="/wicket-site/current/apache" class=" nav-items">Apache</a>
+    
+    </div>
+    <div class="nav-container  ">
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-github nav-items"></i></a>
+        <a href="https://builtwithwicket.tumblr.com" rel="noreferrer noopener noreferrer" target="_blank"><i class="fa fa-tumblr nav-items"></i></a>
+    </div>    
+</nav>
+        
+    </div>
+</div>
+<main>
+    <div class="l-container">
+        <header class="l-full preamble">
+            <h1>A Quick Tour of Wicket</h1>
+            
+            
+            
+        </header>
+        <section class="toc left default ">
+            <div id="toc" class="toc">
+<div id="toc-title"><h2>Table of Contents</h2></div>
+<ul>
+<li class="toc--level-1 toc--section-1"><a href="#for-beginners"><span class="toc-number">1</span> <span class="toc-text">For beginners</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#wicket-bootstrap-project"><span class="toc-number">2</span> <span class="toc-text">Wicket-Bootstrap project</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#wicket-jquery-ui-integration"><span class="toc-number">3</span> <span class="toc-text">Wicket JQuery-UI integration</span></a></li>
+</ul>
+</div>
+        </section>
+        <section>
+            <p>Nothing says more about a development technology than a few simple examples.
+After all, how hard should it be to do something easy? The examples below
+should speak for themselves in demonstrating how easy it is to get things done
+in Wicket when compared to other frameworks. You will discover that Wicket’s
+component-oriented structure and its “low touch” approach to HTML is quite
+inviting.</p>
+
+<hr>
+
+<h2 id="for-beginners">For beginners</h2>
+
+<p>Wicket comes with a collection of examples meant to help you understand the basic concepts of the framework. They are particularly helpful if you are new to Wicket and you are reading our <a href="/wicket-site/current/learn/#guide">User Guide</a>. 
+In addition, you can see the Wicket 10.x examples and much more <a href="https://examples10x.wicket.apache.org/index.html" target="_blank" rel="noopener noreferrer">live in action</a>.</p>
+
+<p>The following list contains a full description for some of these examples:</p>
+
+<ul>
+  <li>
+<a href="helloworld.html">Hello World!</a> - Everybody’s favorite example</li>
+  <li>
+<a href="navomatic.html">Navomatic</a> - Automatic navigation using Borders and Links</li>
+  <li>
+<a href="guestbook.html">GuestBook</a> - A tiny blogger demonstrating ListViews and
+Forms</li>
+  <li>
+<a href="dropdownchoice.html">Using DropDownChoice</a> - A short example explaining the
+DropDownChoice component</li>
+  <li>
+<a href="markupinheritance.html">Markup Inheritance</a> - A short example explaining
+markup inheritance</li>
+  <li>
+<a href="ajaxcounter.html">Ajax Counter</a> - A short example explaining Wicket’s Ajax
+features building a counter.</li>
+  <li>
+<a href="usingfragments.html">Using Fragments</a> - A short example explaining Wicket’s
+fragments feature. Fragments are a type of inline panels.</li>
+  <li>
+<a href="servlet3x.html">Servlet 3.x with Spring Framework</a> - An example to show the configuration of
+Wicket and Spring Framework without any XML definitions.</li>
+</ul>
+
+<hr>
+
+<h2 id="wicket-bootstrap-project">Wicket-Bootstrap project</h2>
+
+<p><a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/" target="_blank" rel="noopener noreferrer">Wicket-Bootstrap</a> is a full-fledged project that provides integration between Wicket and the popular CSS and JS framework. The project site
+offers a complete showcase of the available features.</p>
+
+<hr>
+
+<h2 id="wicket-jquery-ui-integration">Wicket JQuery-UI integration</h2>
+
+<p><a href="https://github.com/sebfz1/wicket-jquery-ui" target="_blank" rel="noopener noreferrer">Wicket JQuery-UI integration</a> provides full integration between Wicket and JQuery UI with many great-looking widgets ready to be used in your application.</p>
+
+
+
+        </section>
+    </div>
+</main>
+
+        <footer>
+            <div class="l-container l-flex">
+    <div class="l-one-third left">
+        <a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a><br>
+        <a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a><br>
+        <a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a><br>
+    </div>
+    <div class="l-one-third">
+        <a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a><br>
+        <a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a><br>
+    </div>
+    <div class="l-one-third">
+        <a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a><br>
+        <a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a><br>
+    </div>
+</div>
+<div class="l-container">
+    <div class="left">
+        <img src="https://www.apache.org/img/asf_logo.png" style="height:90px; float:left; margin-right:10px;">
+        <div style="margin-top:12px;">Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    </div>
+</div>
+
+        </footer>
+    </body>
+</html>

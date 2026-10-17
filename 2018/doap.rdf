@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"?>
+<rdf:RDF xmlns="http://usefulinc.com/ns/doap#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:asfext="http://projects.apache.org/ns/asfext#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xml:lang="en">
+<!--
+  =======================================================================
+
+   Copyright (c) 2010 The Apache Software Foundation.  
+   All rights reserved.
+
+  =======================================================================
+-->
+	<Project rdf:about="http://wicket.apache.org/">
+		<created>2004-04-01</created>
+		<license rdf:resource="http://usefulinc.com/doap/licenses/asl20"/>
+		<name>Apache Wicket</name>
+		<homepage rdf:resource="http://wicket.apache.org"/>
+		<asfext:pmc rdf:resource="http://wicket.apache.org/"/>
+		<shortdesc>Apache Wicket is an open source Java component oriented web application framework.</shortdesc>
+		<description>Write maintainable, secure and scalable web applications using just Java and HTML. Invented in 2004, Wicket is one of the few survivors of the Java serverside web framework wars of the mid 2000's, and a proud member of the Apache Software Foundation.</description>
+		<bug-database rdf:resource="http://issues.apache.org/jira/browse/WICKET"/>
+		<mailing-list rdf:resource="http://wicket.apache.org"/>
+		<download-page rdf:resource="http://wicket.apache.org"/>
+		<programming-language>Java</programming-language>
+		<category rdf:resource="http://projects.apache.org/category/web-framework"/>
+		<release>
+			<Version>
+				<name>Latest Stable Release</name>
+				<created>2018-02-17</created>
+				<revision>7.10.0</revision>
+			</Version>
+		</release>
+		<repository>
+            <repository>
+                <GITRepository>
+                    <location rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
+                    <browse rdf:resource="http://git-wip-us.apache.org/repos/asf?p=wicket.git"/>
+                </GITRepository>
+		</repository>
+	</Project>
+</rdf:RDF>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stateful vs stateless pages — when sessions matter — Apache Wicket</title>
+  <meta name="description" content="Why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link active">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Stateful vs stateless pages — when sessions matter</h1>
+      <p class="docs-header-description">Why some pages store state in the session and others do not, and how that affects performance, bookmarkability, and scalability</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Wicket pages can be divided into two categories: stateful and stateless pages. Stateful pages are those which rely on user session to store their internal state and to keep track of user interaction. On the contrary stateless pages are those which don’t change their internal state during their lifecycle and they don’t need to occupy space into user session.</p>
+
+<p>From Wicket’s point of view the biggest difference between these two page types is that stateful pages are versioned, meaning that they will be saved into user session every time their internal state has changed. Wicket automatically assigns a session to the user the first time a stateful page is requested. Page versions are stored into user session using Java Serialization mechanism. Stateless pages are never versioned and that’s why they don’t require a valid user session. If we want to know whether a page is stateless or not, we can call the <em>isPageStateless()</em> method of class <em>Page</em>.</p>
+
+<p>In order to build a stateless page we must comply with some rules to ensure that the page won’t need to use user session. These rules are illustrated in paragraph 8.3 but before talking about stateless pages we must first understand how stateful pages are handled and why they are versioned.</p>
+
+<p>Stateful pages are versioned in order to support browser’s back button: when this button is pressed Wicket must respond by rendering the same page instance previously used.</p>
+
+<p>A new page version is created when a stateful page is requested for the first time or when an existing instance is modified (for example changing its component hierarchy). To identify each page version Wicket uses a session-relative identifier called page id. This is a unique number and it is increased every time a new page version is created.</p>
+
+<p>In the final example of the previous chapter (project LifeCycleStages), you may have noticed the number appended at the end of URL. This number is the page id we are talking about:</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/page-id.png" />
+</figure>
+
+<p>In this chapter we will use a revised version of this example project where the component hierarchy is modified inside the Link’s <em>onClick()</em> method. This is necessary because Wicket creates a new page version only if the page is modified before its method <em>onBeforeRender()</em> is invoked. The code of the new home page is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="nc">WebPage</span>
+<span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Label</span> <span class="n">firstLabel</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Label</span> <span class="n">secondLabel</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(){</span>
+        <span class="n">firstLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"label"</span><span class="o">,</span> <span class="s">"First label"</span><span class="o">);</span>
+        <span class="n">secondLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"label"</span><span class="o">,</span> <span class="s">"Second label"</span><span class="o">);</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="n">firstLabel</span><span class="o">);</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"reload"</span><span class="o">){</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">getPage</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="n">firstLabel</span><span class="o">,</span> <span class="kc">true</span><span class="o">))</span>
+                    <span class="n">getPage</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="n">secondLabel</span><span class="o">);</span>
+                <span class="k">else</span>
+                    <span class="nf">getPage</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="n">firstLabel</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now if we run the new example (project LifeCycleStagesRevisited) and we click on the “Reload” button, a new page version is created and the page id is increased by one:</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/reload-page.png" />
+</figure>
+
+<p>If we press the back button the page version previously rendered (and serialized) will be retrieved (i.e. deserialized) and it will be used again to respond to our request (and page id is decremented):</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/browser-back.png" />
+</figure>
+
+<blockquote>
+  <p>[!NOTE]
+For more details about page storing you can take a look at paragraph “Page storing” from chapter “Wicket Internals” The content of this paragraph is from wiki page <a href="https://cwiki.apache.org/confluence/display/WICKET/Page+Storage">https://cwiki.apache.org/confluence/display/WICKET/Page+Storage</a>.</p>
+</blockquote>
+
+<p>As we have stated at the beginning of this chapter, page versions are stored using Java serialization, therefore every object referenced inside a page must be serializable. In <a href="#modelsforms.adoc#_model_chaining" class="cross-reference">paragraph 11.6</a> we will see how to overcome this limit and work with non-serializable objects in our components using detachable Wicket models.</p>
+
+<h1 id="using-a-specific-page-version-with-pagereference">Using a specific page version with PageReference</h1>
+
+<p>To retrieve a specific page version in our code we can use class <em>org.apache.wicket.PageReference</em> by providing its constructor with the corresponding page id:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//load page version with page id = 3</span>
+<span class="nc">PageReference</span> <span class="n">pageReference</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PageReference</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<span class="c1">//load the related page instance</span>
+<span class="nc">Page</span> <span class="n">page</span> <span class="o">=</span> <span class="n">pageReference</span><span class="o">.</span><span class="na">getPage</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>To get the related page instance we must use the method getPage.</p>
+
+<h1 id="turning-off-page-versioning">Turning off page versioning</h1>
+
+<p>If for any reason we need to switch off versioning for a given page, we can call its method <em>setVersioned(false)</em>.</p>
+
+<h1 id="pluggable-serialization">Pluggable serialization</h1>
+
+<p>Wicket serializes pages using an implementation of interface <em>org.apache.wicket.serialize.ISerializer</em>. The default implementation is <em>org.apache.wicket.serialize.java.JavaSerializer</em> and it uses the standard Java serialization mechanism based on classes <em>ObjectOutputStream</em> and <em>ObjectInputStream</em>. However on internet we can find other interesting serialization libraries like <a href="https://github.com/EsotericSoftware/kryo">Kryo</a>.</p>
+
+<p>We can set a custom serializer inside <em>init</em> method accessing Wicket settings with <em>getFrameworkSettings()</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getFrameworkSettings</span><span class="o">().</span><span class="na">setSerializer</span><span class="o">(</span><span class="n">yourSerializer</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>A serializer based on Kryo library and another one based on Fast are provided by the WicketStuff project. You can find more information on this project, as well as the instructions to use its modules, in Appendix B.</p>
+
+<h1 id="page-caching">Page caching</h1>
+
+<p>By default Wicket persists versions of pages into a session-relative file on disk, but it uses a two-level cache to speed up the access. The first level of the cache contains all the pages involved in the current requests as we may visit more than one page during a single request, for example if we have been redirected with <em>setResponsePage</em>. The second level cache stores the last rendered page into a session-scoped variables.</p>
+
+<blockquote>
+  <p>[!NOTE]
+Scoped variables will be introduced in <a href="#requestProcessing.adoc#_storing_arbitrary_objects_with_metadata" class="cross-reference">chapter 9.4.6</a> which is about Wicket metadata.</p>
+</blockquote>
+
+<p>The following picture is an overview of these two caching levels:</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/wicket-cache.png" />
+</figure>
+
+<p>Wicket allows us to set the maximum size of the file used to store pages with setting class <em>org.apache.wicket.settings.StoreSettings</em>. This class provides the <em>setMaxSizePerSession(Bytes bytes)</em> method to set the size of the file. The Bytes parameter is the maximum size allowed for this file:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getStoreSettings</span><span class="o">().</span><span class="na">setMaxSizePerSession</span><span class="o">(</span><span class="nc">Bytes</span><span class="o">.</span><span class="na">kilobytes</span><span class="o">(</span><span class="mi">500</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Class <em>org.apache.wicket.util.lang.Bytes</em> is an utility class provided by Wicket to express size in bytes (for further details refer to the JavaDoc).</p>
+
+<blockquote>
+  <p>[!NOTE]
+More insights on internal page storing will be covered in <a href="#internals.adoc#_wicket_internals" class="cross-reference">chapter 26</a></p>
+</blockquote>
+
+<h1 id="page-expiration">Page expiration</h1>
+
+<p>Page instances are not kept in the user session forever. They can be discarded when the limit set with the <em>setMaxSizePerSession</em> method is reached or (more often) when user session expires. When we ask Wicket for a page id corresponding to a page instance removed from the session, we bump into a <em>PageExpiredException</em> and we get the following default error page:</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/page-expired.png" />
+</figure>
+
+<p>This error page can be customized with the <em>setPageExpiredErrorPage</em> method of class <em>org.apache.wicket.settings.ApplicationSettings</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getApplicationSettings</span><span class="o">().</span><span class="na">setPageExpiredErrorPage</span><span class="o">(</span>
+                <span class="nc">CustomExpiredErrorPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The page class provided as custom error page must have a public constructor with no argument or a constructor that takes as input a single <em>PageParameters</em> argument (the page must be bookmarkable as described in <a href="#urls.adoc#_pageparameters" class="cross-reference">paragraph 10.1.1</a>).</p>
+
+<p>Wicket makes it very easy to build stateful pages, but sometimes we might want to use an “old school” stateless page that doesn’t keep memory of its state in the user session. For example consider the public area of a site or a login page: in those cases a stateful page would be a waste of resources or even a security threat, as we will see in paragraph <a href="#forms2.adoc#_stateless_form" class="cross-reference">paragraph 12.10</a>.</p>
+
+<p>In Wicket a page can be stateless only if it satisfies the following requirements:</p>
+
+<ol>
+  <li>
+    <p>it has been instantiated by Wicket (i.e. we don’t create it with operator new) using a constructor with no argument or a constructor that takes as input a single PageParameters argument (class PageParameters will be covered in <a href="#urls.adoc#_pageparameters" class="cross-reference">chapter 10.1</a>).</p>
+  </li>
+  <li>
+    <p>All its children components (and behaviors) are in turn stateless, which means that their method <em>isStateless</em> must return <em>true</em>.</p>
+  </li>
+</ol>
+
+<p>The first requirement implies that, rather than creating a page by hand, we should rely on Wicket’s capability of resolving page instances, like we do when we use method <em>setResponsePage(Class page)</em>.</p>
+
+<p>In order to comply with the second requirement it could be helpful to check if all children components of a page are stateless. To do this we can leverage method <em>visitChildren</em> and the visitor pattern to iterate over components and test if their method <em>isStateless</em> actually returns <em>true</em>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onInitialize</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">onInitialize</span><span class="o">();</span>
+
+    <span class="n">visitChildren</span><span class="o">((</span><span class="n">component</span><span class="o">,</span> <span class="n">visit</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(!</span><span class="n">component</span><span class="o">.</span><span class="na">isStateless</span><span class="o">())</span> <span class="o">{</span>
+           <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Component "</span> <span class="o">+</span> <span class="n">component</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="s">" is not stateless"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Alternatively, we could use the <em>StatelessComponent</em> utility annotation along with the <em>StatelessChecker</em> class (they are both in package <em>org.apache.wicket.devutils.stateless</em>). <em>StatelessChecker</em> will throw an <em>IllegalArgumentException</em> if a component annotated with <em>StatelessComponent</em> doesn’t respect the requirements for being stateless. To use <em>StatelessComponent</em> annotation we must first add the <em>StatelessChecker</em> to our application as a component render listener:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span>
+<span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+    <span class="n">getComponentPostOnBeforeRenderListeners</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">StatelessChecker</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!NOTE]
+Most of the Wicket’s built-in components are stateful, hence they can not be used with a stateless page. However some of them have also a stateless version which can be adopted when we need to keep a page stateless. In the rest of the guide we will point out when a built-in component comes also with a stateless version.</p>
+</blockquote>
+
+<p>A page can be also explicitly declared as stateless setting the appropriate flag to true with the <em>setStatelessHint(true)</em> method. This method will not prevent us from violating the requirements for a stateless page, but if we do so we will get the following warning log message:</p>
+
+<blockquote>
+  <p>[!WARNING]
+Page ’&lt;page class&gt;’ is not stateless because of component with path ’&lt;component path&gt;’</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
