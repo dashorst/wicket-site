@@ -14,7 +14,7 @@ additionalContents:
 {% capture board_head %}
         <h1 class="board-title">Build web applications from Java components and plain&nbsp;HTML</h1>
         <div class="board-intro">
-            <p class="board-lede">Apache Wicket is an open source, component-oriented Java web framework, developed at the Apache Software Foundation since 2004. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
+            <p class="board-lede">Apache Wicket is a component-oriented Java web framework, open source since 2004 and a project of the Apache Software Foundation since 2007. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
             <p class="home-actions">
                 <a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a>
             </p>
