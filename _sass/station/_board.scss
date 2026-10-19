@@ -164,6 +164,13 @@
     color: settings.$board;
 }
 
+// The current line: signal orange, the "now" colour (on the ticket only).
+.plate-current {
+    background: settings.$signal;
+    color: settings.$board;
+    text-transform: uppercase;
+}
+
 // ---------- Summary lines: what is scheduled, what reached end of life
 
 .board-brief {
