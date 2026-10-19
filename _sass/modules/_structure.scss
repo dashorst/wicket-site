@@ -1164,7 +1164,7 @@ a.guide-list-title:hover,
     max-width: 46rem;
     padding: 1.1rem 1.25rem 1.2rem;
 
-    &.is-ending { border-top-color: $plate; }
+    &.is-ending { border-top-color: $board; }
     p { margin: 0; }
     p + p, p + ol, ol + p { margin-top: 0.6rem; }
 }
@@ -1708,4 +1708,12 @@ a.guide-list-title:hover,
     .connections-guides a,
     .connections-table td > a,
     .eol-table td > a { display: inline-block; padding: 0.75rem 0; }
+}
+
+// The release-line names on the releases board read as links.
+.board-full tbody th[scope=row] a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+
+// Quick start: the version field takes the full row, so its label is not cut.
+@include mixins.breakpoint(settings.$breakpoint-20) {
+    .quickstart-fields label:last-child { grid-column: 1 / -1; }
 }

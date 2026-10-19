@@ -120,7 +120,10 @@
 
         // The characters of a flap are inline blocks, which text decoration does not
         // reach, so the link underline is drawn on the flap itself.
-        .flap { border-bottom: 2px solid rgba(settings.$board-dim, 0.45); }
+        .flap { border-bottom: 2px solid settings.$board-dim; }
+
+        // A chevron after the figure says it leads somewhere: to the line's page.
+        &::after { color: settings.$plate; content: "\203A"; font-family: settings.$font-family-signage; margin-left: 0.3rem; }
 
         &:hover .flap { border-bottom-color: currentColor; }
     }
