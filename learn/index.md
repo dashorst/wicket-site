@@ -7,7 +7,6 @@ preamble: No matter how you want to learn about Wicket, there's something availa
 <nav class="station-index" aria-label="Documentation">
 <ul>
     <li><a href="#news"><span class="station-index-label">News</span><span class="station-index-desc">Release announcements and project news</span></a></li>
-    <li><a href="blogs.html"><span class="station-index-label">Blogs</span><span class="station-index-desc">Articles and tutorials from the community</span></a></li>
     <li><a href="https://cwiki.apache.org/WICKET"><span class="station-index-label">Wiki</span><span class="station-index-desc">The Wicket wiki on Apache Confluence</span></a></li>
     <li><a href="{{ site.baseurl }}/guide/"><span class="station-index-label">User Guide</span><span class="station-index-desc">Tutorials, how-to guides, reference and explanation, by topic</span></a></li>
     <li><a href="#javadoc"><span class="station-index-label">API docs</span><span class="station-index-desc">Javadoc for each release line</span></a></li>
@@ -96,7 +95,7 @@ Stuck with a problem? See how you can find [support]({{ site.baseurl }}/help/ind
 ## IDE Support {#ides}
 
 Wicket is well supported by the three main Java IDEs (NetBeans, IntelliJ and Eclipse).
-Find [here]({{ site.baseurl }}/contribute/ides.html) how to work with Wicket projects with your favourite IDE.
+Plugins for IntelliJ IDEA and Eclipse add navigation between Java and markup: see [Add Wicket support to your IDE]({{ site.baseurl }}/guide/ide-plugins.html).
 
 ---
 	

@@ -54,6 +54,8 @@ All current Java IDEs import Maven projects directly:
 - **NetBeans**: choose File, Open Project, and select the project folder.
 - **VS Code** with the Java extensions: open the project folder.
 
+A Wicket plugin lets IntelliJ IDEA and Eclipse jump between a component and its markup; see [Add Wicket support to your IDE]({{ site.baseurl }}/guide/ide-plugins.html).
+
 ## Run it
 
 Run the `main` method of `Start` from your IDE, then open <http://localhost:8080>. The application runs in development mode, which `Start` sets with the system property `wicket.configuration`.

@@ -37,7 +37,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 - API stability remains a stated commitment: breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.
 - Every release produces a news post and updates version numbers in `_config.yml`. With quarterly majors this happens four times a year plus patch releases, so release-day site edits must stay small and mechanical.
 - Existing users typically act on the site by copying a Maven dependency snippet, following a migration guide, or checking whether their version is still supported.
-- External destinations the site routes to: the user guide and Javadoc, the Confluence wiki, live examples (`live_examples_url` in `_config.yml`), GitHub (issues and contributions, after the move away from JIRA per INFRA-28383), mailing lists and IRC.
+- External destinations the site routes to: the user guide and Javadoc, the Confluence wiki, live examples (`live_examples_url` in `_config.yml`), GitHub (issues and contributions, after the move away from JIRA per INFRA-28383), mailing lists and Slack.
 
 ## Capabilities and Constraints
 
