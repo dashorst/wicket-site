@@ -38,7 +38,7 @@ additionalContents:
                 {% for line in site.data.releases.lines %}{% unless line.status == 'lts' or line.status == 'current' %}{% continue %}{% endunless %}{% assign v = site.wicket[line.config] %}{% assign line_page = site.pages | where: "url", line.page | first %}
                 <div class="ticket-snippet">
                     <div class="ticket-stub-head">
-                        <p class="ticket-snippet-label"><strong>{{ v }}</strong>{% if line.service == 'lts' %} <span class="plate plate-lts" title="Long-term support">LTS</span>{% endif %} {{ line.role | downcase }}</p>
+                        <p class="ticket-snippet-label"><strong>{{ v }}</strong>{% if line.service == 'lts' %} <span class="plate plate-lts" title="Long-term support">LTS</span>{% endif %}{% if line.role %} {{ line.role }}{% endif %}</p>
                         <button type="button" class="ticket-copy" data-copy="maven-{{ line.series }}" aria-label="Copy the Maven dependency for Wicket {{ v }}" hidden>Copy</button>
                     </div>
 <pre class="ticket-code"{% if shown %} hidden{% endif %}><code id="maven-{{ line.series }}"><span class="ticket-code-comment"><span>&lt;!-- Apache Wicket {{ line.series }}.x{% if line.status == 'lts' %} LTS{% endif %}:</span> <span>Java {{ line_page.java }}+,</span> <span>{{ line_page.servlet | replace: ' or newer', '+' }} --&gt;</span></span>
