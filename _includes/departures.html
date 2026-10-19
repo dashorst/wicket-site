@@ -9,8 +9,8 @@
   Scheduled: the releases sharing the earliest `when`, plus the next new LTS line.
   End of life: only shown while a line with status `eol` is in the data file.
 
-  The board's head is passed in as include.head (the page's h1, lead and action), so the
-  board and what Wicket is read as one panel.
+  The board's head is passed in as include.head (the page's h1 and lede), so the
+  board and what Wicket is read as one panel. The way to upgrade is on the ticket beside it.
 {% endcomment %}
 {% assign releases = site.data.releases %}
 {% assign eol_lines = releases.lines | where: 'status', 'eol' %}
@@ -78,6 +78,6 @@
             {%- endfor %}
                 <span class="board-brief-item"><a href="{{ site.baseurl }}/versions/#upgrade-paths">Upgrade paths</a></span></p>{% endif %}
         </div>
-        <p class="board-foot"><a href="{{ site.baseurl }}/versions/">All releases and downloads</a><a href="{{ site.baseurl }}/versions/#upgrade-paths">Upgrade paths</a><a href="{{ site.baseurl }}/versions/#release-policy">How the release schedule works</a></p>
+        <p class="board-foot"><a href="{{ site.baseurl }}/versions/">All releases and downloads</a><a href="{{ site.baseurl }}/versions/#release-policy">How the release schedule works</a></p>
     </div>
 </div>

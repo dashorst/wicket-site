@@ -20,7 +20,8 @@
     }
 }
 
-// The arrivals hall: the board hangs from the header band onto the hall.
+// The arrivals hall: the board and the ticket hang from the header band onto the hall,
+// side by side from 1152px with their top edges aligned, stacked below that.
 .home-arrivals {
     background:
         linear-gradient(settings.$board 0, settings.$board 6rem, transparent 6rem),
@@ -30,33 +31,191 @@
     @include mixins.breakpoint(settings.$breakpoint-30) { padding-top: 2rem; }
 }
 
-.home-board .board-intro {
+.home-arrivals-inner {
+    align-items: start;
     display: grid;
     gap: 1.5rem;
-}
+    grid-template-columns: minmax(0, 1fr);
 
-.home-actions {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    margin: 0;
-
-    .button {
-        font-size: settings.$font-size-40;
-        margin: 0;
-        padding: 0.7rem 1.4rem 0.6rem;
-
-        // On the board the plate turns white on hover, as the board is already night blue.
-        &:hover { background: settings.$board-text; color: settings.$board; }
-        &:active { background: settings.$plate; color: settings.$board; }
+    // The ticket is at least 23rem wide, so its Maven lines fit without wrapping.
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        grid-template-columns: minmax(0, 8fr) minmax(23rem, 4fr);
     }
 }
 
-.home-action-alt {
+// Beside the ticket the board is narrower: the title stands over the lede, both a step
+// smaller, and the column heads keep to one line.
+@include mixins.breakpoint(settings.$breakpoint-40) {
+    .home-arrivals .board-head { grid-template-columns: minmax(0, 1fr); }
+    .home-arrivals .board-title { font-size: clamp(2.25rem, 3.3vw, 3rem); max-width: 20ch; }
+    .home-arrivals .board-lede { font-size: 1.1rem; max-width: 64ch; }
+    .home-arrivals .board-table thead th { white-space: nowrap; }
+}
+
+// ---------- The ticket: one primary action, then a stub with the Maven dependency
+// of every line in service, the LTS first.
+
+.ticket {
+    background: settings.$paper;
+    border-top: 6px solid settings.$signal;
+    box-shadow: 0 1.25rem 2.5rem -1.5rem rgba(settings.$board, 0.45);
+    color: settings.$ink;
+
+    p { margin-bottom: 1.25rem; }
+
+    // Between the phone and the wide hall the ticket lies on its side: the action
+    // beside the stub, torn off along a vertical perforation.
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        display: block;
+    }
+}
+
+.ticket-main {
+    padding: 1.5rem 1.25rem 1.6rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-10) { padding: 1.5rem 1.5rem 1.6rem; }
+}
+
+.ticket .ticket-title {
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 0.6rem;
+    max-width: none;
+}
+
+.ticket-action.button {
+    display: block;
+    font-size: settings.$font-size-30;
+    margin: 0;
+    padding: 0.8rem 1rem 0.7rem;
+    text-align: center;
+}
+
+// The stub is torn off along a perforation with a notch cut out on either end.
+.ticket-stub {
+    background:
+        radial-gradient(circle at 0 0, settings.$hall 0.7rem, transparent 0.75rem) top left / 1.5rem 1.5rem no-repeat,
+        radial-gradient(circle at 100% 0, settings.$hall 0.7rem, transparent 0.75rem) top right / 1.5rem 1.5rem no-repeat;
+    border-top: 2px dashed settings.$rule;
+    padding: 1.25rem 1.25rem 1.4rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-10) { padding: 1.25rem 1.5rem 1.4rem; }
+
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        background:
+            radial-gradient(circle at 0 0, settings.$hall 0.7rem, transparent 0.75rem) top left / 1.5rem 1.5rem no-repeat,
+            radial-gradient(circle at 0 100%, settings.$hall 0.7rem, transparent 0.75rem) bottom left / 1.5rem 1.5rem no-repeat;
+        border-left: 2px dashed settings.$rule;
+        border-top: 0;
+        padding-top: 1.5rem;
+    }
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        background:
+            radial-gradient(circle at 0 0, settings.$hall 0.7rem, transparent 0.75rem) top left / 1.5rem 1.5rem no-repeat,
+            radial-gradient(circle at 100% 0, settings.$hall 0.7rem, transparent 0.75rem) top right / 1.5rem 1.5rem no-repeat;
+        border-left: 0;
+        border-top: 2px dashed settings.$rule;
+        padding-top: 1.25rem;
+    }
+}
+
+.ticket .ticket-stub-title {
+    font-size: settings.$font-size-20;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.85rem;
+    text-transform: uppercase;
+}
+
+.ticket-snippet + .ticket-snippet { margin-top: 0.25rem; }
+
+.ticket-stub-head {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+}
+
+.ticket .ticket-snippet-label {
+    color: settings.$ink-soft;
     font-family: settings.$font-family-signage;
-    font-size: settings.$font-size-40;
+    font-size: settings.$font-size-20;
     font-weight: 600;
+    margin: 0;
+
+    strong {
+        color: settings.$board;
+        font-family: settings.$font-family-board;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+    }
+
+    .plate { vertical-align: 0.1em; }
+}
+
+// A small neutral plate that turns board blue with yellow lettering once copied.
+.ticket-copy {
+    background: transparent;
+    border: 2px solid settings.$board;
+    color: settings.$board;
+    flex: none;
+    font-size: settings.$font-size-10;
+    margin: 0;
+    padding: 0.2rem 0.6rem 0.1rem;
+
+    &:hover { background: settings.$board; color: settings.$board-text; }
+
+    &.is-copied,
+    &.is-copied:hover {
+        background: settings.$board;
+        border-color: settings.$board;
+        color: settings.$plate;
+    }
+}
+
+pre.ticket-code {
+    background: settings.$hall;
+    border: 0;
+    border-radius: settings.$border-radius-10;
+    margin: 0 0 1rem;
+    padding: 0.75rem 0.85rem;
+    // The requirements comment wraps; the Maven lines fit the ticket's width.
+    white-space: pre-wrap;
+
+    code {
+        background: none;
+        border: 0;
+        color: settings.$ink;
+        font-size: settings.$font-size-10;
+        line-height: 1.55;
+        padding: 0;
+        white-space: inherit;
+    }
+}
+
+// The requirements comment wraps between its parts, not inside them.
+.ticket-code-comment {
+    color: settings.$ink-soft;
+    font-size: inherit;
+
+    span { white-space: nowrap; }
+}
+
+.ticket-links {
+    font-family: settings.$font-family-signage;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li { margin: 0; }
+    li + li { margin-top: 0.3rem; }
 }
 
 // ---------- Sections
@@ -89,37 +248,75 @@
     margin-top: 1.25rem;
 }
 
-// How a page works: the Java class beside its HTML.
-.home-code-pair {
-    display: grid;
-    gap: 1.5rem 3rem;
-    grid-template-columns: minmax(0, 1fr);
+// ---------- Why Wicket: the route. The stops hang on a 4px board-blue line as ringed
+// station dots, the first one filled orange; text on the left, real code on the right.
 
-    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.route-stops {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
 
-    figure { margin: 0; min-width: 0; }
-    figcaption {
-        color: settings.$ink-soft;
-        font-family: settings.$font-family-code;
-        font-size: settings.$font-size-10;
-        margin-bottom: 0.35rem;
-    }
-    .highlight,
-    pre {
-        background: settings.$paper;
-        margin: 0;
-    }
-    .highlight {
-        border: 1px solid settings.$rule;
-        border-radius: settings.$border-radius-10;
-    }
-    pre {
-        overflow-x: auto;
-        padding: 1rem 1.25rem;
+    // The route line the stops hang on.
+    &::before {
+        background: settings.$board;
+        bottom: 2.5rem;
+        content: "";
+        left: 0.6rem;
+        position: absolute;
+        top: 0.5rem;
+        width: 4px;
     }
 }
 
-.home-code-notes {
+.route-stop {
+    border-top: 1px solid settings.$rule;
+    display: grid;
+    gap: 1rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin: 0;
+    padding: 2rem 0 2.25rem 2.75rem;
+    position: relative;
+
+    &:first-child { border-top: 0; padding-top: 0.25rem; }
+
+    // The stop: a station dot on the line.
+    &::before {
+        background: settings.$paper;
+        border: 4px solid settings.$board;
+        border-radius: 50%;
+        box-sizing: border-box;
+        content: "";
+        height: 1.35rem;
+        left: 0.05rem;
+        position: absolute;
+        top: 2.3rem;
+        width: 1.35rem;
+    }
+
+    &:first-child::before {
+        background: settings.$signal;
+        top: 0.55rem;
+    }
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        padding-left: 3.5rem;
+    }
+
+    h3 {
+        font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin: 0 0 0.6rem;
+    }
+
+    p { max-width: 54ch; }
+}
+
+.route-text > :last-child { margin-bottom: 0; }
+
+.route-notes {
     list-style: none;
     margin: 1.25rem 0 0;
     padding: 0;
@@ -131,42 +328,92 @@
     }
 }
 
-// Why Wicket: a ruled list in two, then three columns, no boxes.
-.home-why {
-    display: grid;
-    gap: 0 3rem;
-    grid-template-columns: minmax(0, 1fr);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.route-code {
+    min-width: 0;
 
-    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .highlight {
+        background: settings.$paper;
+        border: 1px solid settings.$rule;
+        border-radius: settings.$border-radius-10;
+        margin: 0 0 1.25rem;
+    }
+    .highlight:last-child { margin-bottom: 0; }
+
+    pre {
+        background: settings.$paper;
+        margin: 0;
+        overflow-x: auto;
+        padding: 1rem 1.25rem;
+    }
+
+    // On phones samples keep their lines and scroll sideways; a fade at the
+    // right edge shows there is more.
+    @include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
+        .highlight { position: relative; }
+
+        .highlight::after {
+            background: linear-gradient(to right, rgba(settings.$paper, 0), settings.$paper 85%);
+            bottom: 1px;
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            width: 2.5rem;
+        }
+
+        pre { padding: 0.85rem 2.5rem 0.85rem 0.9rem; }
+        pre code,
+        pre span { font-size: 0.75rem; }
+    }
+}
+
+.route-file {
+    color: settings.$ink-soft;
+    font-family: settings.$font-family-code;
+    font-size: settings.$font-size-10;
+    margin: 0 0 0.35rem;
+}
+
+// After the stops: what else comes with Wicket, a ruled list on paper.
+.route-also {
+    background: settings.$paper;
+    margin-top: 1rem;
+    padding: 1.5rem 1.25rem 0.75rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { padding: 1.75rem 2.25rem 1rem; }
+
+    h3 {
+        font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 1rem;
+    }
+
+    ul {
+        display: grid;
+        gap: 0 2.5rem;
+        grid-template-columns: minmax(0, 1fr);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
 
     li {
-        border-top: 2px solid settings.$board;
+        border-top: 1px solid settings.$rule;
+        color: settings.$board;
+        font-family: settings.$font-family-signage;
+        font-weight: 600;
         margin: 0;
-        padding: 0.9rem 0 1.75rem;
+        padding: 0.75rem 0 0.85rem;
     }
-    h3 {
-        font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-        letter-spacing: -0.02em;
-        margin: 0 0 0.4rem;
-    }
-    p { margin: 0; }
 }
 
 .home-also {
-    border-top: 1px solid settings.$rule;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     max-width: 72ch;
-    padding-top: 1rem;
-
-    span {
-        color: settings.$board;
-        font-family: settings.$font-family-signage;
-        font-weight: 700;
-    }
 }
 
 // Learn: the introduction beside the five lessons.
@@ -180,6 +427,7 @@
     h2 { font-size: clamp(2rem, 3.4vw, 2.6rem); }
 }
 .home-lessons { margin: 0; }
+.home-split .home-more { margin-top: 0; }
 
 .home-section .line-panels,
 .home-section .post-panels { margin-bottom: 0; }
@@ -226,6 +474,11 @@
 }
 
 @media (pointer: coarse) {
-    .home-action-alt,
     .home-more a { display: inline-block; padding: 0.7rem 0; }
+    .ticket-links a { align-items: center; display: inline-flex; min-height: 44px; }
+    .ticket-links li + li { margin-top: 0; }
+    .ticket-copy { min-height: 44px; min-width: 44px; }
+    .home-lessons .guide-list-title { align-items: center; display: inline-flex; min-height: 44px; }
+    .home-lessons li { padding-bottom: 0.2rem; padding-top: 0.2rem; }
+    .home-lessons li::before { top: 0.75rem; }
 }

@@ -291,7 +291,7 @@
 
 // Phones: the board answers "which version, is it supported" in one screen.
 // The first-release date stays on /versions/; scheduled releases run on one line;
-// the foot keeps the two links a phone visitor needs.
+// the foot keeps the link to all releases; the ticket below carries the upgrade link.
 @include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
     .board-row {
         grid-template-areas:

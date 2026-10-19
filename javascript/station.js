@@ -31,6 +31,53 @@
     board.classList.add('flaps-run');
 })();
 
+// The ticket's copy plates: <button data-copy="id"> copies the text of the element with that id
+// and announces "Copied". Without clipboard access the snippet is shown and selected, so the
+// visitor can copy it by hand. Without JavaScript the plates stay hidden.
+(function () {
+    var buttons = document.querySelectorAll('.ticket [data-copy]');
+    Array.prototype.forEach.call(buttons, function (button) {
+        var target = document.getElementById(button.getAttribute('data-copy'));
+        if (!target) return;
+        var label = button.textContent;
+        var timer;
+        var status = document.createElement('span');
+        status.className = 'visually-hidden';
+        status.setAttribute('role', 'status');
+        button.parentNode.appendChild(status);
+        button.hidden = false;
+
+        function done(text, said) {
+            button.textContent = text;
+            status.textContent = said;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                button.textContent = label;
+                button.classList.remove('is-copied');
+                status.textContent = '';
+            }, 2000);
+        }
+        function selectByHand() {
+            var pre = target.closest('pre');
+            if (pre) pre.hidden = false;
+            var range = document.createRange();
+            range.selectNodeContents(target);
+            var selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            done('Selected, copy it', 'The snippet is selected; copy it by hand.');
+        }
+        button.addEventListener('click', function () {
+            var text = target.textContent;
+            if (!navigator.clipboard) { selectByHand(); return; }
+            navigator.clipboard.writeText(text).then(function () {
+                button.classList.add('is-copied');
+                done('Copied', 'Copied');
+            }, selectByHand);
+        });
+    });
+})();
+
 // Reading rail: the section in view becomes the current stop.
 (function () {
     var links = document.querySelectorAll('.reading-rail .toc--level-1 > a');
