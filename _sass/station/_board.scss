@@ -269,6 +269,8 @@
     .board-release { grid-area: release; font-size: 1.2rem; }
     .board-status { grid-area: status; text-align: right; }
     .board-when { grid-area: when; }
+    // Stacked, the date loses its column head; it carries its own label.
+    .board-when::before { content: attr(data-label) " "; }
     .board-support { grid-area: support; text-align: right; color: settings.$board-dim; }
 
     .board-brief-label { min-width: 100%; }

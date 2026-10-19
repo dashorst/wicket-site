@@ -1159,12 +1159,12 @@ a.guide-list-title:hover,
 
 .hub-eol {
     background: $paper;
-    border-top: 4px solid $stop;
+    border: 2px solid $stop;
     margin-bottom: 2rem;
     max-width: 46rem;
     padding: 1.1rem 1.25rem 1.2rem;
 
-    &.is-ending { border-top-color: $board; }
+    &.is-ending { border-color: $board; }
     p { margin: 0; }
     p + p, p + ol, ol + p { margin-top: 0.6rem; }
 }
@@ -1697,8 +1697,19 @@ a.guide-list-title:hover,
     .nav-logo a { align-items: center; display: inline-flex; min-height: 44px; }
 }
 
-// Highlight code in half-width columns wraps instead of hiding its end.
-.features .feature-code pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+// Code keeps its lines and scrolls sideways; a fade at the right edge says there is more (DESIGN.md).
+.features .feature-code .highlight,
+.hub-maven .highlight { position: relative; }
+.features .feature-code .highlight::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), $paper);
+    bottom: 1px;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 2rem;
+}
 
 // The quick start's version select shows its whole label.
 .quickstart select { min-width: 100%; }
@@ -1716,4 +1727,9 @@ a.guide-list-title:hover,
 // Quick start: the version field takes the full row, so its label is not cut.
 @include mixins.breakpoint(settings.$breakpoint-20) {
     .quickstart-fields label:last-child { grid-column: 1 / -1; }
+}
+
+@media (pointer: coarse) {
+    .hub-route-one a,
+    .hub-route a { display: inline-block; padding: 0.75rem 0; }
 }
