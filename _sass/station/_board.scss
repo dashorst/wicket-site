@@ -300,6 +300,7 @@
     }
     .board-row .board-when { display: none; }
     .board-row .board-support { text-align: left; }
+    .board-row .board-support::before { content: attr(data-label) " "; }
     .board-brief p { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; }
     .board-brief-label { min-width: 0; }
     .board-brief-item { white-space: nowrap; }
@@ -312,6 +313,5 @@
     .board-lede { font-size: 1rem; line-height: 1.5; }
     .home-board .board-intro { gap: 1rem; }
     .board-row { gap: 0.1rem 1rem; padding: 0.5rem 0; }
-    .board-brief p:first-child .board-brief-item ~ .board-brief-item { display: none; }
     .board-foot { margin-top: 0.5rem; }
 }
