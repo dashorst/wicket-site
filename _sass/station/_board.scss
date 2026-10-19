@@ -304,4 +304,14 @@
     .board-brief-label { min-width: 0; }
     .board-brief-item { white-space: nowrap; }
     .board-foot a[href$="#release-policy"] { display: none; }
+
+    // The whole board in one phone screen: tighter head and rows, and of the
+    // scheduled releases only the next one (the rest are on /versions/).
+    .board-head { gap: 0.75rem; padding-bottom: 1.1rem; }
+    .board-title { font-size: 2rem; }
+    .board-lede { font-size: 1rem; line-height: 1.5; }
+    .home-board .board-intro { gap: 1rem; }
+    .board-row { gap: 0.1rem 1rem; padding: 0.5rem 0; }
+    .board-brief p:first-child .board-brief-item ~ .board-brief-item { display: none; }
+    .board-foot { margin-top: 0.5rem; }
 }
