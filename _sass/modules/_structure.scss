@@ -1,21 +1,26 @@
-@use "sass:color";
 @use "../taiga/mixins";
 @use "../taiga/settings";
 
-// The parts the restructured site adds to the Taiga theme: the version plate in the menu,
-// the release line pages, the release lines table, the blog listings and the user guide.
+// The parts the restructured site adds, in the station look: the release line pages, the
+// release lines table, the blog listings, the user guide and the section front pages.
+// Two grounds: the light hall for reading, the night-blue board for signs and boards.
 
-$rule: settings.$color-neutral-30;
-$tint: settings.$color-neutral-10;
-$ink: settings.$color-neutral-70;
-$ink-soft: #5d6662;
-$brand: settings.$color-brand-50;
-$brand-text: #b4531a;   // brand orange dark enough for text on white
-$navy: #303284;         // the "WICKET" of the logo
-$eol: #b3261e;
+$rule: settings.$rule;
+$paper: settings.$paper;
+$ink: settings.$ink;
+$ink-soft: settings.$ink-soft;
+$board: settings.$board;
+$board-rule: settings.$board-rule;
+$board-dim: settings.$board-dim;
+$signal: settings.$signal;
+$signal-deep: settings.$signal-deep;
+$plate: settings.$plate;
+$stop: settings.$stop;
+$signage: settings.$font-family-signage;
+$figure: settings.$font-family-board;
 
 // One width for the whole site: 66rem of content between the 5rem gutters of the
-// Taiga container, so the menu, page headings, panels, tables and footer share both edges.
+// container, so the menu, signs, boards, tables and footer share both edges.
 $content-width: 66rem;
 $site-width: $content-width + 10rem;
 
@@ -35,156 +40,6 @@ $site-width: $content-width + 10rem;
     width: 1px;
 }
 
-// ---------- Main menu
-
-nav.mainmenu {
-    .nav-items.active {
-        box-shadow: inset 0 -2px 0 $brand;
-        color: $navy;
-    }
-}
-
-.nav-plate {
-    align-items: center;
-    border: 1px solid settings.$color-neutral-50;
-    border-radius: settings.$border-radius-20;
-    display: inline-flex;
-    gap: 0.4rem;
-    margin-right: 1.25rem;
-    min-height: 2.25rem;
-    padding: 0.2rem 0.55rem 0.2rem 0.65rem;
-    text-transform: none;
-    transition: border-color 160ms ease-out, background-color 160ms ease-out;
-    white-space: nowrap;
-
-    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
-
-    .nav-plate-current {
-        color: $navy;
-        font-weight: 600;
-    }
-    .nav-plate-lts {
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-        font-weight: 400;
-    }
-    &:hover,
-    &.active {
-        background: $tint;
-        border-color: $brand-text;
-    }
-}
-
-// ---------- Small labels
-
-.tag {
-    border-radius: settings.$border-radius-10;
-    display: inline-block;
-    font-size: settings.$font-size-10;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    line-height: 1.6;
-    padding: 0 0.4em;
-    text-transform: uppercase;
-    vertical-align: 0.15em;
-}
-.tag-lts {
-    background: $navy;
-    color: #fff;
-}
-.tag-eol {
-    border: 1px solid $eol;
-    color: $eol;
-}
-// A line with one release left: a filled amber label, apart from the red of end of life.
-.tag-ending {
-    background: #fdebd3;
-    color: #7a3510;
-}
-// A release that fixes vulnerabilities: a reason to upgrade, not a warning.
-.tag-security {
-    border: 1px solid $navy;
-    color: $navy;
-}
-.release-lines-latest {
-    color: $ink-soft;
-    display: block;
-    font-size: settings.$font-size-20;
-    font-variant-numeric: tabular-nums;
-    font-weight: 400;
-}
-.tag-post.tag-security {
-    border-color: $navy;
-    color: $navy;
-}
-.release-lines-role {
-    color: $ink-soft;
-    display: block;
-    font-size: settings.$font-size-20;
-}
-
-// ---------- Release lines table
-
-.release-lines {
-    border-collapse: collapse;
-    margin: 1rem 0 2rem;
-    width: 100%;
-
-    th, td {
-        border-bottom: 1px solid $rule;
-        padding: 0.6rem 1rem 0.6rem 0;
-        text-align: left;
-        vertical-align: baseline;
-    }
-    thead th {
-        border-bottom: 2px solid $ink;
-        font-weight: 600;
-    }
-    tbody th[scope=row] {
-        font-weight: 600;
-        white-space: nowrap;
-
-        a { font-weight: 600; }
-        .tag { margin-left: 0.4rem; }
-    }
-    .release-lines-group th {
-        border-bottom: 1px solid $rule;
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        padding-top: 1.5rem;
-        text-transform: uppercase;
-    }
-    .is-eol th[scope=row],
-    .is-eol th[scope=row] a {
-        color: $ink-soft;
-        text-decoration: line-through;
-        text-decoration-color: $eol;
-    }
-
-    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
-        // One release is one block: no rule between its two rows of cells.
-        &,
-        .section-body & {
-            th, td { border: none; }
-        }
-        thead { display: none; }
-        tr { display: grid; grid-template-columns: 1fr 1fr; padding: 0.5rem 0; border-bottom: 1px solid $rule; }
-        th, td { border: none; padding: 0.15rem 0; }
-        .release-lines-group { display: block; border-bottom: none; }
-    }
-}
-
-// ---------- Release line page
-
-.hub {
-    padding-bottom: 3rem;
-
-    .hub-head,
-    .hub-section { max-width: 66rem; }
-}
-
 // Signs and reading columns line up with the menu's container.
 @mixin container-gutters {
     margin: 0 auto;
@@ -198,331 +53,261 @@ nav.mainmenu {
     }
 }
 
-.hub-head {
-    margin: 2rem 0 1rem;
-
-    h1 {
-        color: settings.$color-neutral-90;
-        font-size: 2.6rem;
-        font-weight: 300;
-        line-height: 1.15;
-        margin: 0.25rem 0 0.5rem;
-    }
+// The title of an entry in a list: board-blue signage lettering, orange only on hover and focus.
+@mixin entry-title {
+    color: $board;
+    font-family: $signage;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.hub-crumbs {
-    font-size: settings.$font-size-20;
+@mixin entry-title-hover {
+    color: $signal-deep;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.18em;
 }
 
-.hub-role {
-    font-size: settings.$font-size-50;
-    line-height: 1.4;
-    max-width: 60ch;
-    margin-bottom: 1.5rem;
-}
-
-.hub-facts {
-    border-bottom: 1px solid $rule;
-    border-top: 1px solid $rule;
-    display: grid;
-    gap: 1rem 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    margin-bottom: 1.5rem;
-    padding: 1rem 0;
-
-    dt {
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-    }
-    dd {
-        color: settings.$color-neutral-90;
-        font-weight: 400;
-        margin: 0;
-    }
-    .hub-version {
-        font-size: settings.$font-size-60;
-        font-variant-numeric: tabular-nums;
-        font-weight: 600;
-        line-height: 1.2;
-    }
-}
-
-.hub-eol {
-    border: 1px solid $eol;
-    border-radius: settings.$border-radius-20;
-    color: settings.$color-neutral-90;
-    margin-bottom: 1.5rem;
-    max-width: 46rem;
-    padding: 1rem 1.25rem;
-
-    &.is-ending { border-color: $brand-text; }
-    p { margin: 0; }
-    p + p, p + ol, ol + p { margin-top: 0.5rem; }
-}
-.hub-route-one { font-size: settings.$font-size-40; }
-.hub-eol-title {
-    font-size: settings.$font-size-40;
-    font-weight: 600;
-}
-.hub-eol-more {
-    font-size: settings.$font-size-20;
-}
-.hub-route {
-    margin: 0.5rem 0 0 1.25rem;
-
-    li + li { margin-top: 0.25rem; }
-    .tag { margin-left: 0.25rem; }
-}
-
-.hub-maven {
-    max-width: 36rem;
-
-    pre {
-        background: $tint;
-        border-radius: settings.$border-radius-20;
-        margin: 0.5rem 0;
-        overflow-x: auto;
-        padding: 1rem;
-
-        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { white-space: pre-wrap; }
-    }
-}
-pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
-
-.hub-maven-label {
-    align-items: center;
-    display: flex;
-    font-weight: 400;
-    justify-content: space-between;
-}
-
-.hub-copy {
-    background: none;
-    border: 1px solid $brand;
-    border-radius: settings.$border-radius-20;
-    color: $brand-text;
-    cursor: pointer;
-    font: inherit;
-    font-size: settings.$font-size-20;
-    font-weight: 600;
-    padding: 0.1rem 0.75rem;
-
-    &:hover { background: $brand; color: #fff; }
-    &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
-}
-
-.hub-maven-more,
-.hub-more {
-    font-size: settings.$font-size-20;
-}
-
-.hub-jump {
-    border-top: 1px solid $rule;
-    margin-top: 2rem;
+// A section heading on a reading page: heavy signage over a 2px board rule.
+@mixin section-head {
+    border-top: 2px solid $board;
+    color: $board;
+    font-family: $signage;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
     padding-top: 1rem;
-
-    ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; list-style: none; margin: 0; padding: 0; }
-    li { margin: 0; }
-    a { font-weight: 600; }
-
-    + .hub-section { border-top: none; margin-top: 1.5rem; }
 }
 
-.hub-section {
-    border-top: 1px solid $rule;
-    margin-top: 3rem;
-    padding-top: 2rem;
-
-    > h2 {
-        color: settings.$color-neutral-90;
-        font-weight: 400;
-        font-size: 1.9rem;
-        margin-bottom: 1rem;
-    }
+// Code on light ground: paper with a timetable rule.
+@mixin code-block {
+    background: $paper;
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    overflow-x: auto;
+    padding: 0.85rem 1.1rem;
 }
 
-.hub-panels {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.5rem 2.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    @include mixins.breakpoint(settings.$breakpoint-30) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    li {
-        border-top: 3px solid $brand;
-        padding-top: 0.75rem;
-    }
-    h3 {
-        color: settings.$color-neutral-90;
-        font-weight: 600;
-        font-size: settings.$font-size-40;
-    }
-    p + p { margin-top: 0.5rem; }
+:not(pre) > code {
+    background: $paper;
+    border: 1px solid $rule;
+    border-radius: settings.$border-radius-10;
+    padding: 0.05em 0.3em;
 }
 
-.hub-panel-alt {
-    font-size: settings.$font-size-20;
+.highlight,
+pre.highlight { background: $paper; }
+
+// ---------- Plates and labels
+
+.tag {
+    border: 1px solid transparent;
+    border-radius: settings.$border-radius-10;
+    display: inline-block;
+    font-family: $signage;
+    font-size: settings.$font-size-10;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    padding: 0.35em 0.5em 0.25em;
+    text-transform: uppercase;
+    vertical-align: 0.15em;
+    white-space: nowrap;
 }
-
-.hub-body {
-    scroll-margin-top: 1rem;
-
-    h2 {
-        color: settings.$color-neutral-90;
-        font-weight: 400;
-        font-size: 1.9rem;
-        margin-top: 2.5rem;
-
-        &:first-child { margin-top: 0; }
-    }
-    h3 {
-        font-weight: 600;
-        font-size: settings.$font-size-40;
-        margin-top: 1.5rem;
-    }
-    p, ul { max-width: 68ch; }
+.tag-lts {
+    background: $plate;
+    border-color: $plate;
+    color: $board;
 }
-
-// ---------- Highlights ("New in Wicket n")
-
-.features {
-    display: grid;
-    gap: 2rem 3rem;
-    grid-template-columns: minmax(0, 1fr);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    @include mixins.breakpoint(settings.$breakpoint-30) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .feature {
-        margin: 0;
-
-        h3 {
-            color: settings.$color-neutral-90;
-            font-weight: 600;
-            font-size: settings.$font-size-40;
-        }
-    }
-    .feature-facts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1.5rem;
-        margin-top: 0.75rem;
-
-        dt { color: $ink-soft; font-size: settings.$font-size-20; }
-        dd { font-weight: 600; margin: 0; }
-    }
-    .feature-code {
-        margin-top: 0.75rem;
-
-        pre {
-            background: $tint;
-            border-radius: settings.$border-radius-20;
-            overflow-x: auto;
-            padding: 0.75rem 1rem;
-        }
-    }
-    .route-file {
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-        font-style: italic;
-    }
+.tag-eol {
+    background: $stop;
+    border-color: $stop;
+    color: settings.$white;
 }
-
-// ---------- Blog listings
-
-.post-panels,
-.post-rows {
-    > li { margin-left: 0; padding-left: 0; }
+// A line with its last release coming: a yellow outline plate.
+.tag-ending {
+    background: rgba($plate, 0.22);
+    border: 2px solid $plate;
+    color: $board;
+    padding: 0.25em 0.45em 0.15em;
 }
-
-.post-panels {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: minmax(0, 1fr);
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-
-    @include mixins.breakpoint(settings.$breakpoint-30) {
-        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    }
-
-    a {
-        border: none;
-        border-top: 3px solid $navy;
-        color: $ink;
-        display: block;
-        height: 100%;
-        padding-top: 0.75rem;
-
-        &:hover .post-title { color: $brand-text; }
-    }
-    .is-security a { border-top-color: $eol; }
+// A release that fixes vulnerabilities: a reason to upgrade, not a warning.
+.tag-security {
+    border-color: $board;
+    color: $board;
 }
-
-.post-meta {
+.tag-post {
+    border-color: $rule;
     color: $ink-soft;
+    vertical-align: 0.1em;
+}
+.tag-post.tag-security {
+    border-color: $board;
+    color: $board;
+}
+
+// On night-blue ground the outline plates turn light.
+.board,
+.page-sign {
+    .tag-ending {
+        background: transparent;
+        color: $plate;
+    }
+    .tag-security,
+    .tag-post,
+    .tag-post.tag-security {
+        border-color: $board-dim;
+        color: settings.$board-text;
+    }
+}
+
+.release-lines-latest {
+    color: $board-dim;
+    display: block;
+    font-family: $signage;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+
+    .board-figure { color: settings.$board-text; }
+}
+.release-lines-role {
+    color: $board-dim;
     display: block;
     font-size: settings.$font-size-20;
+    margin-top: 0.35rem;
 }
 
-.post-title {
-    color: settings.$color-neutral-90;
-    display: block;
-    font-size: settings.$font-size-50;
-    font-weight: 400;
-    line-height: 1.3;
-    margin: 0.25rem 0 0.5rem;
+// ---------- Release lines table, on a board panel
+
+.board-full {
+    margin: 1rem 0 2rem;
+    padding-top: 0.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { padding-top: 1.25rem; }
 }
 
-.post-summary {
-    display: block;
-}
-
-.post-rows {
-    list-style: none;
+.release-lines {
+    border-collapse: collapse;
+    font-family: $signage;
     margin: 0;
-    padding: 0;
+    width: 100%;
 
-    li {
-        border-bottom: 1px solid $rule;
-        display: flex;
-        gap: 1.5rem;
-        padding: 0.4rem 0;
+    th, td {
+        border-bottom: 1px solid $board-rule;
+        padding: 0.7rem 1rem 0.6rem 0;
+        text-align: left;
+        vertical-align: baseline;
     }
-    time {
-        color: $ink-soft;
-        flex: 0 0 7rem;
-        font-variant-numeric: tabular-nums;
+    thead th {
+        background: transparent;
+        border-bottom: 2px solid $board-rule;
+        color: $board-dim;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding-top: 0;
+        text-transform: uppercase;
+    }
+    tbody th[scope=row] {
+        color: settings.$board-text;
+        font-size: 1.15rem;
+        font-weight: 700;
+        white-space: nowrap;
+
+        a { text-decoration: none; }
+        a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+    }
+    td { color: settings.$board-text; }
+    tbody tr:hover td { background: transparent; }
+    .release-lines-group th {
+        border-bottom: 1px solid $board-rule;
+        color: $plate;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding-top: 1.5rem;
+        text-transform: uppercase;
+    }
+    tbody:first-of-type .release-lines-group th { padding-top: 1rem; }
+    .is-last-call th[scope=row] a { color: $board-dim; }
+    .is-last-call th[scope=row] a:hover { color: $plate; }
+    .is-scheduled th[scope=row],
+    .is-boarding th[scope=row] { color: $board-dim; }
+    .is-eol th[scope=row],
+    .is-eol th[scope=row] a {
+        color: $board-dim;
+        text-decoration: line-through;
+        text-decoration-color: $stop;
+        text-decoration-thickness: 2px;
+    }
+    .tag { margin-right: 0.25rem; }
+
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        &,
+        .section-body & {
+            th, td,
+            thead th,
+            tbody th[scope=row] { border: none; padding: 0; }
+        }
+        thead { display: none; }
+        tr { display: grid; grid-template-columns: 1fr 1fr; gap: 0.15rem 1rem; padding: 0.75rem 0; border-bottom: 1px solid $board-rule; }
+        th, td { border: none; padding: 0; }
+        tbody th[scope=row] { white-space: normal; }
+        .release-lines-group { display: block; border-bottom: none; padding: 0; }
+        .release-lines-group th { display: block; padding-top: 1rem; }
     }
 }
 
+// Each cell names its column on phones.
+.release-lines td[data-label] {
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        &::before {
+            color: $board-dim;
+            content: attr(data-label) " ";
+            display: block;
+            font-size: settings.$font-size-10;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+    }
+}
 
-// ---------- User guide
+// ---------- Platform signs: every reading page opens with its title on the night-blue band
 
 .page-sign {
-    border-bottom: 1px solid $rule;
-    padding: 2rem 0 1.5rem;
+    background: $board;
+    color: settings.$board-text;
+
+    a {
+        color: settings.$board-text;
+        text-decoration-color: rgba($board-dim, 0.6);
+
+        &:hover { color: $plate; text-decoration-color: currentColor; }
+    }
 }
 
 .page-sign-inner {
     @include container-gutters;
+    padding-bottom: 2.25rem;
+    padding-top: 2.5rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding-bottom: 2.75rem;
+        padding-top: 3.25rem;
+    }
 
     h1 {
-        color: settings.$color-neutral-90;
-        font-size: 2.4rem;
-        font-weight: 300;
-        line-height: 1.15;
-        margin: 0.25rem 0 0.5rem;
+        color: settings.$board-text;
+        font-size: clamp(2.1rem, 4.5vw, 3.6rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin: 0;
+        max-width: 22ch;
+        overflow-wrap: break-word;
     }
 }
 
@@ -537,20 +322,30 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
 }
 
 .page-sign-sub {
-    font-size: settings.$font-size-50;
+    color: $board-dim;
+    font-family: $signage;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-weight: 500;
     line-height: 1.4;
-    max-width: 46rem;
+    margin: 0.9rem 0 0;
+    max-width: 50ch;
 }
 
-.guide-crumbs {
+.guide-crumbs,
+.hub-crumbs {
+    font-family: $signage;
     font-size: settings.$font-size-20;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+
+    span { color: $board-dim; }
 }
 
 .guide-plates {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.75rem;
+    margin: 1rem 0 0;
 }
 
 .guide-kind,
@@ -561,68 +356,110 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     border-radius: settings.$border-radius-10;
     color: $ink-soft;
     display: inline-block;
+    font-family: $signage;
     font-size: settings.$font-size-10;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.04em;
-    line-height: 1.6;
-    padding: 0 0.45em;
+    line-height: 1;
+    padding: 0.35em 0.5em 0.25em;
     text-transform: uppercase;
 }
+// On the sign: the kind as a white plate, the version as an outline plate with a board figure.
 .guide-kind {
-    background: $navy;
-    border-color: $navy;
-    color: #fff;
+    background: settings.$board-text;
+    border-color: settings.$board-text;
+    color: $board;
+}
+.guide-since {
+    border-color: $board-dim;
+    color: settings.$board-text;
+}
+.guide-since-figure {
+    font-family: $figure;
+    font-variant-numeric: tabular-nums;
 }
 
-// Search
+// ---------- Search (on the sign, and its results over the page)
+
 .guide-search {
     position: relative;
 }
 .guide-search-label {
+    color: $ink-soft;
     display: block;
+    font-family: $signage;
     font-size: settings.$font-size-20;
-    font-weight: 400;
-    margin-bottom: 0.25rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
 }
 .guide-search-field {
     position: relative;
 
     input {
-        border: 1px solid $ink-soft;
-        border-radius: settings.$border-radius-20;
+        background: $paper;
+        border: 2px solid $ink-soft;
+        border-radius: settings.$border-radius-10;
+        color: $ink;
         font: inherit;
         padding: 0.5rem 2.5rem 0.5rem 0.75rem;
         width: 100%;
 
-        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+        &::placeholder { color: $ink-soft; opacity: 1; }
+
+        &:focus,
+        &:focus-visible { border-color: $board; outline: 3px solid $board; outline-offset: 1px; }
     }
+}
+// On the sign the field is a paper plate and the focus ring turns yellow.
+.page-sign {
+    .guide-search-label,
+    .guide-search-hint { color: $board-dim; }
+    .guide-search-field input {
+        border-color: transparent;
+
+        &:focus,
+        &:focus-visible { border-color: $plate; outline-color: $plate; }
+    }
+    .guide-search-hint select:focus-visible { outline-color: $plate; }
 }
 .guide-search--large .guide-search-field input {
     font-size: settings.$font-size-50;
     padding: 0.75rem 3rem 0.75rem 1rem;
 }
+.guide-search--large { margin-top: 1.75rem; max-width: 46rem; }
 .guide-search-key {
     border: 1px solid $rule;
     border-radius: settings.$border-radius-10;
     color: $ink-soft;
+    font-family: $signage;
     font-size: settings.$font-size-10;
-    padding: 0 0.4em;
+    padding: 0.1em 0.45em 0;
     position: absolute;
     right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
 }
 .guide-search-hint {
+    color: $ink-soft;
     font-size: settings.$font-size-20;
-    margin-top: 0.4rem;
+    margin: 0.5rem 0 0;
 
-    select { font: inherit; }
+    select {
+        background: $paper;
+        border: 1px solid $ink-soft;
+        border-radius: settings.$border-radius-10;
+        color: $ink;
+        font: inherit;
+        padding: 0.15rem 0.35rem;
+    }
 }
+// The results drop over the page: a paper panel with a shadow, so it reads as on top.
 .guide-results {
-    background: #fff;
+    background: $paper;
     border: 1px solid $rule;
-    border-radius: settings.$border-radius-20;
-    box-shadow: 0 0.5rem 1.5rem rgba(35, 39, 37, 0.15);
+    border-radius: settings.$border-radius-10;
+    box-shadow: 0 1rem 2rem -1rem rgba($board, 0.45);
+    color: $ink;
     left: 0;
     list-style: none;
     margin: 0.25rem 0 0;
@@ -633,84 +470,68 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     right: 0;
     z-index: settings.$z-index-30;
 
+    ul { list-style: none; margin: 0; padding: 0; }
     li { margin: 0; }
     a {
-        border: none;
         color: $ink;
         display: block;
-        padding: 0.5rem 0.75rem;
+        padding: 0.55rem 0.85rem;
+        text-decoration: none;
     }
     .is-active a,
-    a:hover { background: $tint; }
+    a:hover { background: settings.$hall; }
+    .is-active .guide-result-title,
+    a:hover .guide-result-title { color: $signal-deep; text-decoration: underline; }
 }
-.guide-result-title { color: settings.$color-neutral-90; display: block; font-weight: 400; }
-.guide-result-meta { color: $ink-soft; display: block; font-size: settings.$font-size-10; text-transform: uppercase; letter-spacing: 0.04em; }
+.guide-result-title { color: $board; display: block; font-family: $signage; font-weight: 700; }
+.guide-result-meta { color: $ink-soft; display: block; font-family: $signage; font-size: settings.$font-size-10; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.guide-result-meta span + span::before { content: " · "; }
 .guide-result-text { display: block; font-size: settings.$font-size-20; }
-.guide-results-empty { padding: 0.5rem 0.75rem; }
+.guide-results-empty { padding: 0.55rem 0.85rem; }
 
-// Reading
+// The reference guide of each line and the scope of the docs, under the search on the docs front page.
+.guide-sign-refs {
+    color: $board-dim;
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    line-height: 1.9;
+    margin: 1.25rem 0 0;
+    max-width: 60rem;
+
+    .tag { vertical-align: 0.1em; }
+}
+.guide-sign-refs-label {
+    color: settings.$board-text;
+    font-family: $signage;
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+.guide-sign-scope {
+    color: $board-dim;
+    font-size: settings.$font-size-20;
+    grid-column: 1 / -1;
+    margin: 0.25rem 0 0;
+}
+
+// ---------- Reading: the column, and the "On this page" rail at its right
+
 .reading {
     @include container-gutters;
-    padding-bottom: 3rem;
-    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 2.5rem;
 
-    // The rail sits right of the text, so title and text share the left edge.
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding-top: 3rem; }
+
+    // The rail sits right of the text, so the sign's title and the text share the left edge.
     &.has-rail {
         @include mixins.breakpoint(settings.$breakpoint-40) {
+            align-items: start;
             display: grid;
-            gap: 3rem;
+            gap: 4rem;
             grid-template-columns: minmax(0, 1fr) 14rem;
 
             > .reading-rail { grid-column: 2; grid-row: 1; }
             > .reading-main { grid-column: 1; grid-row: 1; }
-        }
-    }
-}
-
-.reading-rail {
-    // The rail lists sections by name; their numbers stay in the headings.
-    .toc-number { display: none; }
-
-    // Below 1152px the rail is a compact row of the top-level sections above the text.
-    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') {
-        border-bottom: 1px solid $rule;
-        font-size: settings.$font-size-20;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-
-        .toc { display: block; }
-        #toc-title h2,
-        .toc h2 {
-            font-size: settings.$font-size-20;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.35rem;
-            text-transform: uppercase;
-        }
-        ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; margin: 0; padding: 0; }
-        li,
-        .toc > ul > li + li { margin: 0; }
-        ul ul { display: none; }
-        a { border: none; }
-    }
-
-    @include mixins.breakpoint(settings.$breakpoint-40) {
-        display: block;
-
-        .toc,
-        > nav > .toc,
-        > .toc {
-            display: block;
-            font-size: settings.$font-size-20;
-            position: sticky;
-            top: 1rem;
-
-            ul { margin: 0; padding: 0; }
-            li { margin: 0 0 0.4rem; }
-            ul ul { margin: 0.4rem 0 0 0.75rem; }
-            a { border: none; color: $ink; }
-            a:hover { color: $brand-text; }
-            h2 { font-size: settings.$font-size-20; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
         }
     }
 }
@@ -720,130 +541,299 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     min-width: 0;
 }
 
-.guide-version-note {
-    background: $tint;
-    border-radius: settings.$border-radius-20;
+.reading-rail {
+    font-family: $signage;
+
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin: 0; }
+
+    // The rail lists sections by name; their numbers stay in the headings.
+    .toc-number { display: none; }
+
+    #toc-title h2,
+    .toc h2 {
+        border: 0;
+        color: $board;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin: 0 0 0.6rem;
+        padding: 0;
+        text-transform: none;
+    }
+
+    a {
+        color: $ink-soft;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        line-height: 1.3;
+        text-decoration: none;
+
+        &:hover { color: $board; text-decoration: underline; }
+    }
+
+    .toc .toc-gap {
+        border-top: 1px solid $rule;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    // Below 1152px the rail is a compact paper block of the top-level sections above the text.
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') {
+        background: $paper;
+        border-top: 2px solid $board;
+        margin-bottom: 2rem;
+        padding: 0.9rem 1.1rem 0.75rem;
+
+        .toc { display: block; }
+        ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+        ul ul,
+        .toc--level-2 { display: none; }
+        .toc > ul > li + li { margin: 0; }
+    }
+
+    // From 1152px: a sticky route with the sections as stops.
+    @include mixins.breakpoint(settings.$breakpoint-40) {
+        display: block;
+        max-height: calc(100vh - 3rem);
+        overflow-y: auto;
+        position: sticky;
+        top: 1.5rem;
+
+        .toc { display: block; }
+
+        // The route line the stops hang on.
+        .toc > ul {
+            margin-left: 0.5rem;
+            position: relative;
+
+            &::before {
+                background: $board;
+                bottom: 0.4rem;
+                content: "";
+                left: 0;
+                position: absolute;
+                top: 0.4rem;
+                width: 3px;
+            }
+        }
+        .toc > ul > li + li { margin-top: 0; }
+
+        li { position: relative; }
+
+        a {
+            display: block;
+            padding: var(--rail-pad, 0.35rem) 0 var(--rail-pad, 0.35rem) 1.1rem;
+        }
+
+        // Station dots, centred on the 3px line and on the first text line.
+        .toc--level-1 > a::before {
+            background: settings.$hall;
+            border: 3px solid $board;
+            border-radius: 50%;
+            content: "";
+            height: 0.8rem;
+            left: calc(1.5px - 0.4rem);
+            position: absolute;
+            top: calc(var(--rail-pad, 0.35rem) + 0.65em - 0.4rem);
+            width: 0.8rem;
+        }
+        .toc--level-1 > a.is-current { color: $board; }
+        .toc--level-1 > a.is-current::before { background: $signal; }
+
+        .toc--level-2 > a,
+        ul ul a {
+            font-weight: 500;
+            padding: 0.15rem 0 0.15rem 1.9rem;
+        }
+    }
+}
+
+// A page that opens with its own panels (community) needs no compact rail above the text on phones.
+.section-lead + .has-rail .reading-rail {
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') { display: none; }
+}
+
+// Reading text stays near 70 characters a line; tables and code take the full column.
+.guide-content,
+.section-body,
+.hub-body,
+.guide-front-section,
+.page-content {
+    > p,
+    > ul:not([class]),
+    > ol:not([class]) { max-width: 68ch; }
+}
+
+.page-content {
+    li { margin-bottom: 0.3rem; }
+    img { max-width: 100%; height: auto; }
+    pre { @include code-block; }
+    figure.highlight,
+    div.highlight { margin: 1rem 0 1.5rem; }
+    figure.highlight pre,
+    div.highlight pre { margin: 0; }
+    blockquote {
+        border-left: 1px solid $rule;
+        color: $ink-soft;
+        margin: 1.5rem 0;
+        padding-left: 1.25rem;
+    }
+    > h2 { @include section-head; margin-top: 2.5rem; }
+    > h2:first-child { margin-top: 0; }
+    table { margin: 1rem 0 1.5rem; width: 100%; }
+    td { border-bottom: 1px solid $rule; padding: 0.55rem 0.75rem; vertical-align: top; }
+}
+
+.guide-version-note,
+.guide-upcoming {
+    background: $paper;
+    border-top: 3px solid $board;
     margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1.1rem;
 }
 
 .guide-content {
     h2 {
-        color: settings.$color-neutral-90;
-        font-weight: 400;
-        margin-top: 2rem;
+        @include section-head;
+        margin-top: 2.5rem;
     }
     h3 {
-        font-weight: 600;
-        font-size: settings.$font-size-40;
-        margin-top: 1.5rem;
+        font-size: 1.25rem;
+        margin-top: 1.75rem;
     }
     p, ul, ol, table, pre, blockquote { margin-bottom: 1rem; }
-    ul, ol { padding-left: 1.5rem; }
-    pre {
-        background: $tint;
-        border-radius: settings.$border-radius-20;
-        overflow-x: auto;
-        padding: 0.75rem 1rem;
-    }
-    :not(pre) > code {
-        overflow-wrap: anywhere;
-        background: $tint;
-        border-radius: settings.$border-radius-10;
-        padding: 0 0.25em;
-    }
+    ul, ol { padding-left: 1.5rem; margin-left: 0; }
+    pre { @include code-block; }
+    :not(pre) > code { overflow-wrap: anywhere; }
     table {
         border-collapse: collapse;
         width: 100%;
     }
     th, td {
         border-bottom: 1px solid $rule;
-        padding: 0.4rem 0.75rem 0.4rem 0;
+        padding: 0.5rem 0.75rem 0.5rem 0;
         text-align: left;
         vertical-align: top;
     }
+    thead th { border-bottom: 0; padding-left: 0.75rem; }
+    td:first-child { padding-left: 0.75rem; }
+    tbody th { padding-left: 0.75rem; }
     blockquote.since,
     .since {
-        border: 1px solid $rule;
-        border-radius: settings.$border-radius-20;
-        padding: 0.5rem 1rem;
+        background: $paper;
+        border: 0;
+        border-top: 3px solid $board;
+        padding: 0.6rem 1rem;
     }
 }
 
-.guide-foot {
-    border-top: 1px solid $rule;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
+// The copy button of a code sample in the documentation, in a bar above the code.
+.guide-copy-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.75rem 0 0.4rem;
 }
-.guide-foot-title { font-weight: 300; }
+
+.guide-foot {
+    border-top: 2px solid $board;
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+}
+.guide-foot-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
 .guide-foot-kinds {
     display: grid;
-    gap: 1rem 2rem;
+    gap: 1rem 2.5rem;
 
     @include mixins.breakpoint(settings.$breakpoint-30) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    h3 { font-size: settings.$font-size-30; font-weight: 600; margin-top: 1rem; }
+    h3 { font-size: 1rem; margin: 1rem 0 0.25rem; }
 }
 .guide-edit {
     font-size: settings.$font-size-20;
     margin-top: 2rem;
 }
 
-// Lists of pages
+// ---------- Ruled lists of pages
+
 .guide-list,
 .guide-route,
 .guide-topics,
-.guide-lookup {
+.guide-lookup,
+.notfound-map {
     list-style: none;
     margin: 0;
     padding: 0;
 
     li {
-        border-bottom: 1px solid $rule;
-        padding: 0.6rem 0;
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 0.7rem 0 0.8rem;
     }
 }
-.guide-route {
-    counter-reset: route;
-
-    li {
-        counter-increment: route;
-        padding-left: 2.25rem;
-        position: relative;
-
-        &::before {
-            color: $brand-text;
-            content: counter(route);
-            font-size: settings.$font-size-50;
-            font-weight: 600;
-            left: 0;
-            position: absolute;
-            top: 0.45rem;
-        }
-    }
+.guide-list-title,
+.notfound-map a {
+    @include entry-title;
+    font-size: 1.05rem;
 }
-.guide-list-title {
-    font-weight: 400;
-}
+a.guide-list-title:hover,
+.notfound-map a:hover { @include entry-title-hover; }
 .guide-list .is-current .guide-list-title {
-    color: settings.$color-neutral-90;
-    font-weight: 600;
+    color: $ink-soft;
 }
 .guide-list-meta {
     display: inline-flex;
     gap: 0.4rem;
     margin-left: 0.5rem;
+    vertical-align: 0.1em;
 }
-.guide-list-summary {
+.guide-list-summary,
+.notfound-map span {
+    color: $ink-soft;
     display: block;
     font-size: settings.$font-size-30;
+    margin-top: 0.1rem;
+}
+// The lessons: numbered stops, each number on a board plate.
+.guide-route {
+    counter-reset: route;
+
+    li {
+        counter-increment: route;
+        padding-left: 2.75rem;
+        position: relative;
+
+        &::before {
+            background: $board;
+            border-radius: settings.$border-radius-10;
+            color: settings.$board-text;
+            content: counter(route);
+            font-family: $figure;
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            left: 0;
+            line-height: 1.75rem;
+            position: absolute;
+            text-align: center;
+            top: 0.7rem;
+            width: 1.75rem;
+        }
+        &:first-child::before { background: $signal; color: $board; }
+    }
 }
 .guide-topic-counts {
     color: $ink-soft;
     display: flex;
     flex-wrap: wrap;
+    font-family: $signage;
     font-size: settings.$font-size-10;
+    font-weight: 600;
     gap: 0 1rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -861,93 +851,110 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     max-width: 66rem;
 }
 .guide-front-section {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
 
-    h2 {
-        color: settings.$color-neutral-90;
-        font-weight: 400;
-        font-size: 1.9rem;
+    > h2 { @include section-head; margin-top: 0; }
+    h3 {
+        font-size: 1.25rem;
+        margin: 2.25rem 0 0.75rem;
     }
 }
-// The reference guide of each line, under the search on the docs front page.
-.guide-sign-refs {
-    font-size: settings.$font-size-20;
-    grid-column: 1 / -1;
-    line-height: 1.8;
-    margin: 0;
-
-    .tag { vertical-align: 0.1em; }
-}
-.guide-sign-refs-label {
-    color: settings.$color-neutral-90;
-    font-weight: 600;
-    margin-right: 0.25rem;
+.guide-group-intro {
+    margin-bottom: 1rem;
+    max-width: 68ch;
 }
 .guide-kinds-line { margin-top: 1rem; }
-.guide-front-section h3 {
-    font-size: settings.$font-size-40;
-    font-weight: 600;
-    margin: 2rem 0 0.75rem;
-}
 
-// The reference guide and Javadoc of every release line
+// The reference guide and Javadoc of every release line: a timetable.
 .guide-refs {
     border-collapse: collapse;
     width: 100%;
 
     th, td {
         border-bottom: 1px solid $rule;
-        padding: 0.6rem 1rem 0.6rem 0;
+        padding: 0.6rem 1rem 0.55rem 0;
         text-align: left;
         vertical-align: top;
     }
-    thead th {
-        border-bottom: 2px solid $ink;
-        font-weight: 600;
-    }
-    tbody th { font-weight: 600; }
+    thead th { border-bottom: 0; padding-left: 0.75rem; }
+    tbody th { font-weight: 700; padding-left: 0.75rem; }
     td { white-space: nowrap; }
 }
 .guide-refs-status {
     color: $ink-soft;
     display: block;
     font-size: settings.$font-size-20;
-    font-weight: 400;
+    font-weight: 500;
 }
 .guide-group {
     margin-bottom: 2.5rem;
 
-    h2 { color: settings.$color-neutral-90; font-weight: 400; }
-}
-.guide-group-intro {
-    margin-bottom: 0.75rem;
+    > h2 { @include section-head; }
 }
 .guide-topics-other {
-    border-top: 1px solid $rule;
-    padding-top: 1.5rem;
+    border-top: 2px solid $board;
+    padding-top: 1rem;
 
-    h2 { font-size: settings.$font-size-40; font-weight: 600; }
+    h2 { font-size: 1.1rem; }
     ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; list-style: none; margin: 0.5rem 0 0; padding: 0; }
+    a { font-family: $signage; font-weight: 600; }
 }
 
 // A-Z
 .guide-letters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 0.75rem;
+    font-family: $figure;
+    gap: 0.25rem 0.5rem;
     margin: 0.5rem 0 1.5rem;
 
-    a { font-weight: 600; }
+    a {
+        border: 1px solid $rule;
+        border-radius: settings.$border-radius-10;
+        color: $board;
+        display: inline-block;
+        font-weight: 600;
+        min-width: 2rem;
+        padding: 0.2rem 0.4rem 0.1rem;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover { background: $board; border-color: $board; color: settings.$board-text; }
+    }
 }
 .guide-letter {
-    border-bottom: 1px solid $rule;
-    color: $brand-text;
+    border-bottom: 2px solid $board;
+    color: $board;
+    font-family: $figure;
     font-weight: 600;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    padding-bottom: 0.25rem;
 }
 .guide-classes {
-    dt { font-weight: 400; margin-top: 0.5rem; }
-    dd { font-size: settings.$font-size-20; margin: 0; }
+    dt { font-family: settings.$font-family-code; font-weight: 400; margin-top: 0.6rem; overflow-wrap: anywhere; }
+    code { overflow-wrap: anywhere; }
+    dd { color: $ink-soft; font-size: settings.$font-size-20; margin: 0; }
+}
+
+// ---------- Docs: a version the documentation does not cover
+
+.guide-uncovered {
+    padding-bottom: 0;
+}
+.guide-uncovered-inner {
+    background: $paper;
+    border-top: 3px solid $board;
+    max-width: 48rem;
+    padding: 1rem 1.25rem;
+
+    p { margin: 0; }
+}
+.guide-uncovered-title {
+    color: $board;
+    font-family: $signage;
+    font-size: settings.$font-size-40;
+    font-weight: 700;
+    margin-bottom: 0.25rem !important;
 }
 
 // ---------- Section front pages
@@ -962,116 +969,91 @@ pre:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
     }
     th, td {
         border-bottom: 1px solid $rule;
-        padding: 0.6rem 1rem 0.6rem 0;
+        padding: 0.65rem 1rem 0.6rem 0;
         text-align: left;
         vertical-align: top;
     }
-    thead th {
-        border-bottom: 2px solid $ink;
-        font-weight: 600;
-    }
-    tbody th[scope=row] { font-weight: 600; }
+    thead th { border-bottom: 0; padding-left: 0.75rem; }
+    tbody th[scope=row] { font-weight: 700; padding-left: 0.75rem; }
     td p + p { margin-top: 0.5rem; }
-    .connections-route { color: settings.$color-neutral-90; font-weight: 400; }
-    pre {
-        background: $tint;
-        border-radius: settings.$border-radius-20;
-        overflow-x: auto;
-        padding: 0.75rem 1rem;
-    }
+    .connections-route { color: $board; font-family: $signage; font-weight: 700; }
+    pre { @include code-block; }
 
     > h2 {
-        border-top: 1px solid $rule;
-        color: settings.$color-neutral-90;
-        font-size: 1.9rem;
-        font-weight: 400;
-        margin-top: 2.5rem;
-        padding-top: 2rem;
+        @include section-head;
+        margin-top: 3rem;
     }
     > p,
     > ul:not([class]) {
         margin-bottom: 1rem;
         max-width: 46rem;
     }
-    > ul:not([class]) { padding-left: 1.25rem; }
+    > ul:not([class]) { padding-left: 1.25rem; margin-left: 0; }
     > ul:not([class]) li + li { margin-top: 0.35rem; }
     > hr { display: none; }
+
+    // A section page that opens with a heading needs no space above it: the sign is above.
+    > h2:first-child { margin-top: 0; }
+
+    // Phones: tables keep to the screen; long addresses break.
+    @include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
+        th, td { padding-right: 0.5rem; }
+        thead th, tbody th[scope=row] { padding-left: 0.5rem; }
+        td a { overflow-wrap: anywhere; }
+    }
 }
+
+// Tables inside the board keep their own look.
+.section-body .board-full table th,
+.section-body .board-full table td { padding-left: 0; }
 
 .section-index {
+    border-top: 1px solid $rule;
     display: flex;
     flex-wrap: wrap;
-    font-size: settings.$font-size-20;
-    gap: 0.25rem 1.5rem;
-    margin-bottom: 1rem;
-}
+    font-family: $signage;
+    font-weight: 700;
+    gap: 0.25rem 1.75rem;
+    margin-bottom: 2.5rem;
+    padding-top: 0.75rem;
 
-// The active marker spans the label only.
-nav.mainmenu .nav-container > a.nav-items {
-    margin-right: 1rem;
-    padding-right: 0;
-}
+    a {
+        color: $board;
+        text-decoration: none;
 
-// The ASF mark before GitHub, at the height of the GitHub icon.
-.nav-asf {
-    border: none;
-    display: inline-flex;
-    margin-right: 1rem;
-
-    img {
-        display: block;
-        height: 2.1rem;
-        width: auto;
-    }
-    &:hover img { opacity: 0.8; }
-}
-
-// The menu: logo and version plate on the left, the sections centred on the page,
-// the ASF mark and GitHub on the right.
-.header.default nav.mainmenu {
-    @include mixins.breakpoint(settings.$breakpoint-20) {
-        align-items: center;
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        padding-right: 0;
-
-        > .nav-container:last-child { justify-content: flex-end; }
+        &:hover { @include entry-title-hover; }
     }
 }
 
-.nav-brand {
-    align-items: center;
-    display: flex;
-    gap: 0.25rem;
+// A section page with a lead above its rail: the lead sits closer to the content.
+.section-lead {
+    padding-bottom: 0;
 
-    .nav-logo { padding-right: 0.75rem; }
-    .nav-plate { margin-right: 0; }
-
-    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
-        flex-direction: column;
-        gap: 0.5rem;
-
-        .nav-logo { padding-right: 0; }
-    }
+    .line-panels { margin-bottom: 0.5rem; }
 }
 
-nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
-
-// Taiga strips borders from header links; the plate keeps its outline.
-.header.default nav.mainmenu a.nav-plate {
-    border: 1px solid $ink-soft;
-
-    &:hover,
-    &.active { border-color: $navy; }
+// The mailing lists on the community page.
+.community-lists th[scope=row] {
+    white-space: nowrap;
 }
 
-// Release line panels on the docs front page.
+// Upgrade paths: one guide per line.
+.connections-guides {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li + li { margin-top: 0.4rem; }
+}
+
+// ---------- Release line panels: a ruled index of the lines (docs front, homepage, community)
+
 .line-panels {
     margin-bottom: 3rem;
 
     ul {
         display: grid;
-        gap: 1rem;
+        gap: 0 2rem;
         grid-template-columns: minmax(0, 1fr);
         list-style: none;
         margin: 0;
@@ -1082,167 +1064,421 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     }
     li { margin: 0; }
     a {
-        border: 1px solid $rule;
-        border-radius: settings.$border-radius-20;
-        border-top: 3px solid $brand;
+        border-top: 2px solid $board;
         color: $ink;
         display: block;
         height: 100%;
-        padding: 0.9rem 1rem 1rem;
+        padding: 0.8rem 0 1rem;
+        text-decoration: none;
 
-        &:hover {
-            border-color: $brand;
-            .line-panel-name { color: $brand-text; }
-        }
-        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+        &:hover .line-panel-name { @include entry-title-hover; }
     }
-    .is-eol a { border-top-color: settings.$color-neutral-50; }
-    .is-ending a { border-top-color: $brand-text; }
+    .is-ending a,
+    .is-eol a { border-top-color: $rule; }
 }
 .line-panel-name {
-    color: settings.$color-neutral-90;
+    @include entry-title;
     display: block;
-    font-size: settings.$font-size-60;
-    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
     line-height: 1.2;
 
-    .tag { margin-left: 0.25rem; }
+    .tag { margin-left: 0.3rem; }
 }
 .line-panel-role {
+    color: $ink;
     display: block;
-    margin-top: 0.25rem;
+    margin-top: 0.3rem;
 }
 .line-panel-meta {
     color: $ink-soft;
     display: block;
+    font-family: $signage;
     font-size: settings.$font-size-20;
     font-variant-numeric: tabular-nums;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
-
 .guide-front-lines {
     padding-bottom: 0;
 
     .line-panels { margin-bottom: 1rem; }
 }
 
-.guide-upcoming {
-    border: 1px solid $brand;
-    border-radius: settings.$border-radius-20;
-    margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem;
+// ---------- Release line page
+
+.hub {
+    padding-bottom: 3rem;
+
+    .hub-section { max-width: 66rem; }
 }
 
-// The last icon ends on the right edge, without the padding of the menu links.
-.header.default nav.mainmenu > .nav-container:last-child .nav-items {
-    padding-right: 0;
+.hub-main {
+    padding-top: 2.5rem;
+
+    &::before,
+    &::after { display: none; }
 }
 
-// The quick start wizard.
-.quickstart {
+.hub-role {
+    color: $board-dim;
+    font-family: $signage;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.45;
+    margin: 0.9rem 0 0;
+    max-width: 60ch;
+}
+
+// The line's facts on the sign, set like a board row.
+.hub-facts {
+    border-top: 2px solid $board-rule;
+    display: grid;
+    font-family: $signage;
+    gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    margin: 1.75rem 0 0;
+    padding: 1rem 0 0;
+
+    dt {
+        color: $board-dim;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+    dd {
+        color: settings.$board-text;
+        font-variant-numeric: tabular-nums;
+        margin: 0.2rem 0 0;
+    }
+    .hub-version {
+        font-size: 1.75rem;
+        line-height: 1.1;
+    }
+}
+
+.hub-eol {
+    background: $paper;
+    border-top: 4px solid $stop;
     margin-bottom: 2rem;
     max-width: 46rem;
+    padding: 1.1rem 1.25rem 1.2rem;
+
+    &.is-ending { border-top-color: $plate; }
+    p { margin: 0; }
+    p + p, p + ol, ol + p { margin-top: 0.6rem; }
 }
-.quickstart-fields {
+.hub-route-one { font-size: settings.$font-size-40; }
+.hub-eol-title {
+    color: $board;
+    font-family: $signage;
+    font-size: settings.$font-size-40;
+    font-weight: 700;
+}
+.hub-eol-more {
+    font-size: settings.$font-size-20;
+}
+.hub-route {
+    margin: 0.5rem 0 0 1.25rem;
+
+    li + li { margin-top: 0.25rem; }
+    .tag { margin-left: 0.25rem; }
+}
+
+.hub-maven {
+    max-width: 38rem;
+
+    pre {
+        @include code-block;
+        margin: 0.5rem 0;
+        padding: 1rem;
+
+        @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') { white-space: pre-wrap; }
+    }
+}
+
+.hub-maven-label {
+    align-items: center;
+    color: $board;
+    display: flex;
+    font-family: $signage;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+// The copy button: a small neutral plate.
+.hub-copy {
+    background: transparent;
+    border: 2px solid $board;
+    border-radius: settings.$border-radius-10;
+    color: $board;
+    cursor: pointer;
+    font-family: $signage;
+    font-size: settings.$font-size-20;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0.2rem 0.7rem 0.1rem;
+    transition: background-color 160ms cubic-bezier(0.16, 1, 0.3, 1), color 160ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover { background: $board; color: settings.$board-text; }
+    &:active { background: settings.$board-row; color: $plate; }
+}
+
+.hub-maven-more,
+.hub-more {
+    font-size: settings.$font-size-20;
+}
+.section-body > .hub-more { margin-top: 1rem; }
+
+.hub-jump {
+    border-top: 1px solid $rule;
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+
+    ul { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; list-style: none; margin: 0; padding: 0; }
+    li { margin: 0; }
+    a {
+        color: $board;
+        font-family: $signage;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover { @include entry-title-hover; }
+    }
+
+    + .hub-section { margin-top: 2.5rem; }
+}
+
+.hub-section {
+    margin-top: 4rem;
+
+    > h2 {
+        @include section-head;
+        margin-bottom: 1.25rem;
+    }
+}
+
+.hub-panels {
     display: grid;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    label {
-        display: block;
-        font-size: settings.$font-size-20;
-        font-weight: 400;
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(3, 1fr);
     }
-    input, select {
-        background-color: #fff;
-        border: 1px solid settings.$color-neutral-50;
-        border-radius: settings.$border-radius-20;
-        box-sizing: border-box;
-        display: block;
-        font: inherit;
-        font-size: settings.$font-size-30;
-        height: 2.6rem;
-        line-height: 1.4;
-        margin-top: 0.25rem;
-        padding: 0 0.6rem;
-        width: 100%;
 
-        &:focus { border-color: $brand; outline: 2px solid color.adjust($brand, $alpha: -0.6); }
+    li {
+        border-top: 1px solid $rule;
+        margin: 0;
+        padding: 0.8rem 0 1rem;
     }
+    h3 {
+        font-size: 1.15rem;
+        margin: 0 0 0.35rem;
+    }
+    p + p { margin-top: 0.5rem; }
 }
-.quickstart-command pre {
-    background: $tint;
-    border-radius: settings.$border-radius-20;
-    margin: 0.5rem 0;
-    overflow-x: auto;
-    padding: 1rem;
-}
-.quickstart-needs {
-    color: $ink-soft;
+
+.hub-panel-alt {
     font-size: settings.$font-size-20;
 }
 
-// The homepage's call to action, under the announcement.
-.home-start {
-    margin-top: 1.5rem;
-    text-align: center;
+.hub-body {
+    scroll-margin-top: 1rem;
 
-    .button {
-        font-size: settings.$font-size-50;
-        padding: 0.6rem 2rem;
+    h2 {
+        @include section-head;
+        margin-top: 3rem;
+
+        &:first-child { margin-top: 0; }
+    }
+    h3 {
+        font-size: 1.2rem;
+        margin-top: 1.75rem;
+    }
+    p, ul { max-width: 68ch; }
+    pre { @include code-block; }
+    table { margin: 1rem 0 1.5rem; }
+    td { border-bottom: 1px solid $rule; padding: 0.55rem 0.75rem; }
+}
+
+// ---------- Highlights ("New in Wicket n"): ruled entries, facts set as board figures
+
+.features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // Two balanced columns: entries of unequal height stack without gaps.
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        column-gap: 3rem;
+        columns: 2;
+    }
+
+    .feature {
+        border-top: 1px solid $rule;
+        break-inside: avoid;
+        display: flow-root;
+        margin: 0;
+        padding: 1.1rem 0 1.75rem;
+
+        h3 {
+            font-size: 1.25rem;
+            letter-spacing: -0.01em;
+            margin: 0 0 0.5rem;
+        }
+        p code { white-space: nowrap; }
+    }
+    .feature-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 2.5rem;
+        margin: 0.5rem 0 0;
+
+        dt {
+            color: $ink-soft;
+            font-family: $signage;
+            font-size: settings.$font-size-20;
+            font-weight: 600;
+        }
+        dd {
+            color: $board;
+            font-family: $figure;
+            font-size: 2rem;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            line-height: 1.1;
+            margin: 0;
+        }
+    }
+    .feature-code {
+        margin-top: 0.75rem;
+
+        pre { @include code-block; margin: 0; }
+        .highlight { margin: 0; }
+    }
+}
+.route-file {
+    color: $ink-soft;
+    font-family: settings.$font-family-code;
+    font-size: settings.$font-size-10;
+    margin: 0 0 0.35rem;
+}
+
+// ---------- Blog listings
+
+.post-panels,
+.post-rows {
+    > li { margin-left: 0; padding-left: 0; }
+}
+
+// Featured posts: ruled entries under a board rule, not boxes.
+.post-panels {
+    display: grid;
+    gap: 0 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    }
+
+    a {
+        border-top: 2px solid $board;
+        color: $ink;
+        display: block;
+        height: 100%;
+        padding: 0.8rem 0 1.5rem;
+        text-decoration: none;
+
+        &:hover .post-title { @include entry-title-hover; }
     }
 }
 
-// The mailing lists on the community page.
-.community-lists th[scope=row] {
-    white-space: nowrap;
+.post-meta {
+    color: $ink-soft;
+    display: block;
+    font-family: $signage;
+    font-size: settings.$font-size-20;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
 }
-.line-panels .is-security a { border-top-color: $eol; }
 
-// A section page with a lead above its rail: the lead sits closer to the content.
-.section-lead {
-    padding-bottom: 0;
-
-    .line-panels { margin-bottom: 1rem; }
+.post-title {
+    @include entry-title;
+    display: block;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin: 0.3rem 0 0.5rem;
 }
-// In a rail layout the first heading needs no rule above it.
-.has-rail .section-body > h2:first-child {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0;
+
+.post-summary {
+    display: block;
+}
+
+.post-rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid $rule;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0.55rem 0 0.5rem;
+    }
+    li:first-child { border-top: 2px solid $board; }
+    time {
+        color: $ink-soft;
+        flex: 0 0 7rem;
+        font-family: $signage;
+        font-size: settings.$font-size-20;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        padding-top: 0.15em;
+    }
+    .post-row-title > a {
+        color: $board;
+        font-family: $signage;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover { @include entry-title-hover; }
+    }
+    .post-row-title .tag { margin-left: 0.35rem; }
 }
 
 // Blog posts and archives.
 .post-sign-meta {
     align-items: center;
-    color: $ink-soft;
+    color: $board-dim;
     display: flex;
     flex-wrap: wrap;
+    font-family: $signage;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
     gap: 0.5rem 1rem;
-    margin-top: 0.75rem;
-}
-.tag-post {
-    border: 1px solid $rule;
-    color: $ink-soft;
-    vertical-align: baseline;
+    margin: 1rem 0 0;
 }
 .post-content {
     overflow-wrap: break-word;
 
     h2 { font-size: 1.6rem; }
-    blockquote {
-        border-left: 1px solid $rule;
-        color: $ink-soft;
-        padding-left: 1rem;
-    }
     img { max-width: 100%; height: auto; }
 }
 .post-foot {
-    border-top: 1px solid $rule;
+    border-top: 2px solid $board;
     margin-top: 3rem;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
 }
 .post-pager {
     display: grid;
@@ -1252,16 +1488,25 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: 1fr 1fr; }
 
     a {
-        border: none;
+        color: $board;
         display: block;
+        font-family: $signage;
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover { @include entry-title-hover; }
 
         span {
             color: $ink-soft;
             display: block;
             font-size: settings.$font-size-20;
+            font-weight: 600;
         }
     }
     .post-pager-newer { text-align: right; grid-column: 2; }
+    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+        .post-pager-newer { grid-column: 1; text-align: left; }
+    }
 }
 .post-follow {
     color: $ink-soft;
@@ -1283,503 +1528,94 @@ nav.mainmenu .nav-sections > a.nav-items:last-child { margin-right: 0; }
     font-size: settings.$font-size-20;
 }
 .section-body > h2.archive-month {
-    border-top: none;
+    border-top: 0;
     color: $ink-soft;
     font-size: settings.$font-size-40;
-    font-weight: 600;
-    margin: 1.5rem 0 0.25rem;
+    font-weight: 700;
+    margin: 2rem 0 0.4rem;
     padding-top: 0;
 }
 
 // The archives' pager sits under the list, like the pager under a post.
 .section-body > .post-pager {
-    border-top: 1px solid $rule;
+    border-top: 2px solid $board;
     margin-top: 2rem;
-    padding-top: 1.5rem;
-}
-
-// The blog page: the newest posts in full, one after another.
-.blog-entry {
     max-width: 48rem;
-
-    & + .blog-entry {
-        border-top: 1px solid $rule;
-        margin-top: 3rem;
-        padding-top: 2.5rem;
-    }
-}
-.blog-entry-head {
-    margin-bottom: 1.25rem;
-
-    .post-sign-meta { margin-top: 0; }
-    h2 {
-        font-size: 2rem;
-        font-weight: 300;
-        line-height: 1.2;
-        margin: 0.4rem 0 0;
-
-        a { border: none; color: settings.$color-neutral-90; }
-        a:hover { color: $brand-text; }
-    }
-}
-.blog-entry .post-content h2 {
-    font-size: settings.$font-size-50;
-    font-weight: 600;
-}
-.section-body > .blog-entry + .post-pager,
-.section-body > .post-pager {
-    max-width: 48rem;
-}
-
-// The posts after the newest: a title and a sentence each.
-.blog-entry--short {
-    & + .blog-entry--short {
-        margin-top: 1.75rem;
-        padding-top: 1.5rem;
-    }
-    .blog-entry-head { margin-bottom: 0.4rem; }
-    .blog-entry-head h2 { font-size: settings.$font-size-60; font-weight: 400; }
-}
-.blog-entry-summary {
-    color: $ink-soft;
-}
-
-.reading-rail .toc .toc-gap {
-    border-top: 1px solid $rule;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-}
-
-// ---------- Browser surfaces
-
-// Hidden until focused, then a plate in the top left corner.
-.skip-link {
-    background: #fff;
-    border: 2px solid $navy;
-    border-radius: settings.$border-radius-20;
-    color: $navy;
-    font-weight: 600;
-    left: 1rem;
-    padding: 0.5rem 0.9rem;
-    position: absolute;
-    top: -4rem;
-    z-index: 10;
-
-    &:focus { top: 1rem; }
-}
-
-a:focus-visible,
-button:focus-visible,
-select:focus-visible,
-[tabindex]:focus-visible,
-.button:focus-visible {
-    outline: 2px solid $navy;
-    outline-offset: 2px;
-}
-main:focus-visible { outline: none; }
-
-::selection {
-    background: color.adjust($brand, $lightness: 30%);
-    color: settings.$color-neutral-90;
-}
-
-// Reading text stays near 75 characters a line; tables and code take the full column.
-.guide-content,
-.section-body,
-.hub-body,
-.guide-front-section {
-    > p,
-    > ul:not([class]),
-    > ol:not([class]) { max-width: 68ch; }
-}
-
-// On touch screens the small links of the menu, the plate and the copy buttons grow to 44px.
-@media (pointer: coarse) {
-    .header.default nav.mainmenu .nav-sections > a.nav-items,
-    .header.default nav.mainmenu a.nav-plate,
-    .nav-asf,
-    .header.default nav.mainmenu .nav-container:last-child > a {
-        align-items: center;
-        display: inline-flex;
-        min-height: 44px;
-        min-width: 44px;
-        justify-content: center;
-    }
-    .hub-copy { min-height: 44px; min-width: 44px; }
-    .reading-rail a,
-    .footer-sitemap a,
-    .hub-jump a,
-    .section-index a { display: inline-block; padding: 0.75rem 0; }
-    .release-lines th[scope=row] a,
-    .home-release a,
-    .guide-foot a { display: inline-block; padding: 0.75rem 0; }
-    .quickstart input,
-    .quickstart select { min-height: 44px; }
-    .hub-crumbs a,
-    .guide-crumbs a,
-    .hub-maven-more a,
-    .post-sign-meta a,
-    .home-action-alt,
-    .home-more a,
-    .hub-more a,
-    .post-row-title > a,
-    .guide-refs a,
-    .hub-panel-alt a { display: inline-block; padding: 0.7rem 0; }
-    .footer-sitemap a { display: inline-block; min-width: 44px; }
-    .guide-search-hint select,
-    .guide-search-field input { min-height: 44px; }
-    .guide-search-key { display: none; }
-}
-
-// ---------- Footer
-
-body > footer {
-    border-top: 1px solid $rule;
-    margin-top: 2rem;
-}
-
-// Taiga's container clears floats with pseudo-elements, which would take a grid or flex cell.
-.footer-columns,
-.footer-legal {
-    &::before,
-    &::after { display: none; }
-}
-
-.footer-columns {
-    display: grid;
-    gap: 1.5rem 3rem;
-    grid-template-columns: minmax(0, 1fr);
-    padding-top: 2.5rem;
-
-    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
-}
-.footer-sitemap {
-    display: grid;
-    gap: 0 2rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    h2 {
-        color: settings.$color-neutral-90;
-        font-size: settings.$font-size-20;
-        font-weight: 600;
-        grid-column: 1 / -1;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-    }
-    ul { list-style: none; margin: 0; padding: 0; }
-    li { margin: 0 0 0.35rem; }
-    a { border: none; }
-    a:hover { border: none; text-decoration: underline; }
-}
-
-.footer-legal {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 1.5rem;
-    margin-top: 1.5rem;
-    padding-bottom: 2rem;
-    padding-top: 1.5rem;
-
-    p {
-        color: settings.$color-neutral-70;
-        flex: 1 1 24rem;
-        font-size: settings.$font-size-20;
-        max-width: 68ch;
-        margin: 0;
-        max-width: 80ch;
-    }
-}
-.footer-asf {
-    border: none;
-
-    img { display: block; height: 4.5rem; width: auto; }
-}
-
-// ---------- Docs: a version the documentation does not cover
-
-.guide-uncovered {
-    padding-bottom: 0;
-}
-.guide-uncovered-inner {
-    border: 1px solid $navy;
-    border-radius: settings.$border-radius-20;
-    max-width: 48rem;
-    padding: 1rem 1.25rem;
-
-    p { margin: 0; }
-}
-.guide-uncovered-title {
-    font-size: settings.$font-size-40;
-    font-weight: 600;
-    margin-bottom: 0.25rem !important;
-}
-
-// ---------- Release lines table on phones: each cell names its column
-
-.release-lines td[data-label] {
-    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
-        &::before {
-            color: $ink-soft;
-            content: attr(data-label) " ";
-            font-size: settings.$font-size-10;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-    }
-}
-
-.post-rows .post-row-title .tag { margin-left: 0.35rem; }
-
-// ---------- Homepage
-
-.home {
-    padding-bottom: 2rem;
-}
-
-.home-inner {
-    @include container-gutters;
-}
-
-.home-hero {
-    border-bottom: 1px solid $rule;
-    padding: 3.5rem 0 2.5rem;
-
-    @include mixins.breakpoint(settings.$breakpoint-30) { padding: 5rem 0 3rem; }
-
-    h1 {
-        color: $navy;
-        font-size: clamp(2.2rem, 5vw, 3.6rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.08;
-        margin: 0 0 1.25rem;
-        max-width: 22ch;
-        text-wrap: balance;
-    }
-}
-
-.home-lead {
-    color: settings.$color-neutral-70;
-    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-    line-height: 1.5;
-    max-width: 40rem;
-}
-
-.home-actions {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem 1.5rem;
-    margin: 1.75rem 0 2.5rem;
-
-    .button {
-        border: none;
-        font-size: settings.$font-size-40;
-        margin: 0;
-        padding: 0.65rem 1.4rem;
-        transition: background-color 160ms ease-out, color 160ms ease-out;
-    }
-}
-.home-action-alt { font-size: settings.$font-size-40; }
-
-// The release facts: one row of what to use now and what comes next.
-.home-release {
-    border-top: 1px solid $rule;
-    display: grid;
-    gap: 1rem 2.5rem;
-    grid-template-columns: minmax(0, 1fr);
-    margin: 0;
     padding-top: 1.25rem;
+}
 
-    @include mixins.breakpoint(settings.$breakpoint-20) {
-        align-items: end;
-        grid-template-columns: repeat(auto-fit, minmax(12rem, auto));
-        justify-content: start;
+// ---------- Quick start: a ticket machine on board ground
+
+.quickstart {
+    background: $board;
+    border-radius: settings.$border-radius-20;
+    color: settings.$board-text;
+    margin-bottom: 2rem;
+    max-width: 46rem;
+    padding: 1.5rem 1.25rem 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { padding: 1.75rem 2rem 1.5rem; }
+
+    .hub-maven-label { color: settings.$board-text; }
+
+    .hub-copy {
+        border-color: $board-dim;
+        color: settings.$board-text;
+
+        &:hover { background: settings.$board-text; border-color: settings.$board-text; color: $board; }
+        &:focus-visible { outline-color: $plate; }
     }
 
-    dt {
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-    }
-    dd {
-        font-variant-numeric: tabular-nums;
-        margin: 0.15rem 0 0;
-
-        > a { font-size: settings.$font-size-50; font-weight: 600; }
-        .tag { margin-left: 0.15rem; }
-    }
-}
-.home-release-note {
-    color: $ink-soft;
-    display: block;
-    font-size: settings.$font-size-20;
-}
-.home-release-all dd > a {
-    font-size: settings.$font-size-30;
-    font-weight: 400;
-}
-
-.home-section {
-    padding-top: 4rem;
-
-    h2 {
-        color: settings.$color-neutral-90;
-        font-size: clamp(1.75rem, 3vw, 2.3rem);
-        font-weight: 400;
-        line-height: 1.2;
-        margin-bottom: 1.25rem;
-    }
-}
-.home-section-lead {
-    max-width: 68ch;
-}
-.home-more {
-    margin-top: 1rem;
-}
-
-// How a page works: the Java class beside its HTML.
-.home-code-pair {
-    display: grid;
-    gap: 1.5rem 3rem;
-    grid-template-columns: minmax(0, 1fr);
-
-    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-
-    figure { margin: 0; min-width: 0; }
-    figcaption {
-        color: $ink-soft;
-        font-size: settings.$font-size-20;
-        margin-bottom: 0.35rem;
-    }
-    .highlight,
     pre {
-        background: $tint;
-        border-radius: settings.$border-radius-20;
-        margin: 0;
+        @include code-block;
+        border: 0;
+        color: $ink;
+        margin: 0.5rem 0;
+        padding: 1rem;
     }
-    pre {
-        overflow-x: auto;
-        padding: 1rem 1.25rem;
-    }
-}
-.home-code-notes {
-    margin: 1.25rem 0 0;
-    padding: 0;
-    list-style: none;
 
-    li {
-        border-top: 1px solid $rule;
-        margin: 0;
-        padding: 0.6rem 0;
-    }
-    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
+    a { color: settings.$board-text; }
+    a:hover { color: $plate; }
+    a:focus-visible,
+    select:focus-visible,
+    input:focus-visible { outline-color: $plate; }
 }
-
-// Why Wicket: a ruled list in two columns, no boxes.
-.home-why {
+.quickstart-fields {
     display: grid;
-    gap: 0 3rem;
-    grid-template-columns: minmax(0, 1fr);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-    li {
-        border-top: 1px solid $rule;
-        margin: 0;
-        padding: 1rem 0 1.25rem;
-    }
-    h3 {
-        color: settings.$color-neutral-90;
-        font-size: settings.$font-size-40;
-        font-weight: 600;
-        margin-bottom: 0.35rem;
-    }
-    p { margin: 0; }
-    code { background: $tint; border-radius: settings.$border-radius-10; padding: 0 0.25em; }
-}
-.home-also {
-    border-top: 1px solid $rule;
-    max-width: 68ch;
-    padding-top: 1rem;
-
-    span { font-weight: 600; }
-}
-
-// Learn: the introduction beside the five lessons.
-.home-split {
-    display: grid;
-    gap: 1rem 4rem;
-    grid-template-columns: minmax(0, 1fr);
-
-    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
-}
-.home-lessons { margin: 0; }
-
-.home-section .line-panels { margin-bottom: 0; }
-
-// Built with Wicket on the homepage: no grey band, the strip on phones.
-#builtwithwicket {
-    padding-bottom: 2rem;
-
-    // slick's own theme removes focus outlines; bring them back, and give its controls contrast.
-    .slick-list:focus-visible,
-    .slick-prev:focus-visible,
-    .slick-next:focus-visible,
-    .slick-dots li button:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
-    .slick-prev::before,
-    .slick-next::before { opacity: 1; }
-    .slick-dots li button::before { color: $ink-soft; opacity: 1; }
-    .slick-dots li.slick-active button::before { color: $navy; opacity: 1; }
-
-    .builtwithwicket-slider { margin-top: 1rem; }
-    .builtwithwicket-caption { font-size: settings.$font-size-20; }
-    .slick-prev::before,
-    .slick-next::before { color: $brand-text; }
-}
-.builtwithwicket-slider.is-strip {
-    display: flex;
-    position: relative;
     gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    margin-bottom: 1.5rem;
 
-    .builtwithwicket-post {
-        flex: 0 0 80%;
-        padding: 0;
-        scroll-snap-align: start;
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    label {
+        color: $board-dim;
+        display: block;
+        font-family: $signage;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
     }
-    .builtwithwicket-screenshot { min-height: 0; min-width: 0; width: 100%; }
+    input, select {
+        background-color: $paper;
+        border: 2px solid transparent;
+        border-radius: settings.$border-radius-10;
+        box-sizing: border-box;
+        color: $ink;
+        display: block;
+        font-family: settings.$font-family-code;
+        font-size: settings.$font-size-30;
+        height: 2.6rem;
+        line-height: 1.4;
+        margin-top: 0.3rem;
+        padding: 0 0.6rem;
+        width: 100%;
+
+        &:focus { border-color: $plate; }
+    }
 }
-.bww-count {
-    color: $ink-soft;
+.quickstart-needs {
+    color: $board-dim;
     font-size: settings.$font-size-20;
-    margin-top: 0.5rem;
-}
-
-// ---------- The menu on phones: logo and plate on one row, sections and icons on the next
-
-.header.default nav.mainmenu {
-    @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
-        justify-content: center;
-        padding: 0.75rem 0 0.5rem;
-
-        .nav-brand { flex: 1 0 100%; flex-direction: row; justify-content: center; gap: 0.75rem; }
-        .nav-logo img { width: 9.5rem; }
-        .nav-container { flex: 0 0 auto; }
-        .nav-container:last-child { flex-grow: 0; font-size: 1.5rem; }
-        .nav-asf img { height: 1.6rem; }
-        .nav-container > a.nav-items { padding-bottom: 0.15rem; padding-top: 0.15rem; }
-    }
+    margin: 0;
 }
 
 // ---------- Page not found
@@ -1787,47 +1623,14 @@ body > footer {
 .notfound-suggest {
     font-size: settings.$font-size-50;
     margin-bottom: 1.5rem;
+    max-width: 52rem;
 }
 .notfound-map {
-    list-style: none;
-    margin: 0;
     max-width: 52rem;
-    padding: 0;
-
-    li {
-        border-top: 1px solid $rule;
-        margin: 0;
-        padding: 0.6rem 0;
-    }
-    a { font-weight: 600; }
-    span { color: $ink-soft; display: block; font-size: settings.$font-size-20; }
 }
 
-// A page that opens with its own panels (community) needs no compact rail above the text on phones.
-.section-lead + .has-rail .reading-rail {
-    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') { display: none; }
-}
+// ---------- Phones: a wider gutter, so text does not touch the screen edge
 
-.home-release-next {
-    font-size: settings.$font-size-50;
-    font-weight: 600;
-}
-
-// The copy button of a code sample in the documentation, in a bar above the code.
-.guide-copy-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin: 0.75rem 0 -0.5rem;
-}
-
-// A section page that opens with a heading needs no rule above it: the sign already ends in one.
-.section-body > h2:first-child {
-    border-top: none;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-// Phones: a wider gutter than Taiga's 15px, so text does not touch the screen edge.
 @include mixins.breakpoint(settings.$breakpoint-30, 'max-width') {
     .l-container,
     .page-sign-inner,
@@ -1835,69 +1638,31 @@ body > footer {
     .home-inner { padding-left: 20px; padding-right: 20px; }
 }
 
-// The scope of the docs, under the reference guide line.
-.guide-sign-scope {
-    color: $ink-soft;
-    font-size: settings.$font-size-20;
-    grid-column: 1 / -1;
-    margin: 0;
-}
+// ---------- Touch screens: the small links and controls grow to 44px
 
-// Upgrade paths: one guide per line.
-.connections-guides {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li + li { margin-top: 0.4rem; }
-}
-
-// The invitation that closes the homepage.
-.home-involved { padding-bottom: 2rem; }
-
-// The GitHub mark in the menu, inline instead of an icon font, at the height of the ASF mark.
-.nav-github {
-    display: block;
-    height: 1.9rem;
-    width: 1.9rem;
-}
-
-// The plate split in two when the newest line is not the LTS: a link to each line.
-.header.default nav.mainmenu .nav-plate--split {
-    border: 1px solid $ink-soft;
-    gap: 0;
-    padding: 0;
-
-    &:hover { background: none; }
-
-    a {
-        align-items: center;
-        border: none;
-        display: inline-flex;
-        min-height: 2.25rem;
-        padding: 0.2rem 0.6rem;
-
-        &:hover, &.active { background: $tint; }
-        &:focus-visible { outline: 2px solid $navy; outline-offset: 2px; }
+@media (pointer: coarse) {
+    .hub-copy { min-height: 44px; min-width: 44px; }
+    .reading-rail { --rail-pad: 0.7rem; }
+    @include mixins.breakpoint(settings.$breakpoint-40, 'max-width') {
+        .reading-rail a { display: inline-block; padding-bottom: 0.7rem; padding-top: 0.7rem; }
     }
-    a + a { border-left: 1px solid $rule; }
-    .nav-plate-current { color: $navy; font-weight: 600; }
-    .nav-plate-lts { color: $ink-soft; font-size: settings.$font-size-20; }
-}
-@media (pointer: coarse) {
-    .header.default nav.mainmenu .nav-plate--split a { min-height: 44px; min-width: 44px; }
-}
-
-// Docs search: a focus ring as strong as everywhere else.
-.guide-search-field input:focus { border-color: $navy; outline: 2px solid $navy; outline-offset: 1px; }
-
-// Search results: the kind and the topic apart.
-.guide-result-meta span + span::before { content: " · "; }
-
-// Small links in rows and strips reach 44px on touch screens.
-@media (pointer: coarse) {
+    .hub-jump a,
+    .section-index a,
+    .release-lines th[scope=row] a,
+    .guide-foot a { display: inline-block; padding-bottom: 0.75rem; padding-top: 0.75rem; }
+    .quickstart input,
+    .quickstart select { min-height: 44px; }
+    .hub-crumbs a,
+    .guide-crumbs a,
+    .hub-maven-more a,
+    .post-sign-meta a,
+    .hub-more a,
+    .post-row-title > a,
     .guide-refs a,
-    .builtwithwicket-post > a,
-    .reading-rail .toc a { display: inline-block; padding: 0.7rem 0.5rem; margin-left: -0.5rem; }
+    .guide-letters a,
+    .hub-panel-alt a { display: inline-block; padding-bottom: 0.7rem; padding-top: 0.7rem; }
+    .guide-search-hint select,
+    .guide-search-field input { min-height: 44px; }
+    .guide-search-key { display: none; }
+    .builtwithwicket-post > a { margin-left: -0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
 }
-.guide-results ul { list-style: none; margin: 0; padding: 0; }

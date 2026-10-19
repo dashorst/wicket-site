@@ -53,8 +53,9 @@ layout: base
     </div>
 </div>
 <main class="hub" id="main" tabindex="-1">
-    <div class="l-container">
-        <header class="hub-head" id="status">
+    {% comment %} The line's sign: its name, role and facts on the night-blue band. {% endcomment %}
+    <header class="page-sign hub-head" id="status">
+        <div class="page-sign-inner">
             <p class="hub-crumbs"><a href="{{ site.baseurl }}/versions/">Releases</a></p>
             <h1>Apache Wicket {{ page.series }}.x</h1>
             <p class="hub-role">
@@ -68,7 +69,7 @@ layout: base
                 {% endcase %}
             </p>
             <dl class="hub-facts">
-                <div><dt>Latest release</dt><dd class="hub-version">{{ version }}</dd></div>
+                <div><dt>Latest release</dt><dd class="hub-version board-figure">{{ version }}</dd></div>
                 <div><dt>Status</dt><dd>{% case status %}{% when 'lts' %}<span class="tag tag-lts">LTS</span> In service{% else %}{% include line-status.html status=status style="tag" %}{% endcase %}</dd></div>
                 <div><dt>Supported</dt><dd>{{ support }}</dd></div>
                 {% assign next_release = site.data.releases.lines | where: "series", page.series | where: "status", "scheduled" | first %}
@@ -76,6 +77,9 @@ layout: base
                 <div><dt>Java</dt><dd>{{ page.java }} or newer</dd></div>
                 <div><dt>Servlet API</dt><dd>{{ page.servlet }}</dd></div>
             </dl>
+        </div>
+    </header>
+    <div class="l-container hub-main">
             {% if recommended == false %}
             <div class="hub-eol{% if status == 'last-call' %} is-ending{% endif %}" id="upgrade">
                 <p class="hub-eol-title">{% if status == 'last-call' %}Wicket {{ page.series }} reaches end of life with its final release{% else %}Wicket {{ page.series }} gets no more releases, not even security fixes{% endif %}</p>
@@ -111,7 +115,6 @@ layout: base
                 {% if recommended %}<p class="hub-maven-more">Other modules, such as <code>wicket-extensions</code> and <code>wicket-spring</code>, take the same group id and version. <a href="{{ site.baseurl }}/docs/modules.html">Wicket's modules</a> lists them all.</p>{% endif %}
                 <p class="hub-maven-more"><a href="#manually">Download the source and binaries</a>{% if recommended %} · New project? <a href="{{ site.baseurl }}/start/quickstart.html?v={{ page.series }}">Generate one with the quick start</a>{% endif %}</p>
             </div>
-        </header>
 
 {% comment %} The page's sections, as a row of links under the head. {% endcomment %}
         <nav class="hub-jump" aria-label="On this page">

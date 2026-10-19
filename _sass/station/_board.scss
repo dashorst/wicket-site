@@ -1,0 +1,283 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// =========== The departure board: a night-blue panel of release lines.
+// On the homepage it carries the page's h1 at its head; on /versions/ it holds the
+// release lines table.
+
+.board {
+    background: settings.$board;
+    border: 1px solid settings.$board-rule;
+    border-radius: settings.$border-radius-20;
+    box-shadow: 0 1.5rem 3rem -1.5rem rgba(settings.$board, 0.55);
+    color: settings.$board-text;
+    padding: 1.5rem 1.25rem 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) {
+        padding: 2.25rem 2.25rem 1.5rem;
+    }
+
+    a {
+        color: settings.$board-text;
+
+        &:hover { color: settings.$plate; }
+    }
+}
+
+// Figures on a board and on the signs: Overpass Mono with tabular numerals.
+.board-figure {
+    font-family: settings.$font-family-board;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+// ---------- Head: the page's title and what Wicket is
+
+.board-head {
+    border-bottom: 2px solid settings.$board-rule;
+    display: grid;
+    gap: 1rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 1.75rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        align-items: start;
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
+}
+
+.board-title {
+    color: settings.$board-text;
+    font-size: clamp(2.25rem, 4.4vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin: 0;
+    max-width: 18ch;
+}
+
+.board-lede {
+    color: settings.$board-dim;
+    font-size: clamp(1.1rem, 1.4vw, 1.2rem);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 52ch;
+}
+
+// ---------- The lines
+
+.board-table {
+    font-family: settings.$font-family-signage;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+    width: 100%;
+
+    thead th {
+        background: transparent;
+        color: settings.$board-dim;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 0.6rem 1rem 0.5rem 0;
+        text-transform: uppercase;
+    }
+
+    th, td {
+        border-bottom: 1px solid settings.$board-rule;
+        padding: 0.65rem 1rem 0.55rem 0;
+        text-align: left;
+        vertical-align: baseline;
+    }
+
+    tbody th[scope=row] { color: settings.$board-text; }
+
+    tbody tr:hover td { background: transparent; }
+}
+
+// The only group on the homepage board labels the table from above its column headers.
+.board-caption {
+    caption-side: top;
+    color: settings.$plate;
+    font-family: settings.$font-family-signage;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 1.25rem 0 0;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.board-release {
+    font-family: settings.$font-family-board;
+    font-size: 1.35rem;
+    font-weight: 600;
+    white-space: nowrap;
+
+    a {
+        text-decoration: none;
+
+        // The characters of a flap are inline blocks, which text decoration does not
+        // reach, so the link underline is drawn on the flap itself.
+        .flap { border-bottom: 2px solid rgba(settings.$board-dim, 0.45); }
+
+        &:hover .flap { border-bottom-color: currentColor; }
+    }
+
+    .plate { margin-left: 0.4rem; vertical-align: 0.2em; }
+}
+
+.board-when { color: settings.$board-dim; white-space: nowrap; }
+
+.board-status { white-space: nowrap; }
+
+.status-role { font-weight: 600; }
+
+// Lines with their last release coming read dimmer, the way a train on its last run does.
+.board-row.is-last-call .board-release a,
+.board-row.is-last-call .board-support,
+.board-row.is-superseded .board-release a {
+    color: settings.$board-dim;
+}
+
+.board-row.is-last-call .board-release a:hover { color: settings.$plate; }
+
+// ---------- Plates
+
+.plate {
+    border-radius: settings.$border-radius-10;
+    display: inline-block;
+    font-family: settings.$font-family-signage;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    padding: 0.35em 0.5em 0.25em;
+}
+
+.plate-lts {
+    background: settings.$plate;
+    color: settings.$board;
+}
+
+// ---------- Summary lines: what is scheduled, what reached end of life
+
+.board-brief {
+    border-bottom: 1px solid settings.$board-rule;
+    font-family: settings.$font-family-signage;
+    padding: 0.9rem 0 0.4rem;
+
+    p {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 1.5rem;
+        margin: 0 0 0.55rem;
+    }
+
+    a { font-weight: 600; }
+}
+
+.board-brief-label {
+    color: settings.$plate;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    min-width: 8.5rem;
+    text-transform: uppercase;
+}
+
+.board-brief-item {
+    color: settings.$board-dim;
+    white-space: nowrap;
+
+    .board-figure {
+        color: settings.$board-text;
+        font-size: 1.1rem;
+        margin-right: 0.2rem;
+    }
+
+    .plate { margin-right: 0.2rem; vertical-align: 0.15em; }
+
+    .is-eol {
+        color: settings.$board-dim;
+        text-decoration: line-through;
+        text-decoration-color: settings.$stop;
+        text-decoration-thickness: 2px;
+    }
+}
+
+.board-foot {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: settings.$font-family-signage;
+    font-size: settings.$font-size-20;
+    font-weight: 600;
+    gap: 0.25rem 1.5rem;
+    margin: 1rem 0 0;
+}
+
+// ---------- Split-flap arrival (set up by javascript/station.js), once per page load
+
+.flap-c {
+    display: inline-block;
+    transform-origin: 50% 55%;
+}
+
+.flaps-run .flap-c {
+    animation: flap-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    // Capped, so no value waits more than about half a second to appear.
+    animation-delay: calc(min(var(--i, 0), 6) * 35ms + min(var(--row, 0), 4) * 50ms);
+}
+
+@keyframes flap-in {
+    0% { transform: perspective(12em) rotateX(-65deg); opacity: 0.45; }
+    60% { opacity: 1; }
+    100% { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .flaps-run .flap-c { animation: none; }
+}
+
+// ---------- Phones: every line becomes a stacked row
+
+@include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
+    .board-table thead { display: none; }
+
+    .board-table,
+    .board-table tbody,
+    .board-caption { display: block; }
+
+    .board-row {
+        border-bottom: 1px solid settings.$board-rule;
+        display: grid;
+        gap: 0.2rem 1rem;
+        grid-template-areas:
+            "release status"
+            "when support";
+        grid-template-columns: auto 1fr;
+        padding: 0.75rem 0;
+
+        th, td { border: 0; padding: 0; }
+    }
+
+    .board-release { grid-area: release; font-size: 1.2rem; }
+    .board-status { grid-area: status; text-align: right; }
+    .board-when { grid-area: when; }
+    .board-support { grid-area: support; text-align: right; color: settings.$board-dim; }
+
+    .board-brief-label { min-width: 100%; }
+    .board-brief-item { white-space: normal; }
+}
+
+@media (pointer: coarse) {
+    .board-foot a,
+    .board-brief a { display: inline-block; padding: 0.7rem 0; }
+
+    .board-release a {
+        display: inline-block;
+        margin: -0.5rem 0;
+        padding: 0.5rem 0;
+    }
+}

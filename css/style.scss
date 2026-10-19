@@ -6,4 +6,21 @@
 @import "../fonts/source-code-pro/stylesheet.css";
 @import "../fonts/source-sans-pro/stylesheet.css";
 @import "../fonts/wicket-font/stylesheet.css";
+
+@font-face {
+    font-family: "Overpass";
+    src: url("../fonts/overpass/overpass-latin-wght-normal.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Overpass Mono";
+    src: url("../fonts/overpass/overpass-mono-latin-wght-normal.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 @include meta.load-css("../_sass/main");

@@ -3,8 +3,10 @@
   A scheduled release of a line that is already out (an LTS patch release) shows in that
   line's row as its next release; a scheduled or announced major without a release yet is
   a row of its own. Reads _data/releases.yml and the versions in _config.yml.
+  Set on a board panel, like the departure board on the homepage.
 {% endcomment %}
 {% assign releases = site.data.releases %}
+<div class="board board-full">
 <table class="release-lines">
     <caption class="visually-hidden">Apache Wicket release lines: their latest and next release, how long they are supported, and their status</caption>
     <thead>
@@ -48,8 +50,8 @@
         <tr class="is-{{ line.status }}">
             <th scope="row">
                 {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}">Wicket {{ line.series }}</a>{% else %}Wicket {{ line.series }}{% endif %}
-                {% if line.config %}<span class="release-lines-latest">Latest {{ version }}</span>{% else %}<span class="release-lines-latest">{{ version }}</span>{% endif %}
-                {% if next %}<span class="release-lines-latest">Next {{ next.version }}, {{ next.when }}</span>{% endif %}
+                {% if line.config %}<span class="release-lines-latest">Latest <span class="board-figure">{{ version }}</span></span>{% else %}<span class="release-lines-latest"><span class="board-figure">{{ version }}</span></span>{% endif %}
+                {% if next %}<span class="release-lines-latest">Next <span class="board-figure">{{ next.version }}</span>, {{ next.when }}</span>{% endif %}
             </th>
             <td data-label="Since">{% if line.config %}{{ line.when | remove: 'Since ' }}{% else %}Due {{ line.when }}{% endif %}</td>
             <td data-label="Supported">{{ line.support }}</td>
@@ -63,3 +65,4 @@
     </tbody>
     {% endfor %}
 </table>
+</div>
