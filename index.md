@@ -7,43 +7,23 @@ additionalContents:
    header: builtwithwicket--header.html
 ---
 {% comment %}
-  The homepage: what Wicket is, how a page works, why to choose it, where to start,
+  The homepage: the departure board of release lines with what Wicket is at its head, how a page works, why to choose it, where to start,
   where existing users find their release line, the projects built with it, the latest releases and how to take part. The blog's featured posts follow the hero, so the project's news is on the first screens.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release day.
 {% endcomment %}
-{% assign lts = site.data.releases.lines | where: "status", "lts" | first %}
-{% assign current = site.data.releases.lines | where: "status", "current" | first %}
-{% assign next = site.data.releases.lines | where: "status", "boarding" | first %}
-<section class="home-hero">
+{% capture board_head %}
+        <h1 class="board-title">Build web applications from Java components and plain&nbsp;HTML</h1>
+        <div class="board-intro">
+            <p class="board-lede">Apache Wicket is an open source, component-oriented Java web framework, developed at the Apache Software Foundation since 2004. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
+            <p class="home-actions">
+                <a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a>
+                <a class="home-action-alt" href="{{ site.baseurl }}/docs/first-application.html">Build your first application</a>
+            </p>
+        </div>
+{% endcapture %}
+<section class="home-arrivals">
     <div class="home-inner">
-        <h1>Build web applications from Java components and plain&nbsp;HTML</h1>
-        <p class="home-lead">Apache Wicket is an open source, component-oriented Java web framework, developed at the Apache Software Foundation since 2004. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
-        <p class="home-actions">
-            <a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a>
-            <a class="home-action-alt" href="{{ site.baseurl }}/docs/first-application.html">Build your first application</a>
-        </p>
-        <dl class="home-release" aria-label="Releases">
-            <div>
-                <dt>For production</dt>
-                <dd><a href="{{ site.baseurl }}{{ lts.page }}">{{ site.wicket[lts.config] }}</a> <span class="tag tag-lts">LTS</span> <span class="home-release-note">{{ lts.support | replace: 'Until', 'supported until' }}</span></dd>
-            </div>
-            {% if current %}
-            <div>
-                <dt>For new features</dt>
-                <dd><a href="{{ site.baseurl }}{{ current.page }}">{{ site.wicket[current.config] }}</a> <span class="home-release-note">{{ current.support | replace: 'Until', 'supported until' }}</span></dd>
-            </div>
-            {% endif %}
-            {% if next %}
-            <div>
-                <dt>Next release</dt>
-                <dd><span class="home-release-next">{{ next.version }}</span> <span class="home-release-note">Announced for {{ next.when }}, not yet released. Hear when it ships on the <a href="{{ site.baseurl }}/community/#announce">announce list</a>.</span></dd>
-            </div>
-            {% endif %}
-            <div class="home-release-all">
-                <dt class="visually-hidden">Everything else</dt>
-                <dd><a href="{{ site.baseurl }}/versions/">All releases and downloads</a></dd>
-            </div>
-        </dl>
+        {% include departures.html head=board_head %}
     </div>
 </section>
 

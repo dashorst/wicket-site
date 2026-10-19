@@ -1,0 +1,231 @@
+@use "../taiga/mixins";
+@use "../taiga/settings";
+
+// =========== Homepage: the departure board with what Wicket is at its head, then the
+// sections on the hall ground.
+
+.home {
+    padding-bottom: 1rem;
+}
+
+.home-inner {
+    margin: 0 auto;
+    max-width: 76rem;
+    padding-left: settings.$spacing;
+    padding-right: settings.$spacing;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        padding-left: settings.$spacing * 5;
+        padding-right: settings.$spacing * 5;
+    }
+}
+
+// The arrivals hall: the board hangs from the header band onto the hall.
+.home-arrivals {
+    background:
+        linear-gradient(settings.$board 0, settings.$board 6rem, transparent 6rem),
+        settings.$hall;
+    padding-top: 1.25rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { padding-top: 2rem; }
+}
+
+.home-board .board-intro {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.home-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    margin: 0;
+
+    .button {
+        font-size: settings.$font-size-40;
+        margin: 0;
+        padding: 0.7rem 1.4rem 0.6rem;
+
+        // On the board the plate turns white on hover, as the board is already night blue.
+        &:hover { background: settings.$board-text; color: settings.$board; }
+        &:active { background: settings.$plate; color: settings.$board; }
+    }
+}
+
+.home-action-alt {
+    font-family: settings.$font-family-signage;
+    font-size: settings.$font-size-40;
+    font-weight: 600;
+}
+
+// ---------- Sections
+
+.home-section {
+    padding-top: 5rem;
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin: 0 0 1.5rem;
+        max-width: 24ch;
+    }
+}
+
+// The first section follows the board closely.
+.home-arrivals + .home-section { padding-top: 4rem; }
+
+.home-section-lead {
+    font-size: clamp(1.05rem, 1.4vw, 1.15rem);
+    margin-bottom: 1.5rem;
+    max-width: 68ch;
+}
+
+.home-more {
+    font-family: settings.$font-family-signage;
+    font-weight: 600;
+    margin-top: 1.25rem;
+}
+
+// How a page works: the Java class beside its HTML.
+.home-code-pair {
+    display: grid;
+    gap: 1.5rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+
+    figure { margin: 0; min-width: 0; }
+    figcaption {
+        color: settings.$ink-soft;
+        font-family: settings.$font-family-code;
+        font-size: settings.$font-size-10;
+        margin-bottom: 0.35rem;
+    }
+    .highlight,
+    pre {
+        background: settings.$paper;
+        margin: 0;
+    }
+    .highlight {
+        border: 1px solid settings.$rule;
+        border-radius: settings.$border-radius-10;
+    }
+    pre {
+        overflow-x: auto;
+        padding: 1rem 1.25rem;
+    }
+}
+
+.home-code-notes {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+
+    li {
+        border-top: 1px solid settings.$rule;
+        margin: 0;
+        padding: 0.65rem 0;
+    }
+}
+
+// Why Wicket: a ruled list in two, then three columns, no boxes.
+.home-why {
+    display: grid;
+    gap: 0 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-20) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @include mixins.breakpoint(settings.$breakpoint-40) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    li {
+        border-top: 2px solid settings.$board;
+        margin: 0;
+        padding: 0.9rem 0 1.75rem;
+    }
+    h3 {
+        font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+        letter-spacing: -0.02em;
+        margin: 0 0 0.4rem;
+    }
+    p { margin: 0; }
+}
+
+.home-also {
+    border-top: 1px solid settings.$rule;
+    margin-top: 0.5rem;
+    max-width: 72ch;
+    padding-top: 1rem;
+
+    span {
+        color: settings.$board;
+        font-family: settings.$font-family-signage;
+        font-weight: 700;
+    }
+}
+
+// Learn: the introduction beside the five lessons.
+.home-split {
+    display: grid;
+    gap: 1rem 4rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mixins.breakpoint(settings.$breakpoint-30) { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+
+    h2 { font-size: clamp(2rem, 3.4vw, 2.6rem); }
+}
+.home-lessons { margin: 0; }
+
+.home-section .line-panels,
+.home-section .post-panels { margin-bottom: 0; }
+
+.home-involved { padding-bottom: 1rem; }
+
+// ---------- Built with Wicket: the strip of screenshots
+
+#builtwithwicket {
+    // slick's own theme removes focus outlines; bring them back, and give its controls contrast.
+    .slick-list:focus-visible,
+    .slick-prev:focus-visible,
+    .slick-next:focus-visible,
+    .slick-dots li button:focus-visible { outline: 3px solid settings.$board; outline-offset: 2px; }
+    .slick-prev::before,
+    .slick-next::before { color: settings.$board; opacity: 1; }
+    .slick-dots li button::before { color: settings.$ink-soft; opacity: 1; }
+    .slick-dots li.slick-active button::before { color: settings.$signal-deep; opacity: 1; }
+
+    .builtwithwicket-slider { margin-top: 1rem; }
+    .builtwithwicket-caption { color: settings.$ink-soft; font-size: settings.$font-size-20; }
+    .builtwithwicket-post > a { text-decoration: none; }
+}
+
+.builtwithwicket-slider.is-strip {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    position: relative;
+    scroll-snap-type: x mandatory;
+
+    .builtwithwicket-post {
+        flex: 0 0 80%;
+        padding: 0;
+        scroll-snap-align: start;
+    }
+    .builtwithwicket-screenshot { min-height: 0; min-width: 0; width: 100%; }
+}
+
+.bww-count {
+    color: settings.$ink-soft;
+    font-size: settings.$font-size-20;
+    margin-top: 0.5rem;
+}
+
+@media (pointer: coarse) {
+    .home-action-alt,
+    .home-more a { display: inline-block; padding: 0.7rem 0; }
+}
