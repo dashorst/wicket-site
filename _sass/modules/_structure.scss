@@ -1696,3 +1696,16 @@ a.guide-list-title:hover,
     .reading-rail .toc a { min-width: 44px; }
     .nav-logo a { align-items: center; display: inline-flex; min-height: 44px; }
 }
+
+// Highlight code in half-width columns wraps instead of hiding its end.
+.features .feature-code pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+// The quick start's version select shows its whole label.
+.quickstart select { min-width: 100%; }
+
+// Touch screens: the links in the release tables reach 44px.
+@media (pointer: coarse) {
+    .connections-guides a,
+    .connections-table td > a,
+    .eol-table td > a { display: inline-block; padding: 0.75rem 0; }
+}

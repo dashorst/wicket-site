@@ -164,11 +164,12 @@ nav.mainmenu {
     }
 
     &:not(.nav-plate--split):hover .nav-plate-lts,
-    .nav-plate-lts:hover,
-    .nav-plate-lts.active {
+    .nav-plate-lts:hover {
         background: settings.$board-text;
         border-color: settings.$board-text;
     }
+    // On its own page the LTS plate stays yellow, underlined as the current page.
+    .nav-plate-lts.active { box-shadow: inset 0 -3px 0 settings.$board; }
 
     // One line in service and it is the LTS: one figure, no split.
     .nav-plate-current:only-child { border-radius: settings.$border-radius-10; }
