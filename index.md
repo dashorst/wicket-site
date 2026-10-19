@@ -27,13 +27,6 @@ additionalContents:
     </div>
 </section>
 
-<section class="home-section home-news" aria-labelledby="blog">
-    <div class="home-inner">
-        <h2 id="blog">From the blog</h2>
-        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
-    </div>
-</section>
-
 <section class="home-section home-code" aria-labelledby="how">
     <div class="home-inner">
         <h2 id="how">A page is a Java class and an HTML file</h2>
@@ -72,6 +65,13 @@ public class HomePage extends WebPage {
                 <p class="home-more"><a href="{{ site.baseurl }}/docs/first-application.html">Build this page in the first lesson</a> · <a href="{{ site.live_examples_url }}">See the examples running</a></p>
             </figure>
         </div>
+    </div>
+</section>
+
+<section class="home-section home-news" aria-labelledby="blog">
+    <div class="home-inner">
+        <h2 id="blog">From the blog</h2>
+        {% include post-list.html posts=site.posts featured=3 rows=0 days=400 %}
     </div>
 </section>
 
@@ -129,24 +129,6 @@ public class HomePage extends WebPage {
             </li>
         {% endfor %}
         </ol>
-    </div>
-</section>
-
-<section class="home-section" aria-labelledby="running">
-    <div class="home-inner">
-        <h2 id="running">Already running Wicket?</h2>
-        <p class="home-section-lead">Each release line has its own page with its support status, Maven coordinates, migration guides and documentation. The <a href="{{ site.baseurl }}/versions/#upgrade-paths">upgrade paths</a> show the route from your version to one that stays supported.</p>
-        {% include line-panels.html %}
-    </div>
-</section>
-
-<section class="home-section" aria-labelledby="releases">
-    <div class="home-inner">
-        <h2 id="releases">Latest releases</h2>
-        {% assign release_posts = '' | split: '' %}
-        {% for post in site.posts %}{% include post-kind.html post=post %}{% if post_kind == 'release' or post_kind == 'major' %}{% assign release_posts = release_posts | push: post %}{% endif %}{% if release_posts.size >= 4 %}{% break %}{% endif %}{% endfor %}
-        {% include post-list.html posts=release_posts featured=0 rows=4 %}
-        <p class="home-more"><a href="{{ site.baseurl }}/news/">All posts on the blog</a> · <a href="{{ site.baseurl }}/atom.xml">Atom feed</a></p>
     </div>
 </section>
 
