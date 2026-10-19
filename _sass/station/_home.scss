@@ -131,7 +131,39 @@
     text-transform: uppercase;
 }
 
-.ticket-snippet + .ticket-snippet { margin-top: 0.25rem; }
+// Each line in service is a ticket of its own, torn off from the one above it.
+.ticket-pass + .ticket-pass {
+    border-top: 2px dashed settings.$rule;
+    margin: 1.1rem -1.25rem 0;
+    padding: 1.1rem 1.25rem 0;
+
+    @include mixins.breakpoint(settings.$breakpoint-10) { margin-left: -1.5rem; margin-right: -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+.ticket .ticket-support {
+    color: settings.$ink-soft;
+    font-size: settings.$font-size-20;
+    margin: 0.15rem 0 0.5rem;
+}
+// The XML of one ticket at a time; the summary says what a click does.
+.ticket-xml {
+    summary {
+        cursor: pointer;
+        font-family: settings.$font-family-signage;
+        font-size: settings.$font-size-20;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        width: fit-content;
+
+        &:focus-visible { outline: 3px solid settings.$board; outline-offset: 2px; }
+    }
+    .ticket-xml-hide { display: none; }
+    &[open] .ticket-xml-show { display: none; }
+    &[open] .ticket-xml-hide { display: inline; }
+}
+.ticket-links { margin-top: 1rem; }
+@media (pointer: coarse) {
+    .ticket-xml summary { align-items: center; display: flex; min-height: 44px; }
+}
 
 .ticket-stub-head {
     align-items: center;

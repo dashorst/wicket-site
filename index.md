@@ -33,22 +33,26 @@ additionalContents:
             </div>
             <div class="ticket-stub">
                 <h3 class="ticket-stub-title">Maven dependency</h3>
-                {% comment %} One snippet per line in service, the LTS first. Only the first is shown in full: the others differ in their version and requirements, and copy their own snippet. {% endcomment %}
-                {% assign shown = false %}
+                {% comment %} One ticket per line in service, the LTS first, torn apart along a perforation. Each carries its version, plate, support date and copy plate; its XML opens one at a time (details with a shared name), the LTS open. {% endcomment %}
+                {% assign first_pass = true %}
                 {% for line in site.data.releases.lines %}{% unless line.status == 'lts' or line.status == 'current' %}{% continue %}{% endunless %}{% assign v = site.wicket[line.config] %}{% assign line_page = site.pages | where: "url", line.page | first %}
-                <div class="ticket-snippet">
+                <div class="ticket-pass">
                     <div class="ticket-stub-head">
                         <p class="ticket-snippet-label"><strong>{{ v }}</strong>{% if line.service == 'lts' %} <span class="plate plate-lts" title="Long-term support">LTS</span>{% endif %}{% if line.status == 'current' %} <span class="plate plate-current">{{ line.role | default: 'Current' }}</span>{% endif %}</p>
                         <button type="button" class="ticket-copy" data-copy="maven-{{ line.series }}" aria-label="Copy the Maven dependency for Wicket {{ v }}" hidden>Copy</button>
                     </div>
-<pre class="ticket-code"{% if shown %} hidden{% endif %}><code id="maven-{{ line.series }}"><span class="ticket-code-comment"><span>&lt;!-- Apache Wicket {{ line.series }}.x{% if line.status == 'lts' %} LTS{% endif %}:</span> <span>Java {{ line_page.java }}+,</span> <span>{{ line_page.servlet | replace: ' or newer', '+' }} --&gt;</span></span>
+                    <p class="ticket-support">Supported until {{ line.support | split: ', ' | last | remove: 'Until ' }}</p>
+                    <details class="ticket-xml" name="ticket-xml"{% if first_pass %} open{% endif %}>
+                        <summary><span class="ticket-xml-show">Show the XML</span><span class="ticket-xml-hide">Hide the XML</span></summary>
+<pre class="ticket-code"><code id="maven-{{ line.series }}"><span class="ticket-code-comment"><span>&lt;!-- Apache Wicket {{ line.series }}.x{% if line.status == 'lts' %} LTS{% endif %}:</span> <span>Java {{ line_page.java }}+,</span> <span>{{ line_page.servlet | replace: ' or newer', '+' }} --&gt;</span></span>
 &lt;dependency&gt;
     &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;
     &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;
     &lt;version&gt;{{ v }}&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
+                    </details>
                 </div>
-                {% assign shown = true %}
+                {% assign first_pass = false %}
                 {% endfor %}
                 <ul class="ticket-links">
                     <li><a href="{{ site.baseurl }}{{ first_line.page }}#manually">Source and binary downloads</a></li>
