@@ -37,11 +37,11 @@
     </div>
     <div class="board-lines">
         <table class="board-table">
-            <caption class="board-caption">In service<span class="visually-hidden">: the Apache Wicket release lines that receive releases, since when, how long they are supported, and what they are for</span></caption>
+            <caption class="board-caption">In service<span class="visually-hidden">: the Apache Wicket release lines that receive releases, when each line started, how long it is supported, and what they are for</span></caption>
             <thead>
                 <tr>
                     <th scope="col">Release</th>
-                    <th scope="col">When</th>
+                    <th scope="col">Line since</th>
                     <th scope="col">Supported</th>
                     <th scope="col">Status</th>
                 </tr>
@@ -55,7 +55,7 @@
                         {% if line.page %}<a href="{{ site.baseurl }}{{ line.page }}"><span class="visually-hidden">Wicket {{ line.series }}, latest release </span><span class="flap" data-flap>{{ version }}</span></a>{% else %}<span class="flap" data-flap>{{ version }}</span>{% endif %}
                         {% if line.service == 'lts' %}<span class="plate plate-lts" title="Long-term support">LTS</span>{% endif %}
                     </th>
-                    <td class="board-when" data-label="When">{{ line.when }}</td>
+                    <td class="board-when" data-label="Line since">{{ line.when | remove: 'Since ' }}</td>
                     <td class="board-support" data-label="Supported">{{ line.support }}</td>
                     <td class="board-status">{% if line.role %}<span class="status-role">{{ line.role }}</span>{% else %}{% include line-status.html status=line.status style="tag" %}{% endif %}</td>
                 </tr>

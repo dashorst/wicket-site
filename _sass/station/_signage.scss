@@ -344,7 +344,7 @@ body > footer {
         flex: 1 1 24rem;
         font-size: settings.$font-size-20;
         margin: 0;
-        max-width: 80ch;
+        max-width: 68ch;
     }
 
     @include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
