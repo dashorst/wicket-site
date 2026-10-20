@@ -270,7 +270,7 @@ Small labels beside a line or a post: Alegreya SC in a 1px bordered bead. **LTS*
 - **Asides:** blockquotes, version notes and end-of-life notes on the pale tint with a 1px orange top rule.
 
 ### Navigation
-- **Masthead:** lies on the photograph. Alegreya Sans 500 at 1.0625rem, ink. Hover shows a `ribbon-deep` underline; the current section (or the section of a page's breadcrumb) carries a 4px orange underline at a deep offset. GitHub is set off by a hairline after the ASF feather. On the homepage the menu is centred without the brand; elsewhere the mark and the serif wordmark sit left.
+- **Masthead:** lies on the photograph. Alegreya Sans 500 at 1.0625rem, ink. Hover shows a `ribbon-deep` underline; the current section (or the section of a page's breadcrumb) carries a 4px orange underline at a deep offset. The ASF feather with "ASF" and the GitHub mark with "GitHub" close the menu, set off from each other by a hairline; below 600px the marks stand alone. On the homepage the menu is centred without the brand; elsewhere the mark and the serif wordmark sit left.
 - **Version plate:** beside the wordmark, the supported lines as two beads on one string, "11.0 | LTS 10", each linking to its line page; the line whose page is open is the lit bead. The homepage leaves it out from 1000px up, where the hero's release panel is in the first screen; on phones it stays, centred above the sections.
 - **Rail:** the page's sections hang from the ribbon, which drops from the photograph's edge. Entries are Alegreya Sans in `ink-soft`; hover shows the orange wash; the section in view is a lit bead.
 - **Breadcrumb:** the section above a page's title in small capitals, `ribbon-deep` links.

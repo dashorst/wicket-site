@@ -52,9 +52,14 @@ nav.mainmenu .nav-items {
     &.active { text-decoration-color: var(--ribbon); text-decoration-thickness: 4px; text-underline-offset: .42em; }
 }
 
-// The ASF feather and GitHub at the end, set off by a hairline.
+// The ASF feather and GitHub at the end, set off by a hairline, each with its name beside the
+// mark; on phones the marks alone.
 .nav-sections + .nav-container { gap: 18px; }
-.nav-asf { display: inline-flex; line-height: 0; }
+.nav-asf {
+    display: inline-flex; align-items: center; gap: 7px; padding: 8px 0;
+    color: var(--ink); text-decoration-color: transparent; white-space: nowrap;
+    &:hover { text-decoration-color: var(--ribbon-deep); }
+}
 .nav-asf img { display: block; height: 26px; width: auto; }
 .nav-gh {
     display: inline-flex; align-items: center; gap: 7px; padding: 8px 0 8px 18px;
@@ -93,7 +98,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
     .nav-sections { column-gap: 14px; }
     .nav-sections + .nav-container { gap: 10px; }
     .nav-gh { padding-left: 10px; }
-    .nav-github-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .nav-github-label, .nav-asf-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .nav-github { width: 20px; height: 20px; }
     .nav-asf img { height: 24px; }
 }
