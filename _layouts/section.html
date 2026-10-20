@@ -14,6 +14,7 @@ layout: base
     </div>
 </div>
 <div class="page-sign">
+    {% include season-photo.html %}
     <div class="page-sign-inner">
         {% if page.parent %}<p class="hub-crumbs"><a href="{{ site.baseurl }}{{ page.parent.url }}">{{ page.parent.title }}</a></p>{% endif %}
         <h1>{{ page.title }}</h1>

@@ -1,0 +1,115 @@
+// =========== Tokens, reset, type, links and the browser's own surfaces
+
+:root {
+    --cloth: #103C35;          // bookcloth green: the component-tree band and the footer
+    --cloth-deep: #0B2E28;
+    --paper: #F6F8F7;          // cool paper white page ground, never cream
+    --paper-tint: #E9F0ED;     // the second field: alternating homepage sections, asides
+    --ink: #14241F;
+    --ink-soft: #4A5E57;       // 6.3:1 on paper, 5.7:1 on tint
+    --rule: #CFDAD5;           // hairlines between rows
+    --field: #73877F;          // borders of inputs and selects: 3.5:1 on paper, 3.2:1 on tint
+    --code-bg: #E4ECE8;
+    --ribbon: #EE7F2D;         // Wicket orange, graphic use: the ribbon, rules, beads, the one action
+    --ribbon-under: #C9661F;   // the ribbon's reverse side at a fold
+    --ribbon-text: #F39A55;    // orange for text on cloth, 5.6:1
+    --ribbon-deep: #9A430A;    // orange for text on paper, 6.2:1
+    --ribbon-wash: rgba(238, 127, 45, .16);
+    --muted: #A8C7BD;          // secondary text on cloth, 6.7:1
+    --veil: 246, 248, 247;     // paper, as the scrim over the photograph
+    --focus: var(--ribbon-deep);
+
+    --serif: "Alegreya", Georgia, serif;
+    --sc: "Alegreya SC", "Alegreya", Georgia, serif;
+    --sans: "Alegreya Sans", "Alegreya", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+    --pad: 56px;
+    --max: 1440px;
+    --mast-h: 76px;            // the masthead's height: the photograph reaches up behind it
+    --measure: 68ch;
+    --ribbon-w: 7px;           // the ribbon's width where CSS draws it
+    --ease: cubic-bezier(.16, 1, .3, 1);
+
+    color-scheme: light;
+}
+
+@media (max-width: 1399px) { :root { --pad: 36px; } }
+@media (max-width: 999px) { :root { --mast-h: 104px; } }
+@media (max-width: 860px) { :root { --pad: 18px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    background: var(--paper);
+    scrollbar-color: var(--field) var(--paper-tint);
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+    scroll-padding-top: 24px;
+    overflow-x: clip;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.1875rem/1.55 var(--serif);
+    font-kerning: normal;
+    caret-color: var(--ribbon-deep);
+    accent-color: var(--ribbon);
+    overflow-x: clip;
+    overflow-wrap: break-word;
+}
+@media (max-width: 860px) { body { font-size: 1.125rem; } }
+
+::selection { background: var(--ribbon); color: var(--ink); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--paper-tint); }
+::-webkit-scrollbar-thumb { background: var(--field); border: 3px solid var(--paper-tint); border-radius: 6px; }
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+main:focus, main:focus-visible { outline: none; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; color: var(--ink); font-family: var(--serif); font-weight: 700; text-wrap: balance; }
+p { text-wrap: pretty; }
+img { max-width: 100%; height: auto; }
+hr { border: 0; border-top: 1px solid var(--rule); }
+th { text-align: left; }
+
+// Links keep the text colour with a burnt-orange underline that thickens on hover.
+a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: var(--ribbon-deep);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: .22em;
+}
+a:hover { text-decoration-thickness: 3px; }
+
+// JetBrains Mono's ligatures would turn <!-- and <> into arrows and diamonds: code shows what you type.
+code, kbd, samp, pre, .loom, .bead, .tl-j, .tl-t { font-family: var(--mono); font-variant-ligatures: none; font-feature-settings: "calt" 0, "liga" 0; }
+code { font-size: .82em; }
+pre code { font-size: inherit; }
+abbr[title] { text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.visually-hidden {
+    position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+// Hidden until focused, then an orange plate in the top left corner.
+.skip-link {
+    position: absolute; left: 12px; top: -80px; z-index: 20;
+    background: var(--ribbon); color: var(--ink); padding: 13px 16px; border-radius: 2px;
+    font: 700 1rem var(--sans); text-decoration: none;
+}
+.skip-link:focus { top: 12px; }
+
+// Font Awesome is gone: the icon elements left in older Markdown pages are decoration only.
+i.fa { display: none; }
+
+pre, .reading-rail, .guide-results { scrollbar-width: thin; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; animation: none !important; scroll-behavior: auto !important; }
+}
