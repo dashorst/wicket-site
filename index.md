@@ -22,7 +22,7 @@ description: Apache Wicket is an open source, component-oriented Java web framew
             </p>
         </div>
         <div class="board home-board">
-            <h2 class="board-title">Release lines</h2>
+            <h2 class="board-title">Releases</h2>
             <table>
                 <caption class="visually-hidden">The Apache Wicket release lines in service, until when each is supported, and the lines that have reached end of life</caption>
                 <tbody>
