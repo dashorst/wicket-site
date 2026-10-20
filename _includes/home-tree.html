@@ -1,0 +1,107 @@
+{% comment %}
+  The component tree on bookcloth: one small page, OrderPage, with its Java and its markup on aligned rows.
+  The ribbon in the middle is drawn by javascript/ribbon.js from the bead positions; each bead is one
+  component instance. Below the loom's width, and without JavaScript, the same tree is shown as a
+  list with the ribbon drawn in CSS. Under reduced motion the ribbon is drawn complete, without the unroll.
+{% endcomment %}
+<section class="ctree" id="tree" aria-labelledby="tree-title">
+  <div class="ctree-in">
+    <header class="ctree-head">
+      <h2 id="tree-title">A page is a tree of components</h2>
+      <p>Java builds the tree with <code>add(...)</code>, the HTML has the same nesting, and each <code>wicket:id</code> names the component that renders its tag. <code>AddressPanel</code> is written once, with its own markup, and the form uses it twice: the ribbon branches into the same shape for billing and shipping.</p>
+    </header>
+
+    <div class="loom" aria-describedby="loom-hint">
+      <div class="sheet" style="--c:1; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:1; --r:15 / 25" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:15 / 25" aria-hidden="true"></div>
+
+      <p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln c" style="--r:8" data-c="shipping">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span></span>
+<span class="ln c" style="--r:9" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:10">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:11">    <span class="x">}</span></span>
+<span class="ln" style="--r:12"><span class="x">}</span></span></code></pre>
+
+      <p class="file" style="--c:1; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:17" data-c="AddressPanel"><span class="x"><span class="tk">public class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:18">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:19">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:20" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:21" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:22">    <span class="x">}</span></span>
+<span class="ln" style="--r:23"><span class="x">}</span></span></code></pre>
+
+      <div class="beads" role="group" aria-label="Component tree of OrderPage">
+        <button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page: OrderPage.java with OrderPage.html">OrderPage</button>
+        <button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label="Label &quot;message&quot; renders &lt;p wicket:id=&quot;message&quot;&gt;">message</button>
+        <button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label="Form &quot;order&quot; renders &lt;form wicket:id=&quot;order&quot;&gt;">order</button>
+        <button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label="AddressPanel &quot;billing&quot; renders &lt;div wicket:id=&quot;billing&quot;&gt; with the markup of AddressPanel.html">billing</button>
+        <button type="button" class="bead" style="--r:8; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label="AddressPanel &quot;shipping&quot; renders &lt;div wicket:id=&quot;shipping&quot;&gt; with the same AddressPanel.html">shipping</button>
+        <button type="button" class="bead" style="--r:9; --x:25" data-path="page/order/save" data-k="save" aria-label="Button &quot;save&quot; renders &lt;button wicket:id=&quot;save&quot;&gt;">save</button>
+        <button type="button" class="bead" style="--r:20; --x:50" data-path="page/order/billing/street" data-k="street" aria-label="TextField &quot;street&quot; inside billing renders &lt;input wicket:id=&quot;street&quot;&gt;">street</button>
+        <button type="button" class="bead" style="--r:20; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label="TextField &quot;street&quot; inside shipping renders the same &lt;input wicket:id=&quot;street&quot;&gt;">street</button>
+        <button type="button" class="bead" style="--r:21; --x:50" data-path="page/order/billing/city" data-k="city" aria-label="TextField &quot;city&quot; inside billing renders &lt;input wicket:id=&quot;city&quot;&gt;">city</button>
+        <button type="button" class="bead" style="--r:21; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label="TextField &quot;city&quot; inside shipping renders the same &lt;input wicket:id=&quot;city&quot;&gt;">city</button>
+      </div>
+
+      <p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:8" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:9" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:10">  <span class="x"><span class="tg">&lt;/form&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:11"><span class="x"><span class="tg">&lt;/body&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12"><span class="x"><span class="tg">&lt;/html&gt;</span></span></span></code></pre>
+
+      <p class="file" style="--c:3; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:17" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:20" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:21" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/wicket:panel&gt;</span></span></span></code></pre>
+
+      <svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+    </div>
+    <p class="loom-hint" id="loom-hint">Point at a component, or tab to the tree and use the arrow keys, to follow it from its Java line to its tag.</p>
+
+    <!-- The same tree as a list: read by screen readers on wide screens, and the visible tree on phones. -->
+    <div class="tree-list">
+      <h3 class="tree-list-title">OrderPage as a tree</h3>
+      <ol class="tl">
+        <li><span class="tl-name"><b>OrderPage</b> <span>page</span></span><code class="tl-j">OrderPage.java</code><code class="tl-t">OrderPage.html</code>
+          <ol>
+            <li><span class="tl-name"><b>"message"</b> <span>Label</span></span><code class="tl-j">new Label("message", …)</code><code class="tl-t">&lt;p wicket:id="message"&gt;</code></li>
+            <li><span class="tl-name"><b>"order"</b> <span>Form</span></span><code class="tl-j">new Form&lt;&gt;("order")</code><code class="tl-t">&lt;form wicket:id="order"&gt;</code>
+              <ol>
+                <li><span class="tl-name"><b>"billing"</b> <span>AddressPanel</span></span><code class="tl-j">new AddressPanel("billing", billingAddress)</code><code class="tl-t">&lt;div wicket:id="billing"&gt;</code>
+                  <ol>
+                    <li><span class="tl-name"><b>"street"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("street")</code><code class="tl-t">&lt;input wicket:id="street"&gt;</code></li>
+                    <li><span class="tl-name"><b>"city"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("city")</code><code class="tl-t">&lt;input wicket:id="city"&gt;</code></li>
+                  </ol>
+                </li>
+                <li><span class="tl-name"><b>"shipping"</b> <span>AddressPanel, reused</span></span><code class="tl-j">new AddressPanel("shipping", shippingAddress)</code><code class="tl-t">&lt;div wicket:id="shipping"&gt;</code>
+                  <ol>
+                    <li><span class="tl-name"><b>"street"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("street")</code><code class="tl-t">&lt;input wicket:id="street"&gt;</code></li>
+                    <li><span class="tl-name"><b>"city"</b> <span>TextField</span></span><code class="tl-j">new TextField&lt;String&gt;("city")</code><code class="tl-t">&lt;input wicket:id="city"&gt;</code></li>
+                  </ol>
+                </li>
+                <li><span class="tl-name"><b>"save"</b> <span>Button</span></span><code class="tl-j">new Button("save")</code><code class="tl-t">&lt;button wicket:id="save"&gt;</code></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <p class="tl-foot">Both panels render <code>AddressPanel.html</code>, the panel's own markup inside <code>&lt;wicket:panel&gt;</code>.</p>
+    </div>
+    <p class="ctree-more"><a href="{{ site.baseurl }}/docs/topics/components.html">Components and markup</a> <a href="{{ site.live_examples_url }}">See the examples running</a></p>
+  </div>
+</section>
