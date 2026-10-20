@@ -82,8 +82,10 @@ form.add(new Button("cancel") {
 
 The user's input is neither validated nor stored.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a `Button` with default form processing turned off renders `formnovalidate`, so the browser does not block it on empty required fields either.
 {: .since}
+{% endif %}
 
 ## Submit a form from a link
 
@@ -104,4 +106,4 @@ add(new SubmitLink("saveFromToolbar", form));
 
 ## Submit without reloading the page
 
-`AjaxButton` and `AjaxSubmitLink` do the same over Ajax and give you an `AjaxRequestTarget` in `onSubmit` and `onError`, so you can update the feedback panel without rendering the whole page. See [Ajax components]({{ site.baseurl }}/guide/ajax-components.html).
+`AjaxButton` and `AjaxSubmitLink` do the same over Ajax and give you an `AjaxRequestTarget` in `onSubmit` and `onError`, so you can update the feedback panel without rendering the whole page. See [Ajax components]({{ site.baseurl }}/docs/ajax-components.html).

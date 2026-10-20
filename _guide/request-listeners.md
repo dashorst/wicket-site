@@ -10,7 +10,7 @@ order: 50
 source: [advanced/advanced_2.adoc]
 ---
 
-Use `IRequestListener` when a component or behavior needs a URL that calls back into it on the server, and none of the built-in links, forms or Ajax behaviors fits. `Link` itself works this way: its `onClick()` is called from the listener method `onRequest()`. For callbacks from JavaScript without a page reload, use an Ajax behavior such as `AbstractDefaultAjaxBehavior` instead; see [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html).
+Use `IRequestListener` when a component or behavior needs a URL that calls back into it on the server, and none of the built-in links, forms or Ajax behaviors fits. `Link` itself works this way: its `onClick()` is called from the listener method `onRequest()`. For callbacks from JavaScript without a page reload, use an Ajax behavior such as `AbstractDefaultAjaxBehavior` instead; see [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html).
 
 The interface has two methods:
 
@@ -113,10 +113,10 @@ public void onRequest() {
 }
 ```
 
-The handlers you can schedule are listed in [Request processing]({{ site.baseurl }}/guide/request-processing.html#request-handlers).
+The handlers you can schedule are listed in [Request processing]({{ site.baseurl }}/docs/request-processing.html#request-handlers).
 
 ## Things to know
 
-- A behavior that implements `IRequestListener` makes its page stateful, because the URL points to one component instance on one page instance. A component that implements it decides with `getStatelessHint()`; `Link` returns `false`. On a stateless page, Wicket creates the page again for the callback. See [Keep a page stateless]({{ site.baseurl }}/guide/keep-stateless.html).
+- A behavior that implements `IRequestListener` makes its page stateful, because the URL points to one component instance on one page instance. A component that implements it decides with `getStatelessHint()`; `Link` returns `false`. On a stateless page, Wicket creates the page again for the callback. See [Keep a page stateless]({{ site.baseurl }}/docs/keep-stateless.html).
 - Wicket calls the listener only when the component is visible and enabled, and the behavior enabled. Otherwise it throws a `ListenerInvocationNotAllowedException` and shows the access denied page. Override `canCallListener()` to change this.
-- `onRequest()` runs before the rendering hooks of the request. Change state there and let `onConfigure()` act on it; see [Component lifecycle]({{ site.baseurl }}/guide/component-lifecycle.html#when-a-request-invokes-a-listener).
+- `onRequest()` runs before the rendering hooks of the request. Change state there and let `onConfigure()` act on it; see [Component lifecycle]({{ site.baseurl }}/docs/component-lifecycle.html#when-a-request-invokes-a-listener).

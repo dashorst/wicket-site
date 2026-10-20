@@ -103,4 +103,4 @@ protected void populateItem(ListItem<Order> item) {
 
 ## Use queueing with wicket:enclosure
 
-With `add`, a `<wicket:enclosure>` is not the parent of the components inside it, so fields in a hidden enclosure are still validated. With `queue`, Wicket places the components inside the enclosure, and hiding it skips them. See [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/guide/use-enclosures.html).
+With `add`, a `<wicket:enclosure>` is not the parent of the components inside it, so fields in a hidden enclosure are still validated. With `queue`, Wicket places the components inside the enclosure, and hiding it skips them. See [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/docs/use-enclosures.html).

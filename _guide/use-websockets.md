@@ -10,7 +10,7 @@ order: 10
 source: [nativewebsockets/nativewebsockets_2.adoc]
 ---
 
-Use this when the server has to update a page without the user doing anything: a job that reports progress, a chat, a dashboard that follows live data. [How native WebSockets work]({{ site.baseurl }}/guide/how-websockets-work.html) explains what happens underneath.
+Use this when the server has to update a page without the user doing anything: a job that reports progress, a chat, a dashboard that follows live data. [How native WebSockets work]({{ site.baseurl }}/docs/how-websockets-work.html) explains what happens underneath.
 
 ## Add the dependency and the filter
 
@@ -86,7 +86,7 @@ add(new WebSocketBehavior() {
 });
 ```
 
-`handler.add(...)` re-renders components in the browser, exactly as with an `AjaxRequestTarget`; the components need a markup id. `handler.push(String)` sends a plain text message instead, which your JavaScript receives; see [WebSocket JavaScript API]({{ site.baseurl }}/guide/websocket-client-api.html). `appendJavaScript` and `prependJavaScript` work as well.
+`handler.add(...)` re-renders components in the browser, exactly as with an `AjaxRequestTarget`; the components need a markup id. `handler.push(String)` sends a plain text message instead, which your JavaScript receives; see [WebSocket JavaScript API]({{ site.baseurl }}/docs/websocket-client-api.html). `appendJavaScript` and `prependJavaScript` work as well.
 
 ## Push an update from a background thread
 
@@ -142,7 +142,7 @@ Code outside a request cannot touch components. It sends a message object, and t
 
    `WebSocketBehavior.onPush(handler, message)` receives the same messages, if you prefer to handle them in the behavior.
 
-A connection that has closed in the meantime is skipped without an error. To show that a component is being recomputed while the server works, see [Block the page while a request runs]({{ site.baseurl }}/guide/ajax-veils.html#veil-a-component-during-a-websocket-push).
+A connection that has closed in the meantime is skipped without an error.{% if site.wicket.version_11 %} To show that a component is being recomputed while the server works, see [Block the page while a request runs]({{ site.baseurl }}/docs/ajax-veils.html#veil-a-component-during-a-websocket-push).{% endif %}
 
 ## Push to many pages at once
 

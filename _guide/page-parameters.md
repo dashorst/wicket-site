@@ -32,9 +32,9 @@ Call `setResponsePage` with the page class and the parameters, for example in th
 setResponsePage(ProductPage.class, new PageParameters().add("id", product.getId()));
 ```
 
-To render a plain link to the page without a click handler, use a `BookmarkablePageLink`, described in [Link to a page]({{ site.baseurl }}/guide/bookmarkable-links.html).
+To render a plain link to the page without a click handler, use a `BookmarkablePageLink`, described in [Link to a page]({{ site.baseurl }}/docs/bookmarkable-links.html).
 
-Without a mount, the URL contains the class name: `/wicket/bookmarkable/com.example.ProductPage?id=42&tab=reviews`. [Give pages readable URLs]({{ site.baseurl }}/guide/mount-pages.html) shows how to turn this into `/products/42`.
+Without a mount, the URL contains the class name: `/wicket/bookmarkable/com.example.ProductPage?id=42&tab=reviews`. [Give pages readable URLs]({{ site.baseurl }}/docs/mount-pages.html) shows how to turn this into `/products/42`.
 
 ## Read the parameters in the page
 

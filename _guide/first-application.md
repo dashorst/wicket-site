@@ -12,7 +12,7 @@ source: [introduction.adoc, howToSource.adoc, helloWorld/helloWorld_1.adoc, hell
 
 In this tutorial you create a Wicket application and write its home page: a greeting, the time on the server, a link that counts your clicks, and a link to a second page. The tutorials after this one continue with the same application.
 
-You need a JDK (Java 17 or newer for Wicket 10, Java 21 or newer for Wicket 11), Apache Maven, and an IDE that opens Maven projects.
+You need a JDK ({% if site.wicket.version_11 %}Java 17 or newer for Wicket 10, Java 21 or newer for Wicket 11{% else %}Java 17 or newer{% endif %}), Apache Maven, and an IDE that opens Maven projects.
 
 ## 1. Generate the project
 
@@ -22,7 +22,7 @@ Open a terminal in the folder where you keep your projects and run the quickstar
 mvn archetype:generate \
   -DarchetypeGroupId=org.apache.wicket \
   -DarchetypeArtifactId=wicket-archetype-quickstart \
-  -DarchetypeVersion={{ site.wicket.version_11 }} \
+  -DarchetypeVersion={{ site.wicket.version }} \
   -DgroupId=com.example \
   -DartifactId=myapp \
   -DinteractiveMode=false
@@ -239,6 +239,6 @@ You now have an application with two pages, a component that shows a computed va
 
 ## Continue with a shared layout
 
-Both pages repeat the same `<head>` and the same frame around their content. In the next tutorial, [Give every page the same layout]({{ site.baseurl }}/guide/page-layout.html), you move that into one base page.
+Both pages repeat the same `<head>` and the same frame around their content. In the next tutorial, [Give every page the same layout]({{ site.baseurl }}/docs/page-layout.html), you move that into one base page.
 
-To understand what you built: [Why component-oriented]({{ site.baseurl }}/guide/why-wicket.html) explains the idea behind pages and components, [What models are for]({{ site.baseurl }}/guide/about-models.html) explains the lambda you gave the labels, and [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains why the counter keeps its value. Before you put the application on a server, [switch it to deployment mode]({{ site.baseurl }}/guide/deployment-mode.html).
+To understand what you built: [Why component-oriented]({{ site.baseurl }}/docs/why-wicket.html) explains the idea behind pages and components, [What models are for]({{ site.baseurl }}/docs/about-models.html) explains the lambda you gave the labels, and [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains why the counter keeps its value. Before you put the application on a server, [switch it to deployment mode]({{ site.baseurl }}/docs/deployment-mode.html).

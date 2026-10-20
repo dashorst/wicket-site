@@ -10,7 +10,7 @@ order: 80
 source: [resources/resources_9.adoc]
 ---
 
-Change the order of header items when a stylesheet must override another one, or when a tag such as `<meta charset>` has to come before everything Wicket adds. Declare a dependency first if the order exists because one file needs another: [Declare dependencies between resources]({{ site.baseurl }}/guide/resource-dependencies.html) keeps the order right wherever the files are used.
+Change the order of header items when a stylesheet must override another one, or when a tag such as `<meta charset>` has to come before everything Wicket adds. Declare a dependency first if the order exists because one file needs another: [Declare dependencies between resources]({{ site.baseurl }}/docs/resource-dependencies.html) keeps the order right wherever the files are used.
 
 ## The default order
 
@@ -77,4 +77,4 @@ Markup before the tag stays before every item Wicket adds, and markup after it s
 
 A page can contain only one `<wicket:header-items/>`, inside its `<head>`. Wicket throws an exception when it loads markup with a second one or with one after `</head>`.
 
-The default Content Security Policy blocks a `<script>` or `<link rel="stylesheet">` written directly in the markup, because it has no nonce. Wrap such tags in `<wicket:link>`, as in the example, so Wicket writes the URL of the package resource and adds the nonce; for files outside your packages, render a header item instead. See [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+The default Content Security Policy blocks a `<script>` or `<link rel="stylesheet">` written directly in the markup, because it has no nonce. Wrap such tags in `<wicket:link>`, as in the example, so Wicket writes the URL of the package resource and adds the nonce; for files outside your packages, render a header item instead. See [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).

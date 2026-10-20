@@ -1,7 +1,7 @@
 // The Reveal: monochrome on near-black, Wicket orange (#ff9925, from the registered mark) as the
-// only accent: the mark, the component-tree line, active states and links.
+// only accent: the mark, the component-tree line, active states and links. DESIGN.md describes it.
 
-// Taiga's grid and layout classes stay: the Markdown pages use l-full, l-two-third, l-one-third...
+// Taiga's grid and layout classes stay: older Markdown pages use l-clearfix, l-one-third...
 @use "taiga/settings";
 @use "taiga/mixins";
 @use "taiga/grid";
@@ -11,7 +11,9 @@
 
 @use "reveal/base";
 @use "reveal/chrome";
-@use "reveal/home";
 @use "reveal/page";
+@use "reveal/release";
+@use "reveal/blog";
 @use "reveal/guide";
+@use "reveal/home";
 @use "reveal/syntax";

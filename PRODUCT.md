@@ -17,7 +17,7 @@ Contributors (code, documentation, releases) are served by the Contribute and Co
 
 ## Product Purpose
 
-wicket.apache.org is the official home of Apache Wicket, an open source, component-oriented Java web framework maintained by the Apache Software Foundation since 2004. The site exists to win new users, keep existing users informed and upgrading, and route people to documentation, downloads and the community. Success means evaluators understand why Wicket fits their problem and reach the quick start, and existing users find the current release, its support status and the migration path without hunting.
+wicket.apache.org is the official home of Apache Wicket, an open source, component-oriented Java web framework open source since 2004 and maintained by the Apache Software Foundation since 2007. The site exists to win new users, keep existing users informed and upgrading, and route people to documentation, downloads and the community. Success means evaluators understand why Wicket fits their problem and reach the quick start, and existing users find the current release, its support status and the migration path without hunting.
 
 The project is deliberately revitalizing itself. Development and contributions slowed over the past decade, partly because the core is stable, partly because the world moved to client-side JavaScript frameworks, and the slow release cadence made contributing less attractive in turn. Wicket 11.0.0 (first week of October 2026) starts a time-based release model to break that cycle. The site has to carry that renewal visibly, to existing users, evaluators and prospective contributors, without alienating the community and the long-lived applications that depend on Wicket's stability.
 
@@ -37,7 +37,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 - API stability remains a stated commitment: breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.
 - Every release produces a news post and updates version numbers in `_config.yml`. With quarterly majors this happens four times a year plus patch releases, so release-day site edits must stay small and mechanical.
 - Existing users typically act on the site by copying a Maven dependency snippet, following a migration guide, or checking whether their version is still supported.
-- External destinations the site routes to: the user guide and Javadoc, the Confluence wiki, live examples (`live_examples_url` in `_config.yml`), GitHub (issues and contributions, after the move away from JIRA per INFRA-28383), mailing lists and IRC.
+- External destinations the site routes to: the user guide and Javadoc, the Confluence wiki, live examples (`live_examples_url` in `_config.yml`), GitHub (issues and contributions, after the move away from JIRA per INFRA-28383), mailing lists and Slack.
 
 ## Capabilities and Constraints
 
@@ -45,7 +45,7 @@ What a visitor should remember Wicket for, compared to Spring MVC/Thymeleaf, Vaa
 - **Version data is centralized** in `_config.yml` (`wicket.version`, per-branch versions, release date, version list). Pages must keep reading versions from there instead of hard-coding them.
 - **Volunteer-maintained.** Committers edit pages in Markdown. Design work must keep pages easy to author and update without bespoke, fragile markup; release-day edits must stay mechanical.
 - **ASF website policy applies:** required links to the Apache license, security, sponsorship/thanks, events and privacy policy; Apache trademark attribution; no third-party trackers; no externally hosted fonts or scripts that leak visitor data.
-- Site sections: Quick Start, Download (per-branch pages `start/wicket-*.x.md`), Documentation (`learn/`), Support (`help/`), Contribute, Community, Apache, plus a news archive organized by year.
+- Site sections: Docs (`docs/`, the documentation from `_guide/`), Blog (the news archive), Community (`community/`: getting help, bugs, security, mailing lists) with Contribute (`contribute/` and `_contribute/`), Releases (`versions/`: the release lines, with a page per line; the version plate leads to the newest line in service), the quick start (`start/quickstart.md`), Learn (`learn/`), and the Apache page in the footer.
 
 ## Brand Commitments
 

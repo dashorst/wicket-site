@@ -84,4 +84,4 @@ size.nullValid=No preference
 
 `null=...` without an id in the application bundle changes the text for every drop-down in the application.
 
-These keys work whether or not the display values are translated. The lookup of each key follows the usual order, described in [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html). The choice components themselves are listed in [Form components]({{ site.baseurl }}/guide/form-components.html).
+These keys work whether or not the display values are translated. The lookup of each key follows the usual order, described in [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html). The choice components themselves are listed in [Form components]({{ site.baseurl }}/docs/form-components.html).

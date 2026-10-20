@@ -10,7 +10,7 @@ order: 70
 source: [urls/urls_6.adoc, security/security_4.adoc]
 ---
 
-Encrypt URLs when they must not show the class names and component paths of your application, or when every user has to get URLs that nobody else can produce. With the default per-session key an encrypted URL also works as a token against [cross-site request forgery]({{ site.baseurl }}/guide/csrf.html).
+Encrypt URLs when they must not show the class names and component paths of your application, or when every user has to get URLs that nobody else can produce. With the default per-session key an encrypted URL also works as a token against [cross-site request forgery]({{ site.baseurl }}/docs/csrf.html).
 
 For Wicket 10, where the encryption classes and their defaults differ, see the [Wicket 10 guide](https://nightlies.apache.org/wicket/guide/10.x/single.html#_encrypting_page_urls).
 
@@ -82,8 +82,8 @@ setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this)
     .setMarkEncryptedUrls(true));
 ```
 
-Encrypted URLs then start with `crypt.`, and a marked URL that does not decrypt throws a `PageExpiredException`. See [Handle exceptions and error pages]({{ site.baseurl }}/guide/handle-exceptions.html) to change the page that follows.
+Encrypted URLs then start with `crypt.`, and a marked URL that does not decrypt throws a `PageExpiredException`. See [Handle exceptions and error pages]({{ site.baseurl }}/docs/handle-exceptions.html) to change the page that follows.
 
 ## Change the cipher
 
-`CryptoMapper` uses the encryption scheme configured in the security settings, authenticated AES-256-GCM by default. To switch schemes, or to supply your own `ICrypt` through the `CryptoMapper(IRequestMapper, Supplier<ICrypt>)` constructor, see [Encryption in Wicket]({{ site.baseurl }}/guide/crypt-schemes.html).
+`CryptoMapper` uses the encryption scheme configured in the security settings, authenticated AES-256-GCM by default. To switch schemes, or to supply your own `ICrypt` through the `CryptoMapper(IRequestMapper, Supplier<ICrypt>)` constructor, see [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html).

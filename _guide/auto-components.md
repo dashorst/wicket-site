@@ -37,7 +37,7 @@ What comes out is a sequence of two kinds of elements: raw markup, which Wicket 
 
 The chain is open: a `MarkupFactory` subclass can add filters in `newMarkupParser`, and an application can register it with `getMarkupSettings().setMarkupFactory(...)`. Few applications need this.
 
-Some Wicket tags never become components. `<wicket:remove>` is gone after parsing. `<wicket:child>` and `<wicket:extend>` serve to merge a parent's and a subclass's markup when it is loaded; see [Markup inheritance]({{ site.baseurl }}/guide/markup-inheritance.html). `<wicket:panel>` and `<wicket:border>` tell a panel or border which part of its file to use.
+Some Wicket tags never become components. `<wicket:remove>` is gone after parsing. `<wicket:child>` and `<wicket:extend>` serve to merge a parent's and a subclass's markup when it is loaded; see [Markup inheritance]({{ site.baseurl }}/docs/markup-inheritance.html). `<wicket:panel>` and `<wicket:border>` tell a panel or border which part of its file to use.
 
 ## Resolving: finding a component for each tag
 
@@ -56,10 +56,10 @@ Resolving explains the one surprise in this mechanism. In the markup, `<wicket:e
 
 So the markup hierarchy and the component hierarchy differ. When the enclosure is hidden, the components inside it are not hidden in Java: they are still configured, `onBeforeRender` may be called on them, and form components in a hidden enclosure are still validated when the form is submitted. WicketTester cannot see that they are hidden either.
 
-Component queueing removes the difference. When you `queue` components instead of adding them, Wicket builds the hierarchy from the markup before rendering. When it meets a tag that has an auto component factory, such as an enclosure, it creates the component right there and places the queued components inside it. The enclosure becomes a real parent, and hiding it hides its children. See [Add components without repeating the markup hierarchy]({{ site.baseurl }}/guide/queue-components.html). Where you cannot queue, an `EnclosureContainer` that you add yourself gives the same result; see [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/guide/use-enclosures.html).
+Component queueing removes the difference. When you `queue` components instead of adding them, Wicket builds the hierarchy from the markup before rendering. When it meets a tag that has an auto component factory, such as an enclosure, it creates the component right there and places the queued components inside it. The enclosure becomes a real parent, and hiding it hides its children. See [Add components without repeating the markup hierarchy]({{ site.baseurl }}/docs/queue-components.html). Where you cannot queue, an `EnclosureContainer` that you add yourself gives the same result; see [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/docs/use-enclosures.html).
 
 ## Your own tags
 
 The same mechanism is available to applications. A class implementing `IComponentResolver`, registered with `getPageSettings().addComponentResolver(...)`, can supply components for tags that have no component in Java. A new tag name in the Wicket namespace also needs `WicketTagIdentifier.registerWellKnownTagName(...)`, or the parser rejects it.
 
-This is a trade-off. A custom tag lets markup authors use a feature without touching Java, but it hides where the component comes from: someone reading the Java code does not see it, and someone reading the markup has to know the tag. Wicket's own tags are few for that reason, and most features that could be tags are components or behaviors instead. The complete list of tags is in [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html).
+This is a trade-off. A custom tag lets markup authors use a feature without touching Java, but it hides where the component comes from: someone reading the Java code does not see it, and someone reading the markup has to know the tag. Wicket's own tags are few for that reason, and most features that could be tags are components or behaviors instead. The complete list of tags is in [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html).

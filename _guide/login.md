@@ -106,7 +106,7 @@ public class AccountPage extends WebPage {
 }
 ```
 
-When an anonymous user requests the page, the application remembers the requested URL and redirects to the sign-in page. A user who is signed in but lacks the role gets the access-denied page instead. [Restrict access by role]({{ site.baseurl }}/guide/roles.html) covers roles, actions and whole packages.
+When an anonymous user requests the page, the application remembers the requested URL and redirects to the sign-in page. A user who is signed in but lacks the role gets the access-denied page instead. [Restrict access by role]({{ site.baseurl }}/docs/roles.html) covers roles, actions and whole packages.
 
 ## Add the sign-in page
 
@@ -136,8 +136,12 @@ public class SignInPage extends WebPage {
 
 If the default layout is good enough, return `UsernamePasswordPage.class` from `getSignInPageClass()` and skip your own page.
 
+{% if site.wicket.version_11 %}
 > `UsernamePasswordPanel` and `UsernamePasswordPage` exist since Wicket 10.11.0. Wicket 10 also has `SignInPanel` and `SignInPage`, whose "remember me" option stores the username and password in a cookie. They are deprecated in 10.11.0 and removed in Wicket 11, together with `IAuthenticationStrategy`, its implementations and `SecuritySettings.get/setAuthenticationStrategy()`; signing out no longer clears a remember-me cookie. A persistent login needs your own random, revocable token per device.
 {: .since}
+{% else %}
+`UsernamePasswordPanel` and `UsernamePasswordPage` exist since Wicket 10.11.0. Wicket 10 also has `SignInPanel` and `SignInPage`, whose "remember me" option stores the username and password in a cookie. They are deprecated since 10.11.0.
+{% endif %}
 
 ## Write your own sign-in form
 
@@ -173,7 +177,7 @@ public class SignInPage extends WebPage {
 }
 ```
 
-A `StatelessForm` keeps the sign-in page stateless, so showing it does not create a session. [Build a stateless form]({{ site.baseurl }}/guide/stateless-forms.html) explains why that matters.
+A `StatelessForm` keeps the sign-in page stateless, so showing it does not create a session. [Build a stateless form]({{ site.baseurl }}/docs/stateless-forms.html) explains why that matters.
 
 ## Sign the user out
 

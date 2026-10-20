@@ -1,0 +1,238 @@
+// =========== Releases: tags, the release lines table, line pages, highlights, panels, upgrade paths
+
+// ---------------------------------------------------------------- tags
+
+// Small outlined labels: LTS, Current, End of life, Security fixes. Never a fill.
+.tag {
+    display: inline-block; padding: 0 6px;
+    border: 1px solid var(--line-2); border-radius: 4px;
+    font: 500 .75rem/1.55 var(--sans); letter-spacing: 0; color: var(--ink-2);
+    white-space: nowrap; vertical-align: .12em;
+}
+.tag-lts,
+.tag-ending,
+.tag-security { color: var(--ink); }
+// The line in service with new features: the current line, outlined in the accent.
+.tag-current { color: var(--ink); border-color: var(--orange); }
+.tag-eol { color: var(--ink-3); }
+
+// ---------------------------------------------------------------- the release lines table
+
+.section-body table.release-lines,
+.release-lines {
+    margin: 1rem 0 2rem;
+
+    thead th { white-space: nowrap; }
+    .release-lines-group th {
+        padding: 28px 0 8px; border-bottom: 1px solid var(--line);
+        font: 500 .8125rem/1.5 var(--mono); color: var(--ink-3); vertical-align: bottom;
+    }
+    tbody:first-of-type .release-lines-group th { padding-top: 14px; }
+    tbody th[scope=row] { white-space: nowrap; font-weight: 700; }
+    tbody th[scope=row] > a { font-size: 1.0625rem; }
+    td { color: var(--ink-2); }
+    td .tag + .tag, td .tag + .release-lines-role { margin-left: 4px; }
+    .is-eol th[scope=row], .is-eol th[scope=row] a, .is-eol td { color: var(--ink-3); }
+    .is-eol th[scope=row] a { text-decoration-color: var(--orange-dim); text-decoration-thickness: 1px; }
+}
+.release-lines-latest {
+    display: block; margin-top: 2px;
+    font: 400 .875rem/1.5 var(--mono); color: var(--ink-3);
+}
+.release-lines-role { display: block; margin-top: 4px; font-size: .875rem; color: var(--ink-2); }
+
+// Phones: each line is a block of two columns, every cell named.
+@media (max-width: 760px) {
+    .section-body table.release-lines,
+    .release-lines {
+        thead { display: none; }
+        &, tbody { display: block; }
+        .release-lines-group { display: block; }
+        .release-lines-group th { display: block; }
+        tr:not(.release-lines-group) {
+            display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 16px;
+            padding: 14px 0; border-bottom: 1px solid var(--line);
+        }
+        tr:not(.release-lines-group) > * { padding: 0; border: 0; }
+        td[data-label]::before {
+            content: attr(data-label); display: block;
+            font: 500 .75rem/1.5 var(--mono); color: var(--ink-3);
+        }
+    }
+}
+
+// ---------------------------------------------------------------- the page of one release line
+
+.hub-head .page-sign-inner h1 { max-width: none; }
+.hub-role {
+    max-width: 52ch; margin-top: 18px;
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; color: var(--ink-2);
+}
+
+// The line's facts: small labels over values, the version as a large mono figure.
+.hub-facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 20px 32px; align-items: start;
+    max-width: 66rem; margin-top: clamp(32px, 5vh, 48px); padding-top: 22px; border-top: 1px solid var(--line);
+
+    dt { font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+    dd { margin: 4px 0 0; color: var(--ink); line-height: 1.4; }
+    .tag { margin-right: 6px; }
+}
+.hub-version { font: 500 1.75rem/1.1 var(--mono); }
+
+.hub-main { padding-top: clamp(40px, 6vh, 64px); }
+
+// A line that is ending or has ended: the way on, in a panel above everything else.
+.hub-eol {
+    max-width: 48rem; margin-bottom: 40px; padding: 22px 24px 20px;
+    background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 16px;
+
+    p { margin: 0; max-width: var(--measure); }
+    p + p, p + ol, ol + p { margin-top: 12px; }
+}
+.hub-eol-title { color: var(--ink); font-size: 1.1875rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.3; }
+.hub-eol-more { font-size: .9375rem; }
+.hub-route-one { font-weight: 600; }
+.hub-route {
+    margin: 0; padding-left: 1.5em;
+
+    li { margin: 0; padding: 4px 0; }
+    li::marker { font-family: var(--mono); color: var(--ink-3); }
+    .tag { margin-left: 6px; }
+}
+
+// The Maven dependency.
+.hub-maven { max-width: 40rem; }
+div.highlight, figure.highlight { margin: 0; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; }
+div.highlight pre, figure.highlight pre { margin: 0; padding: 18px 20px; overflow-x: auto; }
+.hub-maven .highlight { margin: 0; }
+.hub-maven-more { margin-top: 12px; font-size: .9375rem; color: var(--ink-2); }
+.hub-maven-more code { font-size: .86em; }
+
+// The page's sections, as a ruled row of labels.
+.hub-jump {
+    margin-top: clamp(48px, 7vh, 72px); padding: 12px 0; border-block: 1px solid var(--line);
+
+    ul { display: flex; flex-wrap: wrap; gap: 4px 28px; list-style: none; margin: 0; padding: 0; }
+    li { margin: 0; }
+    a { color: var(--ink); font-weight: 600; text-decoration: none; }
+    a:hover { color: var(--orange); }
+}
+
+.hub-section {
+    max-width: 66rem; margin-top: clamp(64px, 9vh, 104px);
+    scroll-margin-top: 24px;
+
+    > h2 { margin: 0 0 28px; font-size: clamp(1.9rem, 3.4vw, 3rem); line-height: 1.05; letter-spacing: -.035em; }
+}
+
+// Docs, migration guide, Javadoc: three ruled columns.
+.hub-panels {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px;
+    list-style: none; margin: 0; padding: 0;
+
+    li { margin: 0; padding: 18px 0 20px; border-top: 1px solid var(--line); }
+    h3 { margin-bottom: 8px; font-size: 1.1875rem; font-weight: 700; letter-spacing: -.015em; }
+    p { font-size: 1rem; }
+    p + p { margin-top: 10px; }
+}
+.hub-panel-alt { font-size: .9375rem; }
+
+@media (max-width: 860px) {
+    .hub-panels { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (pointer: coarse) {
+    .hub-jump a, .hub-panel-alt a, .hub-maven-more a, .hub-crumbs a, .guide-crumbs a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+// ---------------------------------------------------------------- highlights ("New in Wicket n")
+
+.features {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px;
+    list-style: none; margin: 0; padding: 0;
+}
+.feature {
+    min-width: 0; margin: 0; padding: 24px 0 32px; border-top: 1px solid var(--line);
+
+    h3 { margin: 0 0 8px; font-size: 1.3125rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.25; }
+    p { font-size: 1rem; max-width: var(--measure); }
+    p + p { margin-top: .8em; }
+    :not(pre) > code {
+        padding: .06em .32em; border: 1px solid var(--line); border-radius: 5px;
+        background: var(--bg-3); font-size: .86em; overflow-wrap: anywhere;
+    }
+}
+.feature-facts {
+    display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 18px 0 0;
+
+    dt { font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+    dd { margin: 2px 0 0; font: 500 1.75rem/1.1 var(--mono); color: var(--ink); }
+}
+.feature-code { margin-top: 18px; }
+.feature-code div.highlight { margin: 0; }
+.feature-code pre { font-size: .8125rem; }
+// The file name over a code sample.
+.route-file { margin: 0 0 8px; font: 500 .8125rem/1.5 var(--mono); color: var(--ink-2); }
+
+@media (max-width: 860px) {
+    .features { grid-template-columns: minmax(0, 1fr); }
+}
+
+// ---------------------------------------------------------------- panels of release lines and routes
+
+// A ruled grid of labels with a line of description: the release lines on the docs front
+// page, the routes on the community page.
+.line-panels {
+    margin: 0 0 3rem;
+
+    ul {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 0 40px;
+        list-style: none; margin: 0; padding: 0; max-width: none;
+    }
+    li { margin: 0; border-top: 1px solid var(--line); }
+    a { display: block; height: 100%; padding: 14px 0 18px; color: var(--ink-2); text-decoration: none; }
+    a:hover .line-panel-name { color: var(--orange); }
+    .is-eol .line-panel-name { color: var(--ink-2); }
+}
+.line-panel-name {
+    display: block; color: var(--ink); font-size: 1.1875rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.3;
+    transition: color .2s;
+    .tag { margin-left: 4px; }
+}
+.line-panel-role { display: block; margin-top: 4px; font-size: .9375rem; line-height: 1.45; }
+.line-panel-meta { display: block; margin-top: 6px; font: 400 .8125rem/1.5 var(--mono); color: var(--ink-3); }
+
+.section-lead { padding-bottom: 0; }
+.section-lead .line-panels { margin-bottom: 0; }
+
+// ---------------------------------------------------------------- upgrade paths and end of life
+
+.connections-table {
+    th[scope="row"] { white-space: nowrap; }
+
+    @media (max-width: 760px) {
+        thead { display: none; }
+        &, tbody, tr, th[scope="row"], td { display: block; }
+        tr { padding: 12px 0 14px; border-bottom: 1px solid var(--line); }
+        th[scope="row"], td, td:last-child { padding: 3px 0; border: 0; white-space: normal; }
+    }
+}
+.connections-route { margin: 0 0 4px; font: 500 .9375rem/1.5 var(--mono); color: var(--ink); }
+.connections-guides {
+    list-style: none; margin: 0; padding: 0;
+    li { margin: 0; }
+    li + li { margin-top: 4px; }
+}
+.section-body .eol-table { max-width: 36rem; }
+.eol-table td:nth-child(2) { font-family: var(--mono); color: var(--ink-2); }
+@media (max-width: 760px) {
+    .eol-table th, .eol-table td { padding-right: 10px; }
+}
+
+@media (pointer: coarse) {
+    .connections-guides a,
+    .connections-table td > a,
+    .eol-table td > a,
+    .release-lines th[scope=row] a { display: inline-block; padding-block: 10px; }
+}

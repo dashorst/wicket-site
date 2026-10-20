@@ -12,7 +12,7 @@ source: [modelsforms/modelsforms_4.adoc, forms2/forms2_1.adoc, forms2/forms2_2.a
 
 In this tutorial you add a guestbook to the application: a page where visitors leave their name and a message, and see the messages others left. You build a form that writes its input into a Java object, check that input, and show errors and a confirmation.
 
-Start from the `myapp` project as you left it at the end of [Give every page the same layout]({{ site.baseurl }}/guide/page-layout.html), with `BasePage`, `HeaderPanel` and `FooterPanel` in the package `com.example`.
+Start from the `myapp` project as you left it at the end of [Give every page the same layout]({{ site.baseurl }}/docs/page-layout.html), with `BasePage`, `HeaderPanel` and `FooterPanel` in the package `com.example`.
 
 ## 1. Store guestbook entries
 
@@ -247,8 +247,10 @@ Import `org.apache.wicket.markup.html.panel.FeedbackPanel`, and put its tag abov
 <div wicket:id="feedback"></div>
 ```
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a required field also gets the HTML attribute `required`, so the browser stops the empty submit itself and shows its own message at the first empty field. Write the form tag as `<form wicket:id="form" novalidate>` to leave the check to Wicket and see its messages.
 {: .since}
+{% endif %}
 
 Restart and submit the empty form. Nothing is saved, and the page shows:
 
@@ -284,6 +286,6 @@ You now have a page that takes input, checks it, saves it in a Java object and s
 
 ## Continue with Ajax
 
-Every submit reloads the whole page. In the next tutorial, [Update a page with Ajax]({{ site.baseurl }}/guide/first-ajax.html), you update only the parts that change.
+Every submit reloads the whole page. In the next tutorial, [Update a page with Ajax]({{ site.baseurl }}/docs/first-ajax.html), you update only the parts that change.
 
-[How a form is processed]({{ site.baseurl }}/guide/form-processing.html) explains the steps between submit and `onSubmit()`, [Validate input and show errors]({{ site.baseurl }}/guide/validate-input.html) covers the other validators and how to change their messages, and [Read and write data with lambda models]({{ site.baseurl }}/guide/lambda-models.html) explains `LambdaModel` and `map`. To show a list from a database, read [Show a list with ListView]({{ site.baseurl }}/guide/list-items.html).
+[How a form is processed]({{ site.baseurl }}/docs/form-processing.html) explains the steps between submit and `onSubmit()`, [Validate input and show errors]({{ site.baseurl }}/docs/validate-input.html) covers the other validators and how to change their messages, and [Read and write data with lambda models]({{ site.baseurl }}/docs/lambda-models.html) explains `LambdaModel` and `map`. To show a list from a database, read [Show a list with ListView]({{ site.baseurl }}/docs/list-items.html).

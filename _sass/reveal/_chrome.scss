@@ -1,63 +1,155 @@
-// =========== Masthead and footer
+// =========== Container, masthead and footer
 
-.masthead-in {
-    max-width: var(--max); margin: 0 auto; padding: 22px var(--pad) 0;
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 40px;
+// One column for the whole site: the menu, title bands, reading columns and footer share both edges.
+.l-container {
+    display: flow-root;
+    max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+    &::before, &::after { display: none; }
 }
-.masthead.is-home .masthead-in { justify-content: center; }
 
-// Sub pages: the registered mark with the wordmark in the heading face.
+// ---------------------------------------------------------------- masthead
+
+.header.default > .l-container { padding-top: 22px; }
+
+nav.mainmenu {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 40px;
+    font-size: .9375rem; font-weight: 500;
+}
+
+.nav-brand { display: flex; align-items: center; gap: 12px 22px; }
+
+// The registered mark with the wordmark in the heading face.
 .brand {
     display: inline-flex; align-items: center; gap: 11px;
     color: var(--ink); text-decoration: none;
     font-size: 1.3125rem; font-weight: 800; letter-spacing: -.035em; line-height: 1;
+    white-space: nowrap;
+    &:hover { color: var(--ink); }
 }
-.brand:hover { color: var(--ink); }
 .brand-mark { width: 32px; height: 32px; flex: none; }
 
-.nav {
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-    gap: 6px clamp(16px, 2.2vw, 30px);
-    font-size: .9375rem; font-weight: 500;
+// The version plate: a segmented control of the release lines in service, versions in mono.
+// The line whose page is open is checked: an orange outline on the raised surface.
+.nav-plate {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 13px; border: 1px solid var(--line-2); border-radius: 999px;
+    color: var(--ink-2); text-decoration: none; white-space: nowrap;
+    font: 500 .8125rem/1 var(--mono);
+    transition: color .2s, border-color .2s;
+
+    &:hover { color: var(--ink); border-color: var(--ink-3); }
+    &.active { color: var(--ink); border-color: var(--orange); background: var(--bg-3); }
 }
-.nav a { color: var(--ink-2); text-decoration: none; padding: 6px 0; transition: color .2s; }
-.nav a:hover { color: var(--ink); }
-// The section the page belongs to: ink with the orange underline of a link.
-.nav a.is-active {
-    color: var(--ink);
-    text-decoration: underline; text-decoration-color: var(--orange);
-    text-decoration-thickness: 2px; text-underline-offset: .5em;
+.nav-plate-current { color: var(--ink); }
+.nav-plate-lts { color: var(--ink-2); }
+
+.nav-plate--split {
+    gap: 2px; padding: 3px;
+
+    &:hover { border-color: var(--line-2); }
+    a {
+        display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px;
+        border: 1px solid transparent; border-radius: 999px;
+        text-decoration: none; transition: color .2s, border-color .2s;
+    }
+    a:hover { color: var(--ink); border-color: var(--line-2); }
+    a.active { color: var(--ink); border-color: var(--orange); background: var(--bg-3); }
 }
-.nav-gh { display: inline-flex; align-items: center; gap: 7px; }
+
+.nav-container { display: flex; align-items: center; gap: 4px 26px; }
+.nav-sections { margin-left: auto; }
+
+nav.mainmenu .nav-items {
+    color: var(--ink-2); text-decoration: none; padding: 6px 0;
+    transition: color .2s;
+
+    &:hover { color: var(--ink); }
+    // The section the page belongs to: ink with the orange underline of a link.
+    &.active {
+        color: var(--ink);
+        text-decoration: underline; text-decoration-color: var(--orange);
+        text-decoration-thickness: 2px; text-underline-offset: .5em;
+    }
+}
+
+// The ASF mark and GitHub, as quiet marks at the end of the menu.
+.nav-sections + .nav-container { gap: 18px; }
+.nav-asf { display: inline-flex; line-height: 0; }
+.nav-asf img { display: block; height: 26px; width: auto; transition: opacity .2s; }
+.nav-asf:hover img { opacity: .8; }
+.nav-sections + .nav-container > a:not(.nav-asf) { display: inline-flex; color: var(--ink-2); }
+.nav-sections + .nav-container > a:not(.nav-asf):hover { color: var(--ink); }
+.nav-github { display: block; width: 22px; height: 22px; }
 
 @media (max-width: 999px) {
-    .masthead:not(.is-home) .masthead-in { padding-top: 18px; }
-    .masthead:not(.is-home) .nav { flex-basis: 100%; justify-content: flex-start; gap: 0 18px; }
+    nav.mainmenu { gap: 14px 22px; }
+    .nav-brand { flex: 1 0 100%; justify-content: space-between; }
+    .nav-sections { margin-left: 0; gap: 4px 20px; }
+    .nav-sections + .nav-container { margin-left: auto; }
 }
 
 @media (max-width: 600px) {
-    .nav { gap: 0 13px; font-size: .875rem; }
-    .nav a { padding: 8px 0; }
-    .masthead:not(.is-home) .nav { gap: 0 14px; }
+    .header.default > .l-container { padding-top: 16px; }
+    nav.mainmenu { font-size: .875rem; gap: 10px 16px; }
+    .brand { font-size: 1.125rem; gap: 9px; }
+    .brand-mark { width: 28px; height: 28px; }
+    .nav-sections { gap: 4px 15px; }
+    .nav-sections + .nav-container { gap: 14px; }
+    .nav-asf img { height: 22px; }
+    .nav-github { width: 20px; height: 20px; }
+}
+
+// Touch screens: every link of the masthead is a 44px target.
+@media (pointer: coarse) {
+    nav.mainmenu .nav-items,
+    .nav-asf,
+    .nav-sections + .nav-container > a,
+    .brand { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
+    .nav-plate { min-height: 44px; }
+    .nav-plate--split { min-height: 0; }
+    .nav-plate--split a { min-height: 40px; }
 }
 
 // ---------------------------------------------------------------- footer
 
-.footer { margin-top: var(--sec); border-top: 1px solid var(--line); }
-.footer-in {
-    max-width: var(--max); margin: 0 auto; padding: 48px var(--pad) 56px;
-    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px 48px; align-items: start;
-}
-// The ASF logo on a light tile, so its purple lettering stays legible on the dark ground.
-.asf-tile { display: block; padding: 12px 16px; background: #f6f6f3; border-radius: 10px; line-height: 0; }
-.asf-tile img { display: block; width: 114px; height: auto; }
-.footer nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: .9375rem; }
-.footer nav a { color: var(--ink-2); }
-.footer nav a:hover { color: var(--orange); }
-.legal { margin-top: 18px; max-width: 75ch; font-size: .8125rem; line-height: 1.6; color: var(--ink-3); }
+body > footer { margin-top: var(--sec); border-top: 1px solid var(--line); }
 
-@media (max-width: 600px) {
-    .footer-in { grid-template-columns: 1fr; }
-    .asf-tile { justify-self: start; }
-    .footer nav a { display: inline-block; padding: 4px 0; }
+.footer-columns {
+    display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px 64px;
+    padding-top: 48px;
+}
+
+.footer-sitemap {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; align-content: start;
+
+    h2 { grid-column: 1 / -1; margin: 0 0 12px; font: 500 .8125rem/1.5 var(--mono); color: var(--ink-3); }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin: 0 0 6px; }
+    a { color: var(--ink-2); font-size: .9375rem; text-decoration: none; }
+    a:hover { color: var(--orange); }
+}
+
+.footer-legal {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 40px; align-items: center;
+    margin-top: 40px; padding-top: 28px; padding-bottom: 56px;
+    // The rule spans the content edges, not the container's gutters.
+    background: linear-gradient(var(--line), var(--line)) no-repeat var(--pad) 0 / calc(100% - 2 * var(--pad)) 1px;
+
+    p { max-width: 80ch; font-size: .8125rem; line-height: 1.6; color: var(--ink-3); }
+}
+// The ASF logo on a light tile, so its own colours stay legible on the dark ground.
+.footer-asf {
+    display: block; padding: 12px 16px; background: #f6f6f3; border-radius: 10px; line-height: 0;
+    img { display: block; width: 114px; height: auto; }
+}
+
+@media (max-width: 760px) {
+    .footer-columns { grid-template-columns: minmax(0, 1fr); }
+    .footer-legal { grid-template-columns: minmax(0, 1fr); }
+    .footer-asf { justify-self: start; }
+}
+
+@media (pointer: coarse) {
+    .footer-sitemap li { margin: 0; }
+    .footer-sitemap a { display: inline-flex; align-items: center; min-height: 44px; }
 }

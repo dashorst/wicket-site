@@ -10,7 +10,7 @@ order: 50
 source: [urls/urls_5.adoc]
 ---
 
-A plain `Link` makes its page stateful: its URL points to a component of a page instance that Wicket keeps in the page store. On a page that has to stay stateless, such as a landing page or a login page that must not create a session, use a `StatelessLink` for clicks that run code, and a `BookmarkablePageLink` for plain navigation. Why a page is stateful or stateless is explained in [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html).
+A plain `Link` makes its page stateful: its URL points to a component of a page instance that Wicket keeps in the page store. On a page that has to stay stateless, such as a landing page or a login page that must not create a session, use a `StatelessLink` for clicks that run code, and a `BookmarkablePageLink` for plain navigation. Why a page is stateful or stateless is explained in [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html).
 
 ## Replace Link with StatelessLink
 
@@ -89,4 +89,4 @@ add(new BookmarkablePageLink<Void>("increment", CounterPage.class,
 
 ## Check that the page stays stateless
 
-A page that you expect to be stateless can turn stateful when someone adds a component later. [Keep a page stateless]({{ site.baseurl }}/guide/keep-stateless.html) shows how to find the component that makes a page stateful and how to test for it. For forms and Ajax on stateless pages, see [Build a stateless form]({{ site.baseurl }}/guide/stateless-forms.html) and [Use Ajax on stateless pages]({{ site.baseurl }}/guide/stateless-ajax.html).
+A page that you expect to be stateless can turn stateful when someone adds a component later. [Keep a page stateless]({{ site.baseurl }}/docs/keep-stateless.html) shows how to find the component that makes a page stateful and how to test for it. For forms and Ajax on stateless pages, see [Build a stateless form]({{ site.baseurl }}/docs/stateless-forms.html) and [Use Ajax on stateless pages]({{ site.baseurl }}/docs/stateless-ajax.html).

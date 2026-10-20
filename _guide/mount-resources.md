@@ -27,7 +27,7 @@ protected void init() {
 }
 ```
 
-A request for `/exports/orders.csv` is now answered by the resource, and every link to the reference uses that URL. `OrdersCsvResource` is the resource from [Generate a resource in code]({{ site.baseurl }}/guide/custom-resources.html).
+A request for `/exports/orders.csv` is now answered by the resource, and every link to the reference uses that URL. `OrdersCsvResource` is the resource from [Generate a resource in code]({{ site.baseurl }}/docs/custom-resources.html).
 
 A mounted resource serves all users of the application. Keep no per-user state in it, and check in the resource whether the current user may see the data, because anyone can type the URL.
 
@@ -42,7 +42,7 @@ mountResource("/robots.txt", new PackageResourceReference(WicketApplication.clas
 mountResource("/favicon.ico", new PackageResourceReference(WicketApplication.class, "favicon.ico"));
 ```
 
-The package resource guard still applies, so the file type must be one it serves; see [Control which package resources are served]({{ site.baseurl }}/guide/package-resource-guard.html).
+The package resource guard still applies, so the file type must be one it serves; see [Control which package resources are served]({{ site.baseurl }}/docs/package-resource-guard.html).
 
 ## Put parameters in the path
 
@@ -79,7 +79,7 @@ protected ResourceResponse newResourceResponse(Attributes attributes) {
 }
 ```
 
-Segments after the mount path become indexed parameters, and a query string becomes named parameters, as for pages: `/invoices/2024-0042?download=true`. [Pass parameters to a page]({{ site.baseurl }}/guide/page-parameters.html) shows how to read both kinds.
+Segments after the mount path become indexed parameters, and a query string becomes named parameters, as for pages: `/invoices/2024-0042?download=true`. [Pass parameters to a page]({{ site.baseurl }}/docs/page-parameters.html) shows how to read both kinds.
 
 ## Link to a mounted resource
 

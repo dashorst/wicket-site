@@ -1,4 +1,4 @@
-// =========== Tokens, reset, type and links
+// =========== Tokens, reset, type, links and the browser's own surfaces
 
 :root {
     --bg: #0c0c0c;
@@ -6,12 +6,14 @@
     --bg-3: #1b1b1b;
     --line: #262626;
     --line-2: #3a3a38;
+    --field: #666661;   // borders of form fields: 3:1 against both grounds
     --ink: #f3f3f0;
     --ink-2: #c3c3be;
     --ink-3: #8c8c87;
     --orange: #ff9925;
     --orange-dim: rgba(255, 153, 37, .5);
     --orange-wash: rgba(255, 153, 37, .12);
+    --wash: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%);
 
     --sans: "Schibsted Grotesk", system-ui, sans-serif;
     --mono: "Red Hat Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -44,13 +46,15 @@ body {
 
 ::selection { background: var(--orange); color: #0c0c0c; }
 
+// One focus ring everywhere: 2px orange, clear of the element.
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 4px; }
-main:focus { outline: none; }
+main:focus, main:focus-visible { outline: none; }
 
-h1, h2, h3, h4, h5, h6 { color: var(--ink); margin: 0; font-weight: 800; text-wrap: balance; }
+h1, h2, h3, h4, h5, h6 { color: var(--ink); margin: 0; font-weight: 800; line-height: 1.15; text-wrap: balance; }
 p, dl, dd, ul, ol, figure, blockquote, pre { margin: 0; }
 p { text-wrap: pretty; }
 img { max-width: 100%; height: auto; }
+hr { border: 0; border-top: 1px solid var(--line); }
 
 // Links carry the accent: an orange underline, orange text on hover.
 a {
@@ -65,23 +69,33 @@ a:hover { color: var(--orange); }
 
 code, kbd, samp, pre { font-family: var(--mono); }
 code { font-size: .9em; color: var(--ink); }
+kbd { font-size: .85em; }
 
 abbr[title] { text-decoration: none; }
 
-.vh,
+// Schibsted's tabular figures set wide stops and commas; columns of figures use the mono instead.
+li::marker { font-variant-numeric: normal; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
 .visually-hidden {
     position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
 }
 
-.skip {
-    position: absolute; left: 16px; top: -60px; z-index: 10;
-    background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px; text-decoration: none; font-weight: 700;
+// Hidden until focused, then a light button in the top left corner.
+.skip-link {
+    position: absolute; left: 16px; top: -80px; z-index: 20;
+    background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 10px;
+    font-weight: 700; text-decoration: none;
 }
-.skip:focus { top: 16px; color: var(--bg); }
+.skip-link:focus { top: 16px; color: var(--bg); }
 
 // Font Awesome is gone: the icon elements left in older Markdown pages are decoration only.
 i.fa { display: none; }
+
+// Scrollbars inside code and panels: thin, in the rule colour.
+pre, .reading-rail, .guide-results { scrollbar-width: thin; scrollbar-color: var(--line-2) transparent; }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition-duration: .01ms !important; transition-delay: 0s !important; animation: none !important; scroll-behavior: auto !important; }

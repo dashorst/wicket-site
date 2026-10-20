@@ -64,7 +64,7 @@ In the file of a panel, a border or a page that extends another page, Wicket use
 </html>
 ```
 
-The `<link>` above only works when you open the file from disk; it is never rendered. The panel's CSS for the real page comes from a header contribution; see [Add CSS and JavaScript to a page]({{ site.baseurl }}/guide/add-css-javascript.html).
+The `<link>` above only works when you open the file from disk; it is never rendered. The panel's CSS for the real page comes from a header contribution; see [Add CSS and JavaScript to a page]({{ site.baseurl }}/docs/add-css-javascript.html).
 
 Inside a border, the content of `<wicket:body>` is preview content as well:
 
@@ -76,4 +76,4 @@ Inside a border, the content of `<wicket:body>` is preview content as well:
 </wicket:border>
 ```
 
-For every tag mentioned here, see [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html).
+For every tag mentioned here, see [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html).

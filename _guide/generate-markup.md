@@ -83,4 +83,4 @@ Generated markup is parsed as a template, not escaped. Never paste user input or
 
 ## Change how all markup is loaded
 
-`IMarkupResourceStreamProvider` works per component. To change where Wicket looks for the markup of every component, for example to load all templates from a directory outside the classpath, configure the resource stream locator in the resource settings instead; see [Customize where resources are loaded from]({{ site.baseurl }}/guide/resource-loading.html). How Wicket loads, parses and caches markup is described in [How markup becomes components]({{ site.baseurl }}/guide/auto-components.html).
+`IMarkupResourceStreamProvider` works per component. To change where Wicket looks for the markup of every component, for example to load all templates from a directory outside the classpath, configure the resource stream locator in the resource settings instead; see [Customize where resources are loaded from]({{ site.baseurl }}/docs/resource-loading.html). How Wicket loads, parses and caches markup is described in [How markup becomes components]({{ site.baseurl }}/docs/auto-components.html).

@@ -16,10 +16,10 @@ Scanners such as [Mozilla Observatory](https://developer.mozilla.org/en-US/obser
 
 | Header | Sent by Wicket by default | Set with |
 |---|---|---|
-| `Content-Security-Policy` | Yes, a strict policy with nonces, on every `WebPage` | `getCspSettings()`, see [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html) |
-| `Cross-Origin-Opener-Policy` | Yes, `same-origin`, on every response | `getSecuritySettings().setCrossOriginOpenerPolicyConfiguration(...)`, see [Isolate the page with COOP and COEP]({{ site.baseurl }}/guide/cross-origin-isolation.html) |
+| `Content-Security-Policy` | Yes, a strict policy with nonces, on every `WebPage` | `getCspSettings()`, see [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html) |
+| `Cross-Origin-Opener-Policy` | Yes, `same-origin`, on every response | `getSecuritySettings().setCrossOriginOpenerPolicyConfiguration(...)`, see [Isolate the page with COOP and COEP]({{ site.baseurl }}/docs/cross-origin-isolation.html) |
 | `Cross-Origin-Embedder-Policy` | As `Cross-Origin-Embedder-Policy-Report-Only: require-corp`, on every response | `getSecuritySettings().setCrossOriginEmbedderPolicyConfiguration(...)` |
-| `Vary: sec-fetch-dest, sec-fetch-site, sec-fetch-mode` | Only with `ResourceIsolationRequestCycleListener` registered | See [Protect against cross-site request forgery]({{ site.baseurl }}/guide/csrf.html) |
+| `Vary: sec-fetch-dest, sec-fetch-site, sec-fetch-mode` | Only with `ResourceIsolationRequestCycleListener` registered | See [Protect against cross-site request forgery]({{ site.baseurl }}/docs/csrf.html) |
 | `Cache-Control: no-cache, no-store`, `Pragma: no-cache`, `Expires` | Yes, on every `WebPage` | Override `WebPage#setHeaders(WebResponse)` |
 | `Strict-Transport-Security` | No | Your own code, the container or the proxy |
 | `X-Content-Type-Options: nosniff` | No | Your own code, the container or the proxy |
@@ -105,6 +105,6 @@ The servlet container can redirect every plain HTTP request to HTTPS:
 </security-constraint>
 ```
 
-[Require HTTPS]({{ site.baseurl }}/guide/https.html) covers HTTPS in Wicket itself.
+[Require HTTPS]({{ site.baseurl }}/docs/https.html) covers HTTPS in Wicket itself.
 
 After adding headers, check that the application still works: `Strict-Transport-Security` with `includeSubDomains` affects every subdomain for as long as `max-age` says, and a strict `frame-ancestors` breaks pages that are meant to be embedded.

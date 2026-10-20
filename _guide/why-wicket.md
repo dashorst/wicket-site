@@ -24,8 +24,6 @@ It also means the web is never hidden from you. A form that a user edits over th
 
 A component-oriented framework keeps a model of the page on the server. In Wicket, a page is an instance of a `WebPage` subclass. It contains components, such as labels, links, forms and text fields, and containers that hold other components. Together they form a tree. When a request comes in, Wicket finds or creates the page, lets the components handle the request, and then asks each component to render its part of the HTML.
 
-![A request for a page: the framework builds the page model, generates HTML from it and returns it]({{ site.baseurl }}/img/guide/requesthandling-general.png)
-
 You can think of this tree as a DOM that lives on the server: it exists before any HTML does, and the HTML is generated from it, not the other way around. A link is not a URL you construct, but a component with an `onClick()` method. A text field is not a request parameter, but an object that converts and validates its input and writes it to your Java object.
 
 Wicket shares this idea with other component frameworks. Jakarta Faces builds a component tree from its view definitions, and Vaadin builds the whole user interface in Java and renders it with its own client-side widgets. Wicket's version keeps the HTML in plain HTML files and the behavior in plain Java classes.
@@ -44,13 +42,13 @@ Wicket shares this idea with other component frameworks. Jakarta Faces builds a 
 
 ## What it costs
 
-**Memory and serialization.** Keeping pages on the server has a price. Wicket keeps the most recent pages of each session in memory and writes pages to disk, which means everything a page refers to must be serializable and should be small. Models that load data per request and let it go at the end, detachable models, exist for this reason. [How pages are stored]({{ site.baseurl }}/guide/page-storage.html) describes the mechanism.
+**Memory and serialization.** Keeping pages on the server has a price. Wicket keeps the most recent pages of each session in memory and writes pages to disk, which means everything a page refers to must be serializable and should be small. Models that load data per request and let it go at the end, detachable models, exist for this reason. [How pages are stored]({{ site.baseurl }}/docs/page-storage.html) describes the mechanism.
 
-**Stateless pages take effort.** A page with a plain `Link` or `Form` is stateful: its URLs point to a stored page instance, and the page expires with the session. For pages that search engines index or that must survive a server restart, you choose stateless components and bookmarkable URLs deliberately. [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains when Wicket keeps a page and when it does not.
+**Stateless pages take effort.** A page with a plain `Link` or `Form` is stateful: its URLs point to a stored page instance, and the page expires with the session. For pages that search engines index or that must survive a server restart, you choose stateless components and bookmarkable URLs deliberately. [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains when Wicket keeps a page and when it does not.
 
 **HTTP is further away.** Wicket generates URLs, so readable URLs require mounting pages. A developer who knows request-based frameworks has to learn when a component's code runs, and that a page instance lives longer than one request.
 
-**It is not a client-side framework.** Wicket renders HTML on the server, also for Ajax updates. It suits applications with many forms and much business logic: administration screens, line-of-business applications, portals. If your interface lives mostly in the browser and talks to the server through a JSON API, a JavaScript framework fits better, and Wicket can still [wrap JavaScript widgets as components]({{ site.baseurl }}/guide/integrate-javascript.html) when you need some of both.
+**It is not a client-side framework.** Wicket renders HTML on the server, also for Ajax updates. It suits applications with many forms and much business logic: administration screens, line-of-business applications, portals. If your interface lives mostly in the browser and talks to the server through a JSON API, a JavaScript framework fits better, and Wicket can still [wrap JavaScript widgets as components]({{ site.baseurl }}/docs/integrate-javascript.html) when you need some of both.
 
 ## Why Wicket among component frameworks
 

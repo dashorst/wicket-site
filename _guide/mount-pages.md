@@ -49,7 +49,7 @@ mountPage("/products/${id}/#{tab}", ProductPage.class);
 // id=42, tab=reviews -> /products/42/reviews
 ```
 
-A placeholder fills a whole segment; `/products-${id}` is not a placeholder. Named parameters without a placeholder still go into the query string. The full syntax is listed in [Request mappers]({{ site.baseurl }}/guide/request-mappers.html#mount-path-syntax).
+A placeholder fills a whole segment; `/products-${id}` is not a placeholder. Named parameters without a placeholder still go into the query string. The full syntax is listed in [Request mappers]({{ site.baseurl }}/docs/request-mappers.html#mount-path-syntax).
 
 ## Mount all pages of a package
 
@@ -65,7 +65,7 @@ New pages in the package get a URL without a change to `init()`. Pages in subpac
 
 ## Why a stateful page gets a number in its URL
 
-A mounted page that is stateful shows its page id: `/products/42?3`. Wicket needs the id to find this instance of the page again when the user clicks a link or reloads. A stateless page keeps the clean URL. See [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html).
+A mounted page that is stateful shows its page id: `/products/42?3`. Wicket needs the id to find this instance of the page again when the user clicks a link or reloads. A stateless page keeps the clean URL. See [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html).
 
 ## Refuse the class name URLs of mounted pages
 
@@ -111,4 +111,4 @@ protected IMapperContext newMapperContext() {
 
 Do not start a mount path with one of these reserved segments.
 
-To give a resource a URL, see [Give a resource a URL]({{ site.baseurl }}/guide/mount-resources.html). To hide the paths behind encrypted URLs, see [Encrypt URLs]({{ site.baseurl }}/guide/encrypt-urls.html).
+To give a resource a URL, see [Give a resource a URL]({{ site.baseurl }}/docs/mount-resources.html).{% if site.wicket.version_11 %} To hide the paths behind encrypted URLs, see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html).{% endif %}

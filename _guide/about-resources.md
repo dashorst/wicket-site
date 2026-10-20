@@ -19,7 +19,7 @@ A resource is an object that implements `IResource`. That interface has one meth
 Resources come in two flavours, and the difference is only in how much work `respond` does:
 
 - A **static** resource sends a file that already exists, such as a stylesheet on the classpath or an image in the web application folder. Wicket ships these as `PackageResource`, `ContextRelativeResource` and `FileSystemResource`.
-- A **dynamic** resource builds its content when the request comes in. `CaptchaImageResource` in wicket-extensions draws a new captcha image every time, and an export that writes the rows of a database query is dynamic too. You build these by extending `AbstractResource`, see [Generate a resource in code]({{ site.baseurl }}/guide/custom-resources.html).
+- A **dynamic** resource builds its content when the request comes in. `CaptchaImageResource` in wicket-extensions draws a new captcha image every time, and an export that writes the rows of a database query is dynamic too. You build these by extending `AbstractResource`, see [Generate a resource in code]({{ site.baseurl }}/docs/custom-resources.html).
 
 `AbstractResource` handles the HTTP side for both: content type, `Content-Disposition`, `Last-Modified`, cache headers and byte ranges for media files. A subclass only describes the response in a `ResourceResponse` and supplies the bytes.
 
@@ -37,9 +37,9 @@ Separating the name from the thing has three effects:
 
 The usual home for a component's CSS, JavaScript and images is its own Java package, next to its class and its markup. These are *package resources*, served through `PackageResourceReference` and its subclasses `CssResourceReference` and `JavaScriptResourceReference`.
 
-When a component brings its own files, using it means adding it to a page and nothing more. Nobody has to know which stylesheet a date picker needs or copy files into the web application folder. The files travel inside the JAR with the class, and a component library is one dependency. See [Serve files from your Java packages]({{ site.baseurl }}/guide/package-resources.html).
+When a component brings its own files, using it means adding it to a page and nothing more. Nobody has to know which stylesheet a date picker needs or copy files into the web application folder. The files travel inside the JAR with the class, and a component library is one dependency. See [Serve files from your Java packages]({{ site.baseurl }}/docs/package-resources.html).
 
-A package also holds class files and configuration that must never reach a browser. The package resource guard decides which files Wicket serves at all; by default only common web file types such as `.css`, `.js`, `.png` and `.woff2` pass. See [Control which package resources are served]({{ site.baseurl }}/guide/package-resource-guard.html).
+A package also holds class files and configuration that must never reach a browser. The package resource guard decides which files Wicket serves at all; by default only common web file types such as `.css`, `.js`, `.png` and `.woff2` pass. See [Control which package resources are served]({{ site.baseurl }}/docs/package-resource-guard.html).
 
 ## URLs that browsers can cache forever
 
@@ -60,11 +60,11 @@ A component declares the files it needs in `renderHead(IHeaderResponse)`, and a 
 Behind the header response sits the `ResourceAggregator`. It collects the items of every visible component on the page and then:
 
 - renders each file once, however many components ask for it;
-- renders the dependencies of an item before the item itself, see [Declare dependencies between resources]({{ site.baseurl }}/guide/resource-dependencies.html);
-- swaps members of a bundle for the bundle, see [Combine resources into one bundle]({{ site.baseurl }}/guide/resource-bundles.html);
-- sorts the items, with priority items first, see [Control the order of header items]({{ site.baseurl }}/guide/header-order.html).
+- renders the dependencies of an item before the item itself, see [Declare dependencies between resources]({{ site.baseurl }}/docs/resource-dependencies.html);
+- swaps members of a bundle for the bundle, see [Combine resources into one bundle]({{ site.baseurl }}/docs/resource-bundles.html);
+- sorts the items, with priority items first, see [Control the order of header items]({{ site.baseurl }}/docs/header-order.html).
 
-Because the header is assembled from items rather than written as text, Wicket can also secure it. Its default Content Security Policy allows only scripts and styles that carry the nonce of the current response, and Wicket adds that nonce to every script and style item it renders. A `<script>` you type into the markup gets no nonce, and the browser blocks it. That is why the pages in this topic add JavaScript through header items; see [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html). The full list of items is in [Header items]({{ site.baseurl }}/guide/header-items.html).
+Because the header is assembled from items rather than written as text, Wicket can also secure it. Its default Content Security Policy allows only scripts and styles that carry the nonce of the current response, and Wicket adds that nonce to every script and style item it renders. A `<script>` you type into the markup gets no nonce, and the browser blocks it. That is why the pages in this topic add JavaScript through header items; see [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html). The full list of items is in [Header items]({{ site.baseurl }}/docs/header-items.html).
 
 During an Ajax request the same mechanism runs for the components being updated. Wicket sends their header items along with the new markup, and the browser loads only the files that the page does not have yet.
 
@@ -72,6 +72,6 @@ During an Ajax request the same mechanism runs for the components being updated.
 
 A URL for a resource reference does not involve a page: Wicket finds the reference by its key and lets the resource respond. Such URLs work on stateless pages and from anywhere, including another site.
 
-A `ResourceLink` that you give an `IResource` object instead of a reference works differently. The resource is stored in the link, the link's URL points at the page instance, and the page becomes stateful. Use a reference, a mount or a shared resource when the page must stay stateless; [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains the difference.
+A `ResourceLink` that you give an `IResource` object instead of a reference works differently. The resource is stored in the link, the link's URL points at the page instance, and the page becomes stateful. Use a reference, a mount or a shared resource when the page must stay stateless; [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains the difference.
 
 A mounted or shared resource is one object for the whole application, used by all users and threads at once. It must not keep state about the current user in its fields; it reads what it needs from the request, the session or a service while it responds.

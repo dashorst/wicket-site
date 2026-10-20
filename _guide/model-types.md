@@ -10,7 +10,7 @@ order: 10
 source: [modelsforms/modelsforms_1.adoc, modelsforms/modelsforms_2.adoc, modelsforms/modelsforms_3.adoc, modelsforms/modelsforms_6.adoc, modelsforms/modelsforms_7.adoc]
 ---
 
-The classes are in `org.apache.wicket.model`, except the collection models, which are in `org.apache.wicket.model.util`. [Models and component data]({{ site.baseurl }}/guide/about-models.html) explains what models are for.
+The classes are in `org.apache.wicket.model`, except the collection models, which are in `org.apache.wicket.model.util`. [Models and component data]({{ site.baseurl }}/docs/about-models.html) explains what models are for.
 
 ## Model classes
 
@@ -86,12 +86,16 @@ When the collection passed to a collection model is not `Serializable`, the mode
 | `boolean isAttached()` | whether the model holds a loaded object |
 | `void detach()` | calls `onDetach()` when attached, then drops the object |
 | `protected void onAttach()` | called after `load()` |
-| `protected void onDetach()` | called on detach when the model was attached |
+| `protected void onDetach()` | called on detach when the model was attached |{% if site.wicket.version_11 %}
 | `protected void onDetach(T object)` | called by `onDetach()` with the object that was held; Wicket 11 |
 | `protected void onDetachAlways()` | called on every `detach()`, attached or not, after `onDetach()`; Wicket 11 |
 
 > In Wicket 11, `detach()` is final and calls `onDetachAlways()` at the end. In Wicket 10, `detach()` can be overridden, and `onDetach(T)` and `onDetachAlways()` do not exist.
 {: .since}
+{% else %}
+
+`detach()` is not final, so a subclass can override it.
+{% endif %}
 
 ## StringResourceModel methods
 
@@ -106,7 +110,7 @@ When the collection passed to a collection model is not `Serializable`, the mode
 | `setDefaultValue(String)`, `setDefaultValue(IModel<String>)` | the text when the key is not found |
 | `getString()` | the localized text |
 
-[Put model values into translated texts]({{ site.baseurl }}/guide/resource-models.html) shows `ResourceModel` and `StringResourceModel` in use.
+[Put model values into translated texts]({{ site.baseurl }}/docs/resource-models.html) shows `ResourceModel` and `StringResourceModel` in use.
 
 ## Model interfaces
 

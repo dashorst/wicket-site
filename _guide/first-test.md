@@ -12,7 +12,7 @@ source: [testing/testing_1.adoc]
 
 In this tutorial you write tests for the application you built in the previous tutorials. The tests render the home page, click its links, submit the guestbook form and check what Ajax redraws. They run in JUnit, without a browser and without starting a server.
 
-Start from the `myapp` project as you left it at the end of [Update a page with Ajax]({{ site.baseurl }}/guide/first-ajax.html). The quickstart already put the test dependencies in *pom.xml*: `wicket-tester` and JUnit.
+Start from the `myapp` project as you left it at the end of [Update a page with Ajax]({{ site.baseurl }}/docs/first-ajax.html). The quickstart already put the test dependencies in *pom.xml*: `wicket-tester` and JUnit.
 
 ## 1. Run the test you already have
 
@@ -236,4 +236,4 @@ Run `mvn test`: all nine tests pass. Together they cover every page, the counter
 
 ## Continue from here
 
-This is the last of the tutorials. From here, the how-to guides help you with a specific goal: start with [Test pages and components]({{ site.baseurl }}/guide/test-pages.html) and [Test forms]({{ site.baseurl }}/guide/test-forms.html) for more of what you used here, and [WicketTester]({{ site.baseurl }}/guide/wicket-tester.html) lists its methods. [Best practices]({{ site.baseurl }}/guide/best-practices.html) explains how to keep a growing Wicket application easy to change and to test.
+This is the last of the tutorials. From here, the how-to guides help you with a specific goal: start with [Test pages and components]({{ site.baseurl }}/docs/test-pages.html) and [Test forms]({{ site.baseurl }}/docs/test-forms.html) for more of what you used here, and [WicketTester]({{ site.baseurl }}/docs/wicket-tester.html) lists its methods. [Best practices]({{ site.baseurl }}/docs/best-practices.html) explains how to keep a growing Wicket application easy to change and to test.

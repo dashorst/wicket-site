@@ -10,7 +10,7 @@ order: 20
 source: [repeaters/repeaters_2.adoc]
 ---
 
-Use a `ListView` to render a fragment of markup for each element of a `java.util.List`, such as a row per person in a table. For large or paged data use a [DataView]({{ site.baseurl }}/guide/paginate-data.html) instead; a `ListView` always works with the whole list.
+Use a `ListView` to render a fragment of markup for each element of a `java.util.List`, such as a row per person in a table. For large or paged data use a [DataView]({{ site.baseurl }}/docs/paginate-data.html) instead; a `ListView` always works with the whole list.
 
 ## Render a row per element
 
@@ -41,7 +41,7 @@ add(new ListView<>("persons", persons) {
 
 Add the components to `item`, not to the list view. The `ListItem` is what renders the `<tr>`, so behaviors and attributes for the row go on the item as well, for example `item.add(AttributeModifier.append("class", "inactive"))`.
 
-The list view also accepts a plain `List`, which it wraps in a model. Pass a model, as above, when the list comes from a database, so the list is [loaded per request]({{ site.baseurl }}/guide/detachable-models.html) and not stored with the page.
+The list view also accepts a plain `List`, which it wraps in a model. Pass a model, as above, when the list comes from a database, so the list is [loaded per request]({{ site.baseurl }}/docs/detachable-models.html) and not stored with the page.
 
 ## Bind the row components by id
 
@@ -57,7 +57,7 @@ add(new PropertyListView<>("persons", persons) {
 });
 ```
 
-[Bind components to a JavaBean]({{ site.baseurl }}/guide/property-models.html) describes the property expressions.
+[Bind components to a JavaBean]({{ site.baseurl }}/docs/property-models.html) describes the property expressions.
 
 ## Put form fields in the rows
 
@@ -83,8 +83,8 @@ The model of a `ListItem` is a `ListItemModel`: it reads element number *n* from
 
 Two ways to avoid this:
 
-- Override `getListItemModel(listModel, index)` and return a model that keeps the element's id, such as a [detachable model]({{ site.baseurl }}/guide/detachable-models.html) loaded by id.
-- Use a `RefreshingView` or `DataView`, which build each item from a model you provide. [Control how items are reused]({{ site.baseurl }}/guide/refreshing-view.html) shows how.
+- Override `getListItemModel(listModel, index)` and return a model that keeps the element's id, such as a [detachable model]({{ site.baseurl }}/docs/detachable-models.html) loaded by id.
+- Use a `RefreshingView` or `DataView`, which build each item from a model you provide. [Control how items are reused]({{ site.baseurl }}/docs/refreshing-view.html) shows how.
 
 ## Move and remove elements
 

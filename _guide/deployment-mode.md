@@ -10,7 +10,7 @@ order: 20
 source: [maven/maven_1.adoc, helloWorld/helloWorld_2.adoc]
 ---
 
-Switch to deployment mode before an application goes to a production server. Wicket starts in development mode unless you tell it otherwise. That mode shows full stack traces to visitors, polls markup files for changes and adds the Ajax debug window, so you do not want it in production. [Application settings]({{ site.baseurl }}/guide/configuration.html#development-and-deployment-defaults) lists every setting the mode changes.
+Switch to deployment mode before an application goes to a production server. Wicket starts in development mode unless you tell it otherwise. That mode shows full stack traces to visitors, polls markup files for changes and adds the Ajax debug window, so you do not want it in production. [Application settings]({{ site.baseurl }}/docs/configuration.html#development-and-deployment-defaults) lists every setting the mode changes.
 
 You can recognize development mode by this warning on standard error when the application starts:
 
@@ -85,7 +85,7 @@ The override replaces the lookup of the system property and the `web.xml` parame
 When it starts, Wicket logs the mode at INFO level:
 
 ```
-[wicket.myproject] Started Wicket version 11.0.0 in DEPLOYMENT mode
+[wicket.myproject] Started Wicket version {{ site.wicket.version_11 | default: site.wicket.version_10 }} in DEPLOYMENT mode
 ```
 
 In code, ask the application:

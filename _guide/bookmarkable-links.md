@@ -35,7 +35,7 @@ add(new BookmarkablePageLink<Void>("product", ProductPage.class,
     new PageParameters().add("id", product.getId())));
 ```
 
-The target page needs a constructor without arguments or one that takes `PageParameters`; see [Pass parameters to a page]({{ site.baseurl }}/guide/page-parameters.html). A `BookmarkablePageLink` does not make its own page stateful, which matters on [stateless pages]({{ site.baseurl }}/guide/stateless-links.html).
+The target page needs a constructor without arguments or one that takes `PageParameters`; see [Pass parameters to a page]({{ site.baseurl }}/docs/page-parameters.html). A `BookmarkablePageLink` does not make its own page stateful, which matters on [stateless pages]({{ site.baseurl }}/docs/stateless-links.html).
 
 ## Run code when the user clicks with Link
 
@@ -56,7 +56,7 @@ add(new Link<Void>("delete") {
 - `setResponsePage(CartPage.class)` and `setResponsePage(CartPage.class, parameters)` make Wicket create a new instance of the page, through a redirect to the URL of that page.
 - `setResponsePage(new ConfirmPage(order))` renders the instance you created. Use it when the next page needs objects or models that do not fit in a URL.
 
-Why the response is a redirect, and when it is not, is explained in [Redirects after a request]({{ site.baseurl }}/guide/redirects.html).
+Why the response is a redirect, and when it is not, is explained in [Redirects after a request]({{ site.baseurl }}/docs/redirects.html).
 
 Because its URL points at a component of the current page, a `Link` makes the page stateful. On a page that must stay stateless, use a `StatelessLink` or a `BookmarkablePageLink`.
 
@@ -80,7 +80,7 @@ add(new BookmarkablePageLink<Void>("menuProducts", ProductListPage.class)
     .setAutoEnable(true));
 ```
 
-A disabled link on an `<a>` tag renders without its `href`, so the browser shows plain text. Use `onConfigure` with `setEnabled(...)` to disable a link for other reasons, as with any component; see [Show, hide or disable a component]({{ site.baseurl }}/guide/show-hide-components.html).
+A disabled link on an `<a>` tag renders without its `href`, so the browser shows plain text. Use `onConfigure` with `setEnabled(...)` to disable a link for other reasons, as with any component; see [Show, hide or disable a component]({{ site.baseurl }}/docs/show-hide-components.html).
 
 ## Open the target in a popup window
 
@@ -91,4 +91,4 @@ add(new BookmarkablePageLink<Void>("help", HelpPage.class)
     .setPopupSettings(new PopupSettings("help").setWidth(600).setHeight(400)));
 ```
 
-For links to other sites, use an [ExternalLink]({{ site.baseurl }}/guide/external-links.html). For links written in plain HTML, without Java code, see [Turn plain links into page links with wicket:link]({{ site.baseurl }}/guide/wicket-link.html).
+For links to other sites, use an [ExternalLink]({{ site.baseurl }}/docs/external-links.html). For links written in plain HTML, without Java code, see [Turn plain links into page links with wicket:link]({{ site.baseurl }}/docs/wicket-link.html).

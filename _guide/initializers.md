@@ -72,6 +72,6 @@ module com.example.charts {
 
 Because the application's `init()` runs last, an application can change any setting an initializer made. When the application is destroyed, Wicket calls `destroy()` on every initializer, after the application's `onDestroy()`.
 
-Wicket uses the same mechanism for its own modules: wicket-jmx, for example, registers its MBeans from an initializer as soon as the jar is on the classpath (see [Inspect and change settings with JMX]({{ site.baseurl }}/guide/jmx.html)). Each Wicket application in a web application runs every initializer once.
+Wicket uses the same mechanism for its own modules: wicket-jmx, for example, registers its MBeans from an initializer as soon as the jar is on the classpath (see [Inspect and change settings with JMX]({{ site.baseurl }}/docs/jmx.html)). Each Wicket application in a web application runs every initializer once.
 
 Wicket does not read the *META-INF/wicket/\*.properties* files with an `initializer=` entry that older documentation describes; only the ServiceLoader registration works.

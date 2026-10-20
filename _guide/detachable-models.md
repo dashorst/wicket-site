@@ -10,9 +10,9 @@ order: 40
 source: [modelsforms/modelsforms_7.adoc]
 ---
 
-Use a detachable model for data that comes from a database or a service. The model loads the object the first time a component asks for it in a request, drops it at the end of the request, and keeps only what it needs to load it again. The page stays small, and every request sees current data. [Models and component data]({{ site.baseurl }}/guide/about-models.html#detaching-drop-the-data-keep-the-key) explains why this matters.
+Use a detachable model for data that comes from a database or a service. The model loads the object the first time a component asks for it in a request, drops it at the end of the request, and keeps only what it needs to load it again. The page stays small, and every request sees current data. [Models and component data]({{ site.baseurl }}/docs/about-models.html#detaching-drop-the-data-keep-the-key) explains why this matters.
 
-The examples get their service through an injected field, as described in [Inject Spring beans]({{ site.baseurl }}/guide/spring.html). Injected fields hold a serializable proxy, so a lambda can use them.
+The examples get their service through an injected field, as described in [Inject Spring beans]({{ site.baseurl }}/docs/spring.html). Injected fields hold a serializable proxy, so a lambda can use them.
 
 ## Load an entity by id
 
@@ -85,20 +85,31 @@ public class PersonModel extends LoadableDetachableModel<Person> {
     protected Person load() {
         return id == null ? new Person() : personService.findById(id);
     }
-
+{% if site.wicket.version_11 %}
     @Override
     protected void onDetach(Person person) {
         if (person != null) {
             id = person.getId();
         }
-    }
+    }{% else %}
+    @Override
+    protected void onDetach() {
+        Person person = getObject();
+        if (person != null) {
+            id = person.getId();
+        }
+    }{% endif %}
 }
 ```
 
+{% if site.wicket.version_11 %}
 `onDetach(T)` receives the object the model held in this request, or `null` when it held none.
 
 > `onDetach(T)` exists since Wicket 11. On Wicket 10, override `onDetach()` and read the object with `getObject()`, which still returns the held object at that point without loading it again.
 {: .since}
+{% else %}
+`onDetach()` runs only when the model held an object in this request. `getObject()` then returns that object without loading it again.
+{% endif %}
 
 The model does not save anything. Changes made to the object during a request are lost when it is detached, unless your code saved them, usually in the form's `onSubmit()`.
 
@@ -110,12 +121,12 @@ The model does not save anything. Changes made to the object during a request ar
 personModel.setObject(personService.findByEmail(email));
 ```
 
-The next request calls `load()` again. If `load()` uses an id, change the id as well, or the model returns to the old entity. `PersonModel` above does that in `onDetach(Person)`.
+The next request calls `load()` again. If `load()` uses an id, change the id as well, or the model returns to the old entity. `PersonModel` above does that in `onDetach({% if site.wicket.version_11 %}Person{% endif %})`.
 
 ## Use detachable models in repeaters
 
-A list of rows needs a detachable model per row, not one model for the whole list. `IDataProvider.model(T)` is where a data view gets that model; return a `PersonModel` there. [Page through data]({{ site.baseurl }}/guide/paginate-data.html) shows a complete provider.
+A list of rows needs a detachable model per row, not one model for the whole list. `IDataProvider.model(T)` is where a data view gets that model; return a `PersonModel` there. [Page through data]({{ site.baseurl }}/docs/paginate-data.html) shows a complete provider.
 
 ## Detach models the component does not own
 
-Wicket detaches the default model of every component. A model that you keep in a field of your component, or that a behavior holds, is detached only if you do it yourself. [Use more than one model in a component]({{ site.baseurl }}/guide/multiple-models.html) shows how.
+Wicket detaches the default model of every component. A model that you keep in a field of your component, or that a behavior holds, is detached only if you do it yourself. [Use more than one model in a component]({{ site.baseurl }}/docs/multiple-models.html) shows how.

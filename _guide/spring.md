@@ -12,8 +12,12 @@ source: [jee.adoc, jee/jee_2.adoc, jee/jee_5.adoc]
 
 Use this when your services live in a Spring application context and your pages need them. Spring does not create Wicket components, so `@Autowired` has no effect in them. Module wicket-spring fills fields annotated with `@SpringBean` instead, as each component is constructed.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 works with Spring 7; Wicket 10 with Spring 6.
 {: .since}
+{% else %}
+Wicket 10 works with Spring 6.
+{% endif %}
 
 ## Add the dependencies
 
@@ -86,7 +90,7 @@ private ProductService archive;
 private AuditLog auditLog;
 ```
 
-wicket-spring also understands `@jakarta.inject.Inject` with `@Named`; see [Inject with JSR-330 annotations]({{ site.baseurl }}/guide/jsr330.html).
+wicket-spring also understands `@jakarta.inject.Inject` with `@Named`; see [Inject with JSR-330 annotations]({{ site.baseurl }}/docs/jsr330.html).
 
 ## Inject into objects that are not components
 
@@ -139,4 +143,4 @@ To define the `WebApplication` itself as a Spring bean, so it can have its own d
 
 The factory takes the single `WebApplication` bean from the context created by `ContextLoaderListener`; with more than one, name it in the `applicationBean` init parameter. With a `contextConfigLocation` init parameter, the factory creates a separate context for the application as a child of that one. `AnnotationConfigSpringWebApplicationFactory` does the same, but reads `contextConfigLocation` as `@Configuration` classes instead of XML files.
 
-To test pages that use Spring beans, see [Test with Spring]({{ site.baseurl }}/guide/test-with-spring.html).
+To test pages that use Spring beans, see [Test with Spring]({{ site.baseurl }}/docs/test-with-spring.html).

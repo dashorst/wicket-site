@@ -30,7 +30,7 @@ Keep referencing `calendar.js`. When minified resources are in use, Wicket serve
 getResourceSettings().setUseMinifiedResources(false);
 ```
 
-Files in the web application folder follow the same naming rule with `ContextRelativeResourceReference`, but without the fallback, see [Use files from the web application root]({{ site.baseurl }}/guide/context-resources.html).
+Files in the web application folder follow the same naming rule with `ContextRelativeResourceReference`, but without the fallback, see [Use files from the web application root]({{ site.baseurl }}/docs/context-resources.html).
 
 Whether the compressors described below run depends on the name you reference: a reference to `calendar.min.js` is never compressed, but when Wicket picks `calendar.min.js` for a reference to `calendar.js`, the compressor runs on the minified file as well.
 
@@ -96,7 +96,7 @@ Add `?embedBase64` to a URL to embed the image in the stylesheet as a `data:` UR
 }
 ```
 
-The default Content Security Policy blocks images from `data:` URLs. Allow them with `getCspSettings().blocking().add(CSPDirective.IMG_SRC, "data:")`, see [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+The default Content Security Policy blocks images from `data:` URLs. Allow them with `getCspSettings().blocking().add(CSPDirective.IMG_SRC, "data:")`, see [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
 ## Compress responses with gzip
 

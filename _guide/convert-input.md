@@ -10,7 +10,7 @@ order: 20
 source: [forms2/forms2_3.adoc]
 ---
 
-You need this when a field holds something other than a `String` and the default conversion does not do what you want, or does not know your type. Conversion runs after the required check and before the validators; [How a form is processed]({{ site.baseurl }}/guide/form-processing.html) explains why.
+You need this when a field holds something other than a `String` and the default conversion does not do what you want, or does not know your type. Conversion runs after the required check and before the validators; [How a form is processed]({{ site.baseurl }}/docs/form-processing.html) explains why.
 
 ## Tell the field its type
 
@@ -29,7 +29,7 @@ TextField<Integer> quantity = new TextField<>("quantity",
 
 Without `Integer.class`, Wicket would try to put a `String` into an `Integer` property. Setting a primitive type such as `int.class` also makes the field required.
 
-Wicket converts the common types out of the box: numbers, `Boolean`, `Character`, `BigDecimal`, `BigInteger`, `java.util.Date`, `Calendar`, the `java.sql` date types, `LocalDate`, `LocalDateTime`, `LocalTime` and `ZonedDateTime`. [Validators and converters]({{ site.baseurl }}/guide/validators.html#converters) lists them with their formats.
+Wicket converts the common types out of the box: numbers, `Boolean`, `Character`, `BigDecimal`, `BigInteger`, `java.util.Date`, `Calendar`, the `java.sql` date types, `LocalDate`, `LocalDateTime`, `LocalTime` and `ZonedDateTime`. [Validators and converters]({{ site.baseurl }}/docs/validators.html#converters) lists them with their formats.
 
 ## Write a converter
 
@@ -107,4 +107,4 @@ Variables you set on the exception, such as `${format}` above, are available in 
 
 ## Choices convert differently
 
-`DropDownChoice`, `RadioChoice` and the other choice components do not use converters. They map the submitted option id back to one of their choices with their `IChoiceRenderer`. See [Let the user pick from a list]({{ site.baseurl }}/guide/dropdown-choice.html).
+`DropDownChoice`, `RadioChoice` and the other choice components do not use converters. They map the submitted option id back to one of their choices with their `IChoiceRenderer`. See [Let the user pick from a list]({{ site.baseurl }}/docs/dropdown-choice.html).

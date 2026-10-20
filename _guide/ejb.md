@@ -10,9 +10,9 @@ order: 30
 source: [jee/jee_1.adoc]
 ---
 
-Use this when your business logic lives in Enterprise JavaBeans on a Jakarta EE server and you want to inject them with `@EJB`. Wicket components are not managed by the server, so the server ignores these annotations on them. The module wicketstuff-javaee-inject from [WicketStuff]({{ site.baseurl }}/guide/wicketstuff.html) looks the beans up in JNDI when a component is constructed.
+Use this when your business logic lives in Enterprise JavaBeans on a Jakarta EE server and you want to inject them with `@EJB`. Wicket components are not managed by the server, so the server ignores these annotations on them. The module wicketstuff-javaee-inject from [WicketStuff]({{ site.baseurl }}/docs/wicketstuff.html) looks the beans up in JNDI when a component is constructed.
 
-If your server supports CDI, as every Jakarta EE server does, you can also inject stateless and singleton session beans with `@Inject` through [wicket-cdi]({{ site.baseurl }}/guide/cdi.html), without an extra module.
+If your server supports CDI, as every Jakarta EE server does, you can also inject stateless and singleton session beans with `@Inject` through [wicket-cdi]({{ site.baseurl }}/docs/cdi.html), without an extra module.
 
 ## Add the dependency
 

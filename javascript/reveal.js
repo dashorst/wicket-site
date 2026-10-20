@@ -1,111 +1,11 @@
-/* Apache Wicket site behaviour.
-   1. Homepage install box: what to copy, release line, build tool, copy.
-   2. Homepage reveal: on wide screens with motion allowed, the steps' code and tree move into one
+/* Apache Wicket site behaviour, from the reveal design.
+   1. Homepage reveal: on wide screens with motion allowed, the steps' code and tree move into one
       sticky stage that follows the step in the middle of the viewport. Everywhere else the page keeps
       its static layout, where every step shows its own tree and code.
-   3. Copy buttons: <button data-copy="#id"> copies the text of the target, or its value for a field.
-   4. Reading rail: marks the section in view. */
+   2. Reading rail: marks the section in view.
+   Copy buttons are wired by the pages that have them (hub.html, quickstart, guide.js). */
 
-/* ---------------------------------------------------------------- 1. install box */
-(function () {
-    'use strict';
-    var box = document.querySelector('.cmd');
-    var dataEl = document.getElementById('install-data');
-    if (!box || !dataEl) return;
-    var data = JSON.parse(dataEl.textContent);
-    var show = document.getElementById('cmd-show');
-    var tool = document.getElementById('cmd-tool');
-    var copy = box.querySelector('.cmd-copy');
-    var status = box.querySelector('.cmd-status');
-    var hint = document.getElementById('cmd-hint');
-    var radios = Array.prototype.slice.call(box.querySelectorAll('[data-line]'));
-    var modes = Array.prototype.slice.call(box.querySelectorAll('[data-mode]'));
-    var line = 'current', mode = 'dependency', timer;
-
-    function fill(template) {
-      var v = data.lines[line].version, p = v.split('.');
-      return template.replace(/\{groupId\}/g, data.defaults.groupId)
-        .replace(/\{artifactId\}/g, data.defaults.artifactId)
-        .replace(/\{version\}/g, v).replace(/\{major\}/g, p[0])
-        .replace(/\{minor\}/g, p[1]).replace(/\{patch\}/g, p[2]).replace(/\{guide\}/g, data.guide);
-    }
-    // A radio group: only the checked button is a tab stop, the arrow keys move the choice.
-    function check(group, attr, value) {
-      group.forEach(function (b) {
-        var on = b.getAttribute(attr) === value;
-        b.setAttribute('aria-checked', String(on));
-        b.tabIndex = on ? 0 : -1;
-      });
-    }
-    function render() {
-      var t = data[mode][tool.value];
-      show.textContent = fill(t.show);
-      show.title = fill(t.copy);
-      hint.textContent = fill(t.hint);
-      box.classList.toggle('is-project', mode === 'project');
-      box.classList.toggle('is-prose', !!t.prose);
-      box.classList.remove('is-by-hand');
-      check(modes, 'data-mode', mode);
-      check(radios, 'data-line', line);
-      say('');
-    }
-    // The status replaces the hint under the box while it shows.
-    function say(msg) {
-      status.textContent = msg;
-      box.classList.toggle('has-status', msg !== '');
-      clearTimeout(timer);
-      if (msg) timer = setTimeout(function () { say(''); }, 3200);
-    }
-    function arrows(group, attr, set) {
-      group.forEach(function (b, i) {
-        b.addEventListener('click', function () { set(b.getAttribute(attr)); render(); });
-        b.addEventListener('keydown', function (e) {
-          var step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-          if (!step) return;
-          var next = group[(i + step + group.length) % group.length];
-          set(next.getAttribute(attr)); render(); next.focus(); e.preventDefault();
-        });
-      });
-    }
-    arrows(radios, 'data-line', function (v) { line = v; });
-    arrows(modes, 'data-mode', function (v) { mode = v; });
-    tool.addEventListener('change', render);
-    copy.addEventListener('click', function () {
-      var t = data[mode][tool.value], text = fill(t.copy);
-      var done = 'The ' + t.what + ' for ' + data.lines[line].version + ' is on your clipboard.';
-      // Without the clipboard: show exactly what would have been copied, selected, to copy by hand.
-      var byHand = function () {
-        show.textContent = text;
-        box.classList.add('is-by-hand');
-        var range = document.createRange();
-        range.selectNodeContents(show);
-        var selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        say('Your browser blocked the clipboard. The text is selected: copy it by hand.');
-      };
-      var fallback = function () {
-        var ta = document.createElement('textarea');
-        ta.value = text; ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select();
-        var ok = false;
-        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-        ta.remove();
-        if (ok) say(done); else byHand();
-      };
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () { say(done); }, fallback);
-      } else {
-        fallback();
-      }
-    });
-    box.querySelector('.cmd-controls').hidden = false;
-    copy.hidden = false;
-    render();
-})();
-
-/* ---------------------------------------------------------------- 2. reveal */
+/* ---------------------------------------------------------------- 1. reveal */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -179,53 +79,10 @@
   if (mq.addEventListener) mq.addEventListener('change', mode); else mq.addListener(mode);
 })();
 
-/* ---------------------------------------------------------------- 3. copy buttons */
+/* ---------------------------------------------------------------- 2. reading rail */
 (function () {
   'use strict';
-  if (!navigator.clipboard) return;
-  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (button) {
-    button.hidden = false;
-    var label = button.textContent;
-    // Announces the outcome to screen readers; the button text alone changes silently.
-    var status = document.createElement('span');
-    status.className = 'visually-hidden';
-    status.setAttribute('role', 'status');
-    button.parentNode.appendChild(status);
-    button.addEventListener('click', function () {
-      var target = document.querySelector(button.getAttribute('data-copy'));
-      if (!target) return;
-      var text = 'value' in target ? target.value : target.textContent;
-      navigator.clipboard.writeText(text.trim()).then(function () {
-        button.textContent = 'Copied';
-        button.classList.add('is-copied');
-        status.textContent = 'Copied to the clipboard';
-        setTimeout(function () {
-          button.textContent = label;
-          button.classList.remove('is-copied');
-          status.textContent = '';
-        }, 1800);
-      }, function () {
-        // Select the text so the visitor can copy it by hand.
-        if ('select' in target) {
-          target.select();
-        } else {
-          var range = document.createRange();
-          range.selectNodeContents(target);
-          var selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(range);
-        }
-        button.textContent = 'Selected, copy by hand';
-        status.textContent = 'Copying failed. The text is selected; copy it by hand.';
-      });
-    });
-  });
-})();
-
-/* ---------------------------------------------------------------- 4. reading rail */
-(function () {
-  'use strict';
-  var links = document.querySelectorAll('.rail a[href^="#"]');
+  var links = document.querySelectorAll('.reading-rail a[href^="#"]');
   if (!links.length || !('IntersectionObserver' in window)) return;
   var byId = {};
   Array.prototype.forEach.call(links, function (a) {

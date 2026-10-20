@@ -88,8 +88,8 @@ The default Content Security Policy only allows images from your own origin, `im
 getCspSettings().blocking().add(CSPDirective.IMG_SRC, "https://images.example.com");
 ```
 
-See [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+See [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
 When a script on the page reads the image, for example to draw it on a canvas, the server must allow cross-origin access and the tag needs a `crossorigin` attribute: `photo.setCrossOrigin(CrossOrigin.ANONYMOUS)`.
 
-For images that you serve yourself, use `Image` with a resource reference instead, see [Serve files from your Java packages]({{ site.baseurl }}/guide/package-resources.html).
+For images that you serve yourself, use `Image` with a resource reference instead, see [Serve files from your Java packages]({{ site.baseurl }}/docs/package-resources.html).

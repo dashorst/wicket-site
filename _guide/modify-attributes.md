@@ -115,4 +115,4 @@ public class StatusLabel extends Label {
 }
 ```
 
-Wicket escapes attribute values when it writes the tag, so a value with quotes or `<` cannot break out of the attribute. Attribute changes need a tag: on a component with `setRenderBodyOnly(true)` they have no effect. For more on behaviors, see [Add behavior to a component with a Behavior]({{ site.baseurl }}/guide/add-behaviors.html).
+Wicket escapes attribute values when it writes the tag, so a value with quotes or `<` cannot break out of the attribute. Attribute changes need a tag: on a component with `setRenderBodyOnly(true)` they have no effect. For more on behaviors, see [Add behavior to a component with a Behavior]({{ site.baseurl }}/docs/add-behaviors.html).

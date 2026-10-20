@@ -46,7 +46,7 @@ public abstract class BasePage extends WebPage {
 
 Wicket serves the file through its resource handling, so the URL contains a version that changes with the file, the response gets long cache headers, and the tag gets the Content Security Policy nonce.
 
-A plain `<link href="/css/site.css">` or `<script src="/js/site.js">` in the markup has no nonce, and the default Content Security Policy blocks it. See [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+A plain `<link href="/css/site.css">` or `<script src="/js/site.js">` in the markup has no nonce, and the default Content Security Policy blocks it. See [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
 ## Serve the minified file in deployment mode
 
@@ -60,7 +60,7 @@ Choose per file:
 | `new ContextRelativeResourceReference("js/site.js", false)` | `js/site.js` | `js/site.js` |
 | `new ContextRelativeResourceReference("js/site.js", "minified")` | `js/site.js` | `js/site.minified.js` |
 
-Whether minified files are used follows `getResourceSettings().setUseMinifiedResources(…)`; [Minify and compress CSS and JavaScript]({{ site.baseurl }}/guide/compress-resources.html) describes that setting.
+Whether minified files are used follows `getResourceSettings().setUseMinifiedResources(…)`; [Minify and compress CSS and JavaScript]({{ site.baseurl }}/docs/compress-resources.html) describes that setting.
 
 ## Link a file by URL without versioning
 
@@ -90,4 +90,4 @@ add(new ContextImage("logo", "img/logo.png"));
 
 The path can also come from a model, `new ContextImage("logo", logoPathModel)`, to switch images per tenant or theme.
 
-For files that belong to a component, prefer package resources: [Serve files from your Java packages]({{ site.baseurl }}/guide/package-resources.html).
+For files that belong to a component, prefer package resources: [Serve files from your Java packages]({{ site.baseurl }}/docs/package-resources.html).

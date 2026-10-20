@@ -1,6 +1,6 @@
 // The user guide: search, and the reader's Wicket version.
 //
-// Search loads MiniSearch and /guide/search.json on first use. The index holds a record per
+// Search loads MiniSearch and /docs/search.json on first use. The index holds a record per
 // page and per section, so a result can open the section that answers the question. Class
 // names are indexed whole and split at their capitals, so "dropdown" finds DropDownChoice.
 //
@@ -19,6 +19,10 @@
         try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) { /* private mode */ }
     }
 
+    // A link can choose the version, as the release line pages do with ?v=11.
+    var fromUrl = new URLSearchParams(window.location.search).get('v');
+    if (fromUrl !== null && /^[0-9]*$/.test(fromUrl)) storeVersion(fromUrl);
+
     // The note on pages that need a newer version than the reader's.
     function showVersionNote() {
         var note = document.querySelector('.guide-version-note');
@@ -33,6 +37,56 @@
     }
 
     var selects = document.querySelectorAll('[data-guide-version]');
+
+    // A panel at the top of the page for a line the documentation does not cover: where that
+    // line's own documentation is (its page under /versions/, its reference guide when it has
+    // one), and that this documentation starts at the oldest line it covers.
+    function showUncovered(wanted) {
+        var form = document.querySelector('.guide-search');
+        var main = document.getElementById('main');
+        if (!form || !main) return;
+        var base = form.getAttribute('data-base') || '';
+        var oldest = form.getAttribute('data-oldest');
+        var guides = (form.getAttribute('data-guides') || '').split(',');
+        var lines = (form.getAttribute('data-lines') || '').split(',');
+        var panel = document.createElement('div');
+        panel.className = 'reading guide-uncovered';
+        panel.setAttribute('role', 'status');
+        var inner = document.createElement('div');
+        inner.className = 'guide-uncovered-inner';
+        var title = document.createElement('p');
+        title.className = 'guide-uncovered-title';
+        title.textContent = 'This documentation covers Wicket ' + oldest + ' and later.';
+        inner.appendChild(title);
+        var p = document.createElement('p');
+        function link(href, text) { var a = document.createElement('a'); a.href = href; a.textContent = text; return a; }
+        if (lines.indexOf(wanted) >= 0) {
+            p.appendChild(document.createTextNode('For Wicket ' + wanted + ', see '));
+            if (guides.indexOf(wanted) >= 0) {
+                p.appendChild(link('https://nightlies.apache.org/wicket/guide/' + wanted + '.x/single.html', 'the reference guide for Wicket ' + wanted));
+                p.appendChild(document.createTextNode(' and '));
+            }
+            p.appendChild(link(base + '/versions/wicket-' + wanted + '.x/', 'the page of Wicket ' + wanted + '.x'));
+            p.appendChild(document.createTextNode(', with its Javadoc and the route to a supported line.'));
+        } else {
+            p.appendChild(document.createTextNode('There is no Wicket ' + wanted + '. '));
+            p.appendChild(link(base + '/versions/', 'Releases'));
+            p.appendChild(document.createTextNode(' lists every release line.'));
+        }
+        inner.appendChild(p);
+        panel.appendChild(inner);
+        main.insertBefore(panel, main.firstChild);
+    }
+    // A version the documentation does not cover (an older line, or a mistyped link): fall back
+    // to every version and say why, with the reference guide of that line.
+    if (selects.length && storedVersion()) {
+        var wanted = storedVersion();
+        var known = Array.prototype.some.call(selects[0].options, function (o) { return o.value === wanted; });
+        if (!known) {
+            storeVersion('');
+            showUncovered(wanted);
+        }
+    }
     Array.prototype.forEach.call(selects, function (select) {
         select.value = storedVersion();
         select.addEventListener('change', function () {
@@ -211,7 +265,12 @@
                 items.push(li);
             });
             empty.hidden = results.length > 0;
-            empty.textContent = 'Nothing matches “' + query + '”. Try a class name, or fewer words.';
+            empty.textContent = 'Nothing matches “' + query + '”. Try a class name, or fewer words. For versions, support and downloads, see ';
+            var releasesLink = document.createElement('a');
+            releasesLink.href = (form.getAttribute('data-base') || '') + '/versions/';
+            releasesLink.textContent = 'Releases';
+            empty.appendChild(releasesLink);
+            empty.appendChild(document.createTextNode('.'));
             status.textContent = results.length ? results.length + ' results' : 'No results';
             panel.hidden = false;
             input.setAttribute('aria-expanded', 'true');
@@ -276,4 +335,27 @@
 
     var first = forms[0] && forms[0].querySelector('input[type=search]');
     if (first && first.value) { first.focus(); }
+
+    // Every code sample in a documentation page gets a copy button, as the Maven snippets have.
+    Array.prototype.forEach.call(document.querySelectorAll('.guide-content pre'), function (pre) {
+        if (!navigator.clipboard) return;
+        var box = pre.closest('.highlight') || pre;
+        // The button sits in a bar above the code, as on the release line pages, so it covers no code.
+        var bar = document.createElement('div');
+        bar.className = 'guide-copy-bar';
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'hub-copy guide-copy';
+        button.setAttribute('aria-live', 'polite');
+        button.setAttribute('aria-label', 'Copy code');
+        button.textContent = 'Copy';
+        button.addEventListener('click', function () {
+            navigator.clipboard.writeText(pre.textContent).then(function () {
+                button.textContent = 'Copied';
+                setTimeout(function () { button.textContent = 'Copy'; }, 2000);
+            });
+        });
+        bar.appendChild(button);
+        box.parentNode.insertBefore(bar, box);
+    });
 })();

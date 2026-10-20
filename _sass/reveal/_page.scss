@@ -1,21 +1,31 @@
-// =========== Reading pages: title band, rail, body copy, and the legacy Markdown furniture
+// =========== Reading pages: title band, rail, body copy and the furniture of Markdown pages
 
 // ---------------------------------------------------------------- title band
 
-.page-head { border-bottom: 1px solid var(--line); }
-.page-head-in {
+.page-sign { border-bottom: 1px solid var(--line); }
+.page-sign-inner {
     max-width: var(--max); margin: 0 auto;
     padding: clamp(56px, 10vh, 112px) var(--pad) clamp(40px, 6vh, 64px);
+
+    h1 {
+        max-width: 22ch;
+        font-size: clamp(2.25rem, 4.6vw, 4rem); line-height: 1.03; letter-spacing: -.038em;
+    }
 }
-.page-head h1 {
-    max-width: 22ch;
-    font-size: clamp(2.25rem, 4.6vw, 4rem); line-height: 1.03; letter-spacing: -.038em;
-}
-.page-sub {
+.page-sign-sub {
     max-width: 48ch; margin-top: 18px;
     font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.4; color: var(--ink-2);
 }
-.page-date { margin-top: 16px; font-family: var(--mono); font-size: .9375rem; color: var(--ink-3); }
+
+// The breadcrumb above a title: the section the page belongs to, in mono.
+.guide-crumbs,
+.hub-crumbs {
+    margin: 0 0 18px;
+    font-family: var(--mono); font-size: .875rem; color: var(--ink-3);
+
+    a { color: var(--ink-2); text-decoration-color: var(--orange-dim); text-decoration-thickness: 1px; }
+    a:hover { color: var(--orange); text-decoration-color: var(--orange); }
+}
 
 // ---------------------------------------------------------------- reading layout and rail
 
@@ -25,71 +35,80 @@
 }
 .reading-main { min-width: 0; max-width: 54rem; }
 
+// From 1100px the rail stands right of the text, so the title and the text share the left edge.
 @media (min-width: 1100px) {
     .reading.has-rail {
-        display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: clamp(48px, 5vw, 96px); align-items: start;
-    }
-    .reading.has-index {
-        display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: clamp(48px, 5vw, 96px); align-items: start;
+        display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: clamp(48px, 5vw, 96px); align-items: start;
+
+        > .reading-rail { grid-column: 2; grid-row: 1; }
+        > .reading-main { grid-column: 1; grid-row: 1; }
     }
 }
 
-.rail-title,
-.rail #toc-title h2 {
-    margin: 0 0 12px;
-    font-family: var(--mono); font-size: .8125rem; font-weight: 500; letter-spacing: 0; color: var(--ink-3);
-}
-
-// The rail: the page's sections hang on the orange line of the component tree.
-.rail {
+.reading-rail {
     font-size: .9375rem;
 
+    #toc-title h2,
+    .toc h2 {
+        margin: 0 0 12px;
+        font: 500 .8125rem/1.5 var(--mono); letter-spacing: 0; color: var(--ink-3);
+    }
     ul { list-style: none; margin: 0; padding: 0; }
-    li { position: relative; margin: 0; padding-left: 18px; --mid: 15px; }
-    li li { --mid: 13px; }
-
-    // Elbow from the parent line to the section, and the line on to the next sibling.
-    li::before, li::after { content: ""; position: absolute; left: 4px; pointer-events: none; }
-    li::before {
-        top: 0; height: var(--mid); width: 9px;
-        border-left: 1px solid var(--orange-dim); border-bottom: 1px solid var(--orange-dim);
-        border-bottom-left-radius: 6px;
-    }
-    li::after { top: var(--mid); bottom: 0; border-left: 1px solid var(--orange-dim); }
-    li:last-child::after { display: none; }
-
-    a {
-        display: block; padding: 5px 8px 5px 6px; margin-left: -2px; border-radius: 6px;
-        color: var(--ink-3); line-height: 20px; text-decoration: none;
-        transition: color .2s, background-color .4s var(--ease);
-    }
+    li { margin: 0; }
+    a { color: var(--ink-3); text-decoration: none; transition: color .2s, background-color .4s var(--ease); }
     a:hover { color: var(--ink); }
-    .toc--level-2 a { padding-block: 4px; font-size: .875rem; line-height: 19px; }
     .toc-number { display: none; }
-
-    // The section in view, marked like the node a reveal step adds.
-    a.is-current { color: var(--orange); background: linear-gradient(90deg, var(--orange-wash), rgba(255, 153, 37, .02) 85%); }
-    li:has(> a.is-current)::before { border-color: var(--orange); }
 }
 
+// The rail on wide screens: the page's sections hang on the orange line of the component tree.
 @media (min-width: 1100px) {
-    .rail { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: thin; padding-bottom: 8px; }
-}
+    .reading-rail {
+        position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; padding-bottom: 8px;
 
-// Below the wide layout the rail is a compact index above the text.
-@media (max-width: 1099px) {
-    .rail {
-        margin-bottom: 40px; padding: 16px 18px 12px;
-        background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px;
-        ul ul { display: none; }
+        li { position: relative; padding-left: 18px; --mid: 15px; }
+        li li { --mid: 13px; }
+
+        // Elbow from the parent line to the section, and the line on to the next sibling.
+        li::before, li::after { content: ""; position: absolute; left: 4px; pointer-events: none; }
+        li::before {
+            top: 0; height: var(--mid); width: 9px;
+            border-left: 1px solid var(--orange-dim); border-bottom: 1px solid var(--orange-dim);
+            border-bottom-left-radius: 6px;
+        }
+        li::after { top: var(--mid); bottom: 0; border-left: 1px solid var(--orange-dim); }
+        li:last-child::after { display: none; }
+
+        a { display: block; padding: 5px 8px 5px 6px; margin-left: -2px; border-radius: 6px; line-height: 20px; }
+        .toc--level-2 a { padding-block: 4px; font-size: .875rem; line-height: 19px; }
+
+        // The section in view, marked like the node a reveal step adds.
+        a.is-current { color: var(--orange); background: var(--wash); }
+        li:has(> a.is-current)::before { border-color: var(--orange); }
+
+        .toc-gap { margin-top: 10px; }
     }
 }
 
-// Jump lists that only point at sections of this page repeat the rail.
-.has-rail .l-button-table:not(:has(a:not([href^="#"]))),
-.has-rail .page-content > .button-bar:not(:has(a:not([href^="#"]))) { display: none; }
+// Below the wide layout the rail is a compact index above the text: the first level, in a row.
+@media (max-width: 1099px) {
+    .reading-rail {
+        margin-bottom: 40px; padding: 14px 18px 12px;
+        background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px;
 
-// ---------------------------------------------------------------- preamble
+        #toc-title h2, .toc h2 { margin-bottom: 6px; }
+        ul { display: flex; flex-wrap: wrap; gap: 2px 22px; }
+        ul ul, .toc--level-2 { display: none; }
+        a { color: var(--ink-2); }
+    }
+    // A page that opens with its own panels (community) needs no index above the text.
+    .section-lead + .has-rail .reading-rail { display: none; }
+}
+
+@media (pointer: coarse) {
+    .reading-rail a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+// ---------------------------------------------------------------- preamble (older pages)
 
 .preamble {
     margin-bottom: 40px;
@@ -100,14 +119,14 @@
 
 // ---------------------------------------------------------------- body copy
 
-.page-content {
+.page-content,
+.section-body,
+.hub-body {
     line-height: 1.7;
-
-    &::after { content: ""; display: table; clear: both; }
 
     > :first-child { margin-top: 0; }
 
-    p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6 { max-width: var(--measure); }
+    p, ul:not([class]), ol:not([class]), dl:not([class]), blockquote, h1, h2, h3, h4, h5, h6 { max-width: var(--measure); }
 
     h1, h2 {
         margin: 3.5rem 0 1rem;
@@ -119,10 +138,10 @@
     h2, h3, h4 { scroll-margin-top: 24px; }
 
     p { margin: 0 0 1.1em; }
-    ul, ol { margin: 0 0 1.25em; padding-left: 1.35em; }
-    li { margin-bottom: .35em; }
+    ul:not([class]), ol:not([class]) { margin: 0 0 1.25em; padding-left: 1.35em; }
+    :is(ul, ol):not([class]) > li { margin-bottom: .35em; }
     li > ul, li > ol { margin: .35em 0 0; }
-    li::marker { color: var(--ink-3); font-variant-numeric: normal; }
+    li::marker { color: var(--ink-3); }
     dl { margin: 0 0 1.25em; }
     dt { color: var(--ink); font-weight: 700; }
     dd { margin: 0 0 .9em; }
@@ -143,63 +162,86 @@
 
     :not(pre) > code {
         padding: .08em .36em; border: 1px solid var(--line); border-radius: 5px;
-        background: var(--bg-3); font-size: .86em;
+        background: var(--bg-3); font-size: .86em; overflow-wrap: anywhere;
     }
     a code { color: inherit; }
 }
 
+// Section pages: each section opens on a rule; the first sits right under the title band.
+.section-body {
+    > h2 { max-width: none; padding-top: 2.25rem; border-top: 1px solid var(--line); margin-top: 3.5rem; }
+    > h2:first-child,
+    > .visually-hidden:first-child + * + h2 { margin-top: 0; }
+    > h2:first-child { padding-top: 0; border-top: 0; }
+    > hr { display: none; }
+}
+.section-body.reading > *:not(table):not(.post-panels):not(.line-panels):not(.board) { max-width: 54rem; }
+
+.hub-body > h2:first-child { margin-top: 0; }
+
 // ---------------------------------------------------------------- code blocks
 
 .page-content pre,
-.feature-code pre {
-    overflow-x: auto; scrollbar-width: thin;
+.section-body pre,
+.hub-body pre,
+.hub-maven pre,
+.feature-code pre,
+.quickstart pre {
+    overflow-x: auto;
     font: 400 .875rem/1.7 var(--mono); color: #d6d6d1; tab-size: 4;
 }
-.page-content pre code,
-.feature-code pre code { font-size: 1em; color: inherit; }
+pre code { font-size: 1em; color: inherit; }
 
 .page-content div.highlight,
-.page-content figure.highlight,
-.feature-code div.highlight,
-.page-content > pre {
+.section-body div.highlight,
+.hub-body div.highlight,
+figure.highlight,
+.page-content > pre,
+.section-body > pre {
     margin: 1.25rem 0 1.75rem;
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px;
 }
-.page-content div.highlight pre,
-.page-content figure.highlight pre,
-.feature-code div.highlight pre { margin: 0; padding: 18px 20px; }
-.page-content > pre { padding: 18px 20px; }
+div.highlight pre,
+figure.highlight pre { margin: 0; padding: 18px 20px; }
+.page-content > pre,
+.section-body > pre { padding: 18px 20px; }
+pre:focus-visible { outline-offset: 2px; }
+
+// The copy button guide.js puts in a bar at the top of a code sample.
+.guide-copy-bar { display: flex; justify-content: flex-end; padding: 10px 10px 0; }
+.guide-copy-bar + pre { padding-top: 4px !important; }
 
 // ---------------------------------------------------------------- tables
 
-.page-content table {
+.page-content table,
+.section-body table,
+.hub-body table {
     width: 100%; margin: 1.5rem 0 2.25rem;
     border-collapse: collapse; font-size: .96875rem; line-height: 1.55;
+
+    th, td { padding: 12px 18px 12px 0; text-align: left; vertical-align: top; }
+    th:last-child, td:last-child { padding-right: 0; }
+    thead th {
+        padding-block: 8px 10px; vertical-align: bottom;
+        border-bottom: 1px solid var(--line-2);
+        font-size: .8125rem; font-weight: 500; color: var(--ink-3);
+    }
+    td { border-bottom: 1px solid var(--line); }
+    tbody th { border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 700; }
+    td p { margin: 0 0 .5rem; }
+    td p:last-child { margin-bottom: 0; }
 }
-.page-content th,
-.page-content td { padding: 12px 18px 12px 0; text-align: left; vertical-align: top; }
-.page-content th:last-child,
-.page-content td:last-child { padding-right: 0; }
-.page-content thead th,
-.page-content tr:first-child > th:not([scope="row"]) {
-    padding-block: 8px 10px; vertical-align: bottom;
-    border-bottom: 1px solid var(--line-2);
-    font-size: .8125rem; font-weight: 500; color: var(--ink-3);
-}
-.page-content td { border-bottom: 1px solid var(--line); }
-.page-content th[scope="row"] { border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 700; }
-.page-content td p { margin: 0 0 .5rem; }
-.page-content td p:last-child { margin-bottom: 0; }
+.community-lists th[scope=row] { white-space: nowrap; }
 
 // Narrow screens: wide tables scroll inside their own box rather than the page.
 @media (max-width: 760px) {
-    .page-content table:not(.connections-table):not(.board-table) { display: block; overflow-x: auto; scrollbar-width: thin; }
+    .page-content table:not(.connections-table):not(.release-lines):not(.eol-table),
+    .section-body table:not(.connections-table):not(.release-lines):not(.eol-table) { display: block; overflow-x: auto; }
 }
 
 // ---------------------------------------------------------------- buttons
 
-.button,
-.page-content .button {
+.button {
     display: inline-flex; align-items: center; gap: 10px;
     margin: .25rem 0 1rem; padding: 12px 20px; border: 0; border-radius: 10px;
     background: var(--ink); color: #0c0c0c;
@@ -209,20 +251,15 @@
 .button:hover { background: #fff; color: #0c0c0c; }
 .button:active { transform: translateY(1px); }
 
-// Jump lists (.button-bar in the Markdown): a ruled index, labels only.
+// Jump lists (.button-bar in older Markdown): a ruled index, labels only.
 .l-button-table,
 .l-button-table > div { display: block; float: none; margin: 0; width: auto; }
 .l-button-table { margin: 0 0 2.5rem; }
-
 .button-bar {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0 2.5rem;
     margin: 0; max-width: none;
 
-    & + .button-bar { margin-top: 0; }
-    &:last-child { margin-bottom: 2.5rem; }
-
-    .button,
-    .page-content & .button {
+    .button {
         display: block; margin: 0; padding: 12px 0 13px;
         border-top: 1px solid var(--line); border-radius: 0;
         background: transparent; color: var(--ink);
@@ -230,31 +267,47 @@
     }
     .button:hover { background: transparent; color: var(--orange); }
     i, br { display: none; }
-    div.button { display: none; }
 }
 
-// Index of a section's pages (learn/, ...): label and a line of description.
-.page-index {
-    margin: 0 0 3rem;
+// The copy button of a code sample: a small light button.
+.hub-copy {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 6px 13px; border: 0; border-radius: 8px;
+    background: var(--ink); color: #0c0c0c;
+    font: 700 .8125rem/1.2 var(--sans); cursor: pointer;
+    transition: background-color .2s, transform .15s var(--ease);
 
-    ul {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0 2.5rem;
-        list-style: none; margin: 0; padding: 0; max-width: none;
-    }
-    li { margin: 0; border-top: 1px solid var(--line); }
-    a { display: block; padding: 13px 0 15px; color: var(--ink-3); text-decoration: none; line-height: 1.45; }
-    a:hover .page-index-label { color: var(--orange); }
+    &:hover { background: #fff; }
+    &:active { transform: translateY(1px); }
 }
-.page-index-label { display: block; color: var(--ink); font-size: 1.0625rem; font-weight: 700; letter-spacing: -.01em; transition: color .2s; }
-.page-index-desc { display: block; margin-top: 2px; font-size: .9375rem; }
+@media (pointer: coarse) { .hub-copy { min-height: 44px; min-width: 64px; } }
 
-// ---------------------------------------------------------------- legacy Taiga layout inside the reading column
+// The label row over a code sample: what it is, and its copy button.
+.hub-maven-label {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    margin: 0 0 8px; font: 500 .8125rem/1.5 var(--mono); color: var(--ink-2);
+}
 
-// A single two-third or half block is a narrower column, not a float.
+// ---------------------------------------------------------------- section index and jump rows
+
+// A row of the page's sections (contribute, learn): plain labels between rules.
+.section-index {
+    display: flex; flex-wrap: wrap; gap: 4px 28px;
+    margin: 0 0 2.5rem; padding: 12px 0; border-block: 1px solid var(--line);
+
+    a { color: var(--ink); font-weight: 600; text-decoration: none; }
+    a:hover { color: var(--orange); }
+}
+.section-index + h2 { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
+@media (pointer: coarse) { .section-index a { display: inline-flex; align-items: center; min-height: 44px; } }
+
+.hub-more { margin-top: 1rem; font-size: .9375rem; }
+@media (pointer: coarse) { .hub-more a { display: inline-block; padding-block: 10px; } }
+
+// ---------------------------------------------------------------- older Taiga layout inside the reading column
+
 .page-content > .l-two-third,
 .page-content > .l-half { float: none; width: auto; margin-left: 0; margin-right: 0; max-width: 42rem; }
-
-// Rows of floated columns become grids.
 .l-clearfix {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0 2.5rem; margin-bottom: 1.5rem;
     > * { float: none; width: auto; margin: 0; }
@@ -272,145 +325,47 @@
     a:hover > img { box-shadow: 0 0 0 2px var(--orange), 0 18px 40px -24px rgba(0, 0, 0, .9); }
 }
 @media (max-width: 600px) { .media-bar a > img { height: 160px; } }
-.page-content article + article { clear: both; }
+.page-content article + article { clear: both; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
 
-// ---------------------------------------------------------------- release highlights (branch pages)
+// ---------------------------------------------------------------- quick start
 
-.page-content .features { list-style: none; margin: 0 0 2rem; padding: 0; max-width: none; }
-
-.feature {
-    margin: 0; padding: 28px 0 30px; border-top: 1px solid var(--line);
-
-    .page-content & h3 { margin: 0 0 .5rem; font-size: 1.3125rem; }
-    p:last-child { margin-bottom: 0; }
-    p code { white-space: nowrap; }
-}
-
-.feature-facts {
-    display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 16px 0 0;
-
-    dt { font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
-    dd { margin: 2px 0 0; font-family: var(--mono); font-size: 1.75rem; font-weight: 500; line-height: 1.1; color: var(--ink); }
-}
-
-.feature-code {
-    margin-top: 18px;
-    .fname { margin: 0 0 8px; }
-    div.highlight { margin: 0; }
-}
-
-// ---------------------------------------------------------------- the full release board (download page)
-
-.board-full { margin: 0 0 2rem; }
-.board-head {
-    h2 { margin-top: 0; }
-    p { color: var(--ink-2); }
-}
-.page-content .board-table { margin: 1rem 0 0; }
-.board-table {
-    .grp th {
-        padding: 26px 0 8px; border-bottom: 1px solid var(--line);
-        font-size: .8125rem; font-weight: 500; color: var(--ink-3); vertical-align: bottom;
-    }
-    tbody:first-of-type .grp th { padding-top: 14px; }
-    .b-release { white-space: nowrap; }
-    .b-release .v { font-family: var(--mono); font-size: 1rem; font-weight: 500; }
-    .b-when, .b-support { white-space: nowrap; }
-    .is-eol .b-release a, .is-eol td { color: var(--ink-3); }
-}
-.board-all { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 16px; font-size: .9375rem; }
-
-.board-table abbr,
-.status-eol,
-.page-content .status {
-    display: inline-block;
-    font-size: .75rem; font-weight: 500; line-height: 1.5; color: var(--ink-2);
-}
-.board-table abbr,
-.status-eol { padding: 0 6px; border: 1px solid var(--line-2); border-radius: 4px; }
-.status.is-live { color: var(--ink); font-size: .9375rem; font-weight: 500; }
-.status.is-live::before {
-    content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 9px; vertical-align: 1px;
-    border-radius: 50%; background: var(--orange);
-}
-.status.is-next { color: var(--ink); font-size: .9375rem; }
-.board-table .status:not(.is-live):not(.is-next):not(.is-eol) { font-size: .9375rem; color: var(--ink-2); }
-.status.is-eol { padding: 0 6px; border: 1px solid var(--line-2); border-radius: 4px; color: var(--ink-3); }
-.status-eol { margin-right: 8px; color: var(--ink-3); }
-
-@media (max-width: 760px) {
-    .board-table thead { display: none; }
-    .board-table, .board-table tbody { display: block; }
-    .board-table .grp { display: block; }
-    .board-table .grp th { display: block; }
-    .board-table tr:not(.grp) {
-        display: grid; grid-template-columns: minmax(0, 1fr) auto;
-        grid-template-areas: "release status" "service when" "support support";
-        gap: 2px 12px; padding: 12px 0; border-bottom: 1px solid var(--line);
-    }
-    .board-table tr:not(.grp) > * { padding: 0; border: 0; white-space: normal; }
-    .board-table .b-release { grid-area: release; }
-    .board-table .b-status { grid-area: status; text-align: right; }
-    .board-table .b-service { grid-area: service; color: var(--ink-3); font-size: .875rem; }
-    .board-table .b-when { grid-area: when; text-align: right; color: var(--ink-3); font-size: .875rem; }
-    .board-table .b-support { grid-area: support; color: var(--ink-3); font-size: .875rem; }
-}
-
-// ---------------------------------------------------------------- upgrade paths and unsupported releases
-
-.connections-table {
-    th[scope="row"] { white-space: nowrap; }
-    td:last-child { white-space: nowrap; }
-
-    @media (max-width: 760px) {
-        thead { display: none; }
-        &, tbody, tr, th[scope="row"], td { display: block; }
-        tr { padding: 12px 0 14px; border-bottom: 1px solid var(--line); }
-        th[scope="row"], td, td:last-child { padding: 3px 0; border: 0; white-space: normal; }
-    }
-}
-.connections-route { font-family: var(--mono); font-size: .9375rem; color: var(--ink); }
-.page-content .eol-table { max-width: 34rem; }
-.eol-table td:nth-child(2) { font-family: var(--mono); color: var(--ink-2); }
-
-// ---------------------------------------------------------------- quick start wizard
-
-.quickstart-wizard {
-    max-width: 40rem; margin: 1.5rem 0 2rem; padding: 22px 24px 24px;
+.quickstart {
+    max-width: 46rem; margin: 0 0 2.5rem; padding: 22px 24px 20px;
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px;
-    line-height: 1.4;
+}
+.quickstart-fields {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px;
 
-    label { display: block; margin: 16px 0 7px; font-size: .875rem; font-weight: 500; color: var(--ink-2); }
-    > div:first-child label { margin-top: 0; }
-
-    input, select, textarea {
-        display: block; width: 100%;
-        padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 9px;
+    label { display: block; font-size: .875rem; font-weight: 500; color: var(--ink-2); }
+    input, select {
+        display: block; width: 100%; height: 44px; margin-top: 7px; padding: 0 12px;
+        border: 1px solid var(--field); border-radius: 9px;
         background: var(--bg); color: var(--ink);
         font: 400 .9375rem/1.4 var(--mono);
         transition: border-color .2s;
     }
-    input:hover, select:hover, textarea:hover { border-color: #55554f; }
-    input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--orange); outline: 0; }
+    input:hover, select:hover { border-color: var(--ink-3); }
+    input:focus-visible, select:focus-visible { border-color: var(--orange); outline: 2px solid var(--orange); outline-offset: 1px; }
     select {
         appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer;
         background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23ff9925' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 13px center;
     }
-    textarea { height: 7.5rem; font-size: .875rem; line-height: 1.55; }
+}
+.quickstart-command pre {
+    margin: 0; padding: 16px 18px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+}
+.quickstart p { max-width: none; }
+.quickstart .quickstart-needs { margin: 12px 0 0; font-size: .875rem; color: var(--ink-3); }
 
-    button {
-        display: inline-flex; align-items: center; justify-content: center; width: 100%; margin-top: 16px;
-        padding: 12px 16px; border: 0; border-radius: 9px;
-        background: var(--ink); color: #0c0c0c; font: 700 .9375rem/1.2 var(--sans); cursor: pointer;
-        transition: background-color .2s, transform .15s var(--ease);
-    }
-    button:hover { background: #fff; }
-    button:active { transform: translateY(1px); }
-    button.is-copied { background: var(--bg-3); color: var(--ink); box-shadow: inset 0 0 0 1px var(--orange); }
+@media (max-width: 760px) {
+    .quickstart { padding: 18px 16px; }
+    .quickstart-fields { grid-template-columns: minmax(0, 1fr); }
+    .quickstart-command pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
 
-// Numbered steps on the quick start page, numbered like the reveal's steps.
-.quickstart .page-content > ol {
+// The steps under the quick start, numbered like the reveal's steps.
+.quickstart ~ ol {
     list-style: none; padding-left: 0; counter-reset: step;
 
     > li { position: relative; padding-left: 2.75rem; counter-increment: step; margin-bottom: .6em; }
@@ -421,65 +376,15 @@
     }
 }
 
-// ---------------------------------------------------------------- news
+// ---------------------------------------------------------------- page not found
 
-.news-list {
-    h1 { margin-top: 0; }
-    article,
-    .news {
-        clear: both; padding: 20px 0 22px; border-top: 1px solid var(--line);
-    }
-    article + article { margin: 0; }
-    article h3,
-    .news h3 { margin: 0 0 4px; font-size: 1.1875rem; }
-    article small,
-    .news small { display: block; margin-bottom: 8px; font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
-    article p { margin-bottom: 0; }
-    .l-first + hr,
-    hr { margin: 2.5rem 0; }
-    .l-full { float: none; width: auto; margin: 0; }
+.notfound-suggest { margin-bottom: 1.5rem; font-size: 1.25rem; color: var(--ink); }
+.notfound-suggest[hidden] { display: none; }
+.section-body > .guide-search { max-width: 40rem; margin-bottom: 1rem; }
+.notfound-map {
+    list-style: none; margin: 0 0 2rem; padding: 0; max-width: 54rem;
+
+    li { margin: 0; padding: 13px 0 15px; border-top: 1px solid var(--line); }
+    a { font-weight: 700; }
+    span { display: block; margin-top: 2px; font-size: .9375rem; color: var(--ink-3); }
 }
-
-.news-index {
-    margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line);
-
-    @media (min-width: 1100px) {
-        position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: thin;
-        margin-top: 0; padding-top: 0; border-top: 0;
-    }
-
-    .news-year { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 0 10px; padding: 7px 0; border-top: 1px solid var(--line); }
-    h2 { margin: 0; font-family: var(--mono); font-size: .875rem; font-weight: 500; line-height: 1.6; }
-    h2 a { color: var(--ink); text-decoration: none; }
-    h2 a:hover { color: var(--orange); }
-    ul { display: flex; flex-wrap: wrap; gap: 0 9px; list-style: none; margin: 0; padding: 0; }
-    li { margin: 0; }
-    ul a { color: var(--ink-3); font-size: .8125rem; line-height: 1.6; text-decoration: none; }
-    ul a:hover { color: var(--orange); }
-}
-
-.post-back {
-    display: flex; flex-wrap: wrap; gap: 6px 28px;
-    margin-top: 3rem; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9375rem;
-}
-
-// Touch screens get 44px targets for the small links.
-@media (pointer: coarse) {
-    .board-all a, .post-back a, .news-index a, .built-links a, .footer nav a { display: inline-block; padding-block: 10px; }
-}
-
-// Earlier years on the news page: a compact list of dates and titles.
-.page-content .news-titles {
-    list-style: none; margin: 0 0 1rem; padding: 0; max-width: none;
-
-    li {
-        display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 16px;
-        margin: 0; padding: 7px 0; border-top: 1px solid var(--line); line-height: 1.45;
-    }
-    time { font-family: var(--mono); font-size: .8125rem; line-height: 1.8; color: var(--ink-3); }
-    // Long title lists keep the site's orange link underline, a little lighter so 200 titles don't shout.
-    a { text-decoration-color: var(--orange-dim); text-decoration-thickness: 1px; }
-    a:hover { text-decoration-color: var(--orange); }
-}
-.news-list h2 { margin-top: 3rem; }
-.news-list > h2:first-child { margin-top: 0; }

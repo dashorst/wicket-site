@@ -10,9 +10,9 @@ order: 10
 source: [modelsforms/modelsforms_2.adoc, modelsforms/modelsforms_3.adoc]
 ---
 
-Use lambda models when a component shows a value computed from other data, or reads and writes one property of an object that another model holds. They are checked by the compiler and survive a rename, unlike [property expressions]({{ site.baseurl }}/guide/property-models.html).
+Use lambda models when a component shows a value computed from other data, or reads and writes one property of an object that another model holds. They are checked by the compiler and survive a rename, unlike [property expressions]({{ site.baseurl }}/docs/property-models.html).
 
-The examples use a `personModel` of type `IModel<Person>`, for instance a [detachable model]({{ site.baseurl }}/guide/detachable-models.html) that loads the person by id.
+The examples use a `personModel` of type `IModel<Person>`, for instance a [detachable model]({{ site.baseurl }}/docs/detachable-models.html) that loads the person by id.
 
 ## Show a computed value
 
@@ -125,7 +125,7 @@ IModel<Customer> customer = partyModel.as(Customer.class);
 The lambdas you pass to these methods are serializable types (`SerializableSupplier`, `SerializableFunction` and so on), because they are stored with the page. Everything a lambda captures is stored with it.
 
 - Capture models, ids and `this`. The page or panel is serialized anyway.
-- Do not capture entities or large objects. `LambdaModel.of(person::getName, person::setName)` stores `person` in the page, with the problems described in [Why `new Model<>(entity)` goes wrong]({{ site.baseurl }}/guide/about-models.html#why-new-modelentity-goes-wrong). Use the `LambdaModel.of(personModel, ...)` form instead.
-- Do not capture services or connections, which are rarely serializable. Reach them through an injected field of the component, as described in [Inject Spring beans]({{ site.baseurl }}/guide/spring.html).
+- Do not capture entities or large objects. `LambdaModel.of(person::getName, person::setName)` stores `person` in the page, with the problems described in [Why `new Model<>(entity)` goes wrong]({{ site.baseurl }}/docs/about-models.html#why-new-modelentity-goes-wrong). Use the `LambdaModel.of(personModel, ...)` form instead.
+- Do not capture services or connections, which are rarely serializable. Reach them through an injected field of the component, as described in [Inject Spring beans]({{ site.baseurl }}/docs/spring.html).
 
-[Model classes]({{ site.baseurl }}/guide/model-types.html#imodel-methods) lists every default method of `IModel`.
+[Model classes]({{ site.baseurl }}/docs/model-types.html#imodel-methods) lists every default method of `IModel`.

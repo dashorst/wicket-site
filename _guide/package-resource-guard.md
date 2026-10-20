@@ -81,4 +81,4 @@ guard.addPattern("-com/example/internal/**/*.html");
 
 `getResourceSettings().setPackageResourceGuard(guard)` installs your own `IPackageResourceGuard`. Extend `SecurePackageResourceGuard` to keep the default rules, or `PackageResourceGuard` for a guard that applies only the fixed refusals listed above and allows every other file.
 
-[Serve files from your Java packages]({{ site.baseurl }}/guide/package-resources.html) shows how to reference package resources from your components.
+[Serve files from your Java packages]({{ site.baseurl }}/docs/package-resources.html) shows how to reference package resources from your components.
