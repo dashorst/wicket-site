@@ -67,6 +67,9 @@ nav.mainmenu .nav-items {
 // Homepage: the hero lockup carries the mark, so the menu goes without the brand, centred.
 nav.mainmenu.is-home { justify-content: center; }
 nav.mainmenu.is-home .nav-sections { margin-left: 0; }
+// The hero's release panel names the supported lines beside the lockup, so on wide screens the
+// homepage menu goes without the plate. On phones the panel is below the first screen; the plate stays.
+@media (min-width: 1000px) { nav.mainmenu.is-home .nav-brand { display: none; } }
 
 @media (max-width: 1199px) {
     nav.mainmenu { gap: 12px 22px; }

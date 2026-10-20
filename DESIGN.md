@@ -194,7 +194,7 @@ A cool, green-grey book palette with a single warm voice: Wicket orange.
 **Character:** One humanist book family in three cuts: the serif reads and titles, the small caps date and label, the sans runs the menu, buttons, metadata and table cells. All four families are self-hosted under the SIL Open Font License.
 
 ### Hierarchy
-- **Display** (700, `clamp(3.4rem, 5.6vw, 5.1rem)`, 0.9): the homepage lockup "Apache Wicket", with the number of the newest supported line at the same size in weight 400 behind a 3px orange rule.
+- **Display** (700, `clamp(3.4rem, 5.6vw, 5.1rem)`, 0.9): the homepage lockup "Apache Wicket" beside the mark. The lockup carries no version: the release panel below it names the lines.
 - **Headline** (700, `clamp(2.4rem, 4.4vw, 3.8rem)`, 1.02): the title of every page on the photo band, at most 20ch wide.
 - **Section** (700, `clamp(2rem, 3vw, 2.6rem)`, 1.05): homepage sections, the docs front page sections, the sections of a release line page.
 - **Title** (700, `clamp(1.75rem, 2.6vw, 2.25rem)`, 1.1): h2 inside reading pages, documentation groups and the foot of a documentation page.
@@ -271,7 +271,7 @@ Small labels beside a line or a post: Alegreya SC in a 1px bordered bead. **LTS*
 
 ### Navigation
 - **Masthead:** lies on the photograph. Alegreya Sans 500 at 1.0625rem, ink. Hover shows a `ribbon-deep` underline; the current section (or the section of a page's breadcrumb) carries a 4px orange underline at a deep offset. GitHub is set off by a hairline after the ASF feather. On the homepage the menu is centred without the brand; elsewhere the mark and the serif wordmark sit left.
-- **Version plate:** beside the wordmark, the supported lines as two beads on one string, "11.0 | LTS 10", each linking to its line page; the line whose page is open is the lit bead.
+- **Version plate:** beside the wordmark, the supported lines as two beads on one string, "11.0 | LTS 10", each linking to its line page; the line whose page is open is the lit bead. The homepage leaves it out from 1000px up, where the hero's release panel is in the first screen; on phones it stays, centred above the sections.
 - **Rail:** the page's sections hang from the ribbon, which drops from the photograph's edge. Entries are Alegreya Sans in `ink-soft`; hover shows the orange wash; the section in view is a lit bead.
 - **Breadcrumb:** the section above a page's title in small capitals, `ribbon-deep` links.
 - **Footer:** cloth field: a sitemap of the site and the ASF links under small-caps headings in `ribbon-text`, paper links with orange underlines, the ASF logo on a paper tile beside the legal line in lichen.
@@ -287,7 +287,7 @@ On cloth: the Java sheet left, the markup sheet right, beads on the ribbon betwe
 One element in two uses: behind the homepage hero and behind every page title. The season or dated occasion comes from `_data/seasons.yml`; without JavaScript a page shows the season of the month it was built in. Credits sit in a small cloth chip in the photo's corner (on phones, as a line on paper under the title). Review builds with `season_selector: true` add a season selector chip beside the credit; production builds do not show it.
 
 ### Release Facts (homepage)
-On a translucent paper panel under a 1px orange top rule in the hero: the Current and the LTS line as their version in bold serif figures with their tag and "supported until …", then the lines that reached end of life with "How to upgrade" (to the upgrade paths), then "Release lines and support" (to /versions/). No scheduled releases. The full release lines live on /versions/ as a ruled table grouped under small-caps headings: Supported, Scheduled, End of life.
+On a translucent paper panel under a 1px orange top rule in the hero: the Current and the LTS line as their version in bold serif figures with their tag and "supported until …", a line with a `brief` in `_data/highlights.yml` with that one sentence of what is new under it in ink, then the lines that reached end of life with "How to upgrade" (to the upgrade paths), then "Release lines and support" (to /versions/). No scheduled releases. The full release lines live on /versions/ as a ruled table grouped under small-caps headings: Supported, Scheduled, End of life.
 
 ### Blog Lists
 Featured posts on /news/ are columns under an ink rule: the date in small capitals, the serif title, a line of summary. On the homepage the same posts are rows: date left, title and summary right. Release announcements and archives are dated rows with hairlines.

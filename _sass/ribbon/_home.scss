@@ -10,10 +10,6 @@
 .lockup { margin: 0; display: flex; align-items: center; gap: 0 26px; font-weight: 400; color: var(--ink); }
 .lockup-mark { width: 104px; height: 104px; flex: none; display: block; }
 .lockup-name { font: 700 clamp(3.4rem, 5.6vw, 5.1rem)/.9 var(--serif); letter-spacing: -.022em; white-space: nowrap; }
-.lockup-v {
-    font: 400 clamp(3.4rem, 5.6vw, 5.1rem)/.9 var(--serif); letter-spacing: -.02em; font-variant-numeric: lining-nums;
-    padding-left: 26px; border-left: 3px solid var(--ribbon);
-}
 .lede { max-width: 660px; }
 .tagline { font: italic 400 clamp(1.7rem, 2.4vw, 2.15rem)/1.15 var(--serif); margin: 0 0 12px; }
 .definition { font: 400 clamp(1.2rem, 1.5vw, 1.4rem)/1.38 var(--serif); margin: 0 0 20px; max-width: 46ch; }
@@ -36,6 +32,8 @@
 .release-v { min-width: 4.6ch; font: 700 1.25rem/1.2 var(--serif); font-variant-numeric: lining-nums; text-decoration-color: transparent; }
 .release-v:hover { text-decoration-color: var(--ribbon-deep); }
 .release-until { color: var(--ink-soft); }
+// What is new in the line, under its version.
+.release-brief { flex: 1 0 100%; margin: 0 0 4px; color: var(--ink); }
 .release-note { margin-top: 6px !important; padding-top: 6px; border-top: 1px solid var(--rule); color: var(--ink-soft); }
 .release-note a { color: var(--ink); white-space: nowrap; }
 .release-all { margin-top: 6px !important; font-weight: 500; }
@@ -339,7 +337,6 @@
     .lockup-mark { width: 64px; height: 64px; }
     .lockup-name { font-size: 2.55rem; line-height: .92; }
     .lockup-name > span { display: block; }
-    .lockup-v { font-size: 4.6rem; line-height: .8; padding-left: 14px; }
     .tagline { font-size: 1.6rem; margin-bottom: 8px; }
     .definition { font-size: 1.2rem; margin-bottom: 18px; }
     .release { display: block; background: var(--paper-tint); padding: 10px 12px 11px; }

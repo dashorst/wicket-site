@@ -8,7 +8,7 @@ additionalContents:
 ---
 {% comment %}
   The homepage: the lockup on the season's photograph with what Wicket is and the supported
-  release lines, the blog, the component tree on bookcloth (how a page works), why Wicket, the
+  release lines with what is new in them, the blog, the component tree on bookcloth (how a page works), why Wicket, the
   projects built with it, the five lessons and how to take part.
   The release facts come from _data/releases.yml and _config.yml; nothing here changes on release
   day. Scheduled releases are on /versions/, not here.
@@ -16,9 +16,6 @@ additionalContents:
 {%- assign lts = site.data.releases.lines | where: "status", "lts" | first -%}
 {%- assign current = site.data.releases.lines | where: "status", "current" | first -%}
 {%- assign eol = site.data.releases.lines | where: "status", "eol" -%}
-{%- comment %} The lockup carries the number of the newest supported line. {% endcomment -%}
-{%- assign newest = lts -%}{%- assign n = current.series | plus: 0 -%}{%- assign m = lts.series | plus: 0 -%}
-{%- if current and n > m %}{% assign newest = current %}{% endif -%}
 {%- comment %} The supported lines, the current one first. {% endcomment -%}
 {%- assign supported = '' | split: '' -%}
 {%- if current %}{% assign supported = supported | push: current %}{% endif -%}
@@ -29,19 +26,18 @@ additionalContents:
         <h1 class="lockup" id="title">
             <img class="lockup-mark" src="{{ site.baseurl }}/img/logo-apachewicket-mark.svg" alt="" width="112" height="112">
             <span class="lockup-name"><span>Apache</span> <span>Wicket</span></span>
-            <span class="lockup-v"><span class="visually-hidden">, version </span>{{ newest.series }}</span>
         </h1>
         <div class="lede">
             {% comment %} Tagline placeholder: "Write less, achieve more." is the Wicket 8 announcement's line, kept until the project picks one. {% endcomment %}
             <p class="tagline">Write less, achieve more.</p>
             <p class="definition">A component-oriented Java web framework, open source since 2004 and a project of the Apache Software Foundation since 2007. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
             <p class="hero-actions"><a class="button" href="{{ site.baseurl }}/start/quickstart.html">Get started</a></p>
-            {% comment %} The one release element on the homepage: the supported lines, and the lines that reached end of life with how to upgrade. {% endcomment %}
+            {% comment %} The one release element on the homepage: the supported lines, each with its brief from _data/highlights.yml when it has one, and the lines that reached end of life with how to upgrade. {% endcomment %}
             <div class="release">
                 <h2 class="visually-hidden">Releases</h2>
                 <ul class="release-lines-home">
                 {%- for line in supported %}
-                    <li><a class="release-v" href="{{ site.baseurl }}{{ line.page }}">{{ site.wicket[line.config] }}</a> {% if line.service == 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% else %}<span class="tag tag-current">{{ line.role }}</span>{% endif %} <span class="release-until">{{ line.support | replace: 'Until', 'supported until' }}</span></li>
+                    <li><a class="release-v" href="{{ site.baseurl }}{{ line.page }}">{{ site.wicket[line.config] }}</a> {% if line.service == 'lts' %}<span class="tag tag-lts" title="Long-term support">LTS</span>{% else %}<span class="tag tag-current">{{ line.role }}</span>{% endif %} <span class="release-until">{{ line.support | replace: 'Until', 'supported until' }}</span>{% assign brief = site.data.highlights[line.series].brief %}{% if brief %}<span class="release-brief">{{ brief }}</span>{% endif %}</li>
                 {%- endfor %}
                 </ul>
                 {%- if eol.size > 0 %}
