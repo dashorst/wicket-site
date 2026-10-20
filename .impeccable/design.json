@@ -1,0 +1,500 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-15T21:07:53Z",
+  "title": "Design System: Apache Wicket",
+  "extensions": {
+    "colorMeta": {
+      "ribbon": {
+        "role": "primary",
+        "displayName": "Wicket Ribbon Orange",
+        "canonical": "oklch(70.9% 0.163 52.2)",
+        "tonalRamp": [
+          "#170600",
+          "#3B1902",
+          "#62300A",
+          "#904609",
+          "#C26214",
+          "#F28332",
+          "#FDB990",
+          "#FEEADE"
+        ]
+      },
+      "ribbon-under": {
+        "role": "primary",
+        "displayName": "Ribbon Reverse",
+        "canonical": "oklch(61.7% 0.148 50.8)",
+        "tonalRamp": [
+          "#170600",
+          "#3B1903",
+          "#63300B",
+          "#91450B",
+          "#C36117",
+          "#EC8645",
+          "#FEB991",
+          "#FFEADE"
+        ]
+      },
+      "ribbon-text": {
+        "role": "primary",
+        "displayName": "Ribbon on Cloth",
+        "canonical": "oklch(76.4% 0.136 56.6)",
+        "tonalRamp": [
+          "#160700",
+          "#391B03",
+          "#623101",
+          "#8B4A0E",
+          "#BC671A",
+          "#E48C47",
+          "#FDBA8A",
+          "#FEEADD"
+        ]
+      },
+      "ribbon-deep": {
+        "role": "primary",
+        "displayName": "Burnt Ribbon",
+        "canonical": "oklch(49.0% 0.131 46.6)",
+        "tonalRamp": [
+          "#180500",
+          "#3E1701",
+          "#672C08",
+          "#974004",
+          "#BE6434",
+          "#E78959",
+          "#FABA9B",
+          "#FFE9E0"
+        ]
+      },
+      "cloth": {
+        "role": "secondary",
+        "displayName": "Bookcloth Green",
+        "canonical": "oklch(32.4% 0.049 180.6)",
+        "tonalRamp": [
+          "#000F0C",
+          "#032B25",
+          "#1E4841",
+          "#3D675F",
+          "#5F8A82",
+          "#83AFA6",
+          "#A8D6CC",
+          "#CCFAF0"
+        ]
+      },
+      "cloth-deep": {
+        "role": "secondary",
+        "displayName": "Deep Bookcloth",
+        "canonical": "oklch(27.4% 0.041 179.7)",
+        "tonalRamp": [
+          "#000F0B",
+          "#072A25",
+          "#254740",
+          "#43665E",
+          "#658981",
+          "#89AEA5",
+          "#AED4CB",
+          "#D2F8EF"
+        ]
+      },
+      "muted": {
+        "role": "secondary",
+        "displayName": "Lichen",
+        "canonical": "oklch(80.4% 0.036 173.9)",
+        "tonalRamp": [
+          "#000F0A",
+          "#0E2A23",
+          "#2B463E",
+          "#48655C",
+          "#6A887E",
+          "#8EACA3",
+          "#B3D3C9",
+          "#D7F7EC"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(97.7% 0.002 165.1)",
+        "tonalRamp": [
+          "#0A0B0B",
+          "#232424",
+          "#3F403F",
+          "#5C5E5D",
+          "#7F8180",
+          "#A3A5A4",
+          "#C9CBCA",
+          "#EDEFEE"
+        ]
+      },
+      "paper-tint": {
+        "role": "neutral",
+        "displayName": "Pale Green Tint",
+        "canonical": "oklch(94.9% 0.008 168.7)",
+        "tonalRamp": [
+          "#080C0A",
+          "#202523",
+          "#3C413F",
+          "#595F5D",
+          "#7C827F",
+          "#A0A6A4",
+          "#C5CCC9",
+          "#E9F0ED"
+        ]
+      },
+      "code-bg": {
+        "role": "neutral",
+        "displayName": "Code Ground",
+        "canonical": "oklch(93.6% 0.010 164.9)",
+        "tonalRamp": [
+          "#070D0A",
+          "#202623",
+          "#3B413E",
+          "#595F5C",
+          "#7B827F",
+          "#9FA7A3",
+          "#C5CDC9",
+          "#E9F1ED"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(87.9% 0.014 167.1)",
+        "tonalRamp": [
+          "#060D0A",
+          "#1E2623",
+          "#39423E",
+          "#57605C",
+          "#79837E",
+          "#9DA7A3",
+          "#C3CDC9",
+          "#E6F2EC"
+        ]
+      },
+      "field-stroke": {
+        "role": "neutral",
+        "displayName": "Field Stroke",
+        "canonical": "oklch(75.1% 0.026 170.7)",
+        "tonalRamp": [
+          "#010F0A",
+          "#172822",
+          "#32443E",
+          "#4F635B",
+          "#71857E",
+          "#95AAA2",
+          "#BBD0C8",
+          "#DEF4EC"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(24.4% 0.024 172.6)",
+        "tonalRamp": [
+          "#020E0A",
+          "#182823",
+          "#33443E",
+          "#50625C",
+          "#72857F",
+          "#96AAA3",
+          "#BCD0C9",
+          "#DFF4ED"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "oklch(46.3% 0.027 171.8)",
+        "tonalRamp": [
+          "#010F0A",
+          "#162822",
+          "#31453E",
+          "#4F635C",
+          "#71867E",
+          "#95AAA2",
+          "#BAD1C8",
+          "#DDF5EC"
+        ]
+      },
+      "code-green": {
+        "role": "neutral",
+        "displayName": "Code Green",
+        "canonical": "oklch(43.3% 0.080 162.3)",
+        "tonalRamp": [
+          "#010F07",
+          "#042C1C",
+          "#014C33",
+          "#2C6C50",
+          "#508F72",
+          "#75B596",
+          "#9ADBBB",
+          "#C3FEE0"
+        ]
+      },
+      "code-tag": {
+        "role": "neutral",
+        "displayName": "Tag Green",
+        "canonical": "oklch(37.0% 0.061 178.7)",
+        "tonalRamp": [
+          "#000F0B",
+          "#042B24",
+          "#0F4A40",
+          "#33695E",
+          "#568C81",
+          "#7AB2A5",
+          "#A0D8CB",
+          "#C3FDEF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The homepage lockup \"Apache Wicket\" and the release number."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The title of every page on the photo band."
+      },
+      "section": {
+        "displayName": "Section",
+        "purpose": "Homepage and guide front-page section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h2 in reading pages and guide groups."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "h3 in reading pages and column heads."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Taglines and page subtitles in italic; preamble and definition in roman."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text at a 68ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Dates, table headers, list and rail headings in Alegreya SC."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Menu, buttons, metadata and summaries in Alegreya Sans."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Code blocks, beads and file paths in JetBrains Mono."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet-on-cloth",
+        "value": "0 1px 0 rgba(0, 0, 0, .06), 0 16px 36px -22px rgba(0, 0, 0, .55)",
+        "purpose": "The Java and markup sheets on the component-tree band."
+      },
+      {
+        "name": "sheet-on-paper",
+        "value": "0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .35)",
+        "purpose": "Dependency cards and the quick start wizard; .45 for the guide search sheet on the photograph."
+      },
+      {
+        "name": "dropdown",
+        "value": "0 1px 0 rgba(20, 36, 31, .06), 0 24px 48px -24px rgba(6, 26, 22, .55)",
+        "purpose": "Search results over the page."
+      },
+      {
+        "name": "book-cover",
+        "value": "0 1px 0 rgba(0, 0, 0, .06), 0 16px 32px -20px rgba(6, 26, 22, .5)",
+        "purpose": "Book covers; on hover a 0 0 0 3px ribbon ring is added."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The ribbon unrolling through the component tree."
+      },
+      {
+        "name": "unroll",
+        "value": "1.4s",
+        "purpose": "The one authored moment: the ribbon draws down once. Drawn at once under reduced motion."
+      },
+      {
+        "name": "state",
+        "value": ".15s",
+        "purpose": "Background, border and color changes on buttons, beads, fields and links."
+      },
+      {
+        "name": "focus-dim",
+        "value": ".2s",
+        "purpose": "Dimming the rest of the tree when a bead is lit."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "860px"
+      },
+      {
+        "name": "table-stack",
+        "value": "760px"
+      },
+      {
+        "name": "guide-head",
+        "value": "1000px"
+      },
+      {
+        "name": "rail",
+        "value": "1100px"
+      },
+      {
+        "name": "tree-list",
+        "value": "1239px"
+      },
+      {
+        "name": "mid",
+        "value": "1399px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action of a section: orange fill, ink text, square corners.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Open the quick start</a>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-btn{display:inline-block;padding:13px 18px;border-radius:2px;background:var(--ribbon);color:var(--ink);font:700 1.0625rem/1 \"Alegreya Sans\",sans-serif;text-decoration:none;transition:background-color .15s}.ds-btn:hover{background:var(--ribbon-text)}.ds-btn:focus-visible{outline:2px solid var(--ribbon-deep);outline-offset:3px}"
+    },
+    {
+      "name": "Copy Button on Snippet",
+      "kind": "button",
+      "refersTo": "code-block",
+      "description": "A small primary button inside a Maven snippet; ink when copied.",
+      "html": "<div class=\"ds-snip\"><pre>&lt;dependency&gt;\n  &lt;groupId&gt;org.apache.wicket&lt;/groupId&gt;\n  &lt;artifactId&gt;wicket-core&lt;/artifactId&gt;\n  &lt;version&gt;11.0.0&lt;/version&gt;\n&lt;/dependency&gt;</pre><button class=\"ds-copy\" type=\"button\">Copy</button></div>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-snip{position:relative;max-width:420px}.ds-snip pre{margin:0;padding:12px 14px;background:var(--code-bg);color:var(--ink);font:400 13px/1.55 \"JetBrains Mono\",ui-monospace,monospace;border-radius:2px}.ds-copy{position:absolute;top:8px;right:8px;padding:8px 12px;border:0;border-radius:2px;background:var(--ribbon);color:var(--ink);font:700 .9rem/1 \"Alegreya Sans\",sans-serif;cursor:pointer;transition:background-color .15s}.ds-copy:hover{background:var(--ribbon-text)}.ds-copy:focus-visible{outline:2px solid var(--ribbon-deep);outline-offset:3px}"
+    },
+    {
+      "name": "Beads",
+      "kind": "chip",
+      "refersTo": "bead",
+      "description": "Components on the ribbon: orange-bordered, paper at rest, orange when lit.",
+      "html": "<div class=\"ds-beads\"><span class=\"ds-bead ds-root\">OrderPage</span><button class=\"ds-bead\">message</button><button class=\"ds-bead\">order</button><button class=\"ds-bead ds-on\">shipping</button></div>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-beads{display:flex;gap:8px;padding:16px;background:var(--cloth)}.ds-bead{height:2.1em;padding:0 1ch;font:400 12px/1 \"JetBrains Mono\",ui-monospace,monospace;color:var(--ink);background:var(--paper);border:1px solid var(--ribbon);border-radius:3px;cursor:pointer;transition:background-color .15s;display:inline-flex;align-items:center}.ds-bead:hover,.ds-on,.ds-root{background:var(--ribbon)}.ds-bead:focus-visible{outline:2px solid var(--paper);outline-offset:2px}"
+    },
+    {
+      "name": "Guide Search Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A paper sheet with a small-caps label and a square field; focus turns the border burnt orange.",
+      "html": "<div class=\"ds-search\"><label class=\"ds-lab\" for=\"ds-q\">Search the guide</label><div class=\"ds-field\"><input id=\"ds-q\" type=\"search\" placeholder=\"Task, class or tag\"><kbd>/</kbd></div></div>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-search{max-width:26rem;padding:12px 14px;background:var(--paper);box-shadow:0 1px 0 rgba(20,36,31,.06),0 14px 30px -20px rgba(6,26,22,.45)}.ds-lab{display:block;margin:0 0 7px;font:500 1rem/1.2 \"Alegreya SC\",Alegreya,serif;letter-spacing:.03em;color:var(--ink-soft)}.ds-field{position:relative}.ds-field input{box-sizing:border-box;width:100%;height:44px;padding:0 44px 0 12px;background:var(--paper);border:1px solid #9FB4AC;border-radius:2px;color:var(--ink);font:400 1.0625rem \"Alegreya Sans\",sans-serif;transition:border-color .15s}.ds-field input:hover{border-color:var(--ink-soft)}.ds-field input:focus-visible{border-color:var(--ribbon-deep);outline:2px solid var(--ribbon-wash);outline-offset:0}.ds-field kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);padding:1px 7px;border:1px solid var(--ribbon);border-radius:3px;font:400 .85rem \"JetBrains Mono\",monospace;color:var(--ink)}.ds-field input:focus~kbd{visibility:hidden}"
+    },
+    {
+      "name": "Masthead Menu",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Sans menu on the photograph; the current section carries a short run of ribbon underneath.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Quick Start</a><a href=\"#\">Download</a><a class=\"ds-active\" href=\"#\">Documentation</a><a href=\"#\">Support</a><a class=\"ds-gh\" href=\"#\">GitHub</a></nav>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-nav{display:flex;gap:26px;align-items:center;padding:20px 24px;background:linear-gradient(180deg,rgba(246,248,247,.85),rgba(246,248,247,.6));font:500 1.0625rem/1 \"Alegreya Sans\",sans-serif}.ds-nav a{padding:8px 0;color:var(--ink);text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1.5px;text-underline-offset:.22em}.ds-nav a:hover{text-decoration-color:var(--ribbon-deep)}.ds-nav a.ds-active{text-decoration-color:var(--ribbon);text-decoration-thickness:4px;text-underline-offset:.42em}.ds-nav a:focus-visible{outline:2px solid var(--ribbon-deep);outline-offset:3px}.ds-gh{padding-left:22px!important;border-left:1px solid rgba(20,36,31,.22)}"
+    },
+    {
+      "name": "Reading Rail",
+      "kind": "nav",
+      "refersTo": "bead-lit",
+      "description": "The page sections hang from the ribbon with folded elbows; the section in view is the lit bead.",
+      "html": "<nav class=\"ds-rail\"><p class=\"ds-rt\">On this page</p><ul><li><a href=\"#\">A page outlives the request</a></li><li><a class=\"ds-cur\" href=\"#\">The IModel interface</a></li><li><a href=\"#\">Between requests</a></li></ul></nav>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-rail{width:15rem;font:400 1rem/1.3 \"Alegreya Sans\",sans-serif;--rw:5px;--mid:17px}.ds-rt{position:relative;margin:0;padding:0 0 10px 24px;font:500 1rem/1.2 \"Alegreya SC\",Alegreya,serif;letter-spacing:.04em;color:var(--ribbon-deep);border-left:var(--rw) solid var(--ribbon)}.ds-rail ul{list-style:none;margin:0;padding:0}.ds-rail li{position:relative;padding:0 0 0 24px}.ds-rail li::before{content:\"\";position:absolute;left:0;top:0;width:14px;height:var(--mid);border-left:var(--rw) solid var(--ribbon);border-bottom:var(--rw) solid var(--ribbon);border-bottom-left-radius:2px}.ds-rail li:not(:last-child)::after{content:\"\";position:absolute;left:0;top:calc(var(--mid) - 4px);bottom:0;border-left:var(--rw) solid var(--ribbon)}.ds-rail a{display:inline-block;margin:4px 0;padding:4px 7px 5px;border-radius:3px;color:var(--ink-soft);text-decoration:none;transition:background-color .15s,color .15s}.ds-rail a:hover{color:var(--ink);background:var(--ribbon-wash)}.ds-rail a.ds-cur{color:var(--ink);background:var(--ribbon)}.ds-rail a:focus-visible{outline:2px solid var(--ribbon-deep);outline-offset:3px}"
+    },
+    {
+      "name": "Dependency Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "A paper sheet on the tint field: serif version, small-caps LTS, the snippet below.",
+      "html": "<div class=\"ds-tint\"><div class=\"ds-dep\"><p class=\"ds-dh\"><span class=\"ds-v\">10.11.0</span><span class=\"ds-lts\">LTS</span><span class=\"ds-role\">for production · Java 17</span></p><pre>&lt;artifactId&gt;wicket-core&lt;/artifactId&gt;</pre></div></div>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-tint{padding:24px;background:var(--paper-tint)}.ds-dep{max-width:420px;padding:16px 18px 18px;background:var(--paper);box-shadow:0 1px 0 rgba(20,36,31,.06),0 14px 30px -20px rgba(6,26,22,.35)}.ds-dh{margin:0 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.ds-v{font:700 1.6rem/1 Alegreya,Georgia,serif;letter-spacing:-.01em;color:var(--ink)}.ds-lts{font:500 1.05rem/1 \"Alegreya SC\",Alegreya,serif;color:var(--ribbon-deep);letter-spacing:.06em}.ds-role{margin-left:auto;font:400 1rem/1.2 \"Alegreya Sans\",sans-serif;color:var(--ink-soft)}.ds-dep pre{margin:0;padding:12px 14px;background:var(--code-bg);color:var(--ink);font:400 13px/1.55 \"JetBrains Mono\",monospace}"
+    },
+    {
+      "name": "Ruled List with Dates",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "An ink rule above, hairlines between, dates in burnt-orange small caps, titles in the serif.",
+      "html": "<ul class=\"ds-news\"><li><time>11 Sep 2026</time><a href=\"#\">A new release cadence for Apache Wicket</a></li><li><time>30 Aug 2026</time><a href=\"#\">Apache Wicket 9.24.0 released</a></li></ul>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-news{list-style:none;margin:0;padding:0;max-width:640px;border-top:2px solid var(--ink)}.ds-news li{display:grid;grid-template-columns:128px 1fr;gap:20px;padding:12px 0;border-bottom:1px solid var(--rule)}.ds-news time{font:500 1.02rem/1.45 \"Alegreya SC\",Alegreya,serif;color:var(--ribbon-deep);letter-spacing:.03em;font-variant-numeric:tabular-nums}.ds-news a{font:700 1.2rem/1.3 Alegreya,Georgia,serif;color:var(--ink);text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1.5px;text-underline-offset:.22em}.ds-news a:hover{text-decoration-color:var(--ribbon-deep)}.ds-news a:focus-visible{outline:2px solid var(--ribbon-deep);outline-offset:3px}"
+    },
+    {
+      "name": "Footer",
+      "kind": "custom",
+      "refersTo": "footer",
+      "description": "Bookcloth field, lichen text, paper links with orange underlines, the ASF logo on a paper tile.",
+      "html": "<footer class=\"ds-foot\"><span class=\"ds-tile\">ASF</span><div><p>Apache Wicket is a project of The Apache Software Foundation.</p><a href=\"#\">License</a> <a href=\"#\">Security</a> <a href=\"#\">Privacy</a></div></footer>",
+      "css": ":host { --ribbon: #EE7F2D; --ribbon-text: #F39A55; --ribbon-deep: #9A430A; --ribbon-wash: rgba(238,127,45,.16); --cloth: #103C35; --muted: #A8C7BD; --paper: #F6F8F7; --paper-tint: #E9F0ED; --code-bg: #E4ECE8; --rule: #CFDAD5; --ink: #14241F; --ink-soft: #4A5E57; } .ds-foot{display:grid;grid-template-columns:auto 1fr;gap:20px 48px;padding:40px 56px 48px;background:var(--cloth);color:var(--muted);font:400 1rem/1.5 \"Alegreya Sans\",sans-serif}.ds-foot p{margin:0 0 14px;color:var(--paper)}.ds-foot a{margin-right:24px;color:var(--paper);text-decoration:underline;text-decoration-color:var(--ribbon)}.ds-foot a:focus-visible{outline:2px solid var(--ribbon-text);outline-offset:3px}.ds-tile{align-self:start;padding:8px 12px;background:var(--paper);color:#4B2A6A;font:700 1.4rem Alegreya,serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Ribbon Through the Tree",
+    "overview": "A Wicket page is a tree of Java components that mirrors its HTML, and the site is drawn the same way: one orange ribbon runs from the seasonal photograph at the top of a page down into the component tree, into the reading rail, into lists of guide pages, folding at a square elbow into every child. The ribbon is the only loud element. Everything else is cool paper, bookcloth green and ink, set in a humanist book face.\n\nEvery page opens on a photograph of the current season (or a dated occasion) under a cool paper veil that only thickens where text sits. The homepage hero carries the lockup on it; every other page carries its title band on it. Below the photograph the page turns to paper for reading, with bookcloth green fields for the homepage component tree and the footer, and a pale green tint for alternating sections and asides. The density is that of a well-set book: generous measure, ink rules above lists and tables, hairlines between rows, few boxes.\n\nThe world refuses the framework-homepage default of a headline, a code panel and three feature cards, and it refuses cream or warm paper.",
+    "keyCharacteristics": [
+      "One orange ribbon, drawn as a continuous band with square folded elbows, connecting parent to child wherever there is a hierarchy.",
+      "A seasonal photograph behind the masthead and title on every page, under a paper veil.",
+      "Bookcloth green fields for the tree and the footer; cool paper and a pale green tint for reading.",
+      "Alegreya for headings and body, Alegreya SC for dates and small labels, Alegreya Sans for interface text, JetBrains Mono for code.",
+      "Square corners (2px), beads at 3px, ink rules (2px) over lists and tables, hairlines (1px) between rows."
+    ],
+    "rules": [
+      {
+        "name": "The One Ribbon Rule",
+        "body": "Wicket orange is a ribbon, a rule or the one action on a screen. It is never a fill for a panel, a heading color or a decorative wash beyond the light hover tint (`rgba(238, 127, 45, .16)`).",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Oranges Rule",
+        "body": "Text in orange uses `ribbon-deep` on paper and `ribbon-text` on cloth. The bright `ribbon` carries ink text when it is a fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cool Paper Rule",
+        "body": "The ground is cool paper with a green cast. No cream, no warm white, no pure white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Small Caps Rule",
+        "body": "Dates and labels are set in Alegreya SC in `ribbon-deep` or `ink-soft`. A label names the list or table directly below it; it is not a tag line above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lining Numbers Rule",
+        "body": "Version numbers in the serif use lining figures; dates in lists use tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper Veil Rule",
+        "body": "Text on the photograph sits under a cool paper scrim that is strongest at the masthead and the text corner and clear elsewhere. A dark photo gets the stronger veil; a small photo is shown softened rather than stretched sharp.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Low Sheet Rule",
+        "body": "Shadows are long, soft and negative-spread, so a sheet reads as paper resting on a ground. No hard offset shadows, no card stacks.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** draw hierarchy with the ribbon: a left run and a folded elbow into each child, in `ribbon` at 5 to 7px.",
+      "**Do** open lists, tables and indexes with a 2px ink rule and separate rows with 1px `rule` hairlines.",
+      "**Do** set dates and labels in Alegreya SC, in `ribbon-deep` or `ink-soft`.",
+      "**Do** put the season's photograph behind the title of every new page, through the shared page head.",
+      "**Do** keep corners at 2px, and 3px for beads.",
+      "**Do** use `ribbon-deep` for orange text on paper and `ribbon-text` on cloth."
+    ],
+    "donts": [
+      "**Don't** fill panels, headings or large areas with orange; it is the ribbon, a rule or the one action.",
+      "**Don't** use cream, warm white or pure white as a ground.",
+      "**Don't** build feature-card grids; mechanisms are columns of text with their code, on shared rows.",
+      "**Don't** use hard offset shadows or stacked cards; sheets rest on the ground with the low sheet shadow.",
+      "**Don't** put kickers or eyebrow labels above headings; small caps head the list or table below them.",
+      "**Don't** use icon fonts or glyph icons; the Wicket mark, the ASF logo, the GitHub mark and the select chevron are the only drawn images in the interface.",
+      "**Don't** round corners beyond 3px."
+    ]
+  }
+}
