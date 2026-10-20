@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T10:09:56+00:00",
+  "title": "Design System: Apache Wicket",
+  "extensions": {
+    "colorMeta": {
+      "wicket-orange": {
+        "role": "primary",
+        "displayName": "Wicket Orange",
+        "canonical": "oklch(77.3% 0.168 62.2)",
+        "tonalRamp": [
+          "#2b1600",
+          "#4a2700",
+          "#6b3a00",
+          "#8f4f00",
+          "#b46500",
+          "#da7d0a",
+          "#ff9925",
+          "#ffd09a"
+        ]
+      },
+      "orange-dim": {
+        "role": "primary",
+        "displayName": "Orange Dim",
+        "canonical": "rgba(255, 153, 37, .5)",
+        "tonalRamp": [
+          "#2b1600",
+          "#4a2700",
+          "#6b3a00",
+          "#8f4f00",
+          "#b46500",
+          "#da7d0a",
+          "#ff9925",
+          "#ffd09a"
+        ]
+      },
+      "orange-wash": {
+        "role": "primary",
+        "displayName": "Orange Wash",
+        "canonical": "rgba(255, 153, 37, .12)",
+        "tonalRamp": [
+          "#2b1600",
+          "#4a2700",
+          "#6b3a00",
+          "#8f4f00",
+          "#b46500",
+          "#da7d0a",
+          "#ff9925",
+          "#ffd09a"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "oklch(15.4% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "oklch(19.1% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Surface",
+        "canonical": "oklch(22.2% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(26.9% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "oklch(34.8% 0.003 106.6)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(96.3% 0.004 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(81.6% 0.007 106.6)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "oklch(63.9% 0.007 106.6)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "code-ink": {
+        "role": "neutral",
+        "displayName": "Code Ink",
+        "canonical": "oklch(87.5% 0.007 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "asf-tile": {
+        "role": "neutral",
+        "displayName": "ASF Tile",
+        "canonical": "oklch(97.2% 0.004 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The homepage lockup only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Homepage section heads and the page title band."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h1/h2 inside reading pages."
+      },
+      "step-title": {
+        "displayName": "Step Title",
+        "purpose": "Reveal step headings, after a mono step number."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "h3 in reading pages, release highlights, news titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Page sub-title; the homepage definition and preamble are its larger and smaller siblings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text; line-height 1.7 and 68ch in reading pages."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Metadata, captions, board footers."
+      },
+      "label-mono": {
+        "displayName": "Label Mono",
+        "purpose": "Rail title, file names, column and group labels, dates."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Code blocks; homepage reveal code runs at clamp(12px, .9vw, 13px)."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Large numbers in release-highlight fact rows."
+      }
+    },
+    "shadows": [
+      {
+        "name": "stage-float",
+        "value": "0 30px 80px -40px rgba(0, 0, 0, .9)",
+        "purpose": "Only under the sticky reveal stage."
+      },
+      {
+        "name": "cover",
+        "value": "0 0 0 1px #3a3a38, 0 18px 40px -24px rgba(0, 0, 0, .9)",
+        "purpose": "Book covers; on hover the ring becomes 2px Wicket orange."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The house easing for movement: panes, node growth, line wipes, button press."
+      },
+      {
+        "name": "state-color",
+        "value": ".2s",
+        "purpose": "Colour and border changes on hover (links, nav, pills, buttons)."
+      },
+      {
+        "name": "step-focus",
+        "value": ".45s var(--ease)",
+        "purpose": "Reveal step text brightening as it becomes active."
+      },
+      {
+        "name": "node-grow",
+        "value": "grid-template-rows .6s var(--ease), opacity .5s ease-out .12s",
+        "purpose": "Tree nodes growing into the stage tree."
+      },
+      {
+        "name": "pane-in",
+        "value": "opacity .45s ease-out .08s, transform .7s var(--ease) .08s (from translateY(12px))",
+        "purpose": "Code pane entering the stage."
+      },
+      {
+        "name": "line-wipe",
+        "value": "background-size .8s var(--ease), delay .18s + 45ms per line",
+        "purpose": "Orange wash wiping across newly added code lines."
+      },
+      {
+        "name": "press",
+        "value": "transform .15s var(--ease), translateY(1px)",
+        "purpose": "Active state of light buttons."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all transitions .01ms, animations off",
+        "purpose": "Under prefers-reduced-motion the reveal falls back to its static layout."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "600px"
+      },
+      {
+        "name": "table-reflow",
+        "value": "760px"
+      },
+      {
+        "name": "head-stack",
+        "value": "860px"
+      },
+      {
+        "name": "nav-wrap",
+        "value": "999px"
+      },
+      {
+        "name": "rail",
+        "value": "1100px"
+      },
+      {
+        "name": "reveal-stage",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The light primary action: ink fill, ground text, white on hover.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Download Wicket</a>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:10px;background:var(--ink);color:#0c0c0c;font:700 1rem/1.2 var(--sans);text-decoration:none;transition:background-color .2s,transform .15s var(--ease)} .ds-btn:hover{background:#fff} .ds-btn:active{transform:translateY(1px)} .ds-btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}"
+    },
+    {
+      "name": "Link",
+      "kind": "custom",
+      "refersTo": "wicket-orange",
+      "description": "Ink text with the 2px orange underline; orange on hover.",
+      "html": "<p class=\"ds-p\">Read the <a class=\"ds-a\" href=\"#\">migration guide</a> before upgrading.</p>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-p{background:var(--bg);color:var(--ink-2);font:400 1.0625rem/1.6 var(--sans);padding:16px} .ds-a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:.28em;transition:color .2s} .ds-a:hover{color:var(--orange)} .ds-a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Masthead (sub page)",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Mark and wordmark at the left, menu at the right, current section underlined in orange.",
+      "html": "<header class=\"ds-mh\"><a class=\"ds-brand\" href=\"#\"><svg width=\"28\" height=\"28\" aria-hidden=\"true\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"199 0 64 64\">\n  <title>Apache Wicket</title>\n  \n  <circle cx=\"231\" cy=\"32\" r=\"32\" fill=\"#ff9925\"/>\n  <path d=\"m 199,0 m 20,20 v 24 h 8 8 8 V 20 l -8,16 -4,-8 -4,8 z\" fill=\"#ffffff\"/>\n</svg>Apache Wicket</a><nav class=\"ds-nav\"><a href=\"#\">Quick Start</a><a href=\"#\" class=\"is-active\">Download</a><a href=\"#\">Documentation</a><a href=\"#\">Support</a></nav></header>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-mh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 40px;padding:22px 24px;background:var(--bg)} .ds-brand{display:inline-flex;align-items:center;gap:11px;color:var(--ink);text-decoration:none;font:800 1.3125rem/1 var(--sans);letter-spacing:-.035em} .ds-nav{display:flex;gap:6px 24px;font:500 .9375rem var(--sans)} .ds-nav a{color:var(--ink-2);text-decoration:none;padding:6px 0;transition:color .2s} .ds-nav a:hover{color:var(--ink)} .ds-nav a.is-active{color:var(--ink);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:.5em} .ds-nav a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Install Box",
+      "kind": "custom",
+      "refersTo": "install-box",
+      "description": "Hero install box: mode and release-line pills, build-tool select, one mono command and a Copy button.",
+      "html": "<div class=\"ds-cmd\"><div class=\"ds-ctl\"><div class=\"ds-seg\"><button aria-checked=\"true\">Add to project</button><button aria-checked=\"false\">New project</button></div><div class=\"ds-seg ds-mono\"><button aria-checked=\"true\">11.0</button><button aria-checked=\"false\">10.11 <abbr>LTS</abbr></button></div><select class=\"ds-sel\"><option>Maven</option><option>Gradle</option></select></div><div class=\"ds-row\"><code>org.apache.wicket:wicket-core:11.0.0</code><button class=\"ds-copy\">Copy</button></div></div>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-cmd{display:inline-grid;gap:10px;padding:10px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:13px;font-family:var(--sans)} .ds-ctl{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between} .ds-seg{display:inline-flex;gap:4px;padding:3px;border:1px solid var(--line-2);border-radius:999px} .ds-seg button{border:1px solid transparent;border-radius:999px;background:transparent;color:var(--ink-2);font:500 .875rem/1 var(--sans);padding:7px 12px;cursor:pointer;transition:color .2s,border-color .2s} .ds-mono button{font-family:var(--mono)} .ds-seg abbr{font-family:var(--sans);font-size:.8em;text-decoration:none} .ds-seg button:hover{color:var(--ink)} .ds-seg button[aria-checked=true]{border-color:var(--orange);color:var(--ink)} .ds-seg button:focus-visible,.ds-sel:focus-visible,.ds-copy:focus-visible{outline:2px solid var(--orange);outline-offset:3px} .ds-sel{appearance:none;background:var(--bg);border:1px solid var(--line-2);border-radius:999px;color:var(--ink);font:500 .875rem/1 var(--sans);padding:9px 32px 9px 14px} .ds-sel:hover{border-color:var(--orange)} .ds-row{display:flex;align-items:center;gap:14px;padding-left:10px} .ds-row code{flex:1;font:400 .9375rem var(--mono);color:var(--ink)} .ds-copy{padding:10px 15px;border:0;border-radius:9px;background:var(--ink);color:#0c0c0c;font:600 .875rem/1 var(--sans);cursor:pointer;transition:background-color .2s} .ds-copy:hover{background:#fff}"
+    },
+    {
+      "name": "Component Tree",
+      "kind": "custom",
+      "refersTo": "tree-row-active",
+      "description": "Nodes on orange elbow connectors; the node a step adds is orange on the orange wash.",
+      "html": "<ul class=\"ds-tree\"><li class=\"n root\"><span class=\"row\"><code class=\"nid\">OrderPage</code><span class=\"t\">WebPage</span></span><ul><li class=\"n\"><span class=\"row\"><code class=\"nid\">\"message\"</code><span class=\"t\">Label</span><code class=\"tag\">&lt;p&gt;</code></span></li><li class=\"n on last\"><span class=\"row\"><code class=\"nid\">\"order\"</code><span class=\"t\">Form</span><code class=\"tag\">&lt;form&gt;</code></span></li></ul></li></ul>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-tree,.ds-tree ul{list-style:none;margin:0;padding:0} .ds-tree{--rh:30px;--ind:20px;font:400 .875rem var(--sans);background:var(--bg-2);padding:16px;color:var(--ink-3)} .ds-tree li{position:relative} .ds-tree ul>li{padding-left:var(--ind)} .ds-tree ul>li::before,.ds-tree ul>li::after{content:'';position:absolute;left:6px} .ds-tree ul>li::before{top:0;height:calc(var(--rh)/2);width:calc(var(--ind) - 10px);border-left:1px solid var(--orange-dim);border-bottom:1px solid var(--orange-dim);border-bottom-left-radius:6px} .ds-tree ul>li::after{top:calc(var(--rh)/2);bottom:0;border-left:1px solid var(--orange-dim)} .ds-tree li.last::after{display:none} .ds-tree li.on::before{border-color:var(--orange)} .ds-tree .row{display:flex;align-items:center;gap:9px;height:var(--rh);padding:0 8px 0 6px;margin-left:-6px;border-radius:6px;white-space:nowrap} .ds-tree .nid{font-family:var(--mono);color:var(--ink)} .ds-tree .root>.row .nid{font:700 1.05em var(--sans)} .ds-tree .tag{margin-left:auto;padding-left:12px;font-family:var(--mono)} .ds-tree li.on>.row{background:linear-gradient(90deg,var(--orange-wash),rgba(255,153,37,.02) 85%)} .ds-tree li.on>.row .nid{color:var(--orange)}"
+    },
+    {
+      "name": "Reading Rail",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Table of contents on the component-tree elbows; the section in view is marked like an added node.",
+      "html": "<nav class=\"ds-rail\"><p>On this page</p><ul><li><a href=\"#\">Release lines</a></li><li><a href=\"#\" class=\"is-current\">Upgrade paths</a></li><li><a href=\"#\">Release Policy</a></li></ul></nav>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-rail{background:var(--bg);padding:16px;font:400 .9375rem var(--sans)} .ds-rail p{margin:0 0 12px;font:500 .8125rem var(--mono);color:var(--ink-3)} .ds-rail ul{list-style:none;margin:0;padding:0} .ds-rail li{position:relative;padding-left:18px} .ds-rail li::before,.ds-rail li::after{content:'';position:absolute;left:4px} .ds-rail li::before{top:0;height:15px;width:9px;border-left:1px solid var(--orange-dim);border-bottom:1px solid var(--orange-dim);border-bottom-left-radius:6px} .ds-rail li::after{top:15px;bottom:0;border-left:1px solid var(--orange-dim)} .ds-rail li:last-child::after{display:none} .ds-rail a{display:block;padding:5px 8px 5px 6px;border-radius:6px;color:var(--ink-3);line-height:20px;text-decoration:none;transition:color .2s} .ds-rail a:hover{color:var(--ink)} .ds-rail a.is-current{color:var(--orange);background:linear-gradient(90deg,var(--orange-wash),rgba(255,153,37,.02) 85%)} .ds-rail li:has(>a.is-current)::before{border-color:var(--orange)} .ds-rail a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}"
+    },
+    {
+      "name": "Compact Release Board",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Homepage release board: grouped rows, mono versions, outlined LTS tag, right-aligned dates.",
+      "html": "<div class=\"ds-board\"><h3>Release lines</h3><table><tbody><tr class=\"g\"><th colspan=\"3\">In service</th></tr><tr><th>Wicket 11 <span class=\"v\">11.0.0</span></th><td></td><td class=\"d\">since <span>Oct 2026</span></td></tr><tr><th>Wicket 10 <span class=\"v\">10.11.0</span><abbr>LTS</abbr></th><td></td><td class=\"d\">until <span>Jul 2027</span></td></tr></tbody></table><p class=\"all\"><a href=\"#\">All release lines</a></p></div>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-board{padding:22px 24px 20px;border:1px solid var(--line);border-radius:16px;background:var(--bg-2);font:400 .9063rem var(--sans);color:var(--ink-2)} .ds-board h3{margin:0;color:var(--ink);font:700 1rem var(--sans)} .ds-board table{width:100%;border-collapse:collapse} .ds-board th,.ds-board td{padding:6px 0;text-align:left;font-weight:400} .ds-board th{color:var(--ink)} .ds-board .g th{padding:10px 0 6px;font-size:.8125rem;font-weight:500;color:var(--ink-3);border-bottom:1px solid var(--line)} .ds-board .v{font-family:var(--mono);font-size:.95em} .ds-board abbr{font-size:.72rem;font-weight:500;color:var(--ink-2);border:1px solid var(--line-2);border-radius:4px;padding:1px 5px;margin-left:4px;text-decoration:none} .ds-board .d{text-align:right} .ds-board .d span{font-family:var(--mono);color:var(--ink)} .ds-board .all{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);font-size:.875rem} .ds-board a{color:var(--ink);text-decoration-color:var(--orange);text-decoration-thickness:2px;text-underline-offset:.28em} .ds-board a:hover{color:var(--orange)}"
+    },
+    {
+      "name": "Code Block",
+      "kind": "card",
+      "refersTo": "code-block",
+      "description": "Grey-highlighted code on a surface panel; added lines carry the orange wash and bar.",
+      "html": "<div class=\"ds-code\"><p class=\"f\">OrderPage.java</p><pre><code><span class=\"ln\"><span class=\"k\">public class</span> OrderPage <span class=\"k\">extends</span> WebPage {</span><span class=\"ln new\">  add(<span class=\"k\">new</span> Label(<span class=\"s\">\"message\"</span>, model));</span><span class=\"ln\">}</span></code></pre></div>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-code{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:18px 0} .ds-code .f{margin:0 0 8px;padding:0 16px;font:400 .8125rem var(--mono);color:var(--ink-2)} .ds-code pre{margin:0;font:400 .875rem/1.7 var(--mono);color:#d6d6d1} .ds-code .ln{display:block;position:relative;padding:0 16px} .ds-code .ln.new{background:linear-gradient(90deg,var(--orange-wash),rgba(255,153,37,.03))} .ds-code .ln.new::before{content:'';position:absolute;left:0;top:3px;bottom:3px;width:2px;border-radius:2px;background:var(--orange)} .ds-code .k{color:#9d9d98} .ds-code .s{color:#ecece8;font-weight:500}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Quick start wizard field: ground fill, strong-rule border, orange border on focus.",
+      "html": "<label class=\"ds-lbl\">Group id<input class=\"ds-in\" value=\"com.mycompany\"></label>",
+      "css": ":host{--bg:#0c0c0c;--bg-2:#141414;--bg-3:#1b1b1b;--line:#262626;--line-2:#3a3a38;--ink:#f3f3f0;--ink-2:#c3c3be;--ink-3:#8c8c87;--orange:#ff9925;--orange-dim:rgba(255,153,37,.5);--orange-wash:rgba(255,153,37,.12);--sans:'Schibsted Grotesk',system-ui,sans-serif;--mono:'Red Hat Mono',ui-monospace,Menlo,monospace;--ease:cubic-bezier(.16,1,.3,1)} .ds-lbl{display:block;padding:20px;background:var(--bg-2);font:500 .875rem var(--sans);color:var(--ink-2)} .ds-in{display:block;width:100%;margin-top:7px;padding:10px 12px;border:1px solid var(--line-2);border-radius:9px;background:var(--bg);color:var(--ink);font:400 .9375rem/1.4 var(--mono);transition:border-color .2s} .ds-in:hover{border-color:#55554f} .ds-in:focus-visible{border-color:var(--orange);outline:0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Component Tree, Revealed",
+    "overview": "The site is a dark, code-led reading room in which every surface explains one idea: a Wicket page is a tree of components. The homepage builds that tree in front of the reader. Seven numbered steps each add a few lines of real Java or HTML, and a sticky stage beside them grows one branch of the tree per step, with the new lines and the new node lit in orange. The rest of the site reuses that tree as its wayfinding: the reading rail on sub pages hangs the page's sections on the same orange elbow lines, and the section in view lights up exactly like a node a reveal step adds.\n\nThe world is monochrome. A near-black ground carries warm off-white and grey ink in three steps, separated by one-pixel rules rather than boxes or shadows. Wicket orange, the colour of the registered mark, is the only hue on any page, and it is spent on meaning: the mark, the tree line, the active or checked state, and the underline of every link. Type is one grotesque at heavy weights for headings and calm regular weight for reading, with a monospace for code, versions, dates and small structural labels. Density is generous on the homepage (tall section spacing, display-sized lockup) and tight and tabular on reference pages (release board, upgrade paths, news archive).\n\nThe structure follows vercel.com/eve: a centred hero with one install box, then sections that each open with a large two-column head and continue with code, facts or a ruled list. The site stays Markdown-driven: furniture is styled from plain Markdown output and data files, so a volunteer edits text and data, not markup.",
+    "keyCharacteristics": [
+      "Near-black ground, three steps of warm grey ink, one-pixel rules for structure.",
+      "Wicket orange as the single accent, carrying meaning only (mark, tree line, active state, link underline).",
+      "The component tree with orange elbow connectors as the recurring signature, on the homepage and in every reading rail.",
+      "Heavy, tightly tracked Schibsted Grotesk headings; Red Hat Mono for code, versions, dates and structural labels.",
+      "Light primary buttons (ink on dark), never orange buttons.",
+      "Motion is a reading aid: steps brighten, nodes grow in, new code lines wipe in; all of it disappears under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The Orange Is Meaning Rule",
+        "body": "Orange appears only on the mark, the tree line, an active, checked or current state, a focus ring, and the link underline. No orange fills, orange headings, orange backgrounds or orange buttons. Test: every orange pixel on a screen must answer \"this is Wicket\" or \"this is where you are / what is selected / where you can go\".",
+        "section": "colors"
+      },
+      {
+        "name": "The Grey Syntax Rule",
+        "body": "Code is highlighted in greys only (keywords and tags mid-grey, strings near-white, comments dim). Orange in code marks a line added by the current step, never a token type.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Button Rule",
+        "body": "The primary action is an ink-filled button with ground-coloured text, turning white on hover. Orange is never a button fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heavy Heading Rule",
+        "body": "Every heading is Schibsted Grotesk at 700 or 800 with negative tracking proportional to size (-0.04em at display down to -0.01em at small heads), balanced wrapping. No light or thin heading weights.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Machine Rule",
+        "body": "Monospace is for code and machine values (versions, dates, file names, step numbers) and for small structural labels. Prose never runs in mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rule-Not-Box Rule",
+        "body": "Lists, tables, facts and news entries are separated by one-pixel top rules in Rule, not by cards. A surface panel is reserved for content that is code, data or a control.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** spend orange only on the mark, the tree line, active/checked/current states, the focus ring and link underlines.",
+      "**Do** separate list items, table rows and facts with one-pixel Rule lines; keep surface panels for code, data and controls.",
+      "**Do** reuse the component-tree elbow (one pixel, Orange Dim, 6px corner, full orange when active) for any new hierarchical wayfinding.",
+      "**Do** mark a current item the way the reveal marks a new node: orange text on the Orange Wash gradient, full-orange connector.",
+      "**Do** set versions, dates, file names and step numbers in Red Hat Mono.",
+      "**Do** keep every animated reveal readable without it: under reduced motion, without JavaScript and below 1000px every step shows its own tree and code.",
+      "**Do** drive release-dependent content (install box, release boards, strip) from `_data/` and `_config.yml`, never hard-coded versions in templates.",
+      "**Do** keep the registered orange-circle mark unchanged and the ASF logo on its light tile."
+    ],
+    "donts": [
+      "**Don't** fill buttons, backgrounds or headings with orange, or introduce a second hue.",
+      "**Don't** colour syntax tokens; code highlighting stays grey, with orange only for lines added by the current step.",
+      "**Don't** wrap lists of links or facts in cards; use ruled rows.",
+      "**Don't** add shadows beyond the stage float and the book cover; depth is tonal.",
+      "**Don't** use icon fonts; icons are inline SVG (the leftover Font Awesome elements in old Markdown are hidden).",
+      "**Don't** set headings below weight 700 or run prose in monospace."
+    ]
+  }
+}
