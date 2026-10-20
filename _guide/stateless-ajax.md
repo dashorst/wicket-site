@@ -10,7 +10,7 @@ order: 60
 source: [ajax/ajax_7.adoc]
 ---
 
-Use this when a page has to stay stateless, for example a login page or a public landing page, and still uses Ajax. By default an Ajax component or behavior makes its page stateful, because its callback URL points to a page instance that Wicket must keep. A stateless Ajax callback recreates the page from its URL instead. [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains the difference.
+Use this when a page has to stay stateless, for example a login page or a public landing page, and still uses Ajax. By default an Ajax component or behavior makes its page stateful, because its callback URL points to a page instance that Wicket must keep. A stateless Ajax callback recreates the page from its URL instead. [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains the difference.
 
 ## Make an Ajax component stateless
 
@@ -37,7 +37,7 @@ add(new AjaxFallbackLink<Void>("increment") {
 });
 ```
 
-Forms on a stateless page have to be stateless too. Put the Ajax submit components in a `StatelessForm`; see [Build a stateless form]({{ site.baseurl }}/guide/stateless-forms.html).
+Forms on a stateless page have to be stateless too. Put the Ajax submit components in a `StatelessForm`; see [Build a stateless form]({{ site.baseurl }}/docs/stateless-forms.html).
 
 ## Make an Ajax behavior stateless
 
@@ -70,4 +70,4 @@ or set it in Java with `setMarkupId("counter")` together with `setOutputMarkupId
 
 ## Keep the state in the URL
 
-A stateless callback never sees the fields of the previous page instance: the instance is new. Keep what the page needs in its page parameters, as in the counter example above, or in the session; see [Keep data in the session]({{ site.baseurl }}/guide/use-session.html). To check that the page really stays stateless, see [Keep a page stateless]({{ site.baseurl }}/guide/keep-stateless.html).
+A stateless callback never sees the fields of the previous page instance: the instance is new. Keep what the page needs in its page parameters, as in the counter example above, or in the session; see [Keep data in the session]({{ site.baseurl }}/docs/use-session.html). To check that the page really stays stateless, see [Keep a page stateless]({{ site.baseurl }}/docs/keep-stateless.html).

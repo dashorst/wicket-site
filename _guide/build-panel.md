@@ -36,7 +36,7 @@ public class AddressPanel extends GenericPanel<Address> {
 }
 ```
 
-`getModel().map(...)` derives a model for each field, so the labels always show the current address. See [Read and write data with lambda models]({{ site.baseurl }}/guide/lambda-models.html).
+`getModel().map(...)` derives a model for each field, so the labels always show the current address. See [Read and write data with lambda models]({{ site.baseurl }}/docs/lambda-models.html).
 
 ## Write the panel's markup
 
@@ -107,10 +107,10 @@ public void renderHead(IHeaderResponse response) {
 }
 ```
 
-Wicket adds the stylesheet once, however many panels are on the page. For a few lines you can also put a `<style>` inside `<wicket:head>` in the panel's markup file. See [Add CSS and JavaScript to a page]({{ site.baseurl }}/guide/add-css-javascript.html).
+Wicket adds the stylesheet once, however many panels are on the page. For a few lines you can also put a `<style>` inside `<wicket:head>` in the panel's markup file. See [Add CSS and JavaScript to a page]({{ site.baseurl }}/docs/add-css-javascript.html).
 
 ## Extend a panel
 
-A panel can extend another panel and its markup, as pages do. Put `<wicket:child/>` in the base panel's markup inside `<wicket:panel>`, and the subclass's markup in `<wicket:extend>`. See [Markup inheritance]({{ site.baseurl }}/guide/markup-inheritance.html).
+A panel can extend another panel and its markup, as pages do. Put `<wicket:child/>` in the base panel's markup inside `<wicket:panel>`, and the subclass's markup in `<wicket:extend>`. See [Markup inheritance]({{ site.baseurl }}/docs/markup-inheritance.html).
 
-For a small block of markup that only one page needs, a [fragment]({{ site.baseurl }}/guide/use-fragments.html) saves you the class and the file.
+For a small block of markup that only one page needs, a [fragment]({{ site.baseurl }}/docs/use-fragments.html) saves you the class and the file.

@@ -45,7 +45,7 @@ form.add(new CheckBoxMultipleChoice<>("toppings",
 <div wicket:id="toppings"></div>
 ```
 
-For objects, pass an `IChoiceRenderer` as fourth argument, as for a [`DropDownChoice`]({{ site.baseurl }}/guide/dropdown-choice.html#show-objects-with-a-choice-renderer).
+For objects, pass an `IChoiceRenderer` as fourth argument, as for a [`DropDownChoice`]({{ site.baseurl }}/docs/dropdown-choice.html#show-objects-with-a-choice-renderer).
 
 ## Let the user pick one option
 
@@ -135,4 +135,4 @@ deliveryChoice.add(AjaxFormChoiceComponentUpdatingBehavior.onUpdateChoice(
     target -> target.add(totalPrice)));
 ```
 
-For a single `CheckBox`, use `AjaxFormComponentUpdatingBehavior` on the `change` event, or an `AjaxCheckBox`. See [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html).
+For a single `CheckBox`, use `AjaxFormComponentUpdatingBehavior` on the `change` event, or an `AjaxCheckBox`. See [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html).

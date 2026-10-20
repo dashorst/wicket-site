@@ -10,7 +10,7 @@ order: 40
 source: [security/security_5.adoc]
 ---
 
-You need this when a page on another site must not be able to make your users click a link, submit a form or fire an Ajax call in your application. Browsers send your session cookie along with such forged requests, so the request has to be checked for where it came from. [How Wicket keeps applications secure]({{ site.baseurl }}/guide/security-model.html#cross-site-request-forgery) explains what stateful pages and encrypted URLs already do against it.
+You need this when a page on another site must not be able to make your users click a link, submit a form or fire an Ajax call in your application. Browsers send your session cookie along with such forged requests, so the request has to be checked for where it came from. [How Wicket keeps applications secure]({{ site.baseurl }}/docs/security-model.html#cross-site-request-forgery) explains what stateful pages and encrypted URLs already do against it.
 
 ## Register the listener
 
@@ -111,7 +111,7 @@ tester.addRequestHeader(FetchMetadataResourceIsolationPolicy.SEC_FETCH_SITE_HEAD
 tester.clickLink("delete");
 ```
 
-A request header applies to the next request only. [Test pages and components]({{ site.baseurl }}/guide/test-pages.html#set-request-headers) has more on headers in tests.
+A request header applies to the next request only. [Test pages and components]({{ site.baseurl }}/docs/test-pages.html#set-request-headers) has more on headers in tests.
 
 ## Protect WebSocket connections
 
@@ -128,8 +128,8 @@ WebSocketSettings.Holder.get(this).setConnectionFilter(
     new WebSocketConnectionOriginFilter(List.of("https://app.example.com")));
 ```
 
-A connection whose single `Origin` header is not in the list is closed with code 1008, "Origin mismatch". An empty list allows every origin. [Push updates over a WebSocket]({{ site.baseurl }}/guide/use-websockets.html) covers the setup.
+A connection whose single `Origin` header is not in the list is closed with code 1008, "Origin mismatch". An empty list allows every origin. [Push updates over a WebSocket]({{ site.baseurl }}/docs/use-websockets.html) covers the setup.
 
 ## Combine it with encrypted URLs
 
-`CryptoMapper` and this listener work independently and can be combined. [Encrypt URLs]({{ site.baseurl }}/guide/encrypt-urls.html) covers the mapper. `CsrfPreventionRequestCycleListener`, the Origin-header check of Wicket 7 to 9, was removed in Wicket 10; `OriginResourceIsolationPolicy` contains its logic.
+`CryptoMapper` and this listener work independently and can be combined.{% if site.wicket.version_11 %} [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html) covers the mapper.{% endif %} `CsrfPreventionRequestCycleListener`, the Origin-header check of Wicket 7 to 9, was removed in Wicket 10; `OriginResourceIsolationPolicy` contains its logic.

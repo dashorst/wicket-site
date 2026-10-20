@@ -24,7 +24,7 @@ Two gaps remain. `${name}` in a message first resolves to a child component, who
 
 Escaping prevents injection; the Content Security Policy limits the damage if an injection gets through anyway. Wicket sends a strict policy with every page: scripts and stylesheets run only when they carry a nonce that is new for every response, and inline scripts, inline styles and event attributes are refused. There is no `'unsafe-inline'`, so a `<script>` that an attacker manages to place in the page does not run.
 
-That policy is only usable because Wicket itself writes no inline JavaScript. Since Wicket 6, Ajax components do not write `onclick` attributes; they register their handlers from a script, and every script Wicket contributes is a header item that gets the nonce. `'strict-dynamic'` then lets those scripts load what they need. The cost lands on application code that still writes `onclick` attributes or `style` attributes, which has to move them into header items and stylesheets. [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html) shows how.
+That policy is only usable because Wicket itself writes no inline JavaScript. Since Wicket 6, Ajax components do not write `onclick` attributes; they register their handlers from a script, and every script Wicket contributes is a header item that gets the nonce. `'strict-dynamic'` then lets those scripts load what they need. The cost lands on application code that still writes `onclick` attributes or `style` attributes, which has to move them into header items and stylesheets. [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html) shows how.
 
 ## Cross-site request forgery
 
@@ -34,27 +34,31 @@ On a stateful page, Wicket's URLs already ask for more than a cookie. The URL of
 
 `CryptoMapper` closes that gap. It encrypts every URL with a key that is unique to the session, so the URL itself becomes a secret token that another site cannot construct. Stateless pages have no instance to name: the URL of a stateless form is the same for every user and easy to predict, so neither of these defences applies.
 
-What does apply everywhere is checking where a request comes from. Browsers add `Sec-Fetch-Site` to every request, and other documents cannot forge or remove it. `ResourceIsolationRequestCycleListener` reads it and refuses a listener invocation that comes from another origin, while still letting other sites link to your pages. It is not registered by default. [Protect against cross-site request forgery]({{ site.baseurl }}/guide/csrf.html) shows how to add it.
+What does apply everywhere is checking where a request comes from. Browsers add `Sec-Fetch-Site` to every request, and other documents cannot forge or remove it. `ResourceIsolationRequestCycleListener` reads it and refuses a listener invocation that comes from another origin, while still letting other sites link to your pages. It is not registered by default. [Protect against cross-site request forgery]({{ site.baseurl }}/docs/csrf.html) shows how to add it.
 
 ## Encrypted URLs
 
 An encrypted URL hides which pages and components exist and makes listener URLs unguessable per session. It is not access control. A URL can leak through a log, a browser history or a `Referer` header, and whoever has it can replay it within the session. Encrypted URLs are deterministic by design: the same URL must encrypt to the same text so that a regenerated URL matches the requested one and resources stay cacheable. Equal URLs are therefore recognisable as equal, and anyone holding the key can confirm a guess. With the default per-session key that stays within one user's session.
 
-> Since Wicket 11, URLs and stored pages are encrypted with authenticated AES-256-GCM, so altered ciphertext is refused instead of decrypted to garbage. Wicket 10 encrypts URLs with `PBEWithMD5AndDES` and stored pages with AES-CBC, neither of which is authenticated. [Encryption in Wicket]({{ site.baseurl }}/guide/crypt-schemes.html) describes the Wicket 11 API.
+{% if site.wicket.version_11 %}
+> Since Wicket 11, URLs and stored pages are encrypted with authenticated AES-256-GCM, so altered ciphertext is refused instead of decrypted to garbage. Wicket 10 encrypts URLs with `PBEWithMD5AndDES` and stored pages with AES-CBC, neither of which is authenticated. [Encryption in Wicket]({{ site.baseurl }}/docs/crypt-schemes.html) describes the Wicket 11 API.
 {: .since}
+{% else %}
+By default, URLs are encrypted with `PBEWithMD5AndDES` and stored pages with AES-CBC, neither of which is authenticated.
+{% endif %}
 
 ## Authorization belongs in a strategy
 
-Because a URL can be guessed, replayed or leaked, the question whether a user may see a page or press a button has to be answered on the server for every request. Wicket asks the `IAuthorizationStrategy` before it creates a component and before it renders or enables one. A restricted page therefore stays restricted whether the request came from a link, a bookmark or a hand-made URL. [Restrict access by role]({{ site.baseurl }}/guide/roles.html) shows the annotation-based strategy.
+Because a URL can be guessed, replayed or leaked, the question whether a user may see a page or press a button has to be answered on the server for every request. Wicket asks the `IAuthorizationStrategy` before it creates a component and before it renders or enables one. A restricted page therefore stays restricted whether the request came from a link, a bookmark or a hand-made URL. [Restrict access by role]({{ site.baseurl }}/docs/roles.html) shows the annotation-based strategy.
 
 Signing in is part of the same picture: `AuthenticatedWebSession.signIn` gives the session a new id when the user signs in, so a session id planted before the sign-in cannot be used afterwards.
 
 ## What the deployment has to provide
 
-Wicket takes its own identity, the scheme, host and port it is served on, from the servlet container. It does not check the `Host` header. Every absolute URL, every redirect to HTTPS, and the fallback Origin check of the resource isolation listener rely on it. The container or proxy has to reject unexpected host names; [Require HTTPS]({{ site.baseurl }}/guide/https.html#make-the-host-in-redirects-trustworthy) lists what to configure. `X-Forwarded-*` headers are ignored unless you install the wrapper that reads them.
+Wicket takes its own identity, the scheme, host and port it is served on, from the servlet container. It does not check the `Host` header. Every absolute URL, every redirect to HTTPS, and the fallback Origin check of the resource isolation listener rely on it. The container or proxy has to reject unexpected host names; [Require HTTPS]({{ site.baseurl }}/docs/https.html#make-the-host-in-redirects-trustworthy) lists what to configure. `X-Forwarded-*` headers are ignored unless you install the wrapper that reads them.
 
-Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. [Encrypting the page store]({{ site.baseurl }}/guide/configure-page-store.html) keeps stored pages confidential, and since Wicket 11 also tamper-evident, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.
+Pages and sessions are serialized to the page store, and Java deserialization of untrusted bytes is dangerous. Wicket treats the page store and the session store as trusted, private storage. [Encrypting the page store]({{ site.baseurl }}/docs/configure-page-store.html) keeps stored pages confidential{% if site.wicket.version_11 %}, and since Wicket 11 also tamper-evident{% endif %}, but the key lives in the session, so it protects against someone who can read or write the store, not against someone who holds the session.
 
-Development mode adds debugging aids and detailed error pages. It is not hardened and must not run in production; see [Switch between development and deployment mode]({{ site.baseurl }}/guide/deployment-mode.html).
+Development mode adds debugging aids and detailed error pages. It is not hardened and must not run in production; see [Switch between development and deployment mode]({{ site.baseurl }}/docs/deployment-mode.html).
 
 The [`SECURITY.md`](https://github.com/apache/wicket/blob/master/SECURITY.md) file in the Wicket source lists these trust boundaries in full, along with how to report a vulnerability.

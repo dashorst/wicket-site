@@ -43,7 +43,7 @@ public class PersonDataProvider implements IDataProvider<Person> {
 }
 ```
 
-`iterator(first, count)` maps directly to an offset and a limit in a query. `model` should return a [detachable model]({{ site.baseurl }}/guide/detachable-models.html) that keeps only the id, so the rows are not stored with the page. The provider is stored with the page itself, so it reaches the service through an injected field ([Inject Spring beans]({{ site.baseurl }}/guide/spring.html)).
+`iterator(first, count)` maps directly to an offset and a limit in a query. `model` should return a [detachable model]({{ site.baseurl }}/docs/detachable-models.html) that keeps only the id, so the rows are not stored with the page. The provider is stored with the page itself, so it reaches the service through an injected field ([Inject Spring beans]({{ site.baseurl }}/docs/spring.html)).
 
 For a list that is already in memory, `ListDataProvider` does all three: `new ListDataProvider<>(list)`.
 
@@ -102,7 +102,7 @@ add(new AjaxPagingNavigator("navigator", rows));
 <div wicket:id="navigator"></div>
 ```
 
-Both navigators are [stateful]({{ site.baseurl }}/guide/stateful-stateless.html): they keep the current page in the view.
+Both navigators are [stateful]({{ site.baseurl }}/docs/stateful-stateless.html): they keep the current page in the view.
 
 ## Let DataTable build the table
 
@@ -150,6 +150,6 @@ add(new DefaultDataTable<>("table", columns, new PersonSortableProvider(), 20));
 <table wicket:id="table"></table>
 ```
 
-A column with a sort property, `"name"` here, gets a clickable header. `AjaxFallbackDefaultDataTable` takes the same arguments and sorts and pages with Ajax. [Repeaters]({{ site.baseurl }}/guide/repeaters.html#tables) lists the toolbars and column types.
+A column with a sort property, `"name"` here, gets a clickable header. `AjaxFallbackDefaultDataTable` takes the same arguments and sorts and pages with Ajax. [Repeaters]({{ site.baseurl }}/docs/repeaters.html#tables) lists the toolbars and column types.
 
 `PageableListView` is a `ListView` with a page size, and works with `PagingNavigator` too, but it always holds the complete list.

@@ -14,12 +14,11 @@
 @use "modules/builtwithwicket";
 @use "modules/quickstart";
 @use "modules/wicket8";
+@use "modules/structure";
 
 @use "station/signage";
 @use "station/board";
-@use "station/page";
 @use "station/home";
-@use "station/guide";
 
 // =========== Station-wide elements
 
@@ -32,13 +31,7 @@ code, pre, code > span, pre > span {
     font-size: settings.$font-size-20;
 }
 
-:not(pre) > code {
-    background: settings.$paper;
-    border: 1px solid settings.$rule;
-    border-radius: settings.$border-radius-10;
-    padding: 0.05em 0.3em;
-}
-
+// Links on light ground: deep signal orange, underlined; board blue on hover.
 a {
     color: settings.$signal-deep;
     cursor: pointer;
@@ -51,38 +44,21 @@ a {
         color: settings.$board;
         text-decoration-thickness: 2px;
     }
-
-    &:focus-visible {
-        outline: 3px solid settings.$plate;
-        outline-offset: 2px;
-        border-radius: 1px;
-    }
 }
 
 h1 a, h2 a, h3 a {
     color: inherit;
     text-decoration: none;
+
+    &:hover {
+        color: settings.$signal-deep;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+    }
 }
 
 pre {
     margin: 1rem 0 1.5rem;
-}
-
-.highlight,
-pre.highlight {
-    background: settings.$paper;
-}
-
-figure.highlight,
-div.highlight {
-    border: 1px solid settings.$rule;
-    border-radius: settings.$border-radius-10;
-    margin: 1rem 0 1.5rem;
-
-    pre {
-        margin: 0;
-        padding: 1rem 1.25rem;
-    }
 }
 
 hr {
@@ -107,14 +83,17 @@ article + article {
     hr { margin-left: 0; margin-right: 0; }
 }
 
-// Tables are timetables: a board-blue head, ruled rows, tabular figures.
+// Tables are timetables: a board-blue head row, ruled rows, tabular figures.
 table {
     border-collapse: collapse;
     font-variant-numeric: tabular-nums;
-    margin: 1rem 0 2rem;
 }
 
 th {
+    text-align: left;
+}
+
+thead th {
     background: settings.$board;
     color: settings.$board-text;
     font-family: settings.$font-family-signage;
@@ -122,21 +101,34 @@ th {
     font-weight: 700;
     letter-spacing: 0.02em;
     padding: 0.6rem 0.75rem 0.45rem;
-    text-align: left;
 }
 
-td {
-    border-bottom: 1px solid settings.$rule;
-    padding: 0.55rem 0.75rem;
-    vertical-align: top;
+tbody th[scope=row] {
+    color: settings.$board;
+    font-family: settings.$font-family-signage;
 }
 
-tbody tr:hover td {
-    background: settings.$paper;
+// The legacy page preamble: a lead under the platform sign.
+.preamble {
+    margin-bottom: 1.5rem;
+
+    p {
+        color: settings.$ink;
+        font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+        line-height: 1.55;
+        max-width: 62ch;
+    }
+
+    img {
+        display: block;
+        height: auto;
+        margin: 0 0 1.5rem;
+        max-width: 100%;
+    }
 }
 
-// Jump lists on reading pages (.button-bar in page content) render as a
-// left-aligned ruled index: label only, the icon-font glyphs are dropped.
+// Jump lists on legacy pages (.button-bar in page content) render as a left-aligned
+// ruled index: label only, the icon-font glyphs are dropped.
 .l-button-table,
 .l-button-table > div {
     display: block;
@@ -211,69 +203,24 @@ tbody tr:hover td {
     }
 }
 
+// A row of covers or screenshots on legacy pages.
 .media-bar {
-    clear: both;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    margin-bottom: 1.5rem;
+
+    > a {
+        margin: 0;
+        width: auto;
+    }
+
     a > img {
+        display: block;
         width: 100%;
     }
 }
 
 .color-brand {
-    color: settings.$signal;
-}
-
-// Hidden until a keyboard user reaches it, then a plate in the top left corner.
-.skip-link {
-    background: settings.$paper;
-    color: settings.$board;
-    font-family: settings.$font-family-signage;
-    font-weight: 700;
-    left: 1rem;
-    padding: 0.75rem 1rem 0.65rem;
-    position: absolute;
-    text-decoration: none;
-    top: -4rem;
-    z-index: 10;
-
-    &:focus { top: 1rem; }
-}
-
-main:focus { outline: none; }
-
-// Touch screens get 44px targets for the small links and controls.
-@media (pointer: coarse) {
-    .ticket-links a,
-    .board-foot a,
-    .board-upgrade,
-    .home-new-more,
-    .connections-more a,
-    .announcements-links a {
-        display: inline-block;
-        padding: 0.7rem 0;
-    }
-
-    .board-divider .board-upgrade { margin: -0.7rem 0 -0.7rem 0.75rem; }
-
-    .board-release a {
-        display: inline-block;
-        margin: -0.5rem 0;
-        padding: 0.5rem 0;
-    }
-
-    .ticket-copy {
-        min-height: 2.75rem;
-        min-width: 2.75rem;
-    }
-}
-
-.visually-hidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    color: settings.$signal-deep;
 }

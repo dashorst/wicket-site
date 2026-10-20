@@ -1,59 +1,72 @@
 @use "../taiga/mixins";
 @use "../taiga/settings";
 
-// =========== The departure board
+// =========== The departure board: a night-blue panel of release lines.
+// On the homepage it carries the page's h1 at its head; on /versions/ it holds the
+// release lines table.
 
 .board {
     background: settings.$board;
+    border: 1px solid settings.$board-rule;
     border-radius: settings.$border-radius-20;
     box-shadow: 0 1.5rem 3rem -1.5rem rgba(settings.$board, 0.55);
     color: settings.$board-text;
-    padding: 1.75rem 1.5rem 1.25rem;
+    padding: 1.5rem 1.25rem 1.25rem;
 
     @include mixins.breakpoint(settings.$breakpoint-20) {
         padding: 2.25rem 2.25rem 1.5rem;
     }
+
+    a {
+        color: settings.$board-text;
+
+        &:hover { color: settings.$plate; }
+    }
+    a.button { color: settings.$board; }
 }
+
+// Figures on a board and on the signs: Overpass Mono with tabular numerals.
+.board-figure {
+    font-family: settings.$font-family-board;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+// ---------- Head: the page's title and what Wicket is
 
 .board-head {
     border-bottom: 2px solid settings.$board-rule;
-    padding-bottom: 1.25rem;
+    display: grid;
+    gap: 1rem 3rem;
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 1.75rem;
+
+    @include mixins.breakpoint(settings.$breakpoint-30) {
+        align-items: start;
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    }
 }
 
 .board-title {
     color: settings.$board-text;
-    font-family: settings.$font-family-signage;
-    font-size: clamp(2.4rem, 4.6vw, 3.75rem);
+    font-size: clamp(2.25rem, 4.4vw, 3.6rem);
     font-weight: 800;
     letter-spacing: -0.03em;
-    line-height: 0.95;
-    margin: 0 0 0.75rem;
-
-    .flap {
-        color: settings.$signal;
-        font-family: settings.$font-family-board;
-        font-weight: 700;
-        letter-spacing: 0;
-    }
+    line-height: 1;
+    margin: 0;
+    max-width: 18ch;
 }
 
 .board-lede {
-    color: settings.$board-text;
-    font-family: settings.$font-family-signage;
-    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-    font-weight: 600;
-    line-height: 1.35;
-    margin: 0 0 0.6rem;
-    max-width: 40ch;
+    color: settings.$board-dim;
+    font-size: clamp(1.1rem, 1.4vw, 1.2rem);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 52ch;
 }
 
-.board-sub {
-    color: settings.$board-dim;
-    font-family: settings.$font-family-signage;
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-    font-weight: 500;
-    margin: 0;
-}
+// ---------- The lines
 
 .board-table {
     font-family: settings.$font-family-signage;
@@ -67,47 +80,33 @@
         font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.06em;
-        padding: 1rem 0.75rem 0.5rem 0;
+        padding: 0.6rem 1rem 0.5rem 0;
         text-transform: uppercase;
     }
 
-    td {
+    th, td {
         border-bottom: 1px solid settings.$board-rule;
-        padding: 0.7rem 0.75rem 0.6rem 0;
+        padding: 0.65rem 1rem 0.55rem 0;
+        text-align: left;
         vertical-align: baseline;
     }
+
+    tbody th[scope=row] { color: settings.$board-text; }
 
     tbody tr:hover td { background: transparent; }
 }
 
-// On the compact board the only group, In service, labels the table from above
-// its column headers.
+// The only group on the homepage board labels the table from above its column headers.
 .board-caption {
     caption-side: top;
     color: settings.$plate;
+    font-family: settings.$font-family-signage;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     padding: 1.25rem 0 0;
     text-align: left;
     text-transform: uppercase;
-}
-
-.board.is-compact .board-table thead th { padding-top: 0.6rem; }
-
-.board-divider th {
-    background: transparent;
-    color: settings.$plate;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 1.25rem 0 0.35rem;
-    text-transform: uppercase;
-}
-
-.board-when {
-    color: settings.$board-dim;
-    white-space: nowrap;
 }
 
 .board-release {
@@ -117,38 +116,42 @@
     white-space: nowrap;
 
     a {
-        color: settings.$board-text;
         text-decoration: none;
 
-        .flap { border-bottom: 2px solid rgba(settings.$board-dim, 0.45); }
+        // The characters of a flap are inline blocks, which text decoration does not
+        // reach, so the link underline is drawn on the flap itself.
+        .flap { border-bottom: 2px solid settings.$board-dim; }
 
-        &:hover {
-            color: settings.$plate;
+        // A chevron after the figure says it leads somewhere: to the line's page.
+        &::after { color: settings.$plate; content: "\203A"; font-family: settings.$font-family-signage; margin-left: 0.3rem; }
 
-            .flap { border-bottom-color: currentColor; }
-        }
+        &:hover .flap { border-bottom-color: currentColor; }
     }
+
+    .plate { margin-left: 0.4rem; vertical-align: 0.2em; }
 }
 
-.board-support {
-    color: settings.$board-text;
+.board-when { color: settings.$board-dim; white-space: nowrap; }
+
+.board-status { white-space: nowrap; }
+
+.status-role { font-weight: 600; }
+
+// Lines with their last release coming read dimmer, the way a train on its last run does.
+.board-row.is-last-call .board-release a,
+.board-row.is-last-call .board-support,
+.board-row.is-superseded .board-release a {
+    color: settings.$board-dim;
 }
 
-// On the homepage the lines out of service point to their upgrade path.
-.board-divider .board-upgrade {
-    color: settings.$board-text;
-    font-size: settings.$font-size-20;
-    font-weight: 600;
-    letter-spacing: 0;
-    margin-left: 0.75rem;
-    text-transform: none;
+.board-row.is-last-call .board-release a:hover { color: settings.$plate; }
 
-    &:hover { color: settings.$plate; }
-}
+// ---------- Plates
 
 .plate {
     border-radius: settings.$border-radius-10;
     display: inline-block;
+    font-family: settings.$font-family-signage;
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.06em;
@@ -161,89 +164,71 @@
     color: settings.$board;
 }
 
-.status {
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.status-boarding {
+// The current line: signal orange, the "now" colour (on the ticket only).
+.plate-current {
     background: settings.$signal;
-    border-radius: settings.$border-radius-10;
     color: settings.$board;
-    padding: 0.2em 0.55em 0.1em;
-    animation: board-blink 1.2s steps(1, end) 1.5s 3;
+    text-transform: uppercase;
 }
 
-.status-scheduled { color: settings.$board-dim; }
-.status-current { color: settings.$board-text; }
-.status-role { color: settings.$board-text; font-weight: 600; }
-.status-superseded { color: settings.$board-dim; }
+// ---------- Summary lines: what is scheduled, what reached end of life
 
-.status-last-call {
-    border: 2px solid settings.$plate;
-    border-radius: settings.$border-radius-10;
+.board-brief {
+    border-bottom: 1px solid settings.$board-rule;
+    font-family: settings.$font-family-signage;
+    padding: 0.9rem 0 0.4rem;
+
+    p {
+        align-items: baseline;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem 1.5rem;
+        margin: 0 0 0.55rem;
+    }
+
+    a { font-weight: 600; }
+}
+
+.board-brief-label {
     color: settings.$plate;
-    padding: 0.1em 0.45em 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    min-width: 8.5rem;
+    text-transform: uppercase;
 }
 
-.status-eol {
-    background: settings.$stop;
-    border-radius: settings.$border-radius-10;
-    color: settings.$white;
-    padding: 0.2em 0.55em 0.1em;
-}
-
-// Lines on their last call are struck through the way a cancelled train is.
-.board-row.is-last-call .board-support,
-.board-row.is-eol .board-release,
-.board-row.is-eol .board-support {
+.board-brief-item {
     color: settings.$board-dim;
-}
+    white-space: nowrap;
 
-// The characters of a flap are inline blocks, which text decoration does not reach,
-// so the strike and the link underline are drawn on the flap itself.
-.board-row.is-eol .board-release a { color: settings.$board-dim; }
+    .board-figure {
+        color: settings.$board-text;
+        font-size: 1.1rem;
+        margin-right: 0.2rem;
+    }
 
-.board-row.is-eol .board-release .flap {
-    border-bottom: 0;
-    position: relative;
+    .plate { margin-right: 0.2rem; vertical-align: 0.15em; }
 
-    &::after {
-        background: settings.$stop;
-        content: "";
-        height: 2px;
-        left: -0.05em;
-        position: absolute;
-        right: -0.05em;
-        top: 52%;
+    .is-eol {
+        color: settings.$board-dim;
+        text-decoration: line-through;
+        text-decoration-color: settings.$stop;
+        text-decoration-thickness: 2px;
     }
 }
-
-.board-row.is-boarding td { color: settings.$board-text; }
-.board-row.is-boarding .board-release { color: settings.$signal; }
 
 .board-foot {
     display: flex;
     flex-wrap: wrap;
+    font-family: settings.$font-family-signage;
     font-size: settings.$font-size-20;
+    font-weight: 600;
     gap: 0.25rem 1.5rem;
     margin: 1rem 0 0;
-
-    a {
-        color: settings.$board-text;
-
-        &:hover { color: settings.$plate; }
-    }
 }
 
-@keyframes board-blink {
-    0%, 85% { opacity: 1; }
-    86%, 100% { opacity: 0.55; }
-}
-
-// =========== Split-flap characters (set up by javascript/flaps.js)
+// ---------- Split-flap arrival (set up by javascript/station.js), once per page load
 
 .flap-c {
     display: inline-block;
@@ -263,91 +248,77 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .flaps-run .flap-c,
-    .status-boarding { animation: none; }
+    .flaps-run .flap-c { animation: none; }
 }
 
-// =========== Compact board: what comes next and what left service, in two lines
-
-.board-brief {
-    border-bottom: 1px solid settings.$board-rule;
-    font-family: settings.$font-family-signage;
-    padding: 0.9rem 0 0.4rem;
-
-    p {
-        align-items: baseline;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem 1.25rem;
-        margin: 0 0 0.55rem;
-    }
-
-    a { color: settings.$board-text; font-weight: 600; }
-    a:hover { color: settings.$plate; }
-}
-
-.board-brief-label {
-    color: settings.$plate;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    min-width: 8.5rem;
-    text-transform: uppercase;
-}
-
-.board-brief-item { color: settings.$board-dim; white-space: nowrap; }
-
-.board-brief-version {
-    color: settings.$board-text;
-    font-family: settings.$font-family-board;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-right: 0.15rem;
-
-    &.is-eol {
-        color: settings.$board-dim;
-        text-decoration: line-through;
-        text-decoration-color: settings.$stop;
-        text-decoration-thickness: 2px;
-    }
-}
-
-// =========== Small screens: every row becomes a stacked ticket line
+// ---------- Phones: every line becomes a stacked row
 
 @include mixins.breakpoint(settings.$breakpoint-20, 'max-width') {
     .board-table thead { display: none; }
 
-    .board-caption { display: block; }
-
     .board-table,
-    .board-table tbody { display: block; }
-
-    .board-divider { display: block; }
-
-    .board-divider th { display: block; }
+    .board-table tbody,
+    .board-caption { display: block; }
 
     .board-row {
         border-bottom: 1px solid settings.$board-rule;
         display: grid;
-        gap: 0.15rem 1rem;
+        gap: 0.2rem 1rem;
         grid-template-areas:
             "release status"
-            "service when"
-            "support support";
-        grid-template-columns: 1fr auto;
+            "when support";
+        grid-template-columns: auto 1fr;
         padding: 0.75rem 0;
 
-        td {
-            border: 0;
-            padding: 0;
-        }
+        th, td { border: 0; padding: 0; }
     }
 
-    .board-brief-label { min-width: 100%; }
-
-    .board-release { grid-area: release; }
+    .board-release { grid-area: release; font-size: 1.2rem; }
     .board-status { grid-area: status; text-align: right; }
-    .board-service { grid-area: service; }
-    .board-when { grid-area: when; text-align: right; }
-    .board-support { grid-area: support; color: settings.$board-dim; }
+    .board-when { grid-area: when; }
+    // Stacked, the date loses its column head; it carries its own label.
+    .board-when::before { content: attr(data-label) " "; }
+    .board-support { grid-area: support; text-align: right; color: settings.$board-dim; }
+
+    .board-brief-label { min-width: 100%; }
+    .board-brief-item { white-space: normal; }
+}
+
+@media (pointer: coarse) {
+    .board-foot a,
+    .board-brief a { align-items: center; display: inline-flex; min-height: 44px; }
+
+    .board-release a {
+        align-items: center;
+        display: inline-flex;
+        margin: -0.5rem 0;
+        min-height: 44px;
+    }
+}
+
+// Phones: the board answers "which version, is it supported" in one screen.
+// The first-release date stays on /versions/; scheduled releases run on one line;
+// the foot keeps the link to all releases; the ticket below carries the upgrade link.
+@include mixins.breakpoint(settings.$breakpoint-10, 'max-width') {
+    .board-row {
+        grid-template-areas:
+            "release status"
+            "support support";
+    }
+    .board-row .board-when { display: none; }
+    .board-row .board-support { text-align: left; }
+    .board-row .board-support::before { content: attr(data-label) " "; }
+    .board-brief p { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; }
+    .board-brief-label { min-width: 0; }
+    .board-brief-item { white-space: nowrap; }
+    .board-foot a[href$="#release-policy"] { display: none; }
+
+    // The whole board in one phone screen: tighter head and rows, and of the
+    // scheduled releases only the next one (the rest are on /versions/).
+    .board-head { gap: 0.75rem; padding-bottom: 1.1rem; }
+    .board-title { font-size: 2rem; }
+    .board-lede { font-size: 1rem; line-height: 1.5; }
+    .home-board .board-intro { gap: 1rem; }
+    .board-row { gap: 0.1rem 1rem; padding: 0.5rem 0; }
+    .board-foot { margin-top: 0.5rem; }
 }

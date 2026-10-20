@@ -26,7 +26,7 @@ That script is a single call with a JSON object of request attributes:
 Wicket.Ajax.ajax({"u":"./home?2-1.0-counter","c":"counter1","e":"click"});
 ```
 
-`u` is the callback URL of the behavior, `c` the markup id of the element, `e` the event. The URL points at one behavior of one component in one page instance: page id `2`, render count `1`, behavior index `0`, component path `counter`. Wicket renders this call as a DOM-ready script in the page header, so the library binds the event handler once the document is loaded. Other attributes, such as the HTTP method, a form to submit, throttling or JavaScript handlers, are only written when they differ from the default. You change them by overriding `updateAjaxAttributes(AjaxRequestAttributes)`; see [Change how an Ajax request is sent]({{ site.baseurl }}/guide/ajax-request-attributes.html).
+`u` is the callback URL of the behavior, `c` the markup id of the element, `e` the event. The URL points at one behavior of one component in one page instance: page id `2`, render count `1`, behavior index `0`, component path `counter`. Wicket renders this call as a DOM-ready script in the page header, so the library binds the event handler once the document is loaded. Other attributes, such as the HTTP method, a form to submit, throttling or JavaScript handlers, are only written when they differ from the default. You change them by overriding `updateAjaxAttributes(AjaxRequestAttributes)`; see [Change how an Ajax request is sent]({{ site.baseurl }}/docs/ajax-request-attributes.html).
 
 ## The round trip
 
@@ -53,7 +53,7 @@ Back in the browser, the library finds each element by its id and replaces it wi
 
 ## Why components need a markup id
 
-The browser knows nothing about the component tree. It only has the HTML, and the only way the library can find "the label" again is by its `id` attribute. Wicket does not render an `id` for every component, because ids it generates would clutter the markup and could clash with ids you write yourself. A component that is updated through Ajax has to render one, which you ask for with `setOutputMarkupId(true)`, or by writing the id in the markup yourself. See [Give a component a markup id]({{ site.baseurl }}/guide/markup-ids.html).
+The browser knows nothing about the component tree. It only has the HTML, and the only way the library can find "the label" again is by its `id` attribute. Wicket does not render an `id` for every component, because ids it generates would clutter the markup and could clash with ids you write yourself. A component that is updated through Ajax has to render one, which you ask for with `setOutputMarkupId(true)`, or by writing the id in the markup yourself. See [Give a component a markup id]({{ site.baseurl }}/docs/markup-ids.html).
 
 When a component is added to the target, Wicket switches the markup id on for it, but that is too late for the markup already in the browser: if the component did not render its id the first time, the library cannot find the element and logs that the component "was not found while trying to perform markup update".
 
@@ -71,11 +71,13 @@ Repeaters such as `ListView` and `RepeatingView` have no tag of their own: their
 
 The library sends Ajax requests one after the other per channel. By default all requests share one channel that queues them, so a second click waits until the first response has been applied. A channel can also drop all but the last waiting request, or discard a new request while one is running. Combined with the page lock on the server, this keeps the page instance and the DOM in step: the server never processes two requests for the same page at once, and the browser never applies two responses in an unknown order.
 
-Because the callback URL addresses a page instance, an Ajax behavior makes its page stateful: the page has to be kept in the page store so the next request can find it. This is the same reason a `Link` makes a page stateful; see [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html). Ajax components and behaviors can be made stateless when the page can be rebuilt from its URL alone; see [Use Ajax on stateless pages]({{ site.baseurl }}/guide/stateless-ajax.html).
+Because the callback URL addresses a page instance, an Ajax behavior makes its page stateful: the page has to be kept in the page store so the next request can find it. This is the same reason a `Link` makes a page stateful; see [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html). Ajax components and behaviors can be made stateless when the page can be rebuilt from its URL alone; see [Use Ajax on stateless pages]({{ site.baseurl }}/docs/stateless-ajax.html).
 
 ## Two implementations of the client library
 
 The default client library is `wicket-ajax-jquery.js`, which uses jQuery for DOM manipulation and the request itself. The JavaScript API it offers (`Wicket.Ajax`, `Wicket.Event`, `Wicket.DOM` and so on) is what the server-side code relies on, not jQuery.
 
-> Since Wicket 11, Wicket also ships `wicket-ajax.js`, a second implementation of the same API in plain JavaScript that does not need jQuery. Which one a page loads is a single application setting; see [Run Ajax without jQuery]({{ site.baseurl }}/guide/ajax-without-jquery.html).
+{% if site.wicket.version_11 %}
+> Since Wicket 11, Wicket also ships `wicket-ajax.js`, a second implementation of the same API in plain JavaScript that does not need jQuery. Which one a page loads is a single application setting; see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}

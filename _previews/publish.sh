@@ -71,7 +71,7 @@ while IFS='|' read -r slug source gemfile title date desc; do
                 c = YAML.unsafe_load_file(\"_config.yml\")
                 ex = (c[\"exclude\"] || []) + %w[content .claude .previews _previews .impeccable PRODUCT.md DESIGN.md
                      Gemfile Gemfile.lock node_modules vendor/bundle/ vendor/cache/ vendor/gems/ vendor/ruby/]
-                puts({ \"url\" => \"$SITE_URL\", \"baseurl\" => \"$BASE/$slug\", \"exclude\" => ex.uniq, \"season_selector\" => true }.to_yaml)
+                puts({ \"url\" => \"$SITE_URL\", \"baseurl\" => \"$BASE/$slug\", \"exclude\" => ex.uniq, \"season_selector\" => true, \"future\" => true }.to_yaml)
             ' > /tmp/preview-$slug.yml
             export BUNDLE_GEMFILE=$gf BUNDLE_PATH=/site/.bundle-cache
             bundle install --quiet

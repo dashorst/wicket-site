@@ -44,9 +44,9 @@ Prefer this to overriding `isVisible()`. Wicket calls `isVisible()` many times w
 
 ## Hide a group of components at once
 
-Hiding a container hides all of its children. Put the components in a `WebMarkupContainer` and set the visibility on the container. See [Group components with WebMarkupContainer]({{ site.baseurl }}/guide/group-components.html).
+Hiding a container hides all of its children. Put the components in a `WebMarkupContainer` and set the visibility on the container. See [Group components with WebMarkupContainer]({{ site.baseurl }}/docs/group-components.html).
 
-To hide the text around a single component together with it, without a container in Java, use [`wicket:enclosure`]({{ site.baseurl }}/guide/use-enclosures.html).
+To hide the text around a single component together with it, without a container in Java, use [`wicket:enclosure`]({{ site.baseurl }}/docs/use-enclosures.html).
 
 ## Disable a component
 
@@ -89,4 +89,4 @@ add(new AjaxLink<Void>("toggle") {
 });
 ```
 
-See [Update components with Ajax]({{ site.baseurl }}/guide/update-components.html) for more on repainting components.
+See [Update components with Ajax]({{ site.baseurl }}/docs/update-components.html) for more on repainting components.

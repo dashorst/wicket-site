@@ -10,7 +10,7 @@ order: 40
 source: [i18n/i18n_3.adoc]
 ---
 
-Add your own string resource loader when texts do not come from properties files next to your classes: translations kept in a database so that editors can change them, an existing Java `ResourceBundle` shared with other applications, or a translation service. Wicket asks its loaders in turn until one returns a text; see [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html#string-resource-loaders) for the default chain.
+Add your own string resource loader when texts do not come from properties files next to your classes: translations kept in a database so that editors can change them, an existing Java `ResourceBundle` shared with other applications, or a translation service. Wicket asks its loaders in turn until one returns a text; see [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html#string-resource-loaders) for the default chain.
 
 ## Write a loader
 

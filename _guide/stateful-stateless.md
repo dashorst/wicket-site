@@ -32,8 +32,8 @@ Versioning can be switched off per page with `setVersioned(false)`, or for all p
 
 A stateful page lives in the user's HTTP session and in the page store. Wicket creates the session the first time it has to store a page. From then on:
 
-- Every object reachable from the page is serialized after each request. Components, models and their objects must be serializable, and large objects make every request slower. [Models and component data]({{ site.baseurl }}/guide/about-models.html) explains how detachable models keep pages small.
-- Memory and disk grow with the number of users and the pages they open. Every version goes to disk, up to a size limit per session, and the last page used also stays in the session. [How pages are stored]({{ site.baseurl }}/guide/page-storage.html) describes the layers.
+- Every object reachable from the page is serialized after each request. Components, models and their objects must be serializable, and large objects make every request slower. [Models and component data]({{ site.baseurl }}/docs/about-models.html) explains how detachable models keep pages small.
+- Memory and disk grow with the number of users and the pages they open. Every version goes to disk, up to a size limit per session, and the last page used also stays in the session. [How pages are stored]({{ site.baseurl }}/docs/page-storage.html) describes the layers.
 - A page can disappear: the session expires, or the store drops old versions when the limit is reached. A request for it then ends in a `PageExpiredException` and the page-expired error page. For a bookmarkable page, Wicket creates a new instance from the URL instead (`PageSettings.setRecreateBookmarkablePagesAfterExpiry`, on by default), but the old instance's state is gone and a click on a component of it is not executed.
 - In a cluster, the session must reach the node that handles the next request, through sticky sessions or session replication.
 - Every visitor of a stateful page gets a session, including search engine crawlers.
@@ -42,7 +42,7 @@ A stateful page lives in the user's HTTP session and in the page store. Wicket c
 
 A stateless page needs no session and can be cached and shared like any other URL. In exchange, nothing survives the response. Wicket has to be able to create the page again for every request, from its class and its `PageParameters`, so the page must be bookmarkable: a public constructor without arguments or with a single `PageParameters` argument. Anything the page needs must come from the URL, a cookie, the session or the database.
 
-The components that normally keep state have stateless versions with the same limitation. A `StatelessLink` or `StatelessForm` makes Wicket create a new page instance when it is clicked or submitted, run the handler on the new instance, and render that. Ajax behaviors can be stateless too, as described in [Use Ajax on stateless pages]({{ site.baseurl }}/guide/stateless-ajax.html).
+The components that normally keep state have stateless versions with the same limitation. A `StatelessLink` or `StatelessForm` makes Wicket create a new page instance when it is clicked or submitted, run the handler on the new instance, and render that. Ajax behaviors can be stateless too, as described in [Use Ajax on stateless pages]({{ site.baseurl }}/docs/stateless-ajax.html).
 
 ## How Wicket decides
 
@@ -52,9 +52,9 @@ You do not declare a page stateful or stateless; Wicket works it out before rend
 - the page's stateless hint is not switched off, and
 - every visible and enabled component on the page, and every behavior on those components, reports that it is stateless.
 
-One `Link`, `Form` or Ajax behavior anywhere on the page makes the whole page stateful. A hidden or disabled one does not count, since it renders no callback. Because a single component can change the outcome, pages tend to turn stateful by accident; [Keep a page stateless]({{ site.baseurl }}/guide/keep-stateless.html) shows how to check.
+One `Link`, `Form` or Ajax behavior anywhere on the page makes the whole page stateful. A hidden or disabled one does not count, since it renders no callback. Because a single component can change the outcome, pages tend to turn stateful by accident; [Keep a page stateless]({{ site.baseurl }}/docs/keep-stateless.html) shows how to check.
 
-A session exists for stateless requests too, but it is temporary: Wicket creates it for the request and drops it at the end, unless something binds it. [Keep data in the session]({{ site.baseurl }}/guide/use-session.html#temporary-and-permanent-sessions) describes when that happens.
+A session exists for stateless requests too, but it is temporary: Wicket creates it for the request and drops it at the end, unless something binds it. [Keep data in the session]({{ site.baseurl }}/docs/use-session.html#temporary-and-permanent-sessions) describes when that happens.
 
 ## Choosing
 

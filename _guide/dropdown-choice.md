@@ -69,7 +69,7 @@ Priority.LOW=Low
 Priority.HIGH=High
 ```
 
-Passing the component (`this`) makes the renderer look in the resources of that component and its parents, such as the page's properties file. [Translate the options of a choice]({{ site.baseurl }}/guide/localize-choices.html) has more on translating options.
+Passing the component (`this`) makes the renderer look in the resources of that component and its parents, such as the page's properties file. [Translate the options of a choice]({{ site.baseurl }}/docs/localize-choices.html) has more on translating options.
 
 ## Control the empty option
 
@@ -96,10 +96,10 @@ Add an `AjaxFormComponentUpdatingBehavior` on the `change` event to update other
 country.add(AjaxFormComponentUpdatingBehavior.onUpdate("change", target -> target.add(city)));
 ```
 
-The behavior validates the drop-down and updates its model before your code runs. See [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html). Without Ajax, `FormComponentUpdatingBehavior` does the same with a full page request.
+The behavior validates the drop-down and updates its model before your code runs. See [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html). Without Ajax, `FormComponentUpdatingBehavior` does the same with a full page request.
 
 ## Group the options
 
 `GroupedDropDownChoice` renders `<optgroup>` elements. Sort the choices by group and implement `isNewGroup`, `hasNoGroup` and `getGroupLabel` to tell where each group starts and what it is called.
 
-To let the user pick more than one value, see [Select several values]({{ site.baseurl }}/guide/select-multiple.html). For a few options shown at once, a [`RadioChoice`]({{ site.baseurl }}/guide/checkboxes-radios.html) works the same way as a `DropDownChoice`.
+To let the user pick more than one value, see [Select several values]({{ site.baseurl }}/docs/select-multiple.html). For a few options shown at once, a [`RadioChoice`]({{ site.baseurl }}/docs/checkboxes-radios.html) works the same way as a `DropDownChoice`.

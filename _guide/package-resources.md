@@ -49,11 +49,11 @@ public class CalendarPanel extends Panel {
 </wicket:panel>
 ```
 
-Wicket renders a URL such as `./wicket/resource/com.example.components.CalendarPanel/calendar-ver-1712345678000.png`. The version in the name changes when the file changes, so browsers can cache it safely; [How Wicket serves resources]({{ site.baseurl }}/guide/about-resources.html#urls-that-browsers-can-cache-forever) explains the scheme.
+Wicket renders a URL such as `./wicket/resource/com.example.components.CalendarPanel/calendar-ver-1712345678000.png`. The version in the name changes when the file changes, so browsers can cache it safely; [How Wicket serves resources]({{ site.baseurl }}/docs/about-resources.html#urls-that-browsers-can-cache-forever) explains the scheme.
 
 Use the class name, not `getClass()`, as the scope. A subclass in another package would otherwise look for the file in its own package.
 
-For stylesheets and scripts, use `CssResourceReference` and `JavaScriptResourceReference` with a header item instead, see [Add CSS and JavaScript to a page]({{ site.baseurl }}/guide/add-css-javascript.html).
+For stylesheets and scripts, use `CssResourceReference` and `JavaScriptResourceReference` with a header item instead, see [Add CSS and JavaScript to a page]({{ site.baseurl }}/docs/add-css-javascript.html).
 
 ## Refer to package files from markup
 
@@ -66,7 +66,7 @@ Inside `<wicket:link>`, Wicket turns the `src` of `<img>` and `<script>` and the
 </wicket:link>
 ```
 
-Wicket adds the Content Security Policy nonce to the `<script>` and `<link>` tags it rewrites this way, so they also load under the default policy. See [Turn plain links into page links with wicket:link]({{ site.baseurl }}/guide/wicket-link.html).
+Wicket adds the Content Security Policy nonce to the `<script>` and `<link>` tags it rewrites this way, so they also load under the default policy. See [Turn plain links into page links with wicket:link]({{ site.baseurl }}/docs/wicket-link.html).
 
 ## Offer several image sizes
 
@@ -133,7 +133,7 @@ add(new Video("intro",
 <video wicket:id="intro" controls></video>
 ```
 
-Two defaults stand in the way of media files. The package resource guard does not serve `.mp4`, `.webm` or `.mp3`; allow the extension as described in [Control which package resources are served]({{ site.baseurl }}/guide/package-resource-guard.html). And the default Content Security Policy sets no `media-src`, so it falls back to `default-src 'none'`; add your own origin:
+Two defaults stand in the way of media files. The package resource guard does not serve `.mp4`, `.webm` or `.mp3`; allow the extension as described in [Control which package resources are served]({{ site.baseurl }}/docs/package-resource-guard.html). And the default Content Security Policy sets no `media-src`, so it falls back to `default-src 'none'`; add your own origin:
 
 ```java
 getCspSettings().blocking().add(CSPDirective.MEDIA_SRC, CSPDirectiveSrcValue.SELF);
@@ -141,4 +141,4 @@ getCspSettings().blocking().add(CSPDirective.MEDIA_SRC, CSPDirectiveSrcValue.SEL
 
 ## Serve a localized file
 
-Package resources follow the same naming rules as markup and properties files. With `calendar.png` and `calendar_fr.png` in the package, a session with a French locale gets `calendar_fr.png` from the same reference. Styles and variations work the same way; [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html) describes the lookup order.
+Package resources follow the same naming rules as markup and properties files. With `calendar.png` and `calendar_fr.png` in the package, a session with a French locale gets `calendar_fr.png` from the same reference. Styles and variations work the same way; [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html) describes the lookup order.

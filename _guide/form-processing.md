@@ -14,7 +14,7 @@ A browser submits a form as a set of strings, one per field. Your code wants typ
 
 ## The stages of a form submit
 
-When the request arrives, the `Form` first finds out what submitted it. That is a submitting component such as a `Button` or `SubmitLink` (an `IFormSubmitter`), or nothing when the user pressed Enter or clicked a plain `<input type="submit">` without a `wicket:id`. The submitter decides which form is processed, which matters for [nested forms]({{ site.baseurl }}/guide/nest-forms.html). Then the form is processed in four stages.
+When the request arrives, the `Form` first finds out what submitted it. That is a submitting component such as a `Button` or `SubmitLink` (an `IFormSubmitter`), or nothing when the user pressed Enter or clicked a plain `<input type="submit">` without a `wicket:id`. The submitter decides which form is processed, which matters for [nested forms]({{ site.baseurl }}/docs/nest-forms.html). Then the form is processed in four stages.
 
 1. **Validation.** Every visible and enabled form component goes through three checks, in this order:
    - *Required.* If the component is required and the user left it empty, it gets the `Required` error and the other checks are skipped.
@@ -26,10 +26,12 @@ When the request arrives, the `Form` first finds out what submitted it. That is 
 3. **Model update.** If nothing failed, every component writes its converted value to its model. After that the form calls `onValidateModelObjects()`, a late check that can look at the updated model objects. An error there still leads to `onError()`.
 4. **Submit.** The submitter's `onSubmit()` runs, then `onSubmit()` of each processed form, then the submitter's `onAfterSubmit()`.
 
-Nested forms are visited innermost first, both when validating and when calling `onSubmit()` and `onError()`. Inside a form, children are visited before their parents. That is why a [`FormComponentPanel`]({{ site.baseurl }}/guide/form-component-panel.html) can read the converted input of its inner fields in its own `convertInput()`: they have already been converted.
+Nested forms are visited innermost first, both when validating and when calling `onSubmit()` and `onError()`. Inside a form, children are visited before their parents. That is why a [`FormComponentPanel`]({{ site.baseurl }}/docs/form-component-panel.html) can read the converted input of its inner fields in its own `convertInput()`: they have already been converted.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields render the HTML attributes `required` and `pattern` when they are required or have a `PatternValidator`. The browser then checks these before it sends the request. Wicket still runs every stage on the server, because a request does not have to come from your page.
 {: .since}
+{% endif %}
 
 ## Why a form updates all models or none
 
@@ -49,18 +51,18 @@ This has consequences for your code:
 
 Validators run after conversion so that they can work with your types. A `RangeValidator<Integer>` compares integers, a `RangeValidator<LocalDate>` compares dates. If conversion came after validation, every validator would have to parse the string itself, and each would do it slightly differently.
 
-The type comes from the component: set it with `setType()`, or let the component take it from a model that knows its object class, such as `PropertyModel`. Without a type, the input stays a `String`. [Convert input to your types]({{ site.baseurl }}/guide/convert-input.html) shows how to plug in your own converter.
+The type comes from the component: set it with `setType()`, or let the component take it from a model that knows its object class, such as `PropertyModel`. Without a type, the input stays a `String`. [Convert input to your types]({{ site.baseurl }}/docs/convert-input.html) shows how to plug in your own converter.
 
 ## The exception: late validation
 
-`onValidateModelObjects()` runs after the models are updated, so it breaks the all-or-nothing rule on purpose. It exists for checks that need the complete object, such as class-level constraints in [Bean Validation]({{ site.baseurl }}/guide/bean-validation.html). If such a check fails, the model objects already contain the new values. Your `onError()` should then discard or reload them, for example by not saving and detaching a loadable model.
+`onValidateModelObjects()` runs after the models are updated, so it breaks the all-or-nothing rule on purpose. It exists for checks that need the complete object, such as class-level constraints in [Bean Validation]({{ site.baseurl }}/docs/bean-validation.html). If such a check fails, the model objects already contain the new values. Your `onError()` should then discard or reload them, for example by not saving and detaching a loadable model.
 
 ## Skipping the stages
 
-Sometimes a submit should not validate anything. A "Cancel" button has to work even when required fields are empty. Call `setDefaultFormProcessing(false)` on the submitting component, and Wicket skips all four stages: it only calls the submitter's `onSubmit()` and `onAfterSubmit()`. The user's input is neither checked nor stored. See [Use more than one submit button]({{ site.baseurl }}/guide/submit-buttons.html).
+Sometimes a submit should not validate anything. A "Cancel" button has to work even when required fields are empty. Call `setDefaultFormProcessing(false)` on the submitting component, and Wicket skips all four stages: it only calls the submitter's `onSubmit()` and `onAfterSubmit()`. The user's input is neither checked nor stored. See [Use more than one submit button]({{ site.baseurl }}/docs/submit-buttons.html).
 
-Ajax narrows the stages instead of skipping them. An `AjaxFormComponentUpdatingBehavior` runs required check, conversion, validators and model update for the one component it is attached to, without touching the rest of the form. That lets you store a field as the user leaves it, at the price of the all-or-nothing guarantee for that field. See [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html).
+Ajax narrows the stages instead of skipping them. An `AjaxFormComponentUpdatingBehavior` runs required check, conversion, validators and model update for the one component it is attached to, without touching the rest of the form. That lets you store a field as the user leaves it, at the price of the all-or-nothing guarantee for that field. See [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html).
 
 ## Where the messages come from
 
-Every error in the stages above becomes a feedback message on the component that failed. The text is looked up in resource bundles by a key: `Required` for the required check, `IConverter` for a failed conversion, and the validator's class name for a validator. Wicket fills in variables such as `${label}` and `${input}`. [Validate input and show errors]({{ site.baseurl }}/guide/validate-input.html) shows how to display these messages and replace their text; [Validators and converters]({{ site.baseurl }}/guide/validators.html) lists the keys.
+Every error in the stages above becomes a feedback message on the component that failed. The text is looked up in resource bundles by a key: `Required` for the required check, `IConverter` for a failed conversion, and the validator's class name for a validator. Wicket fills in variables such as `${label}` and `${input}`. [Validate input and show errors]({{ site.baseurl }}/docs/validate-input.html) shows how to display these messages and replace their text; [Validators and converters]({{ site.baseurl }}/docs/validators.html) lists the keys.

@@ -84,4 +84,4 @@ A `FilteredHeaderItem` goes into the bucket it names, whatever the filters say, 
 
 ## Defer scripts instead
 
-If you only want scripts not to block rendering, adding `defer` to the script tags in the head has the same effect without a container: `JavaScriptHeaderItem.forReference(…).setDefer(true)`. To defer every script of the application, Wicket has `JavaScriptDeferHeaderResponse`, which it marks as experimental. The decorators are listed in [Header items]({{ site.baseurl }}/guide/header-items.html#header-response-decorators).
+If you only want scripts not to block rendering, adding `defer` to the script tags in the head has the same effect without a container: `JavaScriptHeaderItem.forReference(…).setDefer(true)`. To defer every script of the application, Wicket has `JavaScriptDeferHeaderResponse`, which it marks as experimental. The decorators are listed in [Header items]({{ site.baseurl }}/docs/header-items.html#header-response-decorators).

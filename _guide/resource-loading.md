@@ -47,7 +47,7 @@ protected void init() {
 
 Adding at index 0 makes the folder win over a file with the same name on the classpath, so a folder can override the markup of a component. Use `add(finder)` instead to search the folder only when the classpath has no match. `WebApplicationPath` never loads files under `WEB-INF`.
 
-Everything Wicket looks up by class and name goes through these finders: markup, properties files and package resources such as CSS and images. The package resource guard still decides which package files found in a folder are served, see [Control which package resources are served]({{ site.baseurl }}/guide/package-resource-guard.html).
+Everything Wicket looks up by class and name goes through these finders: markup, properties files and package resources such as CSS and images. The package resource guard still decides which package files found in a folder are served, see [Control which package resources are served]({{ site.baseurl }}/docs/package-resource-guard.html).
 
 ## Add a folder on the file system
 
@@ -73,4 +73,4 @@ The `sourceFolder` init parameter of the Wicket filter also adds a `Path` in dev
 
 `IResourceFinder` has one method, `find(Class<?> clazz, String pathname)`, which returns an `IResourceStream` or `null`. Implement it to load files from a database or a remote store, and add it to the list like the finders above.
 
-To replace the lookup as a whole, including the way locale, style and variation are combined into file names, set an `IResourceStreamLocator` with `getResourceSettings().setResourceStreamLocator(…)`. Wrap your locator in a `CachingResourceStreamLocator`, as Wicket does with its own, or every lookup goes to your source again. [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html) shows how locale and style become part of the names that the finders receive.
+To replace the lookup as a whole, including the way locale, style and variation are combined into file names, set an `IResourceStreamLocator` with `getResourceSettings().setResourceStreamLocator(…)`. Wrap your locator in a `CachingResourceStreamLocator`, as Wicket does with its own, or every lookup goes to your source again. [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html) shows how locale and style become part of the names that the finders receive.

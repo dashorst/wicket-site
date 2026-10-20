@@ -59,7 +59,7 @@ public class LoginPage extends WebPage {
 
 ## Keep everything on the page stateless
 
-A `StatelessForm` only helps when the whole page is stateless. The page must be bookmarkable: it needs a constructor without arguments or one that takes `PageParameters`. Every other component on the page must be stateless too. Labels, fields and buttons are; a normal `Link` or an Ajax behavior makes the page stateful again. Use a `StatelessLink` or a `BookmarkablePageLink` for links. [Keep a page stateless]({{ site.baseurl }}/guide/keep-stateless.html) shows how to find the component that breaks it.
+A `StatelessForm` only helps when the whole page is stateless. The page must be bookmarkable: it needs a constructor without arguments or one that takes `PageParameters`. Every other component on the page must be stateless too. Labels, fields and buttons are; a normal `Link` or an Ajax behavior makes the page stateful again. Use a `StatelessLink` or a `BookmarkablePageLink` for links. [Keep a page stateless]({{ site.baseurl }}/docs/keep-stateless.html) shows how to find the component that breaks it.
 
 ## Understand what the form gets on submit
 

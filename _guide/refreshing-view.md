@@ -10,7 +10,7 @@ order: 30
 source: [repeaters/repeaters_3.adoc]
 ---
 
-Use a `RefreshingView` when you want to decide which model each item gets, and whether an item survives a re-render. Unlike a [ListView]({{ site.baseurl }}/guide/list-items.html), it does not tie an item to an index: you hand it a model per element, and with the right strategy it keeps the item for as long as that model is in the list. That keeps the user's input and other state in the right row even when rows are added, removed or reordered.
+Use a `RefreshingView` when you want to decide which model each item gets, and whether an item survives a re-render. Unlike a [ListView]({{ site.baseurl }}/docs/list-items.html), it does not tie an item to an index: you hand it a model per element, and with the right strategy it keeps the item for as long as that model is in the list. That keeps the user's input and other state in the right row even when rows are added, removed or reordered.
 
 ## Supply a model per item
 
@@ -43,7 +43,7 @@ add(new RefreshingView<Person>("persons") {
 </ul>
 ```
 
-Wicket calls `getItemModels()` every time the view renders. `ModelIteratorAdapter` turns an iterable of objects into an iterator of models, using the `model` method you implement. `PersonModel` is a [detachable model]({{ site.baseurl }}/guide/detachable-models.html) that keeps the person's id.
+Wicket calls `getItemModels()` every time the view renders. `ModelIteratorAdapter` turns an iterable of objects into an iterator of models, using the `model` method you implement. `PersonModel` is a [detachable model]({{ site.baseurl }}/docs/detachable-models.html) that keeps the person's id.
 
 ## Keep items whose model is still in the list
 

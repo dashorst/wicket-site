@@ -10,7 +10,7 @@ order: 20
 source: [i18n/i18n_5.adoc]
 ---
 
-Use these models when a label, a link text or an attribute must show a translated text, possibly with values from your data in it. Both look up the text when the component renders, through the same search as `<wicket:message>`, so they follow a change of language. Where the texts live is covered in [Translate component texts]({{ site.baseurl }}/guide/localize-components.html).
+Use these models when a label, a link text or an attribute must show a translated text, possibly with values from your data in it. Both look up the text when the component renders, through the same search as `<wicket:message>`, so they follow a change of language. Where the texts live is covered in [Translate component texts]({{ site.baseurl }}/docs/localize-components.html).
 
 ## Show a translated text
 

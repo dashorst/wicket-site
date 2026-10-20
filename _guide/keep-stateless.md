@@ -10,7 +10,7 @@ order: 10
 source: [versioningCaching/versioningCaching_3.adoc]
 ---
 
-Keep a page stateless when it is public, visited by many anonymous users or meant to be bookmarked, such as a home page, a product page or a login page. A stateless page needs no session. [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains the trade-off.
+Keep a page stateless when it is public, visited by many anonymous users or meant to be bookmarked, such as a home page, a product page or a login page. A stateless page needs no session. [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains the trade-off.
 
 ## Make the page bookmarkable
 
@@ -26,7 +26,7 @@ public class ProductPage extends WebPage {
 }
 ```
 
-Link to it by class, with `BookmarkablePageLink` or `setResponsePage(ProductPage.class, parameters)`, so Wicket creates it from the URL. [Pass parameters to a page]({{ site.baseurl }}/guide/page-parameters.html) shows how to build those URLs.
+Link to it by class, with `BookmarkablePageLink` or `setResponsePage(ProductPage.class, parameters)`, so Wicket creates it from the URL. [Pass parameters to a page]({{ site.baseurl }}/docs/page-parameters.html) shows how to build those URLs.
 
 ## Use stateless components
 
@@ -35,8 +35,8 @@ A page is stateless only when every visible, enabled component on it, and every 
 | Instead of | Use |
 |---|---|
 | `Link` | `BookmarkablePageLink` to go to a page, `StatelessLink` to run code on click |
-| `Form` | `StatelessForm`, see [Build a stateless form]({{ site.baseurl }}/guide/stateless-forms.html) |
-| Ajax behaviors and links | their stateless variants, see [Use Ajax on stateless pages]({{ site.baseurl }}/guide/stateless-ajax.html) |
+| `Form` | `StatelessForm`, see [Build a stateless form]({{ site.baseurl }}/docs/stateless-forms.html) |
+| Ajax behaviors and links | their stateless variants, see [Use Ajax on stateless pages]({{ site.baseurl }}/docs/stateless-ajax.html) |
 | any link to another site | `ExternalLink`, which has no callback |
 
 Labels, images, containers and other components without a callback are stateless already. A stateful component that is hidden or disabled does not make the page stateful.
@@ -101,4 +101,4 @@ void productPageIsStateless() {
 }
 ```
 
-[Test pages and components]({{ site.baseurl }}/guide/test-pages.html) shows how to set up `WicketTester`.
+[Test pages and components]({{ site.baseurl }}/docs/test-pages.html) shows how to set up `WicketTester`.

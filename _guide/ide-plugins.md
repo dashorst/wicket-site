@@ -54,4 +54,4 @@ Report problems in the [QWickie issues](https://github.com/count-negative/qwicki
 
 ## NetBeans and VS Code
 
-There is no maintained Wicket plugin for NetBeans or VS Code. Wicket does not need one: a page is a Java class and an HTML file, and the Java support of either IDE handles both. Keep the HTML file next to its class, as [the quickstart project]({{ site.baseurl }}/guide/create-project.html#open-it-in-your-ide) does, and the IDE shows the pair together in the project tree.
+There is no maintained Wicket plugin for NetBeans or VS Code. Wicket does not need one: a page is a Java class and an HTML file, and the Java support of either IDE handles both. Keep the HTML file next to its class, as [the quickstart project]({{ site.baseurl }}/docs/create-project.html#open-it-in-your-ide) does, and the IDE shows the pair together in the project tree.

@@ -81,7 +81,7 @@ The value must be `Serializable`. The same API exists on `Application`, `Request
 
 ## Temporary and permanent sessions
 
-As long as a user only sees [stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html), Wicket does not create an HTTP session. `Session.get()` still works, but returns a temporary session that is thrown away at the end of the request. `isTemporary()` returns `true` and `getId()` returns `null`.
+As long as a user only sees [stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html), Wicket does not create an HTTP session. `Session.get()` still works, but returns a temporary session that is thrown away at the end of the request. `isTemporary()` returns `true` and `getId()` returns `null`.
 
 Wicket makes the session permanent when a stateful page has to be stored. To keep data from a stateless page, make it permanent yourself with `bind()`:
 
@@ -113,7 +113,7 @@ add(new Link<Void>("logout") {
 
 `invalidateNow()` ends it immediately and removes all pages of the session, so the rest of the request cannot use them.
 
-After a successful login, give the session a new id with `changeSessionId()`, to protect against session fixation. [Log users in]({{ site.baseurl }}/guide/login.html) shows this in context.
+After a successful login, give the session a new id with `changeSessionId()`, to protect against session fixation. [Log users in]({{ site.baseurl }}/docs/login.html) shows this in context.
 
 ## React to new sessions
 

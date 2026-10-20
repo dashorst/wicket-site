@@ -10,7 +10,7 @@ order: 20
 source: [modelsforms/modelsforms_3.adoc]
 ---
 
-Use property models when you bind many components to properties of one object, most often the fields of a form. They name the property with a string, a property expression. For a single property, [lambda models]({{ site.baseurl }}/guide/lambda-models.html) do the same with compile-time checks.
+Use property models when you bind many components to properties of one object, most often the fields of a form. They name the property with a string, a property expression. For a single property, [lambda models]({{ site.baseurl }}/docs/lambda-models.html) do the same with compile-time checks.
 
 The examples bind to this bean, held in a `personModel` of type `IModel<Person>`:
 
@@ -85,7 +85,7 @@ add(form);
 
 This works through model inheritance: a component created without a model asks its parents for an `IComponentInheritedModel`, and `CompoundPropertyModel` answers with a property model that uses the component's id as the expression. The fields do not have to be direct children of the form: Wicket walks up the parents until it finds an inheritable model, so containers in between do not get in the way.
 
-The compound model can wrap a model, as above, or an object with `CompoundPropertyModel.of(person)`. Wrap a model when the object comes from a database, so that it is [loaded per request]({{ site.baseurl }}/guide/detachable-models.html).
+The compound model can wrap a model, as above, or an object with `CompoundPropertyModel.of(person)`. Wrap a model when the object comes from a database, so that it is [loaded per request]({{ site.baseurl }}/docs/detachable-models.html).
 
 ## Use an id that differs from the property
 
@@ -110,4 +110,4 @@ form.add(new TextField<>("nickname", LambdaModel.of(personModel,
 form.add(new CheckBox("subscribe", Model.of(false)));                         // not a Person property
 ```
 
-[Model classes]({{ site.baseurl }}/guide/model-types.html) describes the other property-based models, such as `ComponentPropertyModel`.
+[Model classes]({{ site.baseurl }}/docs/model-types.html) describes the other property-based models, such as `ComponentPropertyModel`.

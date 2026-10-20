@@ -10,7 +10,7 @@ order: 20
 source: [requestProcessing/requestProcessing_1.adoc, requestProcessing/requestProcessing_2.adoc, requestProcessing/requestProcessing_3.adoc]
 ---
 
-How these parts work together, and why, is explained in [What happens during a request]({{ site.baseurl }}/guide/request-cycle.html).
+How these parts work together, and why, is explained in [What happens during a request]({{ site.baseurl }}/docs/request-cycle.html).
 
 ## Objects of a request
 
@@ -173,4 +173,4 @@ Throw these from a constructor, a listener or a lifecycle hook to stop the curre
 
 ## Request mappers
 
-`IRequestMapper` turns a request into a handler with `mapRequest(Request)` and a handler into a URL with `mapHandler(IRequestHandler)`. `getCompatibilityScore(Request)` says how well the mapper fits a request; when several mappers can map it, the one with the highest score wins. The root mapper of an application is a `SystemMapper` that holds the built-in mappers and the ones you add with `mount()` and `mountPage()`. The mappers are listed in [Request mappers]({{ site.baseurl }}/guide/request-mappers.html).
+`IRequestMapper` turns a request into a handler with `mapRequest(Request)` and a handler into a URL with `mapHandler(IRequestHandler)`. `getCompatibilityScore(Request)` says how well the mapper fits a request; when several mappers can map it, the one with the highest score wins. The root mapper of an application is a `SystemMapper` that holds the built-in mappers and the ones you add with `mount()` and `mountPage()`. The mappers are listed in [Request mappers]({{ site.baseurl }}/docs/request-mappers.html).

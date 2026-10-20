@@ -1,7 +1,15 @@
 ---
 layout: base
 ---
-{% include mainmenu.html %}
+{% comment %}
+  A plain content page (books, examples, older contributor pages): the title on the platform
+  sign, then the content, with an "On this page" rail when the content has headings.
+{% endcomment %}
+<div class="header default">
+    <div class="l-container">
+        {% include mainmenu.html %}
+    </div>
+</div>
 {% capture toc %}{{ content | toc_generate }}{% endcapture %}{% assign toc = toc | strip %}
 <div class="page-sign">
     <div class="page-sign-inner">
@@ -12,13 +20,11 @@ layout: base
 <main id="main" tabindex="-1">
     <div class="reading{% if toc != '' %} has-rail{% endif %}">
         {% if toc != '' %}
-        <nav class="reading-rail" aria-label="On this page">
-            {{ toc }}
-        </nav>
+        <nav class="reading-rail" aria-label="On this page">{{ toc }}</nav>
         {% endif %}
         <div class="reading-main">
             {% if page.titlePicture or page.preamble %}
-            <header class="l-full preamble">
+            <header class="preamble">
                 {% if page.titlePicture %}
                     {% assign pictureAttrs = "" %}
                     {% for prop in page.titlePicture %}

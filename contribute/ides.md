@@ -3,7 +3,7 @@ layout: default
 title: IDE Support for Wicket development
 ---
 
-For Wicket plugins that help you build applications, see [Add Wicket support to your IDE]({{ site.baseurl }}/guide/ide-plugins.html) in the user guide. This page covers setting up your IDE to work on Wicket itself.
+For Wicket plugins that help you build applications, see [Add Wicket support to your IDE]({{ site.baseurl }}/docs/ide-plugins.html) in the user guide. This page covers setting up your IDE to work on Wicket itself.
 
 ## Setting up your IDE ##
 

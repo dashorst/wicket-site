@@ -94,4 +94,4 @@ The fourth argument is the fragment's model; components inside the fragment get 
 
 ## Choose between a fragment and a panel
 
-A fragment belongs to the page or panel that defines it: other classes cannot use its markup. When the same block is needed in more than one place, make it a panel. See [Build a reusable panel]({{ site.baseurl }}/guide/build-panel.html).
+A fragment belongs to the page or panel that defines it: other classes cannot use its markup. When the same block is needed in more than one place, make it a panel. See [Build a reusable panel]({{ site.baseurl }}/docs/build-panel.html).

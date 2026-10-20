@@ -25,7 +25,7 @@ Use this to test the `WebSocketBehavior` of a page, or a `WebSocketResource`, in
 </dependency>
 ```
 
-The class is `org.apache.wicket.protocol.ws.tester.WebSocketTester`. It works with the `WicketTester` you already use; see [Test pages and components]({{ site.baseurl }}/guide/test-pages.html).
+The class is `org.apache.wicket.protocol.ws.tester.WebSocketTester`. It works with the `WicketTester` you already use; see [Test pages and components]({{ site.baseurl }}/docs/test-pages.html).
 
 ## Send a message and check the answer
 
@@ -95,4 +95,4 @@ WebSocketTester webSocket = new WebSocketTester(tester, "prices") {
 };
 ```
 
-The resource must be registered in the application's `init()` as in production. [Push updates over a WebSocket]({{ site.baseurl }}/guide/use-websockets.html) shows the behavior and resource side.
+The resource must be registered in the application's `init()` as in production. [Push updates over a WebSocket]({{ site.baseurl }}/docs/use-websockets.html) shows the behavior and resource side.

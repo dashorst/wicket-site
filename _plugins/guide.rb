@@ -3,18 +3,29 @@ require 'nokogiri'
 
 # The user guide (_guide/, see GUIDE.md).
 #
-# - Generates a page per topic in _data/guide.yml at /guide/topics/<id>.html.
+# - Generates a page per topic in _data/guide.yml at /docs/topics/<id>.html, and a page
+#   per kind (tutorials, how-to guides, ...) at /docs/kinds/<slug>.html.
 # - Collects the `apis` front matter into site.data['guide_classes'] for the A-Z index.
-# - Writes /guide/search.json: a record per page and per ## section, for the search
+# - Writes /docs/search.json: a record per page and per ## section, for the search
 #   in javascript/guide.js.
 # - Warns about pages with an unknown topic or kind and about links to guide pages
 #   that do not exist.
+# - Leaves out pages whose `since` is a release line that is not released yet.
 module WicketGuide
   KINDS = %w[tutorial howto reference explanation].freeze
 
+  # The newest released line: the highest series in _data/releases.yml whose `config`
+  # names a version in _config.yml (wicket.version_NN). nil when no line has one.
+  def self.newest_line(site)
+    versions = site.config['wicket'] || {}
+    (site.data.dig('releases', 'lines') || [])
+      .select { |l| l['config'] && versions[l['config']] }
+      .map { |l| l['series'].to_i }.max
+  end
+
   class TopicPage < Jekyll::PageWithoutAFile
     def initialize(site, topic)
-      super(site, site.source, 'guide/topics', "#{topic['id']}.html")
+      super(site, site.source, 'docs/topics', "#{topic['id']}.html")
       data['layout'] = 'guide-topic'
       data['title'] = topic['title']
       data['topic'] = topic['id']
@@ -22,6 +33,23 @@ module WicketGuide
       data['active_link'] = 'documentation'
       self.content = ''
     end
+  end
+
+  class KindPage < Jekyll::PageWithoutAFile
+    def initialize(site, kind)
+      super(site, site.source, 'docs/kinds', "#{WicketGuide.kind_slug(kind)}.html")
+      data['layout'] = 'guide-kind'
+      data['title'] = kind['title']
+      data['kind'] = kind['id']
+      data['summary'] = kind['intro']
+      data['active_link'] = 'documentation'
+      self.content = ''
+    end
+  end
+
+  # "How-to guides" -> "how-to-guides"
+  def self.kind_slug(kind)
+    kind['title'].downcase.gsub(/[^a-z0-9]+/, '-').gsub(/\A-|-\z/, '')
   end
 
   class Generator < Jekyll::Generator
@@ -35,6 +63,10 @@ module WicketGuide
       topic_ids = topics.map { |t| t['id'] }
 
       topics.each { |topic| site.pages << TopicPage.new(site, topic) }
+      (config['kinds'] || []).each do |kind|
+        kind['url'] = "/docs/kinds/#{WicketGuide.kind_slug(kind)}.html"
+        site.pages << KindPage.new(site, kind)
+      end
 
       classes = Hash.new { |h, k| h[k] = [] }
       guide.docs.each do |doc|
@@ -54,6 +86,9 @@ module WicketGuide
       lines = (site.data.dig('releases', 'lines') || []).select { |l| l['page'] && %w[lts current].include?(l['status']) }
       site.data['guide_oldest'] = lines.map { |l| l['series'].to_i }.min || 0
       site.data['guide_lines'] = lines.map { |l| l['series'].to_i }.uniq.sort
+      # The next major release, announced but not out yet: pages and notes for it say so.
+      boarding = (site.data.dig('releases', 'lines') || []).find { |l| l['status'] == 'boarding' }
+      site.data['guide_upcoming'] = boarding && { 'series' => boarding['series'].to_i, 'when' => boarding['when'] }
     end
   end
 
@@ -105,6 +140,14 @@ module WicketGuide
   end
 end
 
+# Pages for a line that is not released yet are not published: removing them right
+# after reading keeps them out of every listing, the class index and the search index.
+Jekyll::Hooks.register :site, :post_read do |site|
+  guide = site.collections['guide'] or next
+  newest = WicketGuide.newest_line(site) or next
+  guide.docs.reject! { |doc| doc.data['since'].to_i > newest }
+end
+
 Jekyll::Hooks.register :site, :pre_render do |_site|
   WicketGuide.records.clear
 end
@@ -115,14 +158,81 @@ end
 
 Jekyll::Hooks.register :site, :post_write do |site|
   next unless site.collections['guide']
-  dir = File.join(site.dest, 'guide')
+  dir = File.join(site.dest, 'docs')
   FileUtils.mkdir_p(dir)
-  File.write(File.join(dir, 'search.json'), JSON.generate(WicketGuide.records.sort_by { |r| r['id'] }))
+  # The reference guide is not a guide page; readers search for it as "user guide" too.
+  base = site.config['baseurl'].to_s
+  refs = { 'id' => '/docs/#reference-guide', 'url' => "#{base}/docs/#reference-guide",
+           'title' => 'Reference guide and Javadoc', 'page' => 'Documentation', 'kind' => 'reference',
+           'topic' => '', 'since' => 0,
+           'text' => 'The complete Wicket user guide of each release line as one page or PDF, and its Javadoc.',
+           'keywords' => 'user guide userguide user-guide manual reference guide single page pdf javadoc api', 'apis' => '', 'body' => '' }
+  # Upgrading lives on the releases page and in the announcement of the newest major release.
+  upgrade = { 'id' => '/versions/#upgrade-paths', 'url' => "#{base}/versions/#upgrade-paths",
+              'title' => 'Upgrade paths', 'page' => 'Releases', 'kind' => 'reference', 'topic' => '', 'since' => 0,
+              'text' => 'The route from your Wicket version to one that is supported, with the migration guides.',
+              'keywords' => 'upgrade upgrading migrate migration guide move javax jakarta', 'apis' => '', 'body' => '' }
+  extra = [refs, upgrade]
+  # The one-page reference guide of every line, so "user guide" finds the document itself.
+  lines = (site.data.dig('releases', 'lines') || []).select { |l| l['page'] && l['config'] }.map { |l| l['series'].to_i }.uniq
+  ((lines.min || 7) - 1).downto(7) { |n| lines << n } if lines.any?
+  lines.each_with_index do |n, i|
+    extra << { 'id' => "/docs/#reference-guide-#{i}-#{n}", 'url' => "https://nightlies.apache.org/wicket/guide/#{n}.x/single.html",
+               'title' => "Wicket #{n} reference guide, one page", 'page' => 'Reference guide', 'kind' => 'reference',
+               'topic' => '', 'since' => 0, 'text' => "The complete user guide of Wicket #{n} in one document, on nightlies.apache.org.",
+               'keywords' => "user guide userguide user-guide manual reference guide single page wicket #{n}", 'apis' => '', 'body' => '' }
+  end
+  major = site.posts.docs.map { |post| [post, post.url[%r{/wicket-(\d+)\.0\.0-released}, 1].to_i] }
+                    .select { |post, n| n.positive? && post.output.to_s.include?("id=\"upgrading-from-wicket-#{n - 1}\"") }
+                    .max_by { |_, n| n }
+  if major
+    post, n = major
+    extra << { 'id' => "#{post.url}#upgrading", 'url' => "#{base}#{post.url}#upgrading-from-wicket-#{n - 1}",
+               'title' => "Upgrading from Wicket #{n - 1} to #{n}", 'page' => post.data['title'], 'kind' => 'howto',
+               'topic' => '', 'since' => 0, 'text' => "The steps from Wicket #{n - 1} to Wicket #{n}, in the release announcement.",
+               'keywords' => 'upgrade upgrading migrate migration guide', 'apis' => '', 'body' => '' }
+  end
+  # Releases: readers search the docs for support, end of life and migration as well.
+  data_lines = site.data.dig('releases', 'lines') || []
+  extra << { 'id' => '/versions/', 'url' => "#{base}/versions/", 'title' => 'Release lines and support', 'page' => 'Releases',
+             'kind' => 'reference', 'topic' => '', 'since' => 0,
+             'text' => 'Every release line with its status, how long it is supported, and the upgrade paths.',
+             'keywords' => 'LTS long-term support supported support end of life EOL release lines versions download', 'apis' => '', 'body' => '' }
+  extra << { 'id' => '/versions/#release-policy', 'url' => "#{base}/versions/#release-policy", 'title' => 'Release policy', 'page' => 'Releases',
+             'kind' => 'explanation', 'topic' => '', 'since' => 0,
+             'text' => 'Which release lines are maintained, the LTS and the quarterly releases, and for how long.',
+             'keywords' => 'LTS long-term support quarterly cadence schedule supported support policy', 'apis' => '', 'body' => '' }
+  site.pages.select { |pg| pg.data['layout'] == 'hub' && pg.data['series'] }.each do |pg|
+    series = pg.data['series'].to_s
+    line = data_lines.find { |l| l['series'].to_s == series && l['config'] }
+    status = line ? line['status'] : 'eol'
+    support = line ? line['support'] : 'No longer supported'
+    words = ['release line', 'version', "wicket #{series}", "#{series}.x", 'download', 'maven dependency', 'javadoc']
+    words += ['supported', 'support'] unless status == 'eol'
+    words += ['LTS', 'long-term support'] if status == 'lts'
+    words += ['end of life', 'EOL', 'final release'] if %w[last-call eol].include?(status)
+    extra << { 'id' => pg.url, 'url' => "#{base}#{pg.url}", 'title' => "Wicket #{series} release line", 'page' => 'Releases',
+               'kind' => 'reference', 'topic' => '', 'since' => 0,
+               'text' => "#{(line && line['role']) || status.tr('-', ' ').capitalize}. #{support}.",
+               'keywords' => words.join(' '), 'apis' => '', 'body' => '' }
+    mig = pg.data['migration']
+    next unless mig.is_a?(Hash) && mig['url']
+    extra << { 'id' => "#{pg.url}#migrate", 'url' => mig['url'], 'title' => "Migrate from Wicket #{mig['from']} to #{series}",
+               'page' => 'Migration guide', 'kind' => 'howto', 'topic' => '', 'since' => 0,
+               'text' => "The migration guide on the wiki: what changed from Wicket #{mig['from']} to #{series} and what to adjust.",
+               'keywords' => "migrate migration upgrade wicket #{mig['from']} #{series}", 'apis' => '', 'body' => '' }
+  end
+  site.posts.docs.select { |post| post.data['announces'] == 'end-of-life' }.each do |post|
+    extra << { 'id' => post.url, 'url' => "#{base}#{post.url}", 'title' => post.data['title'], 'page' => 'Blog',
+               'kind' => 'explanation', 'topic' => '', 'since' => 0, 'text' => post.data['description'].to_s,
+               'keywords' => 'end of life EOL final release support javax ' + Array(post.data['lines']).map { |l| "wicket #{l}" }.join(' '),
+               'apis' => '', 'body' => '' }
+  end
+  File.write(File.join(dir, 'search.json'), JSON.generate((WicketGuide.records + extra).sort_by { |r| r['id'] }))
 
   # Links to guide pages that do not exist.
-  base = site.config['baseurl'].to_s
   site.collections['guide'].docs.each do |doc|
-    doc.output.to_s.scan(%r{href="#{Regexp.escape(base)}(/guide/[^"#?]+)}).flatten.uniq.each do |url|
+    doc.output.to_s.scan(%r{href="#{Regexp.escape(base)}(/docs/[^"#?]+)}).flatten.uniq.each do |url|
       file = File.join(site.dest, url.end_with?('/') ? "#{url}index.html" : url)
       Jekyll.logger.warn 'Guide:', "#{doc.relative_path} links to missing #{url}" unless File.exist?(file)
     end

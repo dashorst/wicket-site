@@ -10,7 +10,7 @@ order: 20
 source: [testing/testing_2.adoc]
 ---
 
-You need this when you want to test a form the way a user fills it in: type values, choose options, press a button, and see the result. `FormTester` does that for one form on the page that `WicketTester` last rendered. [Test pages and components]({{ site.baseurl }}/guide/test-pages.html) covers setting up the tester.
+You need this when you want to test a form the way a user fills it in: type values, choose options, press a button, and see the result. `FormTester` does that for one form on the page that `WicketTester` last rendered. [Test pages and components]({{ site.baseurl }}/docs/test-pages.html) covers setting up the tester.
 
 ## Fill in and submit a form
 
@@ -40,8 +40,10 @@ Each `FormTester` submits once. Create a new one for the next submit.
 
 `FormTester` sends the request directly, so the browser's own checks of `required` and `pattern` attributes do not run. A test that submits an empty required field therefore reaches Wicket's server-side validation, which is what you want to test.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required` when they are required, `placeholder` from their label (`setLabel`), and `pattern` for a `PatternValidator`. Tests that compare rendered markup with an expected file, or check the attributes of an `<input>` with `TagTester`, see these attributes on Wicket 11 and not on Wicket 10.
 {: .since}
+{% endif %}
 
 ## Set each kind of field
 
@@ -116,4 +118,4 @@ tester.executeAjaxEvent("form:country", "change");
 tester.assertComponentOnAjaxResponse("form:province");
 ```
 
-If the application uses `ResourceIsolationRequestCycleListener`, add the `Sec-Fetch-Site` header before each submit; see [Test pages and components]({{ site.baseurl }}/guide/test-pages.html#set-request-headers).
+If the application uses `ResourceIsolationRequestCycleListener`, add the `Sec-Fetch-Site` header before each submit; see [Test pages and components]({{ site.baseurl }}/docs/test-pages.html#set-request-headers).

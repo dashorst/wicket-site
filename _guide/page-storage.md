@@ -46,7 +46,7 @@ Reading goes the same way. A page used again in the same request comes from the 
 
 The back button needs the earlier state of a page, not the current one. Keeping a live object is not enough, because the next request changes that same object. Serializing after each request freezes a copy. A chain needs at least one store that makes such copies, or the back button shows the current state.
 
-Serialization is also what turns a page into bytes for the disk, or for a database or cache in other stores. Wicket uses the `ISerializer` from `FrameworkSettings.getSerializer()`, by default `JavaSerializer` with standard Java serialization. This is why everything a page references must be serializable, and why [detachable models]({{ site.baseurl }}/guide/detachable-models.html) matter: their data is dropped before this step.
+Serialization is also what turns a page into bytes for the disk, or for a database or cache in other stores. Wicket uses the `ISerializer` from `FrameworkSettings.getSerializer()`, by default `JavaSerializer` with standard Java serialization. This is why everything a page references must be serializable, and why [detachable models]({{ site.baseurl }}/docs/detachable-models.html) matter: their data is dropped before this step.
 
 ## The disk store
 
@@ -66,7 +66,11 @@ The session holds only the last page used, as a live object. When the servlet co
 
 Wicket deserializes whatever it reads back from the store. Treat the store as private storage either way: on a disk only the application can read, or in a database only the application can write to.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, `CryptingPageStore` uses the crypt scheme of `SecuritySettings`, by default authenticated AES-256-GCM, so a page that was altered in the store fails to decrypt and is treated as missing. In Wicket 10 the cipher comes from `StoreSettings.setCrypter`: the default `DefaultCrypter` (AES-256-CBC) is not authenticated, and `GCMSIVCrypter` is the authenticated option.
 {: .since}
+{% else %}
+The cipher comes from `StoreSettings.setCrypter`. The default `DefaultCrypter` (AES-256-CBC) is not authenticated; `GCMSIVCrypter` is the authenticated option.
+{% endif %}
 
-[Configure the page store]({{ site.baseurl }}/guide/configure-page-store.html) shows how to change the size, the folder, encryption and the stores in the chain.
+[Configure the page store]({{ site.baseurl }}/docs/configure-page-store.html) shows how to change the size, the folder, encryption and the stores in the chain.

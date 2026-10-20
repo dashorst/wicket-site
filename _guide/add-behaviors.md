@@ -77,7 +77,7 @@ public void renderHead(Component component, IHeaderResponse response) {
 }
 ```
 
-For JavaScript that needs the component's element, call `component.setOutputMarkupId(true)` in `bind` and use `component.getMarkupId()` in `renderHead`. See [Wrap a JavaScript widget in a component]({{ site.baseurl }}/guide/integrate-javascript.html).
+For JavaScript that needs the component's element, call `component.setOutputMarkupId(true)` in `bind` and use `component.getMarkupId()` in `renderHead`. See [Wrap a JavaScript widget in a component]({{ site.baseurl }}/docs/integrate-javascript.html).
 
 ## Write a small behavior as a lambda
 
@@ -88,7 +88,7 @@ name.add(Behavior.onTag((component, tag) -> tag.put("autocomplete", "name")));
 name.add(Behavior.onAttribute("class", current -> current == null ? "wide" : current + " wide"));
 ```
 
-To set or append an attribute value from a model, use `AttributeModifier`; see [Change a tag's attributes]({{ site.baseurl }}/guide/modify-attributes.html).
+To set or append an attribute value from a model, use `AttributeModifier`; see [Change a tag's attributes]({{ site.baseurl }}/docs/modify-attributes.html).
 
 ## Choose the right method to override
 
@@ -110,4 +110,4 @@ To set or append an attribute value from a model, use `AttributeModifier`; see [
 | `getStatelessHint(Component)` | return `false` if the behavior makes the page stateful |
 | `canCallListener(Component)` | for behaviors with a callback URL: whether a request to it is accepted |
 
-A behavior that holds no state can be shared: add one instance to many components. Ajax behaviors are bound to a single component and throw an exception when you add them to a second one. For Ajax behaviors, see [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html).
+A behavior that holds no state can be shared: add one instance to many components. Ajax behaviors are bound to a single component and throw an exception when you add them to a second one. For Ajax behaviors, see [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html).

@@ -91,4 +91,4 @@ add(ComponentFactory.ajaxSubmitLink("save",
     (link, target) -> target.add(feedback)));
 ```
 
-It is a separate dependency with its own release cycle; see [WicketStuff]({{ site.baseurl }}/guide/wicketstuff.html).
+It is a separate dependency with its own release cycle; see [WicketStuff]({{ site.baseurl }}/docs/wicketstuff.html).

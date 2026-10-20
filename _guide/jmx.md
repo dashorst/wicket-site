@@ -22,7 +22,7 @@ Use this when you want to look into a running Wicket application, or fix a typo 
 </dependency>
 ```
 
-There is nothing to configure. The module has an [initializer]({{ site.baseurl }}/guide/initializers.html) that registers the MBeans with the platform MBean server when the application starts.
+There is nothing to configure. The module has an [initializer]({{ site.baseurl }}/docs/initializers.html) that registers the MBeans with the platform MBean server when the application starts.
 
 To register them with another MBean server, set one of these system properties:
 

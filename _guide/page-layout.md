@@ -10,7 +10,7 @@ order: 20
 source: [layout/layout_1.adoc, layout/layout_2.adoc, layout/layout_3.adoc, layout/layout_4.adoc]
 ---
 
-In this tutorial you give the application from [Build your first application]({{ site.baseurl }}/guide/first-application.html) one layout for all its pages: a header with navigation, a footer, and a page title that each page fills in. You build it with a base page that other pages extend, and with panels for the header and the footer.
+In this tutorial you give the application from [Build your first application]({{ site.baseurl }}/docs/first-application.html) one layout for all its pages: a header with navigation, a footer, and a page title that each page fills in. You build it with a base page that other pages extend, and with panels for the header and the footer.
 
 Start from the `myapp` project as you left it at the end of the previous tutorial, with `HomePage` and `AboutPage` in the package `com.example`.
 
@@ -264,6 +264,6 @@ Your application now has one layout. A new page only needs to extend `BasePage` 
 
 ## Continue with a form
 
-In the next tutorial, [Build a form that saves data]({{ site.baseurl }}/guide/first-form.html), you add a guestbook page to this layout.
+In the next tutorial, [Build a form that saves data]({{ site.baseurl }}/docs/first-form.html), you add a guestbook page to this layout.
 
-[Markup inheritance]({{ site.baseurl }}/guide/markup-inheritance.html) explains how Wicket merges the markup of a page with that of its parent, [Build a reusable panel]({{ site.baseurl }}/guide/build-panel.html) shows more of what panels can do, and [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html) lists `wicket:child`, `wicket:extend` and `wicket:panel` with the other Wicket tags.
+[Markup inheritance]({{ site.baseurl }}/docs/markup-inheritance.html) explains how Wicket merges the markup of a page with that of its parent, [Build a reusable panel]({{ site.baseurl }}/docs/build-panel.html) shows more of what panels can do, and [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html) lists `wicket:child`, `wicket:extend` and `wicket:panel` with the other Wicket tags.

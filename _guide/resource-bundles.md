@@ -75,4 +75,4 @@ protected void init() {
 
 The first argument is a `CssResourceReference` or a `JavaScriptResourceReference`; the replacement can be any reference. A replaced CSS item keeps its media attribute, and a replaced script keeps `defer`, `async` and the nonce. A replacement is a bundle with one member, so the original cannot also be part of a bundle.
 
-To replace jQuery, set the jQuery reference instead: `getJavaScriptLibrarySettings().setJQueryReference(…)`, see [Declare dependencies between resources]({{ site.baseurl }}/guide/resource-dependencies.html#depend-on-jquery).
+To replace jQuery, set the jQuery reference instead: `getJavaScriptLibrarySettings().setJQueryReference(…)`, see [Declare dependencies between resources]({{ site.baseurl }}/docs/resource-dependencies.html#depend-on-jquery).

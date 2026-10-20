@@ -65,7 +65,7 @@ The `href` is gone and the `disabled` attribute is added, so you can style the c
 
 Inside `<wicket:link>`, Wicket only rewrites tags that have no `wicket:id` and whose `href` or `src` contains no colon. Links such as `https://wicket.apache.org` or `mailto:dev@wicket.apache.org` stay as they are.
 
-A `href` that does not end in `.html` (or `.xml`, `.wml`, `.svg`) is treated as a package resource instead of a page: `<link href="style.css">` inside `<wicket:link>` becomes a URL to `style.css` in the package of the page. See [Serve files from your Java packages]({{ site.baseurl }}/guide/package-resources.html).
+A `href` that does not end in `.html` (or `.xml`, `.wml`, `.svg`) is treated as a package resource instead of a page: `<link href="style.css">` inside `<wicket:link>` becomes a URL to `style.css` in the package of the page. See [Serve files from your Java packages]({{ site.baseurl }}/docs/package-resources.html).
 
 ## Turn automatic linking on or off for a region
 
@@ -87,4 +87,4 @@ protected void init() {
 }
 ```
 
-The tag itself is described with the other Wicket tags in [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html).
+The tag itself is described with the other Wicket tags in [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html).

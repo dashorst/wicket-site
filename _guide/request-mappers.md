@@ -10,7 +10,7 @@ order: 10
 source: [urls/urls_6.adoc, requestProcessing/requestProcessing_3.adoc]
 ---
 
-A request mapper works in two directions. For an incoming request it returns the request handler that produces the response, or `null` when it does not recognize the URL. When Wicket renders a link, form or resource reference, it asks the mappers for the URL of a request handler. How the handler then processes the request is described in [Request processing]({{ site.baseurl }}/guide/request-processing.html).
+A request mapper works in two directions. For an incoming request it returns the request handler that produces the response, or `null` when it does not recognize the URL. When Wicket renders a link, form or resource reference, it asks the mappers for the URL of a request handler. How the handler then processes the request is described in [Request processing]({{ site.baseurl }}/docs/request-processing.html).
 
 ## IRequestMapper
 
@@ -92,7 +92,7 @@ mountResource("/export/${format}", new ExportResourceReference());
 | `HomePageMapper` | `/` | the page from `Application#getHomePage()` |
 | `BookmarkableMapper` | `/wicket/bookmarkable/com.example.ProductPage?id=42` | any bookmarkable page that is not mounted. Disabled for requests by `SecuritySettings#setEnforceMounts(true)` |
 | `PageInstanceMapper` | `/wicket/page?3`, `/wicket/page?3-1.-form` | a page instance from the page store, for pages that were not created from a bookmarkable URL |
-| `BufferedResponseMapper` | the URL of a response stored by `REDIRECT_TO_BUFFER` | see [Redirects after a request]({{ site.baseurl }}/guide/redirects.html) |
+| `BufferedResponseMapper` | the URL of a response stored by `REDIRECT_TO_BUFFER` | see [Redirects after a request]({{ site.baseurl }}/docs/redirects.html) |
 
 The number after `?` is the page id. After it may follow the render count and the path of the component whose listener the URL calls, such as `3-1.-form`.
 
@@ -112,8 +112,8 @@ These mappers wrap another mapper, usually the root mapper, with `setRootRequest
 
 | Mapper | Constructor | What it does |
 |---|---|---|
-| `CryptoMapper` | `(IRequestMapper, Application)`, `(IRequestMapper, Supplier<ICrypt>)` | encrypts the URLs of the wrapped mapper; see [Encrypt URLs]({{ site.baseurl }}/guide/encrypt-urls.html) |
-| `HttpsMapper` | `(IRequestMapper, HttpsConfig)` | redirects to HTTPS for pages annotated with `@RequireHttps`, and back to HTTP for others; see [Require HTTPS]({{ site.baseurl }}/guide/https.html) |
+| `CryptoMapper` | `(IRequestMapper, Application)`, `(IRequestMapper, Supplier<ICrypt>)` | encrypts the URLs of the wrapped mapper{% if site.wicket.version_11 %}; see [Encrypt URLs]({{ site.baseurl }}/docs/encrypt-urls.html){% endif %} |
+| `HttpsMapper` | `(IRequestMapper, HttpsConfig)` | redirects to HTTPS for pages annotated with `@RequireHttps`, and back to HTTP for others; see [Require HTTPS]({{ site.baseurl }}/docs/https.html) |
 
 ## Compound mappers
 
@@ -123,7 +123,7 @@ These mappers wrap another mapper, usually the root mapper, with `setRootRequest
 | `CompoundRequestMapper` | the implementation; selects by score as described above |
 | `SystemMapper` | the default root mapper. Holds, added in this order: `PageInstanceMapper`, `BookmarkableMapper`, `HomePageMapper`, `ResourceReferenceMapper`, `UrlResourceReferenceMapper`, the mapper for `RestartResponseAtInterceptPageException`, `BufferedResponseMapper`. Override its `new...Mapper()` factory methods to replace one of them |
 
-Other features add their own mappers, such as `ReportCSPViolationMapper` for the reports of the [Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+Other features add their own mappers, such as `ReportCSPViolationMapper` for the reports of the [Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
 ## Parameter encoders
 

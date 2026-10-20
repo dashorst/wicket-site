@@ -10,7 +10,7 @@ order: 10
 source: [testing/testing_1.adoc, testing/testing_2.adoc, testing/testing_3.adoc, testing/testing_4.adoc]
 ---
 
-`WicketTester`, in the `wicket-tester` module, runs a Wicket application in memory with a mock servlet container. It processes requests synchronously on the calling thread and keeps the last rendered page, request and response. `WicketTester` adds JUnit assertions to `BaseWicketTester`, which holds the machinery. Component paths in all methods are relative to the page, with ids separated by `:`. [Test pages and components]({{ site.baseurl }}/guide/test-pages.html) shows them in use.
+`WicketTester`, in the `wicket-tester` module, runs a Wicket application in memory with a mock servlet container. It processes requests synchronously on the calling thread and keeps the last rendered page, request and response. `WicketTester` adds JUnit assertions to `BaseWicketTester`, which holds the machinery. Component paths in all methods are relative to the page, with ids separated by `:`. [Test pages and components]({{ site.baseurl }}/docs/test-pages.html) shows them in use.
 
 ## Constructors
 
@@ -115,8 +115,10 @@ The `is` and `has` methods return a `Result` instead of failing, for your own as
 
 Each compares the response with the file `filename` in the package of `testClass`. With the system property `wicket.replace.expected.results=true` the file is written instead.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required`, `placeholder` and `pattern` attributes, so expected files of pages with text fields differ between Wicket 10 and 11.
 {: .since}
+{% endif %}
 
 ## Inspect the page and response
 
@@ -148,7 +150,7 @@ Each compares the response with the file `filename` in the package of `testClass
 
 ## FormTester
 
-Returned by `newFormTester(path)`. Ids are relative to the form. Every setter returns the `FormTester`. [Test forms]({{ site.baseurl }}/guide/test-forms.html) shows it in use.
+Returned by `newFormTester(path)`. Ids are relative to the form. Every setter returns the `FormTester`. [Test forms]({{ site.baseurl }}/docs/test-forms.html) shows it in use.
 
 | Method | Description |
 |---|---|
@@ -168,7 +170,7 @@ A `FormTester` submits once.
 
 ## TagTester
 
-Created with the static methods `createTagByName`, `createTagByAttribute`, `createTagsByAttribute` and `createTags`, or by the `getTag...` methods of the tester. It reads tags with `getName`, `hasAttribute`, `getAttribute`, `getAttributeIs`, `getAttributeContains`, `getAttributeEndsWith`, `getValue`, `getMarkup`, `hasChildTag` and `getChild`. [Test markup]({{ site.baseurl }}/guide/test-markup.html) describes each.
+Created with the static methods `createTagByName`, `createTagByAttribute`, `createTagsByAttribute` and `createTags`, or by the `getTag...` methods of the tester. It reads tags with `getName`, `hasAttribute`, `getAttribute`, `getAttributeIs`, `getAttributeContains`, `getAttributeEndsWith`, `getValue`, `getMarkup`, `hasChildTag` and `getChild`. [Test markup]({{ site.baseurl }}/docs/test-markup.html) describes each.
 
 ## JUnit helpers
 
