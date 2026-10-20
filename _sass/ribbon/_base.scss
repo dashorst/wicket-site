@@ -86,7 +86,7 @@ a {
 a:hover { text-decoration-thickness: 3px; }
 
 // JetBrains Mono's ligatures would turn <!-- and <> into arrows and diamonds: code shows what you type.
-code, kbd, samp, pre, .loom, .bead, .tl-j, .tl-t { font-family: var(--mono); font-variant-ligatures: none; font-feature-settings: "calt" 0, "liga" 0; }
+code, kbd, samp, pre, .loom, .bead, .tl-bead { font-family: var(--mono); font-variant-ligatures: none; font-feature-settings: "calt" 0, "liga" 0; }
 code { font-size: .82em; }
 pre code { font-size: inherit; }
 abbr[title] { text-decoration: none; }

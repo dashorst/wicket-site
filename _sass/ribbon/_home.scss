@@ -147,18 +147,47 @@
     // The ribbon: a vertical run beside every child list and a fold into each item.
     .tl li li::before { content: ""; position: absolute; left: 0; top: 0; width: 18px; height: 24px; border-left: var(--ribbon-w) solid var(--ribbon); border-bottom: var(--ribbon-w) solid var(--ribbon); border-bottom-left-radius: 2px; }
     .tl li li:not(:last-child)::after { content: ""; position: absolute; left: 0; top: 20px; bottom: 0; border-left: var(--ribbon-w) solid var(--ribbon); }
-    .tl-name, .tl-j, .tl-t { display: block; }
+    .tl-name { display: block; }
     .tl li > .tl-name { padding-top: 10px; }
     .tl > li > .tl-name { padding-top: 0; }
     .tl-name b { font: 700 .98rem/1.2 var(--mono); color: var(--paper); background: var(--cloth-deep); }
     .tl > li > .tl-name b { font: 700 1.3rem/1.2 var(--serif); }
     .tl-name span { font: 500 1.05rem/1.2 var(--sc); color: var(--ribbon-text); letter-spacing: .03em; margin-left: 6px; }
-    .tl-j, .tl-t { font: 400 12px/1.45 var(--mono); padding: 5px 9px; white-space: pre-wrap; }
-    .tl-j { margin-top: 6px; background: var(--paper); color: var(--ink); border-radius: 2px 2px 0 0; }
-    .tl-t { background: #DCE7E2; color: #0F4A40; border-radius: 0 0 2px 2px; }
-    .tl-foot { margin: 18px 0 0; font: 400 1.0625rem/1.45 var(--sans); color: var(--muted); }
+    // With JavaScript a name is a bead: tapping it lights its lines in the files below.
+    .tl-bead {
+        font: 700 .98rem/1.2 var(--mono); color: var(--paper); background: var(--cloth-deep);
+        border: 1px solid var(--ribbon); border-radius: 3px; padding: 3px 8px; margin: 0; cursor: pointer;
+    }
+    .tl > li > .tl-name .tl-bead { font: 700 1.3rem/1.2 var(--serif); }
+    .tl-bead:hover { background: rgba(238, 127, 45, .22); }
+    .tl-bead[aria-pressed="true"] { background: var(--ribbon); color: var(--ink); }
+    .tl-hint, .tl-foot { margin: 18px 0 0; font: 400 1.0625rem/1.45 var(--sans); color: var(--muted); }
+    .tl-hint + .tl-foot { margin-top: 6px; }
     .tl-foot code { color: var(--ribbon-text); }
+    // The four files, each in its own language, on paper sheets.
+    .tree-code { display: block; max-width: 760px; margin-top: 26px; }
+    .tc-file { margin: 22px 0 8px; font: 500 1.05rem/1.2 var(--sans); color: var(--paper); }
+    .tc-file:first-child { margin-top: 0; }
+    .tc-file.on { color: var(--ribbon-text); }
+    .tc {
+        margin: 0; padding: 10px 0; overflow-x: auto; background: var(--paper); color: var(--ink);
+        border-radius: 2px; font: 400 12px/1.7 var(--mono);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 16px 36px -22px rgba(0, 0, 0, .55);
+    }
+    .tc code { display: block; min-width: max-content; font: inherit; background: none; padding: 0; color: inherit; }
+    .tcl { display: block; white-space: pre; padding: 0 12px; transition: background-color .15s; }
+    .tcl.on { background: var(--ribbon-wash); }
+    .tcl.on .tw { background: rgba(238, 127, 45, .3); color: var(--ink); }
+    .tc .tk, .tc .tw { color: var(--ribbon-deep); }
+    .tc .ts { color: #1C5E43; }
+    .tc .tg { color: #0F4A40; }
+    @media (pointer: coarse) {
+        .tl-bead { min-height: 44px; min-width: 44px; }
+        .tl li > .tl-name { padding-top: 6px; }
+    }
 }
+.tree-code { display: none; }
+.no-js .tl-hint { display: none; }
 
 @media (max-width: 1399px) { .ctree { --loom-fs: 11px; } }
 

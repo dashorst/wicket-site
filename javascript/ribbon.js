@@ -261,6 +261,38 @@ document.documentElement.classList.replace('no-js', 'js');
   schedule();
 })();
 
+/* ---------------------------------------------------------------- 2b. the tree as a list
+   Below the loom's width the tree is a list of components followed by the four files. Each name
+   becomes a bead that lights its lines in the files; on wide screens the list is only read aloud,
+   so its beads leave the tab order there. */
+(() => {
+  const list = document.querySelector('.tree-list');
+  const code = document.querySelector('.tree-code');
+  if (!list || !code) return;
+  const narrow = matchMedia('(max-width: 1239px)');
+  const lines = [...code.querySelectorAll('.tcl[data-c], .tc-file[data-c]')];
+  const beads = [...list.querySelectorAll('.tl-name b[data-c]')].map(b => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'tl-bead';
+    button.dataset.c = b.dataset.c;
+    button.setAttribute('aria-pressed', 'false');
+    button.innerHTML = b.innerHTML;
+    b.replaceWith(button);
+    return button;
+  });
+  const tabs = () => beads.forEach(b => { b.tabIndex = narrow.matches ? 0 : -1; });
+  tabs();
+  narrow.addEventListener('change', tabs);
+  beads.forEach(bead => bead.addEventListener('click', () => {
+    const on = bead.getAttribute('aria-pressed') !== 'true';
+    beads.forEach(b => b.setAttribute('aria-pressed', 'false'));
+    const keys = on ? bead.dataset.c.split(' ') : [];
+    if (on) bead.setAttribute('aria-pressed', 'true');
+    lines.forEach(l => l.classList.toggle('on', l.dataset.c.split(' ').some(k => keys.includes(k))));
+  }));
+})();
+
 /* ---------------------------------------------------------------- 3. reading rail */
 (() => {
   const links = document.querySelectorAll('.reading-rail a[href^="#"]');
