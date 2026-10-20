@@ -10,7 +10,7 @@ summary: From Wicket 11 on, a long-term support (LTS) release ships once a year,
 
 Every release is announced on the [announce list]({{ site.baseurl }}/community/#announce), on the [blog]({{ site.baseurl }}/news/) and in its [Atom feed]({{ site.baseurl }}/atom.xml).
 
-If your application runs on a line with its last release coming, or one past its end of life, plan the upgrade: the [upgrade paths](#upgrade-paths) show the route.
+If your application runs on a line with its last release coming, or one past its end of life, plan the upgrade: the [upgrade paths](#upgrade-paths) show how.
 
 ---
 
@@ -22,7 +22,7 @@ How to move an application to a line that stays supported.
     <thead>
         <tr>
             <th scope="col">You are on</th>
-            <th scope="col">Your route</th>
+            <th scope="col">Your path</th>
             <th scope="col">Guide</th>
         </tr>
     </thead>
@@ -73,7 +73,7 @@ How to move an application to a line that stays supported.
 
 ## Release policy {#release-policy}
 
-Since Wicket 11.0.0, released in October 2026, Wicket follows a time-based release schedule: a new major release every three months, and every fourth major release &mdash; once a year &mdash; is a long-term support (LTS) release. The table above shows the lines in service and the releases scheduled after them.
+Since Wicket 11.0.0, released in October 2026, Wicket follows a time-based release schedule: a new major release every three months, and every fourth major release &mdash; once a year &mdash; is a long-term support (LTS) release. The table above shows the supported lines and the releases scheduled after them.
 
 Two release lines are maintained at any time:
 
@@ -86,7 +86,7 @@ Wicket 10 is the current LTS and stays supported until Wicket 14 is released in 
 
 ## End of life {#unsupported}
 
-These release lines get no more releases, not even security fixes. If your application depends on one of them, upgrade to Wicket 10 LTS; the [upgrade paths](#upgrade-paths) show the route.
+These release lines get no more releases, not even security fixes. If your application depends on one of them, upgrade to Wicket 10 LTS; the [upgrade paths](#upgrade-paths) show how.
 
 <table class="eol-table">
 	<tr>
@@ -140,7 +140,7 @@ These release lines get no more releases, not even security fixes. If your appli
 
 ## Release archives {#archives}
 
-The Apache mirrors only carry the latest release of each line in service. Every older release is in [the Apache archives](https://archive.apache.org/dist/wicket).
+The Apache mirrors only carry the latest release of each supported line. Every older release is in [the Apache archives](https://archive.apache.org/dist/wicket).
 
 ---
 

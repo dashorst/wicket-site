@@ -55,8 +55,8 @@ along: Spring 6, Guice 7 and Commons FileUpload 2.
    migration guide covers one major version, so the step to 10 follows from there.
 
 The [upgrade paths]({{ site.baseurl }}/versions/#upgrade-paths) on the releases page show
-the route, and the pages of [Wicket 9]({{ site.baseurl }}/versions/wicket-9.x/) and
-[Wicket 8]({{ site.baseurl }}/versions/wicket-8.x/) carry it as well.
+each step, and the pages of [Wicket 9]({{ site.baseurl }}/versions/wicket-9.x/) and
+[Wicket 8]({{ site.baseurl }}/versions/wicket-8.x/) list them as well.
 
 Once on Wicket 10, the step to [Wicket 11]({{ site.baseurl }}/versions/wicket-11.x/) is your
 JDK and your container: it needs Java 21 and Jakarta Servlet 6.1.
