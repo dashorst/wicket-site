@@ -50,7 +50,7 @@ The buffers live in the `WebApplication` object, keyed by session id and URL. Th
 
 A request for `/order` creates a new instance of the page. If the page is stateful, its URL has to identify this instance, so that a later click on one of its links reaches the same object. Wicket renders the page, finds that its URL is now `/order?3`, stores the response and redirects to `/order?3`.
 
-A stateless page has nothing to find again. Wicket renders it directly into the response, without a buffer and without a redirect, and the URL stays `/order`. This is one reason to [keep pages stateless]({{ site.baseurl }}/guide/keep-stateless.html) where you can; [Stateful and stateless pages]({{ site.baseurl }}/guide/stateful-stateless.html) explains the difference.
+A stateless page has nothing to find again. Wicket renders it directly into the response, without a buffer and without a redirect, and the URL stays `/order`. This is one reason to [keep pages stateless]({{ site.baseurl }}/docs/keep-stateless.html) where you can; [Stateful and stateless pages]({{ site.baseurl }}/docs/stateful-stateless.html) explains the difference.
 
 ## When Wicket does not redirect
 
@@ -78,4 +78,4 @@ The fix is sticky sessions: the load balancer sends all requests of a session to
 
 Switching to `ONE_PASS_RENDER` also removes the problem, because there is no second request. It brings back the double-submit problem and the action URLs in the address bar, so it trades one problem for another. It suits clusters that cannot use sticky sessions, and applications whose pages are mostly stateless or driven by Ajax, where few full-page form posts happen.
 
-How the request cycle resolves handlers and mappers around these redirects is described in [What happens during a request]({{ site.baseurl }}/guide/request-cycle.html).
+How the request cycle resolves handlers and mappers around these redirects is described in [What happens during a request]({{ site.baseurl }}/docs/request-cycle.html).

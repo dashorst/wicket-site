@@ -44,7 +44,7 @@ Any other tag in the namespace stops the parser with `Unknown tag name with Wick
 
 ## Wicket tags in development and deployment mode
 
-In development mode Wicket tags and `wicket:` attributes stay in the HTML sent to the browser, which helps when you inspect the page. In deployment mode Wicket strips them. The `MarkupSettings#setStripWicketTags(boolean)` setting controls this; the configuration type sets it for you. Browsers ignore unknown tags, but CSS selectors such as `div > p` see the extra elements, so a selector can match in deployment mode and not in development mode. See [Switch between development and deployment mode]({{ site.baseurl }}/guide/deployment-mode.html).
+In development mode Wicket tags and `wicket:` attributes stay in the HTML sent to the browser, which helps when you inspect the page. In deployment mode Wicket strips them. The `MarkupSettings#setStripWicketTags(boolean)` setting controls this; the configuration type sets it for you. Browsers ignore unknown tags, but CSS selectors such as `div > p` see the extra elements, so a selector can match in deployment mode and not in development mode. See [Switch between development and deployment mode]({{ site.baseurl }}/docs/deployment-mode.html).
 
 ## `wicket:id`
 
@@ -89,7 +89,7 @@ Attributes: none.
 </html>
 ```
 
-The panel's own tag in the parent page stays; the content of `<wicket:panel>` replaces its body. See [Build a reusable panel]({{ site.baseurl }}/guide/build-panel.html).
+The panel's own tag in the parent page stays; the content of `<wicket:panel>` replaces its body. See [Build a reusable panel]({{ site.baseurl }}/docs/build-panel.html).
 
 ## `wicket:child`
 
@@ -106,7 +106,7 @@ Attributes: none.
 </body>
 ```
 
-See [Markup inheritance]({{ site.baseurl }}/guide/markup-inheritance.html).
+See [Markup inheritance]({{ site.baseurl }}/docs/markup-inheritance.html).
 
 ## `wicket:extend`
 
@@ -154,7 +154,7 @@ fragment.add(new Label("date", shippedDate));
 add(fragment);
 ```
 
-The third argument is the container whose markup holds the fragment. See [Swap markup with fragments]({{ site.baseurl }}/guide/use-fragments.html).
+The third argument is the container whose markup holds the fragment. See [Swap markup with fragments]({{ site.baseurl }}/docs/use-fragments.html).
 
 ## `wicket:border`
 
@@ -186,7 +186,7 @@ Attributes: none.
 </section>
 ```
 
-Components in that content are added with `Border#add`; components in the border's own markup with `Border#addToBorder`. See [Wrap content with a Border]({{ site.baseurl }}/guide/use-borders.html).
+Components in that content are added with `Border#add`; components in the border's own markup with `Border#addToBorder`. See [Wrap content with a Border]({{ site.baseurl }}/docs/use-borders.html).
 
 ## `wicket:enclosure`
 
@@ -218,7 +218,7 @@ Put `wicket:enclosure` on any HTML element that can contain other elements. Leav
 </tr>
 ```
 
-If the element has both an `id` and a `wicket:id`, the two must be equal. See [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/guide/use-enclosures.html).
+If the element has both an `id` and a `wicket:id`, the two must be equal. See [Hide surrounding markup with wicket:enclosure]({{ site.baseurl }}/docs/use-enclosures.html).
 
 ## `wicket:container`
 
@@ -241,7 +241,7 @@ Do not put other attributes on it: in deployment mode the whole tag is stripped,
 
 ## `wicket:message`
 
-Inserts a text from the resource bundles, or puts localized texts into attribute values. See [Translate component texts]({{ site.baseurl }}/guide/localize-components.html) for where the texts come from.
+Inserts a text from the resource bundles, or puts localized texts into attribute values. See [Translate component texts]({{ site.baseurl }}/docs/localize-components.html) for where the texts come from.
 
 ### As a tag
 
@@ -333,7 +333,7 @@ Inside the tag, Wicket handles every element without a `wicket:id` whose `href` 
 </wicket:link>
 ```
 
-An empty `<wicket:link/>` changes the setting until the end of the file or the next `<wicket:link>`. `MarkupSettings#setAutomaticLinking(true)` turns automatic linking on for all markup. See [Turn plain links into page links with wicket:link]({{ site.baseurl }}/guide/wicket-link.html).
+An empty `<wicket:link/>` changes the setting until the end of the file or the next `<wicket:link>`. `MarkupSettings#setAutomaticLinking(true)` turns automatic linking on for all markup. See [Turn plain links into page links with wicket:link]({{ site.baseurl }}/docs/wicket-link.html).
 
 ## `wicket:head`
 
@@ -356,7 +356,7 @@ The content is written once per component class, however many instances of the c
 </wicket:panel>
 ```
 
-For CSS and JavaScript files, contributing from Java is more flexible; see [Add CSS and JavaScript to a page]({{ site.baseurl }}/guide/add-css-javascript.html).
+For CSS and JavaScript files, contributing from Java is more flexible; see [Add CSS and JavaScript to a page]({{ site.baseurl }}/docs/add-css-javascript.html).
 
 ## `wicket:header-items`
 
@@ -372,7 +372,7 @@ Attributes: none. Allowed only inside the page's `<head>`, at most once.
 </head>
 ```
 
-See [Control the order of header items]({{ site.baseurl }}/guide/header-order.html).
+See [Control the order of header items]({{ site.baseurl }}/docs/header-order.html).
 
 ## `wicket:remove`
 
@@ -390,4 +390,4 @@ Attributes: none. It must have a closing tag, and it must not contain tags with 
 </ul>
 ```
 
-See [Keep preview markup out of the output]({{ site.baseurl }}/guide/stub-markup.html).
+See [Keep preview markup out of the output]({{ site.baseurl }}/docs/stub-markup.html).

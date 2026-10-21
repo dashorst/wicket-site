@@ -10,7 +10,7 @@ order: 10
 source: [repeaters/repeaters_1.adoc]
 ---
 
-Use `RepeatingView` when you build a small, fixed set of items in code: a menu, a row of buttons, a set of badges. You add one child per item, and each child renders with the repeater's tag. For items that come from a list or a database, use [ListView]({{ site.baseurl }}/guide/list-items.html) or a [data view]({{ site.baseurl }}/guide/paginate-data.html), which build the children for you.
+Use `RepeatingView` when you build a small, fixed set of items in code: a menu, a row of buttons, a set of badges. You add one child per item, and each child renders with the repeater's tag. For items that come from a list or a database, use [ListView]({{ site.baseurl }}/docs/list-items.html) or a [data view]({{ site.baseurl }}/docs/paginate-data.html), which build the children for you.
 
 ## Repeat a single tag
 
@@ -81,4 +81,4 @@ Here the child is a link, which is itself a container. Any `MarkupContainer` can
 
 `RepeatingView` keeps its children until you change them. It does not rebuild them when it renders, so the items stay as you added them for the life of the page. To change the list, call `removeAll()`, `remove(component)` or `add(component)`, for example in an event handler.
 
-When the items depend on data that changes between requests, rebuilding them yourself gets tedious. A `ListView` or `RefreshingView` rebuilds its items on every render by default; see [Repeaters]({{ site.baseurl }}/guide/repeaters.html) for how each repeater treats its items.
+When the items depend on data that changes between requests, rebuilding them yourself gets tedious. A `ListView` or `RefreshingView` rebuilds its items on every render by default; see [Repeaters]({{ site.baseurl }}/docs/repeaters.html) for how each repeater treats its items.

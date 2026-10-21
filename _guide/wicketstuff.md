@@ -93,16 +93,16 @@ The tables list the modules in the WicketStuff repository by artifact id.
 | `wicketstuff-urlfragment` | Read and write parameters in the URL fragment, for bookmarkable Ajax state. |
 | `wicketstuff-sitemap-xml` | Generate *sitemap.xml* files for search engines. |
 | `wicketstuff-htmlcompressor` | Compress the rendered markup with htmlcompressor. |
-| `wicketstuff-annotationeventdispatcher` | Deliver [Wicket events]({{ site.baseurl }}/guide/send-events.html) to methods marked with an annotation. |
+| `wicketstuff-annotationeventdispatcher` | Deliver [Wicket events]({{ site.baseurl }}/docs/send-events.html) to methods marked with an annotation. |
 | `wicketstuff-mbeanview` | A panel that shows and operates the application's JMX MBeans. |
 
 ### Integration, security and storage
 
 | Artifact | Adds |
 |---|---|
-| `wicketstuff-javaee-inject` | Inject EJBs, JNDI resources and persistence units; see [Inject EJBs]({{ site.baseurl }}/guide/ejb.html). |
+| `wicketstuff-javaee-inject` | Inject EJBs, JNDI resources and persistence units; see [Inject EJBs]({{ site.baseurl }}/docs/ejb.html). |
 | `wicketstuff-springreference` | A serializable reference to Spring beans, for places where `@SpringBean` does not work. |
 | `wicketstuff-shiro` | Authentication and authorization with Apache Shiro. |
-| `wicketstuff-datastore-redis`, `-hazelcast`, `-cassandra`, `-memcached`, `-ignite` | Page stores that keep pages in a shared data store, for clusters. See [Configure the page store]({{ site.baseurl }}/guide/configure-page-store.html). |
+| `wicketstuff-datastore-redis`, `-hazelcast`, `-cassandra`, `-memcached`, `-ignite` | Page stores that keep pages in a shared data store, for clusters. See [Configure the page store]({{ site.baseurl }}/docs/configure-page-store.html). |
 | `wicketstuff-serializer-fast2` | A faster page serializer based on FST. |
 | `wicketstuff-serializer-kryo2` | A page serializer based on Kryo. Its own documentation advises against production use. |

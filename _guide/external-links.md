@@ -57,7 +57,7 @@ Put the attributes in the markup, where they belong to the design:
 <a wicket:id="search" target="_blank" rel="noopener noreferrer">Search</a>
 ```
 
-`rel="noreferrer"` also keeps the browser from sending the URL of your page, including a session id in the URL, to the other site. To set attributes from code instead, use an `AttributeModifier`; see [Change a tag's attributes]({{ site.baseurl }}/guide/modify-attributes.html).
+`rel="noreferrer"` also keeps the browser from sending the URL of your page, including a session id in the URL, to the other site. To set attributes from code instead, use an `AttributeModifier`; see [Change a tag's attributes]({{ site.baseurl }}/docs/modify-attributes.html).
 
 ## Link to a file in your web application
 

@@ -10,7 +10,7 @@ order: 10
 source: [i18n/i18n_1.adoc, i18n/i18n_2.adoc]
 ---
 
-Wicket localizes an application with the same building blocks as Java: a `java.util.Locale` that names a language and country, and properties files with keys and translated texts. What Wicket adds is where it looks for those files. Instead of one bundle for the whole application, every page, panel and component can have its own, and Wicket searches them along the component tree. The exact search order is listed in [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html); this page explains the ideas behind it.
+Wicket localizes an application with the same building blocks as Java: a `java.util.Locale` that names a language and country, and properties files with keys and translated texts. What Wicket adds is where it looks for those files. Instead of one bundle for the whole application, every page, panel and component can have its own, and Wicket searches them along the component tree. The exact search order is listed in [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html); this page explains the ideas behind it.
 
 ## Where the locale comes from
 
@@ -52,4 +52,4 @@ Properties files keep one layout for all languages, so a change to the page has 
 
 The lookup is the same for every text Wicket shows. `Component#getString`, `ResourceModel`, `StringResourceModel`, `<wicket:message>`, the error messages of validators and converters, and the placeholder text of a drop-down all go through the `Localizer`, which asks a chain of string resource loaders. A validator you write can ship its messages in a properties file next to its class. Wicket's own messages, such as `'${label}' is required.` and the messages of its validators, live in the bundle of the `Application` class, near the end of the search, so that your bundles can replace them.
 
-Because the loaders form a chain, you can add your own, for example to read texts from a database or from an existing Java `ResourceBundle`: see [Load texts from your own source]({{ site.baseurl }}/guide/custom-string-loaders.html). For the everyday work of translating a page, see [Translate component texts]({{ site.baseurl }}/guide/localize-components.html).
+Because the loaders form a chain, you can add your own, for example to read texts from a database or from an existing Java `ResourceBundle`: see [Load texts from your own source]({{ site.baseurl }}/docs/custom-string-loaders.html). For the everyday work of translating a page, see [Translate component texts]({{ site.baseurl }}/docs/localize-components.html).

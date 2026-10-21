@@ -10,7 +10,7 @@ order: 10
 source: [i18n/i18n_2.adoc]
 ---
 
-To translate a page or panel, put its texts in properties files next to its class, one file per language, and refer to them by key from the markup or the Java code. How Wicket finds the right file is explained in [How Wicket localizes]({{ site.baseurl }}/guide/about-localization.html).
+To translate a page or panel, put its texts in properties files next to its class, one file per language, and refer to them by key from the markup or the Java code. How Wicket finds the right file is explained in [How Wicket localizes]({{ site.baseurl }}/docs/about-localization.html).
 
 ## Create a properties file per language
 
@@ -134,7 +134,7 @@ add(new Label("greeting", new ResourceModel("greeting")));
 add(new Label("greeting", () -> getString("greeting")));
 ```
 
-To put values in a text, such as a name or a date, see [Put model values into translated texts]({{ site.baseurl }}/guide/resource-models.html).
+To put values in a text, such as a name or a date, see [Put model values into translated texts]({{ site.baseurl }}/docs/resource-models.html).
 
 ## Use a different markup file per language
 

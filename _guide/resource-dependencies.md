@@ -74,11 +74,15 @@ public class DatePickerJs extends JQueryPluginResourceReference {
 
 The jQuery version comes from `getJavaScriptLibrarySettings().getJQueryReference()`. Point that setting at another reference to use your own copy of jQuery everywhere, including in Wicket's own components.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 uses jQuery 4 by default; Wicket 10 uses jQuery 3. A plugin that does not work with jQuery 4 can keep jQuery 3 on Wicket 11 with
 > `getJavaScriptLibrarySettings().setJQueryReference(JQueryResourceReference.getV3())`.
 {: .since}
+{% else %}
+By default that is jQuery 3.
+{% endif %}
 
-To depend on Wicket's own Ajax and event functions, such as `Wicket.Event` or `Wicket.Ajax`, add `JavaScriptHeaderItem.forReference(getJavaScriptLibrarySettings().getWicketAjaxReference())` to the dependencies; get the settings with `Application.get()`. That reference follows the application's choice of library, including the jQuery-free one that Wicket 11 offers, see [Run Ajax without jQuery]({{ site.baseurl }}/guide/ajax-without-jquery.html).
+To depend on Wicket's own Ajax and event functions, such as `Wicket.Event` or `Wicket.Ajax`, add `JavaScriptHeaderItem.forReference(getJavaScriptLibrarySettings().getWicketAjaxReference())` to the dependencies; get the settings with `Application.get()`. That reference follows the application's choice of library{% if site.wicket.version_11 %}, including the jQuery-free one that Wicket 11 offers, see [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html){% endif %}.
 
 ## Depend on a library from a CDN
 
@@ -107,7 +111,7 @@ public class JQueryUiJs extends UrlResourceReference {
 }
 ```
 
-The default Content Security Policy allows the script because Wicket gives it a nonce, but stylesheets, fonts and images that the library loads from that server need the host in the matching directive, see [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html). For subresource integrity, render the item with `setIntegrity(…)` and `setCrossOrigin(CrossOrigin.ANONYMOUS)`, or set both on the reference.
+The default Content Security Policy allows the script because Wicket gives it a nonce, but stylesheets, fonts and images that the library loads from that server need the host in the matching directive, see [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html). For subresource integrity, render the item with `setIntegrity(…)` and `setCrossOrigin(CrossOrigin.ANONYMOUS)`, or set both on the reference.
 
 ## Give a header item its own dependencies
 
@@ -124,4 +128,4 @@ response.render(new OnDomReadyHeaderItem("Chart.draw('" + getMarkupId() + "');")
 });
 ```
 
-Wicket renders the dependencies first and the ready script after all files, as described in [Control the order of header items]({{ site.baseurl }}/guide/header-order.html).
+Wicket renders the dependencies first and the ready script after all files, as described in [Control the order of header items]({{ site.baseurl }}/docs/header-order.html).

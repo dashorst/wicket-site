@@ -38,11 +38,11 @@ add(new Label("now", () -> LocalTime.now()));
 
 A component has at most one model of its own, its default model (`getDefaultModel()`, `setDefaultModel()`). `GenericPanel` and `GenericWebPage` add typed versions, `getModel()` and `getModelObject()`. One model can serve several components: a form and its fields share the form's object, and a label and a link can show and act on the same person.
 
-Components use the model at fixed moments. A `Label` calls `getObject()` while it renders and converts the result to text. A form component calls `setObject()` when its form is submitted and the input is valid. Between those moments the component does not touch the data. See [How a form is processed]({{ site.baseurl }}/guide/form-processing.html) for the order of those calls in a submit.
+Components use the model at fixed moments. A `Label` calls `getObject()` while it renders and converts the result to text. A form component calls `setObject()` when its form is submitted and the input is valid. Between those moments the component does not touch the data. See [How a form is processed]({{ site.baseurl }}/docs/form-processing.html) for the order of those calls in a submit.
 
 ## Between requests the page is serialized
 
-At the end of a request, Wicket stores every stateful page that took part in it, so that the next request and the back button can find it again. Storing means serializing: Wicket writes the page and everything reachable from it to the page store. That includes the components, their behaviors, their models and the objects the models hold. [How pages are stored]({{ site.baseurl }}/guide/page-storage.html) describes where they go.
+At the end of a request, Wicket stores every stateful page that took part in it, so that the next request and the back button can find it again. Storing means serializing: Wicket writes the page and everything reachable from it to the page store. That includes the components, their behaviors, their models and the objects the models hold. [How pages are stored]({{ site.baseurl }}/docs/page-storage.html) describes where they go.
 
 Two things follow from this. The objects your models hold must be serializable, which is why `Model` only accepts `Serializable` values and why a `NotSerializableException` usually names a field in one of your components. And whatever a model holds is copied to the store after every request: a list of ten thousand rows in a `Model` is written to disk each time the user clicks.
 
@@ -75,7 +75,7 @@ The trouble starts after the first request:
 - On the next request the panel works with a deserialized copy that belongs to no persistence context. Touching a lazy collection throws `LazyInitializationException`, and saving the copy can overwrite what another user changed in the meantime.
 - The copy never changes. When someone else edits the person, this page keeps showing the old values until the user opens a new page.
 
-Passing the entity to a component's constructor and keeping it in a field has the same effect, because the field is serialized in the same way, and the component can no longer get at fresh data. Give the component a model instead, and make that model one that loads the entity by its id. [Load data once per request with detachable models]({{ site.baseurl }}/guide/detachable-models.html) shows how.
+Passing the entity to a component's constructor and keeping it in a field has the same effect, because the field is serialized in the same way, and the component can no longer get at fresh data. Give the component a model instead, and make that model one that loads the entity by its id. [Load data once per request with detachable models]({{ site.baseurl }}/docs/detachable-models.html) shows how.
 
 `Model` is the right choice for values that belong to the page itself: the search term the user typed, the selected tab, a small value object.
 
@@ -86,12 +86,12 @@ A model that holds a value, like `Model`, is static: `getObject()` returns what 
 The choice comes down to where the data lives:
 
 - A value the page owns: `Model`, or a lambda on a field of the page.
-- A property of an object another model holds: [lambda models]({{ site.baseurl }}/guide/lambda-models.html) or [property models]({{ site.baseurl }}/guide/property-models.html).
-- Data from a database or service: [a detachable model]({{ site.baseurl }}/guide/detachable-models.html).
-- A value that depends on another model's current value: [a chained model]({{ site.baseurl }}/guide/chain-models.html).
+- A property of an object another model holds: [lambda models]({{ site.baseurl }}/docs/lambda-models.html) or [property models]({{ site.baseurl }}/docs/property-models.html).
+- Data from a database or service: [a detachable model]({{ site.baseurl }}/docs/detachable-models.html).
+- A value that depends on another model's current value: [a chained model]({{ site.baseurl }}/docs/chain-models.html).
 
-[Model classes]({{ site.baseurl }}/guide/model-types.html) lists every model class in `wicket-core`.
+[Model classes]({{ site.baseurl }}/docs/model-types.html) lists every model class in `wicket-core`.
 
 ## Models a component finds on its own
 
-A component created without a model asks its parents for one. When a parent holds a model that implements `IComponentInheritedModel`, the component gets a model derived from it. `CompoundPropertyModel` is the common case: it gives each child a model for the property named by the child's id. A form with a `CompoundPropertyModel` of a person and a `TextField` with id `email` edits the person's email without any model code on the field. [Bind components to a JavaBean]({{ site.baseurl }}/guide/property-models.html) shows this in a form.
+A component created without a model asks its parents for one. When a parent holds a model that implements `IComponentInheritedModel`, the component gets a model derived from it. `CompoundPropertyModel` is the common case: it gives each child a model for the property named by the child's id. A form with a `CompoundPropertyModel` of a person and a `TextField` with id `email` edits the person's email without any model code on the field. [Bind components to a JavaBean]({{ site.baseurl }}/docs/property-models.html) shows this in a form.

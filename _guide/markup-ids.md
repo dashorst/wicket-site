@@ -39,7 +39,7 @@ add(new WebMarkupContainer("hint")
 
 Call `getMarkupId()` once the component is on a page, for instance from `onInitialize`, `onConfigure`, a model or `renderHead`, not in a constructor where the component has no parent yet.
 
-For `<label>` tags there is a shortcut that needs no Java: `<label wicket:for="search">` writes the `for` attribute and turns on the markup id. See [`wicket:for`]({{ site.baseurl }}/guide/wicket-tags.html#wicketfor).
+For `<label>` tags there is a shortcut that needs no Java: `<label wicket:for="search">` writes the `for` attribute and turns on the markup id. See [`wicket:for`]({{ site.baseurl }}/docs/wicket-tags.html#wicketfor).
 
 ## Choose the id yourself
 
@@ -86,4 +86,4 @@ The generator must return the same id every time it is asked about the same comp
 
 ## Keep the tag when you need the id
 
-A component with `setRenderBodyOnly(true)` has no tag to carry the id. Wicket logs `Markup id set on a component that renders its body only`, and the component cannot be updated with Ajax. Keep the tag on components that need an id; see [Render a component without its tag]({{ site.baseurl }}/guide/render-body-only.html).
+A component with `setRenderBodyOnly(true)` has no tag to carry the id. Wicket logs `Markup id set on a component that renders its body only`, and the component cannot be updated with Ajax. Keep the tag on components that need an id; see [Render a component without its tag]({{ site.baseurl }}/docs/render-body-only.html).

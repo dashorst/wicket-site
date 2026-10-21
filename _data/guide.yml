@@ -1,5 +1,5 @@
 # Topics of the user guide (`_guide/`), in reading order. Every page names one
-# topic in its `topic` front matter; the topic page at /guide/topics/<id>.html
+# topic in its `topic` front matter; the topic page at /docs/topics/<id>.html
 # lists that topic's pages by kind. See GUIDE.md.
 
 kinds:

@@ -10,7 +10,7 @@ order: 10
 source: [ajax/ajax_2.adoc]
 ---
 
-Every component on this page renders an Ajax behavior and calls a method with an `AjaxRequestTarget`, or an `Optional<AjaxRequestTarget>` for the fallback components, which is empty when the request came in without Ajax. Components from wicket-core need no extra dependency; the others are in the `wicket-extensions` module. To add Ajax to a component that has none, use an [Ajax behavior]({{ site.baseurl }}/guide/ajax-behaviors.html).
+Every component on this page renders an Ajax behavior and calls a method with an `AjaxRequestTarget`, or an `Optional<AjaxRequestTarget>` for the fallback components, which is empty when the request came in without Ajax. Components from wicket-core need no extra dependency; the others are in the `wicket-extensions` module. To add Ajax to a component that has none, use an [Ajax behavior]({{ site.baseurl }}/docs/ajax-behaviors.html).
 
 ## Links and buttons
 
@@ -82,7 +82,7 @@ add(new AutoCompleteTextField<String>("city", cityModel, settings) {
 | `AjaxFallbackOrderByBorder<S>` | wicket-extensions | Sort border around a column header. | `onAjaxClick(AjaxRequestTarget)` |
 | `AjaxOrderByLink<S>` | wicket-extensions | Sort link. | `onClick(AjaxRequestTarget)` |
 
-`AjaxPagingNavigator` adds the nearest parent of the repeater that outputs a markup id to the target, and the whole page when there is none, so give the container around the repeater a markup id. `AjaxFallbackDefaultDataTable` sets its own. See [Page through data]({{ site.baseurl }}/guide/paginate-data.html).
+`AjaxPagingNavigator` adds the nearest parent of the repeater that outputs a markup id to the target, and the whole page when there is none, so give the container around the repeater a markup id. `AjaxFallbackDefaultDataTable` sets its own. See [Page through data]({{ site.baseurl }}/docs/paginate-data.html).
 
 ## Panels, dialogs and tabs
 
@@ -133,4 +133,4 @@ The tree components are in `org.apache.wicket.extensions.markup.html.repeater.tr
 | `CheckedFolder<T>` | wicket-extensions | `Folder` with a check box. | `onUpdate(AjaxRequestTarget)` |
 | `CheckFolder<T>` | wicket-extensions | `Folder` with a `Check`, for trees inside a `CheckGroup`. | none |
 
-`HumanTheme` and `WindowsTheme` are behaviors that give a tree a look. The repeaters these trees build on are described in [Repeaters]({{ site.baseurl }}/guide/repeaters.html).
+`HumanTheme` and `WindowsTheme` are behaviors that give a tree a look. The repeaters these trees build on are described in [Repeaters]({{ site.baseurl }}/docs/repeaters.html).

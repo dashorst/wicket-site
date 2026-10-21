@@ -10,7 +10,7 @@ order: 40
 source: [requestProcessing/requestProcessing_5.adoc]
 ---
 
-Use this when the default error pages do not fit your application, or when you want specific exceptions to lead to specific pages. Exceptions become request handlers inside the request cycle; [What happens during a request]({{ site.baseurl }}/guide/request-cycle.html#exceptions-become-handlers-too) explains how.
+Use this when the default error pages do not fit your application, or when you want specific exceptions to lead to specific pages. Exceptions become request handlers inside the request cycle; [What happens during a request]({{ site.baseurl }}/docs/request-cycle.html#exceptions-become-handlers-too) explains how.
 
 ## Replace the built-in error pages
 
@@ -31,7 +31,7 @@ protected void init() {
 |---|---|
 | `setInternalErrorPage` | Unexpected exceptions, in deployment mode. |
 | `setPageExpiredErrorPage` | `PageExpiredException`: the page a link or form belongs to is no longer in the page store, usually because the session expired. |
-| `setAccessDeniedPage` | `AuthorizationException`, for example from a [role check]({{ site.baseurl }}/guide/roles.html), and listener calls on components that are disabled or invisible. |
+| `setAccessDeniedPage` | `AuthorizationException`, for example from a [role check]({{ site.baseurl }}/docs/roles.html), and listener calls on components that are disabled or invisible. |
 
 Extend `AbstractErrorPage` for your pages. It turns off versioning for the page and adds a small default style sheet. Set the HTTP status in `setHeaders()`, otherwise the browser receives `200 OK`:
 
@@ -54,7 +54,7 @@ public class ErrorPage extends AbstractErrorPage {
 
 ## Choose what users see after an unexpected exception
 
-In development mode Wicket shows `ExceptionErrorPage` with the stack trace; in deployment mode it shows the internal error page (see [Switch between development and deployment mode]({{ site.baseurl }}/guide/deployment-mode.html)). Override this with the exception settings:
+In development mode Wicket shows `ExceptionErrorPage` with the stack trace; in deployment mode it shows the internal error page (see [Switch between development and deployment mode]({{ site.baseurl }}/docs/deployment-mode.html)). Override this with the exception settings:
 
 ```java
 getExceptionSettings().setUnexpectedExceptionDisplay(ExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
@@ -137,4 +137,4 @@ getExceptionSettings().setAjaxErrorHandlingStrategy(
     ExceptionSettings.AjaxErrorStrategy.INVOKE_FAILURE_HANDLER);
 ```
 
-Wicket then answers with status 500 and runs the `onFailure` handlers of the request; see [React to Ajax requests in JavaScript]({{ site.baseurl }}/guide/ajax-call-listeners.html).
+Wicket then answers with status 500 and runs the `onFailure` handlers of the request; see [React to Ajax requests in JavaScript]({{ site.baseurl }}/docs/ajax-call-listeners.html).

@@ -18,7 +18,7 @@ Content-Security-Policy: default-src 'none'; script-src 'strict-dynamic' 'nonce-
   manifest-src 'self'; child-src 'self'; base-uri 'self'
 ```
 
-Scripts and stylesheets only run when they carry the nonce. Wicket adds it to everything you contribute through `renderHead`. Images, fonts, frames and Ajax calls are allowed from your own origin. Anything inline is blocked: `<script>` and `<style>` in the markup, `onclick` and other event attributes, and `style` attributes. [How Wicket keeps applications secure]({{ site.baseurl }}/guide/security-model.html#content-security-policy) explains why the policy has no `'unsafe-inline'`.
+Scripts and stylesheets only run when they carry the nonce. Wicket adds it to everything you contribute through `renderHead`. Images, fonts, frames and Ajax calls are allowed from your own origin. Anything inline is blocked: `<script>` and `<style>` in the markup, `onclick` and other event attributes, and `style` attributes. [How Wicket keeps applications secure]({{ site.baseurl }}/docs/security-model.html#content-security-policy) explains why the policy has no `'unsafe-inline'`.
 
 All settings live in `getCspSettings()` of your `WebApplication`. Change them in `init()`, after `super.init()`.
 
@@ -68,7 +68,7 @@ public void renderHead(IHeaderResponse response) {
 }
 ```
 
-A stylesheet or script inside `<wicket:link>` that Wicket turns into a package resource URL also gets the nonce. Scripts loaded this way may load further scripts, because of `'strict-dynamic'`. [Add CSS and JavaScript to a page]({{ site.baseurl }}/guide/add-css-javascript.html) covers the header items.
+A stylesheet or script inside `<wicket:link>` that Wicket turns into a package resource URL also gets the nonce. Scripts loaded this way may load further scripts, because of `'strict-dynamic'`. [Add CSS and JavaScript to a page]({{ site.baseurl }}/docs/add-css-javascript.html) covers the header items.
 
 ## Replace inline event handlers
 
@@ -121,6 +121,7 @@ getCspSettings().reporting()
 
 ## Exclude pages from the policy
 
+{% if site.wicket.version_11 %}
 A page writes the header while it configures its response, after asking `getCspSettings().mustProtect(page)`. That method returns `true` when a policy is set and the protected filter accepts the page. Change the filter to leave pages out:
 
 ```java
@@ -129,6 +130,16 @@ getCspSettings().setProtectedFilter(page -> !(page instanceof LegacyReportPage))
 
 > Since Wicket 11, every `WebPage` response asks `mustProtect(page)`, and the filter is a `Predicate<WebPage>`, as shown. In Wicket 10 a page writes the header only when the request is handled by a `RenderPageRequestHandler`, and the filter is a `Predicate<IRequestHandler>` that tests that handler, for example `handler -> !(handler instanceof RenderPageRequestHandler h && h.getPageClass() == LegacyReportPage.class)`. `setProtectedFilter(Predicate<IRequestHandler>)` is deprecated since 10.11.0. Wicket 10 also has a `CSPRequestCycleListener` for responses other than page renders; Wicket 11 removes it, so only pages send the header.
 {: .since}
+{% else %}
+A page writes the header only when the request is handled by a `RenderPageRequestHandler`. The protected filter decides which of those requests get it: a `Predicate<IRequestHandler>` that tests the handler. Change the filter to leave pages out:
+
+```java
+getCspSettings().setProtectedFilter(handler ->
+    !(handler instanceof RenderPageRequestHandler h && h.getPageClass() == LegacyReportPage.class));
+```
+
+`setProtectedFilter(Predicate<IRequestHandler>)` is deprecated since 10.11.0. For responses other than page renders, Wicket also has a `CSPRequestCycleListener`.
+{% endif %}
 
 ## Loosen or turn off the policy
 

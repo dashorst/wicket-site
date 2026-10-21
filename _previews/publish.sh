@@ -7,7 +7,9 @@
 #
 # Runs on the host. Jekyll runs in the wicket-site-jekyll container, which
 # mounts this repository at /site; worktrees and output live in .previews/
-# (gitignored) so the container can reach them.
+# (gitignored) so the container can reach them. Every design is built with
+# season_selector: true, which designs with seasonal photographs read to show
+# their review selector.
 #
 # Usage: _previews/publish.sh [--no-push]
 
@@ -69,7 +71,7 @@ while IFS='|' read -r slug source gemfile title date desc; do
                 c = YAML.unsafe_load_file(\"_config.yml\")
                 ex = (c[\"exclude\"] || []) + %w[content .claude .previews _previews .impeccable PRODUCT.md DESIGN.md
                      Gemfile Gemfile.lock node_modules vendor/bundle/ vendor/cache/ vendor/gems/ vendor/ruby/]
-                puts({ \"url\" => \"$SITE_URL\", \"baseurl\" => \"$BASE/$slug\", \"exclude\" => ex.uniq }.to_yaml)
+                puts({ \"url\" => \"$SITE_URL\", \"baseurl\" => \"$BASE/$slug\", \"exclude\" => ex.uniq, \"season_selector\" => true }.to_yaml)
             ' > /tmp/preview-$slug.yml
             export BUNDLE_GEMFILE=$gf BUNDLE_PATH=/site/.bundle-cache
             bundle install --quiet

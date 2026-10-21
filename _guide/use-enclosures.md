@@ -87,7 +87,7 @@ An enclosure does not become the parent of the components inside it: in Java the
 
 Two ways around this:
 
-- Add the components with `queue()` instead of `add()`. Wicket then builds the hierarchy from the markup, and the enclosure becomes the real parent of the fields. Hidden enclosure, skipped fields. See [Add components without repeating the markup hierarchy]({{ site.baseurl }}/guide/queue-components.html).
+- Add the components with `queue()` instead of `add()`. Wicket then builds the hierarchy from the markup, and the enclosure becomes the real parent of the fields. Hidden enclosure, skipped fields. See [Add components without repeating the markup hierarchy]({{ site.baseurl }}/docs/queue-components.html).
 - Replace the tag with an `EnclosureContainer`: a container you add yourself, attached to an ordinary tag or a `<wicket:container>`, that takes its visibility from one child. Add the fields to it.
 
 ```java
@@ -104,4 +104,4 @@ add(phoneGroup);
 </wicket:container>
 ```
 
-`EnclosureContainer` renders without its own tag, so it cannot be repainted with Ajax; repaint its parent instead. For why enclosures behave this way, see [How markup becomes components]({{ site.baseurl }}/guide/auto-components.html).
+`EnclosureContainer` renders without its own tag, so it cannot be repainted with Ajax; repaint its parent instead. For why enclosures behave this way, see [How markup becomes components]({{ site.baseurl }}/docs/auto-components.html).

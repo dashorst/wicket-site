@@ -10,7 +10,7 @@ order: 10
 source: [componentLifecycle/componentLifecycle_1.adoc, componentLifecycle/componentLifecycle_2.adoc, componentLifecycle/componentLifecycle_3.adoc, componentLifecycle/componentLifecycle_4.adoc, componentLifecycle/componentLifecycle_5.adoc, componentLifecycle/componentLifecycle_6.adoc, componentLifecycle/componentLifecycle_7.adoc]
 ---
 
-A component is created once with `new`, then takes part in any number of requests until it is garbage collected with its page. In each request it may be rendered, and at the end of each request it is detached. Why the lifecycle looks like this is explained in [What happens during a request]({{ site.baseurl }}/guide/request-cycle.html).
+A component is created once with `new`, then takes part in any number of requests until it is garbage collected with its page. In each request it may be rendered, and at the end of each request it is detached. Why the lifecycle looks like this is explained in [What happens during a request]({{ site.baseurl }}/docs/request-cycle.html).
 
 ## Stages
 
@@ -38,7 +38,7 @@ The table lists every hook of `Component` in the order Wicket calls it during a 
 | `onReAdd()` | `MarkupContainer.add()` | each time a removed component is added again | checked | Restore what `onRemove()` released. |
 | `onConfigure()` | `Component.configure()`, from the parent's `beforeRender()` | once per request, before rendering, also when the component is invisible | checked | Decide visibility and enabled state with `setVisible()` and `setEnabled()`. |
 | `onBeforeRender()` | `Component.beforeRender()` | once per request, after `onConfigure()`, only when visible | last, checked | Add, replace or remove children. The super call cascades to the children, so changes must come before it. |
-| `renderHead(IHeaderResponse)` | the page's `<head>` section, or the Ajax response for the updated components | when the head is rendered, children before their parents | not needed | Contribute CSS and JavaScript. See [Header items]({{ site.baseurl }}/guide/header-items.html). |
+| `renderHead(IHeaderResponse)` | the page's `<head>` section, or the Ajax response for the updated components | when the head is rendered, children before their parents | not needed | Contribute CSS and JavaScript. See [Header items]({{ site.baseurl }}/docs/header-items.html). |
 | `onRender()` | `Component.render()` | when the component renders | depends on the class | Writes the component to the response. Abstract; rarely overridden. |
 | `onComponentTag(ComponentTag)` | `onRender()` of `WebComponent` and `MarkupContainer` | while writing the component's open tag | yes, usually first | Change the tag name or its attributes. |
 | `onComponentTagBody(MarkupStream, ComponentTag)` | the component's markup sourcing strategy | after the open tag, for tags with a body | call it to keep the default body | Replace the body, for example with `replaceComponentTagBody()`. In a `MarkupContainer`, the super call renders the children. |
@@ -52,7 +52,7 @@ Two more hooks run outside this order:
 | Method | When |
 |---|---|
 | `onModelChanging()` and `onModelChanged()` | Before and after `setDefaultModelObject()` changes the model object. |
-| `onEvent(IEvent<?>)` | When an event sent with `send()` reaches the component. See [Send events between components]({{ site.baseurl }}/guide/send-events.html). |
+| `onEvent(IEvent<?>)` | When an event sent with `send()` reaches the component. See [Send events between components]({{ site.baseurl }}/docs/send-events.html). |
 
 ## Order within the component tree
 
@@ -72,7 +72,7 @@ When the request clicks a link or submits a form, Wicket loads the page and call
 
 ## Hooks of a behavior
 
-A [behavior]({{ site.baseurl }}/guide/add-behaviors.html) is called from the matching hook of the component it is added to:
+A [behavior]({{ site.baseurl }}/docs/add-behaviors.html) is called from the matching hook of the component it is added to:
 
 | Behavior method | Called |
 |---|---|
@@ -138,7 +138,7 @@ add(new Label("title", titleModel) {
 });
 ```
 
-To reuse such a change on several components, use an `AttributeModifier` or a behavior instead; see [Change a tag's attributes]({{ site.baseurl }}/guide/modify-attributes.html).
+To reuse such a change on several components, use an `AttributeModifier` or a behavior instead; see [Change a tag's attributes]({{ site.baseurl }}/docs/modify-attributes.html).
 
 Replace the body in `onComponentTagBody()`:
 

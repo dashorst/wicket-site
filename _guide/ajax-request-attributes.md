@@ -132,4 +132,4 @@ The attributes are rendered as a JSON object in the call to `Wicket.Ajax.ajax`, 
 | `i` | Markup id of the busy indicator | `IAjaxIndicatorAware` |
 | `ih`, `bh`, `pre`, `bsh`, `ah`, `sh`, `fh`, `coh`, `dh` | Call listener handlers | `getAjaxCallListeners` |
 
-The handlers are covered in [React to Ajax requests in JavaScript]({{ site.baseurl }}/guide/ajax-call-listeners.html).
+The handlers are covered in [React to Ajax requests in JavaScript]({{ site.baseurl }}/docs/ajax-call-listeners.html).

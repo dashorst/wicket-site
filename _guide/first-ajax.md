@@ -12,7 +12,7 @@ source: [ajax/ajax_1.adoc]
 
 In this tutorial you make the application update parts of a page without reloading it. The click counter on the home page and the guestbook form send their requests in the background, the form opens when a visitor asks for it, and the guestbook refreshes its list by itself. You write no JavaScript: you tell Wicket in Java which components to redraw.
 
-Start from the `myapp` project as you left it at the end of [Build a form that saves data]({{ site.baseurl }}/guide/first-form.html).
+Start from the `myapp` project as you left it at the end of [Build a form that saves data]({{ site.baseurl }}/docs/first-form.html).
 
 ## 1. Count clicks without a reload
 
@@ -194,11 +194,13 @@ Restart and open the guestbook in two browsers, or in a normal and a private win
 
 Your application now updates parts of its pages over Ajax: from a link, from a form, and on a timer, and it shows a hidden component without a reload.
 
-> Since Wicket 11, the same code runs without jQuery if you switch the application to Wicket's plain JavaScript Ajax implementation. See [Run Ajax without jQuery]({{ site.baseurl }}/guide/ajax-without-jquery.html).
+{% if site.wicket.version_11 %}
+> Since Wicket 11, the same code runs without jQuery if you switch the application to Wicket's plain JavaScript Ajax implementation. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 ## Continue with tests
 
-In the next tutorial, [Test a page with WicketTester]({{ site.baseurl }}/guide/first-test.html), you write tests for the pages, the form and the Ajax link, and run them without a browser or server.
+In the next tutorial, [Test a page with WicketTester]({{ site.baseurl }}/docs/first-test.html), you write tests for the pages, the form and the Ajax link, and run them without a browser or server.
 
-[How Wicket Ajax works]({{ site.baseurl }}/guide/how-ajax-works.html) explains what happens between the click and the update, [Update components with Ajax]({{ site.baseurl }}/guide/update-components.html) covers more of `AjaxRequestTarget`, [Show, hide or disable a component]({{ site.baseurl }}/guide/show-hide-components.html) explains why visibility belongs in `onConfigure()`, and [Ajax components]({{ site.baseurl }}/guide/ajax-components.html) and [Ajax behaviors]({{ site.baseurl }}/guide/ajax-behaviors.html) list what Wicket ships.
+[How Wicket Ajax works]({{ site.baseurl }}/docs/how-ajax-works.html) explains what happens between the click and the update, [Update components with Ajax]({{ site.baseurl }}/docs/update-components.html) covers more of `AjaxRequestTarget`, [Show, hide or disable a component]({{ site.baseurl }}/docs/show-hide-components.html) explains why visibility belongs in `onConfigure()`, and [Ajax components]({{ site.baseurl }}/docs/ajax-components.html) and [Ajax behaviors]({{ site.baseurl }}/docs/ajax-behaviors.html) list what Wicket ships.

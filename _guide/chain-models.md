@@ -65,7 +65,7 @@ public class PersonListDetails extends WebPage {
 
 The form never gets a new model. Only the object at the end of the chain changes.
 
-`Person` is `Serializable` here, so `Model` can hold it. When the people come from a database, hold the selection in a [detachable model]({{ site.baseurl }}/guide/detachable-models.html) that keeps the id. To update only the form and not the whole page, use an `AjaxFormComponentUpdatingBehavior` and add the form to the `AjaxRequestTarget`, as in [Update components with Ajax]({{ site.baseurl }}/guide/update-components.html).
+`Person` is `Serializable` here, so `Model` can hold it. When the people come from a database, hold the selection in a [detachable model]({{ site.baseurl }}/docs/detachable-models.html) that keeps the id. To update only the form and not the whole page, use an `AjaxFormComponentUpdatingBehavior` and add the form to the `AjaxRequestTarget`, as in [Update components with Ajax]({{ site.baseurl }}/docs/update-components.html).
 
 ## Chain a single property
 

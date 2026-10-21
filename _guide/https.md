@@ -77,7 +77,7 @@ The redirect to HTTPS uses the host name the servlet container reports, which is
 - Configure the container or virtual host to reject requests with an unknown `Host`, with a 400 or 404 response.
 - When a reverse proxy terminates TLS, let it set `Host` to the canonical name instead of passing on what the client sent.
 - Do not serve the application from a catch-all or default virtual host.
-- Serve over HTTPS and send an `HSTS` header, so plain HTTP requests are not part of normal traffic. [External security checks]({{ site.baseurl }}/guide/security-checks.html) shows how to add the header.
+- Serve over HTTPS and send an `HSTS` header, so plain HTTP requests are not part of normal traffic. [External security checks]({{ site.baseurl }}/docs/security-checks.html) shows how to add the header.
 
 ## Run behind a proxy that terminates TLS
 

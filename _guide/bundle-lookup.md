@@ -10,7 +10,7 @@ order: 10
 source: [i18n/i18n_3.adoc]
 ---
 
-Every text that Wicket looks up by key, through `Component#getString`, `ResourceModel`, `StringResourceModel`, `<wicket:message>`, feedback messages of validators and converters, or the null option of a choice, goes through the `Localizer`. The `Localizer` asks a chain of string resource loaders, and each loader searches a set of bundles. The first text found wins. Why the search runs in this order is explained in [How Wicket localizes]({{ site.baseurl }}/guide/about-localization.html).
+Every text that Wicket looks up by key, through `Component#getString`, `ResourceModel`, `StringResourceModel`, `<wicket:message>`, feedback messages of validators and converters, or the null option of a choice, goes through the `Localizer`. The `Localizer` asks a chain of string resource loaders, and each loader searches a set of bundles. The first text found wins. Why the search runs in this order is explained in [How Wicket localizes]({{ site.baseurl }}/docs/about-localization.html).
 
 ## Inputs of a lookup
 
@@ -34,7 +34,7 @@ The default chain in `ResourceSettings#getStringResourceLoaders()`, asked in thi
 | 4 | `ValidatorStringResourceLoader` | bundles of the validators of the form component, or the form validators of the form, that asks |
 | 5 | `InitializerStringResourceLoader` | bundles of the `IInitializer` classes of Wicket modules |
 
-Two more loaders exist but are not in the default chain: `BundleStringResourceLoader`, which reads a Java `ResourceBundle` by base name, and `NestedStringResourceLoader`, which resolves references to other keys. See [Load texts from your own source]({{ site.baseurl }}/guide/custom-string-loaders.html).
+Two more loaders exist but are not in the default chain: `BundleStringResourceLoader`, which reads a Java `ResourceBundle` by base name, and `NestedStringResourceLoader`, which resolves references to other keys. See [Load texts from your own source]({{ site.baseurl }}/docs/custom-string-loaders.html).
 
 ## Order of components and keys
 

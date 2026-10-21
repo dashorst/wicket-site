@@ -10,7 +10,7 @@ order: 40
 source: [testingspring.adoc, testingspring/testingspring_1.adoc, testingspring/testingspring_2.adoc, testingspring/testingspring_3.adoc]
 ---
 
-You need this when your pages get their services through `@SpringBean` and you want to test them with `WicketTester`. The test has to give the `SpringComponentInjector` a Spring context: one filled with mock beans for a fast unit test, or a context from Spring's test support for an integration test. [Inject Spring beans]({{ site.baseurl }}/guide/spring.html) covers the setup of the application itself.
+You need this when your pages get their services through `@SpringBean` and you want to test them with `WicketTester`. The test has to give the `SpringComponentInjector` a Spring context: one filled with mock beans for a fast unit test, or a context from Spring's test support for an integration test. [Inject Spring beans]({{ site.baseurl }}/docs/spring.html) covers the setup of the application itself.
 
 If the application creates its Spring context in `init()`, a test with `new WicketTester(new WicketApplication())` already runs against that context and needs nothing from this page. The rest is for applications that let the servlet container or Spring Boot create the context. In a test there is no container, so `new SpringComponentInjector(this)` fails with "No WebApplicationContext found: no ContextLoaderListener registered?".
 
@@ -80,8 +80,12 @@ class OrderPageTest {
 
 For an integration test, let Spring's TestContext framework build the context from your configuration and give it to the injector. Add `spring-test` with test scope, in the version of your Spring Framework.
 
+{% if site.wicket.version_11 %}
 > Wicket 11 is built against Spring 7 and JUnit 6, Wicket 10 against Spring 6.2 and JUnit 5. The annotations and the test code on this page are the same for both.
 {: .since}
+{% else %}
+Wicket 10 is built against Spring 6.2 and JUnit 5.
+{% endif %}
 
 *OrderPageIT.java*
 

@@ -48,7 +48,7 @@ WebMarkupContainer newMail = new WebMarkupContainer("newMail") {
 };
 ```
 
-See [Show, hide or disable a component]({{ site.baseurl }}/guide/show-hide-components.html).
+See [Show, hide or disable a component]({{ site.baseurl }}/docs/show-hide-components.html).
 
 ## Style the group
 
@@ -73,7 +73,7 @@ add(new AjaxLink<Void>("refresh") {
 });
 ```
 
-`setOutputMarkupPlaceholderTag(true)` also writes the id, and keeps a placeholder in the page while the container is hidden so it can reappear. See [Update components with Ajax]({{ site.baseurl }}/guide/update-components.html).
+`setOutputMarkupPlaceholderTag(true)` also writes the id, and keeps a placeholder in the page while the container is hidden so it can reappear. See [Update components with Ajax]({{ site.baseurl }}/docs/update-components.html).
 
 ## Group components without an HTML element
 

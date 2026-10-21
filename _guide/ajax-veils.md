@@ -102,4 +102,4 @@ handler.add(counterPanel);
 veil.unveil(handler);
 ```
 
-`getVeilMessage()` reads the component's markup id, so call it during a request; the message is a plain string you can send from any thread. When the work fails and no update follows, send `getUnveilMessage()` instead. Pushing updates is covered in [Push updates over a WebSocket]({{ site.baseurl }}/guide/use-websockets.html).
+`getVeilMessage()` reads the component's markup id, so call it during a request; the message is a plain string you can send from any thread. When the work fails and no update follows, send `getUnveilMessage()` instead. Pushing updates is covered in [Push updates over a WebSocket]({{ site.baseurl }}/docs/use-websockets.html).

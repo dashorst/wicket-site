@@ -1,6 +1,6 @@
 # Writing the user guide
 
-The user guide lives in `_guide/`, one Markdown file per page, and is published under `/guide/`. Every page has one job, one of the four kinds below, and belongs to one topic. Readers find pages through search, through the topic pages that gather a topic's pages of every kind, and through the class index. All three are built from the front matter, so the front matter is part of the content.
+The user guide lives in `_guide/`, one Markdown file per page, and is published under `/docs/`. Every page has one job, one of the four kinds below, and belongs to one topic. Readers find pages through search, through the topic pages that gather a topic's pages of every kind, and through the class index. All three are built from the front matter, so the front matter is part of the content.
 
 ## Front matter
 
@@ -54,6 +54,8 @@ When a single paragraph differs between the lines in service, keep one page and 
 {: .since}
 ```
 
+Text about a release line that is not released yet goes behind `{% if site.wicket.version_N %}`, with the text for the current line in the `{% else %}` branch, so the page is complete either way. Wrap the whole note, `{: .since}` line included. The gate opens when the line's version is set in `_config.yml`. Pages whose `since` is above the newest released line, the highest line in `_data/releases.yml` whose `config` names a version in `_config.yml`, are left out of the build: no page, no listing, no search entry. Gate the links to them the same way.
+
 ## Writing
 
 - Address the reader as "you". Present tense, active voice, short sentences.
@@ -62,7 +64,7 @@ When a single paragraph differs between the lines in service, keep one page and 
 - Show the Java and the HTML side by side when both are needed: a fenced block per file, each preceded by the file name in italics, like *HomePage.java*.
 - Headings in the page are `##` and `###`; the page title is the only `#` and comes from the front matter. Sections at `##` level appear in the "On this page" rail and as search results of their own, so give them headings a reader would search for.
 - The layout lists the other pages of the topic under every page, so do not end a page with a list of related pages; link in the text where a link helps.
-- Link to other guide pages with `{{ site.baseurl }}/guide/<slug>.html`, to a section with `#<heading-id>`.
+- Link to other guide pages with `{{ site.baseurl }}/docs/<slug>.html`, to a section with `#<heading-id>`.
 - Images go in `img/guide/` and are referenced as `{{ site.baseurl }}/img/guide/<file>`.
 
 ## Releases

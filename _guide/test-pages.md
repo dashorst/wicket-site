@@ -10,7 +10,7 @@ order: 10
 source: [testing/testing_1.adoc]
 ---
 
-You need this when you want to check, without a browser or a server, that a page renders and reacts to the user as intended. `WicketTester` runs your application in memory: it renders pages, clicks links, submits forms and fires Ajax events, and remembers the last rendered page and response so you can check them. [Test a page with WicketTester]({{ site.baseurl }}/guide/first-test.html) is a step-by-step introduction; [WicketTester]({{ site.baseurl }}/guide/wicket-tester.html) lists every method.
+You need this when you want to check, without a browser or a server, that a page renders and reacts to the user as intended. `WicketTester` runs your application in memory: it renders pages, clicks links, submits forms and fires Ajax events, and remembers the last rendered page and response so you can check them. [Test a page with WicketTester]({{ site.baseurl }}/docs/first-test.html) is a step-by-step introduction; [WicketTester]({{ site.baseurl }}/docs/wicket-tester.html) lists every method.
 
 ## Add the dependencies
 
@@ -154,4 +154,4 @@ tester = new WicketTester(new WicketApplication(),
     new File("src/main/webapp").getAbsolutePath());
 ```
 
-Forms have their own helper, `FormTester`; see [Test forms]({{ site.baseurl }}/guide/test-forms.html). Markup details are easier to check with `TagTester`, described in [Test markup]({{ site.baseurl }}/guide/test-markup.html).
+Forms have their own helper, `FormTester`; see [Test forms]({{ site.baseurl }}/docs/test-forms.html). Markup details are easier to check with `TagTester`, described in [Test markup]({{ site.baseurl }}/docs/test-markup.html).

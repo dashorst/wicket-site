@@ -20,13 +20,13 @@ Run the archetype with the Maven coordinates of your project. The `groupId` also
 mvn archetype:generate \
   -DarchetypeGroupId=org.apache.wicket \
   -DarchetypeArtifactId=wicket-archetype-quickstart \
-  -DarchetypeVersion={{ site.wicket.version_11 }} \
+  -DarchetypeVersion={{ site.wicket.version }} \
   -DgroupId=com.mycompany \
   -DartifactId=myproject \
   -DinteractiveMode=false
 ```
 
-Set `archetypeVersion` to the Wicket version you build on: {{ site.wicket.version_11 }} for Wicket 11, which needs Java 21, or {{ site.wicket.version_10 }} for Wicket 10, which needs Java 17. The [quickstart wizard]({{ site.baseurl }}/start/quickstart.html) on this site writes the command for you. To try an unreleased `-SNAPSHOT` version, Maven must know the Apache snapshot repository: add it to a profile in your `~/.m2/settings.xml`, as described under [snapshot versions]({{ site.baseurl }}/guide/maven-setup.html#snapshot-versions).
+Set `archetypeVersion` to the Wicket version you build on: {% if site.wicket.version_11 %}{{ site.wicket.version_11 }} for Wicket 11, which needs Java 21, or {% endif %}{{ site.wicket.version_10 }} for Wicket 10, which needs Java 17. The [quick start]({{ site.baseurl }}/start/quickstart.html) writes the command for you. To try an unreleased `-SNAPSHOT` version, Maven must know the Apache snapshot repository: add it to a profile in your `~/.m2/settings.xml`, as described under [snapshot versions]({{ site.baseurl }}/docs/maven-setup.html#snapshot-versions).
 
 ## What the project contains
 
@@ -54,6 +54,8 @@ All current Java IDEs import Maven projects directly:
 - **NetBeans**: choose File, Open Project, and select the project folder.
 - **VS Code** with the Java extensions: open the project folder.
 
+A Wicket plugin lets IntelliJ IDEA and Eclipse jump between a component and its markup; see [Add Wicket support to your IDE]({{ site.baseurl }}/docs/ide-plugins.html).
+
 ## Run it
 
 Run the `main` method of `Start` from your IDE, then open <http://localhost:8080>. The application runs in development mode, which `Start` sets with the system property `wicket.configuration`.
@@ -64,12 +66,12 @@ Run the generated test with:
 mvn test
 ```
 
-Build a WAR file for an application server with `mvn package`. Before you deploy it, [switch to deployment mode]({{ site.baseurl }}/guide/deployment-mode.html).
+Build a WAR file for an application server with `mvn package`. Before you deploy it, [switch to deployment mode]({{ site.baseurl }}/docs/deployment-mode.html).
 
 ## Adjust the generated project
 
-- Uncomment `wicket-extensions` in *pom.xml* when you need its components, such as data tables, modal dialogs or tabs. [Wicket modules]({{ site.baseurl }}/guide/modules.html) lists what each module offers, and [Maven dependencies]({{ site.baseurl }}/guide/maven-setup.html) shows the dependency for each.
+- Uncomment `wicket-extensions` in *pom.xml* when you need its components, such as data tables, modal dialogs or tabs. [Wicket modules]({{ site.baseurl }}/docs/modules.html) lists what each module offers, and [Maven dependencies]({{ site.baseurl }}/docs/maven-setup.html) shows the dependency for each.
 - Replace `slf4j-simple` with the logging back end your organization uses.
-- The content security policy in `init()` allows Google Fonts only because the generated home page uses them. When you replace the page, remove the two Google entries, but keep `STYLE_SRC` with `SELF` as long as your pages load stylesheets such as `style.css` from the application. See [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+- The content security policy in `init()` allows Google Fonts only because the generated home page uses them. When you replace the page, remove the two Google entries, but keep `STYLE_SRC` with `SELF` as long as your pages load stylesheets such as `style.css` from the application. See [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
-For a step-by-step walk through the generated project, follow the tutorial [Build your first application]({{ site.baseurl }}/guide/first-application.html).
+For a step-by-step walk through the generated project, follow the tutorial [Build your first application]({{ site.baseurl }}/docs/first-application.html).

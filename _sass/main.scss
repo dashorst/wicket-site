@@ -1,8 +1,8 @@
-// The ribbon as a component tree: a seasonal photograph opens every page; on bookcloth one orange
-// ribbon runs through a page's component tree, joining each Java component to its tag. The
-// reading pages are cool paper, with the ribbon carrying their sections.
+// The ribbon through the component tree: a seasonal photograph opens every page; on bookcloth one
+// orange ribbon runs through a page's component tree, joining each Java component to its tag. The
+// reading pages are cool paper, with the ribbon carrying their sections. DESIGN.md describes it.
 
-// Taiga's grid and layout classes stay: the Markdown pages use l-full, l-two-third, l-one-third...
+// Taiga's grid and layout classes stay: older Markdown pages use l-full, l-clearfix, l-one-third...
 @use "taiga/settings";
 @use "taiga/mixins";
 @use "taiga/grid";
@@ -12,7 +12,10 @@
 
 @use "ribbon/base";
 @use "ribbon/chrome";
-@use "ribbon/home";
 @use "ribbon/page";
+@use "ribbon/release";
+@use "ribbon/blog";
 @use "ribbon/guide";
+@use "ribbon/home";
+@use "ribbon/how";
 @use "ribbon/syntax";

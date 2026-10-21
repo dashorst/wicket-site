@@ -10,7 +10,7 @@ order: 110
 source: [resources/resources_13.adoc]
 ---
 
-Register a shared resource when one resource instance should serve the whole application under a fixed key, and components that link to it should not need a reference to the instance. If you want a readable URL instead, mount it: [Give a resource a URL]({{ site.baseurl }}/guide/mount-resources.html).
+Register a shared resource when one resource instance should serve the whole application under a fixed key, and components that link to it should not need a reference to the instance. If you want a readable URL instead, mount it: [Give a resource a URL]({{ site.baseurl }}/docs/mount-resources.html).
 
 ## Register the resource
 
@@ -26,7 +26,7 @@ protected void init() {
 }
 ```
 
-`OrdersCsvResource` is the resource from [Generate a resource in code]({{ site.baseurl }}/guide/custom-resources.html).
+`OrdersCsvResource` is the resource from [Generate a resource in code]({{ site.baseurl }}/docs/custom-resources.html).
 
 ## Refer to it by name
 
@@ -58,7 +58,7 @@ getSharedResources().add(ReportsModule.class, "summary", null, null, null, new S
 new SharedResourceReference(ReportsModule.class, "summary")
 ```
 
-The three `null` arguments are the locale, style and variation, which are part of the key. [Configure a module with an initializer]({{ site.baseurl }}/guide/initializers.html) shows where a library runs such code.
+The three `null` arguments are the locale, style and variation, which are part of the key. [Configure a module with an initializer]({{ site.baseurl }}/docs/initializers.html) shows where a library runs such code.
 
 ## Keep the resource safe for concurrent use
 

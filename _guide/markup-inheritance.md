@@ -88,4 +88,4 @@ The cost of inheritance is coupling. A subclass depends on the ids and slots of 
 
 Everything above holds for panels. A panel subclass without a file uses its parent's markup. A base panel can put `<wicket:child/>` inside its `<wicket:panel>`, and a subclass then writes its part in `<wicket:extend>`. This is how a family of similar panels, say several kinds of dashboard widgets with the same title bar, can share their frame.
 
-To build a page layout step by step, follow the tutorial [Give every page the same layout]({{ site.baseurl }}/guide/page-layout.html). The tags are described in [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html#wicketchild).
+To build a page layout step by step, follow the tutorial [Give every page the same layout]({{ site.baseurl }}/docs/page-layout.html). The tags are described in [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html#wicketchild).

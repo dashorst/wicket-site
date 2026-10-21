@@ -25,6 +25,6 @@
     .gh, .gu { font-weight: 700; }
     .gp { color: var(--ink-soft); user-select: none; }
     .go { color: #33473F; }
-    .w { color: #9FB4AC; }
-    .lineno { color: #7E918A; margin-right: .75rem; text-align: right; }
+    .w { color: inherit; }
+    .lineno { color: var(--ink-soft); margin-right: .75rem; text-align: right; }
 }

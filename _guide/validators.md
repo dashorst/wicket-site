@@ -39,8 +39,12 @@ Validators run only on a non-`null` converted value, unless they implement `INul
 
 `StringValidator` also writes `maxlength` and `minlength` on the `<input>` or `<textarea>` it validates, so the browser enforces the length as the user types.
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, a text field with a `PatternValidator` renders its regular expression as the `pattern` attribute, and the browser checks it before submitting. `EmailAddressValidator` is a `PatternValidator`, so `EmailTextField` gets the attribute too. In Wicket 10 only the `HTML5Attributes` behavior renders it.
 {: .since}
+{% else %}
+The `HTML5Attributes` behavior renders the regular expression of a `PatternValidator` as the `pattern` attribute, and the browser checks it before submitting.
+{% endif %}
 
 ## Form validators
 
@@ -95,7 +99,7 @@ For an error with key `K` on a component with id `C`, Wicket asks the localizer 
 1. `C.K`
 2. `K`
 
-The localizer searches the properties files of the component, its parents and the page, then the application's, then Wicket's own. If no key is found, the error's own message is used, set with `new ValidationError(String)` or `setMessage(String)`. [Where Wicket looks for texts]({{ site.baseurl }}/guide/bundle-lookup.html) describes the search.
+The localizer searches the properties files of the component, its parents and the page, then the application's, then Wicket's own. If no key is found, the error's own message is used, set with `new ValidationError(String)` or `setMessage(String)`. [Where Wicket looks for texts]({{ site.baseurl }}/docs/bundle-lookup.html) describes the search.
 
 An error can carry several keys, added with `addKey(String)`; the first key that yields a text wins.
 
@@ -141,4 +145,4 @@ Choice components such as `DropDownChoice` do not use converters; their `IChoice
 
 ## Validation with Bean Validation
 
-The wicket-bean-validation module adds `PropertyValidator`, which checks the Jakarta Bean Validation constraints of a bean property. Its messages are keyed by the constraint's message key, such as `jakarta.validation.constraints.NotNull.message`. See [Validate with Bean Validation]({{ site.baseurl }}/guide/bean-validation.html).
+The wicket-bean-validation module adds `PropertyValidator`, which checks the Jakarta Bean Validation constraints of a bean property. Its messages are keyed by the constraint's message key, such as `jakarta.validation.constraints.NotNull.message`. See [Validate with Bean Validation]({{ site.baseurl }}/docs/bean-validation.html).

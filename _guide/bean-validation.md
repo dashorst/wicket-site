@@ -135,4 +135,4 @@ Constraints without a group belong to `jakarta.validation.groups.Default`; pass 
 
 ## Constraints on the whole object
 
-`PropertyValidator` checks one property at a time, before the model is updated. A constraint that compares properties, declared on the class, needs the updated object. Check it in `onValidateModelObjects()` of the form, which runs after the model update; see [How a form is processed]({{ site.baseurl }}/guide/form-processing.html#the-exception-late-validation) for what that means for your model.
+`PropertyValidator` checks one property at a time, before the model is updated. A constraint that compares properties, declared on the class, needs the updated object. Check it in `onValidateModelObjects()` of the form, which runs after the model update; see [How a form is processed]({{ site.baseurl }}/docs/form-processing.html#the-exception-late-validation) for what that means for your model.

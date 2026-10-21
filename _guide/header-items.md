@@ -44,7 +44,7 @@ Call `super.renderHead(response)` when you override the method in a component.
 | `MetaDataHeaderItem` from `HtmlImportHeaderItem` | `HtmlImportHeaderItem.forImportLinkTag(…)` | `<link rel="import">`; browsers no longer support HTML imports | no |
 | `NoHeaderItem` | `NoHeaderItem.get()` | nothing; used by Wicket as a placeholder | no |
 
-"Nonce" says whether Wicket adds the Content Security Policy nonce to the rendered tag. The items with a nonce extend `AbstractCspHeaderItem`. The default policy blocks scripts and stylesheets without a nonce, so a `<script>` or `<link rel="stylesheet">` written with `StringHeaderItem`, `MetaDataHeaderItem` or in markup does not load. See [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html).
+"Nonce" says whether Wicket adds the Content Security Policy nonce to the rendered tag. The items with a nonce extend `AbstractCspHeaderItem`. The default policy blocks scripts and stylesheets without a nonce, so a `<script>` or `<link rel="stylesheet">` written with `StringHeaderItem`, `MetaDataHeaderItem` or in markup does not load. See [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html).
 
 ## Options of script and stylesheet items
 
@@ -85,7 +85,7 @@ An item whose id was already rendered is skipped even if its content differs. A 
 3. One inline script that contains the code of all `OnDomReadyHeaderItem`s and `OnEventHeaderItem`s.
 4. One inline script that contains the code of all `OnLoadHeaderItem`s.
 
-Members of a resource bundle are replaced by the bundle before sorting. Steps 1 and 2 come from the comparator in `ResourceSettings#setHeaderItemComparator`; the default is `new PriorityFirstComparator(false)`, and `new PriorityFirstComparator(true)` moves the page's items before those of its components. The content of `<wicket:head>` is written as Wicket meets it, outside this order. See [Control the order of header items]({{ site.baseurl }}/guide/header-order.html).
+Members of a resource bundle are replaced by the bundle before sorting. Steps 1 and 2 come from the comparator in `ResourceSettings#setHeaderItemComparator`; the default is `new PriorityFirstComparator(false)`, and `new PriorityFirstComparator(true)` moves the page's items before those of its components. The content of `<wicket:head>` is written as Wicket meets it, outside this order. See [Control the order of header items]({{ site.baseurl }}/docs/header-order.html).
 
 Without `<wicket:header-items/>`, the items fill the whole `<head>`. With it, they go where the tag stands, between the markup before and after it.
 
@@ -97,10 +97,12 @@ Without `<wicket:header-items/>`, the items fill the whole `<head>`. With it, th
 | `OnEventHeaderItem` | combined into the `domready` script, which binds the handlers | evaluated with the scripts added with `appendJavaScript` |
 | `OnLoadHeaderItem` | combined into one script, run on the window `load` event | evaluated with the scripts added with `appendJavaScript` |
 
-These three items depend on Wicket's JavaScript library, `getJavaScriptLibrarySettings().getWicketAjaxReference()`, which Wicket renders first. By default that library is built on jQuery, so a page with one of these items also loads jQuery: version 3.7.1 in Wicket 10 and 4.0 in Wicket 11.
+These three items depend on Wicket's JavaScript library, `getJavaScriptLibrarySettings().getWicketAjaxReference()`, which Wicket renders first. By default that library is built on jQuery, so a page with one of these items also loads jQuery: {% if site.wicket.version_11 %}version 3.7.1 in Wicket 10 and 4.0 in Wicket 11{% else %}version 3.7.1{% endif %}.
 
-> Since Wicket 11, Wicket also ships a plain JavaScript version of the library with the same API, `org.apache.wicket.ajax.WicketAjaxResourceReference`. Set it with `getJavaScriptLibrarySettings().setWicketAjaxReference(WicketAjaxResourceReference.get())`, and ready, load and event scripts no longer pull in jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/guide/ajax-without-jquery.html).
+{% if site.wicket.version_11 %}
+> Since Wicket 11, Wicket also ships a plain JavaScript version of the library with the same API, `org.apache.wicket.ajax.WicketAjaxResourceReference`. Set it with `getJavaScriptLibrarySettings().setWicketAjaxReference(WicketAjaxResourceReference.get())`, and ready, load and event scripts no longer pull in jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
 ## Header response decorators
 
@@ -120,7 +122,7 @@ Decorators that Wicket provides:
 | `ResourceAggregator` | dependencies, bundles, duplicates and sorting; registered by default |
 | `CSPNonceHeaderResponseDecorator` (package `org.apache.wicket.csp`) | adds the nonce; registered when the Content Security Policy is enabled |
 | `FilteringHeaderResponse` (package `…head.filter`) | sorts items into named buckets; items that no filter accepts go into the `<head>`; renders `FilteredHeaderItem`s into their bucket; a `HeaderResponseContainer` renders a bucket in the page |
-| `JavaScriptFilteredIntoFooterHeaderResponse` (package `…head.filter`) | a `FilteringHeaderResponse` that sends every script item, including ready, load and event scripts, to one bucket; see [Put JavaScript at the end of the body]({{ site.baseurl }}/guide/javascript-in-body.html) |
+| `JavaScriptFilteredIntoFooterHeaderResponse` (package `…head.filter`) | a `FilteringHeaderResponse` that sends every script item, including ready, load and event scripts, to one bucket; see [Put JavaScript at the end of the body]({{ site.baseurl }}/docs/javascript-in-body.html) |
 | `JavaScriptDeferHeaderResponse` (package `…head.filter`) | defers all script reference items and delays inline scripts until they have loaded; marked experimental |
 | `SubresourceHeaderResponse` (package `…head.filter`) | abstract; calls `configure(ISubresourceHeaderItem)` for every script and stylesheet reference item, to set `integrity` and `crossorigin` in one place |
 
@@ -133,4 +135,4 @@ During an Ajax request, `FilteringHeaderResponse` does not sort into buckets; al
 | `<wicket:head>` | in the markup of a panel, border or page: its content goes into the page header, once per component class; inline scripts and styles in it get no nonce |
 | `<wicket:header-items/>` | in the `<head>` of a page: the place where Wicket writes the header items; at most one per page |
 
-Both are described with the other tags in [Wicket tags and attributes]({{ site.baseurl }}/guide/wicket-tags.html).
+Both are described with the other tags in [Wicket tags and attributes]({{ site.baseurl }}/docs/wicket-tags.html).

@@ -10,7 +10,7 @@ order: 30
 source: [testing/testing_3.adoc]
 ---
 
-You need this when a test has to check the markup a page or component renders, not only which components it contains: a CSS class, an attribute, the text inside a tag. `TagTester` finds tags in a piece of markup and gives you their name, attributes and content. [Test pages and components]({{ site.baseurl }}/guide/test-pages.html) covers rendering the page first.
+You need this when a test has to check the markup a page or component renders, not only which components it contains: a CSS class, an attribute, the text inside a tag. `TagTester` finds tags in a piece of markup and gives you their name, attributes and content. [Test pages and components]({{ site.baseurl }}/docs/test-pages.html) covers rendering the page first.
 
 ## Find a tag
 
@@ -67,8 +67,10 @@ void showsTotalAsWarningWhenOverLimit() {
 | `hasChildTag(name)` | Whether a tag with that name is nested inside |
 | `getChild(name)`, `getChild(attribute, value)` | The first nested tag that matches, as a `TagTester` |
 
+{% if site.wicket.version_11 %}
 > Since Wicket 11, text fields write `required`, `placeholder` (from `setLabel`) and `pattern` (from a `PatternValidator`) on their `<input>` tag. Assertions on the attributes of an input see them on Wicket 11 only.
 {: .since}
+{% endif %}
 
 ## Check the whole response
 

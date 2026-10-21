@@ -140,11 +140,11 @@ Wicket's session is your own subclass of `WebSession`, with typed fields. Put da
 
 A factory method that builds and configures a component hides its class. Callers cannot override `onConfigure()` or other methods, and cannot subclass it. Write a class instead, such as a `CmsLabel` that extends `Label`, and create it with `new`.
 
-If the factory exists to give components their services, use injection: an `IComponentInstantiationListener` runs for every component that is constructed. `SpringComponentInjector` from `wicket-spring` is one, and fills fields annotated with `@SpringBean`. See [Inject Spring beans]({{ site.baseurl }}/guide/spring.html).
+If the factory exists to give components their services, use injection: an `IComponentInstantiationListener` runs for every component that is constructed. `SpringComponentInjector` from `wicket-spring` is one, and fills fields annotated with `@SpringBean`. See [Inject Spring beans]({{ site.baseurl }}/docs/spring.html).
 
 ## Test every page and component
 
-Every page and panel should have at least a test that renders it with `WicketTester`. It catches a `wicket:id` without a component and a component without a tag, and it runs in a fraction of the time of starting a server. Tests of forms and Ajax behaviors with `FormTester` and `executeAjaxEvent` catch errors in your logic before a user does. The tutorial [Test a page with WicketTester]({{ site.baseurl }}/guide/first-test.html) shows how.
+Every page and panel should have at least a test that renders it with `WicketTester`. It catches a `wicket:id` without a component and a component without a tag, and it runs in a fraction of the time of starting a server. Tests of forms and Ajax behaviors with `FormTester` and `executeAjaxEvent` catch errors in your logic before a user does. The tutorial [Test a page with WicketTester]({{ site.baseurl }}/docs/first-test.html) shows how.
 
 ## Stay inside Wicket instead of using servlet filters
 

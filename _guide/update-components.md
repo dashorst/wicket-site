@@ -10,7 +10,7 @@ order: 10
 source: [ajax/ajax_1.adoc, ajax/ajax_2.adoc]
 ---
 
-Use this when an Ajax callback has changed some state and the browser should show the result without reloading the page. Every Ajax callback receives an `AjaxRequestTarget`; what you add to it is rendered again and sent back. For what happens underneath, see [How Wicket Ajax works]({{ site.baseurl }}/guide/how-ajax-works.html).
+Use this when an Ajax callback has changed some state and the browser should show the result without reloading the page. Every Ajax callback receives an `AjaxRequestTarget`; what you add to it is rendered again and sent back. For what happens underneath, see [How Wicket Ajax works]({{ site.baseurl }}/docs/how-ajax-works.html).
 
 ## Re-render a component
 
@@ -45,7 +45,7 @@ public class HomePage extends WebPage {
 <a wicket:id="increment">Click me</a>
 ```
 
-`target.add` takes any number of components. The markup id must be there from the first render: without `setOutputMarkupId(true)` the browser has no element to replace, and the browser console shows "Component with id ... was not found while trying to perform markup update". See [Give a component a markup id]({{ site.baseurl }}/guide/markup-ids.html) for the ways to set one.
+`target.add` takes any number of components. The markup id must be there from the first render: without `setOutputMarkupId(true)` the browser has no element to replace, and the browser console shows "Component with id ... was not found while trying to perform markup update". See [Give a component a markup id]({{ site.baseurl }}/docs/markup-ids.html) for the ways to set one.
 
 ## Show a component that was hidden
 
@@ -71,7 +71,7 @@ add(new AjaxLink<Void>("save") {
 });
 ```
 
-The placeholder tag implies a markup id. Use it on every component that you hide or show through Ajax, and on a container whose visibility depends on its children. [Show, hide or disable a component]({{ site.baseurl }}/guide/show-hide-components.html) covers `onConfigure`.
+The placeholder tag implies a markup id. Use it on every component that you hide or show through Ajax, and on a container whose visibility depends on its children. [Show, hide or disable a component]({{ site.baseurl }}/docs/show-hide-components.html) covers `onConfigure`.
 
 ## Refresh a list or table
 
@@ -103,7 +103,7 @@ items.add(new ListView<>("item", todos) {
 target.add(items);
 ```
 
-For tables with paging and sorting, the Ajax variants in [Ajax components]({{ site.baseurl }}/guide/ajax-components.html) refresh themselves. A whole page can be added too, `target.add(getPage())`; Wicket then redirects the browser to the page instead of sending a partial update.
+For tables with paging and sorting, the Ajax variants in [Ajax components]({{ site.baseurl }}/docs/ajax-components.html) refresh themselves. A whole page can be added too, `target.add(getPage())`; Wicket then redirects the browser to the page instead of sending a partial update.
 
 ## Run JavaScript after the update
 
@@ -138,4 +138,4 @@ public class CartSummary extends Panel {
 }
 ```
 
-Code outside a callback, such as a service method that only has the component, can find the target of the current request with `RequestCycle.get().find(AjaxRequestTarget.class)`, which returns an `Optional` that is empty for a normal request. Events between components are covered in [Send events between components]({{ site.baseurl }}/guide/send-events.html).
+Code outside a callback, such as a service method that only has the component, can find the target of the current request with `RequestCycle.get().find(AjaxRequestTarget.class)`, which returns an `Optional` that is empty for a normal request. Events between components are covered in [Send events between components]({{ site.baseurl }}/docs/send-events.html).

@@ -10,7 +10,7 @@ order: 60
 source: [forms2/forms2_12.adoc]
 ---
 
-You need this when the user picks any number of values from a list that is too long for checkboxes. For a short list, [checkboxes]({{ site.baseurl }}/guide/checkboxes-radios.html#let-the-user-tick-several-options) are easier to use.
+You need this when the user picks any number of values from a list that is too long for checkboxes. For a short list, [checkboxes]({{ site.baseurl }}/docs/checkboxes-radios.html#let-the-user-tick-several-options) are easier to use.
 
 ## Select several values from a list
 
@@ -37,7 +37,7 @@ form.add(members);
 
 Wicket adds the `multiple` attribute, and a `size` attribute from `setMaxRows()` unless the markup has one. Give the renderer an id, so that the selection survives a change in the list.
 
-A `ListChoice` looks the same but lets the user pick only one value. It works like a [`DropDownChoice`]({{ site.baseurl }}/guide/dropdown-choice.html) that shows several rows.
+A `ListChoice` looks the same but lets the user pick only one value. It works like a [`DropDownChoice`]({{ site.baseurl }}/docs/dropdown-choice.html) that shows several rows.
 
 ## Move values between two lists
 

@@ -51,7 +51,7 @@ public void renderHead(IHeaderResponse response) {
 
 In Wicket 11 that reference is jQuery 4.0. A script that still needs jQuery 3 can have it application-wide with `getJavaScriptLibrarySettings().setJQueryReference(JQueryResourceReference.getV3())`.
 
-Better still, declare jQuery as a dependency of your script's resource reference, so every page that uses the script loads jQuery first; see [Declare dependencies between resources]({{ site.baseurl }}/guide/resource-dependencies.html).
+Better still, declare jQuery as a dependency of your script's resource reference, so every page that uses the script loads jQuery first; see [Declare dependencies between resources]({{ site.baseurl }}/docs/resource-dependencies.html).
 
 ## Check your JavaScript callbacks
 
@@ -61,4 +61,4 @@ Code that only uses the documented `Wicket.*` functions runs unchanged. Look at 
 - Subscribers registered with `Wicket.Event.subscribe` get a small plain event object as their first argument instead of a jQuery event. The other arguments are the same.
 - Elements passed to `/dom/node/added` and `/dom/node/removing` subscribers are DOM elements in both implementations.
 
-See [React to Ajax requests in JavaScript]({{ site.baseurl }}/guide/ajax-call-listeners.html) for the handlers and events. [How Wicket Ajax works]({{ site.baseurl }}/guide/how-ajax-works.html) explains what the library does during a request.
+See [React to Ajax requests in JavaScript]({{ site.baseurl }}/docs/ajax-call-listeners.html) for the handlers and events. [How Wicket Ajax works]({{ site.baseurl }}/docs/how-ajax-works.html) explains what the library does during a request.

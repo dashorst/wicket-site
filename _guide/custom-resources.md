@@ -77,7 +77,7 @@ private static final ResourceReference ORDERS_CSV =
 add(new ResourceLink<Void>("export", ORDERS_CSV));
 ```
 
-`ResourceReference.of` creates a reference whose resource comes from the supplier. The link registers the reference with the application when it renders; to choose the URL yourself, mount the reference as in [Give a resource a URL]({{ site.baseurl }}/guide/mount-resources.html). A reference serves all users, so the resource must find the current user's data while it responds, as the example does, and not hold it in a field.
+`ResourceReference.of` creates a reference whose resource comes from the supplier. The link registers the reference with the application when it renders; to choose the URL yourself, mount the reference as in [Give a resource a URL]({{ site.baseurl }}/docs/mount-resources.html). A reference serves all users, so the resource must find the current user's data while it responds, as the example does, and not hold it in a field.
 
 ## Write a resource as a lambda
 

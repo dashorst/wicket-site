@@ -56,9 +56,9 @@ public void renderHead(IHeaderResponse response) {
 }
 ```
 
-`setDefer(true)` and `setAsync(true)` add the matching attributes to the `<script>` tag. When the script needs jQuery or another library first, declare that on the reference instead of rendering both in order, see [Declare dependencies between resources]({{ site.baseurl }}/guide/resource-dependencies.html).
+`setDefer(true)` and `setAsync(true)` add the matching attributes to the `<script>` tag. When the script needs jQuery or another library first, declare that on the reference instead of rendering both in order, see [Declare dependencies between resources]({{ site.baseurl }}/docs/resource-dependencies.html).
 
-Files that are not in a package have their own pages: [Use files from the web application root]({{ site.baseurl }}/guide/context-resources.html), and for a CDN, `JavaScriptHeaderItem.forUrl(url)` and `CssHeaderItem.forUrl(url)`.
+Files that are not in a package have their own pages: [Use files from the web application root]({{ site.baseurl }}/docs/context-resources.html), and for a CDN, `JavaScriptHeaderItem.forUrl(url)` and `CssHeaderItem.forUrl(url)`.
 
 ## Run JavaScript when the page is ready
 
@@ -81,12 +81,14 @@ public void renderHead(IHeaderResponse response) {
 
 Wicket collects the ready scripts of all components into one inline script that runs when the DOM is loaded. When an Ajax request replaces the component, the script runs again after the new markup is in place, so the widget is set up again. Escape values from users before you put them in a script, for example with `JavaScriptUtils.escapeQuotes`.
 
-`OnDomReadyHeaderItem` depends on Wicket's JavaScript library, which Wicket renders first. By default that library is built on jQuery, so the page also loads jQuery: version 3.7.1 in Wicket 10 and 4.0 in Wicket 11.
+`OnDomReadyHeaderItem` depends on Wicket's JavaScript library, which Wicket renders first. By default that library is built on jQuery, so the page also loads jQuery: {% if site.wicket.version_11 %}version 3.7.1 in Wicket 10 and 4.0 in Wicket 11{% else %}version 3.7.1{% endif %}.
 
-> Since Wicket 11, a plain JavaScript version of Wicket's library, `WicketAjaxResourceReference`, can replace the jQuery-based one, so that ready scripts and Ajax work without jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/guide/ajax-without-jquery.html).
+{% if site.wicket.version_11 %}
+> Since Wicket 11, a plain JavaScript version of Wicket's library, `WicketAjaxResourceReference`, can replace the jQuery-based one, so that ready scripts and Ajax work without jQuery. See [Run Ajax without jQuery]({{ site.baseurl }}/docs/ajax-without-jquery.html).
 {: .since}
+{% endif %}
 
-To run code after images and other files have loaded, use `OnLoadHeaderItem`. To attach a handler to an event of an element, use `OnEventHeaderItem.forComponent(component, "click", script)`. All header item types are listed in [Header items]({{ site.baseurl }}/guide/header-items.html).
+To run code after images and other files have loaded, use `OnLoadHeaderItem`. To attach a handler to an event of an element, use `OnEventHeaderItem.forComponent(component, "click", script)`. All header item types are listed in [Header items]({{ site.baseurl }}/docs/header-items.html).
 
 ## Keep scripts out of the markup
 
@@ -99,7 +101,7 @@ Wicket's default Content Security Policy only lets the browser run scripts and a
 <div style="color: red">…</div>
 ```
 
-The browser refuses to run the script and the `onclick` handler, ignores the `style` attribute, and reports a violation in its console. Move the code into a file and an `OnDomReadyHeaderItem`, attach handlers with `OnEventHeaderItem` or an Ajax behavior, and put styles in a stylesheet with a class. [Configure the Content Security Policy]({{ site.baseurl }}/guide/csp.html) shows how to relax the policy if you cannot avoid inline code.
+The browser refuses to run the script and the `onclick` handler, ignores the `style` attribute, and reports a violation in its console. Move the code into a file and an `OnDomReadyHeaderItem`, attach handlers with `OnEventHeaderItem` or an Ajax behavior, and put styles in a stylesheet with a class. [Configure the Content Security Policy]({{ site.baseurl }}/docs/csp.html) shows how to relax the policy if you cannot avoid inline code.
 
 ## Contribute from a behavior
 
@@ -129,7 +131,7 @@ public class AutoGrowBehavior extends Behavior {
 add(new TextArea<>("comment", commentModel).add(new AutoGrowBehavior()));
 ```
 
-See [Add behavior to a component with a Behavior]({{ site.baseurl }}/guide/add-behaviors.html).
+See [Add behavior to a component with a Behavior]({{ site.baseurl }}/docs/add-behaviors.html).
 
 ## Add header markup with wicket:head
 
