@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Models — connecting components to data — Apache Wicket</title>
+  <meta name="description" content="How Wicket models work as the bridge between your components and their underlying data">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link active">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Models — connecting components to data</h1>
+      <p class="docs-header-description">How Wicket models work as the bridge between your components and their underlying data</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>Model is essentially a <a href="http://en.wikipedia.org/wiki/Facade_pattern">facade</a> interface which allows components to access and modify their data without knowing any detail about how they are managed or persisted. Every component has at most one related model, while a model can be shared among different components. In Wicket a model is any implementation of the interface <em>org.apache.wicket.model.IModel</em>:</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/uml-imodel.png" />
+</figure>
+
+<p>The main goal of <em>IModel</em> interface is to decouple components from concrete details about the persistence strategy adopted for their data. In order to achieve this level of abstraction IModel defines the two methods required to get and set a data object: <em>getObject()</em> and <em>setObject()</em>. The level of indirection introduced by models allows access data object only when it is really needed (for example during the rendering phase) and not earlier when it may not be ready to be used. In addition to <em>getObject()</em> and <em>setObject()</em>, <em>IModel</em> defines a richer set of methods, mostly meant to work with Java 8 lambdas. We will introduce them in the next paragraph.</p>
+
+<p>Any component can get/set its model as well as its data object using the 4 public shortcut methods listed in the class diagram above. The two methods <em>onModelChanged()</em> and <em>onModelChanging()</em> are triggered by Wicket each time a model is modified: the first one is called after the model has been changed, the second one just before the change occurs. In the examples seen so far we have worked with Label component using its constructor which takes as input two string parameters, the component id and the text to display:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"helloMessage"</span><span class="o">,</span> <span class="s">"Hello WicketWorld!"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>This constructor internally builds a model which wraps the second string parameter. That’s why we didn’t mention label model in the previous examples. Here is the code of this constructor:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">Label</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">label</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="n">label</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Class <em>org.apache.wicket.model.Model</em> is a basic implementation of <em>IModel</em>. It can wrap any object that implements the interface java.io.Serializable. The reason of this constraint over data object is that this model is stored in the web session, and we know from chapter 6 that data are stored into session using serialization.</p>
+
+<blockquote>
+  <p>[!NOTE]
+In general, Wicket models support a detaching capability that allows us to work also with non-serializable objects as data model. We will see the detaching mechanism later in this chapter.</p>
+</blockquote>
+
+<p>Just like any other Wicket components, Label provides a constructor that takes as input the component id and the model to use with the component. Using this constructor the previous example becomes:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"helloMessage"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"Hello WicketWorld!"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>The Model class comes with a bunch of factory methods that makes it easier to build new model instances. For example the <em>of(T object)</em> method creates a new instance of Model which wraps any Object instance inside it. So instead of writing</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">Model</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="s">"Hello WicketWorld!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>we can write</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"Hello WicketWorld!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>If the data object is a <em>List</em>, a <em>Map</em> or a <em>Set</em> we can use similar methods called <em>ofList</em>, <em>ofMap</em> and <em>ofSet</em>. From now on we will use these factory methods in our examples.</p>
+
+<p>It’s quite clear that if our Label must display a static text it doesn’t make much sense to build a model by hand like we did in the last code example. However is not unusual to have a Label that must display a dynamic value, like the input provided by a user or a value read from a database. Wicket models are designed to solve these kinds of problems.</p>
+
+<p>By default the class Component escapes HTML sensitive characters (like ’&lt;’, ’&gt;’ or ’&amp;’) from the textual representation of its model object. The term ’escape’ means that these characters will be replaced with their corresponding HTML <a href="http://en.wikipedia.org/wiki/Character_entity_reference">entity</a> (for example ’&lt;’ becomes \&lt;). This is done for security reasons as a malicious user could attempt to inject markup or JavaScript into our pages. If we want to display the raw content stored inside a model, we can tell the Component class not to escape characters by calling the setEscapeModelStrings(false) method.</p>
+
+<p>With Wicket 8 <em>IModel</em> has been extended with new methods to fully leverage lambdas. The most interesting thing of the new version of <em>IModel</em> is that it provides a default implementation for all of its methods (included <em>setObject()</em>), with the only exception of <em>getObject()</em>. In this way <em>IModel</em> is eligible as functional interface and this greatly simplify the creation of custom models. As long as we need to display a static text it doesn’t make much sense building a custom model, but if we need to display a dynamic value (like the input provided by a user or a value read from a database), defining a model with a lambda expression comes quite in handy.</p>
+
+<p>Let’s say we need a label to display the current time stamp each time a page is rendered. This could be a possible solution:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"timeStamp"</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">java</span><span class="o">.</span><span class="na">time</span><span class="o">.</span><span class="na">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>As mentioned above, method <em>setObject()</em> comes with a default implementation. The code is the following:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">default</span> <span class="kt">void</span> <span class="nf">setObject</span><span class="o">(</span><span class="kd">final</span> <span class="no">T</span> <span class="n">object</span><span class="o">)</span>
+<span class="o">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">(</span>
+    <span class="s">"Override this method to support setObject(Object)"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This means that models obtained using <em>IModel</em> as lambda expressions are <em>read-only</em>. When we work with forms we need to use a model that support also data storing. In the next paragraph we will see a couple of models shipped with Wicket that allow us to easily use JavaBeans as backing objects.</p>
+
+<h1 id="lambda-goodies">Lambda goodies</h1>
+
+<p>Most of the default methods we find in <em>IModel</em> are meant to leverage Lambda expressions to transform model object. The following is a short reference for such methods:</p>
+
+<ul>
+  <li><strong>filter(predicate)</strong>: Returns a <em>IModel</em> checking whether the predicate holds for the contained object, if it is not null. If the predicate doesn’t evaluate to true, the contained object will be null. Example:</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//the filtered model will have a null model object if person's name</span>
+<span class="c1">//is not "Jane"</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">janeModel</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">person</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">filter</span><span class="o">((</span><span class="n">p</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"Jane"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><strong>map(mapperFunction)</strong>: Returns an <em>IModel</em> applying the given mapper to the contained object, if it is not null. Example:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//the new read-only model will contain the person's first name</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">personNameModel</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">person</span><span class="o">).</span><span class="na">map</span><span class="o">(</span><span class="nl">Person:</span><span class="o">:</span><span class="n">getName</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<!-- -->
+
+<ul>
+  <li>
+    <p><strong>flatMap(mapperFunction)</strong>: Returns an <em>IModel</em> applying the given <em>IModel</em>-bearing mapper to the contained object, if it is not null. Example:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//returns a read/write model for person's first name</span>
+<span class="c1">//NOTE: LambdaModel will be discussed later.</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">personNameModel</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">person</span><span class="o">).</span><span class="na">flatMap</span><span class="o">(</span><span class="n">targetPerson</span> <span class="o">-&gt;</span>
+<span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span>
+    <span class="o">()</span> <span class="o">-&gt;</span> <span class="nl">targetPerson:</span><span class="o">:</span><span class="n">getName</span><span class="o">,</span> <span class="nl">targetPerson:</span><span class="o">:</span><span class="n">setName</span>
+<span class="o">));</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>combineWith(otherModel, combiner)</strong>: Returns an <em>IModel</em> applying the given combining function to the current model object and to the one from the other model, if they are not null. Example:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">hello</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">world</span> <span class="o">=</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"world"</span><span class="o">);</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">combinedModel</span> <span class="o">=</span> <span class="n">hello</span><span class="o">.</span><span class="na">combineWith</span><span class="o">(</span>
+    <span class="n">world</span><span class="o">,</span> <span class="o">(</span><span class="n">thisObj</span><span class="o">,</span> <span class="n">otherObj</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">thisObj</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">otherObj</span><span class="o">);</span>
+
+<span class="n">assertEquals</span><span class="o">(</span><span class="s">"hello world"</span><span class="o">,</span> <span class="n">combinedModel</span><span class="o">.</span><span class="na">getObject</span><span class="o">());</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>orElseGet(supplier)</strong>: Returns a read-only <em>IModel</em> using either the contained object or invoking the given supplier to get a default value. Example:</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">nullObj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">();</span>
+<span class="n">assertEquals</span><span class="o">(</span><span class="s">"hello!"</span><span class="o">,</span> <span class="n">nullObj</span><span class="o">.</span><span class="na">orElseGet</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">"hello!"</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>One of the main goals of Wicket is to use JavaBeans and POJO as data model, overcoming the impedance mismatch between web technologies and OO paradigm. In order to make this task as easy as possible, Wicket offers two special model classes: <em>org.apache.wicket.model.PropertyModel</em> and <em>org.apache.wicket.model.CompoundPropertyModel</em>. We will see how to use them in the next two examples, using the following JavaBean as the data object:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">surname</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">passportCode</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">Person</span> <span class="n">spouse</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">children</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">surname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">surname</span> <span class="o">=</span> <span class="n">surname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getFullName</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">surname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/*
+     * Getters and setters for private fields
+     */</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="propertymodel">PropertyModel</h1>
+
+<p>Let’s say we want to display the name field of a Person instance with a label. We could, of course, use the Model class like we did in the previous example, obtaining something like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
+<span class="c1">//load person's data...</span>
+
+<span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<p>However this solution has a huge drawback: the text displayed by the label will be static and if we change the value of the field, the label won’t update its content. Instead, to always display the current value of a class field, we should use the <em>org.apache.wicket.model.PropertyModel</em> model class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
+<span class="c1">//load person's data...</span>
+
+<span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">,</span> <span class="s">"name"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>PropertyModel has just one constructor with two parameters: the model object (person in our example) and the name of the property we want to read/write ( <em>name</em> in our example). This last parameter is called property expression. Internally, methods getObject/setObject use property expression to get/set property’s value. To resolve class properties PropertyModel uses class <em>org.apache.wicket.core.util.lang.PropertyResolver</em> which can access any kind of property, private fields included.</p>
+
+<p>Just like the Java language, property expressions support dotted notation to select sub properties. So if we want to display the name of the Person’s spouse we can write:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"spouseName"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">,</span> <span class="s">"spouse.name"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!NOTE]
+PropertyModel is null-safe, which means we don’t have to worry if property expression includes a null value in its path. If such a value is encountered, an empty string will be returned.</p>
+</blockquote>
+
+<p>If property is an array or a List, we can specify an index after its name. For example, to display the name of the first child of a Person we can write the following property expression:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"firstChildName"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">PropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">,</span> <span class="s">"children.0.name"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>Indexes and map keys can be also specified using squared brackets:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">children</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">name</span> <span class="o">...</span>
+<span class="n">mapField</span><span class="o">[</span><span class="n">key</span><span class="o">].</span><span class="na">subfield</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<h1 id="lambdamodel">LambdaModel</h1>
+
+<p><em>PropertyModel</em> uses textual expressions to resolve object properties. That’s nice but it comes with some drawbacks. For example the expression can not be checked at compile time and is not refactoring-friendly. To overcome these problems with Wicket 8 a new kind of lambda-based model has been introduced: <em>org.apache.wicket.model.LambdaModel</em>. This model uses lambda expressions to get/set model object. Here is the signature of its static factory method:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">LambdaModel</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">of</span><span class="o">(</span><span class="nc">SerializableSupplier</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">getter</span><span class="o">,</span> <span class="nc">SerializableConsumer</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">setter</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>In the following code we use method references to operate on a specific object property:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">();</span>
+<span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">personNameModel</span> <span class="o">=</span> <span class="nc">LambdaModel</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nl">person:</span><span class="o">:</span><span class="n">getName</span><span class="o">,</span> <span class="nl">person:</span><span class="o">:</span><span class="n">setName</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h1 id="compoundpropertymodel-and-model-inheritance">CompoundPropertyModel and model inheritance</h1>
+
+<p>Class <em>org.apache.wicket.model.CompoundPropertyModel</em> is a particular kind of model which is usually used in conjunction with another Wicket feature called model inheritance. With this feature, when a component needs to use a model but none has been assigned to it, it will search through the whole container hierarchy for a parent with an inheritable model. Inheritable models are those which implement interface <em>org.apache.wicket.model.IComponentInheritedModel</em> and <em>CompoundPropertyModel</em> is one of them. Once a <em>CompoundPropertyModel</em> has been inherited by a component, it will behave just like a PropertyModel using the id of the component as property expression. As a consequence, to make the most of CompoundPropertyModel we must assign it to one of the containers of a given component, rather than directly to the component itself.</p>
+
+<p>For example if we use CompoundPropertyModel with the previous example (display spouse’s name), the code would become like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//set CompoundPropertyModel as model for the container of the label</span>
+<span class="n">setDefaultModel</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">));</span>
+
+<span class="nc">Label</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"spouse.name"</span><span class="o">);</span>
+
+<span class="n">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Note that now the id of the label is equal to the property expression previously used with PropertyModel. Now as a further example let’s say we want to extend the code above to display all of the main information of a person (name, surname, address and email). All we have to do is to add one label for every additional information using the relative property expression as component id:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Create a person named 'John Smith'</span>
+<span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Smith"</span><span class="o">);</span>
+<span class="n">setDefaultModel</span><span class="o">(</span><span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">));</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"surname"</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"address"</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"email"</span><span class="o">));</span>
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"spouse.name"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>CompoundPropertyModel can save us a lot of boring coding if we choose the id of components according to properties name. However it’s also possible to use this type of model even if the id of a component does not correspond to a valid property expression. The method bind(String property) allows to create a property model from a given CompoundPropertyModel using the provided parameter as property expression. For example if we want to display the spouse’s name in a label having “xyz” as id, we can write the following code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Create a person named 'John Smith'</span>
+<span class="nc">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Smith"</span><span class="o">);</span>
+<span class="nc">CompoundPropertyModel</span> <span class="n">compoundModel</span><span class="o">;</span>
+<span class="n">setDefaultModel</span><span class="o">(</span><span class="n">compoundModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">(</span><span class="n">person</span><span class="o">));</span>
+
+<span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"xyz"</span><span class="o">,</span> <span class="n">compoundModel</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="s">"spouse.name"</span><span class="o">)));</span>
+</code></pre></div></div>
+
+<p>CompoundPropertyModel is particularly useful when used in combination with Wicket forms, as we will see in the next paragraph.</p>
+
+<blockquote>
+  <p>[!NOTE]
+Model is referred to as static model because the result of its method getObject is fixed and it is not dynamically evaluated each time the method is called. In contrast, models like PropertyModel and CompoundProperty Model are called dynamic models.</p>
+</blockquote>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Wicket 1.5.15 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/structure/atom.xml" />
+
+        <link rel="shortcut icon" href="/wicket-site/structure/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="/wicket-site/structure/css/style.css?v=1792573731" type="text/css" media="screen" />
+
+		<script src="/wicket-site/structure/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/wicket-site/structure/"><img src="/wicket-site/structure/img/logo-apachewicket.svg" alt="Apache Wicket"></a>
+</div>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/structure/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/structure/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/structure/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/structure/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/structure/news/" class="nav-items active" aria-current="true">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/structure/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/structure/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/wicket-site/structure/news/">Blog</a><span aria-hidden="true"> / </span><a href="/wicket-site/structure/news/2016/">2016</a></p>
+        <h1>Wicket 1.5.15 released</h1>
+        <p class="post-sign-meta">
+            <time datetime="2016-02-19T00:00:00+00:00">19 February 2016</time>
+            <span class="tag tag-post">Release</span>
+            
+            <a href="/wicket-site/structure/versions/wicket-1.5.x/">Wicket 1.5.x: status, downloads and documentation</a>
+        </p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading guide-reading">
+        
+        <div class="reading-main">
+            <article class="page-content guide-content post-content">
+                <p>This is the fifteenth maintenance release of the Wicket 1.5.x series. This release brings over 2 bug fixes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHANGELOG for 1.5.15:
+</code></pre></div></div>
+
+<h4 id="bug">Bug</h4>
+
+<ul>
+  <li>[WICKET-6037] - ModalWindow vulnerable to Javascript injection through title model</li>
+  <li>Escape the generated markup for attribute names and values in CheckBoxMultipleChoice and RadioChoice</li>
+</ul>
+
+<h4 id="to-use-in-maven">To use in Maven:</h4>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.5.15<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<h4 id="download-the-full-distribution-including-sources">Download the <a href="http://www.apache.org/dyn/closer.cgi/wicket/1.5.15" target="_blank" rel="noopener noreferrer">full distribution</a> (including sources)</h4>
+
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                    
+                    <a class="post-pager-older" href="/wicket-site/structure/news/2015/10/24/wicket-1.5.14-released.html"><span>Older 1.5.x release</span>Wicket 1.5.14 released</a>
+                    <a class="post-pager-newer" href="/wicket-site/structure/news/2016/08/05/wicket-1.5.16-released.html"><span>Newer 1.5.x release</span>Wicket 1.5.16 released</a>
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="/wicket-site/structure/news/">blog</a>, in the <a href="/wicket-site/structure/atom.xml">Atom feed</a> or on the <a href="/wicket-site/structure/community/#announce">announce list</a>.</p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/structure/versions/">Releases</a></li>
+            <li><a href="/wicket-site/structure/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/structure/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/structure/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/structure/news/">Blog</a></li>
+            <li><a href="/wicket-site/structure/community/">Community and support</a></li>
+            <li><a href="/wicket-site/structure/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/structure/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/structure/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/structure/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+    </body>
+</html>

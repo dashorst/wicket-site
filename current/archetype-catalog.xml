@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<archetype-catalog>
+	<archetypes>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>10.12.0-SNAPSHOT</version>
+			<description>Wicket 10.12.0-SNAPSHOT Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>9.25.0-SNAPSHOT</version>
+			<description>Wicket 9.25.0-SNAPSHOT Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>10.11.0</version>
+			<description>Wicket 10.11.0 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>9.24.0</version>
+			<description>Wicket 9.24.0 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>8.19.0</version>
+			<description>Wicket 8.19.0 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>7.18.0</version>
+			<description>Wicket 7.18.0 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>1.4.23</version>
+			<description>Wicket 1.4.23 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>1.5.16</version>
+			<description>Wicket 1.5.16 Quickstart</description>
+		</archetype>
+
+		<archetype>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-archetype-quickstart</artifactId>
+			<version>6.30.0</version>
+			<description>Wicket 6.30.0 Quickstart</description>
+		</archetype>
+
+	</archetypes>
+</archetype-catalog>

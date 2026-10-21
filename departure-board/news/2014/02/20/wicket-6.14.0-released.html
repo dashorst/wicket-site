@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Apache Wicket 6.14.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/departure-board/atom.xml" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1792573740" type="text/css" media="screen" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40"></a>
+</div>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/departure-board/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/departure-board/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/news/" class="nav-items active" aria-current="true">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/wicket-site/departure-board/news/">Blog</a><span aria-hidden="true"> / </span><a href="/wicket-site/departure-board/news/2014/">2014</a></p>
+        <h1>Apache Wicket 6.14.0 released</h1>
+        <p class="post-sign-meta">
+            <time datetime="2014-02-20T00:00:00+00:00">20 February 2014</time>
+            <span class="tag tag-post">Release</span><span class="tag tag-post tag-security">Security fixes</span>
+            
+            <a href="/wicket-site/departure-board/versions/wicket-6.x/">Wicket 6.x: status, downloads and documentation</a>
+        </p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading guide-reading">
+        
+        <div class="reading-main">
+            <article class="page-content guide-content post-content">
+                <p>The Apache Wicket PMC is proud to announce Apache Wicket 6.14.0!</p>
+
+<p>This release marks the fourteenth minor release of Wicket 6. Starting
+with Wicket 6 we use semantic versioning for the future development of
+Wicket, and as such no API breaks are present in this release compared
+to 6.0.0.</p>
+
+<h3 id="new-and-noteworthy">New and noteworthy</h3>
+
+<p>This release fixes 34 bugs and adds the following improvements:</p>
+
+<ul>
+  <li>JQuery upgraded from 1.10.2 to 1.11.0</li>
+  <li>Fix for <a href="/wicket-site/departure-board/news/2014/02/21/cve-2014-0043.html">CVE-2014-0043</a>
+</li>
+  <li>Wicket Session may not be saved in the SessionStore (Http Session) under some conditions and lead to lost state</li>
+  <li>Update classes copied from commons-fileupload to fix <a href="https://www.cve.org/CVERecord?id=CVE-2014-0050" target="_blank" rel="noopener noreferrer">CVE-2014-0050</a>
+</li>
+  <li>Allow &lt;script&gt; tags to have children components to be able to use client side templating</li>
+</ul>
+
+<h3 id="using-this-release">Using this release</h3>
+
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+ <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
+ <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
+ <span class="nt">&lt;version&gt;</span>6.14.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Or download and build the distribution yourself, or use our
+convenience binary package</p>
+
+<ul>
+  <li>Source: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.14.0" target="_blank" rel="noopener noreferrer">6.14.0 source download</a>
+</li>
+  <li>Binary: <a href="http://www.apache.org/dyn/closer.cgi/wicket/6.14.0/binaries" target="_blank" rel="noopener noreferrer">6.14.0 binary download</a>
+</li>
+</ul>
+
+<h3 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h3>
+
+<p>If you upgrade from 6.y.z this release is a drop in replacement. If
+you come from a version prior to 6.0.0, please read our Wicket 6
+migration guide found at</p>
+
+<ul>
+  <li><a href="https://cwiki.apache.org/confluence/display/WICKET/Migration+to+Wicket+6.0" target="_blank" rel="noopener noreferrer">Migration to Wicket 6.0</a></li>
+</ul>
+
+<p>Have fun!</p>
+
+<p>— The Wicket team</p>
+
+<h3 id="release-notes---wicket---version-6140">Release Notes - Wicket - Version 6.14.0</h3>
+
+<h4 id="bug">Bug</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-4697] - Autolinking not working as soon as component gets a wicket:id
+* [WICKET-5043] - Page not mounted with WebApplication#mountPackage
+* [WICKET-5449] - Missing chapter 2 is causing off-by-one page names in the guides URL links
+* [WICKET-5460] - onBeforeRender called too early on stateless page
+* [WICKET-5462] - Ajax form-component-label repainting fails when setResponsePage() is used to navigate away from the page that has previously failed form validaiton
+* [WICKET-5464] - AbstractAjaxTimerBehavior does not work in combination with Wizards
+* [WICKET-5466] - ListenerInterfaceRequestHandler#respond throws ComponentNotFoundException as a side-effect
+* [WICKET-5467] - NumberTextField should support "any" as valid step attribute value
+* [WICKET-5468] - UrlRenderer#renderRelativeUrl potentially appends "/" after query parameters
+* [WICKET-5469] - ModalWindow unload warning always displayed (even if window is closed)
+* [WICKET-5472] - PackageResource#internalGetResourceStream() should return ProcessingResourceStream only when the resource is existing
+* [WICKET-5473] - Wicket does not handle non in-memory Httpsessions correctly
+* [WICKET-5477] - CSS class is not applied to &lt;TD&gt; for data filter
+* [WICKET-5478] - Wrong JavaDoc for WicketTester
+* [WICKET-5480] - AutoLabelResolver creates null pointer exception in 6.13
+* [WICKET-5482] - Wicket-guice doesn't support @javax.inject.Named annotations
+* [WICKET-5484] - WebPageRenderer must not render full page in Ajax requests
+* [WICKET-5486] - WebPageRenderer should honor RedirectPolicy.ALWAYS_REDIRECT more consistently
+* [WICKET-5491] - Wicket.DateTime.getViewportHeight() returning undefined on IE8, positions calendar out of viewport
+* [WICKET-5492] - WebApplication ignores a SecurityException when reading the configuration type
+* [WICKET-5496] - Wrong translation of RangeValidator.minimum and RangeValidator.maximum
+* [WICKET-5497] - NPE in JsonUtils when the value is null
+* [WICKET-5499] - Page is not touched during initialization
+* [WICKET-5500] - Ignore the path parameters when reading the page class
+* [WICKET-5502] - Patch FileUploadBase to fix CVE-2014-0050
+</code></pre></div></div>
+
+<h4 id="improvement">Improvement</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5288] - Allow &amp;lt;script&amp;gt;-Tags act as WebMarkUpContainer to add Child-Components
+* [WICKET-5439] - Allow restarting AbstractAjaxTimerBehavior without updating its hosting component
+* [WICKET-5463] - RequestUtil.getCharset(HttpServletRequest request) Resilience against unsupported Charsets in Request
+* [WICKET-5470] - Remove 'final' from org.apache.wicket.markup.html.form.EnumChoiceRenderer#getDisplayValue
+* [WICKET-5471] - Store the page if it is known that it will be used in a following request
+* [WICKET-5493] - Disable jar indexing
+</code></pre></div></div>
+
+<h4 id="new-feature">New Feature</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-3491] - Introduce IComponentOnConfigureListener
+</code></pre></div></div>
+
+<h4 id="task">Task</h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* [WICKET-5488] - Promote experimental modules to become stable
+* [WICKET-5494] - Upgrade JQuery to latest stable - 1.11.0 and 2.1.0
+</code></pre></div></div>
+
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                    
+                    <a class="post-pager-older" href="/wicket-site/departure-board/news/2014/01/05/wicket-6.13.0-released.html"><span>Older 6.x release</span>Apache Wicket 6.13.0 released</a>
+                    <a class="post-pager-newer" href="/wicket-site/departure-board/news/2014/04/23/wicket-6.15.0-released.html"><span>Newer 6.x release</span>Apache Wicket 6.15.0 released</a>
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="/wicket-site/departure-board/news/">blog</a>, in the <a href="/wicket-site/departure-board/atom.xml">Atom feed</a> or on the <a href="/wicket-site/departure-board/community/#announce">announce list</a>.</p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/departure-board/versions/">Releases</a></li>
+            <li><a href="/wicket-site/departure-board/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/departure-board/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/departure-board/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/departure-board/news/">Blog</a></li>
+            <li><a href="/wicket-site/departure-board/community/">Community and support</a></li>
+            <li><a href="/wicket-site/departure-board/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/departure-board/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/departure-board/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="footer-legal-band">
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1792573740" defer></script>
+    </body>
+</html>

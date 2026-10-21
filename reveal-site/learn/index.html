@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Learn Wicket | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The reference guide, books, courses and talks about Wicket, and the libraries the community builds on it." />
+        <meta name="theme-color" content="#0c0c0c" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/reveal-site/atom.xml" />
+
+        <link rel="icon" href="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/wicket-site/reveal-site/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/wicket-site/reveal-site/fonts/schibsted-grotesk/schibsted-grotesk-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/wicket-site/reveal-site/css/style.css?v=1792573750" type="text/css" />
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<div class="nav-logo">
+    <a class="brand" href="/wicket-site/reveal-site/"><img class="brand-mark" src="/wicket-site/reveal-site/img/logo-apachewicket-mark.svg" alt="" width="32" height="32"><span class="brand-name">Apache Wicket</span></a>
+</div>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/reveal-site/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/reveal-site/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/reveal-site/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/reveal-site/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/reveal-site/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/reveal-site/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="hub-crumbs"><a href="/wicket-site/reveal-site/docs/">Documentation</a></p>
+        <h1>Learn Wicket</h1>
+        <p class="page-sign-sub">The reference guide, books, courses and talks about Wicket, and the libraries the community builds on it.</p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    
+    
+    <div class="reading section-body">
+        <nav class="section-index" aria-label="On this page">
+    <a href="#guide">Reference guide</a>
+    <a href="#learning">Books, courses and talks</a>
+    <a href="#ecosystem">Libraries and integrations</a>
+</nav>
+
+<h2 id="guide">Reference guide</h2>
+
+<p>The reference guide, called the User Guide on this site before, is the complete guide to Wicket in one document per release line. The <a href="/wicket-site/reveal-site/docs/#reference-guide">Documentation</a> links it for every line, as one page or PDF, with the Javadoc next to it:
+<a href="https://nightlies.apache.org/wicket/guide/10.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 10</a>, <a href="https://nightlies.apache.org/wicket/guide/11.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 11</a>, <a href="https://nightlies.apache.org/wicket/guide/9.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 9</a>, <a href="https://nightlies.apache.org/wicket/guide/8.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 8</a>, <a href="https://nightlies.apache.org/wicket/guide/7.x/single.html" target="_blank" rel="noopener noreferrer">Wicket 7</a>.</p>
+
+<h2 id="learning">Books, courses and talks</h2>
+
+<ul>
+  <li>
+<a href="/wicket-site/reveal-site/learn/books/">Books about Wicket</a>, from Wicket in Action to the Apache Wicket Cookbook.</li>
+  <li>
+<a href="https://www.udemy.com/course/apache-wicket-kompakt/" target="_blank" rel="noopener noreferrer">Apache Wicket Kompakt</a>, a German course with many practical examples.</li>
+  <li>
+<a href="https://www.udemy.com/course/starting-with-apache-wicket-version-9x/?referralCode=C2A6EF19A72071AA2E22" target="_blank" rel="noopener noreferrer">Starting with Apache Wicket</a>, for Wicket 9 and later, with forms, components, MongoDB and Spring Boot.</li>
+  <li>
+<a href="/wicket-site/reveal-site/learn/presentations/wicketIntroduction.pdf">An introduction to Wicket</a>, slides for developers new to Wicket.</li>
+  <li>
+<a href="/wicket-site/reveal-site/learn/examples/">A quick tour of Wicket</a>, small examples of what Wicket code looks like, and the <a href="http://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">live examples</a> running on a server.</li>
+</ul>
+
+<p>The <a href="https://cwiki.apache.org/WICKET" target="_blank" rel="noopener noreferrer">Wicket wiki</a> holds older articles, the migration guides and community pages.</p>
+
+<h2 id="ecosystem">Libraries and integrations</h2>
+
+<p>The community builds and maintains libraries on top of Wicket. They have their own release cycles and maintainers.</p>
+
+<ul>
+  <li>
+<a href="https://github.com/wicketstuff/" target="_blank" rel="noopener noreferrer">WicketStuff</a> gathers community-provided projects, from integrations with JavaScript libraries to REST resources and asynchronous tasks; the <a href="https://github.com/wicketstuff/core/wiki" target="_blank" rel="noopener noreferrer">project overview</a> lists them.</li>
+  <li>
+<a href="https://github.com/MarcGiffing/wicket-spring-boot" target="_blank" rel="noopener noreferrer">Wicket Spring Boot</a> configures Wicket and its extensions automatically in a Spring Boot application.</li>
+  <li>
+<a href="https://github.com/l0rdn1kk0n/wicket-bootstrap/" target="_blank" rel="noopener noreferrer">Wicket-Bootstrap</a> integrates Bootstrap’s components and styles, with a showcase of every feature.</li>
+  <li>
+<a href="https://github.com/sebfz1/wicket-jquery-ui" target="_blank" rel="noopener noreferrer">Wicket jQuery UI</a> wraps the jQuery UI and Kendo UI widgets as Wicket components.</li>
+  <li>
+<a href="https://github.com/bitstorm/modern-webdev-wicket" target="_blank" rel="noopener noreferrer">Modern web development with Apache Wicket</a> shows Wicket with Spring Boot, Hazelcast and WebJars in working examples.</li>
+</ul>
+
+<p>The <a href="/wicket-site/reveal-site/docs/topics/integration.html">Integration</a> topic of the documentation covers Spring, CDI and the other integrations that ship with Wicket.</p>
+
+    </div>
+    
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/reveal-site/versions/">Releases</a></li>
+            <li><a href="/wicket-site/reveal-site/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/reveal-site/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/reveal-site/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/reveal-site/news/">Blog</a></li>
+            <li><a href="/wicket-site/reveal-site/community/">Community and support</a></li>
+            <li><a href="/wicket-site/reveal-site/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/reveal-site/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/reveal-site/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/reveal-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        <script src="/wicket-site/reveal-site/javascript/reveal.js?v=1792573750" defer></script>
+    </body>
+</html>

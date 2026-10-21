@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8">
+	
+	
+
+        <title>Apache Wicket v7.0 released | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/departure-board/atom.xml" />
+
+        <link rel="shortcut icon" href="/wicket-site/departure-board/favicon.ico" type="image/vnd.microsoft.icon" />
+        <meta name="theme-color" content="#0D1B3D" />
+        <link rel="preload" href="/wicket-site/departure-board/fonts/overpass/overpass-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/wicket-site/departure-board/css/style.css?v=1792573740" type="text/css" media="screen" />
+
+		<script src="/wicket-site/departure-board/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        <div class="nav-logo">
+    <a href="/wicket-site/departure-board/"><img src="/wicket-site/departure-board/img/logo-apachewicket-white.svg" alt="Apache Wicket" width="231" height="40"></a>
+</div>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/departure-board/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/departure-board/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/departure-board/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_mark.svg" alt="The Apache Software Foundation" width="22" height="34"></a>
+        <a href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="visually-hidden">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+
+
+
+<div class="page-sign">
+    <div class="page-sign-inner">
+        <p class="guide-crumbs"><a href="/wicket-site/departure-board/news/">Blog</a><span aria-hidden="true"> / </span><a href="/wicket-site/departure-board/news/2015/">2015</a></p>
+        <h1>Apache Wicket v7.0 released</h1>
+        <p class="post-sign-meta">
+            <time datetime="2015-07-28T00:00:00+00:00">28 July 2015</time>
+            <span class="tag tag-post">Release</span>
+            
+            <a href="/wicket-site/departure-board/versions/wicket-7.x/">Wicket 7.x: status, downloads and documentation</a>
+        </p>
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading guide-reading">
+        
+        <div class="reading-main">
+            <article class="page-content guide-content post-content">
+                <p>The Apache Software Foundation announces Apache Wicket™ v7.0 Open Source Java web framework that powers thousands of web applications and web sites for governments, stores, universities, cities, banks, email providers, and more.</p>
+
+<p>The Apache Software Foundation (ASF), the all-volunteer developers, stewards, and incubators of nearly 150 Open Source projects and initiatives, today announced Apache™ Wicket™ v7.0, the Open Source Java web framework for high performance, scalable, component oriented web applications. 
+This marks the seventh major release of the project that celebrated its 10 year anniversary last year.</p>
+
+<p>This framework allows Java developers to write web applications using components. 
+This way developers can reason about the user interface in user interface building blocks, making it easier to link specific user interactions to server-side code. 
+Wicket is a high performance framework processing billions of requests daily across the world.</p>
+
+<p>“With this release we have added a major improvement to our framework, making development with Wicket even easier.”, said Martijn Dashorst, Vice President of Apache Wicket.
+“By adding ‘Component Queuing’ we have divorced the strict relationship between the Java component classes and the markup. This has been a headache for many users and sparked one of the longest discussions on our community lists. We finally put this issue to bed.”</p>
+
+<p>“Other major improvements are the move towards Java 7, newer Java EE standards, security features and the addition of new components. Wicket now bundles a cross site request forgery (CSRF) prevention measure, and provides support for inline images using the data: protocol,” continued Martijn Dashorst.</p>
+
+<p>Apache Wicket v7.0 reflects over 2 years of development, testing and feedback from hundreds of knowledgable users, bringing a highly stable, production ready release of the popular web framework.
+The release consist of almost 300 features, improvements and fixes. In accordance with Semantic Versioning, this major release contains <a href="https://s.apache.org/wicket7migrate" target="_blank" rel="noopener noreferrer">several documented API breaks</a>. Following the Semantic Versioning standard, future minor releases of Wicket v7 will remain API compatible.</p>
+
+<h3 id="availability-and-oversight">Availability and Oversight</h3>
+
+<p>As with all Apache products, Apache Wicket software is released under the Apache License v2.0, and is overseen by a self-selected team of active contributors to the project.
+A Project Management Committee (PMC) guides the Project’s day-to-day operations, including community development and product releases.
+Apache Wicket release notes, source code, documentation, and related resources are available at <a href="https://wicket.apache.org" target="_blank" rel="noopener noreferrer">https://wicket.apache.org</a>.</p>
+
+<h3 id="about-the-apache-software-foundation-asf">About The Apache Software Foundation (ASF)</h3>
+
+<p>Established in 1999, the all-volunteer Foundation oversees nearly one hundred fifty leading Open Source projects, including Apache HTTP Server — the world’s most popular Web server software.
+Through the ASF’s meritocratic process known as “The Apache Way,” more than 350 individual Members and 3,000 Committers successfully collaborate to develop freely available enterprise-grade software, benefiting millions of users worldwide: thousands of software solutions are distributed under the Apache License; and the community actively participates in ASF mailing lists, mentoring initiatives, and ApacheCon, the Foundation’s official user conference, trainings, and expo.
+The ASF is a US 501(3)(c) not-for-profit charity, funded by individual donations and corporate sponsors including AMD, Basis Technology, Cloudera, Facebook, Google, IBM, HP, Hortonworks, Matt Mullenweg, Microsoft, PSW Group, SpringSource/VMware, and Yahoo!.
+For more information, visit <a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">https://www.apache.org/</a>.</p>
+
+<p>“Apache”, “Apache Wicket”, and “ApacheCon” are trademarks of The Apache Software Foundation.
+All other brands and trademarks are the property of their respective owners.</p>
+
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                    
+                    <a class="post-pager-older" href="/wicket-site/departure-board/news/2015/06/21/wicket-7.0.0-M6-released.html"><span>Older 7.x release</span>Apache Wicket 7.0.0-M6 released</a>
+                    <a class="post-pager-newer" href="/wicket-site/departure-board/news/2015/10/25/wicket-7.1.0-released.html"><span>Newer 7.x release</span>Apache Wicket 7.1.0 released</a>
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="/wicket-site/departure-board/news/">blog</a>, in the <a href="/wicket-site/departure-board/atom.xml">Atom feed</a> or on the <a href="/wicket-site/departure-board/community/#announce">announce list</a>.</p>
+            </footer>
+        </div>
+    </div>
+</main>
+
+        <footer>
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/departure-board/versions/">Releases</a></li>
+            <li><a href="/wicket-site/departure-board/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/departure-board/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/departure-board/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/departure-board/news/">Blog</a></li>
+            <li><a href="/wicket-site/departure-board/community/">Community and support</a></li>
+            <li><a href="/wicket-site/departure-board/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/departure-board/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/departure-board/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="footer-legal-band">
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/departure-board/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+</div>
+
+        </footer>
+        <script src="/wicket-site/departure-board/javascript/station.js?v=1792573740" defer></script>
+    </body>
+</html>
