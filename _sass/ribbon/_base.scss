@@ -18,6 +18,17 @@
     --muted: #A8C7BD;          // secondary text on cloth, 6.7:1
     --veil: 246, 248, 247;     // paper, as the scrim over the photograph
     --focus: var(--ribbon-deep);
+    --on-cloth: #F6F8F7;       // text on the green fields, in both modes
+    --on-ribbon: #14241F;      // text on an orange fill, in both modes
+    --sheet: #F6F8F7;          // sheets resting on a darker ground: the tree's files, search, quick start
+    --tile: #F6F8F7;           // the light tile under the ASF logo, in both modes
+    --code-green: #1C5E43;     // strings and numbers
+    --code-tag: #0F4A40;       // tags, types and annotations
+    --code-op: #33473F;        // operators and punctuation
+    --hair: rgba(20, 36, 31, .22);
+    // drawn chevrons for selects and the carousel, in the orange for text
+    --chev-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239A430A' stroke-width='1.6'/%3E%3C/svg%3E");
+    --chev-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16' viewBox='0 0 10 16'%3E%3Cpath d='M8 1L2 8l6 7' fill='none' stroke='%239A430A' stroke-width='2'/%3E%3C/svg%3E");
 
     --serif: "Alegreya", Georgia, serif;
     --sc: "Alegreya SC", "Alegreya", Georgia, serif;
@@ -31,7 +42,32 @@
     --ribbon-w: 7px;           // the ribbon's width where CSS draws it
     --ease: cubic-bezier(.16, 1, .3, 1);
 
-    color-scheme: light;
+    color-scheme: light dark;
+}
+
+// At night the paper turns to a green-black, a shade under the bookcloth, so the tree and the
+// footer still read as fields of cloth; the ribbon stays the one orange. Text on cloth and on
+// orange keeps its colour.
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #0E1C19;
+        --paper-tint: #132622;
+        --ink: #E2EBE7;            // 14:1 on the ground
+        --ink-soft: #A4B8B0;       // 8.4:1 on the ground, 6.9:1 on code
+        --rule: #2A403A;
+        --field: #6A8279;          // 4.2:1 on the ground, 3.8:1 on the tint
+        --code-bg: #182E29;
+        --ribbon-deep: #F39A55;    // orange text: 8:1 on the ground
+        --ribbon-wash: rgba(238, 127, 45, .13);
+        --veil: 14, 28, 25;
+        --sheet: #16302A;          // lighter than the ground, so sheets still rise
+        --code-green: #9FD3AE;
+        --code-tag: #86CBBE;
+        --code-op: #B9C9C2;
+        --hair: rgba(226, 235, 231, .22);
+        --chev-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23F39A55' stroke-width='1.6'/%3E%3C/svg%3E");
+        --chev-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='16' viewBox='0 0 10 16'%3E%3Cpath d='M8 1L2 8l6 7' fill='none' stroke='%23F39A55' stroke-width='2'/%3E%3C/svg%3E");
+    }
 }
 
 @media (max-width: 1399px) { :root { --pad: 36px; } }
@@ -61,7 +97,7 @@ body {
 }
 @media (max-width: 860px) { body { font-size: 1.125rem; } }
 
-::selection { background: var(--ribbon); color: var(--ink); }
+::selection { background: var(--ribbon); color: var(--on-ribbon); }
 ::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track { background: var(--paper-tint); }
 ::-webkit-scrollbar-thumb { background: var(--field); border: 3px solid var(--paper-tint); border-radius: 6px; }
@@ -100,7 +136,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 // Hidden until focused, then an orange plate in the top left corner.
 .skip-link {
     position: absolute; left: 12px; top: -80px; z-index: 20;
-    background: var(--ribbon); color: var(--ink); padding: 13px 16px; border-radius: 2px;
+    background: var(--ribbon); color: var(--on-ribbon); padding: 13px 16px; border-radius: 2px;
     font: 700 1rem var(--sans); text-decoration: none;
 }
 .skip-link:focus { top: 12px; }

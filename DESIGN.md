@@ -184,6 +184,9 @@ A cool, green-grey book palette with a single warm voice: Wicket orange.
 
 **The Cool Paper Rule.** The ground is cool paper with a green cast. No cream, no warm white, no pure white.
 
+### Dark Mode
+The site follows the visitor's system setting (`prefers-color-scheme: dark`); there is no switch. At night the paper turns to a green-black (`#0E1C19`), a shade under the bookcloth, so the component tree and the footer still read as fields of cloth. The tint becomes `#132622`, code ground `#182E29`, hairlines `#2A403A`, field strokes `#6A8279`. Ink turns light (`#E2EBE7`, 14:1) and soft ink `#A4B8B0` (8.4:1). Orange text on the ground takes the orange for cloth (`#F39A55`, 8:1); the ribbon, its reverse and the knots keep their colours. Sheets (the tree's files, the documentation search, the quick start) become `#16302A`, lighter than the ground so they still rise, and the code greens turn pale (`#9FD3AE` strings, `#86CBBE` tags, `#B9C9C2` operators). The veil over the photograph is the night ground, so the photograph darkens where text sits. Text on cloth (`--on-cloth`) and on an orange fill (`--on-ribbon`) keeps its colour in both modes, as does the light tile under the ASF logo. Built with Wicket screenshots are dimmed to 86% brightness.
+
 ## Typography
 
 **Display Font:** Alegreya (with Georgia, serif)
