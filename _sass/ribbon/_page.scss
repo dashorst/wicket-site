@@ -21,6 +21,10 @@
     font: italic 400 clamp(1.25rem, 1.7vw, 1.5rem)/1.3 var(--serif);
 }
 
+// A section's one action on its sign.
+.page-sign-action { margin: 22px 0 0; }
+.page-sign-action .button { margin: 0; }
+
 // The breadcrumb above a title: the section the page belongs to, in small capitals.
 .guide-crumbs,
 .hub-crumbs {
