@@ -36,7 +36,7 @@
 
 .guide-search {
     position: relative; margin-top: 24px; padding: 12px 14px;
-    background: var(--paper);
+    background: var(--sheet);
     box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .45);
 }
 @media (min-width: 1000px) { .guide-sign-inner > .guide-search { margin-top: 0; } }
@@ -76,7 +76,7 @@
 
     select {
         appearance: none; -webkit-appearance: none; margin-left: 4px; cursor: pointer;
-        background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239A430A' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 10px center;
+        background: var(--paper) var(--chev-down) no-repeat right 10px center;
         border: 1px solid var(--field); border-radius: 2px; color: var(--ink);
         font: 500 1rem/1 var(--sans); padding: 7px 28px 7px 9px;
     }
@@ -93,7 +93,7 @@
 .guide-results {
     position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; right: 0;
     max-height: min(32rem, 70vh); overflow-y: auto;
-    background: var(--paper); border-top: 2px solid var(--ribbon);
+    background: var(--sheet); border-top: 2px solid var(--ribbon);
     box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 24px 48px -24px rgba(6, 26, 22, .55);
 
     @media (min-width: 1000px) {
@@ -146,7 +146,7 @@
     &:is(a):hover { text-decoration-color: var(--ribbon-deep); }
 }
 // The page being read: the lit bead.
-.guide-list li.is-current .guide-list-title { padding: 3px 8px 4px; margin-top: 2px; border-radius: 3px; background: var(--ribbon); }
+.guide-list li.is-current .guide-list-title { padding: 3px 8px 4px; margin-top: 2px; border-radius: 3px; background: var(--ribbon); color: var(--on-ribbon); }
 
 .guide-list-meta { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 6px; vertical-align: .1em; &:empty { display: none; } }
 .guide-list-kind { font: 500 1rem var(--sc); letter-spacing: .03em; color: var(--ribbon-deep); }
@@ -233,7 +233,7 @@
         border: 1px solid var(--ribbon-under); border-radius: 3px; background: var(--paper);
         font: 400 .95rem var(--mono); text-decoration: none; transition: background-color .15s;
     }
-    a:hover { background: var(--ribbon); }
+    a:hover { background: var(--ribbon); color: var(--on-ribbon); }
     @media (pointer: coarse) { a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; } }
 }
 

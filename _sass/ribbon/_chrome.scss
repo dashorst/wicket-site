@@ -39,7 +39,7 @@ a.nav-plate:hover, .nav-plate--split a:hover { background: var(--ribbon-wash); }
 .nav-plate-current, .nav-plate-lts { display: inline-flex; align-items: center; padding: 6px 10px 7px; }
 .nav-plate-lts { border-left: 1px solid var(--ribbon-under); }
 .nav-plate--split a { color: var(--ink); text-decoration: none; }
-a.nav-plate.active, .nav-plate--split a.active { background: var(--ribbon); }
+a.nav-plate.active, .nav-plate--split a.active { background: var(--ribbon); color: var(--on-ribbon); }
 
 .nav-container { display: flex; align-items: center; gap: 4px 26px; }
 .nav-sections { margin-left: auto; }
@@ -63,7 +63,7 @@ nav.mainmenu .nav-items {
 .nav-asf img { display: block; height: 26px; width: auto; }
 .nav-gh {
     display: inline-flex; align-items: center; gap: 7px; padding: 8px 0 8px 18px;
-    border-left: 1px solid rgba(20, 36, 31, .22);
+    border-left: 1px solid var(--hair);
     color: var(--ink); text-decoration-color: transparent; white-space: nowrap;
     &:hover { text-decoration-color: var(--ribbon-deep); }
 }
@@ -167,7 +167,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
 }
 .photo-credit {
     margin: 0; padding: 3px 8px 4px; border-radius: 2px;
-    color: var(--paper); background: rgba(11, 46, 40, .84);
+    color: var(--on-cloth); background: rgba(11, 46, 40, .84);
     --focus: var(--ribbon-text);
     a { text-decoration-color: rgba(246, 248, 247, .6); text-decoration-thickness: 1px; }
     &[hidden] { display: none; }
@@ -177,7 +177,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
 .season-pick {
     margin: 0; padding: 3px; border: 0; border-radius: 3px;
     display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
-    background: rgba(11, 46, 40, .88); color: var(--paper);
+    background: rgba(11, 46, 40, .88); color: var(--on-cloth);
     --focus: var(--ribbon-text);
 
     &[hidden] { display: none; }
@@ -186,7 +186,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
     input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
     span { display: block; padding: 3px 8px 4px; border-radius: 2px; transition: background-color .15s, color .15s; }
     label:hover span { background: rgba(246, 248, 247, .14); }
-    input:checked + span { background: var(--ribbon); color: var(--ink); }
+    input:checked + span { background: var(--ribbon); color: var(--on-ribbon); }
     input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 1px; }
 }
 @media (pointer: coarse) {
@@ -197,7 +197,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
 // ---------------------------------------------------------------- footer: the bookcloth field
 
 .footer { margin-top: 0; background: var(--cloth); color: var(--muted); --focus: var(--ribbon-text); }
-.footer a { color: var(--paper); text-decoration-color: var(--ribbon); }
+.footer a { color: var(--on-cloth); text-decoration-color: var(--ribbon); }
 
 .footer-columns {
     display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 48px;
@@ -222,7 +222,7 @@ nav.mainmenu.is-home .nav-sections { margin-left: 0; }
 }
 // The ASF logo on a paper tile, so its purple lettering stays legible on the cloth.
 .footer-asf {
-    display: block; width: max-content; padding: 8px 12px; background: var(--paper); border-radius: 2px; line-height: 0;
+    display: block; width: max-content; padding: 8px 12px; background: var(--tile); border-radius: 2px; line-height: 0;
     img { display: block; width: auto; height: 48px; }
 }
 

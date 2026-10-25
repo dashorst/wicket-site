@@ -7,7 +7,7 @@
 
 .how-n {
     display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; position: relative; z-index: 1;
-    font: 400 .95rem/1 var(--mono); color: var(--paper); background: var(--cloth);
+    font: 400 .95rem/1 var(--mono); color: var(--on-cloth); background: var(--cloth);
     border: 1px solid var(--ribbon); border-radius: 3px;
 }
 
@@ -24,10 +24,10 @@
     font: 500 1rem/1.3 var(--sans);
 }
 .how-t { display: block; margin-top: 10px; max-width: 15ch; }
-.how-rail a:hover .how-t { color: var(--paper); text-decoration: underline; text-decoration-color: var(--ribbon); }
+.how-rail a:hover .how-t { color: var(--on-cloth); text-decoration: underline; text-decoration-color: var(--ribbon); }
 .how-rail .done .how-n { background: var(--cloth-deep); }
-.how-rail a[aria-current] { color: var(--paper); }
-.how-rail a[aria-current] .how-n { background: var(--ribbon); color: var(--ink); }
+.how-rail a[aria-current] { color: var(--on-cloth); }
+.how-rail a[aria-current] .how-n { background: var(--ribbon); color: var(--on-ribbon); }
 
 .how-step { padding-top: 44px; }
 .how-head h2 { display: flex; align-items: center; gap: 14px; max-width: 18ch; }

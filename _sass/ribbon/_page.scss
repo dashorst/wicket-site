@@ -21,6 +21,10 @@
     font: italic 400 clamp(1.25rem, 1.7vw, 1.5rem)/1.3 var(--serif);
 }
 
+// A section's one action on its sign.
+.page-sign-action { margin: 22px 0 0; }
+.page-sign-action .button { margin: 0; }
+
 // The breadcrumb above a title: the section the page belongs to, in small capitals.
 .guide-crumbs,
 .hub-crumbs {
@@ -103,7 +107,7 @@ body > main { flex: 1 0 auto; }
     a:hover { color: var(--ink); background: var(--ribbon-wash); }
     li li a { margin: 2px 0; padding-block: 3px 4px; font-size: 1rem; }
     .toc-number { display: none; }
-    a.is-current { color: var(--ink); background: var(--ribbon); }
+    a.is-current { color: var(--on-ribbon); background: var(--ribbon); }
 }
 
 @media (min-width: 1100px) {
@@ -248,7 +252,7 @@ figure.highlight pre { margin: 0; padding: 14px 16px; }
 .button {
     display: inline-flex; align-items: center; gap: 10px;
     margin: .25rem 0 1rem; padding: 13px 18px; border: 0; border-radius: 2px;
-    background: var(--ribbon); color: var(--ink);
+    background: var(--ribbon); color: var(--on-ribbon);
     font: 700 1.0625rem/1.2 var(--sans); text-decoration: none; cursor: pointer;
     transition: background-color .15s;
 }
@@ -277,7 +281,7 @@ figure.highlight pre { margin: 0; padding: 14px 16px; }
 .hub-copy {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 7px 12px; border: 0; border-radius: 2px;
-    background: var(--ribbon); color: var(--ink);
+    background: var(--ribbon); color: var(--on-ribbon);
     font: 700 .95rem/1 var(--sans); cursor: pointer;
     transition: background-color .15s;
     &:hover { background: var(--ribbon-text); }
@@ -333,7 +337,7 @@ figure.highlight pre { margin: 0; padding: 14px 16px; }
 
 .quickstart {
     max-width: 46rem; margin: 0 0 2.5rem; padding: 18px 20px 20px;
-    background: var(--paper); border-top: 2px solid var(--ribbon);
+    background: var(--sheet); border-top: 2px solid var(--ribbon);
     box-shadow: 0 1px 0 rgba(20, 36, 31, .06), 0 14px 30px -20px rgba(6, 26, 22, .35);
     font-family: var(--sans);
 }
@@ -351,7 +355,7 @@ figure.highlight pre { margin: 0; padding: 14px 16px; }
     input:focus-visible, select:focus-visible { border-color: var(--ribbon-deep); outline: 2px solid var(--ribbon-deep); outline-offset: 1px; }
     select {
         appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer;
-        background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%239A430A' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 13px center;
+        background: var(--paper) var(--chev-down) no-repeat right 13px center;
     }
 }
 .quickstart-command pre { margin: 0; padding: 14px 16px; background: var(--code-bg); border-radius: 2px; }
