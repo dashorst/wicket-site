@@ -1,6 +1,9 @@
 ---
 layout: section
 title: Releases
+sign_action:
+  text: Quick start
+  url: /start/quickstart.html
 summary: From Wicket 11 on, a long-term support (LTS) release ships once a year, and a current release with new features every quarter. Each release line has its own page with Maven coordinates, downloads, what is new and documentation.
 ---
 

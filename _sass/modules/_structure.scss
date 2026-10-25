@@ -321,6 +321,17 @@ pre.highlight { background: $paper; }
     }
 }
 
+// A section's one action on its sign: the orange plate.
+.page-sign-action {
+    margin: 1.4rem 0 0;
+
+    .button {
+        font-size: settings.$font-size-40;
+        margin: 0;
+        padding: 0.7rem 1.4rem 0.6rem;
+    }
+}
+
 .page-sign-sub {
     color: $board-dim;
     font-family: $signage;
