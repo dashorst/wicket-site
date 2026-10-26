@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best practices — Apache Wicket</title>
+  <meta name="description" content="Recommended patterns and practices for building Wicket applications">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/wicket-site/april-2026/favicon.ico" sizes="16x16">
+  <link rel="icon" href="/wicket-site/april-2026/img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/wicket-site/april-2026/img/logo.svg">
+
+  <!-- Fonts loaded locally — no external CDN requests -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/wicket-site/april-2026/assets/css/main.css">
+
+  <!-- Atom Feed -->
+  <link rel="alternate" type="application/atom+xml" title="Apache Wicket" href="/wicket-site/april-2026/feed.xml">
+</head>
+<body>
+  <div class="asf-bar">
+  <div class="asf-bar-inner">
+    <img src="/wicket-site/april-2026/img/asf-oakleaf.svg" alt="" class="asf-bar-icon" aria-hidden="true">
+    <a href="https://apache.org" class="asf-bar-link">A project of The Apache Software Foundation</a>
+  </div>
+</div>
+
+  <nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/wicket-site/april-2026/" class="site-nav-brand">
+      <img src="/wicket-site/april-2026/img/logo.svg" alt="Apache Wicket" class="site-nav-logo-img">
+      <span class="site-nav-title">Apache Wicket&trade;</span>
+    </a>
+    <button class="site-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <div class="site-nav-links">
+      
+      <a href="/wicket-site/april-2026/start/quickstart"
+         class="site-nav-link"
+         >
+        Get Started
+      </a>
+      
+      <a href="/wicket-site/april-2026/docs"
+         class="site-nav-link active"
+         >
+        Documentation
+      </a>
+      
+      <a href="/wicket-site/april-2026/community"
+         class="site-nav-link"
+         >
+        Community
+      </a>
+      
+      <a href="/wicket-site/april-2026/blog"
+         class="site-nav-link"
+         >
+        Blog
+      </a>
+      
+      <a href="https://github.com/apache/wicket"
+         class="site-nav-link"
+         target="_blank" rel="noopener noreferrer">
+        GitHub <span class="site-nav-external-icon">&nearr;</span>
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <main class="docs-layout">
+  <details class="docs-sidebar" open>
+    <summary class="docs-sidebar-toggle">Navigation</summary>
+    <nav class="docs-nav">
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Tutorials</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/getting-started/" class="docs-nav-link">Getting Started</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/your-first-form/" class="docs-nav-link">Your First Form</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/adding-ajax/" class="docs-nav-link">Adding AJAX</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/layout-with-inheritance/" class="docs-nav-link">Page Layouts</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/tutorials/testing-your-pages/" class="docs-nav-link">Testing Your Pages</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">How-To Guides</h3>
+        <ul class="docs-nav-list">
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Forms</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/validate-input/" class="docs-nav-link">Validate Input</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/convert-input-types/" class="docs-nav-link">Convert Input Types</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-bean-validation/" class="docs-nav-link">Bean Validation</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-multiple-submit-buttons/" class="docs-nav-link">Multiple Submit Buttons</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/nest-forms/" class="docs-nav-link">Nested Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/upload-files/" class="docs-nav-link">File Upload</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/build-stateless-forms/" class="docs-nav-link">Stateless Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/use-checkboxes-and-radios/" class="docs-nav-link">Checkboxes & Radios</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/forms/handle-multi-select/" class="docs-nav-link">Multi-Select</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">AJAX</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/update-components/" class="docs-nav-link">Update Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-components/" class="docs-nav-link">Built-in Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/built-in-behaviors/" class="docs-nav-link">Add AJAX Behaviors</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/customize-ajax-lifecycle/" class="docs-nav-link">Customize Lifecycle</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/ajax/use-stateless-ajax/" class="docs-nav-link">Stateless AJAX</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Repeaters</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/repeat-simple-markup/" class="docs-nav-link">Repeat Simple Markup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/display-list-of-items/" class="docs-nav-link">Display a List</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/control-item-reuse/" class="docs-nav-link">Control Item Reuse</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/repeaters/paginate-data/" class="docs-nav-link">Paginate Data</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">HTML Control</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/show-hide-components/" class="docs-nav-link">Show/Hide Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/modify-html-attributes/" class="docs-nav-link">Modify Attributes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/swap-markup-fragments/" class="docs-nav-link">Swap Fragments</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/auto-hide-decorations/" class="docs-nav-link">Auto-Hide Decorations</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/html-control/wrap-content-with-border/" class="docs-nav-link">Borders</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Resources</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/add-css-and-javascript/" class="docs-nav-link">Add CSS & JavaScript</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/use-package-resources/" class="docs-nav-link">Package Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/declare-dependencies/" class="docs-nav-link">Dependencies</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/create-custom-resource/" class="docs-nav-link">Custom Resources</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/resources/mount-resources/" class="docs-nav-link">Mount Resources</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">i18n</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/localize-components/" class="docs-nav-link">Localize Components</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/customize-bundle-lookup/" class="docs-nav-link">Bundle Lookup</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/i18n/use-resource-models/" class="docs-nav-link">Resource Models</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Security</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/implement-login/" class="docs-nav-link">Implement Login</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/restrict-access-by-role/" class="docs-nav-link">Restrict by Role</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/enforce-https/" class="docs-nav-link">Enforce HTTPS</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/prevent-csrf/" class="docs-nav-link">Prevent CSRF</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/configure-csp/" class="docs-nav-link">Configure CSP</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/security/control-package-resources/" class="docs-nav-link">Package Resource Guard</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">URLs</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/use-page-parameters/" class="docs-nav-link">Page Parameters</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/create-bookmarkable-links/" class="docs-nav-link">Bookmarkable Links</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/urls/mount-pages/" class="docs-nav-link">Mount Pages</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Testing</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-pages/" class="docs-nav-link">Test Pages</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-forms/" class="docs-nav-link">Test Forms</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/testing/test-markup/" class="docs-nav-link">Test Markup</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li class="docs-nav-group">
+                <span class="docs-nav-group-title">Integration</span>
+                <ul class="docs-nav-sublist">
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/integrate-with-spring/" class="docs-nav-link">Spring</a>
+                  </li>
+                  
+                  <li>
+                    <a href="/wicket-site/april-2026/docs/howtos/integration/use-websockets/" class="docs-nav-link">WebSockets</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/use-component-queueing/" class="docs-nav-link">Component Queueing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/howtos/integrate-javascript/" class="docs-nav-link">JavaScript Integration</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Reference</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/modules/" class="docs-nav-link">Modules</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/component-lifecycle/" class="docs-nav-link">Component Lifecycle</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/request-processing/" class="docs-nav-link">Request Processing</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/models/" class="docs-nav-link">Models</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/configuration/" class="docs-nav-link">Configuration</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/reference/maven-setup/" class="docs-nav-link">Maven Setup</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <h3 class="docs-nav-section-title">Explanation</h3>
+        <ul class="docs-nav-list">
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/why-wicket/" class="docs-nav-link">Why Wicket</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/stateful-vs-stateless/" class="docs-nav-link">Stateful vs Stateless</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/page-storage/" class="docs-nav-link">Page Storage</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/markup-inheritance/" class="docs-nav-link">Markup Inheritance</a>
+              </li>
+            
+          
+            <li>
+                <a href="/wicket-site/april-2026/docs/explanation/best-practices/" class="docs-nav-link active">Best Practices</a>
+              </li>
+            
+          
+        </ul>
+      </div>
+      
+    </nav>
+  </details>
+  <div class="docs-main">
+    <header class="docs-header">
+      <h1>Best practices</h1>
+      <p class="docs-header-description">Recommended patterns and practices for building Wicket applications</p>
+    </header>
+    <div class="docs-body">
+      <div class="docs-content prose">
+        <p>This section is addressed to developers, who have already made their first experiences with Apache Wicket. Developers who get into Wicket often have difficulties with it because they apply the typical JSF and Struts patterns and approaches. These frameworks primarily use procedural programming methods. In contrast Wicket is strongly based on object oriented patterns. So forget all Struts and JSF patterns, otherwise you won’t have fun with Wicket in the long run.</p>
+
+<p>A component should be self-contained. The user of a component should neither have to know nor care about its internal structure. She should just be familiar with its external interfaces and its documentation in order to be able to use it. This means in detail: Every component that extends Wicket’s own Panel type (thus is a Panel itself) must provide its own HTML template. In contrast, when a component extends the classes <em>WebMarkupContainer</em> or <em>Form</em>, there is no HTML template. This implies that you should add components through composition in <em>WebMarkupContainer</em> or <em>Form</em>.</p>
+
+<p><strong>Listing 1:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Poor component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationForm</span> <span class="kd">extends</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationForm</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;(</span><span class="n">regModel</span><span class="o">))</span>
+        <span class="c1">// Wrong: RegistrationForm provides its own components</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"username"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"firstname"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"lastname"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This snippet is an example for a poor component. The user of the <em>RegistrationForm</em> must know the internal structure of the markup and component in order to use it.</p>
+
+<p><strong>Listing 2:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationPage</span> <span class="kd">extends</span> <span class="nc">Page</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;?&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegistrationForm</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SubmitButton</span><span class="o">(</span><span class="s">"register"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+                 <span class="c1">// do something</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- These are internal structure information from RegistrationForm --&gt;</span>
+        Username <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+        First name <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"firstname"</span><span class="nt">/&gt;</span>
+        Last name <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"lastname"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- Above new components from page which the user knows  --&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">wicket:id=</span><span class="s">"register"</span> <span class="na">value=</span><span class="s">"Register"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>The code above shows the usage of the poor component in the <em>RegistrationPage</em>. You can see that the input fields <em>firstname</em>, <em>lastname</em> and <em>username</em> get used, even though these components are not added explicitly to the <em>RegistrationPage</em>. Avoid this, because other developers cannot directly see that the components were added in <em>RegistrationPage</em> class.</p>
+
+<p><strong>Listing 3:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationInputPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationInputPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">regModel</span><span class="o">);</span>
+        <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">compound</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompoundPropertyModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;(</span><span class="n">regModel</span><span class="o">);</span>
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;(</span><span class="s">"form"</span><span class="o">,</span> <span class="n">compound</span><span class="o">);</span>
+        <span class="c1">// Correct: Add components to Form over the instance variable</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"username"</span><span class="o">));</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"firstname"</span><span class="o">));</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">TextField</span><span class="o">(</span><span class="s">"lastname"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;wicket:panel&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+        Username <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+        First name <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"firstname"</span><span class="nt">/&gt;</span>
+        Last name <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">wicket:id=</span><span class="s">"lastname"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/wicket:panel&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Now we have a properly encapsulated input component which provides its own markup. Furthermore you can see the correct usage of a Wicket <em>Form</em>. The components get added by calling <em>form.add(Component)</em> on the instance variable. On the other hand, it is allowed to add behaviours and validators over inheritance, because those do not have markup ids which must be bound.</p>
+
+<p>With that, the usage of <em>RegistrationInputPanel</em> is much more intuitive. There is no markup of other embedded components present anymore, just markup of components which get directly added. The <em>RegistrationPage</em> provides its own form that delegates the submit to all Wicket nested forms which are contained in the component tree.</p>
+
+<p><strong>Listing 4:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationPage</span> <span class="kd">extends</span> <span class="nc">Page</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;?&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">RegistrationInputPanel</span><span class="o">(</span><span class="s">"registration"</span><span class="o">,</span> <span class="n">regModel</span><span class="o">));</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SubmitButton</span><span class="o">(</span><span class="s">"register"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+              <span class="c1">// do something</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">"registration"</span><span class="nt">&gt;</span>
+           Display the RegistrationInputPanel
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">wicket:id=</span><span class="s">"register"</span> <span class="na">value=</span><span class="s">"Register"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>In contrast to Struts, Wicket pages and components are no singletons, they are stateful and session-scoped. This enables us to store user-specific information within pages and components. The information should be stored in fields. This way you can access the information within a class while avoiding long method signatures only for passing the same information around. Instances of components can exist for several requests. For example, a page with a form which gets submitted and produces validation errors uses the same page instance. Furthermore the same page instance gets used when the user presses the back button of the browser and resubmits this form again. Information which gets passed by the constructor should be assigned to fields (normally this must be models). When storing information in fields you should consider that the information is serializable, because the pages are stored using Java serialization. By default Wicket stores pages on the hard disk. A non-serializable object leads to <em>NullPointerExceptions</em> and <em>NonSerializableExceptions</em>. Additionally, big data (like binary stuff) should not be stored directly in fields because this can cause performance losses and memory leaks during serialization and deserialization. In this case, you should use the <em>LoadableDetachableModel</em> which can be assigned to a field because this provides an efficient mechanism to load and detach data.</p>
+
+<p>For many developers, naming is a dispensable thing, but I think it is one of the major topics in software development. With the help of correct naming, you can easily identify the business aspects of a software component. Additionally, good naming avoids unnecessary and bad comments.</p>
+
+<p>Bad namings for Wicket-IDs are <em>birthdateTextField</em>, <em>firstnameField</em> and <em>addressPanel</em>. Why? The naming contains two aspects: A technical aspect (<em>“TextField”</em>) and the business aspect (<em>“birthdate”</em> ). Only the business aspect is relevant because both the HTML template as well as the Java code already contain the technical details (<em>new TextField(“birthdate”)</em>). Additionally, such names add a lot of effort when you do technical refactorings, e.g. if you have to replace a <em>TextField</em> by a <em>DatePicker</em> and the Wicket ID <em>birthdateTextField</em> becomes <em>birthdateDatePicker</em>. Another reason for avoiding technical aspects in Wicket IDs is the <em>CompoundPropertyModel</em>. This model delegates the properties to its child components named by Wicket IDs (see listing 3). For example the <em>TextField username</em> automatically calls <em>setUsername()</em> and <em>getUsername()</em> on the <em>Registration</em> object. A setter like <em>setUsernameTextField()</em> would be very inconvenient here.</p>
+
+<p>You should consider the component tree as a constant and fixed skeleton which gets revived when its model is filled with data like a robot without brain. Without brain the robot is not able to do anything and is just a dead and fixed skeleton. However, when you fill it with data, it becomes alive and can act. There is no need for changing hardware when filling it with data.</p>
+
+<p>In Wicket, you should manipulate the component tree as little as possible. Consequently, you should avoid calling methods like <em>Component.replace(Component)</em> and <em>Component.remove(Component)</em>. Calling these methods indicates missing usage or misusage of Wicket’s models. Furthermore the component trees should not be constructed using conditions (see listing 5). This reduces the possibility of reusing the same instance significantly.</p>
+
+<p><strong>Listing 5:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// typical for struts</span>
+<span class="k">if</span><span class="o">(</span><span class="nc">MySession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isNotLoggedIn</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">LoginBoxPanel</span><span class="o">(</span><span class="s">"login"</span><span class="o">))</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">EmptyPanel</span><span class="o">(</span><span class="s">"login"</span><span class="o">))</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Instead of constructing <em>LoginBoxPanel</em> conditionally, it is recommended to always add the panel and set the visibility within <em>onConfigure()</em>. So the component <em>LoginBoxPanel</em> is responsible for displaying itself. We move the responsibility into the same component which executes the login. Brilliant! Cleanly encapsulated business logic. There is no decision from outside, the component handles all the logic. You can see another example in “Implement visibilities of components correctly” .</p>
+
+<p>Visibility of components is an important topic. In Wicket you control any component’s visibility via the methods <em>isVisible()</em> and <em>setVisible()</em>. These methods are within Wicket’s base class <em>Component</em> and therefore it is applicable for every component and page. Let’s have a look at a concrete example of <em>LoginBoxPanel</em>. The panel just gets displayed when the user is not logged in.</p>
+
+<p><strong>Listing 6:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Poor implementation</span>
+<span class="nc">LoginBoxPanel</span> <span class="n">loginBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LoginBoxPanel</span><span class="o">(</span><span class="s">"login"</span><span class="o">);</span>
+<span class="n">loginBox</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="nc">MySession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isNotLoggedIn</span><span class="o">());</span>
+<span class="n">add</span><span class="o">(</span><span class="n">loginBox</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Listing 6 shows a poor implementation, because a decision about the visibility is made while instantiating the component. Again, in Wicket instances of components exist for several requests.</p>
+
+<p>To reuse the same instance you have to call <em>loginBox.setVisible(false)</em>. This is very unhandy, because we always have to call <em>setVisible()</em> and manage the visibility manually from the outside.</p>
+
+<p>This approach is error-prone and fragile, because we always have to pay attention to setting the correct information every time. But this is often forgotten because the logic might be widely spread over the code.</p>
+
+<p>The solution is the Hollywood principle: “Don’t call us, we’ll call you”. Take a look at the following diagram illustrating an application flow with some calls. We avoid three calls through the <a href="http://en.wikipedia.org/wiki/Hollywood_Principle">Hollywood-Principle</a> and we just have to instantiate the <em>LoginBoxPanel</em>.</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/login_calls_hollywood.png" />
+</figure>
+
+<p><strong>Listing 7:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginBoxPanel</span> <span class="o">{</span>
+    <span class="c1">// constructor etc.</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setVisible</span><span class="o">(</span><span class="nc">MySession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">isNotLoggedIn</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Now the control over visibility has been inverted, the <em>LoginBoxPanel</em> decides on its visibility autonomously.</p>
+
+<p>For each call of <em>onConfigure()</em> there is a refreshed interpretation of the login state. Hence, there is no additional state that might be outdated. The logic is centralized in one line code and not spread throughout the application. Furthermore, you can easily identify that the technical aspect of visibility correlates to the business aspect “logged in”.</p>
+
+<blockquote>
+  <p>[!TIP]
+The same approach can be used to control when a component is enabled.</p>
+</blockquote>
+
+<blockquote>
+  <p>[!NOTE]
+Forms which are within an inactive or invisible component do not get executed.</p>
+</blockquote>
+
+<p>Note that there are cases in which calls to <em>setVisible()</em> and <em>setEnabled()</em> seem unavoidable. For example, the user presses a button to display an inlined registration form. In general, you can apply the following rules: data driven components are configured by their model, and the button modifies the model. Listing 8 presents a model-bound visibility.</p>
+
+<p><strong>Listing 8:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="s">"headline"</span><span class="o">,</span> <span class="n">headlineModel</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onConfigure</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Headline visible only if text starts with "Berlusconi"</span>
+        <span class="nc">String</span> <span class="n">headline</span> <span class="o">=</span> <span class="n">getModelObject</span><span class="o">();</span>
+        <span class="n">setVisible</span><span class="o">(</span><span class="n">headline</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"Berlusconi"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>[!WARNING]
+While possible, overriding <em>isVisible()</em> may lead to unpredictable results under some conditions. See <a href="https://issues.apache.org/jira/browse/WICKET-3171">WICKET-3171</a>, <a href="https://issues.apache.org/jira/browse/WICKET-6946">WICKET-6946</a> and <a href="http://www.mail-archive.com/dev@wicket.apache.org/msg07123.html">dev@wicket.apache.org mailing list: overriding isVisible bad?</a>.</p>
+</blockquote>
+
+<p>Always use models - period! Do not pass raw objects directly to components. Instances of pages and components can exist for several requests. If you use raw objects, you cannot replace them later. An example is an entity which gets loaded at each request within a <em>LoadableDetachableModel</em>. The entity manager creates a new object reference, but the page would keep the obsolete instance. Always pass <em>IModel</em> in the constructor of your components:</p>
+
+<p><strong>Listing 9:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationInputPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span> <span class="o">{</span>
+    <span class="c1">// Correct: The class Registration gets wrapped by IModel</span>
+    <span class="kd">public</span> <span class="nf">RegistrationInputPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// add components</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This code can use any implementation of <em>IModel</em>, e.g. the class <em>Model</em>, a <em>PropertyModel</em> or a custom implementation of <em>LoadableDetachableModel</em> which loads and persists the values automatically. The model implementations gets very easy to replace. You - as a developer - just need to know: if I call <em>IModel.getObject()</em>, I will get an object of type <em>Registration</em>. Where the object comes from is within the responsibility of the model implementation and the calling component. For example you can pass the model while instantiating the component. If you avoid using models, you will almost certainly have to modify the component tree sooner or later which forces you to duplicate states and thus produce unmaintainable code. Additionally, you should use models due to serialization issues. Objects which get stored in fields of pages and components get serialized and deserialized on each request. This can be inefficient in some cases.</p>
+
+<p>Avoid unwrapping models within the constructor hierarchy, i.e. do not call <em>IModel.getObject()</em> within any constructor. As already mentioned, a page instance can exist for several page requests, so you might store obsolete and redundant information. It is reasonable to unpack Wicket Models at events (user actions), that are methods like <em>onUpdate()</em>, _onClick() or <em>onSubmit()</em>:</p>
+
+<p><strong>Listing 10:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"register"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// correct, unwrap model in an event call</span>
+        <span class="nc">Registration</span> <span class="n">reg</span> <span class="o">=</span> <span class="n">registrationModel</span><span class="o">.</span><span class="na">getObject</span><span class="o">()</span>
+        <span class="n">userService</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">reg</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>An additional possibility to unwrap models is via overriding methods like <em>isVisible()</em>, <em>isEnabled()</em> or <em>onBeforeRender()</em>.</p>
+
+<p>Always try to pass models on to the parent component. By that, you ensure that at the end of every request the method <em>IModel.detach()</em> gets called. This method is responsible for a data cleanup. Another example: you have implemented your own model which persists the data in the <em>detach()</em> method. So the call of <em>detach()</em> is necessary for that your data gets persisted. You can see an exemplary passing to the super constructor here:</p>
+
+<p><strong>Listing 11:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegistrationInputPanel</span> <span class="kd">extends</span> <span class="nc">Panel</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">RegistrationInputPanel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Registration</span><span class="o">&gt;</span> <span class="n">regModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">regModel</span><span class="o">)</span>
+        <span class="c1">// add components</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Validators should just validate. Consider a bank account form which has a <em>BankFormValidator</em>. This validator checks the bank data over a webservice and corrects the bank name. Nobody would expect that a validator modifies information. Such logic has to be located in <em>Form.onSubmit()</em> or in the event logic of a button.</p>
+
+<p>Do not pass entire components or pages to constructors of other components.</p>
+
+<p><strong>Listing 12:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bad solution</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsPage</span> <span class="kd">extends</span> <span class="nc">Page</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SettingsPage</span> <span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Settings</span><span class="o">&gt;</span> <span class="n">settingsModel</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">Webpage</span> <span class="n">backToPage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;?&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="c1">// add components</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SubmitButton</span><span class="o">(</span><span class="s">"changeSettings"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+               <span class="c1">// do something</span>
+               <span class="n">setResponsePage</span><span class="o">(</span><span class="n">backToPage</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The <em>SettingsPage</em> expects the page which should be displayed after a successful submit to be passed to its constructor. This solution works, but is very bad practice. You need to know during the instantiation of <em>SettingsPage</em> where you want to redirect the user. This requires a predetermined order of instantiation. It is better to order the instantiation based on business logic (e.g. the order in the HTML template). Furthermore, you need an unnecessary instance of the next success page which might never be displayed. The solution is once again the Hollywood principle. For this you create an abstract method or a hook:</p>
+
+<p><strong>Listing 13:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good solution</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsPage</span> <span class="kd">extends</span> <span class="nc">Page</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">SettingsPage</span> <span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Settings</span><span class="o">&gt;</span> <span class="n">settingsModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;?&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Form</span><span class="o">(</span><span class="s">"form"</span><span class="o">);</span>
+        <span class="c1">// add components</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">SubmitButton</span><span class="o">(</span><span class="s">"changeSettings"</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+               <span class="c1">// do something</span>
+               <span class="n">onSettingsChanged</span><span class="o">();</span>
+            <span class="o">}</span>
+         <span class="o">});</span>
+         <span class="n">add</span><span class="o">(</span><span class="n">form</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// hook</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSettingsChanged</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+<span class="c1">// The usage of the new component</span>
+<span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">settings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"settings"</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nc">SettingsPage</span><span class="o">(</span><span class="n">settingsModel</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onSettingsChanged</span><span class="o">()</span> <span class="o">{</span>
+               <span class="c1">// reference to the current page</span>
+               <span class="n">setResponsePage</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">};</span>
+<span class="n">add</span><span class="o">(</span><span class="n">settings</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>This solution has more code, but it is more flexible and reusable. We can see there is an event <em>onSettingsChanged()</em> and this event is called after a successful change. Furthermore, there is the possibility to execute additional code besides setting the next page. For example, you can display messages or persist information.</p>
+
+<p>The Wicket session is your own extension of Wicket’s base session. It is fully typed. There is no map structure to store information unlike the servlet session. You just should use Wicket’s session for global data. Authentication is a good example for global data. The login and user information is required on nearly each page. For a blog application it would be good to know whether the user is an author who is allowed to compose blog entries. So you are able to hide or or show links to edit a blog entry. In general you should store the whole authorization logic in Wicket’s session, because it is a global thing and you would expect it there. Data of forms and flows which only span certain pages should not stored in the session. This data can be passed from one page to the next via the constructor (see listing 14). As a consequence of this, the models and data have a clearly defined lifecycle that reflects the corresponding the page flow.</p>
+
+<p><strong>Listing 14:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">MyData</span><span class="o">&gt;</span> <span class="n">myDataModel</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MyPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">MyData</span><span class="o">&gt;</span> <span class="n">myDataModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">myDataModel</span> <span class="o">=</span> <span class="n">myDataModel</span><span class="o">;</span>
+        <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;</span> <span class="n">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Link</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">&gt;(</span><span class="s">"next"</span><span class="o">)</span> <span class="o">{</span>
+             <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+                  <span class="c1">// do something</span>
+                  <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="nc">NextPage</span><span class="o">(</span><span class="n">myDataModel</span><span class="o">));</span>
+             <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">next</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>You should pass concrete information to the page. All models can simply be stored in fields because Wicket pages are user-specific instances and no singletons in contrast to Struts. The big advantage of this approach is that the data gets automatically cleaned up when a user completes or exits the page flow. No manual cleanup anymore! This is basically an automatic garbage collector for your session.</p>
+
+<p>The factory pattern is useful, but nevertheless not suitable for Wicket components.</p>
+
+<p><strong>Listing 15:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CmsFactory</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="nc">Label</span> <span class="nf">getCmsLabel</span><span class="o">(</span><span class="nc">String</span> <span class="n">markupId</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+       <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">fragment</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">loadSomeContent</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+       <span class="nc">Label</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Label</span><span class="o">(</span><span class="n">markupId</span><span class="o">,</span> <span class="n">fragment</span><span class="o">);</span>
+       <span class="n">result</span><span class="o">.</span><span class="na">setRenderBodyOnly</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+       <span class="n">result</span><span class="o">.</span><span class="na">setEscapeModelStrings</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+       <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">String</span> <span class="nf">loadContent</span><span class="o">(</span><span class="nc">String</span> <span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// load some content</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// create the component within the page:</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+   <span class="nd">@SpringBean</span>
+   <span class="nc">CmsFactory</span> <span class="n">cmsFactory</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">MyPage</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">add</span><span class="o">(</span><span class="n">cmsFactory</span><span class="o">.</span><span class="na">getCmsLabel</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="s">"http://url.to.load.from"</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This approach for adding a label from the <em>CmsFactory</em> to a page seems to be okay at first glance, but it comes with some disadvantages. There is no possibility to use inheritance anymore. Furthermore, there is no possibility to override <em>isVisible()</em> and <em>isEnabled()</em>. The factory could also be a Spring service which instantiates the component. A better solution is to create a <em>CmsLabel</em>.</p>
+
+<p><strong>Listing 16:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CmsLabel</span> <span class="kd">extends</span> <span class="nc">Label</span> <span class="o">{</span>
+   <span class="nd">@SpringBean</span>
+   <span class="nc">CmsResource</span> <span class="n">cmsResource</span><span class="o">;</span>
+   <span class="kd">public</span> <span class="nf">CmsLabel</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">urlModel</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">urlModel</span><span class="o">);</span>
+      <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">fragment</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">cmsResource</span><span class="o">.</span><span class="na">loadSomeContent</span><span class="o">(</span><span class="n">urlModel</span><span class="o">.</span><span class="na">getObject</span><span class="o">());</span>
+      <span class="n">setRenderBodyOnly</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+      <span class="n">setEscapeModelStrings</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// create the component within a page</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="nf">MyPage</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">CmsLabel</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="nc">Model</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"http://url.to.load.from"</span><span class="o">)));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The label in listing 16 is clearly encapsulated in a component without using a factory. Now you can easily create inline implementations and override <em>isVisible()</em> or other stuff. Naturally, you might claim “I need a factory to initialize some values in the component, e.g. a Spring service”. For this you can create a implementation of <em>IComponentInstantiationListener</em>. This listener gets called on the super-constructor of every component. The most popular implementation of this interface is the <em>SpringComponentInjector</em> which injects Spring beans in components when the fields are annotated with <em>SpringBean</em>. You can easily write and add your own implementation of <em>IComponentInstantiationListener</em>. So there is no reason for using a factory anymore. More information about the instantiation listener is located in Wicket’s JavaDoc.</p>
+
+<p>Every page and component should have a test. The simplest test just renders the component and validates its technical correctness. For example, a child component should have a matching wicket id in the markup. If the wicket id is not correctly bound - through a typo or if it was just forgotten - the test will fail. An advanced test could test a form, where a backend call gets executed and validated over a mock. So you can validate your component’s behaviour. This is a simple way to detect and fix technical and business logic bugs during the build process. Wicket is very suitable for a test driven development approach. For instance, if you run a unit test which fails and shows a message that the wicket id not bound, you will avoid an unnecessary server startup (a server startup takes longer than running a unit test). This reduces the development turnaround. A disadvantage is the difficult testing possibility of AJAX components. However, the testing features of Wicket are much more sophisticated than in other web frameworks.</p>
+
+<p>Try to get within the Wicket world whenever possible. Avoid the usage of other servlet filters. For this you can use the <em>RequestCycle</em> and override the methods <em>onBeginRequest()</em> and <em>onEndRequest()</em>. You can apply the same to the <em>HttpSession</em>. The equivalent in Wicket is the <em>WebSession</em>. Just extend the <em>WebSession</em> and override the <em>newSession()</em>-method from the Application class. There are very few reasons to access the servlet interfaces. An example could be to read an external cookie to authenticate a user. Those parts should be properly encapsulated and avoided when possible. For this example, you could do the handling within the Wicket session because this is an authentication.</p>
+
+<p>Avoid monolithic classes. Often I have seen that developers put the whole stuff into constructors. These classes are getting very unclear and chaotic because you use inline implementations over several levels. It is recommended to group logical units and extract methods with a correct business naming. This enhances the clarity and the understandability of the business aspect. When a developer navigates to a component, he is not interested in the technical aspect at first, however he just need the business aspect. To retrieve technical information of a component you can navigate to the method implementation. In case of doubt you should consider to extract separate components. Smaller components increase the chances of reuse and make testing easier. Listing 17 shows an example of a possible structuring.</p>
+
+<p><strong>Listing 17:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BlogEditPage</span> <span class="kd">extends</span> <span class="nc">WebPage</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Blog</span><span class="o">&gt;</span> <span class="n">blogModel</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BlogEditPage</span><span class="o">(</span><span class="nc">IModel</span><span class="o">&lt;</span><span class="nc">Blog</span><span class="o">&gt;</span> <span class="n">blogModel</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="k">new</span> <span class="nc">PageParameters</span><span class="o">());</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">blogModel</span> <span class="o">=</span> <span class="n">blogModel</span><span class="o">;</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">createBlogEditForm</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Blog</span><span class="o">&gt;</span> <span class="nf">createBlogEditForm</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Form</span><span class="o">&lt;</span><span class="nc">Blog</span><span class="o">&gt;</span> <span class="n">form</span> <span class="o">=</span> <span class="n">newBlogEditForm</span><span class="o">();</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createHeadlineField</span><span class="o">());</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createContentField</span><span class="o">());</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createTagField</span><span class="o">());</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createViewRightPanel</span><span class="o">());</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createCommentRightPanel</span><span class="o">());</span>
+        <span class="n">form</span><span class="o">.</span><span class="na">setOutputMarkupId</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">form</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// more methods here</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It is a widespread opinion that Wicket has a bad documentation. This argument is just partly correct. There are a lot of code samples and snippets which can be used as code templates. Furthermore, there is a big community that answers complex questions very quickly. In Wicket it is very hard to document everything, because nearly everything is extensible and replaceable. If a component is not completely suitable, you will extend or replace it. Working with Wicket means permanently navigating through code. For example, just consider validators. How can I find all validators that exist? Open the interface <em>IValidator</em> (Eclipse: Ctrl + Shift + T) and then open the type hierarchy (Ctrl + T). Now we can see all the validators existing in Wicket and our project.</p>
+
+<figure>
+<img src="/wicket-site/april-2026/img/guide/validator-type-hierachy.png" />
+</figure>
+
+<p>The best practices presented in this chapter should help you to write better and more maintainable code in Wicket. All described methodologies were already proven in a few Wicket projects. If you follow these advices, your Wicket projects will get future-proof and hopefully successful.</p>
+
+      </div>
+      <aside class="docs-toc" aria-label="Table of contents">
+        <nav class="docs-toc-nav">
+          <h4 class="docs-toc-title">On this page</h4>
+          <ul class="docs-toc-list" id="docs-toc-list"></ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<script>
+// Close sidebar on mobile so content is visible first
+(function() {
+  if (window.innerWidth < 1024) {
+    var sidebar = document.querySelector('details.docs-sidebar');
+    if (sidebar) sidebar.removeAttribute('open');
+  }
+})();
+
+(function() {
+  var content = document.querySelector('.docs-content');
+  var tocList = document.getElementById('docs-toc-list');
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length === 0) {
+    // Hide TOC if no headings
+    var toc = document.querySelector('.docs-toc');
+    if (toc) toc.style.display = 'none';
+    return;
+  }
+
+  // Build TOC
+  headings.forEach(function(h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    }
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'docs-toc-item docs-toc-item--nested' : 'docs-toc-item';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.className = 'docs-toc-link';
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  // Highlight current section on scroll
+  var tocLinks = tocList.querySelectorAll('.docs-toc-link');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(function(link) { link.classList.remove('active'); });
+        var active = tocList.querySelector('a[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+  <footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-grid">
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Project</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/start/quickstart">Get Started</a></li>
+          <li><a href="/wicket-site/april-2026/docs">Documentation</a></li>
+          <li><a href="https://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">Examples</a></li>
+          <li><a href="/wicket-site/april-2026/start/download">Download</a></li>
+          <li><a href="/wicket-site/april-2026/docs/migration">Migration Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Community</h3>
+        <ul class="site-footer-list">
+          <li><a href="/wicket-site/april-2026/community#mailing-lists">Mailing Lists</a></li>
+          <li><a href="/wicket-site/april-2026/community#chat">Chat</a></li>
+          <li><a href="/wicket-site/april-2026/community/contributing">Contributing</a></li>
+          <li><a href="/wicket-site/april-2026/community/who-uses-wicket">Who Uses Wicket</a></li>
+          <li><a href="/wicket-site/april-2026/blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Apache</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://www.apache.org/" target="_blank" rel="noopener noreferrer">Apache Home</a></li>
+          <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+          <li><a href="https://www.apache.org/foundation/sponsorship.html" target="_blank" rel="noopener noreferrer">Sponsorship</a></li>
+          <li><a href="https://www.apache.org/foundation/thanks.html" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+          <li><a href="https://www.apache.org/security/" target="_blank" rel="noopener noreferrer">Security</a></li>
+          <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer-column">
+        <h3 class="site-footer-heading">Source</h3>
+        <ul class="site-footer-list">
+          <li><a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/WICKET" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+          <li><a href="https://ci-builds.apache.org/job/Wicket/" target="_blank" rel="noopener noreferrer">CI / Jenkins</a></li>
+          <li><a href="https://svn.apache.org/repos/asf/wicket/common/site/trunk/_data/doap_Wicket.rdf" target="_blank" rel="noopener noreferrer">DOAP</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="site-footer-bottom">
+      <div class="site-footer-asf-notice">
+        <p>
+          Copyright &copy; 2004&ndash;2026 The Apache Software Foundation, Licensed under the
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache License, Version 2.0</a>.
+        </p>
+        <p>
+          Apache Wicket, Wicket, Apache, the Apache feather logo, and the Apache Wicket
+          project logo are trademarks of The Apache Software Foundation. All other marks
+          mentioned may be trademarks or registered trademarks of their respective owners.
+        </p>
+      </div>
+      <div class="site-footer-event-banner">
+        <a href="https://www.apache.org/events/current-event.html" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.apache.org/events/current-event-234x60.png"
+               alt="Current Apache Event"
+               class="site-footer-event-image"
+               loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

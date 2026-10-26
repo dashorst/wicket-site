@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title>Lists and tables | Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Repeat markup for each item in a list, page through data." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/ribbon-site/atom.xml" />
+
+        <link rel="icon" href="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/wicket-site/ribbon-site/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/wicket-site/ribbon-site/css/style.css?v=1793057983" type="text/css" />
+
+		<script src="/wicket-site/ribbon-site/javascript/jquery-3.7.1.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu" aria-label="Main">
+    <div class="nav-brand">
+        
+<a class="brand" href="/wicket-site/ribbon-site/"><img class="brand-mark" src="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket</span></a>
+
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/ribbon-site/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/ribbon-site/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/docs/" class="nav-items active" aria-current="true">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/ribbon-site/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+
+<div class="page-sign guide-sign">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg" srcset="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-900.jpg 900w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg 1600w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+    <fieldset class="season-pick" hidden>
+        <legend>Season</legend>
+        <label><input type="radio" name="season-band" value=""><span>By date</span></label>
+        <label><input type="radio" name="season-band" value="winter"><span>Winter</span></label>
+        <label><input type="radio" name="season-band" value="spring"><span>Spring</span></label>
+        <label><input type="radio" name="season-band" value="summer"><span>Summer</span></label>
+        <label><input type="radio" name="season-band" value="autumn"><span>Autumn</span></label>
+        <label><input type="radio" name="season-band" value="halloween"><span>Halloween</span></label>
+    </fieldset>
+</div>
+
+    <div class="page-sign-inner guide-sign-inner">
+        <div class="guide-sign-text">
+            <p class="guide-crumbs"><a href="/wicket-site/ribbon-site/docs/">Documentation</a></p>
+            <h1>Lists and tables</h1>
+            <p class="page-sign-sub">Repeat markup for each item in a list, page through data.</p>
+        </div>
+        
+<form class="guide-search" role="search" action="/wicket-site/ribbon-site/docs/a-z.html" data-index="/wicket-site/ribbon-site/docs/search.json" data-script="/wicket-site/ribbon-site/javascript/minisearch-7.2.0.js" data-oldest="10" data-base="/wicket-site/ribbon-site" data-guides="7,8,9,10" data-lines="1.3,1.4,1.5,10,11,6,7,8,9,">
+    <label class="guide-search-label" for="guide-q-sign">Search the documentation</label>
+    <div class="guide-search-field">
+        <input id="guide-q-sign" name="q" type="search" autocomplete="off" spellcheck="false" placeholder="A task, a class or a tag">
+        <kbd class="guide-search-key" aria-hidden="true">/</kbd>
+    </div>
+    
+    <p class="guide-search-hint">
+        <label>For <select name="v" data-guide-version>
+            <option value="">every version</option>
+            <option value="10">Wicket 10</option>
+<option value="11">Wicket 11</option>
+            
+        </select></label>
+    </p>
+</form>
+
+    </div>
+</div>
+<main id="main" tabindex="-1">
+    <div class="reading has-rail guide-reading">
+        <div class="reading-rail">
+            <nav aria-label="On this page">
+                <div id="toc" class="toc">
+<div id="toc-title"><h2>On this page</h2></div>
+<ul>
+                
+                    <li class="toc--level-1"><a href="#howto"><span class="toc-text">How-to guides</span></a></li>
+                
+                    <li class="toc--level-1"><a href="#reference"><span class="toc-text">Reference</span></a></li>
+                
+                </ul>
+</div>
+            </nav>
+        </div>
+        <div class="reading-main">
+            
+                
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="howto">How-to guides</h2>
+                    <p class="guide-group-intro">Directions for a specific goal.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/docs/repeat-markup.html">Repeat markup with RepeatingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render a tag once for every child you add in code, for menus, button bars and other short lists you build in the constructor.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/docs/list-items.html">Show a list with ListView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Render markup for every element of a java.util.List, keep form input in the rows, and avoid the pitfalls of index-based items.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/docs/refreshing-view.html">Control how items are reused with RefreshingView</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Build repeater items from models you supply, and keep an item's components across renders as long as its model stays in the list.</span>
+    </li>
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/docs/paginate-data.html">Page through data</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">Load one page of rows at a time with an IDataProvider, show them in a DataView or DataTable, and let users move between pages.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+                <section class="guide-group">
+                    <h2 id="reference">Reference</h2>
+                    <p class="guide-group-intro">The classes, tags and settings, described.</p>
+                    
+<ul class="guide-list">
+
+    
+    <li>
+        
+        <a class="guide-list-title" href="/wicket-site/ribbon-site/docs/repeaters.html">Repeaters</a>
+        
+        <span class="guide-list-meta"></span>
+        <span class="guide-list-summary">The repeaters of wicket-core and wicket-extensions compared, what each needs and when it re-creates items, plus data providers, navigators and table parts.</span>
+    </li>
+
+</ul>
+
+                </section>
+                
+            
+                
+                
+            
+            <nav class="guide-topics-other" aria-label="Other topics">
+                <h2>Other topics</h2>
+                <ul>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/start.html">Getting started</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/components.html">Components and markup</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/models.html">Models</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/forms.html">Forms</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/ajax.html">Ajax and JavaScript</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/websockets.html">WebSockets</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/links.html">Links and URLs</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/resources.html">Resources</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/state.html">Pages and state</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/lifecycle.html">Requests and lifecycle</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/i18n.html">Localization</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/security.html">Security</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/testing.html">Testing</a></li>
+                
+                    <li><a href="/wicket-site/ribbon-site/docs/topics/integration.html">Integration</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+<script src="/wicket-site/ribbon-site/javascript/guide.js?v=1793057983" defer></script>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/versions/">Releases</a></li>
+            <li><a href="/wicket-site/ribbon-site/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/ribbon-site/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/ribbon-site/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/news/">Blog</a></li>
+            <li><a href="/wicket-site/ribbon-site/community/">Community and support</a></li>
+            <li><a href="/wicket-site/ribbon-site/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/ribbon-site/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/ribbon-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/wicket-site/ribbon-site/img/seasons/" data-selector>{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/wicket-site/ribbon-site/javascript/ribbon.js?v=1793057983" defer></script>
+    </body>
+</html>

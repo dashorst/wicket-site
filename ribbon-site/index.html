@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+	
+	
+
+        <title> Apache Wicket</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Apache Wicket is an open source, component-oriented Java web framework. Pages are Java components bound to plain HTML, with no JavaScript build chain." />
+        <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="alternate" type="application/atom+xml" title="Apache Wicket blog" href="/wicket-site/ribbon-site/atom.xml" />
+
+        <link rel="icon" href="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" type="image/svg+xml" />
+        <link rel="alternate icon" href="/wicket-site/ribbon-site/favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/wicket-site/ribbon-site/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/wicket-site/ribbon-site/css/style.css?v=1793057983" type="text/css" />
+
+		<script src="/wicket-site/ribbon-site/javascript/jquery-3.7.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/wicket-site/ribbon-site/css/slick-1.5.5.css"/>
+<link rel="stylesheet" type="text/css" href="/wicket-site/ribbon-site/css/slick-theme-1.5.5.css"/>
+
+<script type="text/javascript" src="/wicket-site/ribbon-site/javascript/slick-1.5.5.min.js"></script>
+
+
+    </head>
+    <body class="">
+        <a class="skip-link" href="#main">Skip to content</a>
+        
+<div class="header default">
+    <div class="l-container">
+        
+
+
+
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+
+<nav class="mainmenu is-home" aria-label="Main">
+    <div class="nav-brand">
+        
+        
+        
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/ribbon-site/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/ribbon-site/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
+        
+    </div>
+    <div class="nav-container nav-sections">
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/docs/" class="nav-items ">Docs</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/versions/" class="nav-items ">Releases</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/news/" class="nav-items ">Blog</a>
+    
+        
+        
+        
+        <a href="/wicket-site/ribbon-site/community/" class="nav-items ">Community</a>
+    
+    </div>
+    <div class="nav-container">
+        <a class="nav-asf" href="https://www.apache.org/" title="The Apache Software Foundation" aria-label="ASF, The Apache Software Foundation" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/ribbon-site/img/asf_mark.svg" alt="" width="22" height="34"><span class="nav-asf-label">ASF</span></a>
+        <a class="nav-gh" href="https://github.com/apache/wicket" rel="noreferrer noopener noreferrer" title="Apache Wicket on GitHub" target="_blank"><svg class="nav-github" viewbox="0 0 16 16" width="1em" height="1em" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg><span class="nav-github-label">GitHub</span></a>
+    </div>
+</nav>
+
+    </div>
+</div>
+<main id="main" class="home" tabindex="-1">
+    <section class="hero" aria-labelledby="title">
+    <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized="" style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
+    <img src="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg" srcset="/wicket-site/ribbon-site/img/seasons/autumn-ink-cap-900.jpg 900w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-1600.jpg 1600w, /wicket-site/ribbon-site/img/seasons/autumn-ink-cap-2400.jpg 2400w" sizes="100vw" alt="" fetchpriority="high">
+</div>
+<div class="photo-meta">
+    <p class="photo-credit">Photo: <a href="https://unsplash.com/photos/CCAoWVqolxM" rel="noreferrer noopener noreferrer" target="_blank">Veronika Biro on Unsplash</a></p>
+    <fieldset class="season-pick" hidden="">
+        <legend>Season</legend>
+        <label><input type="radio" name="season-hero" value=""><span>By date</span></label>
+        <label><input type="radio" name="season-hero" value="winter"><span>Winter</span></label>
+        <label><input type="radio" name="season-hero" value="spring"><span>Spring</span></label>
+        <label><input type="radio" name="season-hero" value="summer"><span>Summer</span></label>
+        <label><input type="radio" name="season-hero" value="autumn"><span>Autumn</span></label>
+        <label><input type="radio" name="season-hero" value="halloween"><span>Halloween</span></label>
+    </fieldset>
+</div>
+
+    <div class="hero-in">
+        <h1 class="lockup" id="title">
+            <img class="lockup-mark" src="/wicket-site/ribbon-site/img/logo-apachewicket-mark.svg" alt="" width="112" height="112">
+            <span class="lockup-name"><span>Apache</span> <span>Wicket</span></span>
+        </h1>
+        <div class="lede">
+            
+            <p class="tagline">Write less, achieve more.</p>
+            <p class="definition">A component-oriented Java web framework, open source since 2004 and a project of the Apache Software Foundation since 2007. Every component keeps its behaviour and state in Java and its markup in plain HTML, so there is no JavaScript build chain to maintain.</p>
+            <p class="hero-actions"><a class="button" href="/wicket-site/ribbon-site/start/quickstart.html">Get started</a></p>
+            
+            <div class="release">
+                <h2 class="visually-hidden">Releases</h2>
+                <ul class="release-lines-home">
+                    <li>
+<a class="release-v" href="/wicket-site/ribbon-site/versions/wicket-11.x/">11.0.0</a> <span class="tag tag-current">Current</span> <span class="release-until">supported until 12.0.0, Jan 2027</span><span class="release-brief">Java 21, secure by default, pages that serialize about 40% smaller, and Ajax without jQuery.</span>
+</li>
+                    <li>
+<a class="release-v" href="/wicket-site/ribbon-site/versions/wicket-10.x/">10.12.0</a> <span class="tag tag-lts" title="Long-term support">LTS</span> <span class="release-until">supported until 14.0.0, Jul 2027</span>
+</li>
+                </ul>
+                <p class="release-note">9.x and 8.x reached end of life: support ended with 11.0.0. <a href="/wicket-site/ribbon-site/versions/#upgrade-paths">How to upgrade</a></p>
+                <p class="release-all"><a href="/wicket-site/ribbon-site/versions/">Release lines and support</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-news" aria-labelledby="blog">
+    <div class="home-in home-split">
+        <header class="home-head">
+            <h2 class="sec-title" id="blog">From the blog</h2>
+            <p class="home-links"><a href="/wicket-site/ribbon-site/news/">All posts</a> <a type="application/atom+xml" href="/wicket-site/ribbon-site/atom.xml">Atom feed</a></p>
+        </header>
+        <ul class="post-panels">
+<li class="post-panel is-major">
+        <a href="/wicket-site/ribbon-site/news/2026/10/26/wicket-11.0.0-released.html">
+            <span class="post-meta"><time datetime="2026-10-26T11:00:00+00:00">26 Oct 2026</time> · Major release</span>
+            <h3 class="post-title">Apache Wicket 11.0.0 released</h3>
+            <span class="post-summary">The Apache Wicket PMC is proud to announce Apache Wicket 11.0.0! Wicket 11 opens the quarterly release schedule. It moves to a current Java and Jakarta baseline, tightens...</span>
+        </a>
+    </li>
+<li class="post-panel is-article">
+        <a href="/wicket-site/ribbon-site/news/2026/10/26/wicket-8-and-9-end-of-life.html">
+            <span class="post-meta"><time datetime="2026-10-26T10:00:00+00:00">26 Oct 2026</time></span>
+            <h3 class="post-title">Wicket 8 and 9 have reached end of life</h3>
+            <span class="post-summary">With their final releases 9.25.0 and 8.20.0, Wicket 9 and 8 have reached end of life, and with them Wicket's support for javax.servlet. Move to Wicket 10 LTS, supported until July 2027, or to Wicket 11.</span>
+        </a>
+    </li>
+<li class="post-panel is-article">
+        <a href="/wicket-site/ribbon-site/news/2026/09/11/release-cadence.html">
+            <span class="post-meta"><time datetime="2026-09-11T00:00:00+00:00">11 Sep 2026</time></span>
+            <h3 class="post-title">A new release cadence for Apache Wicket</h3>
+            <span class="post-summary">Starting with Apache Wicket 11.0, due in the first week of October 2026, Wicket moves to time-based releases: a new major release every three months, and an LTS...</span>
+        </a>
+    </li>
+</ul>
+    </div>
+</section>
+
+<section class="ctree" id="tree" aria-labelledby="tree-title">
+  <div class="ctree-in">
+    <header class="ctree-head">
+      <h2 id="tree-title">A page is a tree of components</h2>
+      <p>Java builds the tree with <code>add(...)</code>, the HTML has the same nesting, and each <code>wicket:id</code> names the component that renders its tag. <code>AddressPanel</code> is written once, with its own markup, and the form uses it twice: the ribbon branches into the same shape for billing and shipping.</p>
+    </header>
+
+    <div class="loom" aria-describedby="loom-hint">
+      <div class="sheet" style="--c:1; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:1; --r:15 / 25" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:1 / 14" aria-hidden="true"></div>
+      <div class="sheet" style="--c:3; --r:15 / 25" aria-hidden="true"></div>
+
+      <p class="file" style="--c:1; --r:2" data-c="page"><span class="x">OrderPage.java</span></p>
+<pre class="src" aria-label="OrderPage.java"><code><span class="ln" style="--r:3"><span class="x"><span class="tk">public class</span> OrderPage <span class="tk">extends</span> WebPage {</span></span>
+<span class="ln" style="--r:4">    <span class="x"><span class="tk">public</span> OrderPage() {</span></span>
+<span class="ln c" style="--r:5" data-c="message">        <span class="x">add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span></span>
+<span class="ln c" style="--r:6" data-c="order">        <span class="x">Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span></span>
+<span class="ln c" style="--r:7" data-c="billing">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span></span>
+<span class="ln c" style="--r:8" data-c="shipping">        <span class="x">form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span></span>
+<span class="ln c" style="--r:9" data-c="save">        <span class="x">form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span></span>
+<span class="ln" style="--r:10">        <span class="x">add(form);</span></span>
+<span class="ln" style="--r:11">    <span class="x">}</span></span>
+<span class="ln" style="--r:12"><span class="x">}</span></span></code></pre>
+
+      <p class="file" style="--c:1; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.java</span></p>
+<pre class="src" aria-label="AddressPanel.java"><code><span class="ln" style="--r:17" data-c="AddressPanel"><span class="x"><span class="tk">public class</span> AddressPanel <span class="tk">extends</span> Panel {</span></span>
+<span class="ln" style="--r:18">    <span class="x"><span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span></span>
+<span class="ln" style="--r:19">        <span class="x"><span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span></span>
+<span class="ln c" style="--r:20" data-c="street">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span></span>
+<span class="ln c" style="--r:21" data-c="city">        <span class="x">add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span></span>
+<span class="ln" style="--r:22">    <span class="x">}</span></span>
+<span class="ln" style="--r:23"><span class="x">}</span></span></code></pre>
+
+      <div class="beads" role="group" aria-label="Component tree of OrderPage">
+        <button type="button" class="bead root" style="--r:2; --x:0" data-path="page" data-k="page" aria-label="OrderPage, the page: OrderPage.java with OrderPage.html">OrderPage</button>
+        <button type="button" class="bead" style="--r:5; --x:14.5" data-path="page/message" data-k="message" aria-label='Label "message" renders &lt;p wicket:id="message"&gt;'>message</button>
+        <button type="button" class="bead" style="--r:6; --x:14.5" data-path="page/order" data-k="order" aria-label='Form "order" renders &lt;form wicket:id="order"&gt;'>order</button>
+        <button type="button" class="bead" style="--r:7; --x:25" data-path="page/order/billing" data-k="billing AddressPanel" aria-label='AddressPanel "billing" renders &lt;div wicket:id="billing"&gt; with the markup of AddressPanel.html'>billing</button>
+        <button type="button" class="bead" style="--r:8; --x:25" data-path="page/order/shipping" data-k="shipping AddressPanel" aria-label='AddressPanel "shipping" renders &lt;div wicket:id="shipping"&gt; with the same AddressPanel.html'>shipping</button>
+        <button type="button" class="bead" style="--r:9; --x:25" data-path="page/order/save" data-k="save" aria-label='Button "save" renders &lt;button wicket:id="save"&gt;'>save</button>
+        <button type="button" class="bead" style="--r:20; --x:50" data-path="page/order/billing/street" data-k="street" aria-label='TextField "street" inside billing renders &lt;input wicket:id="street"&gt;'>street</button>
+        <button type="button" class="bead" style="--r:20; --x:38.5" data-path="page/order/shipping/street" data-k="street" aria-label='TextField "street" inside shipping renders the same &lt;input wicket:id="street"&gt;'>street</button>
+        <button type="button" class="bead" style="--r:21; --x:50" data-path="page/order/billing/city" data-k="city" aria-label='TextField "city" inside billing renders &lt;input wicket:id="city"&gt;'>city</button>
+        <button type="button" class="bead" style="--r:21; --x:38.5" data-path="page/order/shipping/city" data-k="city" aria-label='TextField "city" inside shipping renders the same &lt;input wicket:id="city"&gt;'>city</button>
+      </div>
+
+      <p class="file" style="--c:3; --r:2" data-c="page"><span class="x">OrderPage.html</span></p>
+<pre class="src" aria-label="OrderPage.html"><code><span class="ln" style="--c:3; --r:3"><span class="x"><span class="tg">&lt;html&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:4"><span class="x"><span class="tg">&lt;body&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:5" data-c="message">  <span class="x"><span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:6" data-c="order">  <span class="x"><span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:7" data-c="billing">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:8" data-c="shipping">    <span class="x"><span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;&lt;/div&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:9" data-c="save">    <span class="x"><span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:10">  <span class="x"><span class="tg">&lt;/form&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:11"><span class="x"><span class="tg">&lt;/body&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:12"><span class="x"><span class="tg">&lt;/html&gt;</span></span></span></code></pre>
+
+      <p class="file" style="--c:3; --r:16" data-c="AddressPanel"><span class="x">AddressPanel.html</span></p>
+<pre class="src" aria-label="AddressPanel.html"><code><span class="ln" style="--c:3; --r:17" data-c="AddressPanel"><span class="x"><span class="tg">&lt;wicket:panel&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:20" data-c="street">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span></span>
+<span class="ln c" style="--c:3; --r:21" data-c="city">  <span class="x"><span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span></span>
+<span class="ln" style="--c:3; --r:22"><span class="x"><span class="tg">&lt;/wicket:panel&gt;</span></span></span></code></pre>
+
+      <svg class="tree-ribbon" aria-hidden="true" focusable="false"></svg>
+    </div>
+    <p class="loom-hint" id="loom-hint">Point at a component, or tab to the tree and use the arrow keys, to follow it from its Java line to its tag.</p>
+
+    <!-- Below the loom's width, and without JavaScript: the tree as a list of components, then the four files, each in its own language. -->
+    <div class="tree-list">
+      <h3 class="tree-list-title">OrderPage as a tree</h3>
+      <ol class="tl">
+        <li>
+<span class="tl-name"><b data-c="page">OrderPage</b> <span>page</span></span>
+          <ol>
+            <li><span class="tl-name"><b data-c="message">"message"</b> <span>Label</span></span></li>
+            <li>
+<span class="tl-name"><b data-c="order">"order"</b> <span>Form</span></span>
+              <ol>
+                <li>
+<span class="tl-name"><b data-c="billing AddressPanel">"billing"</b> <span>AddressPanel</span></span>
+                  <ol>
+                    <li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+                    <li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+                  </ol>
+                </li>
+                <li>
+<span class="tl-name"><b data-c="shipping AddressPanel">"shipping"</b> <span>AddressPanel, reused</span></span>
+                  <ol>
+                    <li><span class="tl-name"><b data-c="street">"street"</b> <span>TextField</span></span></li>
+                    <li><span class="tl-name"><b data-c="city">"city"</b> <span>TextField</span></span></li>
+                  </ol>
+                </li>
+                <li><span class="tl-name"><b data-c="save">"save"</b> <span>Button</span></span></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+      <p class="tl-hint">Tap a component to light its lines in the Java and the HTML below.</p>
+      <p class="tl-foot">Both panels render <code>AddressPanel.html</code>, the panel's own markup inside <code>&lt;wicket:panel&gt;</code>.</p>
+    </div>
+    <div class="tree-code">
+      <p class="tc-file" data-c="page">OrderPage.java</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.java"><code><span class="tcl"><span class="tk">public class</span> OrderPage <span class="tk">extends</span> WebPage {</span><span class="tcl">    <span class="tk">public</span> OrderPage() {</span><span class="tcl" data-c="message">        add(<span class="tk">new</span> Label(<span class="tw">"message"</span>, <span class="ts">"Check both addresses."</span>));</span><span class="tcl" data-c="order">        Form&lt;Void&gt; form = <span class="tk">new</span> Form&lt;&gt;(<span class="tw">"order"</span>);</span><span class="tcl" data-c="billing">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"billing"</span>, billingAddress));</span><span class="tcl" data-c="shipping">        form.add(<span class="tk">new</span> AddressPanel(<span class="tw">"shipping"</span>, shippingAddress));</span><span class="tcl" data-c="save">        form.add(<span class="tk">new</span> Button(<span class="tw">"save"</span>));</span><span class="tcl">        add(form);</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+      <p class="tc-file" data-c="page">OrderPage.html</p>
+<pre class="tc" tabindex="0" aria-label="OrderPage.html"><code><span class="tcl"><span class="tg">&lt;html&gt;</span></span><span class="tcl"><span class="tg">&lt;body&gt;</span></span><span class="tcl" data-c="message">  <span class="tg">&lt;p</span> wicket:id=<span class="tw">"message"</span><span class="tg">&gt;</span>Message<span class="tg">&lt;/p&gt;</span></span><span class="tcl" data-c="order">  <span class="tg">&lt;form</span> wicket:id=<span class="tw">"order"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="billing">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"billing"</span><span class="tg">&gt;&lt;/div&gt;</span></span><span class="tcl" data-c="shipping">    <span class="tg">&lt;div</span> wicket:id=<span class="tw">"shipping"</span><span class="tg">&gt;&lt;/div&gt;</span></span><span class="tcl" data-c="save">    <span class="tg">&lt;button</span> wicket:id=<span class="tw">"save"</span><span class="tg">&gt;</span>Save<span class="tg">&lt;/button&gt;</span></span><span class="tcl">  <span class="tg">&lt;/form&gt;</span></span><span class="tcl"><span class="tg">&lt;/body&gt;</span></span><span class="tcl"><span class="tg">&lt;/html&gt;</span></span></code></pre>
+      <p class="tc-file" data-c="AddressPanel">AddressPanel.java</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.java"><code><span class="tcl" data-c="AddressPanel"><span class="tk">public class</span> AddressPanel <span class="tk">extends</span> Panel {</span><span class="tcl">    <span class="tk">public</span> AddressPanel(String id, IModel&lt;Address&gt; address) {</span><span class="tcl">        <span class="tk">super</span>(id, <span class="tk">new</span> CompoundPropertyModel&lt;&gt;(address));</span><span class="tcl" data-c="street">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"street"</span>));</span><span class="tcl" data-c="city">        add(<span class="tk">new</span> TextField&lt;String&gt;(<span class="tw">"city"</span>));</span><span class="tcl">    }</span><span class="tcl">}</span></code></pre>
+      <p class="tc-file" data-c="AddressPanel">AddressPanel.html</p>
+<pre class="tc" tabindex="0" aria-label="AddressPanel.html"><code><span class="tcl" data-c="AddressPanel"><span class="tg">&lt;wicket:panel&gt;</span></span><span class="tcl" data-c="street">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"street"</span><span class="tg">&gt;</span></span><span class="tcl" data-c="city">  <span class="tg">&lt;input</span> wicket:id=<span class="tw">"city"</span><span class="tg">&gt;</span></span><span class="tcl"><span class="tg">&lt;/wicket:panel&gt;</span></span></code></pre>
+    </div>
+    <p class="ctree-more"><a href="/wicket-site/ribbon-site/start/overview.html">How Wicket works, in seven steps</a> <a href="/wicket-site/ribbon-site/docs/topics/components.html">Components and markup</a> <a href="http://examples10x.wicket.apache.org/" target="_blank" rel="noopener noreferrer">See the examples running</a></p>
+  </div>
+</section>
+
+<section class="why" aria-labelledby="why">
+    <div class="home-in">
+        <header class="home-split why-head">
+            <h2 class="sec-title" id="why">Why Wicket</h2>
+            <p>Coming from Spring MVC, Jakarta Faces or Vaadin? <a href="/wicket-site/ribbon-site/docs/why-wicket.html">Why component-oriented</a> compares Wicket with request-based and other component frameworks, what it gains and what it costs, and the <a href="/wicket-site/ribbon-site/docs/glossary.html">glossary</a> gives each Wicket term with what other frameworks call it.</p>
+        </header>
+        <ul class="why-list">
+            <li>
+                <h3>Just Java and HTML</h3>
+                <p>Use what you know about Java and your favourite HTML editor. Behaviour lives in Java, markup stays plain HTML, and no JavaScript build is needed.</p>
+            </li>
+            <li>
+                <h3>Secure by default</h3>
+                <p>URLs do not expose sensitive information and component paths are session-relative. Wicket supports a Content Security Policy without <code>unsafe-inline</code>: it adds a nonce to every header contribution itself.</p>
+            </li>
+            <li>
+                <h3>Ajax without writing JavaScript</h3>
+                <p>Update selected parts of a page without a single line of JavaScript, with a large set of ready-made Ajax components.</p>
+            </li>
+            <li>
+                <h3>Components you can reuse</h3>
+                <p>Pages and components are real Java objects with encapsulation, inheritance and events. Bundle a component with its stylesheets, JavaScript and other resources into one reusable package.</p>
+            </li>
+            <li>
+                <h3>Tests without a browser</h3>
+                <p>WicketTester renders your pages and components in a unit test, without a browser or a container, and checks their markup, attributes and contents.</p>
+            </li>
+            <li>
+                <h3>Stable for the long run</h3>
+                <p>Open source under the Apache License since 2004. Breaking changes only when needed, deprecated alternatives kept where possible, and every change documented in the migration guide.</p>
+            </li>
+        </ul>
+        <p class="also"><span>Also included:</span> translations in over 25 languages, safe use of multiple tabs and windows, injection with CDI, Spring and Guice, Jakarta EE integration, and component-local JavaScript and CSS.</p>
+    </div>
+</section>
+
+<section class="bww" id="builtwithwicket" aria-labelledby="bww-title">
+    <div class="home-in">
+        <h2 id="bww-title">Built with Wicket</h2>
+<p class="home-section-lead">Many applications run on Wicket without saying so. These say so, collected through the <a href="https://builtwithwicket.tumblr.com" rel="nofollow noopener noreferrer" target="_blank">Built with Wicket</a> feed. <a href="https://builtwithwicket.tumblr.com/submit" rel="nofollow noopener noreferrer" target="_blank">Submit your own project</a>.</p>
+<div class="builtwithwicket-slider"></div>
+<!-- Only display the blog image, title and post URL -->
+<script type="text/javascript">
+    function randomIntFromInterval(min,max)
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+    fetch('/wicket-site/ribbon-site/tumblr.json')
+        .then(res => res.json())
+        .then(function (response) {
+            var posts = response.posts;
+
+            for(var postIndex in posts) {
+                var post = posts[postIndex];
+                var text = jQuery('<div>' + post['photo-caption'] + '</div>').text().replace(/\s+/g, ' ').trim();
+                // The caption without web addresses, cut after its first sentence: feed entries carry notes to the curators.
+                var caption = text.replace(/\(?https?:\/\/\S+\)?/g, '').replace(/\s+([,.;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
+                var firstStop = caption.search(/[.!?](\s|$)/);
+                if (firstStop > 0) caption = caption.substring(0, firstStop + 1);
+                // The caption opens with the project's name, followed by its address or a description.
+                var name = text.split(/\s*\(?https?:\/\//)[0].split(/\s+[-–—]\s+|\s*\(|[.:;!?](?:\s|$)/)[0].trim();
+                if (name.length > 60) name = name.substring(0, name.lastIndexOf(' ', 60));
+                if (!name) name = 'this project';
+                var image = post['photo-url-500'];
+                // Root-relative paths get the baseurl, unless a preview build already added it.
+                var base = '/wicket-site/ribbon-site';
+                if (image.charAt(0) === '/' && image.indexOf(base + '/') !== 0) image = base + image;
+                $('.builtwithwicket-slider').append(
+                    $('<div class="builtwithwicket-post">').append(
+                        $('<img class="builtwithwicket-screenshot">').attr({ 'data-lazy': image, alt: 'Screenshot of ' + name }),
+                        $('<p class="builtwithwicket-caption">').text(caption.length > 150 ? caption.substring(0, 150) + '…' : caption),
+                        $('<a rel="nofollow">').attr('href', post['url']).text('More').append(
+                            $('<span class="visually-hidden">').text(' about ' + name))));
+            }
+
+            if (window.matchMedia('(max-width: 589px)').matches) {
+                // Phones get a swipeable strip; images load as they scroll in.
+                $('.builtwithwicket-slider').addClass('is-strip')
+                    .attr({ role: 'region', tabindex: 0, 'aria-label': 'Built with Wicket projects, swipe for more' })
+                    .after('<p class="bww-count">' + posts.length + ' projects, swipe for more</p>');
+                $('.builtwithwicket-screenshot').each(function () {
+                    this.loading = 'lazy';
+                    this.src = this.getAttribute('data-lazy');
+                });
+                return;
+            }
+
+            // Links in slides out of view leave the tab order, so Tab does not land off screen.
+            $('.builtwithwicket-slider').on('init afterChange', function () {
+                $(this).find('.slick-slide').each(function () {
+                    var hidden = this.getAttribute('aria-hidden') === 'true';
+                    $(this).find('a').attr('tabindex', hidden ? -1 : null);
+                });
+            });
+            // No autoplay: a moving carousel cannot be paused by every visitor.
+            $('.builtwithwicket-slider').slick({
+                arrows: true,
+                autoplay: false,
+                dots: true,
+                draggable: true,
+                infinite: true,
+                initialSlide: randomIntFromInterval(0, posts.length - 1),
+                lazyLoad: 'ondemand',
+                responsive: [    {
+                        breakpoint: 960,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                ],
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                swipe: true,
+            });
+        })
+        .catch(function(e) {
+            $("#builtwithwicket").remove();
+        });
+</script>
+
+    </div>
+</section>
+
+<section class="lessons" aria-labelledby="learn">
+    <div class="home-in home-split">
+        <header class="home-head">
+            <h2 class="sec-title" id="learn">Learn Wicket in five lessons</h2>
+            <p>The lessons build one application, from an empty project to a tested page with Ajax. Every page of the <a href="/wicket-site/ribbon-site/docs/">documentation</a> says which Wicket versions it covers.</p>
+            <p class="home-links"><a href="/wicket-site/ribbon-site/docs/#start">Start here</a></p>
+        </header>
+        
+        <ol class="lesson-list">
+        
+            <li><a href="/wicket-site/ribbon-site/docs/first-application.html"><span class="lesson-n" aria-hidden="true">1</span><span class="lesson-title">Build your first application</span></a></li>
+        
+            <li><a href="/wicket-site/ribbon-site/docs/page-layout.html"><span class="lesson-n" aria-hidden="true">2</span><span class="lesson-title">Give every page the same layout</span></a></li>
+        
+            <li><a href="/wicket-site/ribbon-site/docs/first-form.html"><span class="lesson-n" aria-hidden="true">3</span><span class="lesson-title">Build a form that saves data</span></a></li>
+        
+            <li><a href="/wicket-site/ribbon-site/docs/first-ajax.html"><span class="lesson-n" aria-hidden="true">4</span><span class="lesson-title">Update a page with Ajax</span></a></li>
+        
+            <li><a href="/wicket-site/ribbon-site/docs/first-test.html"><span class="lesson-n" aria-hidden="true">5</span><span class="lesson-title">Test a page with WicketTester</span></a></li>
+        
+        </ol>
+    </div>
+</section>
+
+<section class="involved" aria-labelledby="involved">
+    <div class="home-in home-split">
+        <h2 class="sec-title" id="involved">Built by the people who use it</h2>
+        <div>
+            <p>Apache Wicket is developed in the open by volunteers. Answer a question on the users list, report a bug with a quickstart, improve the documentation, or send a pull request to <a href="https://github.com/apache/wicket" target="_blank" rel="noopener noreferrer">apache/wicket</a>: a committer reviews it, and it goes out with the next release of its line.</p>
+            <p class="home-links"><a href="/wicket-site/ribbon-site/contribute/">How to contribute</a> <a href="/wicket-site/ribbon-site/community/">Community and support</a></p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+        <footer class="footer">
+            
+<div class="l-container footer-columns">
+    <nav class="footer-sitemap" aria-label="Site">
+        <h2>Apache Wicket</h2>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/versions/">Releases</a></li>
+            <li><a href="/wicket-site/ribbon-site/start/quickstart.html">Quick start</a></li>
+            <li><a href="/wicket-site/ribbon-site/docs/">Documentation</a></li>
+            <li><a href="/wicket-site/ribbon-site/learn/">Learn Wicket</a></li>
+        </ul>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/news/">Blog</a></li>
+            <li><a href="/wicket-site/ribbon-site/community/">Community and support</a></li>
+            <li><a href="/wicket-site/ribbon-site/community/#security">Report a vulnerability</a></li>
+            <li><a href="/wicket-site/ribbon-site/contribute/">Contribute</a></li>
+        </ul>
+    </nav>
+    <nav class="footer-sitemap footer-asf-links" aria-label="The Apache Software Foundation">
+        <h2>The ASF</h2>
+        <ul>
+            <li><a href="/wicket-site/ribbon-site/apache/">Wicket at the ASF</a></li>
+            <li><a href="https://www.apache.org" target="_blank" rel="noopener noreferrer">Apache</a></li>
+            <li><a href="https://www.apache.org/licenses/" target="_blank" rel="noopener noreferrer">License</a></li>
+            <li><a href="https://events.apache.org/x/current-event" target="_blank" rel="noopener noreferrer">Events</a></li>
+        </ul>
+        <ul>
+            <li><a href="https://www.apache.org/foundation/sponsorship" target="_blank" rel="noopener noreferrer">Sponsorships</a></li>
+            <li><a href="https://www.apache.org/foundation/thanks" target="_blank" rel="noopener noreferrer">Thanks</a></li>
+            <li><a href="https://www.apache.org/security" target="_blank" rel="noopener noreferrer">Security</a></li>
+            <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html" target="_blank" rel="noopener noreferrer">Privacy</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="l-container footer-legal">
+    <a class="footer-asf" href="https://www.apache.org/" target="_blank" rel="noopener noreferrer"><img src="/wicket-site/ribbon-site/img/asf_logo.svg" alt="The Apache Software Foundation" width="160" height="84"></a>
+    <p>Copyright © 2026 — The Apache Software Foundation. Apache Wicket, Wicket, Apache, the Apache logo, and the Apache Wicket project logo are trademarks of The Apache Software Foundation. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</div>
+
+        </footer>
+        
+        <script type="application/json" id="seasons" data-base="/wicket-site/ribbon-site/img/seasons/" data-selector>{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
+        <script src="/wicket-site/ribbon-site/javascript/ribbon.js?v=1793057983" defer></script>
+    </body>
+</html>
