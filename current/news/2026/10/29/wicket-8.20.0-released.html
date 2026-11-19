@@ -5,9 +5,9 @@
 	
 	
 
-        <title>Build from source | Apache Wicket</title>
+        <title>Apache Wicket 8.20.0 marks the end of Wicket 8 | Apache Wicket</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Apache Wicket, the open source component-oriented Java web framework." />
+        <meta name="description" content="Apache Wicket 8.20.0 is the final release of Wicket 8. Move to Wicket 10 LTS." />
         <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0E1C19" media="(prefers-color-scheme: dark)" />
         <meta name="color-scheme" content="light dark" />
@@ -17,7 +17,7 @@
         <link rel="alternate icon" href="/wicket-site/current/favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="preload" href="/wicket-site/current/fonts/alegreya/alegreya-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="/wicket-site/current/fonts/alegreya/alegreya-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="stylesheet" href="/wicket-site/current/css/style.css?v=1793057996" type="text/css" />
+        <link rel="stylesheet" href="/wicket-site/current/css/style.css?v=1795105727" type="text/css" />
 
 		<script src="/wicket-site/current/javascript/jquery-3.7.1.min.js"></script>
 
@@ -40,20 +40,27 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
 <nav class="mainmenu" aria-label="Main">
     <div class="nav-brand">
         
-<a class="brand" href="/wicket-site/current/"><img class="brand-mark" src="/wicket-site/current/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket</span></a>
+<a class="brand" href="/wicket-site/current/"><img class="brand-mark" src="/wicket-site/current/img/logo-apachewicket-mark.svg" alt="" width="34" height="34"><span class="brand-name">Apache Wicket<span class="tm" aria-hidden="true">™</span></span></a>
 
         
         
-        
-        <a class="nav-plate" href="/wicket-site/current/versions/wicket-10.x/" aria-label="10.11 LTS: Wicket 10, its Maven dependency, downloads and documentation" title="Wicket 10: Maven dependency, downloads and documentation">
-            <span class="nav-plate-current">10.11</span><span class="nav-plate-lts">LTS</span>
-        </a>
+        <span class="nav-plate nav-plate--split">
+            <a class="nav-plate-current" href="/wicket-site/current/versions/wicket-11.x/" aria-label="11.0: Wicket 11, the newest release line" title="Wicket 11: Maven dependency, downloads and documentation">11.0</a><a class="nav-plate-lts" href="/wicket-site/current/versions/wicket-10.x/" aria-label="LTS 10: Wicket 10, the long-term support release" title="Wicket 10 LTS: Maven dependency, downloads and documentation">LTS 10</a>
+        </span>
         
     </div>
     <div class="nav-container nav-sections">
@@ -71,12 +78,12 @@
         
         
         
-        <a href="/wicket-site/current/news/" class="nav-items ">Blog</a>
+        <a href="/wicket-site/current/news/" class="nav-items active" aria-current="true">Blog</a>
     
         
         
         
-        <a href="/wicket-site/current/community/" class="nav-items active" aria-current="true">Community</a>
+        <a href="/wicket-site/current/community/" class="nav-items ">Community</a>
     
     </div>
     <div class="nav-container">
@@ -87,6 +94,9 @@
 
     </div>
 </div>
+
+
+
 
 <div class="page-sign">
     <div class="photo" data-season="autumn" data-anchor="right" data-veil="strong" data-sized style="--focus-wide: 50% 40%; --focus-narrow: 100% 30%; --shift: 2%; --size: 14; --ground: linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%); --night: 1;" aria-hidden="true">
@@ -106,9 +116,14 @@
 </div>
 
     <div class="page-sign-inner">
-        
-        <h1>Build from source</h1>
-        
+        <p class="guide-crumbs"><a href="/wicket-site/current/news/">Blog</a><span aria-hidden="true"> / </span><a href="/wicket-site/current/news/2026/">2026</a></p>
+        <h1>Apache Wicket 8.20.0 marks the end of Wicket 8</h1>
+        <p class="post-sign-meta">
+            <time datetime="2026-10-29T09:00:00+00:00">29 October 2026</time>
+            <span class="tag tag-post">Release</span>
+            
+            <a href="/wicket-site/current/versions/wicket-8.x/">Wicket 8.x: status, downloads and documentation</a>
+        </p>
     </div>
 </div>
 <main id="main" tabindex="-1">
@@ -117,166 +132,191 @@
         <nav class="reading-rail" aria-label="On this page"><div id="toc" class="toc">
 <div id="toc-title"><h2>On this page</h2></div>
 <ul>
-<li class="toc--level-1 toc--section-1"><a href="#getting-your-wicket-version"><span class="toc-number">1</span> <span class="toc-text">Getting your Wicket version</span></a></li>
-<li class="toc--level-1 toc--section-2">
-<a href="#building-wicket"><span class="toc-number">2</span> <span class="toc-text">Building Wicket</span></a><ul>
-<li class="toc--level-2 toc--section-3"><a href="#coping-with-test-failures"><span class="toc-number">2.1</span> <span class="toc-text">Coping with test failures</span></a></li>
-<li class="toc--level-2 toc--section-4"><a href="#using-your-own-built-artifacts"><span class="toc-number">2.2</span> <span class="toc-text">Using your own built artifacts</span></a></li>
-</ul>
+<li class="toc--level-1 toc--section-1"><a href="#final-release-of-wicket-8"><span class="toc-number">1</span> <span class="toc-text">Final release of Wicket 8</span></a></li>
+<li class="toc--level-1 toc--section-2"><a href="#new-and-noteworthy"><span class="toc-number">2</span> <span class="toc-text">New and noteworthy</span></a></li>
+<li class="toc--level-1 toc--section-3"><a href="#using-this-release"><span class="toc-number">3</span> <span class="toc-text">Using this release</span></a></li>
+<li class="toc--level-1 toc--section-4">
+<a href="#upgrading-from-earlier-versions"><span class="toc-number">4</span> <span class="toc-text">Upgrading from earlier versions</span></a><ul><li class="toc--level-2 toc--section-5"><a href="#this-release"><span class="toc-number">4.1</span> <span class="toc-text">This Release</span></a></li></ul>
 </li>
 </ul>
 </div></nav>
         
         <div class="reading-main">
-            
-            <section class="page-content guide-content">
-                <p>The Wicket projects are built using a multi-module build as proposed by the
-Maven project. We use Maven to build our projects and distributions. To be
-able to build Wicket directly from subversion, you will need an understanding
-of Maven.</p>
+            <article class="page-content guide-content post-content">
+                <p>The Apache Wicket PMC is proud to announce Apache Wicket 8.20.0!</p>
 
-<p>This document contains the following sections.</p>
+<p>Apache Wicket is an open source Java component oriented web application
+framework that powers thousands of web applications and web sites for
+governments, stores, universities, cities, banks, email providers, and
+more. You can find more about Apache Wicket at <a href="https://wicket.apache.org" target="_blank" rel="noopener noreferrer">https://wicket.apache.org</a></p>
 
-<ol>
-  <li>Getting your Wicket version</li>
-  <li>Building Wicket</li>
-  <li>Coping with test failures</li>
-  <li>Using your own built artifacts</li>
-</ol>
+<h2 id="final-release-of-wicket-8">Final release of Wicket 8</h2>
 
-<p>For more information on the project structure, please read the ‘Better Builds
-With Maven’ book which has a detailed description on how to structure a
-maintainable, enterprise ready build. The book is available for free from the
-Mergere website.</p>
+<blockquote>
+  <p>This is the final release of Wicket 8. With this release the 8.x
+branch has reached end of life: there will be no further 8.x releases,
+not even for security fixes. Wicket now releases a new major version
+every three months, with a long-term support release once a year. Read
+about our <a href="/wicket-site/current/news/2026/09/11/release-cadence.html">new release cadence and support policy</a>
+and see the <a href="/wicket-site/current/versions/wicket-8.x/#upgrade">upgrade options</a>.</p>
+</blockquote>
 
-<h2 id="getting-your-wicket-version">Getting your Wicket version</h2>
+<p>We use semantic versioning for the development of Wicket, and as such
+no API breaks are present in this release compared to 8.0.0.</p>
 
-<p>Clone the master branch from Apache Git Wicket repository</p>
+<h2 id="new-and-noteworthy">New and noteworthy</h2>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span>git clone http://git-wip-us.apache.org/repos/asf/wicket.git</code></pre></figure>
+<ul>
+  <li>Vulnerable dependencies have been updated (WICKET-7199)</li>
+</ul>
 
-<p>This will give you a directory structure like the following directory tree:</p>
+<h2 id="using-this-release">Using this release</h2>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wicket
-wicket/wicket-core
-wicket/wicket-extensions
-wicket/wicket-spring
-wicket/wicket-auth-roles
-wicket/wicket-examples
-wicket/wicket-spring-annot
-</span><span class="c">...</span></code></pre></figure>
-
-<p>To check out a different branch use:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>wicket
-<span class="gp">$</span><span class="w"> </span>git checkout <span class="nt">-b</span> release/wicket-x.y.z release/wicket-x.y.z
-<span class="gp">#</span><span class="w"> </span>verify the branch with:
-<span class="gp">$</span><span class="w"> </span>git branch</code></pre></figure>
-
-<p>In this document we focus at the maven project descriptor located in the top
-level directory, which enforces default settings for all Wicket projects such
-as plug-in settings, versioning of the Wicket projects, managing the various
-dependencies and more.</p>
-
-<p>The artifacts in this project are there only for having a consistent build.
-This top-level project doesn’t have sources for itself.</p>
-
-<h2 id="building-wicket">Building Wicket</h2>
-
-<p>The current development version of Wicket requires at least jdk 6.</p>
-
-<p>If you want to ensure that your Wicket version is built using JDK-6 and
-fully compatible with that Java version, you will need to build it with a Java
-6 compiler and runtime library.</p>
-
-<p>If you haven’t done so already change into the Wicket root directory:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">cd wicket</span></code></pre></figure>
-
-<p>Now building all of Wicket is as simple as issuing the following command:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn install</span></code></pre></figure>
-
-<p>This will compile, test, package and install all Wicket projects. Installation
-means putting the jar files into your local Maven repository, including the
-source, but without the javadoc jars (this is a Wicket specific configuration,
-because build javadoc takes a long time).</p>
-
-<p>The following commands are useful:</p>
-<table>
-<tr>
-<th>Commandline</th>
-<th>Description</th>
-</tr>
-<tr>
-<td>`mvn clean`</td>
-<td>cleans up build artifacts</td>
-</tr>
-<tr>
-<td>`mvn compile`</td>
-<td>compiles the projects</td>
-</tr>
-<tr>
-<td>`mvn package`</td>
-<td>creates the jar files in the target/ subdirectories</td>
-</tr>
-<tr>
-<td>`mvn install`</td>
-<td>installs the jar files in your local repository</td>
-</tr>
-<tr>
-<td>`mvn -Prelease package`</td>
-<td>generates the javadoc/source jars as well</td>
-</tr>
-</table>
-
-<p>You can just run the install target, as Maven will build the previous stages
-automatically.</p>
-
-<h3 id="coping-with-test-failures">Coping with test failures</h3>
-
-<p>As this is our main development you might/will encounter failing unit tests.
-These can be skipped using:</p>
-
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn -Dmaven.test.skip=true install</span></code></pre></figure>
-
-<p>Of course, all bets are off then and your mileage may vary if you use such a
-built jar.</p>
-
-<h3 id="using-your-own-built-artifacts">Using your own built artifacts</h3>
-
-<p>Now you have built your own fresh Wicket jar you must be anxious to use it.
-This is now as simple as adding a snapshot dependency on the specific Wicket
-version. So in your pom.xml you can use:</p>
+<p>With Apache Maven update your dependency to (and don’t forget to
+update any other dependencies on Wicket projects to the same version):</p>
 
 <figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
     <span class="nt">&lt;groupId&gt;</span>org.apache.wicket<span class="nt">&lt;/groupId&gt;</span>
     <span class="nt">&lt;artifactId&gt;</span>wicket-core<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>6.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;version&gt;</span>8.20.0<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
 
-<p>And adding this to your Eclipse, NetBeans or IntelliJ IDEA project classpath
-is then as simple as:</p>
+<p>Or download and build the distribution yourself, or use our
+convenience binary package you can find here:</p>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">mvn eclipse:eclipse</span></code></pre></figure>
+<ul>
+  <li>Download: <a href="https://wicket.apache.org/versions/wicket-8.x/#manually" target="_blank" rel="noopener noreferrer">https://wicket.apache.org/versions/wicket-8.x/#manually</a>
+</li>
+</ul>
 
-<p>or opening the project using Netbeans or IDEAs Maven integration.</p>
+<!--more-->
 
-<p>Maven will then add all the necessary JAR files to the project’s classpath.</p>
+<h2 id="upgrading-from-earlier-versions">Upgrading from earlier versions</h2>
 
-<p>One thing you need to make sure is that you have set the <code class="language-plaintext highlighter-rouge">M2_REPO</code> classpath
-variable in Eclipse (or a similar construct in Netbeans), and point it to your
-local repository, typically found in <code class="language-plaintext highlighter-rouge">C:\Documents and Settings\username\.m2\repo</code>
-or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/repo</code></p>
+<p>If you upgrade from 8.y.z this release is a drop in replacement. If
+you come from a version prior to 8.0.0, please read our Wicket 8
+migration guide found at</p>
 
-<p>You can add this setting using maven:</p>
+<ul>
+  <li><a href="http://s.apache.org/wicket8migrate" target="_blank" rel="noopener noreferrer">http://s.apache.org/wicket8migrate</a></li>
+</ul>
 
-<figure class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">mvn -Declipse.workspace=&lt;path-to-eclipse-workspace&gt;</span><span class="w"> </span>eclipse:add-maven-repo</code></pre></figure>
+<p>Now that Wicket 8 has reached end of life, plan your move to Wicket 10,
+our long-term support release, supported until July 2027. For upgrade
+options see:</p>
 
+<ul>
+  <li><a href="https://wicket.apache.org/versions/wicket-8.x/#upgrade" target="_blank" rel="noopener noreferrer">https://wicket.apache.org/versions/wicket-8.x/#upgrade</a></li>
+</ul>
 
+<p>Have fun!</p>
 
-            </section>
+<p>— The Wicket team</p>
+
+<p>========================================================================</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The signatures for the source release artefacts:
+</code></pre></div></div>
+
+<p>Signature for apache-wicket-8.20.0.zip:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQJPBAABCgA5FiEEZQrtLYI2XrJWnZFbyDeBfv7L6O8FAmrfdbsbFIAAAAAABAAO
+bWFudTIsMi41KzEuMTIsMCwyAAoJEMg3gX7+y+jvWN0P/At8mOcYS5ax6Bx/YfYX
+cGd0Ev9pE+Jn/hcMiKWRmIzedvg0x4ag20EeZqZsHFwwJtXXk8//Dxpa/W9a+Do9
+gdpEyXNQEButvcBWaXHuixjLq5gI8ecdmmAa0Tyb2PyQS8INbHNbYFCYUlt+edV4
+uULgD8NXJSvvofdpqjoDbB3zfwehFlmjTcd3oexRk/jJVTH87YLcuNcjQAy51/0O
+k1NQM7LzYWXCbAIPKDYeJR6smDva9NDVut2fhiV8rOD48+9xmLPjp7N7EmcSutov
+/cqcLAyis1RvSJehVHFpNzFTCB+/YhLWI7KvFtdnINShf5zvTkjcfRblnR65ljbq
+nU1ZREKlqU2hmF/FX5Ys37cjwszwrxNhG1pIkhVjnzgf00hJDpCGWJuX8GX+gGxs
+itMjGTw1S7LvvT8UGPj0CjbgS5yebafnPv/sZ8WtludY2NLREJjrroNba2OsuJgV
+dh8KHh4BesUZ1/IFXoPs04IvR/zWbuOpdXLmzn7/TayQoY0nK7DUGORT6cuQzGID
+G+8zhrLHttEszhbqzntuvgAIgzLyxBCZLKAkDOmdA2lgSp6whl7IQcOHsXI8nJtt
+zKmuU881HqCy10ec/xCsGYJZ37cpLQcK7oS8OUp0B9J5UZGjCNLciPIB5+zJeNjP
+nI7xSZCpqK0rowv2FOz21fD3
+=OG79
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>Signature for apache-wicket-8.20.0.tar.gz:</p>
+
+<div class="highlight"><pre>
+-----BEGIN PGP SIGNATURE-----
+
+iQJPBAABCgA5FiEEZQrtLYI2XrJWnZFbyDeBfv7L6O8FAmrfdbsbFIAAAAAABAAO
+bWFudTIsMi41KzEuMTIsMCwyAAoJEMg3gX7+y+jvDScQAMBgO9ShmxzynV7dni29
+tWPJMw4Njm1/80nLQGDYDcg9tdvhPlifE2ZNEOuxHMRwrShuVVQF9IGxXiWlCZUN
+oMU84fMjP2TcidwZDEevAF0aGLxo+bPlUrXLdz8qcNyT46Gj+us2I47/eUhwY4Vs
+gE6Mmrl5+QSGxhW3VwKlqiOZiGPWWdSA96/kZA707GZ2dyoRpR+j/x98MgS2pOnR
+7H7PHcQpBu+vKc7VJw0w1ArEittmY/bGF/MWb2MQvr8SzkhHRymeyJjyzHSf2mD8
+ZjB//bpn+T7ZDvSewQ1eFSCUKa9XGCqgJcWxEERWpL3WaJesKaKtBEZE8BiUlZQv
+Lh0nudIsg65VwQ2QLemArwltXPk4oNkI/8JmOrJZMncOrBL4IxmYx2KQDHPgc0L/
+GLlo/FbXG8ABGq5BWZJp3GfiDCmlotNnlf8paa+xFZwstZHqgfSp1aO7XLA6kB3V
+gCP11MqmyGtlk5ogG/zQ/OViyN1OxDzMckUAIhxZhf3gR0N6hrKfRw9QlV1Gpdkf
+i7D8eoOG93RuAoX5x8JEXbk2RWbuXOcRhDNIoMTgYHG8enX8fN786TwNsvWgEodn
+/UnJgJWWTR+EB7XhT7wj0Jcu14eKZKVA/0ZKtMs/PuIws7cRLdDScJW+aHFdzJ5u
+U2AvfLVr2yOi9gm0GlCwNtCG
+=HXzu
+-----END PGP SIGNATURE-----
+</pre></div>
+
+<p>========================================================================</p>
+
+<h3 id="this-release">This Release</h3>
+
+<h4 id="changelog-for-8200">CHANGELOG for 8.20.0:</h4>
+
+<h5 id="bug">Bug</h5>
+
+<ul>
+  <li>[WICKET-7199] - Vulnerable dependencies need to be updated</li>
+</ul>
+
+<h5 id="task">Task</h5>
+
+<ul>
+  <li>[GH-1699] - Include GitHub issues in the release notes built by build-changelog.sh</li>
+  <li>[GH-1708] - build-versions.py fails on Python 3 and misses the experimental modules</li>
+</ul>
+
+            </article>
+            <footer class="post-foot">
+                <nav class="post-pager" aria-label="Other posts">
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        
+                    
+                    <a class="post-pager-older" href="/wicket-site/current/news/2026/08/30/wicket-8.19.0-released.html"><span>Older 8.x release</span>Apache Wicket 8.19.0 released</a>
+                    
+                </nav>
+                <p class="post-follow">Follow the project on the <a href="/wicket-site/current/news/">blog</a>, in the <a href="/wicket-site/current/atom.xml">Atom feed</a> or on the <a href="/wicket-site/current/community/#announce">announce list</a>.</p>
+            </footer>
         </div>
     </div>
 </main>
@@ -323,6 +363,6 @@ or (for unix buffs) <code class="language-plaintext highlighter-rouge">~/.m2/rep
         </footer>
         
         <script type="application/json" id="seasons" data-base="/wicket-site/current/img/seasons/" data-selector>{"seasons":[{"name":"winter","label":"Winter","months":[12,1,2],"photo":"winter-frosted-leaf-1600.jpg","srcset":[{"file":"winter-frosted-leaf-900.jpg","width":900},{"file":"winter-frosted-leaf-1600.jpg","width":1600},{"file":"winter-frosted-leaf-2400.jpg","width":2400}],"focus":"50% 64%","focus_narrow":"100% 50%"},{"name":"spring","label":"Spring","months":[3,4,5],"photo":"spring-meadow.jpg","focus":"50% 26%","focus_narrow":"56% 50%","soft":true},{"name":"summer","label":"Summer","months":[6,7,8],"photo":"summer-reeds-1600.jpg","srcset":[{"file":"summer-reeds-900.jpg","width":900},{"file":"summer-reeds-1600.jpg","width":1600},{"file":"summer-reeds-2400.jpg","width":2400}],"focus":"50% 55%","focus_narrow":"62% 60%","night":0.82,"credit":"D R on Unsplash","url":"https://unsplash.com/photos/u7ldh_tgH3s"},{"name":"autumn","label":"Autumn","months":[9,10,11],"photo":"autumn-ink-cap-1600.jpg","srcset":[{"file":"autumn-ink-cap-900.jpg","width":900},{"file":"autumn-ink-cap-1600.jpg","width":1600},{"file":"autumn-ink-cap-2400.jpg","width":2400}],"focus":"50% 40%","focus_narrow":"100% 30%","anchor":"right","shift":"2%","ground":"linear-gradient(180deg, #2B2C2E 0%, #333536 20%, #3D403F 32%, #34373B 50%, #4A5246 62%, #6E7160 75%, #6F7350 90%, #4B454A 100%)","veil":"strong","night":1,"credit":"Veronika Biro on Unsplash","url":"https://unsplash.com/photos/CCAoWVqolxM"}],"occasions":[{"name":"halloween","label":"Halloween","from":"10-24","to":"11-01","photo":"halloween-pumpkin-1600.jpg","srcset":[{"file":"halloween-pumpkin-900.jpg","width":900},{"file":"halloween-pumpkin-1600.jpg","width":1600},{"file":"halloween-pumpkin-2400.jpg","width":2400}],"focus":"50% 0%","focus_narrow":"50% 0%","anchor":"right","shift":"8%","size":"80%","ground":"linear-gradient(180deg, #150C02 0%, #1A0F03 40%, #21170A 80%, #17120A 100%)","veil":"strong","night":1,"credit":"Ashley Levinson on Unsplash","url":"https://unsplash.com/photos/ApYECGtZa4A"}]}</script>
-        <script src="/wicket-site/current/javascript/ribbon.js?v=1793057996" defer></script>
+        <script src="/wicket-site/current/javascript/ribbon.js?v=1795105727" defer></script>
     </body>
 </html>
